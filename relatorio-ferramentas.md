@@ -105,6 +105,21 @@ A cadeia completa foi executada duas vezes consecutivas. Os hashes de ambos os
 DXFs, ambos os SVGs, do PDF e do PNG permaneceram identicos, comprovando a
 reprodutibilidade dos artefatos com as versoes fixadas.
 
+## Auditoria CAD do Projeto 01
+
+Em 2026-09-05, o Autodesk AcCoreConsole 2027, versao 26.0.118.0.0, abriu e auditou
+individualmente as seis fontes em `01-painel-motor-inversor/fonte/`:
+
+- `01_diagrama_unifilar.dxf`: `PASS`;
+- `02_diagrama_potencia.dxf`: `PASS`;
+- `03_diagrama_comando.dxf`: `PASS`;
+- `04_layout_interno_painel.dxf`: `PASS`;
+- `05_diagrama_bornes.dxf`: `PASS`;
+- `06_interligacoes_campo.dxf`: `PASS`.
+
+Nenhum DWG foi produzido ou versionado para o projeto. DXF AC1027 permanece como fonte
+principal; PDF, SVG e PNG sao derivados de visualizacao.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

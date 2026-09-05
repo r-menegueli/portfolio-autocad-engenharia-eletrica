@@ -1,8 +1,9 @@
 # Projetos acadêmicos planejados
 
-Esta pasta receberá, em etapas futuras, os dez projetos descritos no
-[plano de projetos](../docs/plano-projetos.md). Nenhum projeto final faz parte da
-etapa atual de preparação da infraestrutura.
+Esta pasta receberá, em etapas futuras, os Projetos 02 a 10 descritos no
+[plano de projetos](../docs/plano-projetos.md). O Projeto 01 foi criado na raiz em
+[`01-painel-motor-inversor/`](../01-painel-motor-inversor/README.md) por instrução
+explícita e não deve ser movido ou duplicado aqui.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 [padrão gráfico](../docs/padrao-grafico.md) e os
@@ -12,7 +13,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 
 | Ordem | Pasta futura | Tema |
 | ---: | --- | --- |
-| 1 | `P01-instalacao-residencial-bt` | instalação elétrica residencial de baixa tensão |
+| 1 | [`../01-painel-motor-inversor/`](../01-painel-motor-inversor/README.md) | painel de motor com inversor de frequência - concluído |
 | 2 | `P02-iluminacao-educacional-comercial` | iluminação normal e de emergência |
 | 3 | `P03-distribuicao-predial` | distribuição predial multipavimentos |
 | 4 | `P04-aterramento-spda` | aterramento, equipotencialização e SPDA conceitual |
@@ -105,5 +106,5 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção futura. A criação de qualquer pasta `Pxx-*`,
-cálculo, prancha ou lista de materiais pertence às próximas etapas do portfólio.
+Este README define a convenção dos projetos restantes. P02 a P10 só devem ser criados
+quando solicitados explicitamente.

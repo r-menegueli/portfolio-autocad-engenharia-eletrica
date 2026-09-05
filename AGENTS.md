@@ -9,8 +9,8 @@ parâmetros de validação. Não altere esses contratos silenciosamente.
 
 - O repositório fornece infraestrutura técnica, visual e documental reproduzível para
   um portfólio acadêmico de Engenharia Elétrica.
-- Nesta etapa, mantenha apenas a base comum. Não antecipe nem apresente como concluídos
-  os dez projetos finais.
+- A base comum foi concluída antes do início dos projetos. Desenvolva somente o projeto
+  solicitado pelo usuário e não antecipe os demais.
 - Todo desenho é acadêmico e conceitual. Não o trate como projeto executivo, documento
   de fabricação, instalação, obra, comissionamento ou segurança.
 - Autor oficial: **Rogério Eduardo Moreira Menegueli**.
@@ -112,6 +112,11 @@ Todo DXF de prancha deve conter, com esta grafia exata, no mínimo os layers aba
 
 Cada projeto futuro deve ocupar `projetos/NN-slug/`, onde `NN` vai de `01` a `10` e
 `slug` é curto, descritivo, minúsculo, sem espaços e sem acentos. A estrutura mínima é:
+
+Exceção registrada: por instrução explícita, o Projeto 01 ocupa
+`01-painel-motor-inversor/` na raiz. Não mova nem duplique essa pasta. A convenção
+`projetos/NN-slug/` continua sendo o padrão dos próximos projetos, salvo nova instrução
+explícita.
 
 ```text
 projetos/NN-slug/

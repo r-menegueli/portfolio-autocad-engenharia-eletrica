@@ -32,9 +32,10 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def output_metadata(kind: str, config: dict) -> dict:
+def output_metadata(kind: str, config: dict, artifact: dict) -> dict:
+    title = artifact.get("title", "Template A3 - Portfolio AutoCAD de Engenharia Eletrica")
     common = {
-        "Title": "Template A3 - Portfolio AutoCAD de Engenharia Eletrica",
+        "Title": title,
         "Author": config["portfolio"]["author"],
         "Creator": f"ezdxf {ezdxf.__version__} + matplotlib {matplotlib.__version__}",
     }
@@ -68,6 +69,7 @@ def render_document(
     bounds: tuple[float, float, float, float],
     config: dict,
     dpi: int,
+    artifact: dict,
 ) -> None:
     doc = ezdxf.readfile(source)
     audit = doc.audit()
@@ -118,7 +120,7 @@ def render_document(
             "facecolor": "white",
             "edgecolor": "none",
             "transparent": False,
-            "metadata": output_metadata(kind, config),
+            "metadata": output_metadata(kind, config, artifact),
         }
         if kind == "png":
             save_kwargs["dpi"] = dpi
@@ -179,7 +181,7 @@ def main() -> int:
             for kind in ("svg", "pdf", "png")
             if kind in artifact
         }
-        render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi)
+        render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi, artifact)
         rendered.append(
             {
                 "id": artifact["id"],

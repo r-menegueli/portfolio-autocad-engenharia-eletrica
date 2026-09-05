@@ -10,8 +10,8 @@ import sys
 from portfolio_config import ROOT
 
 
-def run(script: str, root: Path, *extra: str) -> None:
-    command = [sys.executable, str(root / "scripts" / script), "--root", str(root), *extra]
+def run(script: Path, root: Path, *extra: str) -> None:
+    command = [sys.executable, str(script), "--root", str(root), *extra]
     print("+", " ".join(command))
     subprocess.run(command, cwd=root, check=True)
 
@@ -26,10 +26,12 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     root = args.root.resolve()
-    run("gerar_template_a3.py", root)
-    run("renderizar.py", root)
+    run(root / "scripts" / "gerar_template_a3.py", root)
+    for generator in sorted(root.glob("[0-9][0-9]-*/fonte/gerar_projeto_*.py")):
+        run(generator, root)
+    run(root / "scripts" / "renderizar.py", root)
     validation_args = ["--strict"] if args.strict else []
-    run("validar_portfolio.py", root, *validation_args)
+    run(root / "scripts" / "validar_portfolio.py", root, *validation_args)
     return 0
 
 

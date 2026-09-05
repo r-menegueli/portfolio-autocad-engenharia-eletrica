@@ -1,0 +1,7 @@
+cabo,de,para,funcao,formacao,blindagem,comprimento_assumido_m,identificacao_condutores,observacoes
+W01,QDG,X1,alimentacao_trifasica,4G4_mm2_Cu_XLPE_0_6_1_kV,nao,5,L1_L2_L3_PE,secao_sujeita_a_calculo_final
+W02,X2,M1,saida_inversor_motor,3x4_mm2_mais_3G2_5_mm2_Cu,sim_360_graus,20,U_V_W_PE,cabo_simetrico_especifico_para_VFD
+W03,X2,M1,sensor_termico_PTC,2x0_75_mm2,sim,20,PTC1_PTC2,separar_de_potencia
+W04,X3,S0,emergencia_dois_canais,6x1_0_mm2,sim,15,24V_0V_CH1_RET1_CH2_RET2,arquitetura_sujeita_a_analise_de_risco
+W05,X3,PLC,comandos_e_estados_remotos,8x0_75_mm2,sim,30,RUN_STOP_RESET_RUN_FB_FAULT_FB_COM_RESERVA,contatos_secos_24_Vcc
+W06,X3,PLC,referencia_velocidade,2x0_75_mm2,sim,30,AI1_mais_AI1_menos_mais_SH,sinal_4_20_mA

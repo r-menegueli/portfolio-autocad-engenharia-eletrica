@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import OrderedDict
 from pathlib import Path
 
 import ezdxf
@@ -20,6 +21,14 @@ TITLE_STYLE = "PORTFOLIO_TITULO"
 # abaixo fixa apenas esses metadados tecnicos; a data documental permanece no
 # carimbo e nos metadados PORTFOLIO_* definidos pelo gerador.
 ezdxf.options.write_fixed_meta_data_for_testing = True
+
+
+def prepare_deterministic_write(doc: ezdxf.document.Drawing) -> None:
+    """Fixa metadados e ordena classes que o ezdxf coleta por conjunto interno."""
+    doc.classes.add_required_classes(doc.dxfversion)
+    doc.classes.classes = OrderedDict(
+        sorted(doc.classes.classes.items(), key=lambda item: item[0])
+    )
 
 
 def add_rect(layout, x0: float, y0: float, x1: float, y1: float, layer: str) -> None:
@@ -384,6 +393,7 @@ def build_template(config: dict, output_path: Path) -> None:
     insert.add_auto_attribs(title_values(config))
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    prepare_deterministic_write(doc)
     with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
         doc.write(stream)
 
@@ -395,6 +405,7 @@ def build_title_block(config: dict, output_path: Path) -> None:
     insert = msp.add_blockref(TITLE_BLOCK_NAME, (0.0, 0.0), dxfattribs={"layer": "01_CARIMBO"})
     insert.add_auto_attribs(title_values(config))
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    prepare_deterministic_write(doc)
     with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
         doc.write(stream)
 

@@ -5,8 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum do portfólio; os dez projetos finais ainda não fazem parte
-desta etapa.
+**Estado atual:** base comum concluída e Projeto 01 finalizado.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -19,7 +18,7 @@ desta etapa.
 - PDF, SVG e PNG como formatos de visualização;
 - geração e renderização reproduzíveis em Python;
 - validação automática da estrutura, documentos e artefatos;
-- convenção documental comum aos dez projetos futuros.
+- convenção documental comum aos projetos do portfólio.
 
 As regras normativas estão em [AGENTS.md](AGENTS.md), e os parâmetros processáveis
 ficam centralizados em [portfolio.toml](portfolio.toml).
@@ -30,8 +29,9 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
   representação visual.
 - [Critérios técnicos](docs/criterios-tecnicos.md): premissas, rastreabilidade, segurança
   e qualidade técnica.
-- [Plano dos projetos](docs/plano-projetos.md): escopo proposto para os dez trabalhos,
-  sem produzir os projetos finais nesta etapa.
+- [Plano dos projetos](docs/plano-projetos.md): sequência atualizada dos dez trabalhos.
+- [Projeto 01](01-painel-motor-inversor/README.md): painel de acionamento de motor de
+  indução trifásico com inversor de frequência.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -72,12 +72,19 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── template-a3.pdf
 │   ├── template-a3.png
 │   └── manifesto.json
-└── projetos/                    # reservado aos dez projetos futuros
+├── 01-painel-motor-inversor/
+│   ├── fonte/                   # seis DXFs e gerador reproduzível
+│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial e critérios
+│   ├── lista-cabos.csv
+│   └── lista-materiais.csv
+└── projetos/                    # reservado aos próximos projetos
 ```
 
-O diretório `projetos/` fica reservado para `01-...` até `10-...`. Cada projeto futuro
-terá README, memorial descritivo, critérios e premissas, lista de materiais CSV, fonte
-DXF e script em `fonte/`, além de PDF, SVG e PNG em `exports/`.
+Por instrução explícita, o Projeto 01 está na raiz em `01-painel-motor-inversor/`. O
+diretório `projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
+memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
+em `fonte/`, além de PDF, SVG e PNG em `exports/`.
 
 ## Preparação do ambiente
 
@@ -168,6 +175,11 @@ Após qualquer mudança no template, regenere todos os derivados e abra o PNG, o
 SVG. Confira especialmente bordas, carimbo, aviso, legenda, notas, alinhamentos e
 legibilidade. A validação automática complementa essa inspeção, mas não a substitui.
 
+## Projeto concluído
+
+- [P01 - Painel de motor com inversor](01-painel-motor-inversor/README.md), com seis
+  pranchas separadas, documentos técnicos, listas CSV e validação registrada.
+
 ## Formatos
 
 | Formato | Papel no fluxo | Condição |
@@ -194,7 +206,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar um projeto futuro
+## Como iniciar o próximo projeto
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

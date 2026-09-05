@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import asdict, dataclass
 import fnmatch
 import hashlib
@@ -243,6 +244,114 @@ class Validator:
                 self.checked()
                 if warning not in text:
                     self.add("ERROR", "NOTICE_MISSING", readme, "Aviso obrigatorio ausente.")
+            self.check_csv_table(
+                project / "lista-materiais.csv",
+                required_columns=("item", "quantidade", "unidade", "descricao", "referencia", "observacoes"),
+                unique_column="item",
+                numeric_columns=("quantidade",),
+            )
+
+        for project_config in self.config.get("projects", []):
+            project = self.root / project_config["path"]
+            self.checked()
+            if not project.is_dir():
+                self.add("ERROR", "PROJECT_DIR_MISSING", project, "Diretorio configurado ausente.")
+                continue
+            for name in project_config.get("required_files", []):
+                path = project / name
+                self.checked()
+                if not path.is_file():
+                    self.add("ERROR", "PROJECT_FILE_MISSING", path, "Arquivo configurado ausente.")
+            source_dir = project / project_config.get("source_dir", "fonte")
+            export_dir = project / project_config.get("export_dir", "exports")
+            for directory in (source_dir, export_dir):
+                self.checked()
+                if not directory.is_dir():
+                    self.add("ERROR", "PROJECT_DIR_MISSING", directory, "Diretorio configurado ausente.")
+            expected = int(project_config.get("sheet_count", 0))
+            if source_dir.is_dir() and expected:
+                dxfs = list(source_dir.glob("[0-9][0-9]_*.dxf"))
+                self.checked()
+                if len(dxfs) != expected:
+                    self.add("ERROR", "PROJECT_SHEET_COUNT", source_dir, f"Esperados {expected} DXFs; encontrados {len(dxfs)}.")
+            if export_dir.is_dir() and expected:
+                for suffix in ("pdf", "svg", "png"):
+                    files = list(export_dir.glob(f"[0-9][0-9]_*.{suffix}"))
+                    self.checked()
+                    if len(files) != expected:
+                        self.add("ERROR", "PROJECT_EXPORT_COUNT", export_dir, f"Esperados {expected} {suffix.upper()}; encontrados {len(files)}.")
+            warning = normalize_text(self.config["portfolio"]["warning"])
+            for notice_name in ("README.md", "memorial-descritivo.md"):
+                notice_file = project / notice_name
+                if notice_file.is_file():
+                    self.checked()
+                    text = normalize_text(notice_file.read_text(encoding="utf-8"))
+                    if warning not in text:
+                        self.add("ERROR", "NOTICE_MISSING", notice_file, "Aviso obrigatorio ausente.")
+            self.check_csv_table(
+                project / "lista-materiais.csv",
+                required_columns=("item", "quantidade", "unidade", "descricao", "referencia", "observacoes"),
+                unique_column="item",
+                numeric_columns=("quantidade",),
+            )
+            self.check_csv_table(
+                project / "lista-cabos.csv",
+                required_columns=(
+                    "cabo",
+                    "de",
+                    "para",
+                    "funcao",
+                    "formacao",
+                    "blindagem",
+                    "comprimento_assumido_m",
+                    "identificacao_condutores",
+                    "observacoes",
+                ),
+                unique_column="cabo",
+                numeric_columns=("comprimento_assumido_m",),
+            )
+
+    def check_csv_table(
+        self,
+        path: Path,
+        *,
+        required_columns: tuple[str, ...],
+        unique_column: str,
+        numeric_columns: tuple[str, ...],
+    ) -> None:
+        self.checked()
+        if not path.is_file():
+            return
+        try:
+            with path.open("r", encoding="utf-8-sig", newline="") as stream:
+                reader = csv.DictReader(stream)
+                columns = tuple(reader.fieldnames or ())
+                rows = list(reader)
+        except (OSError, csv.Error) as exc:
+            self.add("ERROR", "CSV_PARSE", path, f"CSV invalido: {exc}")
+            return
+        missing = [column for column in required_columns if column not in columns]
+        self.checked(len(required_columns) + 1)
+        if missing:
+            self.add("ERROR", "CSV_COLUMNS", path, "Colunas obrigatorias ausentes: " + ", ".join(missing))
+        if not rows:
+            self.add("ERROR", "CSV_EMPTY", path, "CSV sem linhas de dados.")
+            return
+        identifiers: set[str] = set()
+        for line_number, row in enumerate(rows, start=2):
+            self.checked(len(required_columns) + len(numeric_columns))
+            if any(not str(row.get(column, "")).strip() for column in required_columns):
+                self.add("ERROR", "CSV_VALUE_MISSING", path, f"Valor obrigatorio ausente na linha {line_number}.")
+            identifier = str(row.get(unique_column, "")).strip()
+            if identifier in identifiers:
+                self.add("ERROR", "CSV_DUPLICATE", path, f"Identificador duplicado na linha {line_number}: {identifier}")
+            identifiers.add(identifier)
+            for column in numeric_columns:
+                try:
+                    if float(str(row.get(column, "")).replace(",", ".")) <= 0:
+                        raise ValueError
+                except ValueError:
+                    self.add("ERROR", "CSV_NUMBER", path, f"Valor numerico invalido em {column}, linha {line_number}.")
 
     def check_artifacts(self) -> None:
         for artifact in self.config["artifacts"]:
@@ -725,7 +834,11 @@ def main() -> int:
         print_human(result)
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
-        args.report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        args.report.write_text(
+            json.dumps(result, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
     return 0 if result["status"] == "PASS" else 1
 
 

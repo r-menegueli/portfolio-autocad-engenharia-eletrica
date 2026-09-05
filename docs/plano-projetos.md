@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: planejamento — nenhum projeto final é produzido nesta etapa
+Estado: P01 concluído; P02 a P10 permanecem planejados
 
 ## Propósito
 
@@ -57,34 +57,33 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 
 | Ordem | Código | Projeto | Competência principal | Dependência recomendada |
 | ---: | :---: | --- | --- | --- |
-| 1 | P01 | Instalação elétrica residencial de baixa tensão | circuitos, cargas e documentação básica | infraestrutura do portfólio |
-| 2 | P02 | Iluminação de ambiente educacional e comercial | critérios luminotécnicos e comando de iluminação | P01 |
-| 3 | P03 | Distribuição predial multipavimentos | demanda, alimentadores e prumada elétrica | P01 e P02 |
+| 1 | P01 | Painel de motor com inversor de frequência | potência, comando, STO, bornes e integração | infraestrutura do portfólio |
+| 2 | P02 | Iluminação de ambiente educacional e comercial | critérios luminotécnicos e comando de iluminação | infraestrutura do portfólio |
+| 3 | P03 | Distribuição predial multipavimentos | demanda, alimentadores e prumada elétrica | P02 |
 | 4 | P04 | Aterramento, equipotencialização e SPDA conceitual | proteção, zonas e detalhes construtivos | P03 |
-| 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P01 e P04 |
-| 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P03 e P04 |
-| 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P06 |
+| 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P04 |
+| 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01, P03 e P04 |
+| 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P01 e P06 |
 | 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P07 |
 | 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
 | 10 | P10 | Integração elétrica de uma microindústria | coordenação multidisciplinar e consistência global | P05 a P09 |
 
-## P01 — Instalação elétrica residencial de baixa tensão
+## P01 — Painel de motor com inversor de frequência
 
-**Objetivo.** Estabelecer a primeira referência completa do portfólio com uma
-instalação residencial fictícia, simples o bastante para testar todo o fluxo de
-geração, renderização e validação.
+**Objetivo.** Documentar um painel acadêmico de acionamento de motor de indução
+trifásico com inversor de frequência, estabelecendo a primeira aplicação completa do
+fluxo de geração, renderização e validação.
 
-**Escopo.** Planta de pontos de utilização e iluminação, divisão de circuitos,
-quadro de distribuição, diagrama unifilar, identificação de condutores e cargas,
-critérios de demanda e verificação conceitual de queda de tensão. A arquitetura
-será apenas uma base didática, sem representar imóvel real.
+**Escopo.** Alimentação trifásica, seccionamento, proteção, VFD, motor, emergência em
+dois canais com STO conceitual, partida/parada, seleção local/remoto, referência de
+velocidade, sinalização, bornes, aterramento, cabos e layout interno.
 
-**Pranchas e dados específicos.** Planta elétrica; quadro de cargas e legenda;
-diagrama unifilar do quadro; tabela de circuitos e lista de materiais.
+**Pranchas e dados específicos.** Diagramas unifilar, de potência, de comando e de
+bornes; layout interno; interligações de campo; listas de cabos e materiais; sequência
+funcional e relação conceitual entre V/f e FOC.
 
-**Marco de aceitação.** O DXF deve fixar o padrão de símbolos e layers, manter
-todos os elementos dentro da moldura e gerar PDF, SVG e PNG legíveis sem ajustes
-manuais.
+**Marco de aceitação.** Concluído na revisão 00. Seis DXFs AC1027 auditados no AutoCAD
+2027, derivados PDF/SVG/PNG inspecionados e validação estrita aprovada.
 
 ## P02 — Iluminação de ambiente educacional e comercial
 
@@ -259,7 +258,8 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Evolução da biblioteca comum
 
-- P01 estabelece folha, carimbo, textos, cotas e símbolos básicos de baixa tensão.
+- P01 estabelece símbolos de potência, comando, instrumentação, bornes e interligações
+  de campo para acionamentos com inversor.
 - P02 acrescenta luminárias, comandos e representação de resultados.
 - P03 acrescenta prumadas, medição, quadros e referências entre folhas.
 - P04 acrescenta símbolos de aterramento, equipotencialização e SPDA.
@@ -273,6 +273,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Nesta etapa, o resultado esperado limita-se à infraestrutura, às regras, aos
-templates e às ferramentas de automação. As pastas e pranchas dos dez projetos
-serão criadas apenas em etapas futuras, uma por vez, conforme esta sequência.
+O Projeto 01 foi materializado em `01-painel-motor-inversor/` por instrução explícita e
+está concluído. Os Projetos 02 a 10 permanecem planejados e serão criados apenas sob
+solicitação, um por vez, conforme a sequência revisada.

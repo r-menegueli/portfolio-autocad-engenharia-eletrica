@@ -119,6 +119,24 @@ color = 7
 lineweight = 18
 linetype = "CONTINUOUS"
 
+[[projects]]
+id = "01-painel-motor-inversor"
+path = "01-painel-motor-inversor"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "sequencia-funcionamento.md",
+  "controle-vf-foc.md",
+  "inspecao-visual.md",
+  "lista-cabos.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_01.py",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -136,3 +154,69 @@ source = "templates/carimbo-a3/carimbo-a3.dxf"
 svg = "templates/carimbo-a3/carimbo-a3.svg"
 require_a3 = false
 require_notice = false
+
+[[artifacts]]
+id = "p01-01-diagrama-unifilar"
+kind = "sheet"
+title = "Projeto 01 - Diagrama unifilar"
+source = "01-painel-motor-inversor/fonte/01_diagrama_unifilar.dxf"
+svg = "01-painel-motor-inversor/exports/01_diagrama_unifilar.svg"
+pdf = "01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf"
+png = "01-painel-motor-inversor/exports/01_diagrama_unifilar.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-02-diagrama-potencia"
+kind = "sheet"
+title = "Projeto 01 - Diagrama de potência"
+source = "01-painel-motor-inversor/fonte/02_diagrama_potencia.dxf"
+svg = "01-painel-motor-inversor/exports/02_diagrama_potencia.svg"
+pdf = "01-painel-motor-inversor/exports/02_diagrama_potencia.pdf"
+png = "01-painel-motor-inversor/exports/02_diagrama_potencia.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-03-diagrama-comando"
+kind = "sheet"
+title = "Projeto 01 - Diagrama de comando"
+source = "01-painel-motor-inversor/fonte/03_diagrama_comando.dxf"
+svg = "01-painel-motor-inversor/exports/03_diagrama_comando.svg"
+pdf = "01-painel-motor-inversor/exports/03_diagrama_comando.pdf"
+png = "01-painel-motor-inversor/exports/03_diagrama_comando.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-04-layout-interno"
+kind = "sheet"
+title = "Projeto 01 - Layout interno do painel"
+source = "01-painel-motor-inversor/fonte/04_layout_interno_painel.dxf"
+svg = "01-painel-motor-inversor/exports/04_layout_interno_painel.svg"
+pdf = "01-painel-motor-inversor/exports/04_layout_interno_painel.pdf"
+png = "01-painel-motor-inversor/exports/04_layout_interno_painel.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-05-diagrama-bornes"
+kind = "sheet"
+title = "Projeto 01 - Diagrama de bornes"
+source = "01-painel-motor-inversor/fonte/05_diagrama_bornes.dxf"
+svg = "01-painel-motor-inversor/exports/05_diagrama_bornes.svg"
+pdf = "01-painel-motor-inversor/exports/05_diagrama_bornes.pdf"
+png = "01-painel-motor-inversor/exports/05_diagrama_bornes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-06-interligacoes-campo"
+kind = "sheet"
+title = "Projeto 01 - Interligações de campo"
+source = "01-painel-motor-inversor/fonte/06_interligacoes_campo.dxf"
+svg = "01-painel-motor-inversor/exports/06_interligacoes_campo.svg"
+pdf = "01-painel-motor-inversor/exports/06_interligacoes_campo.pdf"
+png = "01-painel-motor-inversor/exports/06_interligacoes_campo.png"
+require_a3 = true
+require_notice = true

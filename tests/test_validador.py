@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 
 import ezdxf
@@ -100,6 +101,40 @@ def test_renamed_dxf_is_not_accepted_as_dwg(tmp_path: Path) -> None:
     validator = Validator(root)
     validator.check_dwg_files()
     assert {"DWG_SIGNATURE", "DWG_EVIDENCE"}.issubset(codes(validator))
+
+
+def test_invalid_csv_contract_is_detected(tmp_path: Path) -> None:
+    root = fixture_root(tmp_path)
+    table = root / "lista-materiais.csv"
+    table.write_text("item,quantidade\n1,0\n1,abc\n", encoding="utf-8")
+    validator = Validator(root)
+    validator.check_csv_table(
+        table,
+        required_columns=("item", "quantidade", "unidade"),
+        unique_column="item",
+        numeric_columns=("quantidade",),
+    )
+    assert {"CSV_COLUMNS", "CSV_NUMBER", "CSV_DUPLICATE"}.issubset(codes(validator))
+
+
+def test_template_generation_is_reproducible_across_processes(tmp_path: Path) -> None:
+    hashes: list[tuple[bytes, bytes]] = []
+    for name in ("run-a", "run-b"):
+        target = tmp_path / name
+        target.mkdir()
+        shutil.copy2(ROOT / "portfolio.toml", target / "portfolio.toml")
+        subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "gerar_template_a3.py"), "--root", str(target)],
+            check=True,
+            capture_output=True,
+        )
+        hashes.append(
+            (
+                (target / "templates" / "template-a3.dxf").read_bytes(),
+                (target / "templates" / "carimbo-a3" / "carimbo-a3.dxf").read_bytes(),
+            )
+        )
+    assert hashes[0] == hashes[1]
 
 
 def test_current_repository_passes_strict_validation() -> None:
