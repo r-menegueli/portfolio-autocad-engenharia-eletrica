@@ -1,0 +1,17 @@
+[project]
+name = "portfolio-autocad-engenharia-eletrica"
+version = "0.1.0"
+description = "Infraestrutura reproduzivel para portfolio academico de Engenharia Eletrica"
+requires-python = ">=3.11"
+authors = [
+  { name = "Rogério Eduardo Moreira Menegueli" },
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

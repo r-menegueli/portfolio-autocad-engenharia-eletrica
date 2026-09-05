@@ -1,0 +1,31 @@
+# Ambientes e caches Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Arquivos temporarios de editores e do AutoCAD
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*.dwl
+*.dwl2
+*.sv$
+~$*
+.#*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Saidas locais que nao fazem parte dos artefatos versionados
+work/
+tmp/
+*.log
+ErrorReports/

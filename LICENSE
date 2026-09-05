@@ -1,0 +1,72 @@
+LICENCIAMENTO DUAL DO PORTFÓLIO
+
+Copyright (c) 2026 Rogério Eduardo Moreira Menegueli
+
+Este repositório reúne materiais de naturezas diferentes. Por isso, cada parte é
+licenciada segundo a regra abaixo, salvo quando um arquivo contiver uma licença
+própria e explícita.
+
+1. CÓDIGO E AUTOMAÇÃO — LICENÇA MIT
+
+A Licença MIT aplica-se a scripts, código-fonte, testes, validadores, rotinas de
+geração ou renderização e arquivos de configuração destinados à execução dessas
+rotinas. Exemplos incluem o conteúdo de `scripts/` e arquivos Python.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+2. DESENHOS E DOCUMENTAÇÃO — CC BY-NC 4.0
+
+A licença Creative Commons Atribuição-NãoComercial 4.0 Internacional
+(CC BY-NC 4.0) aplica-se aos desenhos, modelos, pranchas, templates gráficos,
+documentos técnicos e acadêmicos, imagens, PDFs, SVGs, PNGs, arquivos CAD e
+listas de materiais. Isso inclui, em particular, o conteúdo de `docs/`,
+`templates/` e `projetos/`, exceto código incorporado que esteja claramente
+identificado como abrangido pela seção 1.
+
+Nos termos da CC BY-NC 4.0, é permitido compartilhar e adaptar esses materiais
+para fins não comerciais, inclusive acadêmicos, desde que seja atribuída a
+autoria, indicado o título deste portfólio, fornecido um link para a licença e
+sinalizadas as alterações realizadas. A atribuição não implica endosso do autor.
+
+Texto oficial da licença:
+https://creativecommons.org/licenses/by-nc/4.0/legalcode.pt
+
+Resumo legível:
+https://creativecommons.org/licenses/by-nc/4.0/deed.pt-br
+
+Para uso comercial dos desenhos ou da documentação, é necessária autorização
+separada e expressa do titular dos direitos autorais.
+
+3. AVISO TÉCNICO E LIMITAÇÃO DE RESPONSABILIDADE
+
+Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação,
+instalação ou execução de serviços sem revisão, dimensionamento e
+responsabilidade de profissional legalmente habilitado.
+
+Os desenhos e documentos são fornecidos sem garantias de adequação normativa,
+construtiva ou operacional. O licenciamento não substitui análise técnica,
+aprovação por autoridade competente nem responsabilidade profissional.
+
+4. MATERIAIS DE TERCEIROS
+
+Marcas, fontes, bibliotecas, normas técnicas, símbolos ou outros materiais de
+terceiros permanecem sujeitos aos direitos e às licenças de seus respectivos
+titulares. Esta licença não concede direitos adicionais sobre esses materiais.

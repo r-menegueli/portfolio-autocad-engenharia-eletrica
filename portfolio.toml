@@ -1,0 +1,138 @@
+schema_version = 1
+
+[portfolio]
+name = "Portfólio AutoCAD de Engenharia Elétrica"
+author = "Rogério Eduardo Moreira Menegueli"
+language = "pt-BR"
+source_format = "DXF"
+dxf_version = "AC1027"
+template_date = "2026-09-05"
+warning = "Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado."
+
+[page]
+format = "A3"
+orientation = "landscape"
+units = "mm"
+insunits = 4
+width = 420.0
+height = 297.0
+frame_left = 10.0
+frame_bottom = 10.0
+frame_right = 410.0
+frame_top = 287.0
+tolerance = 0.5
+
+[validation]
+minimum_file_size = 16
+minimum_png_width = 2400
+aspect_ratio_tolerance = 0.015
+text_overlap_warning_ratio = 0.10
+text_overlap_error_ratio = 0.50
+excluded_directories = [".git", ".venv", ".pytest_cache", "__pycache__", "work", "tmp"]
+temporary_patterns = ["*.bak", "*.tmp", "*.temp", "*.swp", "*.swo", "*.dwl", "*.dwl2", "*.sv$", "~$*", ".#*", "*.pyc", ".DS_Store", "Thumbs.db"]
+
+[layers]
+required = [
+  "00_MOLDURA",
+  "01_CARIMBO",
+  "02_TEXTO",
+  "03_COTAS",
+  "04_EQUIPAMENTOS",
+  "05_POTENCIA",
+  "06_COMANDO",
+  "07_INSTRUMENTACAO",
+  "08_CABOS",
+  "09_BORNES",
+  "10_ELETROCALHAS",
+  "11_ARQUITETURA",
+  "12_LEGENDA",
+  "13_NOTAS",
+]
+
+[layer_styles."00_MOLDURA"]
+color = 7
+lineweight = 50
+linetype = "CONTINUOUS"
+
+[layer_styles."01_CARIMBO"]
+color = 7
+lineweight = 25
+linetype = "CONTINUOUS"
+
+[layer_styles."02_TEXTO"]
+color = 7
+lineweight = 18
+linetype = "CONTINUOUS"
+
+[layer_styles."03_COTAS"]
+color = 4
+lineweight = 18
+linetype = "CONTINUOUS"
+
+[layer_styles."04_EQUIPAMENTOS"]
+color = 2
+lineweight = 35
+linetype = "CONTINUOUS"
+
+[layer_styles."05_POTENCIA"]
+color = 1
+lineweight = 50
+linetype = "CONTINUOUS"
+
+[layer_styles."06_COMANDO"]
+color = 3
+lineweight = 25
+linetype = "CONTINUOUS"
+
+[layer_styles."07_INSTRUMENTACAO"]
+color = 6
+lineweight = 25
+linetype = "CONTINUOUS"
+
+[layer_styles."08_CABOS"]
+color = 30
+lineweight = 35
+linetype = "CONTINUOUS"
+
+[layer_styles."09_BORNES"]
+color = 5
+lineweight = 25
+linetype = "CONTINUOUS"
+
+[layer_styles."10_ELETROCALHAS"]
+color = 8
+lineweight = 35
+linetype = "CONTINUOUS"
+
+[layer_styles."11_ARQUITETURA"]
+color = 9
+lineweight = 18
+linetype = "CONTINUOUS"
+
+[layer_styles."12_LEGENDA"]
+color = 7
+lineweight = 18
+linetype = "CONTINUOUS"
+
+[layer_styles."13_NOTAS"]
+color = 7
+lineweight = 18
+linetype = "CONTINUOUS"
+
+[[artifacts]]
+id = "template-a3"
+kind = "sheet"
+source = "templates/template-a3.dxf"
+svg = "templates/template-a3.svg"
+pdf = "renders/template-a3.pdf"
+png = "renders/template-a3.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "carimbo-a3"
+kind = "asset"
+source = "templates/carimbo-a3/carimbo-a3.dxf"
+svg = "templates/carimbo-a3/carimbo-a3.svg"
+require_a3 = false
+require_notice = false

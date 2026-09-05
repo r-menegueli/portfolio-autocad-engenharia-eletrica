@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-09-05",
+  "source_format": "DXF",
+  "dxf_writer": "ezdxf 1.4.4",
+  "renderer": "matplotlib 3.11.1",
+  "dpi": 300,
+  "artifacts": [
+    {
+      "id": "template-a3",
+      "source": "templates/template-a3.dxf",
+      "source_sha256": "af5734384bbba9f68059db032425a2475cb5cedaa679f1f6bec919a1fac6edc2",
+      "outputs": {
+        "pdf": {
+          "path": "renders/template-a3.pdf",
+          "sha256": "094e6ef6e0c5bf6015f5a62f043effc54d44a4a0b4d1cee26c61e966d50554d7"
+        },
+        "png": {
+          "path": "renders/template-a3.png",
+          "sha256": "d31a4825bba2ba8067cb161b1a4e72a2bba14c80f64ca15cb14906d239c4eee1"
+        },
+        "svg": {
+          "path": "templates/template-a3.svg",
+          "sha256": "8f1849b5091657a3e24314f5fa22be36e744d2bc7bcfa49ae62c68f9bfd52bbc"
+        }
+      }
+    },
+    {
+      "id": "carimbo-a3",
+      "source": "templates/carimbo-a3/carimbo-a3.dxf",
+      "source_sha256": "04e327a7599bc176bc9603f150dba4a2a35eea4e6254d8a1e754e7a708ae1c3c",
+      "outputs": {
+        "svg": {
+          "path": "templates/carimbo-a3/carimbo-a3.svg",
+          "sha256": "6441a6aff2d3b114573c946bfbbb55913843ca6d45fac0a0cf690c2a4cb48e23"
+        }
+      }
+    }
+  ]
+}

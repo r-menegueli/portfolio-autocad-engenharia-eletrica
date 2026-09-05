@@ -1,0 +1,17 @@
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+LICENSE text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.svg text eol=lf -whitespace
+*.dxf text eol=lf working-tree-encoding=UTF-8 -whitespace
+*.ps1 text eol=crlf
+*.scr text eol=crlf -whitespace
+*.png binary
+*.pdf binary
+*.dwg binary
