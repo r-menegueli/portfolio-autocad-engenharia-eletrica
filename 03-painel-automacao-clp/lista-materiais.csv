@@ -1,0 +1,36 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+Q0,1,un,Seccionadora principal 3P 40 A,Q0,Valor preliminar
+QF1,1,un,Disjuntor-motor 3P 9-14 A,QF1,Regular pelos dados de M1
+QF2,1,un,Disjuntor-motor 3P 9-14 A,QF2,Regular pelos dados de M2
+QF3,1,un,Disjuntor 2P 4 A curva C,QF3,Entrada de PSU1
+QF4,1,un,Proteção 24 Vcc 2 A,QF4,CLP e módulos
+QF5,1,un,Proteção 24 Vcc 1 A,QF5,Sensores
+QF6,1,un,Proteção 24 Vcc 2 A,QF6,Relés e contatores
+QF7,1,un,Proteção 24 Vcc 2 A,QF7,Sinalização
+PSU1,1,un,Fonte 100-240 Vca / 24 Vcc 10 A,PSU1,Industrial genérica
+CLP1,1,un,CLP 24 Vcc com 16 DI e 16 DO PNP,CLP1,Sem fabricante
+KSR1,1,un,Relé de segurança 24 Vcc com dois canais,KSR1,Arquitetura final depende de análise de risco
+KDRY,1,un,Relé de nível para proteção contra funcionamento a seco,KDRY,Modo de falha a confirmar
+K1,1,un,Relé de interface 24 Vcc,K1,Diodo de supressão
+K2,1,un,Relé de interface 24 Vcc,K2,Diodo de supressão
+KA1,1,un,Relé de interface para alarme remoto,KA1,Contato seco
+KM1,1,un,Contator tripolar AC-3 18 A bobina 24 Vcc,KM1,Seleção preliminar
+KM2,1,un,Contator tripolar AC-3 18 A bobina 24 Vcc,KM2,Seleção preliminar
+RT1,1,un,Relé de sobrecarga 9-13 A,RT1,Ajuste conforme placa de M1
+RT2,1,un,Relé de sobrecarga 9-13 A,RT2,Ajuste conforme placa de M2
+M1,1,un,Bomba centrífuga 3 kW 220 V trifásica,M1,Dado acadêmico
+M2,1,un,Bomba centrífuga 3 kW 220 V trifásica,M2,Dado acadêmico
+LSL-LL,1,un,Chave de nível baixo-baixo,LSL-LL,Proteção contra funcionamento a seco
+LSL,1,un,Chave de nível baixo,LSL,Fim da demanda
+LSH,1,un,Chave de nível alto,LSH,Início da demanda
+LSHH,1,un,Chave de nível alto-alto,LSHH,Alarme e solicitação da reserva
+S0,1,un,Botão de emergência tipo cogumelo dois canais,S0,Destravamento manual
+S1,1,un,Seletor MAN-0-AUTO,S1,Três posições mantidas
+S2-S6,5,un,Botoeiras de comando 22 mm,S2-S6,Partida parada e ACK
+H1-H6,6,un,Sinalizadores LED 24 Vcc,H1-H6,Cores conforme documentação
+BZ1,1,un,Buzzer 24 Vcc,BZ1,Reconhecível por S6
+X1-X4,50,un,Borne passagem 2.5-6 mm2,X1-X4,Quantidade inclui reserva
+TB-PE,1,un,Barra de equipotencialização,TB-PE,Com pontos reserva
+PAINEL,1,un,Invólucro 800 x 600 x 300 mm,PAINEL,Dimensões e IP a confirmar
+CANALETA,8,m,Canaleta plástica segregada,CANALETA,Dimensão após ocupação
+TRILHO,4,m,Trilho DIN 35 mm,TRILHO,Corte no detalhamento

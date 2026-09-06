@@ -159,6 +159,30 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "03-painel-automacao-clp"
+path = "03-painel-automacao-clp"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 8
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "sequencia-funcionamento.md",
+  "pseudocodigo-estados.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-io.csv",
+  "lista-bornes.csv",
+  "lista-cabos.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_03.py",
+  "fonte/validar_projeto_03.py",
+  "validacao-logica.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -328,5 +352,93 @@ source = "02-projeto-eletrico-residencial/fonte/08_detalhes_aterramento.dxf"
 svg = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.svg"
 pdf = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.pdf"
 png = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-01-arquitetura-automacao"
+kind = "sheet"
+title = "Projeto 03 - Arquitetura de automação"
+source = "03-painel-automacao-clp/fonte/01_arquitetura_automacao.dxf"
+svg = "03-painel-automacao-clp/exports/01_arquitetura_automacao.svg"
+pdf = "03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf"
+png = "03-painel-automacao-clp/exports/01_arquitetura_automacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-02-alimentacao-24v"
+kind = "sheet"
+title = "Projeto 03 - Alimentação 24 Vcc"
+source = "03-painel-automacao-clp/fonte/02_alimentacao_24v.dxf"
+svg = "03-painel-automacao-clp/exports/02_alimentacao_24v.svg"
+pdf = "03-painel-automacao-clp/exports/02_alimentacao_24v.pdf"
+png = "03-painel-automacao-clp/exports/02_alimentacao_24v.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-03-entradas-clp"
+kind = "sheet"
+title = "Projeto 03 - Entradas do CLP"
+source = "03-painel-automacao-clp/fonte/03_entradas_clp.dxf"
+svg = "03-painel-automacao-clp/exports/03_entradas_clp.svg"
+pdf = "03-painel-automacao-clp/exports/03_entradas_clp.pdf"
+png = "03-painel-automacao-clp/exports/03_entradas_clp.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-04-saidas-clp"
+kind = "sheet"
+title = "Projeto 03 - Saídas do CLP"
+source = "03-painel-automacao-clp/fonte/04_saidas_clp.dxf"
+svg = "03-painel-automacao-clp/exports/04_saidas_clp.svg"
+pdf = "03-painel-automacao-clp/exports/04_saidas_clp.pdf"
+png = "03-painel-automacao-clp/exports/04_saidas_clp.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-05-diagrama-comando"
+kind = "sheet"
+title = "Projeto 03 - Diagrama de comando"
+source = "03-painel-automacao-clp/fonte/05_diagrama_comando.dxf"
+svg = "03-painel-automacao-clp/exports/05_diagrama_comando.svg"
+pdf = "03-painel-automacao-clp/exports/05_diagrama_comando.pdf"
+png = "03-painel-automacao-clp/exports/05_diagrama_comando.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-06-layout-painel"
+kind = "sheet"
+title = "Projeto 03 - Layout do painel"
+source = "03-painel-automacao-clp/fonte/06_layout_painel.dxf"
+svg = "03-painel-automacao-clp/exports/06_layout_painel.svg"
+pdf = "03-painel-automacao-clp/exports/06_layout_painel.pdf"
+png = "03-painel-automacao-clp/exports/06_layout_painel.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-07-diagrama-bornes"
+kind = "sheet"
+title = "Projeto 03 - Diagrama de bornes"
+source = "03-painel-automacao-clp/fonte/07_diagrama_bornes.dxf"
+svg = "03-painel-automacao-clp/exports/07_diagrama_bornes.svg"
+pdf = "03-painel-automacao-clp/exports/07_diagrama_bornes.pdf"
+png = "03-painel-automacao-clp/exports/07_diagrama_bornes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-08-interligacoes-campo"
+kind = "sheet"
+title = "Projeto 03 - Interligações de campo"
+source = "03-painel-automacao-clp/fonte/08_interligacoes_campo.dxf"
+svg = "03-painel-automacao-clp/exports/08_interligacoes_campo.svg"
+pdf = "03-painel-automacao-clp/exports/08_interligacoes_campo.pdf"
+png = "03-painel-automacao-clp/exports/08_interligacoes_campo.png"
 require_a3 = true
 require_notice = true

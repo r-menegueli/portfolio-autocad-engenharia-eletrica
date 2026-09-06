@@ -1,0 +1,47 @@
+regua,borne,potencial,funcao,cabo,destino
+X1,1,L1,Entrada fase L1,W01,QDG
+X1,2,L2,Entrada fase L2,W01,QDG
+X1,3,L3,Entrada fase L3,W01,QDG
+X1,4,PE,Proteção de entrada,W01,QDG
+X2,1,U1,Motor M1 fase U,W02,M1
+X2,2,V1,Motor M1 fase V,W02,M1
+X2,3,W1,Motor M1 fase W,W02,M1
+X2,4,PE1,Proteção do motor M1,W02,M1
+X2,5,U2,Motor M2 fase U,W03,M2
+X2,6,V2,Motor M2 fase V,W03,M2
+X2,7,W2,Motor M2 fase W,W03,M2
+X2,8,PE2,Proteção do motor M2,W03,M2
+X3,1,+24-KSR,Retorno KSR1,W04,S0/KSR1
+X3,2,+24-AUTO,Seletor automático,W05,S1
+X3,3,+24-MAN,Seletor manual,W05,S1
+X3,4,+24-P1S,Partida M1,W05,S2
+X3,5,+24-P1P,Parada M1,W05,S3
+X3,6,+24-P2S,Partida M2,W05,S4
+X3,7,+24-P2P,Parada M2,W05,S5
+X3,8,+24-LL,Nível baixo-baixo,W06,LSL-LL
+X3,9,+24-L,Nível baixo,W07,LSL
+X3,10,+24-H,Nível alto,W07,LSH
+X3,11,+24-HH,Nível alto-alto,W07,LSHH
+X3,12,+24-RT1,Sobrecarga M1 saudável,W08,RT1
+X3,13,+24-RT2,Sobrecarga M2 saudável,W08,RT2
+X3,14,+24-KM1,Retorno KM1,W08,KM1
+X3,15,+24-KM2,Retorno KM2,W08,KM2
+X3,16,+24-ACK,Reconhecimento/rearme,W05,S6
+X3,17,0V,Comum dos sensores,W06/W07,Sensores
+X3,18,PE,Blindagem/PE de instrumentação,W06/W07,Campo
+X4,1,+24-K1,Comando relé K1,W09,K1
+X4,2,+24-K2,Comando relé K2,W09,K2
+X4,3,+24-H1,Painel pronto,W10,H1
+X4,4,+24-H2,Modo automático,W10,H2
+X4,5,+24-H3,Bomba 1 em marcha,W10,H3
+X4,6,+24-H4,Bomba 2 em marcha,W10,H4
+X4,7,+24-H5,Alarme geral,W10,H5
+X4,8,+24-H6,Demanda,W10,H6
+X4,9,+24-BZ1,Buzzer,W10,BZ1
+X4,10,KA1-NO,Alarme remoto contato NA,W11,Supervisão
+X4,11,KA1-C,Alarme remoto comum,W11,Supervisão
+X4,12,0V,Comum sinalização,W10,Porta
+X4,13,RES-13,Saída reserva 03,RESERVA,Sem conexão
+X4,14,RES-14,Saída reserva 04,RESERVA,Sem conexão
+X4,15,RES-15,Saída reserva 05,RESERVA,Sem conexão
+X4,16,RES-16,Saída reserva 06,RESERVA,Sem conexão

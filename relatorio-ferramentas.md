@@ -138,6 +138,31 @@ Poppler `pdftoppm` 26.07.0 rasterizou os oito PDFs finais para a inspeção visu
 SVGs foram abertos em Chromium e comparados com os PNGs de 300 dpi. Nenhum DWG foi
 produzido ou versionado; DXF AC1027 permanece como fonte principal.
 
+## Auditoria CAD do Projeto 03
+
+Em 2026-09-06, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as oito fontes em `03-painel-automacao-clp/fonte/`:
+
+- `01_arquitetura_automacao.dxf`: `PASS`;
+- `02_alimentacao_24v.dxf`: `PASS`;
+- `03_entradas_clp.dxf`: `PASS`;
+- `04_saidas_clp.dxf`: `PASS`;
+- `05_diagrama_comando.dxf`: `PASS`;
+- `06_layout_painel.dxf`: `PASS`;
+- `07_diagrama_bornes.dxf`: `PASS`;
+- `08_interligacoes_campo.dxf`: `PASS`.
+
+Poppler `pdftoppm` 26.07.0 rasterizou os oito PDFs finais; os oito SVGs foram abertos
+em Google Chrome/Chromium headless e comparados com os PNGs de 300 dpi. A primeira
+revisão visual detectou sobreposição entre as tabelas X2 e X4 na prancha 07; a origem
+foi corrigida, todos os derivados foram regenerados e a segunda inspeção foi aprovada.
+O validador específico aprovou 129 verificações lógicas; a validação estrita do
+portfólio aprovou 121.899 verificações, sem erros ou avisos. Nove testes automatizados
+passaram. Uma nova geração manteve os hashes de todos os 32 artefatos do projeto
+(oito DXFs e 24 derivados), confirmando reprodutibilidade no ambiente registrado.
+Nenhum DWG foi produzido ou versionado para o projeto. DXF AC1027 permanece como fonte
+principal.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01 e 02 concluídos.
+**Estado atual:** base comum e Projetos 01, 02 e 03 concluídos.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -34,6 +34,8 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
   indução trifásico com inversor de frequência.
 - [Projeto 02](02-projeto-eletrico-residencial/README.md): instalação elétrica
   residencial fictícia com oito pranchas e quadro de cargas verificável.
+- [Projeto 03](03-painel-automacao-clp/README.md): painel de automação com CLP para
+  duas bombas, 32 pontos de I/O e lógica de alternância verificável.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -86,11 +88,16 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── README.md, memorial, critérios e memória de cálculo
 │   ├── quadro-cargas.csv, lista-pontos.csv
 │   └── lista-materiais.csv
-└── projetos/                    # reservado aos próximos projetos
+├── 03-painel-automacao-clp/
+│   ├── fonte/                   # oito DXFs, gerador e validador lógico
+│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios, sequência e pseudocódigo
+│   └── listas de I/O, bornes, cabos e materiais
+└── projetos/                    # reservado aos Projetos 04 a 10
 ```
 
-Por instruções explícitas, os Projetos 01 e 02 estão na raiz. O diretório `projetos/`
-fica reservado aos próximos projetos. Cada projeto terá README,
+Por instruções explícitas, os Projetos 01, 02 e 03 estão na raiz. O diretório
+`projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
 
@@ -190,6 +197,9 @@ legibilidade. A validação automática complementa essa inspeção, mas não a 
 - [P02 - Projeto elétrico residencial](02-projeto-eletrico-residencial/README.md), com
   oito pranchas, quadro de cargas, memória de cálculo, três CSVs, auditoria no AutoCAD
   2027 e validação estrita registrada.
+- [P03 - Painel de automação com CLP](03-painel-automacao-clp/README.md), com oito
+  pranchas, 16 DI, 16 DO, alternância de duas bombas, proteção contra funcionamento a
+  seco, documentação funcional, quatro CSVs e validações registradas.
 
 ## Formatos
 
@@ -217,7 +227,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto
+## Como iniciar o próximo projeto (P04)
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

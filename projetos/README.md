@@ -1,8 +1,8 @@
 # Projetos acadêmicos planejados
 
-Esta pasta receberá, em etapas futuras, os Projetos 03 a 10 descritos no
-[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 e 02 foram criados na
-raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
+Esta pasta receberá, em etapas futuras, os Projetos 04 a 10 descritos no
+[plano de projetos](../docs/plano-projetos.md). Os Projetos 01, 02 e 03 foram criados
+na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 [padrão gráfico](../docs/padrao-grafico.md) e os
@@ -14,7 +14,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 | ---: | --- | --- |
 | 1 | [`../01-painel-motor-inversor/`](../01-painel-motor-inversor/README.md) | painel de motor com inversor de frequência - concluído |
 | 2 | [`../02-projeto-eletrico-residencial/`](../02-projeto-eletrico-residencial/README.md) | projeto elétrico residencial - concluído |
-| 3 | `P03-distribuicao-predial` | distribuição predial multipavimentos |
+| 3 | [`../03-painel-automacao-clp/`](../03-painel-automacao-clp/README.md) | painel de automação com CLP para duas bombas - concluído |
 | 4 | `P04-aterramento-spda` | aterramento, equipotencialização e SPDA conceitual |
 | 5 | `P05-sistema-fotovoltaico` | sistema fotovoltaico conectado à rede |
 | 6 | `P06-distribuicao-industrial-ccm` | distribuição industrial e CCM |
@@ -105,5 +105,5 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção dos projetos restantes. P03 a P10 só devem ser criados
+Este README define a convenção dos projetos restantes. P04 a P10 só devem ser criados
 quando solicitados explicitamente.

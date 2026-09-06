@@ -1,0 +1,33 @@
+tipo,endereco,tag,descricao,normal,seguranca,borne
+DI,I0.0,KSR1_OK,Retorno do relé de segurança,1,Monitoramento; não executa segurança,X3:1
+DI,I0.1,S1_AUTO,Seletor em automático,0,Operacional,X3:2
+DI,I0.2,S1_MAN,Seletor em manual,0,Operacional,X3:3
+DI,I0.3,S2_P1,Partida manual bomba 1,0,Subordinada aos permissivos,X3:4
+DI,I0.4,S3_P1,Parada manual bomba 1,1,Contato NF,X3:5
+DI,I0.5,S4_P2,Partida manual bomba 2,0,Subordinada aos permissivos,X3:6
+DI,I0.6,S5_P2,Parada manual bomba 2,1,Contato NF,X3:7
+DI,I0.7,LSL_LL,Nível baixo-baixo / funcionamento a seco,1,Atua também em KDRY,X3:8
+DI,I1.0,LSL,Nível baixo / fim de demanda,0,Processo,X3:9
+DI,I1.1,LSH,Nível alto / início de demanda,0,Processo,X3:10
+DI,I1.2,LSHH,Nível alto-alto / bomba reserva,0,Processo e alarme,X3:11
+DI,I1.3,RT1_OK,Relé de sobrecarga bomba 1 saudável,1,Permissivo,X3:12
+DI,I1.4,RT2_OK,Relé de sobrecarga bomba 2 saudável,1,Permissivo,X3:13
+DI,I1.5,KM1_FB,Retorno do contator da bomba 1,0,Diagnóstico,X3:14
+DI,I1.6,KM2_FB,Retorno do contator da bomba 2,0,Diagnóstico,X3:15
+DI,I1.7,S6_ACK,Reconhecimento e rearme de alarme,0,Rearme condicionado,X3:16
+DO,Q0.0,K1_CMD,Relé de interface da bomba 1,0,Cadeia física mantém permissivos,X4:1
+DO,Q0.1,K2_CMD,Relé de interface da bomba 2,0,Cadeia física mantém permissivos,X4:2
+DO,Q0.2,H1_PRONTO,Lâmpada verde painel pronto,0,Sinalização,X4:3
+DO,Q0.3,H2_AUTO,Lâmpada âmbar modo automático,0,Sinalização,X4:4
+DO,Q0.4,H3_P1,Lâmpada verde bomba 1 em marcha,0,Sinalização,X4:5
+DO,Q0.5,H4_P2,Lâmpada verde bomba 2 em marcha,0,Sinalização,X4:6
+DO,Q0.6,H5_ALARME,Lâmpada vermelha de alarme geral,0,Sinalização,X4:7
+DO,Q0.7,H6_DEMANDA,Lâmpada azul de demanda,0,Sinalização,X4:8
+DO,Q1.0,BZ1,Buzzer de alarme,0,Silenciável por ACK,X4:9
+DO,Q1.1,KA1_REMOTO,Contato de alarme remoto,0,Relé de interface,X4:10
+DO,Q1.2,RESERVA_DO_01,Saída reserva 01,0,Reserva,X4:11
+DO,Q1.3,RESERVA_DO_02,Saída reserva 02,0,Reserva,X4:12
+DO,Q1.4,RESERVA_DO_03,Saída reserva 03,0,Reserva,X4:13
+DO,Q1.5,RESERVA_DO_04,Saída reserva 04,0,Reserva,X4:14
+DO,Q1.6,RESERVA_DO_05,Saída reserva 05,0,Reserva,X4:15
+DO,Q1.7,RESERVA_DO_06,Saída reserva 06,0,Reserva,X4:16

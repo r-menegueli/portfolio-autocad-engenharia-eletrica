@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 e P02 concluídos; P03 a P10 permanecem planejados
+Estado: P01, P02 e P03 concluídos; P04 a P10 permanecem planejados
 
 ## Propósito
 
@@ -59,7 +59,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | ---: | :---: | --- | --- | --- |
 | 1 | P01 | Painel de motor com inversor de frequência | potência, comando, STO, bornes e integração | infraestrutura do portfólio |
 | 2 | P02 | Projeto elétrico residencial | baixa tensão residencial, cargas, proteção e aterramento | infraestrutura do portfólio |
-| 3 | P03 | Distribuição predial multipavimentos | demanda, alimentadores e prumada elétrica | P02 |
+| 3 | P03 | Painel de automação com CLP para duas bombas | I/O, alternância, segurança e interfaces | P01 |
 | 4 | P04 | Aterramento, equipotencialização e SPDA conceitual | proteção, zonas e detalhes construtivos | P03 |
 | 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P04 |
 | 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01, P03 e P04 |
@@ -101,21 +101,22 @@ de aterramento; listas CSV de pontos, cargas e materiais.
 **Marco de aceitação.** Concluído na revisão 00. Oito DXFs AC1027, derivados
 PDF/SVG/PNG, validação matemática e inspeção visual devem permanecer coerentes.
 
-## P03 — Distribuição predial multipavimentos
+## P03 — Painel de automação com CLP para duas bombas
 
-**Objetivo.** Ampliar a documentação de baixa tensão para um edifício fictício
-com múltiplos pavimentos e medição centralizada.
+**Objetivo.** Documentar um painel acadêmico para enchimento de reservatório com duas
+bombas, CLP genérico, alternância automática e operação manual protegida.
 
-**Escopo.** Entrada e distribuição geral conceituais, agrupamento de medidores,
-quadros por pavimento, prumada, alimentadores, estimativa de demanda, queda de
-tensão e reserva de capacidade. Não abrange aprovação junto a concessionária.
+**Escopo.** Alimentação 220 V trifásica, fonte 24 Vcc, 16 DI, 16 DO, contatores,
+sobrecargas, relés de interface, níveis baixo-baixo/baixo/alto/alto-alto, emergência em
+dois canais, bloqueio físico por funcionamento a seco, sinalização e alarme remoto.
 
-**Pranchas e dados específicos.** Diagrama unifilar geral; diagrama vertical da
-prumada; planta da sala elétrica; quadros de demanda e alimentadores; lista de
-cabos, eletrodutos e dispositivos.
+**Pranchas e dados específicos.** Arquitetura de automação; alimentação 24 Vcc;
+entradas; saídas; comando; layout do painel; bornes; interligações de campo; listas CSV
+de I/O, bornes, cabos e materiais; sequência, estados e pseudocódigo.
 
-**Marco de aceitação.** A numeração de quadros, circuitos e alimentadores deve
-permanecer coerente em todas as pranchas e tabelas.
+**Marco de aceitação.** Concluído na revisão 00. Oito DXFs AC1027 auditados no AutoCAD
+2027, derivados PDF/SVG/PNG inspecionados, invariantes lógicos e validação estrita
+aprovados.
 
 ## P04 — Aterramento, equipotencialização e SPDA conceitual
 
@@ -261,7 +262,8 @@ comum depois de aprovados nos dois portões de qualidade.
   de campo para acionamentos com inversor.
 - P02 acrescenta arquitetura residencial, luminárias, tomadas, eletrodutos, quadros,
   cargas e detalhes de aterramento.
-- P03 acrescenta prumadas, medição, quadros e referências entre folhas.
+- P03 acrescenta CLP, cartões de I/O, sensores de nível, relés de interface, estados,
+  alternância de bombas e permissivos físicos.
 - P04 acrescenta símbolos de aterramento, equipotencialização e SPDA.
 - P05 acrescenta símbolos e estilos para circuitos CC e geração distribuída.
 - P06 acrescenta equipamentos industriais, cabos e eletrocalhas.
@@ -273,6 +275,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Os Projetos 01 e 02 foram materializados em pastas de raiz por instruções explícitas e
-estão concluídos. Os Projetos 03 a 10 permanecem planejados e serão criados apenas sob
-solicitação, um por vez, conforme a sequência revisada.
+Os Projetos 01, 02 e 03 foram materializados em pastas de raiz por instruções explícitas
+e estão concluídos. Os Projetos 04 a 10 permanecem planejados e serão criados apenas
+sob solicitação, um por vez, conforme a sequência revisada.

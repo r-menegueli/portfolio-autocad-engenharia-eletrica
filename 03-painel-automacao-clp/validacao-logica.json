@@ -1,0 +1,16 @@
+{
+  "checks": 129,
+  "errors": [],
+  "results": {
+    "cables": 12,
+    "digital_inputs": 16,
+    "digital_outputs": 16,
+    "io_points": 32,
+    "materials": 35,
+    "safety_truth_table_rows": 16,
+    "supply_24v_capacity_a": "10.00",
+    "supply_24v_load_a": "6.00",
+    "terminals": 46
+  },
+  "status": "PASS"
+}

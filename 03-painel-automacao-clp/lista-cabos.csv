@@ -1,0 +1,13 @@
+cabo,de,para,funcao,formacao,blindagem,comprimento_assumido_m,identificacao_condutores,observacoes
+W01,QDG,X1,Alimentação do painel,4G6 mm2,não,15,W01-1 a W01-PE,Seção preliminar; confirmar cálculo
+W02,X2,M1,Potência bomba 1,4G2.5 mm2,não,25,W02-U/V/W/PE,Motor 3 kW; confirmar queda e método
+W03,X2,M2,Potência bomba 2,4G2.5 mm2,não,30,W03-U/V/W/PE,Motor 3 kW; confirmar queda e método
+W04,S0,X3/KSR1,Emergência em dois canais,4x1.5 mm2,não,12,W04-1 a W04-4,Rotear separado e validar segurança
+W05,Porta,X3,Seletores e botoeiras,12x1.0 mm2,não,3,W05-1 a W05-12,Condutores identificados
+W06,LSL-LL,X3/KDRY,Nível baixo-baixo,3x1.0 mm2,não,35,W06-1 a W06-3,Contato seco; modo de falha a confirmar
+W07,LSL/LSH/LSHH,X3,Níveis de processo,8x1.0 mm2,não,35,W07-1 a W07-8,Reserva de dois condutores
+W08,KM/RT,X3,Retornos dos contatores e sobrecargas,8x1.0 mm2,não,2,W08-1 a W08-8,Fiação interna
+W09,CLP,K1/K2,Comandos dos relés de interface,4x1.0 mm2,não,2,W09-1 a W09-4,Diodos de supressão
+W10,X4,Porta,Sinalização e buzzer,12x1.0 mm2,não,3,W10-1 a W10-12,Fiação interna flexível
+W11,X4,Supervisão,Alarme remoto,3x1.0 mm2,não,40,W11-1 a W11-3,Contato seco de KA1
+W12,TB-PE,M1/M2/porta,Equipotencialização,1x6 mm2,não,12,W12-PE,Verde-amarelo; seção a confirmar
