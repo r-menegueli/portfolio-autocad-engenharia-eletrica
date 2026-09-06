@@ -1,0 +1,9 @@
+circuito,descricao,tensao_v,fases,potencia_ativa_w,potencia_aparente_va,corrente_projeto_a,comprimento_m,condutor_mm2,pe_mm2,disjuntor_a,polos,curva,dr_ma,queda_circuito_pct,observacoes
+C1,Iluminacao sala quartos e circulacao,127,A,69.000,75.000,0.591,28.0,1.5,1.5,10,1,B,30,0.391,LED fator de potencia 0.92
+C2,Iluminacao cozinha banheiro e lavanderia,127,B,68.000,73.913,0.582,24.0,1.5,1.5,10,1,B,30,0.330,LED fator de potencia 0.92
+C3,TUG sala quartos e circulacao,127,A,1200.000,1500.000,11.811,20.0,4.0,4.0,16,1,C,30,2.093,Secao elevada para limitar queda combinada
+C4,TUG cozinha,127,B,1680.000,2100.000,16.535,18.0,4.0,4.0,20,1,C,30,2.637,Tres primeiros pontos a 600 VA
+C5,TUG banheiro e lavanderia,127,A,1440.000,1800.000,14.173,20.0,4.0,4.0,16,1,C,30,2.511,Tres pontos a 600 VA
+C6,TUE forno eletrico,220,AB,3000.000,3000.000,13.636,18.0,4.0,4.0,20,2,C,30,1.255,Circuito exclusivo
+C7,TUE chuveiro,220,AB,5500.000,5500.000,25.000,20.0,6.0,6.0,32,2,C,30,1.705,Circuito exclusivo e conexao fixa
+C8,TUE lavadora,127,B,1200.000,1500.000,11.811,22.0,4.0,4.0,16,1,C,30,2.302,Secao elevada para limitar queda combinada

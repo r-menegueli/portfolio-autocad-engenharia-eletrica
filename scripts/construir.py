@@ -29,6 +29,8 @@ def main() -> int:
     run(root / "scripts" / "gerar_template_a3.py", root)
     for generator in sorted(root.glob("[0-9][0-9]-*/fonte/gerar_projeto_*.py")):
         run(generator, root)
+    for validator in sorted(root.glob("[0-9][0-9]-*/fonte/validar_projeto_*.py")):
+        run(validator, root)
     run(root / "scripts" / "renderizar.py", root)
     validation_args = ["--strict"] if args.strict else []
     run(root / "scripts" / "validar_portfolio.py", root, *validation_args)

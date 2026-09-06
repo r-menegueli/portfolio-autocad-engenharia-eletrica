@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum concluída e Projeto 01 finalizado.
+**Estado atual:** base comum e Projetos 01 e 02 concluídos.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -32,6 +32,8 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
 - [Plano dos projetos](docs/plano-projetos.md): sequência atualizada dos dez trabalhos.
 - [Projeto 01](01-painel-motor-inversor/README.md): painel de acionamento de motor de
   indução trifásico com inversor de frequência.
+- [Projeto 02](02-projeto-eletrico-residencial/README.md): instalação elétrica
+  residencial fictícia com oito pranchas e quadro de cargas verificável.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -78,11 +80,17 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── README.md, memorial e critérios
 │   ├── lista-cabos.csv
 │   └── lista-materiais.csv
+├── 02-projeto-eletrico-residencial/
+│   ├── fonte/                   # oito DXFs, gerador e validador matemático
+│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios e memória de cálculo
+│   ├── quadro-cargas.csv, lista-pontos.csv
+│   └── lista-materiais.csv
 └── projetos/                    # reservado aos próximos projetos
 ```
 
-Por instrução explícita, o Projeto 01 está na raiz em `01-painel-motor-inversor/`. O
-diretório `projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
+Por instruções explícitas, os Projetos 01 e 02 estão na raiz. O diretório `projetos/`
+fica reservado aos próximos projetos. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
 
@@ -175,10 +183,13 @@ Após qualquer mudança no template, regenere todos os derivados e abra o PNG, o
 SVG. Confira especialmente bordas, carimbo, aviso, legenda, notas, alinhamentos e
 legibilidade. A validação automática complementa essa inspeção, mas não a substitui.
 
-## Projeto concluído
+## Projetos concluídos
 
 - [P01 - Painel de motor com inversor](01-painel-motor-inversor/README.md), com seis
   pranchas separadas, documentos técnicos, listas CSV e validação registrada.
+- [P02 - Projeto elétrico residencial](02-projeto-eletrico-residencial/README.md), com
+  oito pranchas, quadro de cargas, memória de cálculo, três CSVs, auditoria no AutoCAD
+  2027 e validação estrita registrada.
 
 ## Formatos
 

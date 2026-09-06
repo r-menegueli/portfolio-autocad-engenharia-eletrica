@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 concluído; P02 a P10 permanecem planejados
+Estado: P01 e P02 concluídos; P03 a P10 permanecem planejados
 
 ## Propósito
 
@@ -58,7 +58,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | Ordem | Código | Projeto | Competência principal | Dependência recomendada |
 | ---: | :---: | --- | --- | --- |
 | 1 | P01 | Painel de motor com inversor de frequência | potência, comando, STO, bornes e integração | infraestrutura do portfólio |
-| 2 | P02 | Iluminação de ambiente educacional e comercial | critérios luminotécnicos e comando de iluminação | infraestrutura do portfólio |
+| 2 | P02 | Projeto elétrico residencial | baixa tensão residencial, cargas, proteção e aterramento | infraestrutura do portfólio |
 | 3 | P03 | Distribuição predial multipavimentos | demanda, alimentadores e prumada elétrica | P02 |
 | 4 | P04 | Aterramento, equipotencialização e SPDA conceitual | proteção, zonas e detalhes construtivos | P03 |
 | 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P04 |
@@ -85,22 +85,21 @@ funcional e relação conceitual entre V/f e FOC.
 **Marco de aceitação.** Concluído na revisão 00. Seis DXFs AC1027 auditados no AutoCAD
 2027, derivados PDF/SVG/PNG inspecionados e validação estrita aprovada.
 
-## P02 — Iluminação de ambiente educacional e comercial
+## P02 — Projeto elétrico residencial
 
-**Objetivo.** Demonstrar um estudo luminotécnico reproduzível para salas de aula,
-circulação e área administrativa fictícias.
+**Objetivo.** Documentar uma residência térrea original e fictícia, com arquitetura,
+iluminação, tomadas, eletrodutos, proteção, distribuição e aterramento conceitual.
 
-**Escopo.** Malha de cálculo, critérios de iluminância e uniformidade, seleção
-conceitual de luminárias, circuitos, comandos, iluminação de emergência e quadro
-de cargas parcial. Dados fotométricos deverão ter origem registrada; na ausência
-de arquivo verificável, deverão ser usados parâmetros didáticos declarados.
+**Escopo.** Alimentação 127/220 V, QD1, oito circuitos, TUG, TUE, DR, DPS,
+disjuntores, condutores, queda de tensão simplificada, rotas de eletrodutos,
+barramentos N/PE e detalhes de equipotencialização e eletrodo.
 
-**Pranchas e dados específicos.** Planta de iluminação normal e de emergência;
-mapa de resultados; detalhes de comando; planilha ou CSV com ambientes,
-quantidades, potência e resultados calculados.
+**Pranchas e dados específicos.** Planta arquitetônica, iluminação, tomadas,
+eletrodutos, diagrama unifilar, quadro de distribuição, quadro de cargas e detalhes
+de aterramento; listas CSV de pontos, cargas e materiais.
 
-**Marco de aceitação.** Resultados numéricos, legenda gráfica e identificadores
-de luminárias devem ser rastreáveis entre desenho, memória e materiais.
+**Marco de aceitação.** Concluído na revisão 00. Oito DXFs AC1027, derivados
+PDF/SVG/PNG, validação matemática e inspeção visual devem permanecer coerentes.
 
 ## P03 — Distribuição predial multipavimentos
 
@@ -260,7 +259,8 @@ comum depois de aprovados nos dois portões de qualidade.
 
 - P01 estabelece símbolos de potência, comando, instrumentação, bornes e interligações
   de campo para acionamentos com inversor.
-- P02 acrescenta luminárias, comandos e representação de resultados.
+- P02 acrescenta arquitetura residencial, luminárias, tomadas, eletrodutos, quadros,
+  cargas e detalhes de aterramento.
 - P03 acrescenta prumadas, medição, quadros e referências entre folhas.
 - P04 acrescenta símbolos de aterramento, equipotencialização e SPDA.
 - P05 acrescenta símbolos e estilos para circuitos CC e geração distribuída.
@@ -273,6 +273,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-O Projeto 01 foi materializado em `01-painel-motor-inversor/` por instrução explícita e
-está concluído. Os Projetos 02 a 10 permanecem planejados e serão criados apenas sob
+Os Projetos 01 e 02 foram materializados em pastas de raiz por instruções explícitas e
+estão concluídos. Os Projetos 03 a 10 permanecem planejados e serão criados apenas sob
 solicitação, um por vez, conforme a sequência revisada.

@@ -120,6 +120,24 @@ individualmente as seis fontes em `01-painel-motor-inversor/fonte/`:
 Nenhum DWG foi produzido ou versionado para o projeto. DXF AC1027 permanece como fonte
 principal; PDF, SVG e PNG sao derivados de visualizacao.
 
+## Auditoria CAD do Projeto 02
+
+Em 2026-09-05, o Autodesk AcCoreConsole 2027, versao 26.0.118.0.0, abriu e auditou
+individualmente as oito fontes em `02-projeto-eletrico-residencial/fonte/`:
+
+- `01_planta_arquitetonica.dxf`: `PASS`;
+- `02_planta_iluminacao.dxf`: `PASS`;
+- `03_planta_tomadas.dxf`: `PASS`;
+- `04_planta_eletrodutos.dxf`: `PASS`;
+- `05_diagrama_unifilar.dxf`: `PASS`;
+- `06_quadro_distribuicao.dxf`: `PASS`;
+- `07_quadro_cargas.dxf`: `PASS`;
+- `08_detalhes_aterramento.dxf`: `PASS`.
+
+Poppler `pdftoppm` 26.07.0 rasterizou os oito PDFs finais para a inspeção visual. Os
+SVGs foram abertos em Chromium e comparados com os PNGs de 300 dpi. Nenhum DWG foi
+produzido ou versionado; DXF AC1027 permanece como fonte principal.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

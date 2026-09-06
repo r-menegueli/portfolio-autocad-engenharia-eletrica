@@ -137,6 +137,28 @@ required_files = [
   "fonte/gerar_projeto_01.py",
 ]
 
+[[projects]]
+id = "02-projeto-eletrico-residencial"
+path = "02-projeto-eletrico-residencial"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 8
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "quadro-cargas.csv",
+  "lista-pontos.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_02.py",
+  "fonte/validar_projeto_02.py",
+  "validacao-matematica.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -218,5 +240,93 @@ source = "01-painel-motor-inversor/fonte/06_interligacoes_campo.dxf"
 svg = "01-painel-motor-inversor/exports/06_interligacoes_campo.svg"
 pdf = "01-painel-motor-inversor/exports/06_interligacoes_campo.pdf"
 png = "01-painel-motor-inversor/exports/06_interligacoes_campo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-01-planta-arquitetonica"
+kind = "sheet"
+title = "Projeto 02 - Planta arquitetônica"
+source = "02-projeto-eletrico-residencial/fonte/01_planta_arquitetonica.dxf"
+svg = "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.svg"
+pdf = "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.pdf"
+png = "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-02-planta-iluminacao"
+kind = "sheet"
+title = "Projeto 02 - Planta de iluminação"
+source = "02-projeto-eletrico-residencial/fonte/02_planta_iluminacao.dxf"
+svg = "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.svg"
+pdf = "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf"
+png = "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-03-planta-tomadas"
+kind = "sheet"
+title = "Projeto 02 - Planta de tomadas"
+source = "02-projeto-eletrico-residencial/fonte/03_planta_tomadas.dxf"
+svg = "02-projeto-eletrico-residencial/exports/03_planta_tomadas.svg"
+pdf = "02-projeto-eletrico-residencial/exports/03_planta_tomadas.pdf"
+png = "02-projeto-eletrico-residencial/exports/03_planta_tomadas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-04-planta-eletrodutos"
+kind = "sheet"
+title = "Projeto 02 - Planta de eletrodutos"
+source = "02-projeto-eletrico-residencial/fonte/04_planta_eletrodutos.dxf"
+svg = "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.svg"
+pdf = "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.pdf"
+png = "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-05-diagrama-unifilar"
+kind = "sheet"
+title = "Projeto 02 - Diagrama unifilar"
+source = "02-projeto-eletrico-residencial/fonte/05_diagrama_unifilar.dxf"
+svg = "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.svg"
+pdf = "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.pdf"
+png = "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-06-quadro-distribuicao"
+kind = "sheet"
+title = "Projeto 02 - Quadro de distribuição"
+source = "02-projeto-eletrico-residencial/fonte/06_quadro_distribuicao.dxf"
+svg = "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.svg"
+pdf = "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.pdf"
+png = "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-07-quadro-cargas"
+kind = "sheet"
+title = "Projeto 02 - Quadro de cargas"
+source = "02-projeto-eletrico-residencial/fonte/07_quadro_cargas.dxf"
+svg = "02-projeto-eletrico-residencial/exports/07_quadro_cargas.svg"
+pdf = "02-projeto-eletrico-residencial/exports/07_quadro_cargas.pdf"
+png = "02-projeto-eletrico-residencial/exports/07_quadro_cargas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-08-detalhes-aterramento"
+kind = "sheet"
+title = "Projeto 02 - Detalhes de aterramento"
+source = "02-projeto-eletrico-residencial/fonte/08_detalhes_aterramento.dxf"
+svg = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.svg"
+pdf = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.pdf"
+png = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.png"
 require_a3 = true
 require_notice = true
