@@ -1,0 +1,12 @@
+borne,grupo,sinal,origem,destino,nivel,observacao
+X2:01-02,Analogico,LT-101 +/-,LT-101,AI0,4-20 mA,Par blindado
+X3:01-02,Digital,LSL-101,LSL-101,DI0,24 Vcc,Contato a definir
+X3:03-04,Digital,LSH-101,LSH-101,DI1,24 Vcc,Contato a definir
+X3:05-06,Digital,LSHH-101,LSHH-101,KSR-101 e DI2,24 Vcc,Bloqueio independente
+X4:01-02,Analogico,REF VFD,AO0,VFD-101,4-20 mA,Par blindado
+X4:03-04,Digital,VFD PRONTO,VFD-101,DI3,Contato,Estado do inversor
+X4:05-06,Digital,VFD MARCHA,VFD-101,DI4,Contato,Estado do inversor
+X4:07-08,Analogico,FB VFD,VFD-101,AI1,4-20 mA,Par blindado
+X4:09-10,Digital,VFD FALHA,VFD-101,DI5,Contato,Estado do inversor
+X4:11-12,Digital,RUN VFD,DO0,VFD-101,24 Vcc,Comando de marcha
+X4:13-14,Digital,RESET VFD,DO1,VFD-101,24 Vcc,Pulso de reset

@@ -1,0 +1,10 @@
+cabo,de,para,funcao,formacao,blindagem,comprimento_assumido_m,identificacao_condutores,segregacao,observacoes
+C-101,PAINEL-101,LT-101,Nivel 4-20 mA,1 par 0.75 mm2,Sim,18,LT+ / LT- / SH,Instrumentacao,Aterrar blindagem no painel
+C-102,PAINEL-101,LSL-101,Nivel baixo,2x0.75 mm2,Nao,18,+24V / DI0,Controle,Contato a definir
+C-103,PAINEL-101,LSH-101,Nivel alto,2x0.75 mm2,Nao,18,+24V / DI1,Controle,Contato a definir
+C-104,KSR-101,LSHH-101,Nivel alto-alto,2x0.75 mm2,Nao,18,+24V / KSR-IN,Controle critico,Rota independente da malha PID
+C-105,PAINEL-101,VFD-101,Referencia e feedback,2 pares 0.75 mm2,Sim,8,REF+ / REF- / FB+ / FB- / SH,Instrumentacao,Segregar de potencia
+C-106,PAINEL-101,VFD-101,Comandos e estados,8x0.75 mm2,Nao,8,RUN / RESET / READY / FB-RUN / FAULT / COM,Controle,24 Vcc
+C-107,QF1,VFD-101,Alimentacao do VFD,4G4 mm2,Nao,6,L1 / L2 / L3 / PE,Potencia,Bitola preliminar
+C-108,VFD-101,M-101,Saida do VFD,4G2.5 mm2,Sim,12,U / V / W / PE / SH,Potencia VFD,Conforme fabricante e EMC
+C-109,PAINEL-101,CAIXA-CAMPO-101,Reserva de sinais,12x0.75 mm2,Nao,20,01-12,Controle,20 por cento de reserva

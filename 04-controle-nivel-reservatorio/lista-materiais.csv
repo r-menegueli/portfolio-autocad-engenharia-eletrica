@@ -1,0 +1,18 @@
+item,quantidade,unidade,descricao,referencia,especificacao_preliminar,observacoes
+1,1,un,Controlador programavel,PLC-101,24 Vcc com AI AO DI DO,Modelo a selecionar
+2,1,un,Inversor de frequencia,VFD-101,4 kW 220 V trifasico com STO,Dimensionar e verificar fabricante
+3,1,un,Motor de inducao,M-101,4 kW 220 V trifasico,Dimensionamento pendente
+4,1,un,Bomba centrifuga,P-101,Compativel com M-101,Curva e NPSH pendentes
+5,1,un,Reservatorio,TK-101,10 m3 nominal,Premissa academica
+6,1,un,Transmissor de nivel,LT-101,4-20 mA 0-100 por cento,Tecnologia a selecionar
+7,1,un,Chave de nivel baixo,LSL-101,24 Vcc ou contato seco,Contato a definir
+8,1,un,Chave de nivel alto,LSH-101,24 Vcc ou contato seco,Contato a definir
+9,1,un,Chave de nivel alto-alto,LSHH-101,Contato para bloqueio,Sem classificacao SIL ou PL
+10,1,un,Rele de seguranca,KSR-101,24 Vcc para permissivo STO,Categoria por analise de risco
+11,1,un,Fonte de alimentacao,PS1,220 Vca / 24 Vcc 5 A,Dimensionar cargas
+12,1,un,Protecao do VFD,QF1,Disjuntor tripolar,Coordenar com fabricante
+13,1,un,Painel de automacao,PAINEL-101,IP a definir,Projeto mecanico pendente
+14,1,lote,Bornes e acessorios,X1-X4,Conforme lista de bornes,Prever reserva
+15,1,lote,Cabos de campo,C-101-C-109,Conforme lista de cabos,Bitolas preliminares
+16,1,lote,Sinalizadores LED,HL-101-HL-106,24 Vcc,Cores conforme documentacao
+17,1,un,Sinalizador sonoro,HA-101,24 Vcc,Nivel sonoro a definir

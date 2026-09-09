@@ -453,6 +453,120 @@
           "sha256": "78f5fd64d08ac5e96473624cab38f9df9991ef7455b01bedb963b74b003ca619"
         }
       }
+    },
+    {
+      "id": "p04-01-fluxograma-processo",
+      "source": "04-controle-nivel-reservatorio/fonte/01_fluxograma_processo.dxf",
+      "source_sha256": "9829077a12dd2cddf6a80022a501b8618cfa66a42b79e20321c82d1fa8c0ec90",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.pdf",
+          "sha256": "089f08cdb1204963fb4b553bc319d6a4c2c3746990a5c20905ba81939c6f06a5"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.png",
+          "sha256": "ba1270df5f3b623a0b830e618e4679cdb5321d4464df2fa29478842d90d85ca5"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.svg",
+          "sha256": "e452648b7ebc83b1defb9c3ad8c6fc69de8eb30d5d98a632e24770bfd8a67a8c"
+        }
+      }
+    },
+    {
+      "id": "p04-02-pid-instrumentacao",
+      "source": "04-controle-nivel-reservatorio/fonte/02_pid_instrumentacao.dxf",
+      "source_sha256": "96d5069dbf9ef70d5dcb49b66686eba5c4b7e47aa3829695dfa8834220570b08",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.pdf",
+          "sha256": "031236af4bd798d1f61f40ff6d58583766f64658836ecb080ef9875efac038dd"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.png",
+          "sha256": "8deeb7bba6edffbc4ed1fb2e99e2f73b0989abf52d2bfe80d9661fe214442852"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.svg",
+          "sha256": "f110b61220312b2ee31204ec281d32abe7b8ef5cb849fa4cad6e6189c1100169"
+        }
+      }
+    },
+    {
+      "id": "p04-03-malha-controle",
+      "source": "04-controle-nivel-reservatorio/fonte/03_malha_controle.dxf",
+      "source_sha256": "bacce068ac35201cfc2d3333116698861bb202433e7ff1466df2ee62ee509a9b",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.pdf",
+          "sha256": "791732178ef2b02793e9c29f292b8ce9150c035d0ae110d7f05dcfb26bf9b221"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.png",
+          "sha256": "d7d589a1689bcbd494311c703f424efd4678b38b2d3654a58b3708c39b15541a"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.svg",
+          "sha256": "c3b54d509bb76215c3bb245b3020078aabb43fa4b6fbe23ff6cefc70d2c1e132"
+        }
+      }
+    },
+    {
+      "id": "p04-04-diagrama-eletrico",
+      "source": "04-controle-nivel-reservatorio/fonte/04_diagrama_eletrico.dxf",
+      "source_sha256": "37e62bd6a3c9292e670d235fdd17118a88ac3cf4aef288eff4b68db748d218e0",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.pdf",
+          "sha256": "cc0db129cc27c85eec2c45a74cbf35d2eec8d664fecc709ab8d1cc731fd1e337"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.png",
+          "sha256": "5350a9988d02f410676b685fe9708cf8d9f3547d6a2f672c0417b302112e1c20"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.svg",
+          "sha256": "8514529c0c3aee6ec64d7da453af74603c5d42dc03c19647beab2c59d5e7ecea"
+        }
+      }
+    },
+    {
+      "id": "p04-05-interligacoes-instrumentos",
+      "source": "04-controle-nivel-reservatorio/fonte/05_interligacoes_instrumentos.dxf",
+      "source_sha256": "8fbde896df252926d45c495cae3416b132aa98d1d902719f3e6a1d8c18103715",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.pdf",
+          "sha256": "762f30d386d5d8e058e6711d0a9ee2ce71ddf134a47b417f5c602795c6454f1d"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.png",
+          "sha256": "44de06f8ddc40dc70cb912eb88621be1492dcc3e9b4a2cf3d52dc8ab91f0e390"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.svg",
+          "sha256": "f8c022d0f129284547d52760bb0caa8e6035fe6842e509ecad75b5f6faf4e248"
+        }
+      }
+    },
+    {
+      "id": "p04-06-layout-sistema",
+      "source": "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf",
+      "source_sha256": "95356aa9c019eee393a955e5cb932f9ab1165ede208b9c49b15cdf4f8a07312a",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf",
+          "sha256": "6826cc2c4f111967cde5805eab849df95603375ee3dd47201c76b1741e750a58"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.png",
+          "sha256": "3d30a25a4ef3e4d475845d4f5a9aecb4c9cce70526e40561676d0596da056ea3"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg",
+          "sha256": "7b6d82604512368b08f0723be63d82bcedf11025d2b0f38658e5ea03263580b4"
+        }
+      }
     }
   ]
 }

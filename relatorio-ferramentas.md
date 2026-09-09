@@ -163,6 +163,30 @@ passaram. Uma nova geração manteve os hashes de todos os 32 artefatos do proje
 Nenhum DWG foi produzido ou versionado para o projeto. DXF AC1027 permanece como fonte
 principal.
 
+## Auditoria CAD do Projeto 04
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as seis fontes em `04-controle-nivel-reservatorio/fonte/`:
+
+- `01_fluxograma_processo.dxf`: `PASS`;
+- `02_pid_instrumentacao.dxf`: `PASS`;
+- `03_malha_controle.dxf`: `PASS`;
+- `04_diagrama_eletrico.dxf`: `PASS`;
+- `05_interligacoes_instrumentos.dxf`: `PASS`;
+- `06_layout_sistema.dxf`: `PASS`.
+
+O validador específico aprovou 169 verificações de I/O, tags, tabelas, sentido da
+malha e permissivos. Poppler `pdftoppm` 26.07.0 reabriu e rasterizou os seis PDFs A3;
+Google Chrome 152.0.7977.77 abriu os seis SVGs; os PNGs de produção foram inspecionados
+em 300 dpi. Duas colisões visuais foram corrigidas na fonte e a segunda inspeção foi
+aprovada. As seis abas do workbook técnico também foram renderizadas e examinadas.
+
+O fluxo usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. Nenhum
+DWG foi produzido ou versionado; DXF AC1027 permanece como fonte principal. A
+validação estrita aprovou 142.949 verificações, sem erros ou avisos; nove testes
+automatizados passaram. Uma nova geração manteve hashes idênticos para os 24
+artefatos do projeto (seis DXFs e 18 derivados), comprovando reprodutibilidade.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

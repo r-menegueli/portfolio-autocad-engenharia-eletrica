@@ -1,0 +1,24 @@
+{
+  "checks": 169,
+  "errors": [],
+  "results": {
+    "analog_inputs": 2,
+    "analog_outputs": 1,
+    "cables": 9,
+    "digital_inputs": 10,
+    "digital_outputs": 10,
+    "instruments_and_equipment": 10,
+    "io_points": 23,
+    "materials": 17,
+    "pid_initial": {
+      "kc": 0.8,
+      "td_s": 0,
+      "ti_s": 120
+    },
+    "safety_truth_table_rows": 64,
+    "setpoint_percent": 60,
+    "sheets": 6,
+    "terminals": 11
+  },
+  "status": "PASS"
+}

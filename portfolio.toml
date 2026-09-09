@@ -183,6 +183,33 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "04-controle-nivel-reservatorio"
+path = "04-controle-nivel-reservatorio"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "filosofia-controle.md",
+  "estrategia-pid.md",
+  "sequencia-funcionamento.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-instrumentos.csv",
+  "lista-io.csv",
+  "lista-bornes.csv",
+  "lista-cabos.csv",
+  "lista-materiais.csv",
+  "tabelas-projeto-04.xlsx",
+  "fonte/gerar_projeto_04.py",
+  "fonte/validar_projeto_04.py",
+  "validacao-controle.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -440,5 +467,71 @@ source = "03-painel-automacao-clp/fonte/08_interligacoes_campo.dxf"
 svg = "03-painel-automacao-clp/exports/08_interligacoes_campo.svg"
 pdf = "03-painel-automacao-clp/exports/08_interligacoes_campo.pdf"
 png = "03-painel-automacao-clp/exports/08_interligacoes_campo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-01-fluxograma-processo"
+kind = "sheet"
+title = "Projeto 04 - Fluxograma do processo"
+source = "04-controle-nivel-reservatorio/fonte/01_fluxograma_processo.dxf"
+svg = "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.svg"
+pdf = "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.pdf"
+png = "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-02-pid-instrumentacao"
+kind = "sheet"
+title = "Projeto 04 - P&ID e instrumentação"
+source = "04-controle-nivel-reservatorio/fonte/02_pid_instrumentacao.dxf"
+svg = "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.svg"
+pdf = "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.pdf"
+png = "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-03-malha-controle"
+kind = "sheet"
+title = "Projeto 04 - Malha de controle"
+source = "04-controle-nivel-reservatorio/fonte/03_malha_controle.dxf"
+svg = "04-controle-nivel-reservatorio/exports/03_malha_controle.svg"
+pdf = "04-controle-nivel-reservatorio/exports/03_malha_controle.pdf"
+png = "04-controle-nivel-reservatorio/exports/03_malha_controle.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-04-diagrama-eletrico"
+kind = "sheet"
+title = "Projeto 04 - Diagrama elétrico"
+source = "04-controle-nivel-reservatorio/fonte/04_diagrama_eletrico.dxf"
+svg = "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.svg"
+pdf = "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.pdf"
+png = "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-05-interligacoes-instrumentos"
+kind = "sheet"
+title = "Projeto 04 - Interligações dos instrumentos"
+source = "04-controle-nivel-reservatorio/fonte/05_interligacoes_instrumentos.dxf"
+svg = "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.svg"
+pdf = "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.pdf"
+png = "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-06-layout-sistema"
+kind = "sheet"
+title = "Projeto 04 - Layout do sistema"
+source = "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf"
+svg = "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg"
+pdf = "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf"
+png = "04-controle-nivel-reservatorio/exports/06_layout_sistema.png"
 require_a3 = true
 require_notice = true

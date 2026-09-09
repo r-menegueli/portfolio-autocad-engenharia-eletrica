@@ -1,0 +1,11 @@
+tag,servico,tipo,sinal,faixa,unidade,localizacao,funcao,observacao
+LT-101,Nivel do reservatorio,Transmissor de nivel,4-20 mA,0-100,%,TK-101,Medição continua,Instrumento conceitual
+LSL-101,Nivel baixo,Chave de nivel,Digital,15,%,TK-101,Alarme de nivel baixo,Contato a definir
+LSH-101,Nivel alto,Chave de nivel,Digital,85,%,TK-101,Alarme de nivel alto,Contato a definir
+LSHH-101,Nivel alto-alto,Chave de nivel,Digital,95,%,TK-101,Bloqueio independente da rotina PID,Sem reivindicacao SIL ou PL
+LIC-101,Controle de nivel,Controlador PI,Software,0-100,%,PLC-101,Controle de nivel,Kc e Ti iniciais
+VFD-101,Controle da bomba,Inversor de frequencia,4-20 mA e digital,20-60,Hz,PAINEL-101,Elemento final de controle,4 kW 220 V trifasico
+P-101,Enchimento do reservatorio,Bomba centrifuga,Mecanico,N/A,N/A,Campo,Elevar vazao de entrada,Selecao executiva pendente
+M-101,Acionamento da bomba,Motor de inducao,220 V 3F,4,kW,Campo,Acionar P-101,Dimensionamento pendente
+PLC-101,Automacao do sistema,CLP,24 Vcc,N/A,N/A,PAINEL-101,Executar logica e PI,Modelo nao especificado
+KSR-101,Permissivo de emergencia,Rele de seguranca,24 Vcc,N/A,N/A,PAINEL-101,Permitir STO do VFD,Categoria a definir por analise de risco

@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01, P02 e P03 concluídos; P04 a P10 permanecem planejados
+Estado: P01, P02, P03 e P04 concluídos; P05 a P10 permanecem planejados
 
 ## Propósito
 
@@ -60,9 +60,9 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 1 | P01 | Painel de motor com inversor de frequência | potência, comando, STO, bornes e integração | infraestrutura do portfólio |
 | 2 | P02 | Projeto elétrico residencial | baixa tensão residencial, cargas, proteção e aterramento | infraestrutura do portfólio |
 | 3 | P03 | Painel de automação com CLP para duas bombas | I/O, alternância, segurança e interfaces | P01 |
-| 4 | P04 | Aterramento, equipotencialização e SPDA conceitual | proteção, zonas e detalhes construtivos | P03 |
-| 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P04 |
-| 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01, P03 e P04 |
+| 4 | P04 | Controle de nível de reservatório | instrumentação, PI, VFD e intertravamentos | P01 e P03 |
+| 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P02 |
+| 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01 e P03 |
 | 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P01 e P06 |
 | 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P07 |
 | 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
@@ -118,22 +118,23 @@ de I/O, bornes, cabos e materiais; sequência, estados e pseudocódigo.
 2027, derivados PDF/SVG/PNG inspecionados, invariantes lógicos e validação estrita
 aprovados.
 
-## P04 — Aterramento, equipotencialização e SPDA conceitual
+## P04 — Controle de nível de reservatório
 
-**Objetivo.** Documentar medidas acadêmicas de proteção contra choques e
-descargas atmosféricas, deixando explícitos os limites da análise.
+**Objetivo.** Documentar uma malha acadêmica de nível com bomba, instrumentação,
+CLP e inversor de frequência, deixando explícitas a dinâmica e as limitações.
 
-**Escopo.** Arranjo de aterramento, barramentos de equipotencialização, condutores
-de proteção, captação e descidas de SPDA, zonas de proteção e pontos de inspeção.
-A análise de risco será didática, com parâmetros e norma/edição identificados.
+**Escopo.** Reservatório TK-101, bomba P-101/M-101, LT-101, chaves LSL/LSH/LSHH,
+controlador LIC-101 no PLC-101, VFD-101, alarmes, permissivos, I/O, cabos e bornes.
+A variável controlada é o nível; a variável manipulada é a frequência do inversor;
+a vazão de consumo é a perturbação principal.
 
-**Pranchas e dados específicos.** Planta de cobertura; planta de aterramento;
-cortes e detalhes típicos; esquema de equipotencialização; tabela de componentes
-e memória conceitual de risco.
+**Pranchas e dados específicos.** Fluxograma do processo; P&ID; malha de controle;
+diagrama elétrico; interligações dos instrumentos; layout do sistema; listas de
+instrumentos, I/O, cabos, bornes e materiais.
 
-**Marco de aceitação.** Cada componente deve ter identificador, layer correto e
-correspondência na legenda e na lista de materiais; conclusões não podem ser
-apresentadas como autorização de execução.
+**Marco de aceitação.** Concluído na revisão 00. Seis DXFs AC1027, derivados
+PDF/SVG/PNG, validação funcional da malha, auditoria CAD e inspeção visual devem
+estar aprovados e registrados.
 
 ## P05 — Sistema fotovoltaico conectado à rede
 
@@ -264,7 +265,7 @@ comum depois de aprovados nos dois portões de qualidade.
   cargas e detalhes de aterramento.
 - P03 acrescenta CLP, cartões de I/O, sensores de nível, relés de interface, estados,
   alternância de bombas e permissivos físicos.
-- P04 acrescenta símbolos de aterramento, equipotencialização e SPDA.
+- P04 acrescenta tanque, tubulações, instrumentos ISA, malha PI, VFD e intertravamentos.
 - P05 acrescenta símbolos e estilos para circuitos CC e geração distribuída.
 - P06 acrescenta equipamentos industriais, cabos e eletrocalhas.
 - P07 acrescenta contatos, bobinas, motores e referências cruzadas.
@@ -275,6 +276,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Os Projetos 01, 02 e 03 foram materializados em pastas de raiz por instruções explícitas
-e estão concluídos. Os Projetos 04 a 10 permanecem planejados e serão criados apenas
+Os Projetos 01, 02, 03 e 04 foram materializados em pastas de raiz por instruções explícitas
+e estão concluídos. Os Projetos 05 a 10 permanecem planejados e serão criados apenas
 sob solicitação, um por vez, conforme a sequência revisada.

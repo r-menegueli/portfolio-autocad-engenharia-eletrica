@@ -1,0 +1,24 @@
+canal,tipo,tag,sinal,descricao,estado_seguro,terminal
+AI0,AI,LT-101,4-20 mA,Nivel TK-101,Parar e alarmar,X2:01-02
+AI1,AI,VFD-101,4-20 mA,Realimentacao de velocidade,Alarmar,X4:07-08
+AO0,AO,VFD-101,4-20 mA,Referencia de velocidade,4 mA / parar,X4:01-02
+DI0,DI,LSL-101,24 Vcc,Nivel baixo,Alarmar,X3:01-02
+DI1,DI,LSH-101,24 Vcc,Nivel alto,Alarmar,X3:03-04
+DI2,DI,LSHH-101,24 Vcc,Nivel alto-alto,Parar e bloquear,X3:05-06
+DI3,DI,VFD-101,Contato,VFD pronto,Parar se ausente,X4:03-04
+DI4,DI,VFD-101,Contato,VFD em marcha,Alarmar incoerencia,X4:05-06
+DI5,DI,VFD-101,Contato,Falha do VFD,Parar e bloquear,X4:09-10
+DI6,DI,SA-101,24 Vcc,Seletor AUTO,Manter parado,X1:01-02
+DI7,DI,SA-101,24 Vcc,Seletor MANUAL,Manter parado,X1:03-04
+DI8,DI,KSR-101,Contato,Permissivo de emergencia,Parar e bloquear,X1:05-06
+DI9,DI,PB-101,24 Vcc,Reconhecimento e rearme,Nenhuma acao,X1:07-08
+DO0,DO,VFD-101,24 Vcc,Comando de marcha,Desenergizar,X4:11-12
+DO1,DO,VFD-101,24 Vcc,Comando de reset,Desenergizar,X4:13-14
+DO2,DO,HL-101,24 Vcc,Lampada sistema pronto,Desenergizar,X1:09-10
+DO3,DO,HL-102,24 Vcc,Lampada modo automatico,Desenergizar,X1:11-12
+DO4,DO,HL-103,24 Vcc,Lampada bomba em marcha,Desenergizar,X1:13-14
+DO5,DO,HL-104,24 Vcc,Lampada nivel baixo,Desenergizar,X1:15-16
+DO6,DO,HL-105,24 Vcc,Lampada nivel alto,Desenergizar,X1:17-18
+DO7,DO,HL-106,24 Vcc,Lampada falha,Desenergizar,X1:19-20
+DO8,DO,HA-101,24 Vcc,Alarme sonoro,Desenergizar,X1:21-22
+DO9,DO,YA-101,24 Vcc,Alarme remoto,Desenergizar,X1:23-24
