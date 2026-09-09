@@ -1,0 +1,5 @@
+alimentador,de,para,quadro_destino,fases,tensao_v,potencia_demandada_kva,corrente_projeto_a,comprimento_m,condutores_fase_neutro_mm2,pe_mm2,disjuntor_a,polos,iz_assumida_a,queda_pct,observacoes
+AL-QGBT,Ponto de entrega,QGBT-05,QGBT-05,ABCN,380,56.289180,86.549846,25.0,50.0,25.0,100,4,134,0.885169,Corrente maxima de fase inclui o desequilibrio monofasico
+AL-QDF,QGBT-05,QDF-05,QDF-05,ABC,380,50.241811,76.334535,18.0,25.0,16.0,80,3,89,0.563655,Alimentador trifasico com PE e neutro de reserva conforme lista de cabos
+AL-QDL,QGBT-05,QDL-05,QDL-05,ABCN,220,3.347368,6.124402,20.0,4.0,4.0,16,4,32,0.626359,Corrente da fase mais carregada B
+AL-QADM,QGBT-05,QADM-05,QADM-05,ABCN,220,2.700000,4.090909,16.0,2.5,2.5,16,4,24,0.535537,Cargas monofasicas equilibradas por fase

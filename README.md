@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01, 02, 03 e 04 concluídos.
+**Estado atual:** base comum e Projetos 01 a 05 concluídos.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -55,6 +55,7 @@ portfolio-autocad-engenharia-eletrica/
 ├── README.md
 ├── LICENSE
 ├── portfolio.toml
+├── package.json
 ├── requirements.txt
 ├── relatorio-ferramentas.md
 ├── docs/
@@ -100,10 +101,15 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── exports/                 # seis conjuntos PDF/SVG/PNG
 │   ├── README.md, memorial, critérios, filosofia e estratégia PI
 │   └── listas de instrumentos, I/O, bornes, cabos e materiais
-└── projetos/                    # reservado aos Projetos 05 a 10
+├── 05-instalacao-eletrica-industrial/
+│   ├── fonte/                   # sete DXFs e geradores Python/JavaScript
+│   ├── exports/                 # sete conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios e memória de cálculo
+│   └── quadros, alimentadores, cabos, materiais e workbook técnico
+└── projetos/                    # reservado aos Projetos 06 a 10
 ```
 
-Por instruções explícitas, os Projetos 01, 02, 03 e 04 estão na raiz. O diretório
+Por instruções explícitas, os Projetos 01 a 05 estão na raiz. O diretório
 `projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
@@ -117,6 +123,9 @@ py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r .\requirements.txt
 ```
+
+O workbook do Projeto 05 usa a dependência JavaScript fixada em `package.json`.
+Instale-a com o gerenciador Node disponível antes de executar o respectivo gerador.
 
 Se o launcher `py` não estiver disponível, use um executável Python 3.11+ encontrado no
 sistema para criar `.venv`. As dependências têm versões fixadas em
@@ -210,6 +219,9 @@ legibilidade. A validação automática complementa essa inspeção, mas não a 
 - [P04 - Controle de nível de reservatório](04-controle-nivel-reservatorio/README.md),
   com seis pranchas, instrumentação de nível, 23 pontos de I/O, controle PI, VFD,
   intertravamentos, cinco CSVs e validação funcional reproduzível.
+- [P05 - Instalação elétrica industrial](05-instalacao-eletrica-industrial/README.md),
+  com sete pranchas, 16 circuitos, quatro alimentadores, máquinas trifásicas,
+  iluminação, tomadas, eletrocalhas e memória de cálculo rastreável.
 
 ## Formatos
 
@@ -237,7 +249,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto (P05)
+## Como iniciar o próximo projeto (P06)
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

@@ -187,6 +187,33 @@ validação estrita aprovou 142.949 verificações, sem erros ou avisos; nove te
 automatizados passaram. Uma nova geração manteve hashes idênticos para os 24
 artefatos do projeto (seis DXFs e 18 derivados), comprovando reprodutibilidade.
 
+## Auditoria CAD do Projeto 05
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as sete fontes em `05-instalacao-eletrica-industrial/fonte/`:
+
+- `01_layout_industrial.dxf`: `PASS`;
+- `02_distribuicao_forca.dxf`: `PASS`;
+- `03_distribuicao_iluminacao.dxf`: `PASS`;
+- `04_eletrocalhas_rotas.dxf`: `PASS`;
+- `05_diagrama_unifilar.dxf`: `PASS`;
+- `06_quadro_cargas.dxf`: `PASS`;
+- `07_detalhes_instalacao.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os sete PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome 152.0.7977.77 abriu os sete SVGs; os PNGs de
+produção foram inspecionados em 300 dpi. A primeira revisão levou a ajustes de rótulos,
+folgas do unifilar e intervalo visual do workbook; a segunda inspeção foi aprovada. As
+sete abas do workbook técnico foram renderizadas, examinadas e não apresentaram erros
+de fórmula. O gerador usa `@oai/artifact-tool` 2.8.59, com versão fixada.
+
+O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 294 verificações de somas, fases, proteções, quedas,
+referências e listas. A validação estrita aprovou 200.489 verificações, sem erros ou
+avisos. Uma reconstrução completa manteve hashes idênticos para os 28 artefatos CAD do
+projeto (sete DXFs e 21 derivados). Nenhum DWG foi produzido ou versionado; DXF AC1027
+permanece como fonte principal.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

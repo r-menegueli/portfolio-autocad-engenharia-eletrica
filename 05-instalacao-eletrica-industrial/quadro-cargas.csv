@@ -1,0 +1,17 @@
+circuito,quadro,descricao,tipo,fases,tensao_v,potencia_saida_kw,rendimento,fator_potencia,potencia_ativa_instalada_kw,potencia_aparente_instalada_kva,fator_demanda,potencia_ativa_demandada_kw,potencia_aparente_demandada_kva,corrente_circuito_a,comprimento_m,condutor_mm2,pe_mm2,disjuntor_a,polos,curva,iz_assumida_a,queda_circuito_pct,observacoes
+C01,QDF-05,Compressor M-501 11 kW,motor,ABC,380,11.000000,0.900,0.850,12.222222,14.379085,1.000,12.222222,14.379085,21.846759,28.0,6.0,6.0,32,3,C,41,1.045571,Partida e protecao do motor a confirmar
+C02,QDF-05,Torno M-502 7.5 kW,motor,ABC,380,7.500000,0.880,0.850,8.522727,10.026738,0.800,6.818182,8.021390,15.234052,24.0,4.0,4.0,25,3,C,32,0.937403,Demanda didatica para processo intermitente
+C03,QDF-05,Fresadora M-503 5.5 kW,motor,ABC,380,5.500000,0.870,0.840,6.321839,7.525999,0.800,5.057471,6.020799,11.434572,22.0,4.0,4.0,20,3,C,32,0.644974,Demanda didatica para processo intermitente
+C04,QDF-05,Exaustor M-504 3 kW,motor,ABC,380,3.000000,0.850,0.820,3.529412,4.304161,1.000,3.529412,4.304161,6.539496,26.0,2.5,2.5,16,3,C,24,0.697489,Operacao continua assumida
+C05,QDF-05,Esmeril M-505 2.2 kW,motor,ABC,380,2.200000,0.840,0.820,2.619048,3.193961,0.600,1.571429,1.916376,4.852721,18.0,2.5,2.5,10,3,C,24,0.358325,Uso intermitente assumido
+C06,QDF-05,Tomada de solda TUE-501 12 kVA,carga_trifasica,ABC,380,10.200000,1.000,0.850,10.200000,12.000000,0.600,6.120000,7.200000,18.232114,30.0,6.0,6.0,32,3,C,41,0.934903,DR 30 mA como premissa a confirmar
+C07,QDF-05,Tomadas industriais TI-501 a TI-503,carga_trifasica,ABC,380,8.925000,1.000,0.850,8.925000,10.500000,0.400,3.570000,4.200000,15.953100,34.0,4.0,4.0,20,4,C,32,1.390668,Tres tomadas IEC 60309 16 A com uso nao simultaneo
+C08,QDF-05,Tomadas industriais TI-504 a TI-506,carga_trifasica,ABC,380,8.925000,1.000,0.850,8.925000,10.500000,0.400,3.570000,4.200000,15.953100,36.0,4.0,4.0,20,4,C,32,1.472472,Tres tomadas IEC 60309 16 A com uso nao simultaneo
+C09,QDL-05,Iluminacao galpao setor A,iluminacao,A,220,0.800000,1.000,0.950,0.800000,0.842105,1.000,0.800000,0.842105,3.827751,40.0,1.5,1.5,10,1,B,17.5,2.087864,Oito luminarias LED de 100 W
+C10,QDL-05,Iluminacao galpao setor B,iluminacao,B,220,0.800000,1.000,0.950,0.800000,0.842105,1.000,0.800000,0.842105,3.827751,42.0,1.5,1.5,10,1,B,17.5,2.192258,Oito luminarias LED de 100 W
+C11,QDL-05,Iluminacao galpao setor C,iluminacao,C,220,0.800000,1.000,0.950,0.800000,0.842105,1.000,0.800000,0.842105,3.827751,44.0,1.5,1.5,10,1,B,17.5,2.296651,Oito luminarias LED de 100 W
+C12,QDL-05,Iluminacao escritorio e apoio,iluminacao,B,220,0.480000,1.000,0.950,0.480000,0.505263,1.000,0.480000,0.505263,2.296651,28.0,1.5,1.5,10,1,B,17.5,0.876903,Doze luminarias LED de 40 W
+C13,QDL-05,Iluminacao externa,iluminacao,C,220,0.300000,1.000,0.950,0.300000,0.315789,1.000,0.300000,0.315789,1.435407,35.0,1.5,1.5,10,1,B,17.5,0.685080,Seis projetores LED de 50 W
+C14,QADM-05,TUG escritorio,tomadas_monofasicas,A,220,1.350000,1.000,0.900,1.350000,1.500000,0.600,0.810000,0.900000,6.818182,25.0,2.5,2.5,16,1,C,24,1.394628,Potencia aparente atribuida 1.5 kVA
+C15,QADM-05,TUG manutencao,tomadas_monofasicas,B,220,1.350000,1.000,0.900,1.350000,1.500000,0.600,0.810000,0.900000,6.818182,27.0,2.5,2.5,16,1,C,24,1.506198,Potencia aparente atribuida 1.5 kVA
+C16,QADM-05,TUG servicos,tomadas_monofasicas,C,220,1.350000,1.000,0.900,1.350000,1.500000,0.600,0.810000,0.900000,6.818182,30.0,2.5,2.5,16,1,C,24,1.673554,Potencia aparente atribuida 1.5 kVA

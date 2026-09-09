@@ -1,0 +1,21 @@
+cabo,de,para,funcao,formacao,blindagem,comprimento_assumido_m,identificacao_condutores,observacoes,circuito,rota,queda_pct
+AL-QGBT,Ponto de entrega,QGBT-05,Alimentacao geral,4x50 mm2 + PE 25 mm2 Cu 0.6/1 kV,Nao,25.0,L1-L2-L3-N-PE,Eletrocalha principal; dimensionamento preliminar,GERAL,E-500,0.885
+AL-QDF,QGBT-05,QDF-05,Alimentador de forca,4x25 mm2 + PE 16 mm2 Cu 0.6/1 kV,Nao,18.0,L1-L2-L3-N-PE,Neutro reservado para cargas auxiliares do quadro,QDF,E-501,0.564
+AL-QDL,QGBT-05,QDL-05,Alimentador de iluminacao,5x4 mm2 Cu 0.6/1 kV,Nao,20.0,L1-L2-L3-N-PE,Dimensionado pela fase mais carregada e queda,QDL,E-502,0.626
+AL-QADM,QGBT-05,QADM-05,Alimentador administrativo,5x2.5 mm2 Cu 0.6/1 kV,Nao,16.0,L1-L2-L3-N-PE,Cargas monofasicas balanceadas,QADM,E-503,0.536
+C01,QDF-05,M-501,Forca motor compressor,3x6 mm2 + PE 6 mm2 Cu 0.6/1 kV,Nao,28.0,U-V-W-PE,Partida e protecao do motor a confirmar,C01,E-501/D-501,1.045571
+C02,QDF-05,M-502,Forca motor torno,3x4 mm2 + PE 4 mm2 Cu 0.6/1 kV,Nao,24.0,U-V-W-PE,Instalacao em eletrocalha,C02,E-501/D-502,0.937403
+C03,QDF-05,M-503,Forca motor fresadora,3x4 mm2 + PE 4 mm2 Cu 0.6/1 kV,Nao,22.0,U-V-W-PE,Instalacao em eletrocalha,C03,E-501/D-503,0.644974
+C04,QDF-05,M-504,Forca motor exaustor,3x2.5 mm2 + PE 2.5 mm2 Cu 0.6/1 kV,Nao,26.0,U-V-W-PE,Operacao continua assumida,C04,E-501/D-504,0.697489
+C05,QDF-05,M-505,Forca motor esmeril,3x2.5 mm2 + PE 2.5 mm2 Cu 0.6/1 kV,Nao,18.0,U-V-W-PE,Uso intermitente,C05,E-501/D-505,0.358325
+C06,QDF-05,TUE-501,Tomada dedicada de solda,3x6 mm2 + PE 6 mm2 Cu 0.6/1 kV,Nao,30.0,L1-L2-L3-PE,DR e conector conforme equipamento,C06,E-501/D-506,0.934903
+C07,QDF-05,TI-501 a TI-503,Tomadas industriais grupo 1,4x4 mm2 + PE 4 mm2 Cu 0.6/1 kV,Nao,34.0,L1-L2-L3-N-PE,Tres pontos IEC 60309 16 A,C07,E-501/D-507,1.390668
+C08,QDF-05,TI-504 a TI-506,Tomadas industriais grupo 2,4x4 mm2 + PE 4 mm2 Cu 0.6/1 kV,Nao,36.0,L1-L2-L3-N-PE,Tres pontos IEC 60309 16 A,C08,E-501/D-508,1.472472
+C09,QDL-05,Luminarias setor A,Iluminacao do galpao,2x1.5 mm2 + PE 1.5 mm2 Cu 450/750 V,Nao,40.0,F-N-PE,Fase A,C09,E-502,2.087864
+C10,QDL-05,Luminarias setor B,Iluminacao do galpao,2x1.5 mm2 + PE 1.5 mm2 Cu 450/750 V,Nao,42.0,F-N-PE,Fase B,C10,E-502,2.192258
+C11,QDL-05,Luminarias setor C,Iluminacao do galpao,2x1.5 mm2 + PE 1.5 mm2 Cu 450/750 V,Nao,44.0,F-N-PE,Fase C,C11,E-502,2.296651
+C12,QDL-05,Luminarias escritorio e apoio,Iluminacao de apoio,2x1.5 mm2 + PE 1.5 mm2 Cu 450/750 V,Nao,28.0,F-N-PE,Fase B,C12,E-502,0.876903
+C13,QDL-05,Projetores externos,Iluminacao externa,2x1.5 mm2 + PE 1.5 mm2 Cu 450/750 V,Nao,35.0,F-N-PE,Fase C,C13,E-502,0.685080
+C14,QADM-05,TUG escritorio,Tomadas administrativas,2x2.5 mm2 + PE 2.5 mm2 Cu 450/750 V,Nao,25.0,F-N-PE,Fase A e DR 30 mA,C14,E-503,1.394628
+C15,QADM-05,TUG manutencao,Tomadas de manutencao,2x2.5 mm2 + PE 2.5 mm2 Cu 450/750 V,Nao,27.0,F-N-PE,Fase B e DR 30 mA,C15,E-503,1.506198
+C16,QADM-05,TUG servicos,Tomadas de servicos,2x2.5 mm2 + PE 2.5 mm2 Cu 450/750 V,Nao,30.0,F-N-PE,Fase C e DR 30 mA,C16,E-503,1.673554

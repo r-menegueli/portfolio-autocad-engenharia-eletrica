@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01, P02, P03 e P04 concluídos; P05 a P10 permanecem planejados
+Estado: P01 a P05 concluídos; P06 a P10 permanecem planejados
 
 ## Propósito
 
@@ -61,7 +61,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 2 | P02 | Projeto elétrico residencial | baixa tensão residencial, cargas, proteção e aterramento | infraestrutura do portfólio |
 | 3 | P03 | Painel de automação com CLP para duas bombas | I/O, alternância, segurança e interfaces | P01 |
 | 4 | P04 | Controle de nível de reservatório | instrumentação, PI, VFD e intertravamentos | P01 e P03 |
-| 5 | P05 | Sistema fotovoltaico conectado à rede | geração distribuída e interfaces CC/CA | P02 |
+| 5 | P05 | Instalação elétrica industrial | cargas, distribuição, iluminação e encaminhamento | P01 e P02 |
 | 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01 e P03 |
 | 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P01 e P06 |
 | 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P07 |
@@ -136,21 +136,25 @@ instrumentos, I/O, cabos, bornes e materiais.
 PDF/SVG/PNG, validação funcional da malha, auditoria CAD e inspeção visual devem
 estar aprovados e registrados.
 
-## P05 — Sistema fotovoltaico conectado à rede
+## P05 — Instalação elétrica industrial
 
-**Objetivo.** Apresentar o arranjo elétrico de um sistema fotovoltaico fictício
-conectado à rede, com rastreabilidade entre premissas energéticas e desenho.
+**Objetivo.** Documentar uma oficina metalmecânica fictícia com dimensões e cargas
+declaradas, mostrando a passagem do levantamento de cargas para distribuição,
+encaminhamento e detalhes de instalação.
 
-**Escopo.** Estimativa de geração, organização de módulos e strings, circuitos
-CC e CA, inversor, seccionamento, proteções, aterramento funcional e interface
-com quadro existente. Não abrange homologação nem estudo estrutural.
+**Escopo.** Galpão de 30 x 18 m, alimentação 380/220 V, QGBT-05, QDF-05, QDL-05,
+QADM-05, cinco máquinas trifásicas, solda, tomadas industriais, iluminação,
+alimentadores, eletrocalhas, circuitos C01 a C16 e critérios preliminares de proteção,
+ampacidade e queda de tensão.
 
-**Pranchas e dados específicos.** Implantação de módulos; diagramas unifilares CC
-e CA; detalhes de proteção e encaminhamento; tabela de strings; balanço energético
-e lista de materiais.
+**Pranchas e dados específicos.** Layout industrial; distribuição de força;
+distribuição de iluminação; eletrocalhas e rotas; diagrama unifilar; quadro de cargas;
+detalhes de instalação; quadro de cargas, alimentadores, cabos e materiais em CSV e
+workbook técnico.
 
-**Marco de aceitação.** Tensões, correntes, quantidades de módulos e referências
-dos dispositivos devem coincidir entre cálculo, desenhos e CSV.
+**Marco de aceitação.** Concluído na revisão 00. Sete DXFs AC1027, derivados
+PDF/SVG/PNG, validação dos cálculos, auditoria CAD e inspeção visual devem permanecer
+coerentes.
 
 ## P06 — Distribuição elétrica industrial e centro de controle de motores
 
@@ -266,7 +270,8 @@ comum depois de aprovados nos dois portões de qualidade.
 - P03 acrescenta CLP, cartões de I/O, sensores de nível, relés de interface, estados,
   alternância de bombas e permissivos físicos.
 - P04 acrescenta tanque, tubulações, instrumentos ISA, malha PI, VFD e intertravamentos.
-- P05 acrescenta símbolos e estilos para circuitos CC e geração distribuída.
+- P05 acrescenta layout industrial, máquinas trifásicas, quadros, tomadas,
+  alimentadores, eletrocalhas e quadro de cargas industrial.
 - P06 acrescenta equipamentos industriais, cabos e eletrocalhas.
 - P07 acrescenta contatos, bobinas, motores e referências cruzadas.
 - P08 acrescenta instrumentos, sinais, bornes e cartões de I/O.
@@ -276,6 +281,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Os Projetos 01, 02, 03 e 04 foram materializados em pastas de raiz por instruções explícitas
-e estão concluídos. Os Projetos 05 a 10 permanecem planejados e serão criados apenas
+Os Projetos 01 a 05 foram materializados em pastas de raiz por instruções explícitas
+e estão concluídos. Os Projetos 06 a 10 permanecem planejados e serão criados apenas
 sob solicitação, um por vez, conforme a sequência revisada.

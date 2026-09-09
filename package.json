@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-autocad-engenharia-eletrica",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gerar:tabelas:p05": "node 05-instalacao-eletrica-industrial/fonte/gerar_tabelas_05.mjs --root ."
+  },
+  "dependencies": {
+    "@oai/artifact-tool": "2.8.59"
+  }
+}

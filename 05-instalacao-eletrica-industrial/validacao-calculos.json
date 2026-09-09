@@ -1,0 +1,25 @@
+{
+  "checks": 294,
+  "errors": [],
+  "results": {
+    "cables": 20,
+    "circuits": 16,
+    "demand_active_kw": "48.068716",
+    "demand_apparent_kva": "56.289178",
+    "equivalent_demand_current_a": "85.522558",
+    "feeders": 4,
+    "installed_active_kw": "68.495248",
+    "installed_apparent_kva": "80.277311",
+    "materials": 38,
+    "maximum_combined_drop_circuit": "C11",
+    "maximum_combined_drop_pct": "3.808179",
+    "phase_currents_a": {
+      "A": "84.253194",
+      "B": "86.549844",
+      "C": "85.688598"
+    },
+    "phase_imbalance_pct": "2.686228",
+    "sheets": 7
+  },
+  "status": "PASS"
+}

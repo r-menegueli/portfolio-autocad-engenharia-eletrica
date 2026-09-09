@@ -1,0 +1,39 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+QD-GERAL,1,un,Quadro geral de baixa tensao 125 A,QGBT-05,Arranjo e verificacao conforme conjunto selecionado
+QD-FORCA,1,un,Quadro secundario de forca 80 A,QDF-05,Inclui barras N e PE separadas
+QD-LUZ,1,un,Quadro secundario de iluminacao 16 A,QDL-05,Quatro polos e reserva tecnica
+QD-ADM,1,un,Quadro secundario administrativo 16 A,QADM-05,Quatro polos e reserva tecnica
+DJ-G,1,un,Disjuntor geral 4P 100 A,DJ-G,Icu minimo 10 kA assumido; confirmar Icc
+DPS-05,1,conjunto,DPS tipo 2 para 3F+N,DPS-05,Up e coordenacao a selecionar
+QF-QDF,1,un,Disjuntor alimentador 3P 80 A,QF-QDF,Curva e seletividade a confirmar
+QF-QDL,1,un,Disjuntor alimentador 4P 16 A,QF-QDL,Protecao do alimentador de iluminacao
+QF-QADM,1,un,Disjuntor alimentador 4P 16 A,QF-QADM,Protecao do alimentador administrativo
+DR-IND,2,un,Interruptor diferencial 4P 40 A 30 mA,DR-501/502,Premissa para C06 a C08; verificar compatibilidade
+DR-ADM,1,un,Interruptor diferencial 4P 25 A 30 mA,DR-503,Premissa para C14 a C16
+DJ-MOTOR,5,un,Protecao de circuito de motor ajustavel,QF-501/505,Ajuste conforme corrente nominal e partida
+DJ-TUE,3,un,Disjuntor tripolar para C06 a C08,QF-506/508,32 A para C06 e 20 A para C07/C08
+DJ-LUZ,5,un,Disjuntor monopolar curva B 10 A,QF-509/513,Circuitos C09 a C13
+DJ-TUG,3,un,Disjuntor monopolar curva C 16 A,QF-514/516,Circuitos C14 a C16
+M-501,1,un,Compressor trifasico 11 kW,M-501,Carga ficticia
+M-502,1,un,Torno trifasico 7.5 kW,M-502,Carga ficticia
+M-503,1,un,Fresadora trifasica 5.5 kW,M-503,Carga ficticia
+M-504,1,un,Exaustor trifasico 3 kW,M-504,Carga ficticia
+M-505,1,un,Esmeril trifasico 2.2 kW,M-505,Carga ficticia
+TUE-501,1,un,Ponto dedicado de solda 12 kVA,TUE-501,Carga ficticia
+TI-16A,6,un,Tomada industrial 16 A 3P+N+PE 380 V,TI-501/506,Grau IP conforme ambiente
+LUM-100,24,un,Luminaria industrial LED 100 W,L-501/524,Fluxo luminoso e fotometria a definir
+LUM-40,12,un,Luminaria LED de apoio 40 W,L-525/536,Fluxo luminoso a definir
+LUM-50,6,un,Projetor LED externo 50 W,L-537/542,Grau IP a definir
+E-501,40,m,Eletrocalha perfurada 300 x 100 mm,E-501,Ocupacao e suportacao a verificar
+E-502,25,m,Eletrocalha perfurada 100 x 50 mm,E-502,Iluminacao
+E-503,20,m,Eletrocalha perfurada 100 x 50 mm,E-503,Circuitos administrativos
+SUP-E,43,un,Suporte para eletrocalha com espacamento medio 2 m,E-501/503,Quantidade arredondada
+CAB-1.5,567,m,Condutor Cu 1.5 mm2 450/750 V,C09/C13,Tres condutores por rota
+CAB-2.5,502,m,Condutor Cu 2.5 mm2 450/750 V e 0.6/1 kV,C04/C05/C14/C16/AL-QADM,Inclui circuitos finais e alimentador administrativo
+CAB-4,634,m,Condutor Cu 4 mm2,C02/C03/C07/C08/AL-QDL,Inclui condutores ativos neutros e PE
+CAB-6,232,m,Condutor Cu 6 mm2 0.6/1 kV,C01/C06,Quatro condutores por rota
+CAB-16,18,m,Condutor Cu PE 16 mm2,AL-QDF,Condutor de protecao
+CAB-25,97,m,Condutor Cu 25 mm2,AL-QDF/AL-QGBT,72 m ativos de AL-QDF mais 25 m de PE de AL-QGBT
+CAB-50,100,m,Condutor Cu 50 mm2,AL-QGBT,Quatro condutores por 25 m
+BEP-05,1,un,Barramento de equipotencializacao principal,BEP-05,Dimensionamento e conexoes a confirmar
+ETIQ,1,conjunto,Identificacao de quadros circuitos cabos e equipamentos,ID-05,Material resistente ao ambiente

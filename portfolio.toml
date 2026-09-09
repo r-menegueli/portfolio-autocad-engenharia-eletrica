@@ -210,6 +210,31 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "05-instalacao-eletrica-industrial"
+path = "05-instalacao-eletrica-industrial"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 7
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "quadro-cargas.csv",
+  "alimentadores.csv",
+  "lista-cabos.csv",
+  "lista-materiais.csv",
+  "tabelas-projeto-05.xlsx",
+  "fonte/gerar_projeto_05.py",
+  "fonte/gerar_tabelas_05.mjs",
+  "fonte/validar_projeto_05.py",
+  "validacao-calculos.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -533,5 +558,82 @@ source = "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf"
 svg = "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg"
 pdf = "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf"
 png = "04-controle-nivel-reservatorio/exports/06_layout_sistema.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-01-layout-industrial"
+kind = "sheet"
+title = "Projeto 05 - Layout industrial"
+source = "05-instalacao-eletrica-industrial/fonte/01_layout_industrial.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/01_layout_industrial.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/01_layout_industrial.pdf"
+png = "05-instalacao-eletrica-industrial/exports/01_layout_industrial.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-02-distribuicao-forca"
+kind = "sheet"
+title = "Projeto 05 - Distribuição de força"
+source = "05-instalacao-eletrica-industrial/fonte/02_distribuicao_forca.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.pdf"
+png = "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-03-distribuicao-iluminacao"
+kind = "sheet"
+title = "Projeto 05 - Distribuição de iluminação"
+source = "05-instalacao-eletrica-industrial/fonte/03_distribuicao_iluminacao.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.pdf"
+png = "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-04-eletrocalhas-rotas"
+kind = "sheet"
+title = "Projeto 05 - Eletrocalhas e rotas"
+source = "05-instalacao-eletrica-industrial/fonte/04_eletrocalhas_rotas.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.pdf"
+png = "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-05-diagrama-unifilar"
+kind = "sheet"
+title = "Projeto 05 - Diagrama unifilar"
+source = "05-instalacao-eletrica-industrial/fonte/05_diagrama_unifilar.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.pdf"
+png = "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-06-quadro-cargas"
+kind = "sheet"
+title = "Projeto 05 - Quadro de cargas"
+source = "05-instalacao-eletrica-industrial/fonte/06_quadro_cargas.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.pdf"
+png = "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-07-detalhes-instalacao"
+kind = "sheet"
+title = "Projeto 05 - Detalhes de instalação"
+source = "05-instalacao-eletrica-industrial/fonte/07_detalhes_instalacao.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.pdf"
+png = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.png"
 require_a3 = true
 require_notice = true

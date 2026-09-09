@@ -567,6 +567,139 @@
           "sha256": "7b6d82604512368b08f0723be63d82bcedf11025d2b0f38658e5ea03263580b4"
         }
       }
+    },
+    {
+      "id": "p05-01-layout-industrial",
+      "source": "05-instalacao-eletrica-industrial/fonte/01_layout_industrial.dxf",
+      "source_sha256": "c2ceaa798800a58b3235f8c4dafdcec4361e0a0dd97c3ba304de2e7da8fa9076",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.pdf",
+          "sha256": "34ec5625446188299469a54f62129264c139b33eefc6b4613a0decace9192afd"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.png",
+          "sha256": "bd739fa80c1d8d477c9be14de7c54a847093942e8c25b9dc7eb8373d7de88e02"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.svg",
+          "sha256": "9a2cbbd837773dde3818471b793070d0a36ef8dfb002e8d64e463480c3c1b5c7"
+        }
+      }
+    },
+    {
+      "id": "p05-02-distribuicao-forca",
+      "source": "05-instalacao-eletrica-industrial/fonte/02_distribuicao_forca.dxf",
+      "source_sha256": "28a1b4cbed025ddb3efc677621b9efed1733b87b45aef5bee9cfe59a68b8abea",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.pdf",
+          "sha256": "42dfa89b7d11325c2177a8d37ebd3c7ca0b7ac70c943b6267b319b6ed08a26f3"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.png",
+          "sha256": "cc087c84a5c63db4b9b62a8c48ecd94952e4034ad1c48f067a87daa7c3f49b21"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.svg",
+          "sha256": "9f4a06c6f352b2eba6c2ef8b523fba77db4a57b257518e86ad9904f66a16817a"
+        }
+      }
+    },
+    {
+      "id": "p05-03-distribuicao-iluminacao",
+      "source": "05-instalacao-eletrica-industrial/fonte/03_distribuicao_iluminacao.dxf",
+      "source_sha256": "f238ac76558a5f0d1d49de3dd3763282381535f7a012e85a7e02b5bd88c3d4ea",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.pdf",
+          "sha256": "5675ee0ad23e14835930fa00d0473bec02add2fc8a0026e161adb14eb5e7513e"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.png",
+          "sha256": "a334b3ee27981d3fbb0b90b9d7b14aca50f170856c3681cd26374f2f06e11bf2"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.svg",
+          "sha256": "b1ad360c7f34206de851ad4e79534e95352ce766ea2d1aa0b434de8a0b410ca7"
+        }
+      }
+    },
+    {
+      "id": "p05-04-eletrocalhas-rotas",
+      "source": "05-instalacao-eletrica-industrial/fonte/04_eletrocalhas_rotas.dxf",
+      "source_sha256": "e5ff87bfe8053eff372e1367f26938c82d8e4be84900902bf489ffd44d787f27",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.pdf",
+          "sha256": "5f73b0e2c4cb9281bafbc07653cff38f566c50ed23b7600632ac85363effad2e"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.png",
+          "sha256": "5149b016be0a1fa6db7ffe700522c468e86b4b4508bcaf09735f83593a7e7fa0"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.svg",
+          "sha256": "672516cc08b10da543f237e6c1723bf3e6a7154fedb1238378743a409369a214"
+        }
+      }
+    },
+    {
+      "id": "p05-05-diagrama-unifilar",
+      "source": "05-instalacao-eletrica-industrial/fonte/05_diagrama_unifilar.dxf",
+      "source_sha256": "1d5f8d049d4489f70852c5c4591d7298b80bbe19b31edeaee3af6edeaa4f1d28",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.pdf",
+          "sha256": "620f37282b63abc59aac928d991e13d08dff54ca30449307ebbbb423cffdf5c6"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.png",
+          "sha256": "4f73416483f696539080a81c9d5932d0e7d4f1f0674f1123e810d470d9b5a1aa"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.svg",
+          "sha256": "efb24c4ed723568fe73973047013c5c3f82e23033a546d017e590f19cdb4c700"
+        }
+      }
+    },
+    {
+      "id": "p05-06-quadro-cargas",
+      "source": "05-instalacao-eletrica-industrial/fonte/06_quadro_cargas.dxf",
+      "source_sha256": "1869d145a8e54bbb9b02c85e380a0f6819c8b4758c954b4473a380a930f631bf",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.pdf",
+          "sha256": "2c9845b4db65b499b66f0b196ed6b7ad8d193af5f406c2362166dd78460cb075"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.png",
+          "sha256": "1bdc7230b55dd51a3befcd642b3e1fd0cccc9049ecae3643f72215a7646f28f3"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.svg",
+          "sha256": "6604eebb2f9f730c48aac9240e90551cf53a29c4fa906070675d88b1d4cd6444"
+        }
+      }
+    },
+    {
+      "id": "p05-07-detalhes-instalacao",
+      "source": "05-instalacao-eletrica-industrial/fonte/07_detalhes_instalacao.dxf",
+      "source_sha256": "1107a245669405a051bd03c83fae1393e247a06de011653d4ee3496a2e5f1a60",
+      "outputs": {
+        "pdf": {
+          "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.pdf",
+          "sha256": "21edf0876d2f5973db9737d413f32a9e0d440c5127eb2a902038f34551927a7e"
+        },
+        "png": {
+          "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.png",
+          "sha256": "ea0605fb630ad3518dceab917be18efbe27715004fc2e25072880a3c621ce755"
+        },
+        "svg": {
+          "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.svg",
+          "sha256": "22d19a90793d64ff08704c63b31b53aa1f4aa5a79149b9c321dde1bb04478b56"
+        }
+      }
     }
   ]
 }

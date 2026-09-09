@@ -113,10 +113,11 @@ Todo DXF de prancha deve conter, com esta grafia exata, no mínimo os layers aba
 Cada projeto futuro deve ocupar `projetos/NN-slug/`, onde `NN` vai de `01` a `10` e
 `slug` é curto, descritivo, minúsculo, sem espaços e sem acentos. A estrutura mínima é:
 
-Exceções registradas: por instruções explícitas, os Projetos 01, 02, 03 e 04 ocupam
+Exceções registradas: por instruções explícitas, os Projetos 01, 02, 03, 04 e 05 ocupam
 `01-painel-motor-inversor/`, `02-projeto-eletrico-residencial/` e
-`03-painel-automacao-clp/` e `04-controle-nivel-reservatorio/` na raiz. Não mova nem
-duplique essas pastas. A convenção
+`03-painel-automacao-clp/`, `04-controle-nivel-reservatorio/` e
+`05-instalacao-eletrica-industrial/` na raiz. Não mova nem duplique essas pastas. A
+convenção
 `projetos/NN-slug/` continua sendo o padrão dos próximos projetos, salvo nova
 instrução explícita.
 

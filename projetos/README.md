@@ -1,7 +1,7 @@
 # Projetos acadêmicos planejados
 
-Esta pasta receberá, em etapas futuras, os Projetos 05 a 10 descritos no
-[plano de projetos](../docs/plano-projetos.md). Os Projetos 01, 02, 03 e 04 foram criados
+Esta pasta receberá, em etapas futuras, os Projetos 06 a 10 descritos no
+[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 05 foram criados
 na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
@@ -16,7 +16,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 | 2 | [`../02-projeto-eletrico-residencial/`](../02-projeto-eletrico-residencial/README.md) | projeto elétrico residencial - concluído |
 | 3 | [`../03-painel-automacao-clp/`](../03-painel-automacao-clp/README.md) | painel de automação com CLP para duas bombas - concluído |
 | 4 | [`../04-controle-nivel-reservatorio/`](../04-controle-nivel-reservatorio/README.md) | controle de nível com instrumentação, CLP e inversor - concluído |
-| 5 | `P05-sistema-fotovoltaico` | sistema fotovoltaico conectado à rede |
+| 5 | [`../05-instalacao-eletrica-industrial/`](../05-instalacao-eletrica-industrial/README.md) | instalação elétrica industrial - concluído |
 | 6 | `P06-distribuicao-industrial-ccm` | distribuição industrial e CCM |
 | 7 | `P07-acionamentos-motores` | potência e comando de motores |
 | 8 | `P08-automacao-instrumentacao` | automação e instrumentação de processo |
@@ -105,5 +105,5 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção dos projetos restantes. P05 a P10 só devem ser criados
+Este README define a convenção dos projetos restantes. P06 a P10 só devem ser criados
 quando solicitados explicitamente.
