@@ -1,0 +1,38 @@
+regua,borne,potencial,funcao,cabo,destino
+X1,1,L1,Entrada fase L1,W600,QG-06
+X1,2,L2,Entrada fase L2,W600,QG-06
+X1,3,L3,Entrada fase L3,W600,QG-06
+X1,4,N,Entrada neutro,W600,Barra N
+X1,5,PE,Entrada protecao,W600,PE-06
+X2,1,U,Motor bomba U,W601,M-601 U
+X2,2,V,Motor bomba V,W601,M-601 V
+X2,3,W,Motor bomba W,W601,M-601 W
+X2,4,PE,Motor bomba PE,W601,M-601 PE
+X2,5,U,Motor esteira U,W602,M-602 U
+X2,6,V,Motor esteira V,W602,M-602 V
+X2,7,W,Motor esteira W,W602,M-602 W
+X2,8,PE,Motor esteira PE,W602,M-602 PE
+X2,9,U,Motor ventilador U,W603B,M-603 U
+X2,10,V,Motor ventilador V,W603B,M-603 V
+X2,11,W,Motor ventilador W,W603B,M-603 W
+X2,12,PE,Motor ventilador PE,W603B,M-603 PE
+X3,1,+24V,Partida bomba,W605,S-601L
+X3,2,DI,Parada bomba,W605,S-601P
+X3,3,+24V,Partida frente,W606,S-602F
+X3,4,+24V,Partida reverso,W606,S-602R
+X3,5,DI,Fim de curso frente,W606,FC-602F
+X3,6,DI,Fim de curso reverso,W606,FC-602R
+X3,7,SAFE1,Emergencia canal 1,W604,S0-601 CH1
+X3,8,SAFE2,Emergencia canal 2,W604,S0-601 CH2
+X3,9,+24V,Sinal bomba em marcha,W608,H-601
+X3,10,+24V,Sinal esteira em marcha,W608,H-602
+X4,1,STO-A,Torque seguro canal A,W604,VFD-603 STO-A
+X4,2,STO-B,Torque seguro canal B,W604,VFD-603 STO-B
+X4,3,+24V,Partida ventilador,W607,VFD-603 DI1
+X4,4,0V,Parada ventilador,W607,VFD-603 DI2
+X4,5,AI1,Referencia velocidade 0-10 V,W607,VFD-603 AI1
+X4,6,COM,Comum analogico,W607,VFD-603 COM
+X4,7,SH,Blindagem sinal analogico,W607,Barra SH
+X4,8,RO1,Estado ventilador em marcha,W608,H-603
+X4,9,RO1,Comum rele de estado,W608,0 V
+X4,10,RO2,Falha do inversor,W608,H-604

@@ -700,6 +700,139 @@
           "sha256": "22d19a90793d64ff08704c63b31b53aa1f4aa5a79149b9c321dde1bb04478b56"
         }
       }
+    },
+    {
+      "id": "p06-01-diagrama-unifilar-ccm",
+      "source": "06-centro-controle-motores/fonte/01_diagrama_unifilar_ccm.dxf",
+      "source_sha256": "40bcea4d3325da3ae98eddcb7f4474c96939d9ebd2f72f8e4bb7968395a24906",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.pdf",
+          "sha256": "8650ebae0738d406bc4900c8f98ad25f562954b228ab7993ab213660a94f789e"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.png",
+          "sha256": "f099b081aeea37ba6054012f4870b39d22bcadc5b60d5d570b785698b32bcf20"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.svg",
+          "sha256": "a4d184fadd70c84d6f42d659c481769738c2d95122bb199c5c9861f7cef89b79"
+        }
+      }
+    },
+    {
+      "id": "p06-02-partida-direta",
+      "source": "06-centro-controle-motores/fonte/02_partida_direta.dxf",
+      "source_sha256": "f6319b0de7081ecb89559bf83db47c035bc4c4e340f24635fcd2942444705442",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/02_partida_direta.pdf",
+          "sha256": "acec394584399070c6cff02858e901d40bb0776373ebddeacfdbc57f869322cb"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/02_partida_direta.png",
+          "sha256": "36f6fa7f27ac8fe17009e96345559b1c02bf0e7094e8298980dd21c81d33d78e"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/02_partida_direta.svg",
+          "sha256": "a4f0f5f52dfc3013db5085883f5b1b5f7eebbbc79d27898b1bafb37bae097a6e"
+        }
+      }
+    },
+    {
+      "id": "p06-03-partida-reversora",
+      "source": "06-centro-controle-motores/fonte/03_partida_reversora.dxf",
+      "source_sha256": "2bc4f4e26442777e0627710e5b254361631c2e9e434b84f5f500d4dced1f7944",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/03_partida_reversora.pdf",
+          "sha256": "9b07ee2c9965cdd6924cdd3aa49a4ad6114619e5c31bee0e3c39e2e76bd549de"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/03_partida_reversora.png",
+          "sha256": "f2a9f4da6e8916e83f2a57e9389b4445a815bf2d3c534946896469e275d9a1db"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/03_partida_reversora.svg",
+          "sha256": "98b2c25f37dfc372313563679d59f0eb22cf3750229876771cf0ea7ff94e4bf4"
+        }
+      }
+    },
+    {
+      "id": "p06-04-acionamento-inversor",
+      "source": "06-centro-controle-motores/fonte/04_acionamento_inversor.dxf",
+      "source_sha256": "83883d1eba14d11738c8cd13e72ea40b943642a9d8acd1221b48d87d1c2bb6ef",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/04_acionamento_inversor.pdf",
+          "sha256": "b3deebc1e8a4b2c49f53eba0b398a9283213364ae327156183e4c1514e5659a2"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/04_acionamento_inversor.png",
+          "sha256": "7cf7a20c29c9c62c856952b43e634bb701a0f7c382748f834997600b9c7a21b2"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/04_acionamento_inversor.svg",
+          "sha256": "62e82334148728c0d3c06d834e8a69bd3cfada2f6f10ef4d299bed1f1efcd02e"
+        }
+      }
+    },
+    {
+      "id": "p06-05-layout-ccm",
+      "source": "06-centro-controle-motores/fonte/05_layout_ccm.dxf",
+      "source_sha256": "7acd0f826d76cebafd61616dd76b6e9583b506c4995e0fbb536eedd49b6b4f7a",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/05_layout_ccm.pdf",
+          "sha256": "974e77dee603627d4d6045ade5f2eb2fae36d0a720b2fce8f771594f1a9c225d"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/05_layout_ccm.png",
+          "sha256": "25adcdbf99c4206bdff02282d5a10643463c8136b1c2a0a73b40217c281516fc"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/05_layout_ccm.svg",
+          "sha256": "9db7dda7062d0c3b062d5b88bbd5c72fa04ce9fd1620721e9fec7a5069ca51f1"
+        }
+      }
+    },
+    {
+      "id": "p06-06-diagrama-bornes",
+      "source": "06-centro-controle-motores/fonte/06_diagrama_bornes.dxf",
+      "source_sha256": "bc112c743a0862f731e4cf13ed9a6b23a98dc0810817ec37953da4b4975fc807",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/06_diagrama_bornes.pdf",
+          "sha256": "807a3cb4ac3e13e53f919b65845b892ac08c36fc4c2bb3abf674f4a89e04737c"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/06_diagrama_bornes.png",
+          "sha256": "444b718dac7729d5b4a4a626aa74b339ab133b5615074c476f153b4eba68089d"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/06_diagrama_bornes.svg",
+          "sha256": "611a5dee2b6bedc7c6a2c7c5552dc1e3fe1fbcd65e1b7acb8ea781b3b59942e3"
+        }
+      }
+    },
+    {
+      "id": "p06-07-lista-cabos",
+      "source": "06-centro-controle-motores/fonte/07_lista_cabos.dxf",
+      "source_sha256": "6362fcc37c976265db224ae5c2f1860e3546500db7e45f47ecb592e10b7f15be",
+      "outputs": {
+        "pdf": {
+          "path": "06-centro-controle-motores/exports/07_lista_cabos.pdf",
+          "sha256": "9d7fbe9500905c1d5e31d92833320bdfb9ed81bd2c86c1ba447abbb2ed36b7f5"
+        },
+        "png": {
+          "path": "06-centro-controle-motores/exports/07_lista_cabos.png",
+          "sha256": "bf5efab5b52f29a632511033934e661e1c94fdddd7eb20d7667aa005c67a8331"
+        },
+        "svg": {
+          "path": "06-centro-controle-motores/exports/07_lista_cabos.svg",
+          "sha256": "4cbbe7aa75823aadafdcf27b833696a3a59dc33f76b8577420c67d45c757c312"
+        }
+      }
     }
   ]
 }

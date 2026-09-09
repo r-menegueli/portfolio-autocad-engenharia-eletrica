@@ -1,0 +1,35 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+CCM-06,1,un,Invólucro metálico 1800 x 1000 x 400 mm,CCM-06,Dimensões conceituais
+QG-06,1,un,Disjuntor geral 4P 50 A 10 kA,QG-06,Curva e seletividade a confirmar
+QF-601,1,un,Disjuntor-motor 3P 16 A,QF-601,Coordenação com KM-601 e FR-601
+KM-601,1,un,Contator AC-3 18 A bobina 24 Vcc,KM-601,Partida direta
+FR-601,1,un,Relé de sobrecarga 9-13 A,FR-601,Ajuste inicial 12.0 A
+QF-602,1,un,Disjuntor-motor 3P 10 A,QF-602,Coordenação a confirmar
+KM-602F,1,un,Contator AC-3 12 A bobina 24 Vcc,KM-602F,Sentido frente
+KM-602R,1,un,Contator AC-3 12 A bobina 24 Vcc,KM-602R,Sentido reverso
+IM-602,1,un,Intertravamento mecânico entre contatores,KM-602F/KM-602R,Obrigatório com intertravamento elétrico
+FR-602,1,un,Relé de sobrecarga 5.5-8 A,FR-602,Ajuste inicial 6.8 A
+QF-603,1,un,Disjuntor 3P 25 A,QF-603,Compatibilizar com fabricante do VFD
+VFD-603,1,un,Inversor de frequência 11 kW 380 V,VFD-603,STO duplo e filtro EMC a confirmar
+KSR-601,1,un,Relé de segurança 24 Vcc,KSR-601,Arquitetura depende de análise de risco
+PSU-601,1,un,Fonte 380/24 Vcc 5 A,PSU-601,Carga estimada inferior a 2 A
+M-601,1,un,Motor trifásico da bomba 5.5 kW,M-601,Carga fictícia
+M-602,1,un,Motor trifásico da esteira 3.0 kW,M-602,Carga fictícia
+M-603,1,un,Motor trifásico do ventilador 7.5 kW,M-603,Carga fictícia
+S0-601,1,un,Botão de emergência com dois contatos NF,S0-601,Rearme manual
+S-601L/S-601P,2,un,Botoeiras liga e para da bomba,PB-601,Contatos NA/NF
+S-602F/S-602R,2,un,Botoeiras frente e reverso,PB-602,Comando por impulso
+FC-602F/FC-602R,2,un,Fins de curso da esteira,FC-602F/FC-602R,Contato NF por sentido
+SA-603,1,un,Seletor local/remoto do ventilador,SA-603,Posições mantidas
+P-603,1,un,Potenciômetro 10 kohm,P-603,Referência 0-10 V
+H-601/H-604,4,un,Sinalizadores LED 24 Vcc,H-601/H-604,Marcha e falha
+X1,5,un,Bornes de entrada potência,X1:1-5,Incluir identificação
+X2,12,un,Bornes de saída para motores,X2:1-12,Incluir bornes PE
+X3,10,un,Bornes de comando,X3:1-10,24 Vcc
+X4,10,un,Bornes de VFD e segurança,X4:1-10,Segregar analógico e STO
+PE-06,1,un,Barra de proteção em cobre,PE-06,Equipotencialização
+N-06,1,un,Barra de neutro isolada,N-06,Separada do PE
+CAN-601,8,m,Canaleta interna com tampa,CAN-601,Reserva mínima 30 por cento
+DIN-601,6,m,Trilho DIN 35 mm,DIN-601,Fixação interna
+VENT-601,1,conj,Ventilação filtrada do compartimento VFD,VENT-601,Dimensionar termicamente
+PLA-601,1,conj,Placas e marcadores de identificação,CCM-06,Identificar equipamentos cabos e bornes

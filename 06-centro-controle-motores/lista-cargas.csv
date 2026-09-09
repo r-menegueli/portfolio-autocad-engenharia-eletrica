@@ -1,0 +1,4 @@
+tag,descricao,metodo_acionamento,potencia_saida_kw,rendimento,fator_potencia,tensao_v,fases,fator_demanda,potencia_ativa_instalada_kw,potencia_aparente_instalada_kva,potencia_ativa_demandada_kw,potencia_aparente_demandada_kva,corrente_projeto_a,protecao,contator_ou_inversor,sobrecarga,cabo,comprimento_m,condutor_mm2,iz_assumida_a,queda_circuito_pct
+M-601,Bomba de processo,PARTIDA DIRETA,5.5,0.87,0.82,380,ABC,1.0,6.321839,7.709560,6.321839,7.709560,11.713464,QF-601 3P 16 A,KM-601 AC-3 18 A,FR-601 9-13 A ajuste 12.0 A,W601,30,2.5,24,1.441538
+M-602,Esteira transportadora,PARTIDA REVERSORA,3.0,0.85,0.80,380,ABC,0.8,3.529412,4.411765,2.823529,3.529412,6.702983,QF-602 3P 10 A,KM-602F/R AC-3 12 A,FR-602 5.5-8 A ajuste 6.8 A,W602,25,2.5,24,0.687429
+M-603,Ventilador de exaustao,INVERSOR DE FREQUENCIA,7.5,0.90,0.95,380,ABC,0.9,8.333333,8.771930,7.500000,7.894737,13.327569,QF-603 3P 25 A,VFD-603 11 kW,Eletronica no VFD + PTC previsto,W603A,15,4,32,0.512556

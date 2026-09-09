@@ -1,0 +1,11 @@
+cabo,de,para,funcao,formacao,identificacao_condutores,blindagem,comprimento_assumido_m,rota,bornes,observacoes
+W600,QGBT-05,CCM-06,Alimentacao geral,4x10+PE10 mm2,L1/L2/L3/N/PE,NAO,20,E-501/X1,X1:1-5,Confirmar origem no QGBT
+W601,CCM-06,M-601,Potencia bomba,4G2.5 mm2,U/V/W/PE,NAO,30,E-601/X2,X2:1-4,Partida direta
+W602,CCM-06,M-602,Potencia esteira,4G2.5 mm2,U/V/W/PE,NAO,25,E-602/X2,X2:5-8,Partida reversora
+W603A,CCM-06,VFD-603,Entrada do inversor,4G4 mm2,R/S/T/PE,NAO,15,Canaleta potencia,Direto QF-603/VFD,Seguir fabricante
+W603B,VFD-603,M-603,Saida PWM ventilador,4G4 mm2,U/V/W/PE,SIM,28,E-603/X2,X2:9-12,Terminar blindagem 360 graus
+W604,CCM-06,S0-601,Emergencia dois canais,6x1.5 mm2,CH1A/CH1B/CH2A/CH2B/24V/0V,NAO,18,E-604/X3-X4,X3:7-8/X4:1-2,Segregar de potencia
+W605,CCM-06,PB-601,Comando bomba,4x1.5 mm2,LIGA/PARA/COM/RES,NAO,22,E-604/X3,X3:1-2,Reserva identificada
+W606,CCM-06,PB-602,Comando e fins de curso esteira,8x1.5 mm2,F/R/FCF/FCR/COM/RES1/RES2/RES3,NAO,20,E-604/X3,X3:3-6,Reservas identificadas
+W607,CCM-06,PB-603,Comando e referencia do VFD,6x1.0 mm2,START/STOP/AI1/COM/SH/RES,SIM,10,E-605/X4,X4:3-7,Blindagem em SH
+W608,CCM-06,PORTA CCM,Sinalizacao de estado,6x1.0 mm2,H601/H602/H603/H604/0V/RES,NAO,8,Canaleta comando,X3:9-10/X4:8-10,Reserva identificada

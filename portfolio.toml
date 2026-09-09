@@ -235,6 +235,31 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "06-centro-controle-motores"
+path = "06-centro-controle-motores"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 7
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "sequencia-funcionamento.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-cargas.csv",
+  "alimentador.csv",
+  "lista-cabos.csv",
+  "lista-bornes.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_06.py",
+  "fonte/validar_projeto_06.py",
+  "validacao-integracao.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -635,5 +660,82 @@ source = "05-instalacao-eletrica-industrial/fonte/07_detalhes_instalacao.dxf"
 svg = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.svg"
 pdf = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.pdf"
 png = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-01-diagrama-unifilar-ccm"
+kind = "sheet"
+title = "Projeto 06 - Diagrama unifilar do CCM"
+source = "06-centro-controle-motores/fonte/01_diagrama_unifilar_ccm.dxf"
+svg = "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.svg"
+pdf = "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.pdf"
+png = "06-centro-controle-motores/exports/01_diagrama_unifilar_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-02-partida-direta"
+kind = "sheet"
+title = "Projeto 06 - Partida direta"
+source = "06-centro-controle-motores/fonte/02_partida_direta.dxf"
+svg = "06-centro-controle-motores/exports/02_partida_direta.svg"
+pdf = "06-centro-controle-motores/exports/02_partida_direta.pdf"
+png = "06-centro-controle-motores/exports/02_partida_direta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-03-partida-reversora"
+kind = "sheet"
+title = "Projeto 06 - Partida reversora"
+source = "06-centro-controle-motores/fonte/03_partida_reversora.dxf"
+svg = "06-centro-controle-motores/exports/03_partida_reversora.svg"
+pdf = "06-centro-controle-motores/exports/03_partida_reversora.pdf"
+png = "06-centro-controle-motores/exports/03_partida_reversora.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-04-acionamento-inversor"
+kind = "sheet"
+title = "Projeto 06 - Acionamento por inversor"
+source = "06-centro-controle-motores/fonte/04_acionamento_inversor.dxf"
+svg = "06-centro-controle-motores/exports/04_acionamento_inversor.svg"
+pdf = "06-centro-controle-motores/exports/04_acionamento_inversor.pdf"
+png = "06-centro-controle-motores/exports/04_acionamento_inversor.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-05-layout-ccm"
+kind = "sheet"
+title = "Projeto 06 - Layout do CCM"
+source = "06-centro-controle-motores/fonte/05_layout_ccm.dxf"
+svg = "06-centro-controle-motores/exports/05_layout_ccm.svg"
+pdf = "06-centro-controle-motores/exports/05_layout_ccm.pdf"
+png = "06-centro-controle-motores/exports/05_layout_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-06-diagrama-bornes"
+kind = "sheet"
+title = "Projeto 06 - Diagrama de bornes"
+source = "06-centro-controle-motores/fonte/06_diagrama_bornes.dxf"
+svg = "06-centro-controle-motores/exports/06_diagrama_bornes.svg"
+pdf = "06-centro-controle-motores/exports/06_diagrama_bornes.pdf"
+png = "06-centro-controle-motores/exports/06_diagrama_bornes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-07-lista-cabos"
+kind = "sheet"
+title = "Projeto 06 - Lista de cabos"
+source = "06-centro-controle-motores/fonte/07_lista_cabos.dxf"
+svg = "06-centro-controle-motores/exports/07_lista_cabos.svg"
+pdf = "06-centro-controle-motores/exports/07_lista_cabos.pdf"
+png = "06-centro-controle-motores/exports/07_lista_cabos.png"
 require_a3 = true
 require_notice = true

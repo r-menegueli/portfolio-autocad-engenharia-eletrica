@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 a P05 concluídos; P06 a P10 permanecem planejados
+Estado: P01 a P06 concluídos; P07 a P10 permanecem planejados
 
 ## Propósito
 
@@ -62,7 +62,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 3 | P03 | Painel de automação com CLP para duas bombas | I/O, alternância, segurança e interfaces | P01 |
 | 4 | P04 | Controle de nível de reservatório | instrumentação, PI, VFD e intertravamentos | P01 e P03 |
 | 5 | P05 | Instalação elétrica industrial | cargas, distribuição, iluminação e encaminhamento | P01 e P02 |
-| 6 | P06 | Distribuição elétrica industrial e CCM | arquitetura de potência, cargas e encaminhamento | P01 e P03 |
+| 6 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD e integração | P01, P03 e P05 |
 | 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P01 e P06 |
 | 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P07 |
 | 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
@@ -156,22 +156,25 @@ workbook técnico.
 PDF/SVG/PNG, validação dos cálculos, auditoria CAD e inspeção visual devem permanecer
 coerentes.
 
-## P06 — Distribuição elétrica industrial e centro de controle de motores
+## P06 — Centro de Controle de Motores
 
-**Objetivo.** Introduzir uma instalação industrial fictícia com cargas de
-processo, quadros de distribuição e centro de controle de motores (CCM).
+**Objetivo.** Integrar em um CCM acadêmico três cargas industriais com métodos de
+acionamento distintos e uma arquitetura comum de proteção, comando e segurança.
 
-**Escopo.** Levantamento de cargas, diagrama unifilar, QGBT e CCM, alimentadores,
-proteções, queda de tensão, rotas de cabos e eletrocalhas e organização física
-conceitual. Curto-circuito e seletividade serão tratados no nível acadêmico
-compatível com os dados disponíveis.
+**Escopo.** Bomba com partida direta, esteira com reversão eletricamente e
+mecanicamente intertravada e ventilador com inversor de frequência e STO. Inclui
+alimentador, proteções, aterramento, layout, bornes, cabos e sequência funcional.
 
-**Pranchas e dados específicos.** Unifilar de potência; implantação de painéis;
-rota principal de eletrocalhas; tabela de cargas e alimentadores; lista de cabos,
-proteções e equipamentos.
+**Pranchas e dados específicos.** Unifilar do CCM; partida direta; partida reversora;
+acionamento por inversor; layout do CCM; diagrama de bornes; lista de cabos; listas
+estruturadas de cargas, alimentador, bornes, cabos e materiais.
 
-**Marco de aceitação.** Tags elétricas e dados nominais devem ter uma única fonte
-estruturada e aparecer sem divergências nas pranchas e no memorial.
+**Marco de aceitação.** Sete DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
+listas estruturadas, comprovar a exclusão mútua dos contatores reversores, a parada
+comum e a ausência de rearme automático.
+
+**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
+auditoria dos sete DXFs no AutoCAD e inspeção visual dos 21 derivados aprovadas.
 
 ## P07 — Acionamentos e comandos de motores
 
@@ -272,7 +275,8 @@ comum depois de aprovados nos dois portões de qualidade.
 - P04 acrescenta tanque, tubulações, instrumentos ISA, malha PI, VFD e intertravamentos.
 - P05 acrescenta layout industrial, máquinas trifásicas, quadros, tomadas,
   alimentadores, eletrocalhas e quadro de cargas industrial.
-- P06 acrescenta equipamentos industriais, cabos e eletrocalhas.
+- P06 acrescenta gavetas de CCM, partida direta, reversão intertravada, VFD, STO e
+  integração de bornes e cabos.
 - P07 acrescenta contatos, bobinas, motores e referências cruzadas.
 - P08 acrescenta instrumentos, sinais, bornes e cartões de I/O.
 - P09 acrescenta equipamentos de média tensão e proteções.
@@ -281,6 +285,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Os Projetos 01 a 05 foram materializados em pastas de raiz por instruções explícitas
-e estão concluídos. Os Projetos 06 a 10 permanecem planejados e serão criados apenas
+Os Projetos 01 a 06 foram materializados em pastas de raiz por instruções explícitas
+e estão concluídos. Os Projetos 07 a 10 permanecem planejados e serão criados apenas
 sob solicitação, um por vez, conforme a sequência revisada.

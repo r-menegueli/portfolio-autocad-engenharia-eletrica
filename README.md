@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01 a 05 concluídos.
+**Estado atual:** base comum e Projetos 01 a 06 concluídos; Projetos 07 a 10 planejados.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -38,6 +38,10 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
   duas bombas, 32 pontos de I/O e lógica de alternância verificável.
 - [Projeto 04](04-controle-nivel-reservatorio/README.md): controle de nível de
   reservatório com instrumentação, CLP, estratégia PI e inversor de frequência.
+- [Projeto 05](05-instalacao-eletrica-industrial/README.md): instalação elétrica
+  industrial com distribuição, iluminação, tomadas e encaminhamento.
+- [Projeto 06](06-centro-controle-motores/README.md): CCM com partida direta,
+  reversão intertravada, inversor, STO, bornes e cabos.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -106,10 +110,15 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── exports/                 # sete conjuntos PDF/SVG/PNG
 │   ├── README.md, memorial, critérios e memória de cálculo
 │   └── quadros, alimentadores, cabos, materiais e workbook técnico
-└── projetos/                    # reservado aos Projetos 06 a 10
+├── 06-centro-controle-motores/
+│   ├── fonte/                   # sete DXFs, gerador e validador de integração
+│   ├── exports/                 # sete conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios, memória e sequência
+│   └── cargas, alimentador, cabos, bornes e materiais
+└── projetos/                    # reservado aos Projetos 07 a 10
 ```
 
-Por instruções explícitas, os Projetos 01 a 05 estão na raiz. O diretório
+Por instruções explícitas, os Projetos 01 a 06 estão na raiz. O diretório
 `projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
@@ -222,6 +231,8 @@ legibilidade. A validação automática complementa essa inspeção, mas não a 
 - [P05 - Instalação elétrica industrial](05-instalacao-eletrica-industrial/README.md),
   com sete pranchas, 16 circuitos, quatro alimentadores, máquinas trifásicas,
   iluminação, tomadas, eletrocalhas e memória de cálculo rastreável.
+- [P06 - Centro de Controle de Motores](06-centro-controle-motores/README.md), com
+  sete pranchas integrando partida direta, reversão intertravada e inversor com STO.
 
 ## Formatos
 
@@ -249,7 +260,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto (P06)
+## Como iniciar o próximo projeto (P07)
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

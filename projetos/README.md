@@ -1,7 +1,7 @@
 # Projetos acadêmicos planejados
 
-Esta pasta receberá, em etapas futuras, os Projetos 06 a 10 descritos no
-[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 05 foram criados
+Esta pasta receberá, em etapas futuras, os Projetos 07 a 10 descritos no
+[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 06 foram criados
 na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
@@ -17,7 +17,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 | 3 | [`../03-painel-automacao-clp/`](../03-painel-automacao-clp/README.md) | painel de automação com CLP para duas bombas - concluído |
 | 4 | [`../04-controle-nivel-reservatorio/`](../04-controle-nivel-reservatorio/README.md) | controle de nível com instrumentação, CLP e inversor - concluído |
 | 5 | [`../05-instalacao-eletrica-industrial/`](../05-instalacao-eletrica-industrial/README.md) | instalação elétrica industrial - concluído |
-| 6 | `P06-distribuicao-industrial-ccm` | distribuição industrial e CCM |
+| 6 | [`../06-centro-controle-motores/`](../06-centro-controle-motores/README.md) | centro de controle de motores - concluído |
 | 7 | `P07-acionamentos-motores` | potência e comando de motores |
 | 8 | `P08-automacao-instrumentacao` | automação e instrumentação de processo |
 | 9 | `P09-subestacao-mt-bt` | subestação acadêmica de média e baixa tensão |
@@ -105,5 +105,5 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção dos projetos restantes. P06 a P10 só devem ser criados
+Este README define a convenção dos projetos restantes. P07 a P10 só devem ser criados
 quando solicitados explicitamente.

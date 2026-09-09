@@ -1,0 +1,25 @@
+{
+  "checks": 828,
+  "errors": [],
+  "results": {
+    "cable_total_m": "196",
+    "cables": 10,
+    "demand_active_kw": "16.645368",
+    "demand_apparent_kva": "19.133709",
+    "dol_truth_rows": 32,
+    "installed_active_kw": "18.184584",
+    "installed_apparent_kva": "20.893255",
+    "loads": 3,
+    "main_current_a": "29.070663",
+    "main_drop_pct": "0.596272",
+    "materials": 34,
+    "maximum_combined_drop_load": "M-601",
+    "maximum_combined_drop_pct": "2.037810",
+    "methods": 3,
+    "reversal_truth_rows": 128,
+    "sheets": 7,
+    "terminals": 37,
+    "vfd_truth_rows": 32
+  },
+  "status": "PASS"
+}

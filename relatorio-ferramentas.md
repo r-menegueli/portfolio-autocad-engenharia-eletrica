@@ -214,6 +214,34 @@ avisos. Uma reconstrução completa manteve hashes idênticos para os 28 artefat
 projeto (sete DXFs e 21 derivados). Nenhum DWG foi produzido ou versionado; DXF AC1027
 permanece como fonte principal.
 
+## Auditoria CAD do Projeto 06
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as sete fontes em `06-centro-controle-motores/fonte/`:
+
+- `01_diagrama_unifilar_ccm.dxf`: `PASS`;
+- `02_partida_direta.dxf`: `PASS`;
+- `03_partida_reversora.dxf`: `PASS`;
+- `04_acionamento_inversor.dxf`: `PASS`;
+- `05_layout_ccm.dxf`: `PASS`;
+- `06_diagrama_bornes.dxf`: `PASS`;
+- `07_lista_cabos.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os sete PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome abriu os sete SVGs em modo headless; os PNGs de
+produção foram inspecionados em 300 dpi. A primeira revisão levou a correções no
+símbolo de motor, na separação dos condutores da partida direta, na arquitetura de
+potência da reversão, nas folgas do unifilar e na altura da tabela de cabos. A segunda
+inspeção foi aprovada nos 21 derivados.
+
+O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 828 verificações de cargas, alimentador, quedas, cabos,
+bornes, materiais, intertravamentos, parada comum, STO e ausência de rearme automático.
+A validação estrita do portfólio aprovou 238.890 verificações sem erros ou avisos, e
+nove testes automatizados passaram. Uma nova geração manteve hashes idênticos para os
+28 artefatos CAD do projeto. Nenhum DWG foi produzido ou versionado; DXF AC1027
+permanece como fonte principal.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A
