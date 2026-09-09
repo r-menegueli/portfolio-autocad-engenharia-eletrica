@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 a P07 concluídos; P08 a P10 permanecem planejados
+Estado: P01 a P08 concluídos; P09 e P10 permanecem planejados
 
 ## Propósito
 
@@ -64,7 +64,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 5 | P05 | Instalação elétrica industrial | cargas, distribuição, iluminação e encaminhamento | P01 e P02 |
 | 6 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD e integração | P01, P03 e P05 |
 | 7 | P07 | Arquitetura elétrica de veículo elétrico | tração HV, baixa tensão, controle V/f e FOC | P01, P03 e P06 |
-| 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P03 e P04 |
+| 8 | P08 | Sistema fotovoltaico residencial conectado à rede | arranjo FV, proteções CC/CA, conexão e aterramento | P02 |
 | 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
 | 10 | P10 | Integração elétrica de uma microindústria | coordenação multidisciplinar e consistência global | P05 a P09 |
 
@@ -198,23 +198,26 @@ experimentais ao TCC do autor.
 **Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
 auditoria dos oito DXFs no AutoCAD e inspeção visual dos 24 derivados aprovadas.
 
-## P08 — Automação e instrumentação de processo
+## P08 — Sistema fotovoltaico residencial conectado à rede
 
-**Objetivo.** Integrar sensores, atuadores, PLC e painéis em uma célula de
-processo didática.
+**Objetivo.** Representar um sistema fotovoltaico residencial acadêmico desde a
+disposição dos módulos até o ponto de conexão interno, com cálculos rastreáveis e
+limites de aplicação explícitos.
 
-**Escopo.** Narrativa de controle, lista de entradas e saídas, arquitetura de
-automação, alimentação de instrumentos, diagramas de malha, bornes, cabos e
-interfaces com os acionamentos de P07. Software de PLC poderá ser representado
-por pseudocódigo ou lógica documentada, sem alegação de validação funcional em
-planta real.
+**Escopo.** Doze módulos em duas strings, inversor string conceitual, circuitos CC e
+CA, string box, fusíveis gPV, DPS, seccionamento, quadro dedicado, medição,
+equipotencialização e interface com aterramento e SPDA existentes.
 
-**Pranchas e dados específicos.** Arquitetura do sistema; diagramas de malha e
-interligação; cartões de I/O; detalhes de painel; lista de I/O, instrumentos,
-cabos e bornes em formatos tabulares.
+**Pranchas e dados específicos.** Disposição dos módulos; unifilares CC e CA;
+detalhamento da string box; aterramento; layout de equipamentos; parâmetros,
+módulos, proteções, cabos, cálculos e materiais em CSV.
 
-**Marco de aceitação.** Cada tag deve manter tipo de sinal, canal, borne, cabo e
-destino coerentes em todos os artefatos.
+**Marco de aceitação.** Seis DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
+potências, strings, tensões corrigidas, correntes, limites do inversor e proteções,
+sem apresentar o estudo como liberado para instalação ou conexão.
+
+**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
+auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
 
 ## P09 — Subestação acadêmica de média e baixa tensão
 
@@ -285,13 +288,14 @@ comum depois de aprovados nos dois portões de qualidade.
   integração de bornes e cabos.
 - P07 acrescenta arquitetura veicular HV/LV, BMS, pré-carga, HVIL, CAN e diagramas
   conceituais de controle V/f e FOC para motor de indução.
-- P08 acrescenta instrumentos, sinais, bornes e cartões de I/O.
+- P08 acrescenta módulos e strings fotovoltaicos, string box, DPS CC/CA, inversor
+  conectado à rede, medição e equipotencialização residencial.
 - P09 acrescenta equipamentos de média tensão e proteções.
 - P10 somente integra componentes já validados; novos símbolos exigem revisão
   explícita da biblioteca e dos testes.
 
 ## Resultado desta etapa
 
-Os Projetos 01 a 07 foram materializados em pastas de raiz por instruções explícitas
-e estão concluídos. Os Projetos 08 a 10 permanecem planejados e serão criados apenas
-sob solicitação, um por vez, conforme a sequência revisada.
+Os Projetos 01 a 08 estão concluídos. O Projeto 08 foi materializado em pasta de raiz
+por instrução explícita. Os Projetos 09 e 10 permanecem planejados e serão criados
+apenas sob solicitação, um por vez.

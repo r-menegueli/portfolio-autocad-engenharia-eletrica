@@ -985,6 +985,120 @@
           "sha256": "73845209c44647cf268e00a1da514717ef27c645d16753471a0ff1c3194f01ae"
         }
       }
+    },
+    {
+      "id": "p08-01-disposicao-modulos",
+      "source": "08-sistema-fotovoltaico/fonte/01_disposicao_modulos.dxf",
+      "source_sha256": "c8d5daebc4104d3b9e8df6fd23e2358ed2342e1da7849a3fe5798f94bcf53fea",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.pdf",
+          "sha256": "43d2470615ce2128c1a6b76da5dda5c39c93d4305f192ea513e11ca6bdc068a7"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.png",
+          "sha256": "95aaf86ee56df692430084b2d65234bd1b0b29c8625e59c4f8c3799bf6cb6350"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.svg",
+          "sha256": "9920905b8b954ff7f0d2bffb45ebd8be7a04b52cb0c97cb28514f22ab496cd6c"
+        }
+      }
+    },
+    {
+      "id": "p08-02-diagrama-unifilar-cc",
+      "source": "08-sistema-fotovoltaico/fonte/02_diagrama_unifilar_cc.dxf",
+      "source_sha256": "836a8e0a69502a34158c4dbc393e252b50b36f327762b5667b2f1b4901aea5df",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.pdf",
+          "sha256": "6124c87313919234e717f1cd50ebbde9927a4dfddfb86866210c8fde86faae94"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.png",
+          "sha256": "b81b0a07bf26eb04a98c3d8502df189c998f2ce551709a661ce800af928de880"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.svg",
+          "sha256": "03e8dbd08c11a6c6f13337fced4d5efb13641bf8d3360afd65f2b02e7ecb04fc"
+        }
+      }
+    },
+    {
+      "id": "p08-03-diagrama-unifilar-ca",
+      "source": "08-sistema-fotovoltaico/fonte/03_diagrama_unifilar_ca.dxf",
+      "source_sha256": "7a6ada3bb8ff2a13b1b1af68d31ae16609e04ce54d5206c75619468e327f5a10",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.pdf",
+          "sha256": "e3f699f1af2f190cd6e39cf58024fa6b22916bac072ce4193c092090ed28c35e"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.png",
+          "sha256": "ba9cfb58015534c5e4d69e91e32ef0be1c8485c1fe1f5408b75a8b9f89ec6c2d"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.svg",
+          "sha256": "97fd0969f362e4150ae9d0a57cf7322d952daafc20c04ff820dbc419bb898383"
+        }
+      }
+    },
+    {
+      "id": "p08-04-string-box",
+      "source": "08-sistema-fotovoltaico/fonte/04_string_box.dxf",
+      "source_sha256": "79bc4f30a114b908106c7629542d235c8a0767d9d1baf503d62ffd5202aaeda5",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/04_string_box.pdf",
+          "sha256": "f66a808b08045eb15cf20b8ff1c8e25287a443c60bc07a6ff457647edb822ab1"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/04_string_box.png",
+          "sha256": "078b6351b5d7ee18186f4a7273e0573569e992802b30f152f33caaa23ce44de5"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/04_string_box.svg",
+          "sha256": "c1a9024b0f8ef6894dd97872ce71f4ed71fdbbc64cd218db4f95745f3c351fbf"
+        }
+      }
+    },
+    {
+      "id": "p08-05-aterramento",
+      "source": "08-sistema-fotovoltaico/fonte/05_aterramento.dxf",
+      "source_sha256": "a4ffd91e10b846ec4750738c4f7c9f9e8f63feca0d8a93104cf45829a1d1d137",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/05_aterramento.pdf",
+          "sha256": "557dd24f6ac20b796257b471606fc40c30f420b4d8ddcfb3befb503c5204b856"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/05_aterramento.png",
+          "sha256": "37e6916ed18a1e5b55f976a5d5b3f6f856fd364032fc1f9ada087471877af111"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/05_aterramento.svg",
+          "sha256": "44d53dde861beac868666681aece9cd38f590fadf6bcb5d93e45b19655746667"
+        }
+      }
+    },
+    {
+      "id": "p08-06-layout-equipamentos",
+      "source": "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf",
+      "source_sha256": "4cfa5b329e51ef897d6e0e77830afc1bae37c78f030dab63da5af08ac2af6da7",
+      "outputs": {
+        "pdf": {
+          "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf",
+          "sha256": "042a03c05f3cada4fe47d264533ab727fa216c7e93dd97c29cd1e9d1924a09d1"
+        },
+        "png": {
+          "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png",
+          "sha256": "f68d202e95bc278533e49d2bc271b4b644c273885129cbe50faf2817c537f2ab"
+        },
+        "svg": {
+          "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg",
+          "sha256": "91136cca236ed8139181a67eb256a2bccdccb9e6a138fa24c5e4ed3ab8174a2d"
+        }
+      }
     }
   ]
 }

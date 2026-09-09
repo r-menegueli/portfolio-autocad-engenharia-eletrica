@@ -286,6 +286,31 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "08-sistema-fotovoltaico"
+path = "08-sistema-fotovoltaico"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "parametros.csv",
+  "lista-modulos.csv",
+  "lista-protecoes.csv",
+  "lista-cabos.csv",
+  "resultados-calculo.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_08.py",
+  "fonte/validar_projeto_08.py",
+  "validacao-fotovoltaico.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -851,5 +876,71 @@ source = "07-arquitetura-veiculo-eletrico/fonte/08_layout_componentes.dxf"
 svg = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.svg"
 pdf = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.pdf"
 png = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-01-disposicao-modulos"
+kind = "sheet"
+title = "Projeto 08 - Disposição dos módulos"
+source = "08-sistema-fotovoltaico/fonte/01_disposicao_modulos.dxf"
+svg = "08-sistema-fotovoltaico/exports/01_disposicao_modulos.svg"
+pdf = "08-sistema-fotovoltaico/exports/01_disposicao_modulos.pdf"
+png = "08-sistema-fotovoltaico/exports/01_disposicao_modulos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-02-diagrama-unifilar-cc"
+kind = "sheet"
+title = "Projeto 08 - Diagrama unifilar CC"
+source = "08-sistema-fotovoltaico/fonte/02_diagrama_unifilar_cc.dxf"
+svg = "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.svg"
+pdf = "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.pdf"
+png = "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-03-diagrama-unifilar-ca"
+kind = "sheet"
+title = "Projeto 08 - Diagrama unifilar CA"
+source = "08-sistema-fotovoltaico/fonte/03_diagrama_unifilar_ca.dxf"
+svg = "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.svg"
+pdf = "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.pdf"
+png = "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-04-string-box"
+kind = "sheet"
+title = "Projeto 08 - String box"
+source = "08-sistema-fotovoltaico/fonte/04_string_box.dxf"
+svg = "08-sistema-fotovoltaico/exports/04_string_box.svg"
+pdf = "08-sistema-fotovoltaico/exports/04_string_box.pdf"
+png = "08-sistema-fotovoltaico/exports/04_string_box.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-05-aterramento"
+kind = "sheet"
+title = "Projeto 08 - Aterramento e equipotencialização"
+source = "08-sistema-fotovoltaico/fonte/05_aterramento.dxf"
+svg = "08-sistema-fotovoltaico/exports/05_aterramento.svg"
+pdf = "08-sistema-fotovoltaico/exports/05_aterramento.pdf"
+png = "08-sistema-fotovoltaico/exports/05_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-06-layout-equipamentos"
+kind = "sheet"
+title = "Projeto 08 - Layout dos equipamentos"
+source = "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf"
+svg = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg"
+pdf = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf"
+png = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png"
 require_a3 = true
 require_notice = true

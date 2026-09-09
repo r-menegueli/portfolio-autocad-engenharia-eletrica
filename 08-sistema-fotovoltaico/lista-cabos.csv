@@ -1,0 +1,8 @@
+cabo,de,para,funcao,formacao,blindagem,comprimento_assumido_m,identificacao_condutores,observacoes,circuito,rota,queda_pct
+FV-S1,M01-M06,INV-FV-801 MPPT1,Circuito CC string S1,2x6 mm2 Cu PV 1.5 kVcc,Nao,20.0,S1+ S1-,Passa por SB-FV-801; conectores compativeis,CC-S1,R-CC-801,0.612174
+FV-S2,M07-M12,INV-FV-801 MPPT2,Circuito CC string S2,2x6 mm2 Cu PV 1.5 kVcc,Nao,20.0,S2+ S2-,Passa por SB-FV-801; conectores compativeis,CC-S2,R-CC-802,0.612174
+CA-INV,INV-FV-801,QD-FV-801,Saida CA do inversor,2x10 mm2 + PE 10 mm2 Cu 0.6/1 kV,Nao,15.0,F1 F2 PE,Metodo de instalacao e ampacidade a confirmar,CA-FV,R-CA-801,0.650826
+CA-PCC,QD-FV-801,PCC-801,Interligacao ao ponto de conexao,2x10 mm2 + PE 10 mm2 Cu 0.6/1 kV,Nao,5.0,F1 F2 PE,Comprimento adicional conceitual,CA-PCC,R-CA-802,0.216942
+PE-MOD,MOD-FV-801,BEP-801,Equipotencializacao de molduras,1x6 mm2 Cu verde-amarelo,Nao,25.0,PE-MOD,Terminais e fixacoes compativeis com aluminio,PE,R-PE-801,0
+PE-EQP,SB-FV-801 e INV-FV-801,BEP-801,Equipotencializacao de equipamentos,1x6 mm2 Cu verde-amarelo,Nao,8.0,PE-EQP,Caminho curto para DPS; secao a revisar,PE,R-PE-802,0
+COM-INV,INV-FV-801,Roteador local,Monitoramento sem funcao de protecao,Cabo de comunicacao do fabricante,Sim,10.0,COM,Opcional; nao substitui protecoes,COM,R-COM-801,0

@@ -1,0 +1,22 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+MOD-FV,12,un,Modulo fotovoltaico monofacial 550 Wp,MOD-FV-801,Classe academica; fabricante e registro a selecionar
+INV-FV,1,un,Inversor string 6 kWca 220 V com dois MPPT,INV-FV-801,Especificacao funcional ficticia; produto homologado a selecionar
+SB-FV,1,un,String box para duas entradas independentes,SB-FV-801,Invólucro e grau IP a selecionar
+F-GPV,4,un,Fusivel gPV 20 A 600 Vcc,F-S1-P/F-S1-N/F-S2-P/F-S2-N,Capacidade de interrupcao a confirmar
+PF-GPV,4,un,Porta-fusivel seccionavel para gPV 600 Vcc,PF-801A-D,Compatibilidade e temperatura a confirmar
+DPS-CC,2,conjunto,DPS FV tipo 2 Ucpv 600 Vcc,DPS-CC-1/DPS-CC-2,Up e coordenacao com SPDA a selecionar
+SEC-CC,2,un,Seccionador sob carga bipolar 32 A 600 Vcc,QDC-1/QDC-2,Categoria DC-PV a confirmar
+DPS-CA,1,conjunto,DPS tipo 2 Uc 275 Vca,DPS-CA,Esquema de aterramento e Up a confirmar
+SEC-CA,1,un,Seccionador CA bipolar 40 A,QSD-CA,Categoria de utilizacao a confirmar
+DJ-CA,1,un,Disjuntor CA bipolar 40 A curva C,QF-CA,Icn e seletividade a confirmar
+QD-FV,1,un,Quadro de protecao CA fotovoltaico,QD-FV-801,Barras e invólucro a selecionar
+BEP,1,un,Barramento equipotencial principal,BEP-801,Interface com aterramento existente
+CB-CC,40,m,Cabo solar cobre 6 mm2 1.5 kVcc,FV-S1/FV-S2,Quantidade eletrica simplificada sem reserva
+CB-CA,40,m,Cabo cobre 10 mm2 0.6/1 kV,CA-INV/CA-PCC,Dois condutores ativos; quantidade simplificada
+CB-PE,50,m,Condutor cobre 6 mm2 verde-amarelo,PE-MOD/PE-EQP,Secao e percurso a confirmar
+CON-FV,8,par,Conector plugue e soquete para circuito FV,CON-FV-801,Compatibilidade de marca e crimpagem obrigatoria
+EST-MOD,1,conjunto,Estrutura de suporte para doze modulos,EST-FV-801,Projeto estrutural e fixacoes nao incluidos
+ETQ-CC,1,conjunto,Etiquetas e sinalizacao de circuitos fotovoltaicos,ETQ-FV-801,Material resistente ao ambiente a selecionar
+ELET-CC,20,m,Eletroduto ou canaleta para rota CC,R-CC-801/802,Material e ocupacao a confirmar
+ELET-CA,20,m,Eletroduto ou canaleta para rota CA,R-CA-801/802,Segregado da rota CC
+MED-BI,1,un,Medidor bidirecional da distribuidora,MED-801,Fornecimento e padrao definidos pela distribuidora

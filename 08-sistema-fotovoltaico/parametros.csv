@@ -1,0 +1,36 @@
+parametro,valor,unidade,classificacao,descricao
+MODULO_POTENCIA,550,Wp,PREMISSA,Potencia nominal unitaria em STC
+QUANTIDADE_MODULOS,12,un,PREMISSA,Quantidade total de modulos
+MODULOS_POR_STRING,6,un,PREMISSA,Modulos em serie por string
+QUANTIDADE_STRINGS,2,un,PREMISSA,Strings independentes
+VMP_MODULO,41.8,V,PREMISSA,Tensao de maxima potencia do modulo em STC
+IMP_MODULO,13.16,A,PREMISSA,Corrente de maxima potencia do modulo em STC
+VOC_MODULO,49.9,V,PREMISSA,Tensao de circuito aberto do modulo em STC
+ISC_MODULO,13.92,A,PREMISSA,Corrente de curto-circuito do modulo em STC
+COEF_VOC,-0.0028,1/C,PREMISSA,Coeficiente relativo de temperatura de Voc
+COEF_VMP,-0.0030,1/C,PREMISSA,Coeficiente relativo de temperatura de Vmp
+COEF_ISC,0.0005,1/C,PREMISSA,Coeficiente relativo de temperatura de Isc
+TEMP_REF,25,C,PREMISSA,Temperatura de referencia STC
+TEMP_MIN,-5,C,PREMISSA,Temperatura minima ambiente academica
+TEMP_CEL_MAX,70,C,PREMISSA,Temperatura maxima de celula academica
+IRRAD_MAX,1100,W/m2,PREMISSA,Irradiancia maxima de calculo
+INV_POT_CA,6000,W,PROPOSTA,Potencia nominal CA do inversor conceitual
+INV_TENSAO_CA,220,V,PREMISSA,Tensao entre fases no ponto de conexao conceitual
+INV_MPPT_MIN,90,V,PROPOSTA,Limite inferior da faixa MPPT
+INV_MPPT_MAX,550,V,PROPOSTA,Limite superior da faixa MPPT
+INV_VDC_MAX,600,V,PROPOSTA,Tensao CC maxima do inversor
+INV_CORRENTE_MPPT_MAX,16,A,PROPOSTA,Corrente operacional maxima por MPPT
+INV_ISC_MPPT_MAX,20,A,PROPOSTA,Corrente de curto-circuito maxima por MPPT
+HSP,5.2,kWh/m2/dia,PREMISSA,Horas de sol pleno equivalentes
+PR,0.78,pu,PREMISSA,Performance ratio para estimativa didatica
+COMPRIMENTO_CC,20,m,PREMISSA,Comprimento de ida do trecho CC
+SECAO_CC,6,mm2,PROPOSTA,Secao preliminar do cabo CC
+COMPRIMENTO_CA,15,m,PREMISSA,Comprimento de ida do trecho CA
+SECAO_CA,10,mm2,PROPOSTA,Secao preliminar do cabo CA
+RHO_CU,0.0175,ohm_mm2/m,PREMISSA,Resistividade de cobre para calculo simplificado
+DISJUNTOR_CA,40,A,PROPOSTA,Corrente nominal do disjuntor CA
+FUSIVEL_STRING,20,A,PROPOSTA,Corrente nominal de cada fusivel gPV
+FUSIVEL_SERIE_MODULO,25,A,PREMISSA,Fusivel serie maximo assumido do modulo
+DPS_CC_UCPV,600,V,PROPOSTA,Tensao continua maxima de operacao do DPS CC
+DPS_CA_UC,275,V,PROPOSTA,Tensao continua maxima de operacao do DPS CA
+PE_SECAO,6,mm2,PROPOSTA,Secao preliminar de equipotencializacao

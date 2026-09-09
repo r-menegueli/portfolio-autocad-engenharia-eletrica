@@ -56,7 +56,7 @@ Foi criado posteriormente um `.venv` local, nao versionado, a partir do Python
 O projeto nao codifica caminhos do cache Codex; os scripts usam o interpretador
 ativo e descoberta explicita de ferramentas externas.
 
-Os sete testes automatizados passaram. O `ezdxf 1.4.4`, quando exercitado com
+Os nove testes automatizados passaram. O `ezdxf 1.4.4`, quando exercitado com
 `numpy 2.5.2` nos casos artificiais de transformacao de blocos, emite um aviso de
 depreciacao interno do NumPy; o aviso nao afeta a geracao nem a validacao desta
 entrega, mas deve ser reavaliado antes de atualizar qualquer uma das dependencias.
@@ -270,6 +270,42 @@ e separação entre fatos, premissas e propostas. A validação estrita final ap
 verificações sem erros ou avisos. Uma nova geração manteve hashes idênticos nos 32
 artefatos CAD do projeto, e nove testes automatizados passaram. Nenhum DWG foi
 produzido ou versionado; DXF AC1027 permanece como fonte principal.
+
+## Auditoria CAD e visual do Projeto 08
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as seis fontes em `08-sistema-fotovoltaico/fonte/`:
+
+- `01_disposicao_modulos.dxf`: `PASS`;
+- `02_diagrama_unifilar_cc.dxf`: `PASS`;
+- `03_diagrama_unifilar_ca.dxf`: `PASS`;
+- `04_string_box.dxf`: `PASS`;
+- `05_aterramento.dxf`: `PASS`;
+- `06_layout_equipamentos.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os seis PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome 152.0.7977.83 abriu os seis SVGs em modo
+headless; os seis PNGs de produção foram inspecionados em 300 dpi. A primeira revisão
+levou a correções na legenda dos módulos, no rótulo de PE, nas descidas dos DPS, nas
+folgas do aterramento e nas rotas CA/PE. Após regeneração, a segunda inspeção foi
+aprovada nos 18 derivados.
+
+O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 8.036 verificações de parâmetros, módulos, strings,
+proteções, cabos, materiais, cálculos, extremos ambientais e conteúdo das seis
+pranchas. A validação estrita integrada aprovou 297.598 verificações sem erros ou
+avisos. Uma nova geração manteve hashes idênticos nos 24 artefatos CAD do projeto, e
+nove testes automatizados passaram. Nenhum DWG foi produzido ou versionado; DXF
+AC1027 permanece como fonte principal.
+
+Para o estado normativo, foram consultadas em 2026-09-09 as fontes oficiais da ANEEL
+sobre MMGD, Resolução Normativa 1.000/2021 alterada pela 1.059/2023 e Módulo 3 do
+PRODIST; a Lei 14.300/2022 no Planalto; o catálogo da ABNT para NBR 16690:2019,
+NBR 5410:2004 versão corrigida 2008 e série NBR 5419:2026; o Inmetro para as Portarias
+140/2022 e 515/2023; e o catálogo IEC para 60364-7-712:2025, 62548-1:2023+A1:2025,
+61643-31:2018/COR1:2022, 62852:2014+A1:2020 e 62446-1:2016+A1:2018. As referências
+são critérios de consulta; sua aplicação executiva permanece condicionada à edição
+vigente, ao acesso integral às normas e à responsabilidade profissional.
 
 ## Limitacoes permanentes
 
