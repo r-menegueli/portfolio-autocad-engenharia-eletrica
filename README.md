@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01 a 06 concluídos; Projetos 07 a 10 planejados.
+**Estado atual:** base comum e Projetos 01 a 07 concluídos; Projetos 08 a 10 planejados.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -42,6 +42,8 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
   industrial com distribuição, iluminação, tomadas e encaminhamento.
 - [Projeto 06](06-centro-controle-motores/README.md): CCM com partida direta,
   reversão intertravada, inversor, STO, bornes e cabos.
+- [Projeto 07](07-arquitetura-veiculo-eletrico/README.md): arquitetura elétrica
+  acadêmica de veículo elétrico com motor de indução e comparação V/f–FOC.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -115,10 +117,15 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── exports/                 # sete conjuntos PDF/SVG/PNG
 │   ├── README.md, memorial, critérios, memória e sequência
 │   └── cargas, alimentador, cabos, bornes e materiais
-└── projetos/                    # reservado aos Projetos 07 a 10
+├── 07-arquitetura-veiculo-eletrico/
+│   ├── fonte/                   # oito DXFs, gerador e validador de arquitetura
+│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios, memória e estratégias de controle
+│   └── parâmetros, sinais, rede CAN, cabos e materiais
+└── projetos/                    # reservado aos Projetos 08 a 10
 ```
 
-Por instruções explícitas, os Projetos 01 a 06 estão na raiz. O diretório
+Por instruções explícitas, os Projetos 01 a 07 estão na raiz. O diretório
 `projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
@@ -233,6 +240,9 @@ legibilidade. A validação automática complementa essa inspeção, mas não a 
   iluminação, tomadas, eletrocalhas e memória de cálculo rastreável.
 - [P06 - Centro de Controle de Motores](06-centro-controle-motores/README.md), com
   sete pranchas integrando partida direta, reversão intertravada e inversor com STO.
+- [P07 - Arquitetura elétrica de veículo elétrico](07-arquitetura-veiculo-eletrico/README.md),
+  com oito pranchas integrando tração HV, baixa tensão, pré-carga, intertravamentos,
+  CAN e as arquiteturas conceituais V/f e FOC para motor de indução.
 
 ## Formatos
 
@@ -260,7 +270,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto (P07)
+## Como iniciar o próximo projeto (P08)
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

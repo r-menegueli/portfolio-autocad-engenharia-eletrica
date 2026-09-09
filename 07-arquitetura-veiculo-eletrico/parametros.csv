@@ -1,0 +1,16 @@
+parametro,valor,unidade,classificacao,descricao
+VBAT_NOMINAL,400,Vcc,PREMISSA,Tensão nominal da bateria de tração
+VBAT_MIN,320,Vcc,PREMISSA,Tensão mínima operacional proposta
+VBAT_MAX,450,Vcc,PREMISSA,Tensão máxima operacional proposta
+ENERGIA_BATERIA,60,kWh,PREMISSA,Energia nominal acadêmica
+P_MOTOR,60000,W,PREMISSA,Potência nominal assumida do motor
+ETA_INVERSOR,0.95,pu,PREMISSA,Rendimento usado somente na estimativa de corrente
+P_DCDC,3000,W,PREMISSA,Potência simultânea assumida do CC-CC
+C_ELO_CC,0.0022,F,PREMISSA,Capacitância equivalente do elo CC
+R_PRE_CARGA,100,ohm,PREMISSA,Resistência proposta de pré-carga
+LIMIAR_PRE_CARGA,0.90,pu,PROPOSTA,Razão mínima VDC sobre VBAT
+TIMEOUT_PRE_CARGA,1.5,s,PROPOSTA,Tempo máximo de pré-carga
+FUSIVEL_PRINCIPAL,250,A,PROPOSTA,Calibre inicial sem coordenação executiva
+TENSAO_AUXILIAR,12,Vcc,PREMISSA,Tensão nominal da bateria auxiliar
+TENSAO_DCDC,14,Vcc,PREMISSA,Tensão regulada proposta do CC-CC
+CAN_PT_BITRATE,500,kbit/s,PROPOSTA,Taxa proposta da rede de trem de força

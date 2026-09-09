@@ -1,0 +1,23 @@
+{
+  "checks": 4224,
+  "errors": [],
+  "results": {
+    "cables": 12,
+    "can_messages": 8,
+    "dc_link_energy_400v_j": "176.000000",
+    "dc_link_energy_450v_j": "222.750000",
+    "estimated_hv_current_a": "206.743421",
+    "experimental_results_claimed": false,
+    "materials": 35,
+    "parameters": 15,
+    "precharge_initial_current_a": "4.000000",
+    "precharge_initial_power_w": "1600.000000",
+    "precharge_t90_s": "0.506569",
+    "precharge_tau_s": "0.220000",
+    "precharge_truth_rows": 512,
+    "sheets": 8,
+    "signals": 18,
+    "torque_truth_rows": 128
+  },
+  "status": "PASS"
+}

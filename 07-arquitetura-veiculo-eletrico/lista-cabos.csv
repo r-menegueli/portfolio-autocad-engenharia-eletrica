@@ -1,0 +1,13 @@
+cabo,de,para,funcao,dominio,tensao_assumida_v,formacao,identificacao_condutores,blindagem,comprimento_assumido_m,rota,conectores,observacoes
+WHV01,BAT-HV-701,PDU-HV-701,Positivo principal,HV,450,1x70 mm2,PACK+ / PDU+,NÃO,1.2,Túnel traseiro,C-HV01 / C-HV02,Laranja; seção não dimensionada
+WHV02,BAT-HV-701,PDU-HV-701,Negativo principal,HV,450,1x70 mm2,PACK- / PDU-,NÃO,1.2,Túnel traseiro,C-HV03 / C-HV04,Laranja; seção não dimensionada
+WHV03,PDU-HV-701,INV-701,Entrada positiva do inversor,HV,450,1x70 mm2,PDU+ / INV+,NÃO,2.5,Assoalho central,C-HV05 / C-HV06,Laranja; seção não dimensionada
+WHV04,PDU-HV-701,INV-701,Entrada negativa do inversor,HV,450,1x70 mm2,PDU- / INV-,NÃO,2.5,Assoalho central,C-HV07 / C-HV08,Laranja; seção não dimensionada
+WHV05,INV-701,IM-701,Fases U V W do motor,HV_AC,320,3x35 mm2,U / V / W / SH,SIM,1.8,Compartimento dianteiro,C-HV09 / C-HV10,Laranja; blindagem e EMC dependem de estudo
+WHV06,PDU-HV-701,DCDC-701,Alimentação do conversor,HV,450,2x6 mm2,HV+ / HV-,NÃO,2.2,Assoalho lateral,C-HV11 / C-HV12,Laranja; fusível derivado
+WLV01,BAT-LV-701,PDU-LV-701,Alimentação auxiliar,LV,14,2x16 mm2,12V+ / 0V,NÃO,1.0,Compartimento dianteiro,C-LV01 / C-LV02,Proteção próxima à bateria
+WLV02,PDU-LV-701,VCU-701,Alimentação de controle,LV,14,4x2.5 mm2,KL30 / KL15 / 0V / WAKE,NÃO,2.0,Painel dianteiro,C-LV03 / C-LV04,Inclui retorno dedicado
+WLV03,PDU-LV-701,BMS-701,Alimentação e wake do BMS,LV,14,4x1.5 mm2,KL30 / KL15 / 0V / WAKE,NÃO,3.0,Assoalho lateral,C-LV05 / C-LV06,Separado de potência HV
+WCAN01,VCU-701,BMS-701,Backbone CAN-PT,COM,5,1 par trançado,CAN-H / CAN-L / SH,SIM,6.0,Túnel central,C-CAN01 / C-CAN05,120 ohm em cada extremidade
+WSEN01,SENSORES,VCU-701,Sinais de pedal freio e térmicos,SINAL,5,12x0.35 mm2,SIG01 a SIG12,SIM,7.0,Habitáculo e cofre,C-SEN01 / C-VCU02,Pinagem conceitual
+WHVIL01,PDU-LV-701,BMS-701,Laço de intertravamento HV,SEGURANCA,12,2x0.75 mm2,HVIL-OUT / HVIL-RET,NÃO,8.0,Conectores HV,C-HVIL01 a C-HVIL06,Laço normalmente fechado

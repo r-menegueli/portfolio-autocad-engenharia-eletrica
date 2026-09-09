@@ -242,6 +242,35 @@ nove testes automatizados passaram. Uma nova geração manteve hashes idênticos
 28 artefatos CAD do projeto. Nenhum DWG foi produzido ou versionado; DXF AC1027
 permanece como fonte principal.
 
+## Auditoria CAD do Projeto 07
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as oito fontes em `07-arquitetura-veiculo-eletrico/fonte/`:
+
+- `01_arquitetura_geral.dxf`: `PASS`;
+- `02_circuito_alta_tensao.dxf`: `PASS`;
+- `03_circuito_baixa_tensao.dxf`: `PASS`;
+- `04_pre_carga_contatores.dxf`: `PASS`;
+- `05_inversor_motor.dxf`: `PASS`;
+- `06_sensores_controle.dxf`: `PASS`;
+- `07_rede_comunicacao.dxf`: `PASS`;
+- `08_layout_componentes.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os oito PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome 152.0.7977.83 abriu os oito SVGs em modo
+headless; os oito PNGs de produção foram inspecionados em 300 dpi. A primeira revisão
+levou a correções na conexão do CC-CC, na cadeia física de habilitação, no estágio
+trifásico e na realimentação FOC, no agrupamento dos sensores e nas folgas da tabela
+CAN. Após regeneração, a segunda inspeção foi aprovada nos 24 derivados.
+
+O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 4.224 verificações de parâmetros, cálculos, sinais,
+cabos, materiais, mensagens CAN, pré-carga, habilitação de torque, conteúdo dos DXFs
+e separação entre fatos, premissas e propostas. A validação estrita final aprovou 272.953
+verificações sem erros ou avisos. Uma nova geração manteve hashes idênticos nos 32
+artefatos CAD do projeto, e nove testes automatizados passaram. Nenhum DWG foi
+produzido ou versionado; DXF AC1027 permanece como fonte principal.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

@@ -1,0 +1,9 @@
+mensagem,id_can_assumido,periodo_ms_assumido,origem,destino,dados,timeout_ms_assumido,acao_timeout
+BMS_STATUS,0x180,10,BMS-701,VCU-701,HV permitido SOC falhas,50,Remover pedido de torque e abrir HV
+BMS_LIMITS,0x181,20,BMS-701,INV-701,Limites de carga e descarga,100,Limitar torque a zero
+VCU_TORQUE_CMD,0x200,10,VCU-701,INV-701,Torque modo direção enable,50,Torque zero e PWM off
+INV_STATUS,0x201,10,INV-701,VCU-701,Velocidade torque VDC falhas,50,Torque zero e abrir HV conforme falha
+DCDC_STATUS,0x210,100,DCDC-701,VCU-701,Tensão corrente temperatura,500,Alerta e estratégia de energia LV
+VCU_STATE,0x220,20,VCU-701,BMS-701,Estado wake ready drive fault,100,Bloquear fechamento HV
+DIAG_REQUEST,0x700,100,SOBD-701,GW-701,Serviço diagnóstico,1000,Encerrar sessão
+DIAG_RESPONSE,0x708,100,GW-701,SOBD-701,Resposta diagnóstico,1000,Registrar timeout

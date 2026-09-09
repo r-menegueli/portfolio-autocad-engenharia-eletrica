@@ -260,6 +260,32 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "07-arquitetura-veiculo-eletrico"
+path = "07-arquitetura-veiculo-eletrico"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 8
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "estrategias-controle.md",
+  "sequencia-funcionamento.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "parametros.csv",
+  "lista-sinais.csv",
+  "rede-can.csv",
+  "lista-cabos.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_07.py",
+  "fonte/validar_projeto_07.py",
+  "validacao-arquitetura.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -737,5 +763,93 @@ source = "06-centro-controle-motores/fonte/07_lista_cabos.dxf"
 svg = "06-centro-controle-motores/exports/07_lista_cabos.svg"
 pdf = "06-centro-controle-motores/exports/07_lista_cabos.pdf"
 png = "06-centro-controle-motores/exports/07_lista_cabos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-01-arquitetura-geral"
+kind = "sheet"
+title = "Projeto 07 - Arquitetura geral do veículo elétrico"
+source = "07-arquitetura-veiculo-eletrico/fonte/01_arquitetura_geral.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-02-circuito-alta-tensao"
+kind = "sheet"
+title = "Projeto 07 - Circuito de alta tensão"
+source = "07-arquitetura-veiculo-eletrico/fonte/02_circuito_alta_tensao.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-03-circuito-baixa-tensao"
+kind = "sheet"
+title = "Projeto 07 - Circuito de baixa tensão"
+source = "07-arquitetura-veiculo-eletrico/fonte/03_circuito_baixa_tensao.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-04-pre-carga-contatores"
+kind = "sheet"
+title = "Projeto 07 - Pré-carga e contatores"
+source = "07-arquitetura-veiculo-eletrico/fonte/04_pre_carga_contatores.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-05-inversor-motor"
+kind = "sheet"
+title = "Projeto 07 - Inversor e motor de indução"
+source = "07-arquitetura-veiculo-eletrico/fonte/05_inversor_motor.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-06-sensores-controle"
+kind = "sheet"
+title = "Projeto 07 - Sensores e controle"
+source = "07-arquitetura-veiculo-eletrico/fonte/06_sensores_controle.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-07-rede-comunicacao"
+kind = "sheet"
+title = "Projeto 07 - Rede de comunicação"
+source = "07-arquitetura-veiculo-eletrico/fonte/07_rede_comunicacao.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-08-layout-componentes"
+kind = "sheet"
+title = "Projeto 07 - Layout dos componentes"
+source = "07-arquitetura-veiculo-eletrico/fonte/08_layout_componentes.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.png"
 require_a3 = true
 require_notice = true

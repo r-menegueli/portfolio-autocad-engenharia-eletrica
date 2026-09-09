@@ -1,0 +1,36 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,1,conjunto,Bateria de tração conceitual 400 V 60 kWh,BAT-HV-701,Química e arranjo não definidos
+2,1,unidade,Sistema de gerenciamento de bateria,BMS-701,Hardware e software não especificados
+3,1,unidade,Desconector manual de serviço HV,MSD-701,Seleção e acesso dependem de análise veicular
+4,1,unidade,Fusível principal HV 250 A,F701,Capacidade de interrupção não dimensionada
+5,1,unidade,Contator principal negativo,KMN-701,Com diagnóstico de posição proposto
+6,1,unidade,Contator principal positivo,KMP-701,Com diagnóstico de posição proposto
+7,1,unidade,Contator de pré-carga,KPR-701,Capacidade de pulso a confirmar
+8,1,unidade,Resistor de pré-carga 100 ohm,RPR-701,Especificar por energia e repetição
+9,1,unidade,Capacitor equivalente do elo CC 2200 uF,CCDC-701,Representação agregada do inversor
+10,1,unidade,Distribuidor de alta tensão,PDU-HV-701,Integra fusíveis derivados conceituais
+11,1,unidade,Fusível derivado do inversor 250 A,F711,Coordenação não executada
+12,1,unidade,Fusível derivado do CC-CC 15 A,F712,Calibre acadêmico
+13,1,unidade,Inversor de tração classe 75 kVA,INV-701,Sem modelo comercial
+14,1,unidade,Motor de indução trifásico 60 kW,IM-701,Parâmetros elétricos dependem do TCC
+15,1,unidade,Conversor CC-CC 400/14 V 3 kW,DCDC-701,Isolação a definir
+16,1,unidade,Bateria auxiliar 12 V 40 Ah,BAT-LV-701,Química não definida
+17,1,unidade,Distribuidor e fusíveis de baixa tensão,PDU-LV-701,Topologia conceitual
+18,1,unidade,Unidade de controle veicular,VCU-701,Software não incluído
+19,1,unidade,Monitor de isolação HV,IMD-701,Limiar depende de norma e arquitetura
+20,1,unidade,Dispositivo de desconexão de emergência,SDE-701,Categoria de segurança não atribuída
+21,1,conjunto,Laço de intertravamento de alta tensão,HVIL-701,Integra conectores HV
+22,1,unidade,Sensor isolado de tensão da bateria,SEN-VBAT-701,Faixa 0-500 V proposta
+23,1,unidade,Sensor isolado de tensão do elo CC,SEN-VDC-701,Faixa 0-500 V proposta
+24,1,unidade,Sensor isolado de corrente CC,SEN-IDC-701,Faixa +-300 A proposta
+25,3,unidade,Sensor de corrente de fase,IU-701/IV-701/IW-701,Topologia de medição a definir
+26,1,conjunto,Sensores de temperatura da bateria,TBAT-701,Quantidade física não definida
+27,1,unidade,Sensor de temperatura do inversor,TINV-701,Tipo NTC proposto
+28,1,unidade,Sensor de temperatura do motor,TMOT-701,Tipo NTC proposto
+29,1,unidade,Resolver ou sensor de posição,RES-701,Interface sensorizada proposta para FOC
+30,1,conjunto,Pedal do acelerador com dois canais,APPS1-701/APPS2-701,Plausibilidade requerida
+31,1,conjunto,Sensor de freio com dois canais,BPS1-701/BPS2-701,Plausibilidade requerida
+32,2,unidade,Resistor de terminação CAN 120 ohm,RT-CAN-701A/RT-CAN-701B,Somente nas extremidades
+33,7.4,m,Cabo de potência HV 70 mm2,WHV01/WHV02/WHV03/WHV04,Laranja; seção não dimensionada
+34,1.8,m,Cabo trifásico blindado do motor,WHV05,Seção 35 mm2 assumida
+35,1,conjunto,Chicotes LV sinais CAN e HVIL,WLV/WSEN/WCAN/WHVIL,Pinagem e conectores a definir

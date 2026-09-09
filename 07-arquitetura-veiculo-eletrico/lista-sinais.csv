@@ -1,0 +1,19 @@
+tag,tipo,origem,destino,faixa_assumida,funcao,reacao_falha,prancha
+SEN-VBAT-701,AI_ISOLADA,BAT-HV-701,BMS-701,0-500 Vcc,Mede tensão da bateria,Bloqueia fechamento HV,02/08
+SEN-VDC-701,AI_ISOLADA,ELO-CC,INV-701,0-500 Vcc,Confirma pré-carga,Bloqueia READY,04/08
+SEN-IDC-701,AI_ISOLADA,BAT-HV-701,BMS-701,+-300 A,Mede corrente do pack,Limita ou abre HV,02/08
+IMD-701,DI_ISOLADA,BARRAMENTO-HV,BMS-701,OK/FALHA,Monitora isolação,Bloqueia ou remove HV,02/08
+HVIL-701,DI,BARRAMENTO-HV,BMS-701,FECHADO/ABERTO,Detecta conectores abertos,Abre contatores,04/08
+SDE-701,DI_NF,EMERGENCIA,VCU-701,OK/ATUADO,Desconexão de emergência,Remove torque e abre HV,03/08
+CRASH-701,DI,MODULO-AIRBAG,VCU-701,OK/COLISAO,Sinal conceitual de colisão,Remove torque e abre HV,03/08
+APPS1-701,AI,PEDAL,VCU-701,0.5-4.5 V,Pedido de torque canal 1,Torque zero,06/08
+APPS2-701,AI,PEDAL,VCU-701,4.5-0.5 V,Pedido de torque canal 2,Torque zero,06/08
+BPS1-701,DI,FREIO,VCU-701,ABERTO/FECHADO,Freio canal 1,Inibe torque positivo,06/08
+BPS2-701,AI,FREIO,VCU-701,0.5-4.5 V,Freio canal 2,Inibe torque positivo,06/08
+IU-701,AI_ISOLADA,INV-701,CTRL-INV,FASE U,Corrente de fase,Desabilita PWM,05/08
+IV-701,AI_ISOLADA,INV-701,CTRL-INV,FASE V,Corrente de fase,Desabilita PWM,05/08
+IW-701,AI_ISOLADA,INV-701,CTRL-INV,FASE W,Corrente de fase,Desabilita PWM,05/08
+RES-701,SIN_COS,IM-701,CTRL-INV,Resolver,Posição e velocidade,Torque zero,05/08
+TMOT-701,AI,IM-701,CTRL-INV,NTC,Temperatura do motor,Derating ou torque zero,06/08
+TINV-701,AI,INV-701,CTRL-INV,NTC,Temperatura do inversor,Derating ou PWM off,06/08
+TBAT-701,AI,BAT-HV-701,BMS-701,NTC múltiplo,Temperaturas da bateria,Limita ou abre HV,06/08

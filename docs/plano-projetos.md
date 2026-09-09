@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 a P06 concluídos; P07 a P10 permanecem planejados
+Estado: P01 a P07 concluídos; P08 a P10 permanecem planejados
 
 ## Propósito
 
@@ -63,8 +63,8 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 4 | P04 | Controle de nível de reservatório | instrumentação, PI, VFD e intertravamentos | P01 e P03 |
 | 5 | P05 | Instalação elétrica industrial | cargas, distribuição, iluminação e encaminhamento | P01 e P02 |
 | 6 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD e integração | P01, P03 e P05 |
-| 7 | P07 | Acionamentos e comandos de motores | lógica eletromecânica, intertravamentos e partidas | P01 e P06 |
-| 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P07 |
+| 7 | P07 | Arquitetura elétrica de veículo elétrico | tração HV, baixa tensão, controle V/f e FOC | P01, P03 e P06 |
+| 8 | P08 | Automação e instrumentação de processo | I/O, malhas, bornes e integração com PLC | P03 e P04 |
 | 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
 | 10 | P10 | Integração elétrica de uma microindústria | coordenação multidisciplinar e consistência global | P05 a P09 |
 
@@ -176,21 +176,27 @@ comum e a ausência de rearme automático.
 **Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
 auditoria dos sete DXFs no AutoCAD e inspeção visual dos 21 derivados aprovadas.
 
-## P07 — Acionamentos e comandos de motores
+## P07 — Arquitetura elétrica acadêmica de veículo elétrico
 
-**Objetivo.** Detalhar circuitos de potência e comando para acionamentos típicos
-de motores, com ênfase em segurança lógica e leitura do esquema.
+**Objetivo.** Representar a arquitetura de um veículo elétrico conceitual com bateria
+de tração, barramento de alta tensão, inversor e motor de indução, relacionando o
+projeto ao estudo acadêmico de controle escalar V/f e controle vetorial FOC.
 
-**Escopo.** Partida direta, reversão, estrela-triângulo e acionamento por inversor
-de frequência; proteções, intertravamentos, sinalização e interfaces de campo.
-As sequências serão simuladas ou verificadas logicamente, sem energização real.
+**Escopo.** BMS, fusíveis, contatores positivo e negativo, pré-carga, inversor,
+motor de indução, conversor CC-CC, bateria auxiliar, VCU, sensores, CAN, HVIL,
+monitoramento de isolação, intertravamentos e desconexão de emergência.
 
-**Pranchas e dados específicos.** Diagramas de potência e comando; sequência
-funcional; diagrama de interligações; tabela de bornes e cabos; lista de materiais
-por tipo de partida.
+**Pranchas e dados específicos.** Arquitetura geral; circuitos de alta e baixa tensão;
+pré-carga e contatores; inversor e motor; sensores e controle; rede de comunicação;
+layout conceitual dos componentes; parâmetros, sinais, mensagens, cabos e materiais.
 
-**Marco de aceitação.** Numeração de fios, contatos cruzados, bobinas, bornes e
-referências de folha deve ser completa e validável.
+**Marco de aceitação.** Oito DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
+tabelas estruturadas, demonstrar uma sequência de pré-carga segura por construção,
+separar fatos de premissas e propostas e explicar V/f e FOC sem atribuir resultados
+experimentais ao TCC do autor.
+
+**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
+auditoria dos oito DXFs no AutoCAD e inspeção visual dos 24 derivados aprovadas.
 
 ## P08 — Automação e instrumentação de processo
 
@@ -277,7 +283,8 @@ comum depois de aprovados nos dois portões de qualidade.
   alimentadores, eletrocalhas e quadro de cargas industrial.
 - P06 acrescenta gavetas de CCM, partida direta, reversão intertravada, VFD, STO e
   integração de bornes e cabos.
-- P07 acrescenta contatos, bobinas, motores e referências cruzadas.
+- P07 acrescenta arquitetura veicular HV/LV, BMS, pré-carga, HVIL, CAN e diagramas
+  conceituais de controle V/f e FOC para motor de indução.
 - P08 acrescenta instrumentos, sinais, bornes e cartões de I/O.
 - P09 acrescenta equipamentos de média tensão e proteções.
 - P10 somente integra componentes já validados; novos símbolos exigem revisão
@@ -285,6 +292,6 @@ comum depois de aprovados nos dois portões de qualidade.
 
 ## Resultado desta etapa
 
-Os Projetos 01 a 06 foram materializados em pastas de raiz por instruções explícitas
-e estão concluídos. Os Projetos 07 a 10 permanecem planejados e serão criados apenas
+Os Projetos 01 a 07 foram materializados em pastas de raiz por instruções explícitas
+e estão concluídos. Os Projetos 08 a 10 permanecem planejados e serão criados apenas
 sob solicitação, um por vez, conforme a sequência revisada.
