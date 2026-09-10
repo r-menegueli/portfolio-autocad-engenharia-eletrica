@@ -1,0 +1,8 @@
+﻿carga,tensao_vcc,corrente_a,potencia_w
+PLC-101,24,0.60,14.40
+SW-101,24,0.35,8.40
+RIO-201,24,0.45,10.80
+RIO-202,24,0.45,10.80
+malhas AI (4),24,0.10,2.40
+sensores DI (2),24,0.10,2.40
+reserva auxiliares,24,1.05,25.20

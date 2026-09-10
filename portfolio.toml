@@ -337,6 +337,36 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "10-rede-instrumentacao-industrial"
+path = "10-rede-instrumentacao-industrial"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "filosofia-sinais.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "parametros.csv",
+  "lista-instrumentos.csv",
+  "lista-io.csv",
+  "lista-cabos.csv",
+  "lista-bornes.csv",
+  "lista-redes.csv",
+  "lista-alimentacao.csv",
+  "lista-materiais.csv",
+  "resultados-calculo.csv",
+  "fonte/gerar_projeto_10.py",
+  "fonte/renderizar_projeto_10.py",
+  "fonte/validar_projeto_10.py",
+  "validacao-instrumentacao.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1034,5 +1064,71 @@ source = "09-fonte-bancada/fonte/06_interligacoes.dxf"
 svg = "09-fonte-bancada/exports/06_interligacoes.svg"
 pdf = "09-fonte-bancada/exports/06_interligacoes.pdf"
 png = "09-fonte-bancada/exports/06_interligacoes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-01-arquitetura-rede"
+kind = "sheet"
+title = "Projeto 10 - Arquitetura da rede"
+source = "10-rede-instrumentacao-industrial/fonte/01_arquitetura_rede.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.pdf"
+png = "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-02-diagrama-instrumentacao"
+kind = "sheet"
+title = "Projeto 10 - Diagrama de instrumentação"
+source = "10-rede-instrumentacao-industrial/fonte/02_diagrama_instrumentacao.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.pdf"
+png = "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-03-diagrama-interligacao"
+kind = "sheet"
+title = "Projeto 10 - Diagrama de interligação"
+source = "10-rede-instrumentacao-industrial/fonte/03_diagrama_interligacao.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.pdf"
+png = "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-04-topologia-comunicacao"
+kind = "sheet"
+title = "Projeto 10 - Topologia de comunicação"
+source = "10-rede-instrumentacao-industrial/fonte/04_topologia_comunicacao.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.pdf"
+png = "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-05-painel-instrumentacao"
+kind = "sheet"
+title = "Projeto 10 - Painel de instrumentação"
+source = "10-rede-instrumentacao-industrial/fonte/05_painel_instrumentacao.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.pdf"
+png = "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-06-lista-instrumentos"
+kind = "sheet"
+title = "Projeto 10 - Lista de instrumentos"
+source = "10-rede-instrumentacao-industrial/fonte/06_lista_instrumentos.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf"
+png = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.png"
 require_a3 = true
 require_notice = true

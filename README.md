@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01 a 09 concluídos; Projeto 10 planejado.
+**Estado atual:** base comum e Projetos 01 a 10 concluídos.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -136,11 +136,16 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── exports/                 # seis conjuntos PDF/SVG/PNG
 │   ├── README.md, memorial, critérios, memória e referências atuais
 │   └── parâmetros, equipamentos, proteções, interligações, recortes e materiais
-└── projetos/                    # reservado ao Projeto 10
+├── 10-rede-instrumentacao-industrial/
+│   ├── fonte/                   # seis DXFs e scripts de geração, render e validação
+│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios, memória, filosofia e referências
+│   └── instrumentos, I/O, cabos, bornes, rede, alimentação e materiais
+└── projetos/                    # guia histórico de organização
 ```
 
-Por instruções explícitas, os Projetos 01 a 09 estão na raiz. O diretório
-`projetos/` fica reservado ao projeto restante. Cada projeto terá README,
+Por instruções explícitas, os Projetos 01 a 10 estão na raiz. O diretório
+`projetos/` conserva o guia de organização. Cada projeto possui README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
 
@@ -287,19 +292,16 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto (P10)
+## Série concluída
 
-1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
-2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,
-   `criterios-premissas.md`, `lista-materiais.csv`, `fonte/` e `exports/`.
-3. Use [templates/template-a3.dxf](templates/template-a3.dxf) e preserve todos os layers
-   obrigatórios.
-4. Mantenha o DXF e o script reproduzível em `fonte/`; exporte PDF, SVG e PNG para
-   `exports/`.
-5. Inclua o aviso obrigatório no desenho e no README individual, registre premissas e
-   mantenha a lista de materiais coerente com as referências da prancha.
-6. Registre o artefato em `portfolio.toml`, gere os derivados, execute a validação
-   estrita e faça inspeção visual antes do commit.
+Os dez projetos previstos estão concluídos. O [Projeto 10](10-rede-instrumentacao-industrial/README.md)
+fecha a série com uma rede acadêmica de instrumentação industrial, seis DXFs AC1027,
+18 derivados, tabelas estruturadas, memória de cálculo, filosofia de sinais,
+validação específica, auditoria no AutoCAD e inspeção visual.
+
+O próximo trabalho recomendado é uma auditoria consolidada de apresentação e o
+empacotamento de uma versão numerada do portfólio, preservando DXF como fonte e sem
+introduzir DWG sem conversão real e verificada.
 
 Não use os materiais como documentação executiva. Qualquer aplicação real exige revisão,
 dimensionamento, conformidade normativa e responsabilidade de profissional legalmente

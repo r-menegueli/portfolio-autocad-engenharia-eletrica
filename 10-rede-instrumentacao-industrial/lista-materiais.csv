@@ -1,0 +1,11 @@
+﻿item,quantidade,unidade,descricao,referencia,observacoes
+1,1,un,Painel metálico 800 x 600 x 250 mm,PI-101,dimensão conceitual
+2,1,un,Fonte 230 Vca / 24 Vcc / 10 A,PS1,seleção final pendente
+3,1,un,CLP com CPU e interface Ethernet,PLC-101,genérico
+4,2,un,Remota com AI e DI 24 Vcc,RIO-201/202,genérica
+5,1,un,"Switch Ethernet industrial gerenciável, 8 portas",SW-101,genérico
+6,1,un,Estação de supervisão,SCADA-101,computador/software não selecionados
+7,4,un,Transmissor 2 fios 4-20 mA,TT/PT/FT/LT,faixas conforme lista
+8,2,un,Chave de processo 24 Vcc,LSH/PSL,contato/sensor final pendente
+9,1,conj,Bornes seccionáveis e de passagem,X1-X4,dimensionamento conceitual
+10,1,conj,Barras de blindagem e proteção,BE-101/PE-101,funções distintas

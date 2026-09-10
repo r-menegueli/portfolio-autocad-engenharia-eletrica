@@ -1,0 +1,7 @@
+﻿tag,variavel,lrv,urv,unidade,sinal,canal,cabo
+TT-101,Temperatura,0,150,°C,"4-20 mA, 2 fios",RIO-201/AI0,C-101
+PT-102,Pressão,0,10,bar(g),"4-20 mA, 2 fios",RIO-201/AI1,C-102
+FT-103,Vazão,0,60,m³/h,"4-20 mA, 2 fios",RIO-202/AI0,C-103
+LT-104,Nível,0,5,m,"4-20 mA, 2 fios",RIO-202/AI1,C-104
+LSH-105,Nível alto,0,1,estado,digital 24 Vcc,RIO-201/DI0,C-105
+PSL-106,Pressão baixa,0,1,estado,digital 24 Vcc,RIO-202/DI0,C-106

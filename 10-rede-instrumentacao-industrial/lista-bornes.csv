@@ -1,0 +1,14 @@
+﻿borne,potencial,funcao,destino
+X1:01,L,entrada 230 Vca,QF0:1
+X1:02,N,entrada 230 Vca,QF0:2
+X1:PE,PE,proteção,PE-101
+X2:01,+24V,distribuição,FU1
+X2:02,0V,retorno funcional,PS1:-
+X3:01/02,TT-101 +/−,analógico,RIO-201/AI0
+X3:03/04,PT-102 +/−,analógico,RIO-201/AI1
+X3:05/06,FT-103 +/−,analógico,RIO-202/AI0
+X3:07/08,LT-104 +/−,analógico,RIO-202/AI1
+X4:01/02,LSH-105,digital,RIO-201/DI0
+X4:03/04,PSL-106,digital,RIO-202/DI0
+BE-101,SHIELD,blindagem funcional,PE-101 em ponto definido
+PE-101,PE,proteção/equipotencial,chassi

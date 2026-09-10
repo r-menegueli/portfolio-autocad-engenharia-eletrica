@@ -340,6 +340,39 @@ IEC 61558-2-16:2021 e IEC 60529, além da página oficial da NR-10 no Ministéri
 Trabalho e Emprego. Essas referências orientam a análise acadêmica e não constituem
 certificação, ensaio ou liberação do equipamento para fabricação.
 
+## Auditoria CAD e visual do Projeto 10
+
+Em 2026-09-10, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as seis fontes em `10-rede-instrumentacao-industrial/fonte/`:
+
+- `01_arquitetura_rede.dxf`: `PASS`;
+- `02_diagrama_instrumentacao.dxf`: `PASS`;
+- `03_diagrama_interligacao.dxf`: `PASS`;
+- `04_topologia_comunicacao.dxf`: `PASS`;
+- `05_painel_instrumentacao.dxf`: `PASS`;
+- `06_lista_instrumentos.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os seis PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome 152.0.7977.83 abriu os seis SVGs em modo
+headless; os seis PNGs de produção foram examinados a 300 dpi. A primeira revisão
+detectou a invasão de uma tabela sobre a legenda/carimbo e o contato entre uma faixa
+de cálculo e uma tabela. A posição dos elementos foi corrigida na fonte, a cor da
+comunicação foi alinhada à legenda e a segunda inspeção aprovou os 18 derivados.
+
+O fluxo usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 64.207 verificações de documentos, tags, I/O, cabos,
+bornes, endereços, balanço 24 Vcc, escalas analógicas, estrutura CAD e derivados.
+O validador estrito integrado aprovou 370.524 verificações, sem erros ou avisos, e
+os nove testes automatizados passaram. Uma reconstrução consecutiva preservou os
+hashes SHA-256 dos 24 artefatos do projeto (seis DXFs e 18 derivados).
+Nenhum DWG foi produzido ou versionado; DXF AC1027 permanece como fonte principal.
+
+Foram consultadas em 2026-09-10 as páginas oficiais da IEC para IEC 60381-1:1982,
+IEC 61326-1:2020, IEC 61131-2:2017, IEC 61158-2:2023 e IEC 60445:2021, a página da
+ISA para ANSI/ISA-5.1-2024 e a página oficial da NR-10 no Ministério do Trabalho e
+Emprego. As referências orientam a análise acadêmica e não representam certificação
+ou liberação executiva.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

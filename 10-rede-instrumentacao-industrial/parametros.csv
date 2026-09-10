@@ -1,0 +1,11 @@
+﻿parametro,valor,unidade,descricao
+tensao_controle,24,Vcc,barramento funcional da instrumentação
+corrente_fonte,10,A,capacidade nominal proposta de PS1
+tensao_entrada,230,Vca,alimentação monofásica conceitual de PI-101
+corrente_carga,3.10,A,carga prevista incluindo reserva auxiliar
+potencia_carga,74.40,W,soma das cargas 24 Vcc
+topologia_rede,estrela,texto,switch SW-101 como ponto central
+subrede,192.168.10.0/24,IPv4,endereçamento documental fictício
+painel_largura,800,mm,dimensão conceitual
+painel_altura,600,mm,dimensão conceitual
+painel_profundidade,250,mm,dimensão conceitual

@@ -1,8 +1,8 @@
-# Projetos acadêmicos planejados
+# Guia de organização dos projetos acadêmicos
 
-Esta pasta receberá, em etapa futura, o Projeto 10 descrito no
-[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 09 foram criados
-na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
+Os dez projetos descritos no [plano de projetos](../docs/plano-projetos.md) foram
+criados na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
+Esta pasta conserva as convenções de organização e aceitação.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 [padrão gráfico](../docs/padrao-grafico.md) e os
@@ -21,7 +21,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 | 7 | [`../07-arquitetura-veiculo-eletrico/`](../07-arquitetura-veiculo-eletrico/README.md) | arquitetura elétrica de veículo elétrico - concluído |
 | 8 | [`../08-sistema-fotovoltaico/`](../08-sistema-fotovoltaico/README.md) | sistema fotovoltaico residencial - concluído |
 | 9 | [`../09-fonte-bancada/`](../09-fonte-bancada/README.md) | fonte de bancada ajustável - concluído |
-| 10 | `P10-integracao-microindustria` | integração elétrica de uma microindústria |
+| 10 | [`../10-rede-instrumentacao-industrial/`](../10-rede-instrumentacao-industrial/README.md) | rede acadêmica de instrumentação industrial - concluído |
 
 Os nomes estão reservados para manter ordenação e links previsíveis. Eles não
 devem ser criados vazios nem usados para armazenar rascunhos sem rastreabilidade.
@@ -105,5 +105,6 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção do projeto restante. P10 só deve ser criado quando
-solicitado explicitamente.
+Este README permanece como guia histórico. A série P01–P10 está concluída; uma nova
+pasta somente deve ser criada mediante solicitação explícita e com a mesma cadeia de
+geração, validação, inspeção visual e congelamento em Git.

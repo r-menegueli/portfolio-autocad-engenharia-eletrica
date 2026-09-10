@@ -1,0 +1,7 @@
+﻿no,ip,mascara,porta,papel
+PLC-101,192.168.10.10,255.255.255.0,SW-101/P1,controlador
+RIO-201,192.168.10.21,255.255.255.0,SW-101/P2,remota área A
+RIO-202,192.168.10.22,255.255.255.0,SW-101/P3,remota área B
+SCADA-101,192.168.10.30,255.255.255.0,SW-101/P4,supervisão
+ENG-101,192.168.10.40,255.255.255.0,SW-101/P5,engenharia temporária
+SW-101,192.168.10.2,255.255.255.0,gerenciado,infraestrutura

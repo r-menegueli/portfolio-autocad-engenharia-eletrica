@@ -1,0 +1,7 @@
+﻿id,tag,no,canal,sinal,escala,semantica
+AI-001,TT-101,RIO-201,AI0,4-20 mA,0-150 °C,temperatura contínua
+AI-002,PT-102,RIO-201,AI1,4-20 mA,0-10 bar(g),pressão contínua
+AI-003,FT-103,RIO-202,AI0,4-20 mA,0-60 m³/h,vazão contínua
+AI-004,LT-104,RIO-202,AI1,4-20 mA,0-5 m,nível contínuo
+DI-001,LSH-105,RIO-201,DI0,24 Vcc,0/1,nível alto
+DI-002,PSL-106,RIO-202,DI0,24 Vcc,0/1,pressão baixa

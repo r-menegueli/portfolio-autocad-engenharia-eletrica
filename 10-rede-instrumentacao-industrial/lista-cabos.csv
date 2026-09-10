@@ -1,0 +1,13 @@
+﻿cabo,de,para,funcao,formacao,identificacao_condutores,blindagem,comprimento_assumido_m,rota,bornes,observacoes
+C-101,TT-101,RIO-201/AI0,Sinal analógico 4-20 mA e alimentação de malha,"1x2x0,75 mm² SH",+/−/SH,SIM,45,E-101,X3:01/02,Blindagem em BE-101 no painel
+C-102,PT-102,RIO-201/AI1,Sinal analógico 4-20 mA e alimentação de malha,"1x2x0,75 mm² SH",+/−/SH,SIM,38,E-101,X3:03/04,Blindagem em BE-101 no painel
+C-103,FT-103,RIO-202/AI0,Sinal analógico 4-20 mA e alimentação de malha,"1x2x0,75 mm² SH",+/−/SH,SIM,52,E-102,X3:05/06,Blindagem em BE-101 no painel
+C-104,LT-104,RIO-202/AI1,Sinal analógico 4-20 mA e alimentação de malha,"1x2x0,75 mm² SH",+/−/SH,SIM,48,E-102,X3:07/08,Blindagem em BE-101 no painel
+C-105,LSH-105,RIO-201/DI0,Entrada digital 24 Vcc,"1x2x0,75 mm²",DI/0V,NÃO,42,E-101,X4:01/02,Tipo elétrico final pendente
+C-106,PSL-106,RIO-202/DI0,Entrada digital 24 Vcc,"1x2x0,75 mm²",DI/0V,NÃO,35,E-102,X4:03/04,Tipo elétrico final pendente
+P24-201,PI-101,RIO-201,Alimentação 24 Vcc,"2x1,5 mm² + PE",+24V/0V/PE,NÃO,50,E-201,X2,Proteção FU2 no painel
+P24-202,PI-101,RIO-202,Alimentação 24 Vcc,"2x1,5 mm² + PE",+24V/0V/PE,NÃO,55,E-202,X2,Proteção FU3 no painel
+NET-101,SW-101/P1,PLC-101,Comunicação Ethernet industrial,Ethernet industrial SH,TX/RX/SH,SIM,3,N-101,P1,Terminação conforme fabricante e EMC
+NET-102,SW-101/P2,RIO-201,Comunicação Ethernet industrial,Ethernet industrial SH,TX/RX/SH,SIM,50,N-102,P2,Terminação conforme fabricante e EMC
+NET-103,SW-101/P3,RIO-202,Comunicação Ethernet industrial,Ethernet industrial SH,TX/RX/SH,SIM,55,N-103,P3,Terminação conforme fabricante e EMC
+NET-104,SW-101/P4,SCADA-101,Comunicação Ethernet industrial,Ethernet industrial SH,TX/RX/SH,SIM,20,N-104,P4,Terminação conforme fabricante e EMC

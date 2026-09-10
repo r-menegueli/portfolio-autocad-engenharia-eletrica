@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 a P09 concluídos; P10 permanece planejado
+Estado: P01 a P10 concluídos
 
 ## Propósito
 
@@ -66,7 +66,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 7 | P07 | Arquitetura elétrica de veículo elétrico | tração HV, baixa tensão, controle V/f e FOC | P01, P03 e P06 |
 | 8 | P08 | Sistema fotovoltaico residencial conectado à rede | arranjo FV, proteções CC/CA, conexão e aterramento | P02 |
 | 9 | P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração eletromecânica | P01 |
-| 10 | P10 | Integração elétrica de uma microindústria | coordenação multidisciplinar e consistência global | P05 a P09 |
+| 10 | P10 | Rede acadêmica de instrumentação industrial | instrumentação, I/O, comunicação e rastreabilidade | P03 e P04 |
 
 ## P01 — Painel de motor com inversor de frequência
 
@@ -240,23 +240,25 @@ sem apresentar o equipamento como certificado ou pronto para fabricação.
 **Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
 auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
 
-## P10 — Integração elétrica de uma microindústria
+## P10 — Rede acadêmica de instrumentação industrial
 
-**Objetivo.** Demonstrar a governança de um conjunto multidisciplinar, integrando
-as competências anteriores em um empreendimento totalmente fictício.
+**Objetivo.** Documentar de ponta a ponta uma arquitetura fictícia de instrumentação,
+distinguindo energia, medição analógica, estados digitais e comunicação industrial.
 
-**Escopo.** Interface entre alimentação, QGBT e CCM, geração fotovoltaica,
-distribuição, iluminação, aterramento, fontes auxiliares, acionamentos, automação, instrumentação,
-rotas de cabos e listas consolidadas. O foco será consistência de interfaces,
-revisões e rastreabilidade, não detalhamento executivo.
+**Escopo.** TT-101, PT-102, FT-103 e LT-104 em 4–20 mA; LSH-105 e PSL-106 como
+entradas digitais 24 Vcc; PLC-101; remotas RIO-201 e RIO-202; switch SW-101;
+SCADA-101; fonte PS1; bornes, cabos, shield, PE e endereçamento documental.
 
-**Pranchas e dados específicos.** Índice geral; unifilar mestre; plantas de
-distribuição e rotas; matriz de interfaces; arquitetura de automação; consolidação
-de cargas, cabos, painéis, instrumentos e materiais.
+**Pranchas e dados específicos.** Arquitetura da rede; diagrama de instrumentação;
+diagrama de interligação; topologia de comunicação; painel de instrumentação; lista
+de instrumentos; tabelas de I/O, cabos, bornes, rede, alimentação e materiais.
 
-**Marco de aceitação.** Uma alteração controlada de tag ou carga deve propagar-se
-de forma reproduzível aos desenhos e tabelas dependentes, sem links quebrados,
-arquivos temporários ou divergências de revisão.
+**Marco de aceitação.** Seis DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
+tags, canais, cabos, bornes, faixas e endereços; quatro escalas lineares devem ser
+verificadas; alimentação, analógico, digital e comunicação devem permanecer claros.
+
+**Situação.** Concluído na revisão 00 em 2026-09-10, com validação específica,
+auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
 
 ## Fases e portões de qualidade
 
@@ -295,10 +297,10 @@ comum depois de aprovados nos dois portões de qualidade.
   conectado à rede, medição e equipotencialização residencial.
 - P09 acrescenta fonte AC/DC isolada, regulação buck CC/CV, medição de bancada,
   painel frontal, ventilação e detalhes mecânicos de gabinete.
-- P10 somente integra componentes já validados; novos símbolos exigem revisão
-  explícita da biblioteca e dos testes.
+- P10 acrescenta transmissores de temperatura, pressão, vazão e nível, remotas de I/O,
+  arquitetura Ethernet industrial, filosofia 4–20 mA, bornes e blindagem funcional.
 
 ## Resultado desta etapa
 
-Os Projetos 01 a 09 estão concluídos. O Projeto 10 permanece planejado e será criado
-apenas sob solicitação.
+Os Projetos 01 a 10 estão concluídos, reproduzíveis e integrados ao manifesto e ao
+validador comum do portfólio.
