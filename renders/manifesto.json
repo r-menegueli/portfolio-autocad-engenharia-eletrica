@@ -1099,6 +1099,120 @@
           "sha256": "91136cca236ed8139181a67eb256a2bccdccb9e6a138fa24c5e4ed3ab8174a2d"
         }
       }
+    },
+    {
+      "id": "p09-01-diagrama-blocos",
+      "source": "09-fonte-bancada/fonte/01_diagrama_blocos.dxf",
+      "source_sha256": "7d49d38cbba86dfc8063754b8e18e6a3e22b1a6c4bba1a5481b06632dab3aa97",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/01_diagrama_blocos.pdf",
+          "sha256": "118b42cbc95053fae7d0398585eaba1fc75a9f72b748e90c4cf3ec8dbfbdcb99"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/01_diagrama_blocos.png",
+          "sha256": "f5fb801b8dbbaba60a44d1cd6088e9e5c1817753e0c5ee2bff78bc45e6f18b75"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/01_diagrama_blocos.svg",
+          "sha256": "7e76dacaf33da163c2ad61c23664c400db9b364b4f21ffd49709971cc3ba1c26"
+        }
+      }
+    },
+    {
+      "id": "p09-02-diagrama-eletrico",
+      "source": "09-fonte-bancada/fonte/02_diagrama_eletrico.dxf",
+      "source_sha256": "207486430916bf2b1d42f088eb4ad63e95dec6a5db549301724c327402312c9c",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/02_diagrama_eletrico.pdf",
+          "sha256": "15cf3ba6a99acef8698bb33a767279d7341b4bc803274fab4d2df1386772d1fb"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/02_diagrama_eletrico.png",
+          "sha256": "583f750f8ffac73ed20fc081c235b12f23f7148e5c02d3953046a417b5068905"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/02_diagrama_eletrico.svg",
+          "sha256": "259ba6ae2d44ea6bded15e7e39963d250702d0ee2936e0d1e8ad6d07661bcfee"
+        }
+      }
+    },
+    {
+      "id": "p09-03-painel-frontal",
+      "source": "09-fonte-bancada/fonte/03_painel_frontal.dxf",
+      "source_sha256": "ab63f3d8385e326e12c8661db5f60d3a45129d4698728b8aa415f3db04abdadc",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/03_painel_frontal.pdf",
+          "sha256": "ca04ea7a52a6e27609185537ed44072cb95a8872677b9dc42acf9f24a987c795"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/03_painel_frontal.png",
+          "sha256": "58a075c5358392d316d2904c066286c53c6a526fa5c673bad8e939573d9f2c64"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/03_painel_frontal.svg",
+          "sha256": "c9859a2f6d89a2f5780ca4d7337ec5757e85ed0fa8d67ee8484a54472a84dfcb"
+        }
+      }
+    },
+    {
+      "id": "p09-04-layout-interno",
+      "source": "09-fonte-bancada/fonte/04_layout_interno.dxf",
+      "source_sha256": "e9b30c556b14cc72248dd3b77a2fe9128341308ce9006a4a11dda1ff2e2838e5",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/04_layout_interno.pdf",
+          "sha256": "c1711a8a45137586ab732663d98a55e7129f8b47e63a6258d7bdecc39cba5d98"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/04_layout_interno.png",
+          "sha256": "eb286dd46668277db412aeb4666f16832f858d692356022ecd394cd0eddf9af5"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/04_layout_interno.svg",
+          "sha256": "b13d027eb789cbcd0a6984028a5e102295b437b7538bc95a852af52a158cde73"
+        }
+      }
+    },
+    {
+      "id": "p09-05-detalhes-mecanicos",
+      "source": "09-fonte-bancada/fonte/05_detalhes_mecanicos.dxf",
+      "source_sha256": "3ba247498e9d26943a5849350035fffebadd1ae645a3712fc3ef2414845ed18a",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.pdf",
+          "sha256": "f36bebd714d2a11830d8a902f77c505b3624961b47b065938a7fa2ea896d4479"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.png",
+          "sha256": "e5e25cea8ccaf673f51f701417892f9c1c5b5b7df5cee50869870782f606867e"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.svg",
+          "sha256": "e923c35d66c14b785437aedfd71d7cdb91bc9f3c007b869328c6aa371d09fe93"
+        }
+      }
+    },
+    {
+      "id": "p09-06-interligacoes",
+      "source": "09-fonte-bancada/fonte/06_interligacoes.dxf",
+      "source_sha256": "bdfbda1f31b9a62a567ac113e2c1b50388c69804c7079c44979fdfe36f4b4fe5",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/06_interligacoes.pdf",
+          "sha256": "c695898c56a1cd644511b1908521899e612e0619fd2bb2208bfa1bec6894edd8"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/06_interligacoes.png",
+          "sha256": "e8518b322317507e05a4caef7c705bba1c3fc8ae05a211942d997e4bc9585e9b"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/06_interligacoes.svg",
+          "sha256": "11acdbfd9ffa744e333365ec198db262eb197fae188000f15c663bff7c8459ea"
+        }
+      }
     }
   ]
 }

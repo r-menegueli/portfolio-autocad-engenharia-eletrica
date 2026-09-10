@@ -1,7 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
-Estado: P01 a P08 concluídos; P09 e P10 permanecem planejados
+Estado: P01 a P09 concluídos; P10 permanece planejado
 
 ## Propósito
 
@@ -65,7 +65,7 @@ rascunho para concluído quando todos os entregáveis correspondem à mesma revi
 | 6 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD e integração | P01, P03 e P05 |
 | 7 | P07 | Arquitetura elétrica de veículo elétrico | tração HV, baixa tensão, controle V/f e FOC | P01, P03 e P06 |
 | 8 | P08 | Sistema fotovoltaico residencial conectado à rede | arranjo FV, proteções CC/CA, conexão e aterramento | P02 |
-| 9 | P09 | Subestação acadêmica de média e baixa tensão | transformação, proteção e manobra | P06 |
+| 9 | P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração eletromecânica | P01 |
 | 10 | P10 | Integração elétrica de uma microindústria | coordenação multidisciplinar e consistência global | P05 a P09 |
 
 ## P01 — Painel de motor com inversor de frequência
@@ -217,33 +217,36 @@ potências, strings, tensões corrigidas, correntes, limites do inversor e prote
 sem apresentar o estudo como liberado para instalação ou conexão.
 
 **Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
+auditoria dos seis DXFs no AutoCAD, inspeção visual dos 18 derivados e validação
+estrita integrada aprovadas.
+
+## P09 — Fonte de bancada ajustável
+
+**Objetivo.** Documentar a arquitetura elétrica e mecânica de uma fonte de bancada
+acadêmica, desde a entrada de rede até a interface de saída ajustável.
+
+**Escopo.** Entrada universal 90-264 Vca, proteção, fonte AC/DC isolada de 36 V,
+regulador buck CC/CV, saída flutuante de 0-30 Vcc e 0-5 A limitada a 150 W, medição,
+comandos, ventilação, painel frontal, gabinete, organização interna e PE de chassi.
+
+**Pranchas e dados específicos.** Diagrama de blocos; diagrama elétrico; painel
+frontal; layout interno; detalhes mecânicos; interligações; parâmetros, cálculos,
+equipamentos, proteções, recortes, condutores e materiais em CSV.
+
+**Marco de aceitação.** Seis DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
+tensões, correntes, potência, perdas, ventilação, tags, recortes e interligações,
+sem apresentar o equipamento como certificado ou pronto para fabricação.
+
+**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
 auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
-
-## P09 — Subestação acadêmica de média e baixa tensão
-
-**Objetivo.** Consolidar conceitos de transformação, medição, proteção e manobra
-em uma subestação fictícia, exclusivamente acadêmica.
-
-**Escopo.** Diagrama unifilar de média e baixa tensão, arranjo físico conceitual,
-transformador, cubículos, QGBT, proteção, intertravamentos, afastamentos
-indicativos e interface de aterramento. Requisitos de concessionária e segurança
-deverão ser citados como dados a confirmar, nunca presumidos.
-
-**Pranchas e dados específicos.** Unifilar geral; planta e cortes da sala;
-diagrama funcional de proteção; tabela de equipamentos e ajustes conceituais;
-lista de materiais.
-
-**Marco de aceitação.** Níveis de tensão, relações de transformação, capacidades,
-tags e estados de manobra devem estar consistentes; a documentação deverá reforçar
-que não serve para construção, operação ou energização.
 
 ## P10 — Integração elétrica de uma microindústria
 
 **Objetivo.** Demonstrar a governança de um conjunto multidisciplinar, integrando
 as competências anteriores em um empreendimento totalmente fictício.
 
-**Escopo.** Interface da subestação com QGBT e CCM, geração fotovoltaica,
-distribuição, iluminação, aterramento, acionamentos, automação, instrumentação,
+**Escopo.** Interface entre alimentação, QGBT e CCM, geração fotovoltaica,
+distribuição, iluminação, aterramento, fontes auxiliares, acionamentos, automação, instrumentação,
 rotas de cabos e listas consolidadas. O foco será consistência de interfaces,
 revisões e rastreabilidade, não detalhamento executivo.
 
@@ -290,12 +293,12 @@ comum depois de aprovados nos dois portões de qualidade.
   conceituais de controle V/f e FOC para motor de indução.
 - P08 acrescenta módulos e strings fotovoltaicos, string box, DPS CC/CA, inversor
   conectado à rede, medição e equipotencialização residencial.
-- P09 acrescenta equipamentos de média tensão e proteções.
+- P09 acrescenta fonte AC/DC isolada, regulação buck CC/CV, medição de bancada,
+  painel frontal, ventilação e detalhes mecânicos de gabinete.
 - P10 somente integra componentes já validados; novos símbolos exigem revisão
   explícita da biblioteca e dos testes.
 
 ## Resultado desta etapa
 
-Os Projetos 01 a 08 estão concluídos. O Projeto 08 foi materializado em pasta de raiz
-por instrução explícita. Os Projetos 09 e 10 permanecem planejados e serão criados
-apenas sob solicitação, um por vez.
+Os Projetos 01 a 09 estão concluídos. O Projeto 10 permanece planejado e será criado
+apenas sob solicitação.

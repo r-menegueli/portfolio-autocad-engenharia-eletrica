@@ -1,0 +1,33 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+GAB-01,1,un,Gabinete metalico 320x150x260 mm,GAB-091,Material acabamento e processo pendentes
+PNL-01,1,un,Painel frontal metalico 3 mm,PNL-091,Recortes conforme prancha 03
+X1,1,un,Entrada IEC C14 10 A 250 Vca,X1,Selecionar componente certificado aplicavel
+F1,1,un,Porta fusivel com fusivel T4 A 250 Vca,F1,Capacidade de interrupcao a confirmar
+S1,1,un,Chave bipolar 10 A 250 Vca,S1,Comutacao de L e N
+MOV1,1,un,Varistor classe 275 Vca,MOV1,Coordenacao e energia pendentes
+FL1,1,un,Filtro EMI bipolar 10 A 250 Vca,FL1,Ensaio EMC nao realizado
+PS1,1,un,Fonte AC DC isolada 36 V 7 A 252 W,PS1,Especificacao funcional ficticia
+F2,1,un,Fusivel CC 7.5 A 60 Vcc,F2,Capacidade em CC a confirmar
+REG1,1,un,Regulador buck CC CV 150 W,REG1,Eletronica e dissipador nao detalhados
+PS2,1,un,Conversor 36 para 12 Vcc 1 A,PS2,Alimentacao auxiliar
+M1,1,un,Medidor digital de tensao e corrente,M1,Calibracao pendente
+SH1,1,un,Shunt 10 A 75 mV,SH1,Conexao Kelvin
+K1,1,un,Rele 12 Vcc contato 10 A CC,K1,Capacidade de corte a confirmar
+FAN1,1,un,Ventilador axial 80 mm 12 Vcc 20 CFM,FAN1,Curva de pressao pendente
+TH1,1,un,Termostato 40 C,TH1,Acionamento do ventilador
+TS1,1,un,Termostato NF 75 C,TS1,Retirada da habilitacao
+RV1,1,un,Potenciometro 10 voltas ajuste V,RV1,Compatibilidade com REG1
+RV2,1,un,Potenciometro 10 voltas ajuste I,RV2,Compatibilidade com REG1
+S2,1,un,Botao 16 mm habilitacao de saida,S2,Logica a detalhar
+LED-01,1,un,LED verde indicacao CV,H1,Resistor e corrente a definir
+LED-02,1,un,LED ambar indicacao CC,H2,Resistor e corrente a definir
+LED-03,1,un,LED branco saida habilitada,H3,Resistor e corrente a definir
+X2,2,un,Borne 4 mm de saida,X2-PLUS/X2-MINUS,Vermelho e preto
+X3,1,un,Borne 4 mm de chassi PE,X3,Verde e separado da saida
+PE1,1,un,Ponto de aterramento do chassi,PE1,Parafuso dedicado e sinalizado
+CB-LN,3,m,Cabo 0.75 mm2 600 V 105 C,W01-W05/W08-W09,Cores conforme lista
+CB-PE,2,m,Cabo 1.5 mm2 verde amarelo,W06/W07/W25,Protecao mecanica e terminais
+CB-POT,4,m,Cabo 2.5 mm2,W10-W16,Vermelho e preto
+CB-SIN,8,m,Cabo 0.5 mm2,W17-W24,Pares Kelvin segregados
+ETQ-01,1,conj,Etiquetas de identificacao,TAGS,Material duravel a selecionar
+GRD-01,2,un,Grelha e protecao do ventilador,FAN1,Entrada e saida de ar

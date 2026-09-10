@@ -5,7 +5,7 @@ de Engenharia Elétrica.
 
 **Autor:** Rogério Eduardo Moreira Menegueli
 
-**Estado atual:** base comum e Projetos 01 a 08 concluídos; Projetos 09 e 10 planejados.
+**Estado atual:** base comum e Projetos 01 a 09 concluídos; Projeto 10 planejado.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -46,6 +46,8 @@ ficam centralizados em [portfolio.toml](portfolio.toml).
   acadêmica de veículo elétrico com motor de indução e comparação V/f–FOC.
 - [Projeto 08](08-sistema-fotovoltaico/README.md): sistema fotovoltaico residencial
   conectado à rede, com arranjo, proteções, aterramento e cálculos reproduzíveis.
+- [Projeto 09](09-fonte-bancada/README.md): documentação eletromecânica acadêmica de
+  fonte ajustável 0-30 Vcc, 0-5 A e 150 W.
 - [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
   formatos efetivamente disponíveis no ambiente.
 - [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
@@ -129,11 +131,16 @@ portfolio-autocad-engenharia-eletrica/
 │   ├── exports/                 # seis conjuntos PDF/SVG/PNG
 │   ├── README.md, memorial, critérios, memória e referências atuais
 │   └── parâmetros, módulos, proteções, cabos, cálculos e materiais
-└── projetos/                    # reservado aos Projetos 09 e 10
+├── 09-fonte-bancada/
+│   ├── fonte/                   # seis DXFs, gerador e validador eletromecânico
+│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
+│   ├── README.md, memorial, critérios, memória e referências atuais
+│   └── parâmetros, equipamentos, proteções, interligações, recortes e materiais
+└── projetos/                    # reservado ao Projeto 10
 ```
 
-Por instruções explícitas, os Projetos 01 a 08 estão na raiz. O diretório
-`projetos/` fica reservado aos próximos projetos. Cada projeto terá README,
+Por instruções explícitas, os Projetos 01 a 09 estão na raiz. O diretório
+`projetos/` fica reservado ao projeto restante. Cada projeto terá README,
 memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
 em `fonte/`, além de PDF, SVG e PNG em `exports/`.
 
@@ -280,7 +287,7 @@ O código de saída é `0` apenas quando o status é `PASS`; falhas de validaç�
 `1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
 aviso como item de revisão visual ou técnica.
 
-## Como iniciar o próximo projeto (P09)
+## Como iniciar o próximo projeto (P10)
 
 1. Escolha o item correspondente em [docs/plano-projetos.md](docs/plano-projetos.md).
 2. Crie `projetos/NN-slug/` com `README.md`, `memorial-descritivo.md`,

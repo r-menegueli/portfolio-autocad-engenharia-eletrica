@@ -1,0 +1,17 @@
+item,painel,geometria,centro_x_mm,centro_y_mm,dimensao_mm,classificacao,observacoes,prancha
+S1,frontal,retangulo,35,92,30x22,PROPOSTA,Conferir desenho do fabricante,03/06
+M1,frontal,retangulo,105,100,72x36,PROPOSTA,Prever encaixe e moldura,03/06
+RV1,frontal,circulo,175,100,D7,PROPOSTA,Furo piloto sem antirotacao,03/06
+RV2,frontal,circulo,220,100,D7,PROPOSTA,Furo piloto sem antirotacao,03/06
+LED-CV,frontal,circulo,174,72,D5,PROPOSTA,Verde,03/06
+LED-CC,frontal,circulo,198,72,D5,PROPOSTA,Ambar,03/06
+S2,frontal,circulo,270,100,D16,PROPOSTA,Comando de saida,03/06
+X2-PLUS,frontal,circulo,205,38,D8,PROPOSTA,Borne vermelho 4 mm,03/06
+X2-MINUS,frontal,circulo,250,38,D8,PROPOSTA,Borne preto 4 mm,03/06
+X3-PE,frontal,circulo,295,38,D8,PROPOSTA,Borne verde de chassi,03/06
+X1,traseiro,retangulo,45,70,28x20,PROPOSTA,Entrada IEC C14,05/06
+FAN1,traseiro,circulo,245,75,D76,PROPOSTA,Ventilador nominal 80 mm,05/06
+FAN1-H1,traseiro,circulo,210,40,D4,PROPOSTA,Fixacao do ventilador,05/06
+FAN1-H2,traseiro,circulo,280,40,D4,PROPOSTA,Fixacao do ventilador,05/06
+FAN1-H3,traseiro,circulo,210,110,D4,PROPOSTA,Fixacao do ventilador,05/06
+FAN1-H4,traseiro,circulo,280,110,D4,PROPOSTA,Fixacao do ventilador,05/06

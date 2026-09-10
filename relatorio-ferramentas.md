@@ -307,6 +307,39 @@ NBR 5410:2004 versão corrigida 2008 e série NBR 5419:2026; o Inmetro para as P
 são critérios de consulta; sua aplicação executiva permanece condicionada à edição
 vigente, ao acesso integral às normas e à responsabilidade profissional.
 
+## Auditoria CAD e visual do Projeto 09
+
+Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
+individualmente as seis fontes em `09-fonte-bancada/fonte/`:
+
+- `01_diagrama_blocos.dxf`: `PASS`;
+- `02_diagrama_eletrico.dxf`: `PASS`;
+- `03_painel_frontal.dxf`: `PASS`;
+- `04_layout_interno.dxf`: `PASS`;
+- `05_detalhes_mecanicos.dxf`: `PASS`;
+- `06_interligacoes.dxf`: `PASS`.
+
+Poppler `pdfinfo` e `pdftoppm` 26.07.0 reabriram os seis PDFs A3 de uma página e os
+rasterizaram a 150 dpi. Google Chrome 152.0.7977.83 abriu os seis SVGs em modo
+headless; os seis PNGs de produção foram inspecionados em 300 dpi. A primeira revisão
+levou à correção de uma linha sobre o quadro de limites, entidades duplicadas no
+painel frontal, cotas junto às legendas, notas sobre tabelas e um rótulo atravessado
+por condutor. Após regeneração, a inspeção final foi aprovada nos 18 derivados.
+
+O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
+validador específico aprovou 18.554 verificações de parâmetros, cálculos, listas,
+extremos de tensão e frequência de entrada, grade tensão-corrente de saída, conteúdo
+e metadados dos seis DXFs. A validação estrita integrada aprovou 330.795 verificações,
+sem erros ou avisos, e nove testes automatizados passaram. Uma reconstrução
+consecutiva manteve hashes SHA-256 idênticos para os 24 artefatos do projeto. Nenhum
+DWG foi produzido ou versionado; DXF AC1027 permanece como fonte principal.
+
+Para o estado normativo, foram consultados em 2026-09-09 o catálogo oficial da IEC
+para IEC 61010-1:2010+A1:2016, IEC 60445:2021, IEC 60320-1:2021,
+IEC 61558-2-16:2021 e IEC 60529, além da página oficial da NR-10 no Ministério do
+Trabalho e Emprego. Essas referências orientam a análise acadêmica e não constituem
+certificação, ensaio ou liberação do equipamento para fabricação.
+
 ## Limitacoes permanentes
 
 O `ezdxf` nao produz DWG e seus limites de texto dependem de metricas de fonte. A

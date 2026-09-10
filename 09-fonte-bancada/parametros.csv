@@ -1,0 +1,45 @@
+parametro,valor,unidade,classificacao,descricao
+ENTRADA_V_MIN,90,Vca,PREMISSA,Tensao minima de entrada universal
+ENTRADA_V_MAX,264,Vca,PREMISSA,Tensao maxima de entrada universal
+ENTRADA_F_MIN,47,Hz,PREMISSA,Frequencia minima
+ENTRADA_F_MAX,63,Hz,PREMISSA,Frequencia maxima
+SAIDA_V_MIN,0,Vcc,PROPOSTA,Tensao minima nominal ajustavel
+SAIDA_V_MAX,30,Vcc,PROPOSTA,Tensao maxima nominal ajustavel
+SAIDA_I_MAX,5,A,PROPOSTA,Corrente maxima com limite CC
+SAIDA_P_MAX,150,W,DERIVADO,Potencia maxima em 30 V e 5 A
+PS1_V_OUT,36,Vcc,PROPOSTA,Tensao nominal da fonte isolada
+PS1_I_OUT,7,A,PROPOSTA,Corrente nominal da fonte isolada
+PS1_P_OUT,252,W,DERIVADO,Capacidade nominal proposta de PS1
+PS1_EFICIENCIA,0.90,pu,PREMISSA,Rendimento de calculo
+REG1_EFICIENCIA,0.92,pu,PREMISSA,Rendimento de calculo no ponto maximo
+FATOR_POTENCIA,0.90,pu,PREMISSA,Fator de potencia minimo para estimativa
+POTENCIA_AUX,8,W,PREMISSA,Medicao controle rele e ventilacao
+F1_CORRENTE,4,A,PROPOSTA,Fusivel retardado de entrada
+S1_CORRENTE,10,A,PROPOSTA,Chave bipolar de entrada
+FL1_CORRENTE,10,A,PROPOSTA,Filtro EMI bipolar
+MOV1_TENSAO,275,Vca,PROPOSTA,Classe nominal do varistor
+F2_CORRENTE,7.5,A,PROPOSTA,Fusivel do barramento de 36 Vcc
+SH1_CORRENTE,10,A,PROPOSTA,Corrente nominal do shunt
+SH1_TENSAO,75,mV,PROPOSTA,Tensao nominal do shunt em 10 A
+FAN_TENSAO,12,Vcc,PROPOSTA,Tensao do ventilador
+FAN_VAZAO,20,CFM,PREMISSA,Vazao em ar livre
+FAN_DERATING,0.50,pu,PREMISSA,Fator de vazao efetiva
+DELTA_T_ALVO,15,C,PREMISSA,Elevacao termica interna alvo
+TH1_LIGA,40,C,PROPOSTA,Temperatura de acionamento do ventilador
+TS1_CORTE,75,C,PROPOSTA,Temperatura de retirada da habilitacao
+AMBIENTE_T_MIN,0,C,PREMISSA,Temperatura ambiente minima
+AMBIENTE_T_MAX,40,C,PREMISSA,Temperatura ambiente maxima
+ALTITUDE_MAX,2000,m,PREMISSA,Altitude maxima de referencia
+GRAU_POLUICAO,2,classe,PREMISSA,Microambiente interno de referencia
+GAB_LARGURA,320,mm,PROPOSTA,Largura externa de referencia
+GAB_ALTURA,150,mm,PROPOSTA,Altura externa de referencia
+GAB_PROFUNDIDADE,260,mm,PROPOSTA,Profundidade externa de referencia
+PAINEL_ESPESSURA,3,mm,PROPOSTA,Espessura do painel frontal
+RHO_CU,0.0175,ohm_mm2/m,PREMISSA,Resistividade simplificada do cobre
+COMPRIMENTO_36V,0.5,m,PREMISSA,Comprimento de ida do barramento interno
+SECAO_36V,2.5,mm2,PROPOSTA,Secao do barramento de 36 V
+COMPRIMENTO_SAIDA,0.5,m,PREMISSA,Comprimento de ida da saida interna
+SECAO_SAIDA,2.5,mm2,PROPOSTA,Secao da saida interna
+SECAO_LN,0.75,mm2,PROPOSTA,Secao preliminar de L e N internos
+SECAO_PE,1.5,mm2,PROPOSTA,Secao preliminar do PE interno
+SECAO_SINAL,0.5,mm2,PROPOSTA,Secao preliminar de controle e Kelvin

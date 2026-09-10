@@ -1,7 +1,7 @@
 # Projetos acadêmicos planejados
 
-Esta pasta receberá, em etapas futuras, os Projetos 09 e 10 descritos no
-[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 08 foram criados
+Esta pasta receberá, em etapa futura, o Projeto 10 descrito no
+[plano de projetos](../docs/plano-projetos.md). Os Projetos 01 a 09 foram criados
 na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
 
 Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
@@ -20,7 +20,7 @@ Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
 | 6 | [`../06-centro-controle-motores/`](../06-centro-controle-motores/README.md) | centro de controle de motores - concluído |
 | 7 | [`../07-arquitetura-veiculo-eletrico/`](../07-arquitetura-veiculo-eletrico/README.md) | arquitetura elétrica de veículo elétrico - concluído |
 | 8 | [`../08-sistema-fotovoltaico/`](../08-sistema-fotovoltaico/README.md) | sistema fotovoltaico residencial - concluído |
-| 9 | `P09-subestacao-mt-bt` | subestação acadêmica de média e baixa tensão |
+| 9 | [`../09-fonte-bancada/`](../09-fonte-bancada/README.md) | fonte de bancada ajustável - concluído |
 | 10 | `P10-integracao-microindustria` | integração elétrica de uma microindústria |
 
 Os nomes estão reservados para manter ordenação e links previsíveis. Eles não
@@ -105,5 +105,5 @@ Um projeto somente poderá ser marcado como concluído quando:
 
 ## Escopo atual
 
-Este README define a convenção dos projetos restantes. P09 e P10 só devem ser criados
-quando solicitados explicitamente.
+Este README define a convenção do projeto restante. P10 só deve ser criado quando
+solicitado explicitamente.

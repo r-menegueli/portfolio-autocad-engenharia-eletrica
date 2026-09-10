@@ -311,6 +311,32 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "09-fonte-bancada"
+path = "09-fonte-bancada"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "parametros.csv",
+  "lista-equipamentos.csv",
+  "lista-protecoes.csv",
+  "lista-interligacoes.csv",
+  "lista-recortes.csv",
+  "resultados-calculo.csv",
+  "lista-materiais.csv",
+  "fonte/gerar_projeto_09.py",
+  "fonte/validar_projeto_09.py",
+  "validacao-fonte.json",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -942,5 +968,71 @@ source = "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf"
 svg = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg"
 pdf = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf"
 png = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-01-diagrama-blocos"
+kind = "sheet"
+title = "Projeto 09 - Diagrama de blocos"
+source = "09-fonte-bancada/fonte/01_diagrama_blocos.dxf"
+svg = "09-fonte-bancada/exports/01_diagrama_blocos.svg"
+pdf = "09-fonte-bancada/exports/01_diagrama_blocos.pdf"
+png = "09-fonte-bancada/exports/01_diagrama_blocos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-02-diagrama-eletrico"
+kind = "sheet"
+title = "Projeto 09 - Diagrama elétrico"
+source = "09-fonte-bancada/fonte/02_diagrama_eletrico.dxf"
+svg = "09-fonte-bancada/exports/02_diagrama_eletrico.svg"
+pdf = "09-fonte-bancada/exports/02_diagrama_eletrico.pdf"
+png = "09-fonte-bancada/exports/02_diagrama_eletrico.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-03-painel-frontal"
+kind = "sheet"
+title = "Projeto 09 - Painel frontal"
+source = "09-fonte-bancada/fonte/03_painel_frontal.dxf"
+svg = "09-fonte-bancada/exports/03_painel_frontal.svg"
+pdf = "09-fonte-bancada/exports/03_painel_frontal.pdf"
+png = "09-fonte-bancada/exports/03_painel_frontal.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-04-layout-interno"
+kind = "sheet"
+title = "Projeto 09 - Layout interno"
+source = "09-fonte-bancada/fonte/04_layout_interno.dxf"
+svg = "09-fonte-bancada/exports/04_layout_interno.svg"
+pdf = "09-fonte-bancada/exports/04_layout_interno.pdf"
+png = "09-fonte-bancada/exports/04_layout_interno.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-05-detalhes-mecanicos"
+kind = "sheet"
+title = "Projeto 09 - Detalhes mecânicos"
+source = "09-fonte-bancada/fonte/05_detalhes_mecanicos.dxf"
+svg = "09-fonte-bancada/exports/05_detalhes_mecanicos.svg"
+pdf = "09-fonte-bancada/exports/05_detalhes_mecanicos.pdf"
+png = "09-fonte-bancada/exports/05_detalhes_mecanicos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-06-interligacoes"
+kind = "sheet"
+title = "Projeto 09 - Interligações"
+source = "09-fonte-bancada/fonte/06_interligacoes.dxf"
+svg = "09-fonte-bancada/exports/06_interligacoes.svg"
+pdf = "09-fonte-bancada/exports/06_interligacoes.pdf"
+png = "09-fonte-bancada/exports/06_interligacoes.png"
 require_a3 = true
 require_notice = true
