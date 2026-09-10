@@ -381,3 +381,23 @@ combina auditoria estrutural, verificacao geometrica, abertura no AutoCAD quando
 possivel, validacao dos derivados e inspecao visual humana. A ausencia de LibreCAD,
 ODA e Inkscape reduz a diversidade de implementacoes testadas e deve permanecer
 visivel neste relatorio.
+
+## Revisão consolidada de 2026-09-10
+
+As ferramentas críticas foram verificadas novamente durante a revisão completa do
+portfólio:
+
+- AutoCAD 2027 `R26.0.118.0.0` e AcCoreConsole `26.0.118.0.0`;
+- Python 3.14.7, ezdxf 1.4.4, Matplotlib 3.11.1 e Pillow 12.3.0;
+- pypdf 6.17.0, pdfplumber 0.11.10, PDFium 5.13.0 e Poppler 26.07.0;
+- Microsoft Edge 152.0.4191.66 e Google Chrome 152.0.7977.83;
+- Node.js 24.19.0 e `@oai/artifact-tool` 2.8.59;
+- Git 2.53.0.windows.3 e PowerShell 7.6.5.
+
+O AcCoreConsole abriu e auditou 70/70 DXFs. O Edge abriu e rasterizou 70/70 SVGs;
+PDFium reabriu os 68 PDFs de projeto e a comparação com os PNGs teve similaridade
+mínima de 0,9842. Os dois workbooks, com 13 abas ao todo, foram importados sem erros
+de fórmula. LibreCAD, ODA File Converter e Inkscape continuam ausentes.
+
+Os detalhes e comandos reproduzíveis estão no
+[relatório de validação consolidada](relatorio-validacao.md).

@@ -1,308 +1,172 @@
-# Portfólio AutoCAD de Engenharia Elétrica
+# Portfólio de Engenharia Elétrica em AutoCAD
 
-Infraestrutura técnica, visual e documental reproduzível para dez projetos acadêmicos
-de Engenharia Elétrica.
+Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
+dez projetos completos de documentação elétrica. O repositório reúne diagramas,
+plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
+verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
-**Autor:** Rogério Eduardo Moreira Menegueli
-
-**Estado atual:** base comum e Projetos 01 a 10 concluídos.
+**Objetivo profissional:** apresentar competências em documentação de projetos
+elétricos, automação, instrumentação, acionamentos, instalações, sistemas de energia
+e integração eletromecânica, com rastreabilidade entre premissas, dados, desenhos e
+validações.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
-## O que esta base estabelece
+## Navegação rápida
 
-- prancha A3 paisagem de 420 × 297 mm, em milímetros;
-- moldura, carimbo, legenda, notas técnicas e identificação da prancha;
-- 14 layers funcionais padronizados;
-- DXF AC1027 (AutoCAD 2013) como fonte principal;
-- PDF, SVG e PNG como formatos de visualização;
-- geração e renderização reproduzíveis em Python;
-- validação automática da estrutura, documentos e artefatos;
-- convenção documental comum aos projetos do portfólio.
+- [Projetos](#projetos)
+- [Galeria de destaques](#galeria-de-destaques)
+- [Competências demonstradas](#competências-demonstradas)
+- [Tecnologias e formatos](#tecnologias-e-formatos)
+- [Como abrir e reproduzir](#como-abrir-e-reproduzir)
+- [Validação e relatórios](#validação-e-relatórios)
 
-As regras normativas estão em [AGENTS.md](AGENTS.md), e os parâmetros processáveis
-ficam centralizados em [portfolio.toml](portfolio.toml).
+As regras permanentes estão em [AGENTS.md](AGENTS.md) e os parâmetros processáveis
+em [portfolio.toml](portfolio.toml).
 
-## Documentação
+## Projetos
 
-- [Padrão gráfico](docs/padrao-grafico.md): folha, moldura, carimbo, tipografia, layers e
-  representação visual.
-- [Critérios técnicos](docs/criterios-tecnicos.md): premissas, rastreabilidade, segurança
-  e qualidade técnica.
-- [Plano dos projetos](docs/plano-projetos.md): sequência atualizada dos dez trabalhos.
-- [Projeto 01](01-painel-motor-inversor/README.md): painel de acionamento de motor de
-  indução trifásico com inversor de frequência.
-- [Projeto 02](02-projeto-eletrico-residencial/README.md): instalação elétrica
-  residencial fictícia com oito pranchas e quadro de cargas verificável.
-- [Projeto 03](03-painel-automacao-clp/README.md): painel de automação com CLP para
-  duas bombas, 32 pontos de I/O e lógica de alternância verificável.
-- [Projeto 04](04-controle-nivel-reservatorio/README.md): controle de nível de
-  reservatório com instrumentação, CLP, estratégia PI e inversor de frequência.
-- [Projeto 05](05-instalacao-eletrica-industrial/README.md): instalação elétrica
-  industrial com distribuição, iluminação, tomadas e encaminhamento.
-- [Projeto 06](06-centro-controle-motores/README.md): CCM com partida direta,
-  reversão intertravada, inversor, STO, bornes e cabos.
-- [Projeto 07](07-arquitetura-veiculo-eletrico/README.md): arquitetura elétrica
-  acadêmica de veículo elétrico com motor de indução e comparação V/f–FOC.
-- [Projeto 08](08-sistema-fotovoltaico/README.md): sistema fotovoltaico residencial
-  conectado à rede, com arranjo, proteções, aterramento e cálculos reproduzíveis.
-- [Projeto 09](09-fonte-bancada/README.md): documentação eletromecânica acadêmica de
-  fonte ajustável 0-30 Vcc, 0-5 A e 150 W.
-- [Relatório de ferramentas](relatorio-ferramentas.md): versões detectadas, limitações e
-  formatos efetivamente disponíveis no ambiente.
-- [Inspeção visual](docs/inspecao-visual.md): defeitos encontrados, correções e
-  conferência final do template renderizado.
-- [Licença](LICENSE): condições de uso do conteúdo acadêmico.
+| Código | Projeto | Ênfase técnica | Pranchas | Documentação |
+| :---: | --- | --- | ---: | :---: |
+| P01 | Painel de motor com inversor | potência, comando, STO, bornes e campo | 6 | [abrir](01-painel-motor-inversor/README.md) |
+| P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas e aterramento | 8 | [abrir](02-projeto-eletrico-residencial/README.md) |
+| P03 | Painel de automação com CLP | I/O, duas bombas, alternância e segurança | 8 | [abrir](03-painel-automacao-clp/README.md) |
+| P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD e intertravamentos | 6 | [abrir](04-controle-nivel-reservatorio/README.md) |
+| P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação e eletrocalhas | 7 | [abrir](05-instalacao-eletrica-industrial/README.md) |
+| P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO e cabos | 7 | [abrir](06-centro-controle-motores/README.md) |
+| P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f e FOC | 8 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
+| P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA e aterramento | 6 | [abrir](08-sistema-fotovoltaico/README.md) |
+| P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração mecânica | 6 | [abrir](09-fonte-bancada/README.md) |
+| P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos e bornes | 6 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 
-Consulte o relatório de ferramentas antes de assumir que AutoCAD, LibreCAD, ODA File
-Converter, Inkscape ou qualquer conversor está disponível.
+Total: **68 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
-## Estrutura
+## Galeria de destaques
 
-```text
-portfolio-autocad-engenharia-eletrica/
-├── AGENTS.md
-├── README.md
-├── LICENSE
-├── portfolio.toml
-├── package.json
-├── requirements.txt
-├── relatorio-ferramentas.md
-├── docs/
-│   ├── padrao-grafico.md
-│   ├── criterios-tecnicos.md
-│   └── plano-projetos.md
-├── templates/
-│   ├── template-a3.dxf
-│   ├── template-a3.svg
-│   └── carimbo-a3/
-│       ├── carimbo-a3.dxf
-│       └── carimbo-a3.svg
-├── scripts/
-│   ├── construir.py
-│   ├── gerar_template_a3.py
-│   ├── renderizar.py
-│   ├── validar_portfolio.py
-│   ├── autocad_console.ps1
-│   └── portfolio_config.py
-├── renders/
-│   ├── template-a3.pdf
-│   ├── template-a3.png
-│   └── manifesto.json
-├── 01-painel-motor-inversor/
-│   ├── fonte/                   # seis DXFs e gerador reproduzível
-│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial e critérios
-│   ├── lista-cabos.csv
-│   └── lista-materiais.csv
-├── 02-projeto-eletrico-residencial/
-│   ├── fonte/                   # oito DXFs, gerador e validador matemático
-│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios e memória de cálculo
-│   ├── quadro-cargas.csv, lista-pontos.csv
-│   └── lista-materiais.csv
-├── 03-painel-automacao-clp/
-│   ├── fonte/                   # oito DXFs, gerador e validador lógico
-│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, sequência e pseudocódigo
-│   └── listas de I/O, bornes, cabos e materiais
-├── 04-controle-nivel-reservatorio/
-│   ├── fonte/                   # seis DXFs, gerador e validador funcional
-│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, filosofia e estratégia PI
-│   └── listas de instrumentos, I/O, bornes, cabos e materiais
-├── 05-instalacao-eletrica-industrial/
-│   ├── fonte/                   # sete DXFs e geradores Python/JavaScript
-│   ├── exports/                 # sete conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios e memória de cálculo
-│   └── quadros, alimentadores, cabos, materiais e workbook técnico
-├── 06-centro-controle-motores/
-│   ├── fonte/                   # sete DXFs, gerador e validador de integração
-│   ├── exports/                 # sete conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, memória e sequência
-│   └── cargas, alimentador, cabos, bornes e materiais
-├── 07-arquitetura-veiculo-eletrico/
-│   ├── fonte/                   # oito DXFs, gerador e validador de arquitetura
-│   ├── exports/                 # oito conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, memória e estratégias de controle
-│   └── parâmetros, sinais, rede CAN, cabos e materiais
-├── 08-sistema-fotovoltaico/
-│   ├── fonte/                   # seis DXFs, gerador e validador fotovoltaico
-│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, memória e referências atuais
-│   └── parâmetros, módulos, proteções, cabos, cálculos e materiais
-├── 09-fonte-bancada/
-│   ├── fonte/                   # seis DXFs, gerador e validador eletromecânico
-│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, memória e referências atuais
-│   └── parâmetros, equipamentos, proteções, interligações, recortes e materiais
-├── 10-rede-instrumentacao-industrial/
-│   ├── fonte/                   # seis DXFs e scripts de geração, render e validação
-│   ├── exports/                 # seis conjuntos PDF/SVG/PNG
-│   ├── README.md, memorial, critérios, memória, filosofia e referências
-│   └── instrumentos, I/O, cabos, bornes, rede, alimentação e materiais
-└── projetos/                    # guia histórico de organização
-```
+| Painel com inversor — P01 | Projeto residencial — P02 |
+| --- | --- |
+| [![Diagrama unifilar do painel com inversor](01-painel-motor-inversor/exports/01_diagrama_unifilar.png)](01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf) | [![Planta de iluminação residencial](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png)](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf) |
+| Automação com CLP — P03 | Veículo elétrico — P07 |
+| [![Arquitetura do painel de automação com CLP](03-painel-automacao-clp/exports/01_arquitetura_automacao.png)](03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf) | [![Arquitetura geral do veículo elétrico](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png)](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf) |
 
-Por instruções explícitas, os Projetos 01 a 10 estão na raiz. O diretório
-`projetos/` conserva o guia de organização. Cada projeto possui README,
-memorial descritivo, critérios e premissas, lista de materiais CSV, fonte DXF e script
-em `fonte/`, além de PDF, SVG e PNG em `exports/`.
+Veja a [galeria visual comentada](docs/galeria-visual.md) para acessar também os
+DXFs, SVGs e READMEs desses quatro projetos.
 
-## Preparação do ambiente
+## Competências demonstradas
 
-Requer Python 3.11 ou superior. No PowerShell, a partir da raiz do repositório:
+- elaboração de diagramas unifilares, multifilares, de comando, instrumentação,
+  bornes e interligações;
+- documentação de instalações residenciais e industriais em baixa tensão;
+- painéis de acionamento, automação, CLP e Centro de Controle de Motores;
+- rastreabilidade de I/O, tags, cabos, bornes, cargas, materiais e revisões;
+- cálculos acadêmicos de corrente, demanda, queda de tensão, controle, pré-carga,
+  sistemas fotovoltaicos e balanço de alimentação;
+- organização em layers, símbolos reutilizáveis, moldura e carimbo A3;
+- automação da geração, renderização, auditoria CAD e validação de consistência;
+- comunicação clara de premissas, limites, riscos e dependências de engenharia.
+
+## Tecnologias e formatos
+
+| Tecnologia ou formato | Uso no portfólio |
+| --- | --- |
+| AutoCAD / AcCoreConsole 2027 | abertura e auditoria independente dos DXFs |
+| DXF AC1027 / R2013 | fonte CAD principal, em milímetros |
+| Python, ezdxf e NumPy | geração e validação estrutural dos desenhos |
+| Matplotlib e Pillow | renderização vetorial e raster |
+| pypdf, PDFium e Poppler | validação e rasterização independente dos PDFs |
+| SVG e navegador Chromium | visualização vetorial e conferência cruzada |
+| CSV e XLSX | dados técnicos, cálculos e listas rastreáveis |
+| Git e PowerShell | reprodução, auditoria e histórico local |
+
+O ambiente verificado e suas limitações estão no
+[relatório de ferramentas](relatorio-ferramentas.md).
+
+### Política dos formatos
+
+- **DXF:** fonte editável e auditável; todos os desenhos usam AC1027/R2013.
+- **PDF:** uma página A3 paisagem por prancha, para leitura e impressão.
+- **SVG:** visualização vetorial com `viewBox` válido.
+- **PNG:** inspeção raster em 300 dpi no fluxo padrão.
+- **DWG:** opcional e ausente da entrega. Nunca é obtido por renomeação; só pode ser
+  gerado por conversão real, assinatura válida e reabertura/auditoria.
+
+## Como abrir e reproduzir
+
+Para consulta rápida, abra o PDF no leitor de sua preferência, o SVG em um navegador
+ou o PNG diretamente. Para edição, abra o DXF em AutoCAD 2013 ou posterior, ou em
+outro CAD com suporte comprovado a DXF AC1027. Consulte sempre as unidades e a revisão
+no carimbo.
+
+Requer Python 3.11 ou superior. No PowerShell, a partir da raiz:
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r .\requirements.txt
+npm install
 ```
 
-O workbook do Projeto 05 usa a dependência JavaScript fixada em `package.json`.
-Instale-a com o gerenciador Node disponível antes de executar o respectivo gerador.
-
-Se o launcher `py` não estiver disponível, use um executável Python 3.11+ encontrado no
-sistema para criar `.venv`. As dependências têm versões fixadas em
-[requirements.txt](requirements.txt).
-
-## Geração, renderização e validação
-
-Gerar novamente o template e o carimbo em DXF verdadeiro:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\gerar_template_a3.py --root .
-```
-
-Renderizar os artefatos declarados em `portfolio.toml` para visualização:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\renderizar.py --root . --dpi 300
-```
-
-Executar a validação normal:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\validar_portfolio.py --root .
-```
-
-Executar a validação estrita, na qual avisos também causam falha:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\validar_portfolio.py --root . --strict
-```
-
-Gerar uma saída JSON para análise automatizada:
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\validar_portfolio.py --root . --format json --report .\work\validacao.json
-```
-
-Executar a cadeia completa — geração, renderização e validação:
+Reconstrução completa e validação estrita:
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\construir.py --root . --strict
 ```
 
-Os comandos acima descrevem o fluxo esperado; não constituem, por si só, afirmação de
-que uma execução ainda não registrada foi aprovada. Consulte a saída mais recente do
-validador e faça também a inspeção visual.
-
-Quando o AutoCAD estiver instalado, auditar a abertura pelo console headless:
+Auditorias complementares da revisão consolidada:
 
 ```powershell
-.\scripts\autocad_console.ps1 -Action Audit -InputPath .\templates\template-a3.dxf
+.\.venv\Scripts\python.exe .\scripts\revisar_portfolio.py --root .
+node .\scripts\revisar_workbooks.mjs --root .
 ```
 
-Uma conversão DWG opcional exige saída nova e gera evidencia JSON ao lado do
-arquivo. Use `work/` para um teste que não sera versionado:
+O `npm install` prepara o `@oai/artifact-tool` 2.8.59, fixado em `package.json`,
+para a geração e a revisão dos workbooks. O gerador de cada projeto e seus comandos
+específicos constam no README individual.
 
-```powershell
-.\scripts\autocad_console.ps1 -Action Convert `
-  -InputPath .\templates\template-a3.dxf `
-  -OutputDwg .\work\template-a3-verificacao.dwg
+## Validação e relatórios
+
+A revisão consolidada aprovou a estrutura, os dados e os formatos do portfólio. Foram
+reconstruídas as 68 pranchas, auditados 70 DXFs no AutoCAD, reabertos os PDFs,
+renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
+
+- [Relatório de validação](relatorio-validacao.md)
+- [Revisão técnica](relatorio-revisao-tecnica.md)
+- [Revisão visual](relatorio-revisao-visual.md)
+- [Inventário de arquivos](inventario-arquivos.md)
+- [Critérios técnicos](docs/criterios-tecnicos.md)
+- [Padrão gráfico](docs/padrao-grafico.md)
+- [Plano dos dez projetos](docs/plano-projetos.md)
+
+O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
+layers, dimensões, moldura, elementos fora da folha, textos potencialmente
+sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
+DWG. Os validadores P02–P10 acrescentam invariantes técnicos próprios; P01 é coberto
+pelo validador comum e pela auditoria consolidada.
+
+## Estrutura resumida
+
+```text
+portfolio-autocad-engenharia-eletrica/
+├── 01-painel-motor-inversor/ ... 10-rede-instrumentacao-industrial/
+│   ├── fonte/                  # DXFs e scripts-fonte
+│   ├── exports/                # PDF, SVG e PNG
+│   ├── README.md, memorial, critérios e memórias
+│   └── listas CSV e relatórios processáveis
+├── docs/                       # padrão, critérios, plano e galeria
+├── templates/                  # template e carimbo A3 em DXF/SVG
+├── renders/                    # visualizações do template e manifesto
+├── scripts/                    # geração, renderização, revisão e validação
+├── tests/                      # testes automatizados do validador
+├── AGENTS.md
+└── portfolio.toml
 ```
 
-O script executa `SAVEAS`, verifica a assinatura binaria e reabre o resultado no
-AcCoreConsole. A disponibilidade observada esta documentada no
-[relatorio de ferramentas](relatorio-ferramentas.md).
+## Limites de uso
 
-## Artefatos-base
+Os valores, topologias e componentes são acadêmicos, fictícios ou premissas
+declaradas. A documentação não inclui levantamento de campo, seleção final de
+fabricantes, responsabilidade técnica, certificação, aprovação de concessionária,
+análise de risco completa, coordenação integral de proteção ou liberação executiva.
 
-- [Template A3 em DXF](templates/template-a3.dxf), fonte principal editável.
-- [Template A3 em SVG](templates/template-a3.svg), visualização vetorial.
-- [Template A3 em PDF](renders/template-a3.pdf), visualização para impressão.
-- [Template A3 em PNG](renders/template-a3.png), visualização raster.
-- [Carimbo A3 em DXF](templates/carimbo-a3/carimbo-a3.dxf) e
-  [carimbo A3 em SVG](templates/carimbo-a3/carimbo-a3.svg).
-- [Manifesto dos renders](renders/manifesto.json), com rastreabilidade dos derivados.
-
-Após qualquer mudança no template, regenere todos os derivados e abra o PNG, o PDF e o
-SVG. Confira especialmente bordas, carimbo, aviso, legenda, notas, alinhamentos e
-legibilidade. A validação automática complementa essa inspeção, mas não a substitui.
-
-## Projetos concluídos
-
-- [P01 - Painel de motor com inversor](01-painel-motor-inversor/README.md), com seis
-  pranchas separadas, documentos técnicos, listas CSV e validação registrada.
-- [P02 - Projeto elétrico residencial](02-projeto-eletrico-residencial/README.md), com
-  oito pranchas, quadro de cargas, memória de cálculo, três CSVs, auditoria no AutoCAD
-  2027 e validação estrita registrada.
-- [P03 - Painel de automação com CLP](03-painel-automacao-clp/README.md), com oito
-  pranchas, 16 DI, 16 DO, alternância de duas bombas, proteção contra funcionamento a
-  seco, documentação funcional, quatro CSVs e validações registradas.
-- [P04 - Controle de nível de reservatório](04-controle-nivel-reservatorio/README.md),
-  com seis pranchas, instrumentação de nível, 23 pontos de I/O, controle PI, VFD,
-  intertravamentos, cinco CSVs e validação funcional reproduzível.
-- [P05 - Instalação elétrica industrial](05-instalacao-eletrica-industrial/README.md),
-  com sete pranchas, 16 circuitos, quatro alimentadores, máquinas trifásicas,
-  iluminação, tomadas, eletrocalhas e memória de cálculo rastreável.
-- [P06 - Centro de Controle de Motores](06-centro-controle-motores/README.md), com
-  sete pranchas integrando partida direta, reversão intertravada e inversor com STO.
-- [P07 - Arquitetura elétrica de veículo elétrico](07-arquitetura-veiculo-eletrico/README.md),
-  com oito pranchas integrando tração HV, baixa tensão, pré-carga, intertravamentos,
-  CAN e as arquiteturas conceituais V/f e FOC para motor de indução.
-- [P08 - Sistema fotovoltaico residencial](08-sistema-fotovoltaico/README.md), com seis
-  pranchas, 12 módulos, duas strings independentes, proteções CC/CA, string box,
-  aterramento e conexão conceitual à rede.
-
-## Formatos
-
-| Formato | Papel no fluxo | Condição |
-|---|---|---|
-| DXF | fonte principal do desenho | AC1027/R2013 real, auditável e compatível com AutoCAD |
-| SVG | visualização vetorial | derivado do DXF |
-| PDF | visualização e impressão | derivado do DXF em A3 paisagem |
-| PNG | inspeção visual raster | derivado do DXF, 300 dpi no fluxo padrão |
-| DWG | saída opcional | somente conversão real e verificada |
-
-Nunca renomeie DXF para DWG. Um DWG só pode ser produzido quando houver AutoCAD, ODA
-File Converter ou outra ferramenta apropriada, seguido de verificação de formato e
-reabertura/auditoria. Sem essa cadeia, o portfólio entrega DXF, PDF, SVG e PNG.
-
-## O que o validador verifica
-
-O script [validar_portfolio.py](scripts/validar_portfolio.py) verifica integridade e
-auditoria de DXF, arquivos vazios, estrutura obrigatória, layers, PDFs, SVGs, PNGs,
-READMEs, links relativos, arquivos temporários, limites de folha, elementos fora da
-moldura e textos potencialmente sobrepostos. Também confere o manifesto e rejeita DWG
-incompatível com a política do repositório.
-
-O código de saída é `0` apenas quando o status é `PASS`; falhas de validação retornam
-`1`, e erro interno retorna `2`. Use `--strict` como critério de entrega e trate cada
-aviso como item de revisão visual ou técnica.
-
-## Série concluída
-
-Os dez projetos previstos estão concluídos. O [Projeto 10](10-rede-instrumentacao-industrial/README.md)
-fecha a série com uma rede acadêmica de instrumentação industrial, seis DXFs AC1027,
-18 derivados, tabelas estruturadas, memória de cálculo, filosofia de sinais,
-validação específica, auditoria no AutoCAD e inspeção visual.
-
-O próximo trabalho recomendado é uma auditoria consolidada de apresentação e o
-empacotamento de uma versão numerada do portfólio, preservando DXF como fonte e sem
-introduzir DWG sem conversão real e verificada.
-
-Não use os materiais como documentação executiva. Qualquer aplicação real exige revisão,
-dimensionamento, conformidade normativa e responsabilidade de profissional legalmente
-habilitado.
+Este repositório não contém CPF, RG, telefone ou endereço residencial do autor. As
+condições de reutilização estão em [LICENSE](LICENSE).

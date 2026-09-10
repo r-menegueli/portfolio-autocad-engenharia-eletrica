@@ -1,6 +1,6 @@
 # Padrao grafico do portfolio
 
-Este documento define a linguagem visual comum aos dez projetos planejados. O
+Este documento define a linguagem visual comum aos dez projetos do portfólio. O
 arquivo [`portfolio.toml`](../portfolio.toml) e a fonte de verdade legivel por
 maquina; divergencias entre este texto e a configuracao devem ser corrigidas antes
 de uma nova prancha.
@@ -99,8 +99,9 @@ referencia historica, nunca como conformidade vigente.
 ## Nomes e formatos
 
 - Pastas de projeto: `NN-nome-curto`, com numero de `01` a `10`.
-- Pranchas-fonte: `NN-nome-curto-PXX-RYY.dxf`.
-- Arquivos derivados conservam o mesmo nome-base e usam `.pdf`, `.svg` e `.png`.
+- Pranchas-fonte: `NN_nome_da_prancha.dxf`, com `NN` sequencial dentro do projeto.
+- Arquivos derivados conservam exatamente o mesmo nome-base e usam `.pdf`, `.svg`
+  e `.png`.
 - DXF e sempre a fonte CAD principal.
 - Um `.dwg` so pode surgir por conversao real e ser acompanhado da evidencia de
   reabertura; mudar apenas a extensao e proibido.
