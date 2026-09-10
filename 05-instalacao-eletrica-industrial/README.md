@@ -25,7 +25,7 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 - `alimentadores.csv`: consolidação dos quatro alimentadores;
 - `lista-cabos.csv` e `lista-materiais.csv`: rastreabilidade de rotas e quantitativos;
 - `tabelas-projeto-05.xlsx`: workbook técnico com fórmulas e auditoria;
-- `fonte/gerar_tabelas_05.mjs`: fonte reproduzível do workbook;
+- `fonte/gerar_tabelas_05.py`: fonte reproduzível do workbook;
 - `validacao-calculos.json` e `validacao.json`: resultados das validações específica e global;
 - `inspecao-visual.md`: registro da inspeção dos arquivos renderizados.
 
@@ -83,13 +83,13 @@ Na raiz do portfólio, execute:
 ```powershell
 .venv\Scripts\python.exe scripts\construir.py --root . --strict
 .venv\Scripts\python.exe scripts\validar_portfolio.py --root . --strict --report 05-instalacao-eletrica-industrial\validacao.json
-node 05-instalacao-eletrica-industrial\fonte\gerar_tabelas_05.mjs --root .
+.venv\Scripts\python.exe 05-instalacao-eletrica-industrial\fonte\gerar_tabelas_05.py --root .
 ```
 
-O comando Node pressupõe a dependência `@oai/artifact-tool` 2.8.59 instalada conforme
-o `package.json`; ambientes com módulos compartilhados podem informá-los por
-`--node-modules <diretório>`. O workbook confere as mesmas entradas usadas nos CSVs e
-nas pranchas. Nenhum DWG é fornecido; os DXFs AC1027 são as fontes principais.
+O workbook é gerado com `openpyxl` 3.1.5 a partir das mesmas entradas usadas nos CSVs
+e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps internos,
+permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
+são as fontes principais.
 
 Resultado registrado: validação específica `PASS` com 294 verificações; validação
 estrita do portfólio `PASS` com 200.489 verificações, zero erros e zero avisos.

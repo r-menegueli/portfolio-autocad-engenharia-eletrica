@@ -37,9 +37,10 @@ SOFTWARE.
 A licença Creative Commons Atribuição-NãoComercial 4.0 Internacional
 (CC BY-NC 4.0) aplica-se aos desenhos, modelos, pranchas, templates gráficos,
 documentos técnicos e acadêmicos, imagens, PDFs, SVGs, PNGs, arquivos CAD e
-listas de materiais. Isso inclui, em particular, o conteúdo de `docs/`,
-`templates/` e `projetos/`, exceto código incorporado que esteja claramente
-identificado como abrangido pela seção 1.
+listas de materiais. Isso inclui, em particular, o conteúdo documental e gráfico na
+raiz, em `docs/`, `templates/`, `renders/` e nas pastas de projeto numeradas de
+`01-painel-motor-inversor/` a `10-rede-instrumentacao-industrial/`, exceto scripts,
+testes, configurações e código incorporado abrangidos pela seção 1.
 
 Nos termos da CC BY-NC 4.0, é permitido compartilhar e adaptar esses materiais
 para fins não comerciais, inclusive acadêmicos, desde que seja atribuída a
@@ -69,4 +70,7 @@ aprovação por autoridade competente nem responsabilidade profissional.
 
 Marcas, fontes, bibliotecas, normas técnicas, símbolos ou outros materiais de
 terceiros permanecem sujeitos aos direitos e às licenças de seus respectivos
-titulares. Esta licença não concede direitos adicionais sobre esses materiais.
+titulares. Esta licença não concede direitos adicionais sobre esses materiais. As
+bibliotecas declaradas em `requirements.txt` não são redistribuídas neste repositório;
+seus nomes e versões servem apenas para instalação pelo gerenciador de pacotes e cada
+biblioteca conserva a própria licença.

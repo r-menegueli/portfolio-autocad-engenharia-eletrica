@@ -103,7 +103,6 @@ Requer Python 3.11 ou superior. No PowerShell, a partir da raiz:
 py -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install -r .\requirements.txt
-npm install
 ```
 
 Reconstrução completa e validação estrita:
@@ -116,12 +115,12 @@ Auditorias complementares da revisão consolidada:
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\revisar_portfolio.py --root .
-node .\scripts\revisar_workbooks.mjs --root .
+.\.venv\Scripts\python.exe .\scripts\revisar_workbooks.py --root .
 ```
 
-O `npm install` prepara o `@oai/artifact-tool` 2.8.59, fixado em `package.json`,
-para a geração e a revisão dos workbooks. O gerador de cada projeto e seus comandos
-específicos constam no README individual.
+Todas as dependências usadas pelos comandos públicos estão fixadas em
+`requirements.txt`. O gerador de cada projeto e seus comandos específicos constam no
+README individual.
 
 ## Validação e relatórios
 
@@ -132,6 +131,7 @@ renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
 - [Relatório de validação](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)
 - [Revisão visual](relatorio-revisao-visual.md)
+- [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
 - [Inventário de arquivos](inventario-arquivos.md)
 - [Critérios técnicos](docs/criterios-tecnicos.md)
 - [Padrão gráfico](docs/padrao-grafico.md)

@@ -13,7 +13,7 @@
 | Verificação | Escopo | Resultado |
 | --- | ---: | :---: |
 | Reconstrução completa | template, carimbo e 68 pranchas | PASS |
-| Validador comum estrito | 370.567 verificações | PASS |
+| Validador comum estrito | 370.584 verificações | PASS |
 | Validadores específicos | P02 a P10, 9 executáveis | PASS |
 | Auditoria consolidada | 10 projetos, 68 pranchas, 272 arquivos e 50 CSVs | PASS |
 | AutoCAD/AcCoreConsole | 70 DXFs abertos e auditados | 70/70 PASS |
@@ -44,7 +44,7 @@ Auditoria consolidada de arquivos, tabelas, carimbos e equivalência PDF/PNG:
 Auditoria somente leitura dos workbooks:
 
 ```powershell
-node .\scripts\revisar_workbooks.mjs --root .
+.\.venv\Scripts\python.exe .\scripts\revisar_workbooks.py --root .
 ```
 
 Testes e compilação:

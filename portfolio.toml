@@ -229,7 +229,7 @@ required_files = [
   "lista-materiais.csv",
   "tabelas-projeto-05.xlsx",
   "fonte/gerar_projeto_05.py",
-  "fonte/gerar_tabelas_05.mjs",
+  "fonte/gerar_tabelas_05.py",
   "fonte/validar_projeto_05.py",
   "validacao-calculos.json",
   "validacao.json",

@@ -7,6 +7,24 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 node_modules/
+.coverage
+htmlcov/
+
+# Segredos e credenciais locais (nunca versionar valores reais)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+credentials*.json
+secrets*.json
+tokens*.json
+.npmrc
+.pypirc
+.netrc
 
 # Arquivos temporarios de editores e do AutoCAD
 *.bak
@@ -19,6 +37,13 @@ node_modules/
 *.sv$
 ~$*
 .#*
+*.ac$
+*.err
+
+# Configuracoes locais de IDE
+.idea/
+.vscode/
+*.code-workspace
 
 # Sistema operacional
 .DS_Store
@@ -30,3 +55,5 @@ work/
 tmp/
 *.log
 ErrorReports/
+dist/
+*.bundle

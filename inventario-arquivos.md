@@ -14,13 +14,12 @@ Menegueli. A contagem considera os arquivos versionados após esta revisão e ex
 | PNG | 69 | 68 pranchas de projeto e template A3 |
 | CSV | 50 | entradas, cálculos, cabos, bornes e materiais |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
-| Markdown | 81 | READMEs, memoriais, critérios, memórias e relatórios |
-| JSON | 21 | validações, manifesto e metadados de dependência |
-| Python | 28 | geração, renderização, revisão, validadores e testes |
-| JavaScript MJS | 2 | geração/revisão de workbooks |
+| Markdown | 82 | READMEs, memoriais, critérios, memórias e relatórios |
+| JSON | 20 | validações e manifesto |
+| Python | 31 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
-| Outros arquivos de configuração/licença | 6 | Git, Python, Node, licença e configuração |
-| **Total versionado** | **470** | inventário final desta revisão |
+| Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
+| **Total versionado** | **471** | inventário após a preparação para publicação |
 
 Nenhum arquivo DWG integra o repositório.
 
