@@ -1,0 +1,25 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+GMG-01,1,un,Grupo moto-gerador diesel 250 kVA Standby / 200 kW 380-220V 60Hz 1800 rpm com cabine 75 dB,GMG-01,Alternador brushless com AVR e PMG
+QTA-01,1,un,Painel autoportante em chapa de aco 14 MSG IP54 1800x800x400 mm pintura RAL 7032,QTA-01,Com placa de montagem laranja RAL 2004
+USCA-01,1,un,Controlador microprocessado para grupo gerador e transferencia automatica LCD,USCA-01,Monitoramento trifasico rede e gerador
+DJ-REDE,1,un,Disjuntor caixa moldada tripolar 400 A Icu 25 kA 380 V,DJ-REDE,Protecao da entrada da concessionaria
+DJ-GER,1,un,Disjuntor caixa moldada tripolar 400 A Icu 16 kA disparador eletronico LSI,DJ-GER,Protecao principal do alternador
+K1-REDE,1,un,Contator de potencia tetrapolar 400 A AC-3 bobina 220 Vca 60 Hz,K1,Chaveamento da fonte rede
+K2-GER,1,un,Contator de potencia tetrapolar 400 A AC-3 bobina 220 Vca 60 Hz,K2,Chaveamento da fonte gerador
+INTER-MEC,1,cj,Mecanismo de intertravamento mecanico rigido para contatores K1 e K2,INT-MEC,Impede fechamento simultaneo das fontes
+TC-REDE,3,un,Transformador de corrente tipo janela 400/5 A 5 VA classe 1.0,TC-R1/R3,Medicao de corrente de rede na USCA
+TC-GER,3,un,Transformador de corrente tipo janela 400/5 A 5 VA classe 1.0,TC-G1/G3,Medicao de corrente do gerador na USCA
+CAR-BAT,1,un,Carregador inteligente de bateria automatico flutuante 12 Vcc / 5 A,CAR-01,Alimentado em 220 Vca pela rede
+BAT-12V,1,un,Bateria estacionaria/arranque selada AGM 12 Vcc 150 Ah 1000 CCA,BAT-01,Instalada na base do grupo gerador
+RES-AQ,1,un,Resistor de pre-aquecimento da agua do bloco com termostato 1000 W 220 V,R-AQ,Mantem motor aquecido a 45 C para partida rapida
+DPS-QTA,4,un,Dispositivo de protecao contra surtos Classe II 275 V 20/45 kA,DPS-01/04,Protecao do barramento de cargas essenciais
+FUS-CMD,8,un,Base seccionavel porta-fusivel com fusiveis cilindricos 2 A e 6 A gG,F1/F8,Protecao de tensao AC da USCA e comando
+BAR-CU,12,m,Barramento de cobre eletrolitico estanhado 40 x 5 mm e 30 x 5 mm,BAR-QTA,Barramentos R-S-T 500 A e N-PE 400 A
+ISOL-BT,16,un,Isolador de epoxi tipo castanha 1 kV M8 para barramentos,ISOL-BT,Fixacao de barramentos no QTA
+BOT-EMG,2,un,Botoeira de emergencia tipo cogumelo vermelho gira para destravar 2NF,S0-PAINEL/EXT,Porta do painel QTA e externo na cabine
+CH-SEL,1,un,Chave seletora comutadora 3 posicoes Manual-0-Automatico 22 mm,S1-MODO,Porta frontal do painel QTA
+SIN-LED,6,un,Sinalizador LED frontal 22 mm cores branco verde azul ambar laranja vermelho,H1/H6,Sinalizacao de status na porta do QTA
+TQ-DIESEL,1,un,Tanque de combustivel em polietileno 250 L com bacia de contencao 297 L,TQ-01,Integrado na base com sensor de nivel
+SIL-HOSP,1,un,Silencioso de escape tipo hospitalar atenuacao 32 dB DN 4 pol com flexivel inox,ESC-01,Descarga de gases de combustao
+AMORT-VIB,6,un,Amortecedor antivibratorio elastomerico de cisalhamento 800 kgf,VIB-01/06,Entre base do GMG e radier de concreto
+EXT-PQS,2,un,Extintor de incendio sobre rodas ou portatil PQS ABC 6 kg e CO2 6 kg,EXT-GMG,Seguranca contra incendio na sala do GMG

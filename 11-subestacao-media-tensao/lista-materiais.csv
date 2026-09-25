@@ -1,0 +1,24 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+TR-01,1,un,Transformador trifasico 500 kVA 13.8 kV / 380-220 V Dyn1 Z=4.5% a oleo mineral,TR-01,Inclui rele Buchholz 63 e termometro de oleo 49
+DJ-MT,1,un,Disjuntor tripolar a vacuo 17.5 kV / 630 A / 16 kA com bobina de abertura 125 Vcc,DJ-MT,Montagem em cubiculo de protecao primaria
+SEC-01,1,un,Chave seccionadora tripolar sob carga 17.5 kV / 630 A com lamina de aterramento,SEC-01,Intertravamento mecanico tipo Kirk com a porta
+RELE-50/51,1,un,Rele digital microprocessado de sobrecorrente ANSI 50/51/50N/51N,RELE-PROT,Alimentacao auxiliar 125 Vcc
+TC-MED,3,un,Transformador de corrente de medicao 15 kV 25-50/5 A classe 0.3C25,TC-MED,Padrao concessionaria
+TP-MED,3,un,Transformador de potencial de medicao 15 kV 13800/115 V classe 0.3P75,TP-MED,Padrao concessionaria
+TC-PROT,3,un,Transformador de corrente de protecao 15 kV 50-100/5 A classe 10B200,TC-PROT,Dedicado ao rele de sobrecorrente
+DPS-MT,3,un,Para-raios de media tensao polimero ZnO 12 kV / 10 kA,DPS-MT,Protecao contra surtos no ponto de entrega
+MUFLA-15,6,un,Terminacao mufla termocontratil unipolar interna 15 kV para cabo 50 mm2,MUFLA-01,Inclui kit de aterramento da blindagem
+ISOL-17,12,un,Isolador de pedestal em resina epoxi 17.5 kV NBI 95 kV,ISOL-MT,Suportacao de barramentos primarios
+BAR-MT,15,m,Barra chata de cobre eletrolitico 25 x 5 mm para media tensao,BAR-MT,Pintura nas cores normativas
+QGBT-01,1,un,Quadro Geral de Baixa Tensao 380/220 V barramento 1000 A IP54,QGBT-01,Compartimentado com barras N e PE
+DJ-GERAL,1,un,Disjuntor caixa aberta tripolar 800 A Icu 50 kA com disparador LSI,DJ-GERAL,Protecao geral de baixa tensao
+DPS-BT,4,un,Dispositivo de protecao contra surtos Classe I+II 275 V 12.5/40 kA,DPS-BT,Instalado na entrada do QGBT
+RET-125,1,cj,Fonte retificadora e banco de baterias seladas 125 Vcc 30 Ah,RET-AUX,Alimentacao auxiliar de comando e trip
+BEP-01,1,un,Barramento de Equipotencializacao Principal em cobre 50 x 6 mm,BEP,Fixado sobre isoladores na alvenaria
+HASTE-CW,8,un,Haste de aterramento aco cobreado 5/8 pol x 2.40 m camada 254 um,H-01/08,Malha de aterramento subterranea
+SOLDA-EXO,24,un,Conjunto de solda exotermica para conexoes cabo-haste e cabo-cabo 70 mm2,SOLDA,Conexoes permanentes na malha
+CX-SOLO,4,un,Caixa de inspecao de aterramento em concreto diam. 300 mm com tampa ferro,CX-TERRA,Para medicao periodica da malha
+CAP-FRANK,4,un,Captor terminal aereo em aco inox h=35 cm para SPDA,CAP-01/04,Instalado nos cantos da platibanda
+PORTA-P90,2,un,Porta corta-fogo metalica dupla P-90 com barra antipanico,PCF-01/02,Abertura para o exterior
+TAP-20KV,4,m2,Tapete isolante de borracha 20 kV espessura 6 mm NBR 14039,TAPETE,Piso em frente aos cubiculos
+EXT-CO2,2,un,Extintor de incendio portatil CO2 6 kg e PQS 6 kg BC,EXT-01/02,Protecao de combate a incendio

@@ -367,6 +367,48 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "11-subestacao-media-tensao"
+path = "11-subestacao-media-tensao"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-cabos.csv",
+  "fonte/gerar_projeto_11.py",
+  "fonte/renderizar_projeto_11.py",
+  "fonte/validar_projeto_11.py",
+  "validacao.json",
+]
+
+[[projects]]
+id = "12-grupo-gerador-qta"
+path = "12-grupo-gerador-qta"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 6
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "memoria-calculo.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-cabos.csv",
+  "fonte/gerar_projeto_12.py",
+  "fonte/renderizar_projeto_12.py",
+  "fonte/validar_projeto_12.py",
+  "validacao.json",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1132,3 +1174,137 @@ pdf = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf"
 png = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.png"
 require_a3 = true
 require_notice = true
+
+[[artifacts]]
+id = "p11-01-diagrama-unifilar-geral"
+kind = "sheet"
+title = "Projeto 11 - Diagrama unifilar geral"
+source = "11-subestacao-media-tensao/fonte/01_diagrama_unifilar_geral.dxf"
+svg = "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.svg"
+pdf = "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.pdf"
+png = "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-02-planta-baixa-subestacao"
+kind = "sheet"
+title = "Projeto 11 - Planta baixa da subestação"
+source = "11-subestacao-media-tensao/fonte/02_planta_baixa_subestacao.dxf"
+svg = "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.svg"
+pdf = "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.pdf"
+png = "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-03-cortes-detalhes-eletromecanicos"
+kind = "sheet"
+title = "Projeto 11 - Cortes e detalhes eletromecânicos"
+source = "11-subestacao-media-tensao/fonte/03_cortes_detalhes_eletromecanicos.dxf"
+svg = "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.svg"
+pdf = "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.pdf"
+png = "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-04-diagrama-funcional-protecao"
+kind = "sheet"
+title = "Projeto 11 - Diagrama funcional de proteção"
+source = "11-subestacao-media-tensao/fonte/04_diagrama_funcional_protecao.dxf"
+svg = "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.svg"
+pdf = "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.pdf"
+png = "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-05-malha-aterramento"
+kind = "sheet"
+title = "Projeto 11 - Malha de aterramento"
+source = "11-subestacao-media-tensao/fonte/05_malha_aterramento.dxf"
+svg = "11-subestacao-media-tensao/exports/05_malha_aterramento.svg"
+pdf = "11-subestacao-media-tensao/exports/05_malha_aterramento.pdf"
+png = "11-subestacao-media-tensao/exports/05_malha_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-06-spda-geral"
+kind = "sheet"
+title = "Projeto 11 - SPDA geral"
+source = "11-subestacao-media-tensao/fonte/06_spda_geral.dxf"
+svg = "11-subestacao-media-tensao/exports/06_spda_geral.svg"
+pdf = "11-subestacao-media-tensao/exports/06_spda_geral.pdf"
+png = "11-subestacao-media-tensao/exports/06_spda_geral.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-01-diagrama-unifilar-qta"
+kind = "sheet"
+title = "Projeto 12 - Diagrama unifilar geral do QTA"
+source = "12-grupo-gerador-qta/fonte/01_diagrama_unifilar_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.pdf"
+png = "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-02-diagrama-trifilar-potencia"
+kind = "sheet"
+title = "Projeto 12 - Diagrama trifilar de potência do QTA"
+source = "12-grupo-gerador-qta/fonte/02_diagrama_trifilar_potencia.dxf"
+svg = "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.svg"
+pdf = "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.pdf"
+png = "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-03-diagrama-funcional-comando"
+kind = "sheet"
+title = "Projeto 12 - Diagrama funcional de comando e USCA"
+source = "12-grupo-gerador-qta/fonte/03_diagrama_funcional_comando.dxf"
+svg = "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.svg"
+pdf = "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.pdf"
+png = "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-04-regua-bornes-interligacao"
+kind = "sheet"
+title = "Projeto 12 - Régua de bornes e interligação de campo"
+source = "12-grupo-gerador-qta/fonte/04_regua_bornes_interligacao.dxf"
+svg = "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.svg"
+pdf = "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.pdf"
+png = "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-05-layout-painel-qta"
+kind = "sheet"
+title = "Projeto 12 - Layout do painel do QTA"
+source = "12-grupo-gerador-qta/fonte/05_layout_painel_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/05_layout_painel_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/05_layout_painel_qta.pdf"
+png = "12-grupo-gerador-qta/exports/05_layout_painel_qta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-06-planta-instalacao-gmg"
+kind = "sheet"
+title = "Projeto 12 - Planta de instalação e detalhes do GMG"
+source = "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf"
+svg = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg"
+pdf = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf"
+png = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.png"
+require_a3 = true
+require_notice = true
+
+
