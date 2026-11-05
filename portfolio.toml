@@ -327,7 +327,7 @@ id = "09-fonte-bancada"
 path = "09-fonte-bancada"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -343,6 +343,7 @@ required_files = [
   "resultados-calculo.csv",
   "dimensionamento-regulador.csv",
   "dimensionamento-descarga.csv",
+  "dimensionamento-termico-parametrico.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_09.py",
   "fonte/validar_projeto_09.py",
@@ -1276,6 +1277,17 @@ source = "09-fonte-bancada/fonte/09_descarga_saida_parametrica.dxf"
 svg = "09-fonte-bancada/exports/09_descarga_saida_parametrica.svg"
 pdf = "09-fonte-bancada/exports/09_descarga_saida_parametrica.pdf"
 png = "09-fonte-bancada/exports/09_descarga_saida_parametrica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-10-matriz-perdas-termicas"
+kind = "sheet"
+title = "Projeto 09 - Matriz paramétrica de perdas e carga térmica"
+source = "09-fonte-bancada/fonte/10_matriz_perdas_termicas_parametrica.dxf"
+svg = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.svg"
+pdf = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.pdf"
+png = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.png"
 require_a3 = true
 require_notice = true
 

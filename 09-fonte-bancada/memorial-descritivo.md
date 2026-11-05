@@ -28,6 +28,15 @@ regulação, o limite inferior de U1 é 0,8 V. SH1 mede corrente no
 retorno e é distinto de RCS. X2 oferece bornes positivo e negativo flutuantes em
 relação ao chassi; X3 oferece conexão separada ao chassi/PE.
 
+## Sensibilidade paramétrica de perdas
+
+A prancha 10 calcula a potência de entrada e as perdas agregadas em PS1 e REG1 para
+uma saída de 150 W. A tabela cruza três eficiências hipotéticas de cada estágio; não
+representa uma fonte ou regulador selecionados, não caracteriza toda a faixa de
+operação e não prevê temperatura. Os valores servem para estudar o balanço de potência
+e mostrar a necessidade de obter curvas e perdas por componente. A estimativa de
+temperatura continua condicionada a dados térmicos, ventilação, gabinete e ensaio.
+
 ## Controle e medição
 
 RV1 ajusta tensão e RV2 ajusta o limite de corrente. S2 solicita habilitação de saída,

@@ -1,4 +1,4 @@
-"""Gera as nove pranchas DXF do Projeto 09 de forma determinística."""
+"""Gera as dez pranchas DXF do Projeto 09 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "09-fonte-bancada"
 PROJECT_DATE = "2026-11-05"
-REVISION = "03"
-SHEET_COUNT = 9
+REVISION = "04"
+SHEET_COUNT = 10
 
 
 @dataclass(frozen=True)
@@ -133,6 +133,16 @@ SHEETS = (
         "KD2: impedir fechamento com fonte externa conectada; permissivo e intertravamento a validar.\\P"
         "Verificar tolerância, derating, energia de pulso, repetição, temperatura e estados de falha. Não garante 0 V.",
         "V_INT: saída interna do REG1 | V_PORT: bornes X2 | R: resistência | C: capacitância equivalente",
+    ),
+    SheetSpec(
+        10,
+        "10_matriz_perdas_termicas_parametrica.dxf",
+        "MATRIZ PARAMÉTRICA DE PERDAS E CARGA TÉRMICA",
+        "Sensibilidade em POUT = 150 W; eficiências são cenários, não dados de fabricante",
+        "A matriz não prevê eficiência real nem temperatura de junção.\\P"
+        "Ploss agregado não substitui perdas por componente, curva térmica ou ensaio.\\P"
+        "Rtheta admissível, fluxo de ar, derating e limites térmicos seguem sem definição; sem liberação para montagem.",
+        "ηPS1: eficiência da fonte isolada | ηREG1: eficiência do buck | PLOSS: potência dissipada",
     ),
 )
 
@@ -692,6 +702,86 @@ def draw_output_discharge(layout, data: dict[str, list[dict[str, str]]]) -> None
     )
 
 
+def draw_thermal_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "CENÁRIOS DIDÁTICOS DE EFICIÊNCIA — NÃO REPRESENTAM CURVAS DE COMPONENTES", (210, 251), 1.25, "05_POTENCIA")
+
+    # Cascaded power flow separates losses in the isolated source from losses in the buck.
+    component(layout, 28, 218, 124, 241, "PS1", "36 V / 7 A / 252 W nominal", "04_EQUIPAMENTOS")
+    component(layout, 162, 218, 258, 241, "REG1", "BUCK CC/CV / 150 W máx.", "04_EQUIPAMENTOS")
+    component(layout, 286, 218, 392, 241, "X2 + CARGA", "VOUT × IOUT ≤ 150 W", "09_BORNES")
+    arrow(layout, (124, 229), (162, 229), "05_POTENCIA", "PIN REG1")
+    arrow(layout, (258, 229), (286, 229), "05_POTENCIA", "POUT")
+    centered(layout, "PLOSS PS1 = PIN PS1 − PIN REG1", (88, 212), 0.95, "05_POTENCIA")
+    centered(layout, "PLOSS REG1 = PIN REG1 − POUT", (210, 212), 0.95, "05_POTENCIA")
+    centered(layout, "CALOR TOTAL = PLOSS PS1 + PLOSS REG1", (338, 212), 0.95, "05_POTENCIA")
+
+    thermal = data["thermal"]
+    loss_by_eta = {
+        (row["eta_ps1"], row["eta_reg"]): row["p_loss_total_w"]
+        for row in thermal
+    }
+    matrix_rows = []
+    for eta_ps1 in ("0.88", "0.92", "0.96"):
+        matrix_rows.append((
+            f"{float(eta_ps1) * 100:.0f}%",
+            *(f"{float(loss_by_eta[(eta_ps1, eta_reg)]):.1f} W" for eta_reg in ("0.85", "0.90", "0.95")),
+        ))
+    table(
+        layout,
+        20,
+        200,
+        (37, 42, 42, 42),
+        ("ηPS1 \\ ηREG1", "85%", "90%", "95%"),
+        matrix_rows,
+        row_height=8.5,
+        text_height=1.25,
+    )
+
+    case_rows = []
+    for label, eta_ps1, eta_reg in (
+        ("BAIXA", "0.88", "0.85"),
+        ("CENTRAL", "0.92", "0.90"),
+        ("ALTA", "0.96", "0.95"),
+    ):
+        row = next(item for item in thermal if item["eta_ps1"] == eta_ps1 and item["eta_reg"] == eta_reg)
+        case_rows.append((
+            label,
+            f"{float(row['p_reg_in_w']):.1f}",
+            f"{float(row['p_loss_reg_w']):.1f}",
+            f"{float(row['p_loss_ps1_w']):.1f}",
+            f"{float(row['p_loss_total_w']):.1f}",
+            f"{float(row['margin_ps1_w']):.1f}",
+        ))
+    table(
+        layout,
+        204,
+        200,
+        (28, 32, 32, 32, 36, 38),
+        ("CASO", "PIN REG", "PLOSS REG", "PLOSS PS1", "PLOSS TOTAL", "MARGEM"),
+        case_rows,
+        row_height=8.5,
+        text_height=1.1,
+    )
+    centered(layout, "P em W | margem = 252 W − potência requerida na saída de PS1", (304, 158), 0.9, "02_TEXTO")
+
+    add_rect(layout, 20, 99, 202, 152, "12_LEGENDA")
+    left(layout, "RELAÇÕES DE POTÊNCIA", (24, 146), 1.25, "12_LEGENDA")
+    left(layout, "PIN_REG1 = POUT / ηREG1", (25, 139), 1.1)
+    left(layout, "PLOSS_REG1 = PIN_REG1 − POUT", (25, 133), 1.1)
+    left(layout, "PIN_PS1 = PIN_REG1 / ηPS1", (25, 127), 1.1)
+    left(layout, "PLOSS_PS1 = PIN_PS1 − PIN_REG1", (25, 121), 1.1)
+    left(layout, "PLOSS_TOTAL = PIN_PS1 − POUT", (25, 115), 1.1)
+    left(layout, "RθJA,req ≤ (Tj,proj − Tamb,proj) / PLOSS,componente", (25, 107), 1.0)
+
+    add_rect(layout, 212, 99, 400, 152, "12_LEGENDA")
+    left(layout, "DADOS PARA FECHAR A ANÁLISE TÉRMICA", (216, 146), 1.25, "12_LEGENDA")
+    left(layout, "• Curvas de perdas de PS1 e REG1 em V/I e temperatura.", (217, 139), 1.0)
+    left(layout, "• Perdas individuais em QH/QL, L1, shunt e passivos.", (217, 133), 1.0)
+    left(layout, "• Tj de projeto com margem; Tc, Rθ, placa/interface e derating.", (217, 127), 1.0)
+    left(layout, "• Ar interno, ambiente, ventilação e posição dos componentes.", (217, 121), 1.0)
+    left(layout, "• Ensaios nos extremos de VOUT/IOUT, carga e falhas.", (217, 115), 1.0)
+    left(layout, "Perda total não informa a temperatura de cada componente.", (217, 107), 1.0, "13_NOTAS")
+
 def draw_front_panel(layout, data: dict[str, list[dict[str, str]]]) -> None:
     x0, y0, width, height = 45.0, 105.0, 320.0, 150.0
     add_rect(layout, x0, y0, x0 + width, y0 + height, "11_ARQUITETURA")
@@ -932,6 +1022,7 @@ DRAWERS = {
     7: draw_regulator_topology,
     8: draw_regulator_predesign,
     9: draw_output_discharge,
+    10: draw_thermal_sensitivity,
 }
 
 
@@ -947,6 +1038,7 @@ def generate(root: Path) -> list[Path]:
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
         "discharge": read_rows(project, "dimensionamento-descarga.csv"),
+        "thermal": read_rows(project, "dimensionamento-termico-parametrico.csv"),
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

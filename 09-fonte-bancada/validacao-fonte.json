@@ -1,5 +1,5 @@
 {
-  "checks": 18696,
+  "checks": 18846,
   "errors": [],
   "results": {
     "airflow_effective_cfm": "10.000000",
@@ -10,7 +10,8 @@
     "materials": 42,
     "operating_envelope_points": 15351,
     "output_power_w": "150.000000",
-    "sheets": 9,
+    "sheets": 10,
+    "thermal_scenarios": 9,
     "wires": 31
   },
   "status": "PASS"

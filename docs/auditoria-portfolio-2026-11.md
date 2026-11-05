@@ -30,7 +30,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
-| P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck, pré-dimensionamento e estudo paramétrico separado para o nó interno e a porta X2. | KD1/RD1 e KD2/RD2 são apenas conceitos; capacitâncias, tensões máximas, V_SAFE, tempo, rating de pulso e intertravamento não estão definidos. A descarga não garante 0 V. Malhas, compensação, térmica, proteções e layout EMI seguem pendentes. | Especificar o cenário de uso e de fonte externa em X2, completar intertravamento e dimensionar/validar os dois ramos com dados de componente e falhas antes de simular ou montar. |
+| P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede e matriz de oito eventos de qualidade/falha de sinal. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
 | P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
@@ -105,11 +105,11 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 ## Limites e validação
 
 Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 537.428 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 98 pranchas, 392 arquivos gráficos e 70 CSVs, com similaridade mínima
+validação estrita aprovou 544.721 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 99 pranchas, 396 arquivos gráficos e 71 CSVs, com similaridade mínima
 PDF/PNG de 0,984061. As 12 folhas de contato foram regeneradas; revisei as composições
 P01 (oito folhas), P03 (dez), P04 (sete), P05 (nove), P06 (oito), P07 (nove), P08
-(sete), P10 (sete), P11 (sete) e P12 (oito).
+(sete), P09 (dez), P10 (sete), P11 (sete) e P12 (oito).
 O contato P02 foi conferido após a expansão para nove folhas. P02-01 foi conferida no
 PNG integral; P02-09 foi inspecionada em PNG integral e PDF rasterizado a 150 dpi. O
 AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs P02 e o validador específico passou em 63
@@ -146,7 +146,9 @@ em PNG integral a 300 dpi e em PDF rasterizado independentemente pelo Poppler a 
 também conferi o contato atualizado das oito folhas. Sua similaridade PDF/PNG foi
 0,984095. O navegador ainda não foi usado para conferir SVGs; essa etapa aguarda
 autorização do usuário. P02, P03 e P05 também foram abertos e auditados no AcCoreConsole;
-os demais projetos não foram reabertos no AutoCAD nesta revisão.
+P09 também foi auditado em 10/10 DXFs na revisão 04. Os demais projetos não foram
+reabertos no AutoCAD nesta revisão. Essas auditorias confirmam abertura/integridade CAD,
+sem validar projeto elétrico, dimensionamento ou conformidade normativa.
 O mesmo cuidado vale para FreeCAD, KiCad e uma IDE de CLP: seus artefatos não foram
 aprovados dentro dos aplicativos nativos.
 
@@ -163,8 +165,8 @@ Poppler a 150 dpi e na composição atual das dez folhas. Os doze itens são leg
 estão marcados `NÃO EXECUTADO`; o status não afirma resultados de campo. A planilha
 mantém como decisão pendente a resposta a sensor incoerente com bomba em marcha. O
 AcCoreConsole 2027 abriu e auditou os dez DXFs do P03, e o validador lógico passou em
-232 verificações. A revisão integral passou em 537.428 verificações; o revisor confirmou
-98 pranchas, 392 arquivos gráficos, 70 CSVs e similaridade mínima PDF/PNG de 0,984061.
+232 verificações. A revisão integral passou em 544.721 verificações; o revisor confirmou
+99 pranchas, 396 arquivos gráficos, 71 CSVs e similaridade mínima PDF/PNG de 0,984061.
 O SVG ainda aguarda inspeção visual no navegador, conforme a autorização pendente.
 
 ### Atualização P05-09 — revisão 03
@@ -173,5 +175,18 @@ A prancha foi conferida no PNG de produção a 300 dpi, no PDF rasterizado pelo 
 150 dpi e no contato das nove folhas P05. Fluxo e tabela cabem na folha; os doze grupos
 de dados continuam `PENDENTE`. O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs
 P05; o validador específico passou em 378 verificações. A validação estrita atual passou
-em 537.428 verificações e o revisor confirmou 98 pranchas, 392 arquivos gráficos e 70
+em 544.721 verificações e o revisor confirmou 99 pranchas, 396 arquivos gráficos e 71
 CSVs. A inspeção visual dos SVGs no navegador continua aguardando autorização.
+
+### Atualização P09-10 — revisão 04
+
+A matriz cruza nove pares de eficiência hipotéticos a POUT=150 W e separa perdas
+agregadas em PS1 e REG1. O cenário central totaliza 31,2 W; a varredura vai de 50,5 W
+a 14,5 W. Esses resultados são apenas balanços paramétricos, não medições, curvas de
+fabricante ou estimativas térmicas. A inspeção no PNG a 300 dpi, PDF rasterizado a 150
+dpi e contato atualizado das dez folhas não encontrou cortes ou colisões após mover os
+quadros inferiores para fora da área da legenda. O validador específico passou em
+18.846 verificações e o AcCoreConsole 2027 abriu/auditou 10/10 DXFs P09. A validação
+estrita passou em 544.721 verificações; o revisor confirmou 12 projetos, 99 folhas,
+396 arquivos gráficos, 71 CSVs e similaridade mínima PDF/PNG de 0,984061. A inspeção
+visual dos SVGs no navegador permanece aguardando autorização do usuário.

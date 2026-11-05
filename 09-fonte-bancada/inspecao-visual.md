@@ -95,3 +95,22 @@ PNGs de produção de 4.960 × 3.507 px a 300 dpi e nos PDFs rasterizados pelo P
   475.517 verificações, sem erros ou avisos.
 - A abertura visual dos SVGs no navegador continua pendente de autorização. O
   AutoCAD/AcCoreConsole e a simulação elétrica não foram executados nesta revisão.
+
+## Revisão 04 — 2026-11-05
+
+A prancha 10 foi inspecionada integralmente no PNG de produção de 4.960 × 3.507 px
+a 300 dpi e no PDF rasterizado pelo Poppler 26.07.0 a 150 dpi (2.481 × 1.754 px).
+O primeiro arranjo dos quadros inferiores avançava sobre a área da legenda; ele foi
+reposicionado antes da exportação final. Na versão atual, quadros, fórmulas, tabelas,
+notas, aviso e carimbo estão separados e não apresentam cortes ou sobreposição
+relevante. A tabela de cenários permanece legível em 150 dpi.
+
+- A matriz mostra nove pares de eficiência assumidos a POUT=150 W. Os totais variam
+  de 50,5 W no cenário de menor eficiência a 14,5 W no de maior eficiência; não são
+  medições, previsões ou resultados térmicos do equipamento.
+- A tabela divide perdas entre PS1 e REG1 e informa a margem nominal de 252 W de PS1.
+  A prancha também enumera os dados de componente, gabinete e ensaio que faltam para
+  estimar temperaturas.
+- O validador específico do P09 passou em 18.846 verificações, sem erros. O restante
+  da revisão do portfólio e a inspeção do contato atualizado estão registrados na
+  auditoria consolidada. Os SVGs continuam aguardando inspeção visual no navegador.

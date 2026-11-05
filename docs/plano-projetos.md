@@ -255,7 +255,8 @@ comandos, ventilação, painel frontal, gabinete, organização interna e PE de 
 
 **Pranchas e dados específicos.** Diagrama de blocos; diagrama elétrico; painel
 frontal; layout interno; detalhes mecânicos; interligações; parâmetros, cálculos,
-equipamentos, proteções, recortes, condutores e materiais em CSV.
+equipamentos, proteções, recortes, condutores, materiais e matriz paramétrica de
+perdas térmicas em CSV.
 
 **Marco de aceitação.** Seis DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
 tensões, correntes, potência, perdas, ventilação, tags, recortes e interligações,
@@ -263,6 +264,11 @@ sem apresentar o equipamento como certificado ou pronto para fabricação.
 
 **Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
 auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
+
+**Revisão 04 (2026-11-05).** Acrescentada a prancha 10 e uma matriz CSV com nove
+combinações hipotéticas de eficiência de PS1 e REG1 em POUT=150 W. O balanço mostra
+perdas agregadas e margem de potência, sem atribuir eficiências a componentes reais ou
+estimar temperaturas. Perdas por componente, Rθ, fluxo de ar e ensaios seguem pendentes.
 
 ## P10 — Rede acadêmica de instrumentação industrial
 

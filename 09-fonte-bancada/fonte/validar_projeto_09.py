@@ -34,6 +34,7 @@ SHEETS = (
     "07_topologia_regulador_cc_cv.dxf",
     "08_predimensionamento_buck.dxf",
     "09_descarga_saida_parametrica.dxf",
+    "10_matriz_perdas_termicas_parametrica.dxf",
 )
 REQUIRED_EQUIPMENT = {
     "X1", "PS1", "REG1", "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1",
@@ -108,6 +109,11 @@ SHEET_TERMS = {
         "R_INT_MIN", "R_PORT_MIN", "KD1", "KD2", "A DEFINIR",
         "FONTE EXTERNA CONECTADA", "NÃO GARANTE 0 V",
     ),
+    "10_matriz_perdas_termicas_parametrica.dxf": (
+        "CENÁRIOS DIDÁTICOS DE EFICIÊNCIA", "PS1", "REG1", "X2 + CARGA",
+        "PLOSS PS1", "PLOSS REG1", "PLOSS TOTAL", "MARGEM",
+        "DADOS PARA FECHAR A ANÁLISE TÉRMICA", "NÃO REPRESENTAM CURVAS DE COMPONENTES",
+    ),
 }
 WARNING = (
     "Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, "
@@ -153,6 +159,7 @@ def validate(root: Path) -> dict:
     calculations = read_rows(project / "resultados-calculo.csv")
     regulator_calculations = read_rows(project / "dimensionamento-regulador.csv")
     discharge_calculations = read_rows(project / "dimensionamento-descarga.csv")
+    thermal_calculations = read_rows(project / "dimensionamento-termico-parametrico.csv")
     errors: list[str] = []
     checks = 0
 
@@ -332,6 +339,40 @@ def validate(root: Path) -> dict:
         if key not in discharge_map or discharge_map[key]["formula"] != formula:
             errors.append(f"Equação paramétrica incorreta ou ausente em {key}.")
 
+    expected_eta_ps1 = {Decimal("0.88"), Decimal("0.92"), Decimal("0.96")}
+    expected_eta_reg = {Decimal("0.85"), Decimal("0.90"), Decimal("0.95")}
+    thermal_pairs = set()
+    checks += 4 + len(thermal_calculations) * 8
+    if len(thermal_calculations) != 9:
+        errors.append("dimensionamento-termico-parametrico.csv deve conter os nove cenários da matriz 3x3.")
+    for row in thermal_calculations:
+        eta_ps1 = decimal(row["eta_ps1"])
+        eta_reg = decimal(row["eta_reg"])
+        thermal_pairs.add((eta_ps1, eta_reg))
+        p_out_case = decimal(row["p_out_w"])
+        p_reg_in = p_out_case / eta_reg
+        p_loss_reg = p_reg_in - p_out_case
+        p_ps1_in = p_reg_in / eta_ps1
+        p_loss_ps1 = p_ps1_in - p_reg_in
+        expected_values = {
+            "p_out_w": Decimal(150),
+            "p_reg_in_w": p_reg_in,
+            "p_loss_reg_w": p_loss_reg,
+            "p_loss_ps1_w": p_loss_ps1,
+            "p_loss_total_w": p_ps1_in - p_out_case,
+            "margin_ps1_w": Decimal(252) - p_reg_in,
+        }
+        for field, expected in expected_values.items():
+            checks += 1
+            if not close(decimal(row[field]), expected, Decimal("0.00001")):
+                errors.append(f"Cenário térmico {row['cenario']} tem {field} divergente; esperado {expected}.")
+        if eta_ps1 not in expected_eta_ps1 or eta_reg not in expected_eta_reg:
+            errors.append(f"Eficiência fora da faixa de varredura no cenário térmico {row['cenario']}.")
+        if row["classificacao"] != "CENARIO_PARAMETRICO" or not row["observacao"]:
+            errors.append(f"Cenário térmico {row['cenario']} deve permanecer explicitamente paramétrico.")
+    if thermal_pairs != {(p, r) for p in expected_eta_ps1 for r in expected_eta_reg}:
+        errors.append("A matriz térmica deve cobrir as três eficiências de cada estágio sem pares duplicados.")
+
     checks += 10
     if p_out != Decimal(150):
         errors.append("Potência máxima de saída deve ser 150 W.")
@@ -492,6 +533,7 @@ def validate(root: Path) -> dict:
             "operating_envelope_points": operating_points,
             "output_power_w": f"{p_out:.6f}",
             "sheets": len(SHEETS),
+            "thermal_scenarios": len(thermal_calculations),
             "wires": len(interconnections),
         },
         "status": "PASS" if not errors else "FAIL",

@@ -2,7 +2,7 @@
 
 ## Fatos do artefato
 
-- São exigidas nove pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
+- São exigidas dez pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
   SVG e PNG.
 - A documentação deve incluir entrada e proteção, conversão, regulação, medição,
   conectores, comandos, ventilação, painel frontal e organização interna.
@@ -26,6 +26,13 @@
   ideais em `dimensionamento-descarga.csv`. C_INT_MAX, C_EXT_MAX, tensões máximas
   iniciais, V_SAFE, T_REQ e ratings dos componentes continuam pendentes; 30 V é só o
   limite nominal de ajuste proposto, não o máximo em falha ou transitório.
+- A revisão 04 varre POUT=150 W em nove pares de eficiência assumidos (ηPS1 de 88%,
+  92% e 96%; ηREG1 de 85%, 90% e 95%). São cenários de sensibilidade sem origem em
+  fabricante ou medição; a faixa não afirma o desempenho real do conjunto.
+- A potência dissipada em cada conversor é obtida por balanço ideal de potência. O
+  resultado agregado não distribui perdas entre semicondutores, indutor, shunt e
+  passivos e não permite estimar temperatura de junção. Rθ, limites térmicos, fluxo de
+  ar e derating dependem dos componentes e do gabinete finais.
 - KD1/RD1 e KD2/RD2 são blocos conceituais. O ramo KD2 exige porta isolada de toda
   fonte externa e um permissivo/intertravamento validado; não deve fechar se houver
   alimentação ou retorno de energia em X2. Não há alegação de tensão zero ou tempo de

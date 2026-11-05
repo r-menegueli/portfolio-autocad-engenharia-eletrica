@@ -1,0 +1,10 @@
+cenario,eta_ps1,eta_reg,p_out_w,p_reg_in_w,p_loss_reg_w,p_loss_ps1_w,p_loss_total_w,margin_ps1_w,classificacao,observacao
+01,0.88,0.85,150,176.470588,26.470588,24.064171,50.534759,75.529412,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+02,0.88,0.90,150,166.666667,16.666667,22.727273,39.393939,85.333333,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+03,0.88,0.95,150,157.894737,7.894737,21.531100,29.425837,94.105263,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+04,0.92,0.85,150,176.470588,26.470588,15.345269,41.815857,75.529412,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+05,0.92,0.90,150,166.666667,16.666667,14.492754,31.159420,85.333333,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+06,0.92,0.95,150,157.894737,7.894737,13.729977,21.624714,94.105263,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+07,0.96,0.85,150,176.470588,26.470588,7.352941,33.823529,75.529412,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+08,0.96,0.90,150,166.666667,16.666667,6.944444,23.611111,85.333333,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
+09,0.96,0.95,150,157.894737,7.894737,6.578947,14.473684,94.105263,CENARIO_PARAMETRICO,"Eficiências de varredura, sem curva OEM ou medição"
