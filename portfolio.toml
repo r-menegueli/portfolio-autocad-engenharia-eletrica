@@ -378,7 +378,7 @@ id = "11-subestacao-media-tensao"
 path = "11-subestacao-media-tensao"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -388,6 +388,7 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "lista-cabos.csv",
+  "dados-estudo-aterramento.csv",
   "fonte/gerar_projeto_11.py",
   "fonte/renderizar_projeto_11.py",
   "fonte/validar_projeto_11.py",
@@ -1322,6 +1323,17 @@ source = "11-subestacao-media-tensao/fonte/06_spda_geral.dxf"
 svg = "11-subestacao-media-tensao/exports/06_spda_geral.svg"
 pdf = "11-subestacao-media-tensao/exports/06_spda_geral.pdf"
 png = "11-subestacao-media-tensao/exports/06_spda_geral.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-07-plano-dados-aterramento"
+kind = "sheet"
+title = "Projeto 11 - Plano de dados para estudo de aterramento"
+source = "11-subestacao-media-tensao/fonte/07_plano_dados_estudo_aterramento.dxf"
+svg = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.svg"
+pdf = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.pdf"
+png = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.png"
 require_a3 = true
 require_notice = true
 

@@ -16,8 +16,8 @@
 | Corrente de curto-circuito no secundário ($I_{cc2}$) | 16,88 kA | calculada |
 | Dimensões externas da alvenaria | 6,00 x 4,00 m (24,00 m²) | premissa sem validação arquitetônica/civil |
 | Pé-direito interno útil | 3,50 m | premissa civil |
-| Resistividade aparente do solo ($\rho$) | 250 $\Omega\cdot\text{m}$ | hipótese não medida; sem uso para aprovar malha |
-| Resistividade da camada superficial ($\rho_s$) | não definida | não medida; não usar para validar segurança |
+| Resistividade aparente do solo ($\rho$) | não definida | depende de levantamento e interpretação do local |
+| Resistividade da camada superficial ($\rho_s$) | não definida | depende de material, espessura e evidência de campo |
 | Geometria/classificação do SPDA | retícula e captores esquemáticos | sem análise de risco ou verificação normativa |
 
 ## Critérios eletromecânicos e de segurança
@@ -37,6 +37,8 @@
 4. **Aterramento e SPDA:**
    - A prancha apresenta uma malha conceitual em cobre nu $70\text{ mm}^2$, a $0,60\text{ m}$, com 8 hastes de $5/8" \times 2,40\text{ m}$. Materiais e geometria ainda não foram dimensionados para um local real.
    - A topologia conceitual prevê um Barramento de Equipotencialização Principal (BEP); conexões e coordenação com o SPDA precisam de projeto e verificação.
+   - A revisão 02 remove da prancha 05 a estimativa aritmética sem dados medidos. Resistividade por profundidade, contribuição e tempo de falta, geometria real, GPR, tensões de toque/passo e potenciais transferidos continuam pendentes e foram rastreados em `dados-estudo-aterramento.csv`.
+   - A prancha 07 organiza evidências de entrada e entregáveis; nenhum valor é presumido e nenhum status de segurança/aprovação é atribuído.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

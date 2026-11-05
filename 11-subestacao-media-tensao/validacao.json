@@ -1,8 +1,9 @@
 {
   "project": "11-subestacao-media-tensao",
-  "sheets_checked": 6,
+  "sheets_checked": 7,
   "materials_count": 23,
   "cables_count": 17,
+  "grounding_inputs_count": 22,
   "errors": [],
   "status": "PASS"
 }

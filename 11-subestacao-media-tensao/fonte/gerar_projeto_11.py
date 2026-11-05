@@ -1,4 +1,4 @@
-"""Gera as seis pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
+"""Gera as sete pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "11-subestacao-media-tensao"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -97,10 +97,10 @@ SHEETS = (
         5,
         "05_malha_aterramento.dxf",
         "MALHA DE ATERRAMENTO E EQUIPOTENCIALIZACAO",
-        "Arranjo conceitual; estimativa preliminar sem estudo de seguranca",
-        "Anel perimetral externo e grade interna em cabo de cobre nu 70 mm2 a 0,60 m profundidade.\\P"
-        "8 hastes de aco cobreado 5/8 pol. x 2,40 m interligadas por solda exotermica.\\P"
-        "Estimativa geometrica simplificada R = 18,72 ohms, sem validacao de seguranca. Toque/passo pendentes.",
+        "Arranjo conceitual; resistividade e seguranca sem estudo",
+        "Anel e grade conceituais em cobre nu 70 mm2 a 0,60 m de profundidade.\\P"
+        "8 hastes 5/8 pol. x 2,40 m sao premissas, sem dimensionamento do local.\\P"
+        "Resistividade e dados de falta nao medidos; resistencia, GPR, toque e passo nao determinados.",
         "Cobre nu 70 mm2 | Haste 5/8\"x2,4m | Caixa de inspecao solo | BEP: barramento equipotencializacao",
         "1:75",
     ),
@@ -113,6 +113,16 @@ SHEETS = (
         "A folha nao declara conformidade normativa nem coordena DPS.",
         "Reticula ilustrativa | Descidas propostas | Captores esquematicos | DPS a especificar",
         "1:75",
+    ),
+    SheetSpec(
+        7,
+        "07_plano_dados_estudo_aterramento.dxf",
+        "PLANO DE DADOS PARA ESTUDO DE ATERRAMENTO",
+        "Subestacao 13,8 kV | entradas, analises e portoes de revisao",
+        "Resistividade do solo, corrente/tempo de falta e geometria final permanecem pendentes.\\P"
+        "Esta folha organiza evidencias necessarias; nao calcula nem aprova a malha.\\P"
+        "O valor hipotetico de solo e a estimativa aritmetica anteriores foram retirados do desenho.",
+        "ENTRADAS PENDENTES | EVIDENCIA DE CAMPO/FABRICANTE | NAO E CRITERIO DE APROVACAO",
     ),
 )
 
@@ -222,7 +232,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO DE ATERRAMENTO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -244,7 +254,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -260,7 +270,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -613,11 +623,11 @@ def draw_sheet_04(layout) -> None:
 # --- Desenho da Prancha 5: Malha de Aterramento e Equipotencializacao ---
 def draw_sheet_05(layout) -> None:
     add_rect(layout, 30, 100, 260, 256, "11_ARQUITETURA")
-    centered(layout, "PLANTA DA MALHA DE ATERRAMENTO (ANEL E QUADRICULAS)", (145, 249), 1.6, "11_ARQUITETURA", style=TITLE_STYLE)
+    centered(layout, "PLANTA DA MALHA DE ATERRAMENTO (ANEL E QUADRICULAS)", (145, 249), 1.6, "12_LEGENDA", style=TITLE_STYLE)
 
     # Subestacao civil no centro
     add_rect(layout, 80, 135, 200, 215, "11_ARQUITETURA")
-    centered(layout, "PROJECAO CIVIL DA SUBESTACAO", (160, 182), 1.25, "11_ARQUITETURA")
+    centered(layout, "PROJECAO CIVIL DA SUBESTACAO", (160, 182), 1.25, "12_LEGENDA")
 
     # Anel externo de aterramento
     add_rect(layout, 60, 115, 220, 235, "05_POTENCIA")
@@ -656,15 +666,83 @@ def draw_sheet_05(layout) -> None:
     # Premissas e limites: nao apresentar a estimativa como dimensionamento normativo.
     panel_box(layout, 275, 100, 402, 256, "LIMITES DO ESTUDO DE ATERRAMENTO", "SEM APROVACAO DE SEGURANCA", "12_LEGENDA")
     sections = [
-        (235, "DADOS DE ENTRADA (PREMISSAS)", "Solo homogeneo assumido: 250 ohm.m; geometria e camada superficial ainda nao medidas."),
-        (205, "ARRANJO DESENHADO", "Condutor Cu nu 70 mm2 a 0,60 m; 8 hastes 5/8 x 2,40 m; BEP conceitual."),
-        (175, "ESTIMATIVA ILUSTRATIVA", "Expressao geometrica simplificada: R aproximada = 18,72 ohms. Nao e criterio PASS."),
-        (145, "NAO FOI CALCULADO", "Corrente/tempo de falta, GPR e tensoes de toque e passo; sem estratificacao ou acoplamento."),
-        (115, "PROXIMA ETAPA", "Medir resistividade, confirmar dados de falta e executar estudo de seguranca por profissional habilitado."),
+        (235, "DADOS DE SOLO", "Resistividade, camadas e camada superficial nao foram medidas."),
+        (205, "ARRANJO ILUSTRATIVO", "Cu nu 70 mm2 e 8 hastes sao premissas, sem dimensionamento do local."),
+        (175, "RESULTADO DA MALHA", "Resistencia e elevacao de potencial nao determinadas; sem valor de aprovacao."),
+        (145, "POTENCIAIS", "GPR, toque, passo e transferencia ainda nao calculados."),
+        (115, "PROXIMA ETAPA", "Consolidar dados de campo e de falta conforme a prancha 07."),
     ]
     for y, heading, detail in sections:
         left_text(layout, heading, (280, y), 1.1, "12_LEGENDA", style=TITLE_STYLE)
         add_mtext(layout, detail, (280, y - 5), 116, 1.0, "02_TEXTO")
+
+
+# --- Desenho da Prancha 7: Dados para estudo de aterramento ---
+def draw_sheet_07(layout) -> None:
+    panels = [
+        (18, 140, "DADOS DE SOLO", "levantamento medido", [
+            "Resistividade por pontos/profundidades",
+            "Camadas e espessuras do perfil",
+            "Resistividade/camada superficial",
+            "Umidade e condicao sazonal",
+            "Relatorio, local e data do ensaio",
+        ]),
+        (149, 271, "FALTA E PROTECAO", "dados da rede e ajustes", [
+            "Corrente de falta e cenarios",
+            "Parcela que circula pela malha",
+            "Tempo de eliminacao rele + DJ",
+            "Aterramento do neutro da fonte",
+            "Fonte e rastreio de cada valor",
+        ]),
+        (280, 402, "GEOMETRIA E INTERFACES", "levantamento real/as-built", [
+            "Perimetro, cotas e zonas acessiveis",
+            "Malha, secoes e profundidades",
+            "Hastes, conexoes e condicoes",
+            "BEP e massas equipotencializadas",
+            "Cercas e metais que cruzam limites",
+        ]),
+    ]
+    for x0, x1, title, subtitle, items in panels:
+        panel_box(layout, x0, 184, x1, 256, title, subtitle, "12_LEGENDA")
+        for index, item in enumerate(items):
+            left_text(layout, item, (x0 + 4, 238 - index * 10), 1.38, "02_TEXTO")
+
+    arrow(layout, (141, 219), (148, 219), "08_CABOS")
+    arrow(layout, (272, 219), (279, 219), "08_CABOS")
+
+    flow = [
+        (18, 109, "LEVANTAR", "solo, falta e sitio"),
+        (116, 207, "MODELAR", "entradas rastreaveis"),
+        (214, 305, "VERIFICAR", "condutor e potenciais"),
+        (312, 402, "REVISAR", "memoria e criterios"),
+    ]
+    for x0, x1, title, detail in flow:
+        add_rect(layout, x0, 160, x1, 181, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, 173.5), 1.55, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+        centered(layout, detail, ((x0 + x1) / 2, 166), 1.25, "02_TEXTO")
+    for x1, x2 in ((109, 116), (207, 214), (305, 312)):
+        arrow(layout, (x1, 170.5), (x2, 170.5), "08_CABOS")
+
+    add_rect(layout, 18, 101, 402, 154, "12_LEGENDA")
+    centered(layout, "ENTREGAS PARA DECISAO DOCUMENTADA", (210, 149), 1.45, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "ANALISE / ENTREGAVEL", (79, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "DADO OU EVIDENCIA A ANEXAR", (239, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "STATUS", (368, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    line(layout, (18, 137), (402, 137), "12_LEGENDA")
+    line(layout, (143, 101), (143, 137), "12_LEGENDA")
+    line(layout, (335, 101), (335, 137), "12_LEGENDA")
+    deliverables = [
+        ("Modelo do solo", "Perfil medido, camadas e camada superficial"),
+        ("Corrente e tempo de falta", "Fonte, parcela na malha e tempo de eliminacao"),
+        ("Condutor e conexoes", "Material, secao, geometria e condicoes instaladas"),
+        ("GPR, toque, passo e transferencia", "Calculo rastreavel com criterios e geometria definida"),
+        ("Decisao tecnica", "Memoria, limites, revisao e evidencias anexas"),
+    ]
+    for index, (analysis, evidence) in enumerate(deliverables):
+        y = 132.5 - index * 7
+        left_text(layout, analysis, (22, y), 1.3, "02_TEXTO")
+        left_text(layout, evidence, (147, y), 1.3, "02_TEXTO")
+        centered(layout, "PENDENTE", (368, y), 1.3, "13_NOTAS", style=TITLE_STYLE)
 
 
 # --- Desenho da Prancha 6: SPDA Geral (NBR 5419) ---
@@ -739,6 +817,7 @@ DRAW_MAP = {
     4: draw_sheet_04,
     5: draw_sheet_05,
     6: draw_sheet_06,
+    7: draw_sheet_07,
 }
 
 
@@ -753,7 +832,7 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
-    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..6)")
+    parser.add_argument("--sheet", type=int, help=f"Gera apenas a prancha especificada (1..{len(SHEETS)})")
     return parser.parse_args()
 
 

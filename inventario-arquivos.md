@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 91 | 89 pranchas de projeto, template e carimbo |
-| PDF | 90 | 89 pranchas de projeto e template A3 |
-| SVG | 91 | 89 pranchas de projeto, template e carimbo |
-| PNG | 90 | 89 pranchas de projeto e template A3 |
-| CSV | 61 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
+| DXF | 92 | 90 pranchas de projeto, template e carimbo |
+| PDF | 91 | 90 pranchas de projeto e template A3 |
+| SVG | 92 | 90 pranchas de projeto, template e carimbo |
+| PNG | 91 | 90 pranchas de projeto e template A3 |
+| CSV | 62 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **587** | **189.722.536 bytes** nesta revisão |
+| **Total** | **592** | arquivos incluídos nesta revisão, sem caches nem saídas temporárias |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -37,12 +37,12 @@ Nenhum arquivo DWG integra o repositório.
 | P08 | 6 | 40 | 6 | 6 | 102 | 2 | 0 |
 | P09 | 9 | 55 | 6 | 9 | 210 | 2 | 0 |
 | P10 | 7 | 50 | 7 | 10 | 90 | 2 | 0 |
-| P11 | 6 | 36 | 6 | 2 | 40 | 1 | 0 |
+| P11 | 7 | 41 | 6 | 3 | 62 | 1 | 0 |
 | P12 | 8 | 45 | 6 | 3 | 48 | 1 | 0 |
-| **Total** | **89** | **546** | **83** | **61** | **1.056** | **21** | **2** |
+| **Total** | **90** | **551** | **83** | **62** | **1.078** | **21** | **2** |
 
 Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 89
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 90
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

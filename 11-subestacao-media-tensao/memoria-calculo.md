@@ -38,22 +38,19 @@ O disjuntor geral do QGBT deve possuir capacidade de interrupção ($I_{cu}$) su
 
 ---
 
-## 3. Estimativa geométrica preliminar da malha (não é dimensionamento)
+## 3. Estudo da malha: entradas requeridas, sem resultado numérico
 
-### 3.1 Parâmetros Geométricos e Geotécnicos
-* Área da malha: $A = 8,00\text{ m} \times 6,00\text{ m} = 48,00\text{ m}^2$.
-* Resistividade do solo: $\rho = 250\ \Omega\cdot\text{m}$.
-* Condutor da malha: Cobre nu $70\text{ mm}^2$ enterrado a $h = 0,60\text{ m}$.
-* Comprimento total de condutores horizontais: $L_c = 72,00\text{ m}$.
-* Número de hastes verticais de $2,40\text{ m}$ ($5/8"$): 8 hastes ($L_v = 8 \times 2,40 = 19,20\text{ m}$).
-* Comprimento total enterrado: $L_T = L_c + L_v = 72,00 + 19,20 = 91,20\text{ m}$.
+A revisão 02 retira a estimativa geométrica anterior porque área, resistividade, corrente de falta e condutores não foram medidos ou confirmados. Não há resistência de malha calculada ou medida e nenhum resultado de segurança pode ser inferido.
 
-### 3.2 Exemplo aritmético simplificado
-$$R_{malha} \approx \frac{\rho}{4 \times r_{eq}} + \frac{\rho}{L_T}$$
-Onde o raio equivalente $r_{eq} = \sqrt{\frac{A}{\pi}} = \sqrt{\frac{48}{\pi}} \approx 3,91\text{ m}$.
-$$R_{malha,est} \approx \frac{250}{4 \times 3,91} + \frac{250}{91,20} \approx 15,98 + 2,74 \approx 18,72\ \Omega$$
+O arquivo [`dados-estudo-aterramento.csv`](dados-estudo-aterramento.csv) mantém 22 entradas como `A DEFINIR/PENDENTE`. Antes de registrar resultados, obter e rastrear, no mínimo:
 
-O resultado de **18,72 Ω** é apenas a saída aritmética da expressão ilustrativa indicada, sem validação do método, modelo de camadas ou fator de acoplamento. Não é dimensionamento normativo, resistência medida, critério de aprovação ou evidência de segurança. O valor anterior de **3,85 Ω** não tinha cálculo rastreável e foi removido. Também não foram calculados elevação de potencial da malha nem tensões de toque e passo para uma corrente de falta, tempo de eliminação, geometria final e camada superficial medidos. O estudo de segurança e a validação por profissional habilitado permanecem pendentes.
+- perfil de resistividade do solo, camadas, resistividade e espessura da camada superficial e condição sazonal;
+- cenários de falta, parcela de corrente que entra na malha, fontes/retornos remotos e tempo de eliminação baseado na proteção selecionada;
+- levantamento do pátio, geometria e profundidade dos condutores, eletrodos, conexões, BEP, cercas e interfaces metálicas externas;
+- zonas de acesso e condições de superfície consideradas no estudo;
+- método, critérios, memória de cálculo e revisão técnica documentada.
+
+A folha 07 organiza esse fluxo. Ela não executa cálculos, define limites admissíveis ou declara segurança/aprovação. GPR, potenciais de toque, passo e transferência, resistência/impedância da malha e dimensionamento de condutores permanecem sem resultados até haver dados e critérios válidos.
 
 ---
 

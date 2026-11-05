@@ -26,7 +26,7 @@ A interligação entre os terminais secundários do transformador e o **QGBT** �
 
 ## 5. Malha de aterramento e SPDA
 
-A prancha mostra, como arranjo conceitual ainda não dimensionado, cabo de cobre nu de `70 mm²` a `0,60 m` de profundidade e `8 hastes` de `5/8" x 2,40 m`. Materiais, seção, espaçamento, conexões e equipotencialização não foram verificados para o local. Não há levantamento de resistividade, dados reais de falta, tempos de eliminação, cálculo de elevação de potencial nem verificação de tensões de toque e passo; a estimativa aritmética de `18,72 Ω` não valida segurança. A topologia mostra a intenção de interligar massas, blindagens e neutro ao **Barramento de Equipotencialização Principal (BEP)**, sem projeto de aterramento final.
+A prancha 05 mostra um arranjo conceitual ainda não dimensionado, com cabo de cobre nu de `70 mm²` a `0,60 m` e `8 hastes` de `5/8" x 2,40 m`. A revisão 02 remove a estimativa aritmética sem dados medidos; não há valor de resistência da malha, cálculo de elevação de potencial nem verificação de tensões de toque e passo. A prancha 07 organiza os dados de solo, falta, geometria e interfaces que ainda devem ser levantados. A topologia mostra a intenção de interligar massas, blindagens e neutro ao **Barramento de Equipotencialização Principal (BEP)**, sem projeto de aterramento final.
 
 O **SPDA** ilustra uma disposição conceitual com anel de cobertura, captores terminais e quatro descidas. O nível de proteção, o método, as distâncias, a equipotencialização e a necessidade de proteção não foram determinados por análise de risco nem validados para uma edificação real.
 

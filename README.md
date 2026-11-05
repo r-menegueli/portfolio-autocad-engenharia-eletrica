@@ -38,10 +38,10 @@ em [portfolio.toml](portfolio.toml).
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA e aterramento | 6 | [abrir](08-sistema-fotovoltaico/README.md) |
 | P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição, integração mecânica e descarga paramétrica | 9 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos, qualidade de sinais e causa–efeito | 7 | [abrir](10-rede-instrumentacao-industrial/README.md) |
-| P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
+| P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e plano de dados para estudo de aterramento/SPDA | 7 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e matriz causa–efeito | 8 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **89 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **90 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,11 +135,11 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 89 pranchas A3 de P01–P12. A validação estrita passou por 475.517
-verificações, sem erros ou avisos; o revisor visual confirmou 12 projetos, 89
-pranchas, 356 arquivos gráficos e 61 CSVs. Veja o [relatório de auditoria e
-limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
-limites técnicos.
+revisão cobre 90 pranchas A3 de P01–P12. A validação estrita passou por 480.701
+verificações, sem erros ou avisos; o revisor confirmou 12 projetos, 90 pranchas,
+360 arquivos gráficos e 62 CSVs, com similaridade mínima PDF/PNG de 0,9842. Veja o
+[relatório de auditoria e limitações](docs/auditoria-portfolio-2026-11.md) para
+escopo, conclusões visuais e limites técnicos.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)

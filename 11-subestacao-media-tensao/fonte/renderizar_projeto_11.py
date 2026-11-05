@@ -1,9 +1,10 @@
-"""Renderiza os seis artefatos do Projeto 11 (Subestacao de Media Tensao) para SVG, PDF e PNG."""
+"""Renderiza os artefatos do Projeto 11 (Subestacao de Media Tensao) para SVG, PDF e PNG."""
 
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import subprocess
 import sys
 
 
@@ -13,7 +14,6 @@ if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
 
 from portfolio_config import load_config  # noqa: E402
-from renderizar import artifact_bounds, render_document  # noqa: E402
 
 
 def main() -> int:
@@ -24,16 +24,24 @@ def main() -> int:
     root = args.root.resolve()
     config = load_config(root)
     artifacts = [item for item in config["artifacts"] if item["id"].startswith("p11-")]
-    if len(artifacts) != 6:
-        raise RuntimeError(f"esperados 6 artefatos P11; encontrados {len(artifacts)}")
+    expected_count = next(
+        project["sheet_count"]
+        for project in config["projects"]
+        if project["id"] == "11-subestacao-media-tensao"
+    )
+    if len(artifacts) != expected_count:
+        raise RuntimeError(f"esperados {expected_count} artefatos P11; encontrados {len(artifacts)}")
+    command = [
+        sys.executable,
+        str(root / "scripts" / "renderizar.py"),
+        "--root",
+        str(root),
+        "--dpi",
+        str(args.dpi),
+    ]
     for artifact in artifacts:
-        source = root / artifact["source"]
-        outputs = {kind: root / artifact[kind] for kind in ("svg", "pdf", "png")}
-        for out_path in outputs.values():
-            out_path.parent.mkdir(parents=True, exist_ok=True)
-        render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi, artifact)
-        print(f"Renderizado: {artifact['id']}")
-    return 0
+        command.extend(("--artifact", artifact["id"]))
+    return subprocess.run(command, cwd=root, check=False).returncode
 
 
 if __name__ == "__main__":

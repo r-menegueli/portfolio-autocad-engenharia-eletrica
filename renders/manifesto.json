@@ -1464,114 +1464,133 @@
     {
       "id": "p11-01-diagrama-unifilar-geral",
       "source": "11-subestacao-media-tensao/fonte/01_diagrama_unifilar_geral.dxf",
-      "source_sha256": "78b9f814e5760527378aa45d8074daedd1f6f92b45d72c74e954024f583461bf",
+      "source_sha256": "35459ee5f155a16023d368b66287633b2f42f69b3156ae8948d97d352637cb26",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.pdf",
-          "sha256": "eec11c47309aad893cc4eb8bbda16619cce234f8be2e5c61862175e164c72a5e"
+          "sha256": "620b69e40e16b08d27a701b65f50207ede77b90251a9f42671638fbdb063b773"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.png",
-          "sha256": "5da590327b13edb02606b36e6e74f99754b8499da37e9ef5fc82b45259adf42d"
+          "sha256": "93a7c49fa8beae4ba0d5000fe616b1127844616d1068a0a3d1e9eac331a803e6"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.svg",
-          "sha256": "277b0d1749012aac12cc4e2da5d948388cba22957a6064de90706761abdf3137"
+          "sha256": "94a44bbacbbf2e6d15b87e7f928b2ed6e738f7afd0a9e43ef8b3ebae516e99cd"
         }
       }
     },
     {
       "id": "p11-02-planta-baixa-subestacao",
       "source": "11-subestacao-media-tensao/fonte/02_planta_baixa_subestacao.dxf",
-      "source_sha256": "ca181aaa08cee67ac5c1b246b57053e8e0105b97350fc8181481028630170fb2",
+      "source_sha256": "dcf139eb930ec5861a0326a195cabd79cf0e71336cdce8359e529b25d344776f",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.pdf",
-          "sha256": "c0a478933478a4da6dcc3b608ca3ee6ca5dc9864793af80bae5bcafeae15b9a9"
+          "sha256": "19ba9c3f8f13943890e092718c1fe66f1dd1c80fa65f8cf9ed41400d2d01a561"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.png",
-          "sha256": "18ee7376d40645520b499274a29782310d2f3decfa70381e2966f46d465ec657"
+          "sha256": "673969cbceed600d73e8db26c3ed9fe8bea0aecccb8d645e04b83e13ff452eea"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.svg",
-          "sha256": "448973f5a21cbf50526a255f6cfcff1e7742cc8f7b216fab0ed274d9c912df68"
+          "sha256": "fb3bb0729db29f32df52ead411b9c2c598d87d520296be67e475936ed508d29c"
         }
       }
     },
     {
       "id": "p11-03-cortes-detalhes-eletromecanicos",
       "source": "11-subestacao-media-tensao/fonte/03_cortes_detalhes_eletromecanicos.dxf",
-      "source_sha256": "cfc5f665fce6e35c79b77ccbf3e3d5e6ed939b7f773f9988949d8e768bc93a48",
+      "source_sha256": "6a7448107a4dde43d17e68ee3fe4e2010f9bdd340431f874dd4844f3d09535ea",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.pdf",
-          "sha256": "020e1e7b0ce46f0f65fb60f244a67d546faabc2204fa88ad90dd6e55a38681bc"
+          "sha256": "e16c058003044bd83538fd3fd5e4bddd5073036e33eb82ec758ec986ef78f81e"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.png",
-          "sha256": "f39bbd46bcc366d3a9859260c98690b5b27ede7908f51f4af09266bd5f7f1a16"
+          "sha256": "2260ff544893aee1fa7abc9931dcc7a18ce3f9cb5980ce0bb9dec9ef27cf78cc"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.svg",
-          "sha256": "2b0da1a4312fdfe7fcd3667f6a0c112ef01037a7106b24094099fbc37a3e4154"
+          "sha256": "e59f807e2dfeed20a2a919d0ae7a95bd53051eb964ada4d7e192b4d6461e52ee"
         }
       }
     },
     {
       "id": "p11-04-diagrama-funcional-protecao",
       "source": "11-subestacao-media-tensao/fonte/04_diagrama_funcional_protecao.dxf",
-      "source_sha256": "e827c7408d8d28a81d54f1f403749325e33c311b6cdf2fd39c06983743344315",
+      "source_sha256": "beaabd1998627da17d6f9301a8779fe98ca45a92a08575ca9c619a9c9c405ef3",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.pdf",
-          "sha256": "b1c1b7aa5845615aefe2701bbc573fe75143be7484d426e1042b05e5dd1a9732"
+          "sha256": "7b2916f97b53c5dd25452426e4dd9c9433fdcf3e238aecd95a174e3c58178fc5"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.png",
-          "sha256": "19d782831c4d3488e8e39ccf7d2257a260e9ba9305063390c5a653226551307a"
+          "sha256": "c3a7ad39d66f9751a67af27e708b39b551b5e102456e4d3cd8b6031829db42a9"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.svg",
-          "sha256": "9aa04124638f55b704d42a3e56326aec536cac884af22efaa58e42f1a4f53e8b"
+          "sha256": "5d4b7c22c56a1119b1d4802de7732bbc9b57c88385cd917b59706c878e1c47a4"
         }
       }
     },
     {
       "id": "p11-05-malha-aterramento",
       "source": "11-subestacao-media-tensao/fonte/05_malha_aterramento.dxf",
-      "source_sha256": "ac077bf691ce768bbe82bdf134dd1c385b8f5794b7314abbb47412e0b0e11bd2",
+      "source_sha256": "f8e3c01e0c9a728a9f2ef2fe40cfeb6c59c9d06e888fc05ef72891f7187c01f3",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.pdf",
-          "sha256": "3cef4f53a1c0ab3a577a4233d1f7f4f0c4a4a23e1703471de01ff13b28edaa98"
+          "sha256": "0dacb99e9b8f09e9dedf7291eac9f4090913fa6f44dc3919f3571167615b935d"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.png",
-          "sha256": "3fd8b6770cb16b20427f682579d9a6c648f299e2f8d99e77a62829c25221ff1e"
+          "sha256": "3b06dadb7d6c98b90a4be7cc0ba18275187342dc335a003ea2bcf270f652b16d"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.svg",
-          "sha256": "0aaaa2a2bcc3158e70f65567aed0e1d81ccefb1a374ce6e339280938ace05eb3"
+          "sha256": "038707b956f39133c181c05a52f42009458724fc6faae4bdeb7d6447bddd5924"
         }
       }
     },
     {
       "id": "p11-06-spda-geral",
       "source": "11-subestacao-media-tensao/fonte/06_spda_geral.dxf",
-      "source_sha256": "f69a198c0afeb578fe2a586d85cd5194b5c67b14379c62354087faf8bb35a319",
+      "source_sha256": "791885f83c6aa6f02818ff881c892e0f0db279ba2fec12823eb6d00007339622",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.pdf",
-          "sha256": "554b433d3dc702820b615a82c8b4d00a6744e191fd0666163a3bd0c2abe82542"
+          "sha256": "d0548d2fe56c511af9ab70f4ccd97e1f39a2b9feaefdc93058c82ca99c009897"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.png",
-          "sha256": "35cae9ee7332c1fe4415a60f5487eb44d153dd865398d4ceb2d012efa7d926b2"
+          "sha256": "202c19ae2c0d4174e9fbbab7d76de80730d46dc390a0b50f5e87f25668d5655c"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.svg",
-          "sha256": "7bb06a267598ba98a518d37683958d420c359917fb2fa810731db56d7d79cee7"
+          "sha256": "23849cf3504e43660937c1c08d8630dbf444757942d3d637b2901ffa9bb9e68b"
+        }
+      }
+    },
+    {
+      "id": "p11-07-plano-dados-aterramento",
+      "source": "11-subestacao-media-tensao/fonte/07_plano_dados_estudo_aterramento.dxf",
+      "source_sha256": "c9fc3252d2a1af88f70f63a8bd6df2788632dcb869ae3cac14b7d202dba7ba32",
+      "outputs": {
+        "pdf": {
+          "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.pdf",
+          "sha256": "58cc14f062938648acc0eeb4c9c215506b689aafd2ddc95e0d14642b795f3510"
+        },
+        "png": {
+          "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.png",
+          "sha256": "be3b3960440de6920bb78313151076e82064609f2f985fcc27d9116ce5785e12"
+        },
+        "svg": {
+          "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.svg",
+          "sha256": "3bfff700173ad1888f3b8718638ca128db21a595d5b6057fee3cc98c3bc42ed6"
         }
       }
     },

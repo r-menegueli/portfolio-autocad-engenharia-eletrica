@@ -18,6 +18,7 @@ SHEETS = (
     "04_diagrama_funcional_protecao.dxf",
     "05_malha_aterramento.dxf",
     "06_spda_geral.dxf",
+    "07_plano_dados_estudo_aterramento.dxf",
 )
 REQUIRED_TAGS = {
     "TR-01",
@@ -31,7 +32,44 @@ REQUIRED_TAGS = {
     "BUCHHOLZ",
     "500 kVA",
     "13,8 kV",
+    "GPR",
 }
+REQUIRED_GROUNDING_INPUTS = {
+    "perfil_resistividade_solo",
+    "estratos_solo",
+    "resistividade_superficial",
+    "espessura_superficial",
+    "condicao_sazonal",
+    "corrente_falta_solo",
+    "fracao_corrente_malha",
+    "tempo_eliminacao",
+    "contribuicao_remota",
+    "aterramento_neutro_fonte",
+    "geometria_patio",
+    "limite_acessivel_malha",
+    "material_secao_condutor",
+    "profundidade_condutor",
+    "espacamento_condutores",
+    "hastes_quantidade_comprimento",
+    "conexoes_malha",
+    "interfaces_bep",
+    "interfaces_cercas",
+    "interfaces_metalicas_remotas",
+    "zonas_pessoas_acesso",
+    "criterios_metodo_revisao",
+}
+REQUIRED_SHEET_07_TERMS = (
+    "PLANO DE DADOS PARA ESTUDO DE ATERRAMENTO",
+    "DADOS DE SOLO",
+    "FALTA E PROTECAO",
+    "GEOMETRIA E INTERFACES",
+    "LEVANTAR",
+    "MODELAR",
+    "VERIFICAR",
+    "REVISAR",
+    "GPR, toque, passo e transferencia",
+    "PENDENTE",
+)
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -65,6 +103,7 @@ def main() -> int:
 
     errors: list[str] = []
     all_texts: list[str] = []
+    sheet_texts: dict[str, str] = {}
 
     for index, filename in enumerate(SHEETS, start=1):
         dxf_path = source_dir / filename
@@ -77,27 +116,43 @@ def main() -> int:
             errors.append(f"Erros de auditoria em {filename}: {len(audit.errors)}")
         text = extract_text(doc)
         all_texts.append(text)
-        expected_sheet = f"{index:02d}/06"
+        expected_sheet = f"{index:02d}/{len(SHEETS):02d}"
         if expected_sheet not in text:
             errors.append(f"Numeracao de prancha {expected_sheet} nao encontrada em {filename}")
+        sheet_texts[filename] = text
 
     combined_text = " ".join(all_texts)
     for tag in sorted(REQUIRED_TAGS):
         if tag not in combined_text:
             errors.append(f"Tag obrigatoria nao encontrada nas pranchas: {tag}")
 
+    sheet_07_text = sheet_texts.get("07_plano_dados_estudo_aterramento.dxf", "")
+    for term in REQUIRED_SHEET_07_TERMS:
+        if term not in sheet_07_text:
+            errors.append(f"Termo obrigatorio ausente na prancha 07: {term}")
+    sheet_05_text = sheet_texts.get("05_malha_aterramento.dxf", "")
+    if "18,72" in sheet_05_text or "250 ohm.m" in sheet_05_text.lower():
+        errors.append("A prancha 05 ainda apresenta valor aritmetico/solo hipotetico como entrada ativa.")
+
     materials = read_rows(project_dir / "lista-materiais.csv")
     cables = read_rows(project_dir / "lista-cabos.csv")
+    grounding_inputs = read_rows(project_dir / "dados-estudo-aterramento.csv")
     if len(materials) < 15:
         errors.append("Lista de materiais possui menos de 15 itens.")
     if len(cables) < 10:
         errors.append("Lista de cabos possui menos de 10 itens.")
+    input_tags = {row["parametro"] for row in grounding_inputs}
+    if len(grounding_inputs) != len(REQUIRED_GROUNDING_INPUTS) or input_tags != REQUIRED_GROUNDING_INPUTS:
+        errors.append("dados-estudo-aterramento.csv deve conter exatamente os 22 dados requeridos sem duplicatas.")
+    if any(row["valor"] != "A DEFINIR" or row["status"] != "PENDENTE" for row in grounding_inputs):
+        errors.append("Nenhum dado de levantamento de aterramento pode ser inferido sem evidencia de campo.")
 
     report = {
         "project": PROJECT_SLUG,
         "sheets_checked": len(SHEETS),
         "materials_count": len(materials),
         "cables_count": len(cables),
+        "grounding_inputs_count": len(grounding_inputs),
         "errors": errors,
         "status": "PASS" if not errors else "FAIL",
     }
@@ -109,7 +164,7 @@ def main() -> int:
         for err in errors:
             print(f"[ERRO] {err}")
         return 1
-    print(f"Validacao Projeto 11: PASS ({len(SHEETS)} pranchas, {len(materials)} materiais, {len(cables)} cabos)")
+    print(f"Validacao Projeto 11: PASS ({len(SHEETS)} pranchas, {len(materials)} materiais, {len(cables)} cabos, {len(grounding_inputs)} dados pendentes)")
     return 0
 
 
