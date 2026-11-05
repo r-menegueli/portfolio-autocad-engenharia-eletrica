@@ -144,7 +144,7 @@ id = "02-projeto-eletrico-residencial"
 path = "02-projeto-eletrico-residencial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -153,6 +153,7 @@ required_files = [
   "referencias-normativas.md",
   "inspecao-visual.md",
   "quadro-cargas.csv",
+  "rastreabilidade-ambientes.csv",
   "lista-pontos.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_02.py",
@@ -613,6 +614,17 @@ source = "02-projeto-eletrico-residencial/fonte/08_detalhes_aterramento.dxf"
 svg = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.svg"
 pdf = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.pdf"
 png = "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-09-rastreabilidade-ambientes-cargas"
+kind = "sheet"
+title = "Projeto 02 - Rastreabilidade de cargas por ambiente"
+source = "02-projeto-eletrico-residencial/fonte/09_rastreabilidade_ambientes_cargas.dxf"
+svg = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.svg"
+pdf = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.pdf"
+png = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.png"
 require_a3 = true
 require_notice = true
 

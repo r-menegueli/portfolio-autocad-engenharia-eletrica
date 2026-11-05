@@ -18,6 +18,11 @@ def rows_by(path: Path, key: str) -> dict[str, dict[str, str]]:
         return {row[key]: row for row in csv.DictReader(stream)}
 
 
+def read_rows(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
 def number(row: dict[str, str], key: str) -> Decimal:
     return Decimal(row[key].replace(",", "."))
 
@@ -27,6 +32,7 @@ def validate(root: Path) -> dict:
     circuits = rows_by(project / "quadro-cargas.csv", "circuito")
     points = rows_by(project / "lista-pontos.csv", "id")
     materials = rows_by(project / "lista-materiais.csv", "item")
+    room_rows = read_rows(project / "rastreabilidade-ambientes.csv")
     errors: list[str] = []
     checks = 0
 
@@ -58,6 +64,62 @@ def validate(root: Path) -> dict:
         table_value = number(circuits[tag], "potencia_aparente_va")
         if abs(point_totals[tag] - table_value) > Decimal("0.0002"):
             errors.append(f"{tag}: soma dos pontos {point_totals[tag]} VA difere do quadro {table_value} VA.")
+
+    room_by_name = {row["ambiente"]: row for row in room_rows}
+    room_by_point_name = {
+        row["ambiente_lista_pontos"]: row
+        for row in room_rows
+        if row["ambiente_lista_pontos"]
+    }
+    checks += 1
+    if len(room_rows) != 8:
+        errors.append(f"Rastreabilidade por ambiente: {len(room_rows)} linhas; esperadas 8.")
+    checks += 1
+    if len(room_by_name) != len(room_rows):
+        errors.append("Há nomes de ambiente duplicados na rastreabilidade.")
+    checks += 1
+    point_room_names = {row["ambiente"] for row in points.values()}
+    if set(room_by_point_name) != point_room_names or len(room_by_point_name) != len(
+        [row for row in room_rows if row["ambiente_lista_pontos"]]
+    ):
+        errors.append("Os ambientes da lista de pontos não têm correspondência única na rastreabilidade.")
+
+    declared_area = Decimal("0")
+    tracked_point_ids: list[str] = []
+    tracked_point_va = Decimal("0")
+    for room in room_rows:
+        dimensions_area = Decimal("0")
+        try:
+            for rectangle in room["dimensoes_adotadas_m"].split("+"):
+                width, height = (Decimal(value.strip()) for value in rectangle.split("x"))
+                dimensions_area += width * height
+        except (ValueError, ArithmeticError):
+            errors.append(f"{room['ambiente']}: dimensões inválidas em rastreabilidade.")
+        area = number(room, "area_declarada_m2")
+        declared_area += area
+        checks += 1
+        if abs(dimensions_area - area) > Decimal("0.0001"):
+            errors.append(f"{room['ambiente']}: área declarada {area} m² difere das dimensões {dimensions_area} m².")
+        checks += 1
+        if room["status"] != "PREMISSA":
+            errors.append(f"{room['ambiente']}: estado deve permanecer PREMISSA até haver levantamento.")
+        point_name = room["ambiente_lista_pontos"]
+        if not point_name:
+            continue
+        for point in points.values():
+            if point["ambiente"] == point_name:
+                tracked_point_ids.append(point["id"])
+                tracked_point_va += number(point, "potencia_total_va")
+
+    checks += 1
+    if declared_area != Decimal("75.00"):
+        errors.append(f"Área total dos ambientes: {declared_area} m²; esperados 75.00 m².")
+    checks += 1
+    if set(tracked_point_ids) != set(points) or len(tracked_point_ids) != len(points):
+        errors.append("As linhas da lista de pontos não estão rastreadas uma única vez por ambiente.")
+    checks += 1
+    if abs(tracked_point_va - sum(point_totals.values(), Decimal("0"))) > Decimal("0.0002"):
+        errors.append("A potência rastreada por ambiente difere da soma da lista de pontos.")
 
     installed = sum((number(row, "potencia_aparente_va") for row in circuits.values()), Decimal("0"))
     general = sum((number(circuits[f"C{index}"], "potencia_aparente_va") for index in range(1, 6)), Decimal("0"))
@@ -101,6 +163,10 @@ def validate(root: Path) -> dict:
             "total_demand_va": f"{demand:.5f}",
             "service_current_a": f"{service_current:.6f}",
             "point_totals_va": {tag: str(point_totals[tag]) for tag in sorted(point_totals)},
+            "room_count": len(room_rows),
+            "declared_area_m2": str(declared_area),
+            "tracked_points": len(tracked_point_ids),
+            "tracked_point_va": str(tracked_point_va),
         },
     }
     output = project / "validacao-matematica.json"

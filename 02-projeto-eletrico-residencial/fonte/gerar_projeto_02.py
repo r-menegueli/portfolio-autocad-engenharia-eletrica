@@ -1,9 +1,11 @@
-"""Gera as oito pranchas DXF do Projeto 02 de forma deterministica."""
+"""Gera as nove pranchas DXF do Projeto 02 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -35,7 +37,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "02-projeto-eletrico-residencial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -153,6 +155,15 @@ SHEETS = (
         "de solo, corrosão, conexões, ensaio e projeto específico.",
         "BEP: equipotencialização | PE: proteção | N: neutro | símbolo: terra",
     ),
+    SheetSpec(
+        9,
+        "09_rastreabilidade_ambientes_cargas.dxf",
+        "RASTREABILIDADE DE CARGAS POR AMBIENTE",
+        "Áreas e cargas atribuídas ligadas às tabelas de pontos e circuitos",
+        "Áreas, potências e uso são premissas acadêmicas.\\P"
+        "Substituir por planta levantada e cargas reais antes de redimensionar.",
+        "IDs remetem a lista-pontos.csv | circuitos remetem a quadro-cargas.csv",
+    ),
 )
 
 
@@ -252,7 +263,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72.0), (x, 94.0), "01_CARIMBO")
     for value, x in (("REV.", 239.0), ("DATA", 264.0), ("DESCRIÇÃO", 316.0), ("RESP.", 381.0)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("REVISAO VISUAL 01", 316.0), ("R.E.M.M.", 381.0)):
+    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("REVISÃO GRÁFICA 02", 316.0), ("R.E.M.M.", 381.0)):
         centered(layout, value, (x, 78.5), 1.7, "02_TEXTO")
 
 
@@ -274,7 +285,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -290,7 +301,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -355,19 +366,20 @@ def draw_floorplan(layout, *, dimensions: bool = False, room_details: bool = Fal
     window(layout, (124.0, 255.0), (143.0, 255.0))
 
     if room_details:
-        room_labels = (
-            ("SALA / JANTAR", (76.0, 145.0), "4,00 x 4,00 m"),
-            ("QUARTO 1", (76.0, 220.0), "4,00 x 3,50 m"),
-            ("COZINHA", (151.0, 133.0), "3,50 x 3,00 m"),
-            ("LAVANDERIA", (210.0, 133.0), "2,50 x 3,00 m"),
-            ("CIRCULAÇÃO", (176.0, 176.0), "6,00 x 1,00 m"),
-            ("BANHEIRO", (135.0, 208.0), "2,00 x 2,30 m"),
-            ("HALL", (135.0, 243.0), "2,00 x 1,20 m"),
-            ("QUARTO 2", (196.0, 220.0), "4,00 x 3,50 m"),
-        )
-        for name, point, size in room_labels:
-            centered(layout, name, (point[0], point[1] + 2.6), 1.9, "02_TEXTO")
-            centered(layout, size, (point[0], point[1] - 1.2), 1.35, "02_TEXTO")
+        room_positions = {
+            "Sala / jantar": (76.0, 145.0),
+            "Quarto 1": (76.0, 220.0),
+            "Quarto 2": (196.0, 220.0),
+            "Cozinha": (151.0, 133.0),
+            "Lavanderia": (210.0, 133.0),
+            "Circulação": (176.0, 176.0),
+            "Banheiro": (135.0, 208.0),
+            "Hall": (135.0, 243.0),
+        }
+        for room in read_csv_rows(PROJECT_DIR / "rastreabilidade-ambientes.csv"):
+            point = room_positions[room["ambiente"]]
+            centered(layout, room["ambiente"].upper(), (point[0], point[1] + 2.6), 1.9, "02_TEXTO")
+            centered(layout, f"{room['dimensoes_adotadas_m']} m", (point[0], point[1] - 1.2), 1.35, "02_TEXTO")
     else:
         for name, point in (
             ("SALA / JANTAR", (70.0, 135.0)), ("QUARTO 1", (70.0, 210.0)),
@@ -393,24 +405,21 @@ def draw_architecture(layout) -> None:
     centered(layout, "PLANTA-BASE ORIGINAL - ÁREA 75,00 m²", (135.0, 262.0), 1.8, "02_TEXTO")
     add_rect(layout, 248.0, 105.0, 402.0, 260.0, "12_LEGENDA")
     centered(layout, "QUADRO DE AMBIENTES", (325.0, 253.0), 2.4, "12_LEGENDA")
+    rooms = read_csv_rows(PROJECT_DIR / "rastreabilidade-ambientes.csv")
+    room_rows = [
+        (row["ambiente"], format_area(Decimal(row["area_declarada_m2"])), row["uso"])
+        for row in rooms
+    ]
+    room_rows.append(("TOTAL", format_area(sum((Decimal(row["area_declarada_m2"]) for row in rooms), Decimal("0"))), "m²"))
     draw_table(
         layout,
         254.0,
         244.0,
         (70.0, 25.0, 53.0),
         ("AMBIENTE", "ÁREA", "USO"),
-        (
-            ("Sala / jantar", "16,00", "social"),
-            ("Quarto 1", "14,00", "privativo"),
-            ("Quarto 2", "14,00", "privativo"),
-            ("Cozinha", "10,50", "serviço"),
-            ("Lavanderia", "7,50", "serviço"),
-            ("Banheiro", "4,60", "molhado"),
-            ("Circulação/hall", "8,40", "circulação"),
-            ("TOTAL", "75,00", "m²"),
-        ),
-        row_h=10.0,
-        text_h=1.55,
+        tuple(room_rows),
+        row_h=8.8,
+        text_h=1.45,
     )
     add_text(layout, "PREMISSAS", (254.0, 145.0), 2.2, layer="13_NOTAS", style=TITLE_STYLE)
     add_mtext(
@@ -704,6 +713,140 @@ def draw_grounding_details(layout) -> None:
               (288.0, 122.0), 106.0, 1.45, "13_NOTAS")
 
 
+def read_csv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
+def format_va(value: Decimal) -> str:
+    whole, fraction = f"{value:,.3f}".split(".")
+    return f"{whole.replace(',', ' ')},{fraction}"
+
+
+def format_area(value: Decimal) -> str:
+    return f"{value:.2f}".replace(".", ",")
+
+
+def draw_room_load_traceability(layout) -> None:
+    project_dir = PROJECT_DIR
+    rooms = read_csv_rows(project_dir / "rastreabilidade-ambientes.csv")
+    points = read_csv_rows(project_dir / "lista-pontos.csv")
+    room_by_point_name = {row["ambiente_lista_pontos"]: row for row in rooms}
+    totals = {
+        row["ambiente"]: {
+            "lighting_va": Decimal("0"),
+            "tug_va": Decimal("0"),
+            "tue_va": Decimal("0"),
+            "lighting_ids": [],
+            "tug_ids": [],
+            "tue_ids": [],
+            "lighting_circuits": set(),
+            "tug_circuits": set(),
+            "tue_circuits": set(),
+        }
+        for row in rooms
+    }
+
+    for point in points:
+        room = room_by_point_name.get(point["ambiente"])
+        if room is None:
+            raise ValueError(f"Ambiente sem correspondência na rastreabilidade: {point['ambiente']}")
+        bucket = totals[room["ambiente"]]
+        kind = point["tipo"]
+        amount = Decimal(point["potencia_total_va"])
+        token = f"{point['id']}x{point['quantidade']}"
+        if kind.startswith("Luminaria"):
+            family = "lighting"
+            bucket["lighting_va"] += amount
+        elif kind.startswith("TUG"):
+            family = "tug"
+            bucket["tug_va"] += amount
+        elif kind.startswith("TUE"):
+            family = "tue"
+            bucket["tue_va"] += amount
+        else:
+            raise ValueError(f"Tipo de ponto sem família de carga: {kind}")
+        bucket[f"{family}_ids"].append(token)
+        bucket[f"{family}_circuits"].add(point["circuito"])
+
+    add_rect(layout, 24.0, 153.0, 396.0, 254.0, "12_LEGENDA")
+    table_rows: list[tuple[str, ...]] = []
+    for room in rooms:
+        bucket = totals[room["ambiente"]]
+        light_va = bucket["lighting_va"]
+        tug_va = bucket["tug_va"]
+        tue_va = bucket["tue_va"]
+        total_va = light_va + tug_va + tue_va
+        light_ids = ";".join(bucket["lighting_ids"])
+        tug_ids = ";".join(bucket["tug_ids"])
+        tue_ids = ";".join(bucket["tue_ids"])
+        light_circuits = "/".join(sorted(bucket["lighting_circuits"]))
+        tug_circuits = "/".join(sorted(bucket["tug_circuits"]))
+        tue_circuits = "/".join(sorted(bucket["tue_circuits"]))
+        label = f"{room['ambiente']} {room['dimensoes_adotadas_m'].replace(' x ', 'x').replace(' + ', '+')}"
+        table_rows.append((
+            label,
+            format_area(Decimal(room["area_declarada_m2"])),
+            f"{light_circuits} {light_ids}".strip() or "—",
+            format_va(light_va),
+            f"{tug_circuits} {tug_ids}".strip() or "—",
+            format_va(tug_va),
+            f"{tue_circuits} {tue_ids}".strip() or "—",
+            format_va(tue_va),
+            format_va(total_va),
+        ))
+
+    area_total = sum((Decimal(row["area_declarada_m2"]) for row in rooms), Decimal("0"))
+    light_total = sum((item["lighting_va"] for item in totals.values()), Decimal("0"))
+    tug_total = sum((item["tug_va"] for item in totals.values()), Decimal("0"))
+    tue_total = sum((item["tue_va"] for item in totals.values()), Decimal("0"))
+    table_rows.append((
+        "TOTAL",
+        format_area(area_total),
+        "C1/C2",
+        format_va(light_total),
+        "C3/C4/C5",
+        format_va(tug_total),
+        "C6/C7/C8",
+        format_va(tue_total),
+        format_va(light_total + tug_total + tue_total),
+    ))
+    draw_table(
+        layout,
+        27.0,
+        248.0,
+        (52.0, 20.0, 50.0, 34.0, 50.0, 34.0, 48.0, 34.0, 40.0),
+        ("AMBIENTE / DIMENSÕES (m)", "m²", "LUZ C / IDs", "LUZ VA", "TUG C / IDs", "TUG VA", "TUE C / IDs", "TUE VA", "TOTAL VA"),
+        tuple(table_rows),
+        row_h=9.2,
+        text_h=1.25,
+    )
+    line(layout, (166.0, 112.0), (166.0, 151.0), "12_LEGENDA")
+    line(layout, (286.0, 112.0), (286.0, 151.0), "12_LEGENDA")
+    centered(layout, "CRITÉRIO", (92.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "VA e quantidades são premissas da lista-pontos.csv.\\P"
+        "Totais por ambiente somam as linhas identificadas por Lxx/Txx.",
+        (30.0, 136.0), 130.0, 1.35, "13_NOTAS",
+    )
+    centered(layout, "DADOS A SUBSTITUIR", (226.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "Planta arquitetônica levantada, vãos e cotas internas.\\P"
+        "Equipamentos, potências reais, uso e simultaneidade.",
+        (172.0, 136.0), 108.0, 1.35, "13_NOTAS",
+    )
+    centered(layout, "RASTREABILIDADE", (344.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "Lxx/Txx: lista-pontos.csv.\\P"
+        "C1-C8: quadro-cargas.csv.\\P"
+        "Nenhuma carga foi medida.",
+        (292.0, 136.0), 96.0, 1.35, "13_NOTAS",
+    )
+
+
 DRAWERS = (
     draw_architecture,
     draw_lighting,
@@ -713,6 +856,7 @@ DRAWERS = (
     draw_distribution_board,
     draw_load_schedule,
     draw_grounding_details,
+    draw_room_load_traceability,
 )
 
 

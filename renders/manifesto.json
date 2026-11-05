@@ -191,152 +191,171 @@
     {
       "id": "p02-01-planta-arquitetonica",
       "source": "02-projeto-eletrico-residencial/fonte/01_planta_arquitetonica.dxf",
-      "source_sha256": "eac9c95fb090f11c852ab15fc12ba4e0d109a63af365fb85aaec0917343d3946",
+      "source_sha256": "9df2920e1a45c031941dbb916973fb6b965a306d27ec6c1a9a310ef80fa6b80e",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.pdf",
-          "sha256": "95a8aebf9d10b6dd9cbdc8432974ad7c1e215602755dafa66033e60ce6076818"
+          "sha256": "4848c60029092c36ee1d689d26e086d3a505d9b8284dce8f81b5c6ecb5206dbf"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.png",
-          "sha256": "4706a02c88e0fffd820edf50ee4e826faf956d6a6d891d40631e8b7022b7ee67"
+          "sha256": "034fc0e481962e75bd00e8592ff74aa879adac2b60a427389fe36ffbdcf1d34b"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.svg",
-          "sha256": "3b73274b7474c4276c70c610e7703f97864632bfd5f82f45f7f3342b132f47a3"
+          "sha256": "fc4e86b429bb791061f1a82fa5b8423aec9bae28e9fa27e9214706e24aaaa370"
         }
       }
     },
     {
       "id": "p02-02-planta-iluminacao",
       "source": "02-projeto-eletrico-residencial/fonte/02_planta_iluminacao.dxf",
-      "source_sha256": "6c6e2344b0e8467d8ec729444b81fb9c61a5728a178f8620b195949d352d7eb1",
+      "source_sha256": "86108790010177c399463515864fdb17619d0dae9164b2063642c3717e0b5157",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf",
-          "sha256": "504d0e56178f71fc3387616d874b5419bfc972556d80420300cedce685b83ff9"
+          "sha256": "9d63a387bf1ce0eba74f924e79bc67e98e3f6d8e85c5955f071a42acf0ac1c4a"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png",
-          "sha256": "f80da30964c22d8543e7e6e6596c90605ed35e5e6be3bc5ec9642408b7205976"
+          "sha256": "be02838375990ef70b36e79a4a63192341209a301c6ba513435325bc96d3748f"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.svg",
-          "sha256": "29475880390c0af8907076ef406f3ef6cdb5c73f28c0abc78991329a2bdb6426"
+          "sha256": "43b10ac715e336c91170c0aa1089adcb6ad0c7e384a01aae7e36ae2019d25821"
         }
       }
     },
     {
       "id": "p02-03-planta-tomadas",
       "source": "02-projeto-eletrico-residencial/fonte/03_planta_tomadas.dxf",
-      "source_sha256": "4aea9b5efd886bcfa0df346e82f04f9970eeff848d512a58df4f063c7f6df841",
+      "source_sha256": "48579a003e72ff9027096cffcd602639cb99ee867004c31f566fe4bd590116cd",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/03_planta_tomadas.pdf",
-          "sha256": "0efcf6aeb5c23ad38d770e9356c09ee382de058baf4d4c9876cd2aa00f84b5ac"
+          "sha256": "f59ab459a3d9eeef3e050f70af4e4a5d589710e41626b9419e070b9fa3a6f15d"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/03_planta_tomadas.png",
-          "sha256": "671f8eedba8a1a5140510aad80f197ed0fb40952e4234e04476056b3c45cd9af"
+          "sha256": "ec186bdfce29c3521dc5c2f80fc98153b82d1918b27f626d335452bd25950f6f"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/03_planta_tomadas.svg",
-          "sha256": "1a66899f5974e707850a2b424e099b10eb47fd9da973b0bb8b02e8543bad7993"
+          "sha256": "f4030c55cf02407d4547be6638128e9101e6f2f3bfb20494a8527f38902e107d"
         }
       }
     },
     {
       "id": "p02-04-planta-eletrodutos",
       "source": "02-projeto-eletrico-residencial/fonte/04_planta_eletrodutos.dxf",
-      "source_sha256": "1ba1f21266b416ab6d27cc3fae8720431c55ff378b11e277d2ced97780347cd0",
+      "source_sha256": "d3c2606a768c109c64582f1821ec9eee333240edafa7b0ba58e2936b68676b85",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.pdf",
-          "sha256": "55552df8a07b805bdd79d8994645616f3fd7dc7fbf2f327a6d666a4a02eadd1d"
+          "sha256": "660de6c5d1d671ec5fab8d7788ff0d5882169717a84120a08f7800e754af224e"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.png",
-          "sha256": "648593337b5c1dc5fe83177a0a8dd75241b1932ef25b6c031267d70fb1490227"
+          "sha256": "f7eca307cf65b3050bb9a94e0aabb9052eda01f688c478f37af092cb5552bcee"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.svg",
-          "sha256": "a8d5115f57d1bcc904101cca4829692e0a3736680620ed9bb3476c2cd1486f21"
+          "sha256": "706cbbed820367340f4ca0fe4b6445108acc3c99814f381c3d36ccf11aabf09d"
         }
       }
     },
     {
       "id": "p02-05-diagrama-unifilar",
       "source": "02-projeto-eletrico-residencial/fonte/05_diagrama_unifilar.dxf",
-      "source_sha256": "3ff103ce9a0ba29bc4431535269e427d1dfb6c68b38d12a82be0db8d06150987",
+      "source_sha256": "53d97ff76b442b95e41114a0fe04fc22f1eee6eb279b233cfb68363d98a50c96",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.pdf",
-          "sha256": "3905422359380c39e52e0aadf5eb6f140536de8fdefa960420be405979023fdf"
+          "sha256": "9550480f8a563ff125d2fb62fb6258b6d8e146135244d860af41484096a0e2af"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.png",
-          "sha256": "f8a927092016770f993d1ea0d434f50f18046341f613a2083e67eac59f0afc7d"
+          "sha256": "914dc56cb95ac49b3db972a049538f7dc9dd040fe20715df9661851f90545ef3"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.svg",
-          "sha256": "a204d0d81b86f4991684895005542298ed084f2f5b33fa1ed7ec697cc33f11e0"
+          "sha256": "90818b9a165cc581ae1ba5f24fa07014b569fbaa5ebef6f6b2a7d659a7a3bac0"
         }
       }
     },
     {
       "id": "p02-06-quadro-distribuicao",
       "source": "02-projeto-eletrico-residencial/fonte/06_quadro_distribuicao.dxf",
-      "source_sha256": "b0f46f3c401cf21013e5f10c3392913256fbea505f10734b2f003eb9c9df6ab2",
+      "source_sha256": "a158cdd93ed795355f4f25ca8ab7eeb294a01ec983375949e97b3145cfacc670",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.pdf",
-          "sha256": "321e746155557daa21395a9a9143a73b425302aead2f3a325fe5fb9a47f7a4b4"
+          "sha256": "d2618aeaa2bb0b2a6983f032fc197bdb95766e3e593212b3fe6368c2169c6143"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.png",
-          "sha256": "8b158feacd38168b70d75f6018b6c9941c7aff89a9eb55ba3b0b6cd100892507"
+          "sha256": "4f2503417cea404d60437e5009c4d2086c28d7879281621d4e78029d6d878184"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.svg",
-          "sha256": "821a46a8bd6e3ab15c5236b7d60fee6e64a4611e591957d020b385bbe5d89ec5"
+          "sha256": "263574dc409e9640ce007018e814e64f3766516804573f8b018ae243f9c30af0"
         }
       }
     },
     {
       "id": "p02-07-quadro-cargas",
       "source": "02-projeto-eletrico-residencial/fonte/07_quadro_cargas.dxf",
-      "source_sha256": "54a767f438f5038339d319f1bd75ce8aefd1325ba3a1a6dd5978293897c69a48",
+      "source_sha256": "4a1f038a8a4a4cb2196c60c6aa802669e83cfce243f5be1fe69a4fd83bed7f11",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/07_quadro_cargas.pdf",
-          "sha256": "000681bfde0e330a8158fa30c7c704f580428bc4d4354514363eafb48030ce3e"
+          "sha256": "a814801a77b2dab7ae878d6ce9349d9700259a790704c104af810259eb56eb59"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/07_quadro_cargas.png",
-          "sha256": "25243a8c061256731324d657a00ceaa699ecc2c8f1c1d43200178ef0f3e28fa4"
+          "sha256": "da4b5cf4f9af81c55f3cd5f41fba39a9a3c4db49fb36943bc9487170ca1ecfac"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/07_quadro_cargas.svg",
-          "sha256": "23edc610be8ef4d0c74d5c2dcf364a4b15822bd646631ac6c1ef70e7a3dd36e7"
+          "sha256": "9b9c4d05a2ebf9d07b65ca323e028145a5fb7723add1d28e3fb8bf3745e3fcde"
         }
       }
     },
     {
       "id": "p02-08-detalhes-aterramento",
       "source": "02-projeto-eletrico-residencial/fonte/08_detalhes_aterramento.dxf",
-      "source_sha256": "89ea1ba2edd13034656d3903f7301fd6c55bd72831ecb7892bd8b5e2b566a1e9",
+      "source_sha256": "b0e53c9896fe1df3dbcefc0c8683270a80e9053a850f002102e6b4b14fce213e",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.pdf",
-          "sha256": "46d2081a3f3613cbe2f67635dd76bde9294b529718861dce32088782b24b854b"
+          "sha256": "6b5f1ff74065e136219a5c075af6fd1cdcc0addffdb42d19838f518658c5b441"
         },
         "png": {
           "path": "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.png",
-          "sha256": "2564a75fd735116260f82379a980d2cfcf8890299b1c3e931758dfd5e6f631cf"
+          "sha256": "eae622ce246db00dffb5fd30972e533025420f0df7c5d5c0ad64bd81ac015bfc"
         },
         "svg": {
           "path": "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.svg",
-          "sha256": "d8423616a46127cc5425ef57a2431b86055731fd9fc4c584ab9e3975061387bb"
+          "sha256": "2d00aecf27b131df0f7ba87e2af10aa01f7566ae85de509c1e410b6f1d48aa9e"
+        }
+      }
+    },
+    {
+      "id": "p02-09-rastreabilidade-ambientes-cargas",
+      "source": "02-projeto-eletrico-residencial/fonte/09_rastreabilidade_ambientes_cargas.dxf",
+      "source_sha256": "8ebb5fe8863b851618b9e7853178957ddfde33921134e8f69f4d59f1b5e64116",
+      "outputs": {
+        "pdf": {
+          "path": "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.pdf",
+          "sha256": "539aae6c75a5b6ea231f4b54f2e26d608a31004bfd44ade531d98ef2a016f2eb"
+        },
+        "png": {
+          "path": "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.png",
+          "sha256": "2845c5b726c64c9270e8ac0844bcb719b2fedde91b371277adf2b447b76fdf23"
+        },
+        "svg": {
+          "path": "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.svg",
+          "sha256": "b21f2093672216e3dd708ec925e6feccdd0a77d5a2d3331b031450c10d7e793f"
         }
       }
     },

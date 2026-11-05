@@ -9333,7 +9333,7 @@ AcDbText
  40
 1.7
   1
-01
+02
   7
 PORTFOLIO_TEXTO
  72
@@ -9405,7 +9405,7 @@ AcDbText
  40
 1.7
   1
-REVISAO VISUAL 01
+REVISÃO GRÁFICA 02
   7
 PORTFOLIO_TEXTO
  72
@@ -9613,7 +9613,7 @@ AcDbText
  40
 2.25
   1
-01
+02
   7
 PORTFOLIO_TEXTO
  11
@@ -9651,7 +9651,7 @@ AcDbText
  40
 2.25
   1
-05/08
+05/09
   7
 PORTFOLIO_TEXTO
  11
@@ -19863,7 +19863,7 @@ DictionaryVariables
 280
 0
   1
-05/08
+05/09
   0
 DICTIONARYVAR
   5

@@ -484,3 +484,22 @@ A validação estrita integrada passou por 509.704 verificações, sem erros nem
 O revisor confirmou 12 projetos, 95 pranchas, 380 arquivos gráficos e 67 CSVs; a
 similaridade mínima PDF/PNG foi 0,984095. A inspeção visual dos SVGs em navegador
 continua pendente de autorização.
+
+## Atualização P02-09 — 2026-11-05
+
+A revisão gráfica 02 amplia o P02 para nove folhas e acrescenta uma rastreabilidade
+por ambiente ligada à lista de pontos e ao quadro de cargas. O CSV declara como
+`PREMISSA` dimensões, usos, equipamentos ainda não selecionados e potências atribuídas;
+os 19 pontos somam 15.548,913 VA em oito ambientes e 75 m². O validador específico
+passou em 63 verificações, sem erros.
+
+O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs. A regeneração repetida
+reproduziu os nove hashes SHA-256. As nove folhas foram renderizadas em PDF, SVG e PNG;
+conferi o contato atualizado, P02-01 no PNG integral a 300 dpi e P02-09 no PNG integral
+e PDF rasterizado independentemente pelo Poppler a 150 dpi. A similaridade mínima
+PDF/PNG do projeto foi 0,986556. O navegador não foi usado para inspecionar os SVGs
+desta revisão; a etapa aguarda autorização.
+
+A validação estrita integrada passou por 521.224 verificações, sem erros nem avisos.
+O revisor confirmou 12 projetos, 96 pranchas, 384 arquivos gráficos e 68 CSVs; a
+similaridade mínima PDF/PNG do portfólio foi 0,984095.

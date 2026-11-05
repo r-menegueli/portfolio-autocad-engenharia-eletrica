@@ -1,7 +1,8 @@
 {
-  "checks": 41,
+  "checks": 63,
   "errors": [],
   "results": {
+    "declared_area_m2": "75.00",
     "general_demand_va": "2592.11955",
     "installed_va": "15548.913",
     "point_totals_va": {
@@ -14,8 +15,11 @@
       "C7": "5500.000",
       "C8": "1500.000"
     },
+    "room_count": 8,
     "service_current_a": "57.236907",
-    "total_demand_va": "12592.11955"
+    "total_demand_va": "12592.11955",
+    "tracked_point_va": "15548.9130",
+    "tracked_points": 19
   },
   "status": "PASS"
 }

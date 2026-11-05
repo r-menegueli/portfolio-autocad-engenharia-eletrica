@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 95 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 96 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -23,7 +23,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
 | P01 — Painel com inversor | Separa unifilar, potência, comando, layout e campo; P01-07 mapeia premissas de proteção e P01-08 organiza evidências para verificação. | Não há estudo de coordenação nem ensaio funcional: Icc, modelos, curvas, ratings, critérios e resultados de campo seguem ausentes. | Substituir premissas por dados do local e modelos escolhidos; calcular e comparar curvas, definir critérios e anexar registros antes de declarar seletividade, capacidade ou funcionamento. |
-| P02 — Residencial | Conjunto mais claro para leitura rápida: plantas, circuitos, quadro de cargas e detalhes. | Continua dependente de arquitetura e cargas assumidas. | Trocar a planta-base fictícia por uma planta cotada e identificar premissas de carga por ambiente. |
+| P02 — Residencial | Conjunto claro para leitura rápida; P02-09 agora liga dimensões/áreas por ambiente aos pontos, potências e circuitos em CSV. | A arquitetura continua fictícia, dimensões e cargas são premissas, e ainda não há levantamento de vãos nem potência de equipamentos selecionados. | Substituir a planta por levantamento cotado com vãos e medidas internas; informar equipamentos e potências escolhidos, então recalcular as cargas e circuitos. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações e sequência causa-efeito em nove folhas. | O desenho não prova teste em CLP ou segurança funcional certificada; a resposta para sensor incoerente com bomba em marcha ainda não foi definida. | Escolher hardware, definir a ação para incoerência de sensores e validar a sequência em software de fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes e a topologia dos seis pares de proteção em P05-08. | As rotas ainda são premissas; Icc, capacidade de interrupção, curvas e seletividade permanecem pendentes. | Substituir as premissas por dados da concessionária, cabos e dispositivos selecionados; calcular e comparar curvas antes de validar os pares. |
@@ -85,6 +85,10 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Na revisão 02 do P01, acrescentei P01-07 e P01-08. As duas matrizes CSV rastreiam
   dados de proteção e evidências de verificação; nenhum item é declarado aprovado e
   nenhum ensaio de campo é apresentado como executado.
+- Na revisão 02 do P02, acrescentei P02-09 e uma rastreabilidade por ambiente: oito
+  áreas e 19 linhas de pontos totalizam as cargas atribuídas e remetem a lista de pontos
+  e quadro de cargas. Os valores seguem como `PREMISSA`; a prancha não substitui a
+  planta real nem um levantamento de equipamentos.
 - Reemiti as oito folhas P05 na revisão 02 e conferi P05-08 em PNG integral e PDF
   rasterizado a 150 dpi; a folha de contato atual mostra as oito composições.
 - A revisão 02 reemitiu as sete folhas P11 como `/07`; a folha 05 deixa explícito que
@@ -94,12 +98,16 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P01, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 509.704 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 95 pranchas, 380 arquivos gráficos e 67 CSVs, com similaridade mínima
-PDF/PNG de 0,9841. As 12 folhas de contato foram regeneradas; revisei as composições
+Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
+validação estrita aprovou 521.224 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 96 pranchas, 384 arquivos gráficos e 68 CSVs, com similaridade mínima
+PDF/PNG de 0,984095. As 12 folhas de contato foram regeneradas; revisei as composições
 P01 (oito folhas), P03 (nove), P04 (sete), P05 (oito), P06 (oito), P07 (nove), P08
 (sete), P10 (sete), P11 (sete) e P12 (oito).
+O contato P02 foi conferido após a expansão para nove folhas. P02-01 foi conferida no
+PNG integral; P02-09 foi inspecionada em PNG integral e PDF rasterizado a 150 dpi. O
+AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs P02 e o validador específico passou em 63
+verificações, sem erros. A inspeção de SVGs P02-09 no navegador aguarda autorização.
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei

@@ -1,5 +1,9 @@
 # Inspeção visual - Projeto 02
 
+> O registro de 2026-09-05 abaixo é histórico e cobre a revisão 00. A revisão 02 foi
+> inspecionada em 2026-11-05 conforme o registro adicional ao final; os resultados
+> anteriores não substituem a conferência atual.
+
 - Data da inspeção: 2026-09-05
 - Revisão inspecionada: 00
 - Resultado: aprovado após correções
@@ -41,3 +45,22 @@
 
 Não foram observados cortes, desalinhamentos, texto ilegível, diferenças entre PDF/SVG/PNG
 ou elementos gráficos fora da moldura na conferência final.
+
+## Revisão gráfica 02 — 2026-11-05
+
+- O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs: `PASS` em 9/9. Isso
+  confirma abertura e integridade CAD, não dimensionamento elétrico nem conformidade.
+- A regeneração repetida produziu os mesmos hashes SHA-256 nos nove DXFs.
+- As nove pranchas foram reemitidas em PDF, SVG e PNG; conferi a folha de contato
+  atualizada para numeração, revisão, composição e ausência de cortes aparentes.
+- P02-01 foi inspecionada no PNG integral de produção a 300 dpi; P02-09 foi inspecionada
+  no PNG integral e em PDF rasterizado independentemente pelo Poppler a 150 dpi. Área,
+  linhas de tabela, texto, aviso de premissa e carimbo cabem dentro da moldura.
+- O revisor automatizado confirmou as nove folhas; a similaridade mínima PDF/PNG foi
+  0,984095.
+- O SVG da revisão 02 não foi aberto no navegador: essa conferência está pendente da
+  autorização do usuário.
+
+P02-09 rastreia 19 pontos e 15.548,913 VA em oito ambientes, totalizando 75 m². As
+dimensões, cargas e usos estão marcados `PREMISSA`; esta folha organiza a substituição
+futura por levantamento real, sem alegar medição ou teste de campo.

@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 agora tem oito folhas e plano de verificação — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas e P02 rev. 02 tem nove, incluindo rastreabilidade por ambiente — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 617 arquivos; 414 links de Markdown verificados; 0 erros; 210192638 bytes.
+- 622 arquivos; 416 links de Markdown verificados; 0 erros; 213005494 bytes.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -30,6 +30,12 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Evidência de revisão CAD
 
+- P02 revisado graficamente para revisão 02 e nove folhas. P02-09 liga oito áreas,
+  19 linhas de pontos e cargas atribuídas a `lista-pontos.csv` e `quadro-cargas.csv`;
+  dimensões, usos e potências permanecem premissas declaradas.
+- O validador matemático do P02 passou por 63 verificações, sem erros; o AutoCAD
+  AcCoreConsole 2027 abriu e auditou 9/9 DXFs. Conferi o contato das nove folhas,
+  P02-01 em PNG integral e P02-09 em PNG integral e PDF rasterizado independente.
 - P01 revisado para a revisão 02 e oito folhas: P01-07 mapeia premissas de proteção;
   P01-08 organiza dados e evidências de verificação, com os doze pontos marcados como
   `NÃO EXECUTADO`.
@@ -76,10 +82,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
 - `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 509.704 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 521.224 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 95 pranchas, 380 arquivos
-  gráficos e 67 CSVs; similaridade mínima PDF/PNG de 0,984095.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 96 pranchas, 384 arquivos
+  gráficos e 68 CSVs; similaridade mínima PDF/PNG de 0,984095.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
@@ -100,6 +106,8 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
   contato das oito folhas; a tabela cabe sem cortes e todos os seis status são pendentes.
 - P08-07 foi inspecionada no PNG de produção e no PDF rasterizado a 150 dpi; a grade
   paramétrica, os dados necessários e o carimbo cabem na folha sem cortes.
+- P02-09 foi inspecionada no PNG de produção a 300 dpi e em PDF rasterizado pelo
+  Poppler a 150 dpi; a tabela, os totais, o aviso de premissas e o carimbo cabem na folha.
 - P07-09 foi inspecionada no PNG de produção a 300 dpi e PDF rasterizado a 150 dpi;
   conferi também a folha de contato atual das nove pranchas.
 - AcCoreConsole 2027 auditou os nove DXFs P07 e os sete P08. Simulação elétrica não foi
