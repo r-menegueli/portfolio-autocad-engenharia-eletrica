@@ -2,7 +2,7 @@
 
 ## Fatos do artefato
 
-- São exigidas seis pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
+- São exigidas oito pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
   SVG e PNG.
 - A documentação deve incluir entrada e proteção, conversão, regulação, medição,
   conectores, comandos, ventilação, painel frontal e organização interna.
@@ -13,8 +13,17 @@
 - Alimentação monofásica universal: 90-264 Vca, 47-63 Hz, por L, N e PE.
 - Equipamento de classe I proposto, com PE permanente no chassi e nunca seccionado.
 - PS1 é uma especificação funcional fictícia: AC/DC isolada, 36 Vcc, 7 A, 252 W.
-- REG1 é uma especificação funcional fictícia: buck CC/CV, 0-30 Vcc, 0-5 A,
-  máximo 150 W e rendimento de cálculo de 92%.
+- REG1 é um estágio proposto de buck síncrono CC/CV. U1 LM5190 é candidato de
+  arquitetura documentado pela TI, com 36 Vcc nominais na entrada, 0,8-30 Vcc
+  regulados, até 5 A e 150 W máximos. K1 aberto desabilita a entrega de potência;
+  sem circuito de descarga, a tensão residual nos bornes não é garantida.
+- O controlador LM5190 requer entrada de 5-80 V e não regula abaixo de 0,8 V. K1
+  interrompe o condutor positivo, mas não curto-circuita nem descarrega a saída. A
+  faixa publicada não substitui a validação de tolerância, transitórios, MOSFETs e
+  térmica.
+- O pré-dimensionamento acadêmico assume fSW=100 kHz, L1=75 uH, RCS=9,1 mOhm e
+  RIMON=8,62 kOhm. O cenário de 42 V é apenas uma sensibilidade paramétrica; PS1
+  continua sem uma curva real de tolerância.
 - A saída CC é flutuante; o borne negativo não é ligado internamente ao PE. Há borne
   verde separado para referência voluntária ao chassi.
 - O limite eletrônico de corrente é função de regulação, não dispositivo de segurança
@@ -51,12 +60,14 @@
 
 ## Limites que impedem fabricação
 
-- ausência de esquema eletrônico e PCB detalhados de PS1, REG1, PS2 e M1;
+- ausência de esquema completo com passivos dimensionados, compensação validada e PCB
+  detalhados de PS1, REG1, PS2 e M1;
 - ausência de análise de risco, ensaios dielétricos, corrente de toque, continuidade
   do PE, temperatura, fogo, curto-circuito, falha única, EMC e exatidão;
 - ausência de materiais, tratamento superficial, tolerâncias gerais, torque, raios,
   ferramental, processo de corte e desenhos de fabricação;
-- ausência de seleção comercial, certificados, datasheets e rastreabilidade de lote;
+- ausência de seleção dos MOSFETs, indutor, capacitores e redes de compensação,
+  certificados e rastreabilidade de lote; U1 permanece candidato, não aprovação final;
 - ausência de verificação de NR-10 aplicável à atividade e de avaliação formal pela
   série IEC 61010.
 

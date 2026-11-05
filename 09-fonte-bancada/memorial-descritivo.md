@@ -2,7 +2,7 @@
 
 ## Finalidade
 
-Documentar uma fonte de bancada ajustável de 0-30 Vcc e 0-5 A, com limite de 150 W,
+Documentar uma fonte de bancada ajustável de 0,8-30 Vcc regulados e até 5 A, com limite de 150 W,
 como exercício de integração elétrica e mecânica. O conjunto é uma arquitetura
 funcional acadêmica, não um produto desenvolvido, certificado ou liberado para
 fabricação.
@@ -15,9 +15,14 @@ e N. MOV1 e FL1 representam proteção contra surtos e filtragem conduzida, suje
 coordenação e ensaios.
 
 PS1 fornece isolamento funcional proposto e barramento de 36 Vcc. F2 protege
-preliminarmente esse barramento. REG1 reduz a tensão e regula os modos CV e CC. K1
-habilita ou remove a saída positiva; SH1 mede corrente no retorno. X2 oferece bornes
-positivo e negativo flutuantes, e X3 oferece conexão separada ao chassi/PE.
+preliminarmente esse barramento. REG1 é representado por um buck síncrono CC/CV com U1
+LM5190 como candidato de arquitetura, MOSFETs externos QH/QL, indutor L1 e shunt RCS.
+Os valores L1/RCS/RIMON são apenas pré-dimensionamentos. K1 habilita ou remove a saída
+positiva; K1 aberto desabilita a entrega de potência, mas a tensão residual nos
+bornes não é garantida sem circuito de descarga, que ainda não está definido. Em
+regulação, o limite inferior de U1 é 0,8 V. SH1 mede corrente no
+retorno e é distinto de RCS. X2 oferece bornes positivo e negativo flutuantes em
+relação ao chassi; X3 oferece conexão separada ao chassi/PE.
 
 ## Controle e medição
 
@@ -55,8 +60,10 @@ isolado, do invólucro e das condições de falha.
 
 ## Responsabilidade
 
-Nenhum tag corresponde a produto comercial escolhido. Dimensões, valores, símbolos e
-cálculos servem ao portfólio acadêmico. Não há declaração de conformidade com IEC,
+U1 LM5190 é um candidato de referência; nenhum estágio de potência completo foi
+selecionado ou validado. MOSFETs, passivos, compensação, layout, PS1 e componentes de
+medição continuam pendentes. Dimensões, valores, símbolos e cálculos servem ao
+portfólio acadêmico. Não há declaração de conformidade com IEC,
 ABNT, Inmetro, NR-10 ou qualquer regime de certificação.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

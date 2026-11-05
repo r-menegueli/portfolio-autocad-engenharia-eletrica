@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 83 | 81 pranchas de projeto, template e carimbo |
-| PDF | 82 | 81 pranchas de projeto e template A3 |
-| SVG | 83 | 81 pranchas de projeto, template e carimbo |
-| PNG | 82 | 81 pranchas de projeto e template A3 |
-| CSV | 54 | entradas, cálculos, cabos, bornes e materiais |
+| DXF | 85 | 83 pranchas de projeto, template e carimbo |
+| PDF | 84 | 83 pranchas de projeto e template A3 |
+| SVG | 85 | 83 pranchas de projeto, template e carimbo |
+| PNG | 84 | 83 pranchas de projeto e template A3 |
+| CSV | 55 | entradas, cálculos, cabos, bornes e materiais |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **548** | 162.594.307 bytes (155,06 MiB) |
+| **Total** | **557** | 167.526.730 bytes (159,77 MiB) |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -35,14 +35,14 @@ Nenhum arquivo DWG integra o repositório.
 | P06 | 7 | 44 | 7 | 5 | 85 | 2 | 0 |
 | P07 | 8 | 49 | 8 | 5 | 88 | 2 | 0 |
 | P08 | 6 | 40 | 6 | 6 | 102 | 2 | 0 |
-| P09 | 6 | 41 | 6 | 7 | 160 | 2 | 0 |
+| P09 | 8 | 50 | 6 | 8 | 188 | 2 | 0 |
 | P10 | 6 | 45 | 7 | 9 | 82 | 2 | 0 |
 | P11 | 6 | 36 | 6 | 2 | 40 | 1 | 0 |
 | P12 | 7 | 40 | 6 | 2 | 39 | 1 | 0 |
-| **Total** | **81** | **507** | **83** | **54** | **963** | **21** | **2** |
+| **Total** | **83** | **516** | **83** | **55** | **991** | **21** | **2** |
 
 Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 81
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 83
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

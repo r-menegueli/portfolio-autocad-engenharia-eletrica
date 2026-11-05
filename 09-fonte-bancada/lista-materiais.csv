@@ -8,7 +8,13 @@ MOV1,1,un,Varistor classe 275 Vca,MOV1,Coordenacao e energia pendentes
 FL1,1,un,Filtro EMI bipolar 10 A 250 Vca,FL1,Ensaio EMC nao realizado
 PS1,1,un,Fonte AC DC isolada 36 V 7 A 252 W,PS1,Especificacao funcional ficticia
 F2,1,un,Fusivel CC 7.5 A 60 Vcc,F2,Capacidade em CC a confirmar
-REG1,1,un,Regulador buck CC CV 150 W,REG1,Eletronica e dissipador nao detalhados
+U1,1,un,Controlador buck CC CV LM5190 TI SNVSCG7,LM5190RGYR,Candidato conceitual; datasheet consultado em fonte oficial
+QH,1,un,MOSFET N canal externo lado alto,QH,Selecionar VDS RDSon Qg SOA e dissipacao
+QL,1,un,MOSFET N canal externo lado baixo,QL,Selecionar VDS RDSon Qg SOA e dissipacao
+L1,1,un,Indutor buck 75 uH Isat minimo 8 A,Pre-dimensionamento P09-08,L1 DCR nucleo saturacao e elevacao termica pendentes
+RCS,1,un,Shunt Kelvin 9.1 mOhm 1 por cento minimo 1 W,Pre-dimensionamento P09-08,RCS valor e potencia preliminares; validar tolerancia e montagem Kelvin
+RIMON,1,un,Resistor de monitor de corrente 8.62 kOhm 1 por cento,Equacao CC do LM5190,RIMON valor nominal preliminar; calibracao e tolerancia final pendentes
+REG-PASSIVOS,1,lote,Redes de compensacao feedback temporizacao e capacitores de entrada e saida,Datasheet LM5190,COMP FB RT CIN COUT CBOOT CVCC; valores finais dependem de projeto e validacao
 PS2,1,un,Conversor 36 para 12 Vcc 1 A,PS2,Alimentacao auxiliar
 M1,1,un,Medidor digital de tensao e corrente,M1,Calibracao pendente
 SH1,1,un,Shunt 10 A 75 mV,SH1,Conexao Kelvin

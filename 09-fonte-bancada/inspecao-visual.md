@@ -1,6 +1,8 @@
 # Inspeção visual - Projeto 09
 
-Estado: aprovada em 2026-09-09 para a revisão 00.
+Estado histórico: aprovada em 2026-09-09 para a revisão 00. A revisão 02 recebeu
+inspeção visual parcial em 2026-11-05; o restante da conferência vetorial no navegador
+aguarda autorização do usuário.
 
 ## Amostra e ferramentas
 
@@ -40,3 +42,34 @@ divergências visuais entre PDF, SVG e PNG. Resultado: **APROVADO**.
 
 As imagens temporárias usadas na comparação não integram o repositório; os arquivos
 oficiais permanecem em `exports/`.
+
+## Revisão 02 — 2026-11-05
+
+O contato atualizado das oito folhas P09 foi examinado para conferir composição,
+identificação `NN/08`, margens e carimbos. As folhas 07 e 08 foram inspecionadas em
+PNG de 4.960 × 3.507 px a 300 dpi e em PDFs rasterizados pelo Poppler 26.07.0 a 150
+dpi (2.481 × 1.754 px). Moldura, carimbo, tabelas, gráfico, notas e aviso obrigatório
+estão dentro da folha, sem cortes ou colisões relevantes. Os PDFs mantêm a composição
+vista nos PNGs.
+
+- P09-07 distingue o candidato LM5190, o estágio de potência e os pinos/interface que
+  ainda aguardam definição. A ligação é uma topologia conceitual; não contém circuito
+  de aplicação completo nem fechamento das malhas.
+- P09-08 identifica as curvas de 36 V nominal e 42 V de sensibilidade, mantém a meta
+  de ondulação e classifica valores como derivados ou propostas. 42 V não é declarada
+  como tolerância de PS1.
+- O contato confirma que as seis folhas anteriores continuam enquadradas após a
+  regeneração; sua revisão individual integral não foi repetida nesta atualização.
+- Após a correção dos rótulos, as folhas 02, 03, 06 e 07 também foram revistas nos
+  PNGs integrais. As chamadas da saída cabem na folha e as tabelas de interligações
+  e pinos tiveram o texto ampliado sem cortes ou sobreposições observadas.
+- A revisão técnica identificou que K1 abre apenas o condutor positivo: isso
+  desabilita a entrega de potência, mas sem descarga dedicada não garante 0 V nos
+  bornes. Os rótulos foram corrigidos; o circuito de descarga segue pendente.
+- `revisar_portfolio.py` confirmou que os SVGs são XML válido, têm raiz `svg` e
+  `viewBox`; a inspeção visual deles no navegador permanece pendente da autorização
+  do usuário. Isto não é registrado como aprovação visual dos SVGs.
+
+O validador estrito aprovou o portfólio inteiro. A revisão 02 ainda não teve abertura
+dos DXFs no AutoCAD/AcCoreConsole nem validação da implementação em ferramenta de
+simulação ou bancada.

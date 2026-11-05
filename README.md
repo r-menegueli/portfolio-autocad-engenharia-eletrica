@@ -36,12 +36,12 @@ em [portfolio.toml](portfolio.toml).
 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO e cabos | 7 | [abrir](06-centro-controle-motores/README.md) |
 | P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f e FOC | 8 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA e aterramento | 6 | [abrir](08-sistema-fotovoltaico/README.md) |
-| P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração mecânica | 6 | [abrir](09-fonte-bancada/README.md) |
+| P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição e integração mecânica | 8 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos e bornes | 6 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e intertravamentos | 7 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **81 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **83 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,8 +135,8 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão reconstruiu as 81 pranchas A3 de P01–P12; a validação estrita atual aprovou
-423.829 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
+revisão cobre 83 pranchas A3 de P01–P12; a validação estrita atual aprovou
+434.039 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
 limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
 limites técnicos.
 

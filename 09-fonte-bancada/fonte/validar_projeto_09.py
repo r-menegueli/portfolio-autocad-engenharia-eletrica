@@ -31,10 +31,12 @@ SHEETS = (
     "04_layout_interno.dxf",
     "05_detalhes_mecanicos.dxf",
     "06_interligacoes.dxf",
+    "07_topologia_regulador_cc_cv.dxf",
+    "08_predimensionamento_buck.dxf",
 )
 REQUIRED_EQUIPMENT = {
     "X1", "PS1", "REG1", "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1",
-    "RV1", "RV2", "S2", "X2", "X3",
+    "RV1", "RV2", "S2", "X2", "X3", "U1", "QH", "QL", "L1", "RCS",
 }
 REQUIRED_PROTECTIONS = {"F1", "S1", "MOV1", "FL1", "F2", "ILIM", "TS1", "PE1"}
 REQUIRED_INTERCONNECTIONS = {f"W{index:02d}" for index in range(1, 26)}
@@ -43,10 +45,10 @@ REQUIRED_CUTOUTS = {
     "X3-PE", "X1", "FAN1", "FAN1-H1", "FAN1-H2", "FAN1-H3", "FAN1-H4",
 }
 REQUIRED_MATERIALS = {
-    "GAB-01", "PNL-01", "X1", "F1", "S1", "MOV1", "FL1", "PS1", "F2", "REG1",
+    "GAB-01", "PNL-01", "X1", "F1", "S1", "MOV1", "FL1", "PS1", "F2",
     "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1", "RV1", "RV2", "S2",
     "LED-01", "LED-02", "LED-03", "X2", "X3", "PE1", "CB-LN", "CB-PE", "CB-POT",
-    "CB-SIN", "ETQ-01", "GRD-01",
+    "CB-SIN", "ETQ-01", "GRD-01", "U1", "QH", "QL", "L1", "RCS", "RIMON", "REG-PASSIVOS",
 }
 REQUIRED_REFERENCES = (
     "IEC 61010-1:2010+A1:2016",
@@ -60,15 +62,19 @@ REQUIRED_REFERENCES = (
     "2027-05-31",
     "2027-06-01",
     "Portaria MTE 737/2026",
+    "LM5190",
+    "SNVSCG7",
+    "5-80 V",
+    "0,8-79 V",
 )
 SHEET_TERMS = {
     "01_diagrama_blocos.dxf": (
-        "90-264 Vca", "0-30 Vcc", "0-5 A / 150 W", "PS1", "REG1", "PS2", "M1",
+        "90-264 Vca", "0.8-30 Vcc regulados", "PS1", "REG1", "PS2", "M1",
         "PE PERMANENTE NO CHASSI", "SAÍDA CC FLUTUANTE",
     ),
     "02_diagrama_eletrico.dxf": (
         "F1 T4 A", "S1 2P 10 A", "FL1", "MOV1", "PS1", "F2 7,5 A", "REG1",
-        "K1 NO", "SH1", "X2 +", "X2 -", "X3 PE", "PE NÃO SECCIONADO",
+        "K1 NO", "SH1", "X2 +", "X2 -", "X3 PE", "0,8-30 V REGULADOS", "PE NÃO SECCIONADO",
     ),
     "03_painel_frontal.dxf": (
         "320 mm", "150 mm", "S1", "M1", "RV1", "RV2", "S2", "X2+", "X2-", "X3",
@@ -83,8 +89,16 @@ SHEET_TERMS = {
         "150 mm REAL", "SEM TOLERÂNCIAS GERAIS",
     ),
     "06_interligacoes.dxf": (
-        "W01-W06", "W08-W09", "W10-W12", "W13-W16", "W17/W18 SENSE KELVIN",
+        "W01-W06", "W08-W09", "W10-W12", "W13-W16", "0,8-30 V regulados", "W17/W18 SENSE KELVIN",
         "W19-W21", "W22-W24", "W25", "SEÇÕES EM mm²",
+    ),
+    "07_topologia_regulador_cc_cv.dxf": (
+        "U1 | LM5190 (CANDIDATO)", "QH", "QL", "L1", "75 uH", "RCS", "9.1 mOhm",
+        "CC e CV", "ISNS+ / VOUT", "0V36", "K1 aberto",
+    ),
+    "08_predimensionamento_buck.dxf": (
+        "100 kHz", "75 uH", "1.20 A / 24%", "1.40 A / 28%", "5.70 A",
+        "9.1 mOhm", "6.59 A pico", "8.62 kOhm", "42 V é apenas um cenário",
     ),
 }
 WARNING = (
@@ -129,12 +143,13 @@ def validate(root: Path) -> dict:
     cutouts = read_rows(project / "lista-recortes.csv")
     materials = read_rows(project / "lista-materiais.csv")
     calculations = read_rows(project / "resultados-calculo.csv")
+    regulator_calculations = read_rows(project / "dimensionamento-regulador.csv")
     errors: list[str] = []
     checks = 0
 
     expected_parameters = {
         "ENTRADA_V_MIN": "90", "ENTRADA_V_MAX": "264", "ENTRADA_F_MIN": "47",
-        "ENTRADA_F_MAX": "63", "SAIDA_V_MIN": "0", "SAIDA_V_MAX": "30",
+        "ENTRADA_F_MAX": "63", "SAIDA_V_MIN": "0.8", "SAIDA_V_MAX": "30",
         "SAIDA_I_MAX": "5", "SAIDA_P_MAX": "150", "PS1_V_OUT": "36",
         "PS1_I_OUT": "7", "PS1_P_OUT": "252", "PS1_EFICIENCIA": "0.90",
         "REG1_EFICIENCIA": "0.92", "FATOR_POTENCIA": "0.90", "POTENCIA_AUX": "8",
@@ -221,6 +236,60 @@ def validate(root: Path) -> dict:
         if key not in result_map or not close(decimal(result_map[key]["resultado"]), value):
             errors.append(f"Resultado {key} divergente: esperado {value}.")
 
+    design_map = {row["calculo"]: row for row in regulator_calculations}
+    fsw = Decimal(100000)
+    ripple_target = Decimal(5) * Decimal("0.30")
+    l1_h = Decimal(75) / Decimal(1_000_000)
+    vin36, vin42 = Decimal(36), Decimal(42)
+    vout36, vout42 = vin36 / 2, vin42 / 2
+    l_min36 = vout36 * (Decimal(1) - vout36 / vin36) / (ripple_target * fsw)
+    l_min42 = vout42 * (Decimal(1) - vout42 / vin42) / (ripple_target * fsw)
+    ripple36 = vout36 * (Decimal(1) - vout36 / vin36) / (l1_h * fsw)
+    ripple42 = vout42 * (Decimal(1) - vout42 / vin42) / (l1_h * fsw)
+    rcs = Decimal("0.0091")
+    peak_normal = Decimal(5) + ripple42 / 2
+    peak_cbc = Decimal("0.060") / rcs
+    average_cbc = peak_cbc - ripple42 / 2
+    rimon = Decimal(1) / (rcs * Decimal("0.002") * Decimal(5) + Decimal("0.000025"))
+    iset_5a = Decimal(8620) * (Decimal(5) * rcs * Decimal("0.002") + Decimal("0.000025"))
+    design_derived = {
+        "F_SW": fsw,
+        "RIPPLE_ALVO": ripple_target,
+        "L_MIN_36V": l_min36 * Decimal(1_000_000),
+        "L_MIN_42V": l_min42 * Decimal(1_000_000),
+        "L1_PROPOSTA": Decimal(75),
+        "DELTA_IL_36V": ripple36,
+        "DELTA_IL_42V": ripple42,
+        "RCS_PROPOSTA": rcs,
+        "I_PEAK_NORMAL": peak_normal,
+        "I_PEAK_CBC": peak_cbc,
+        "I_MEDIA_CBC": average_cbc,
+        "RIMON_CALC": rimon,
+        "RIMON_PROPOSTA": Decimal(8620),
+        "ISET_5A": iset_5a,
+        "P_RCS_5A": Decimal(5) ** 2 * rcs,
+        "P_RCS_CBC": average_cbc ** 2 * rcs,
+        "V_REG_MIN": Decimal("0.8"),
+    }
+    design_classes = {
+        "F_SW": "PREMISSA", "RIPPLE_ALVO": "DERIVADO", "L_MIN_36V": "DERIVADO",
+        "L_MIN_42V": "DERIVADO", "L1_PROPOSTA": "PROPOSTA", "DELTA_IL_36V": "DERIVADO",
+        "DELTA_IL_42V": "DERIVADO", "RCS_PROPOSTA": "PROPOSTA", "I_PEAK_NORMAL": "DERIVADO",
+        "I_PEAK_CBC": "DERIVADO", "I_MEDIA_CBC": "DERIVADO", "RIMON_CALC": "DERIVADO",
+        "RIMON_PROPOSTA": "PROPOSTA", "ISET_5A": "DERIVADO", "P_RCS_5A": "DERIVADO",
+        "P_RCS_CBC": "DERIVADO", "V_REG_MIN": "REFERENCIA",
+    }
+    checks += 4 + len(design_derived)
+    if set(design_map) != set(design_derived) or len(regulator_calculations) != len(design_map):
+        errors.append("dimensionamento-regulador.csv deve conter os 17 cálculos esperados sem duplicatas.")
+    for key, expected in design_derived.items():
+        if key not in design_map or not close(decimal(design_map[key]["resultado"]), expected, Decimal("0.00001")):
+            errors.append(f"Pré-dimensionamento {key} divergente: esperado {expected}.")
+        if key in design_map and design_map[key]["classificacao"] != design_classes[key]:
+            errors.append(f"Classificação de pré-dimensionamento incorreta em {key}.")
+    if any(not row["formula"] or not row["observacao"] for row in regulator_calculations):
+        errors.append("Pré-dimensionamento sem fórmula ou observação.")
+
     checks += 10
     if p_out != Decimal(150):
         errors.append("Potência máxima de saída deve ser 150 W.")
@@ -245,8 +314,8 @@ def validate(root: Path) -> dict:
 
     checks += 12
     equipment_tags = {row["tag"] for row in equipment}
-    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 15:
-        errors.append("lista-equipamentos.csv deve conter exatamente os 15 tags previstos.")
+    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 20:
+        errors.append("lista-equipamentos.csv deve conter exatamente os 20 tags previstos.")
     if any(row["classificacao"] != "PROPOSTA" for row in equipment):
         errors.append("Equipamentos devem ser classificados como PROPOSTA.")
     if any(not row["especificacao"] or not row["observacoes"] for row in equipment):
@@ -275,8 +344,8 @@ def validate(root: Path) -> dict:
         errors.append("Recortes devem ser classificados como PROPOSTA.")
 
     material_ids = {row["item"] for row in materials}
-    if material_ids != REQUIRED_MATERIALS or len(materials) != 32:
-        errors.append("lista-materiais.csv deve conter exatamente os 32 itens esperados.")
+    if material_ids != REQUIRED_MATERIALS or len(materials) != 38:
+        errors.append("lista-materiais.csv deve conter exatamente os 38 itens esperados.")
     if any(decimal(row["quantidade"]) <= 0 or not row["referencia"] or not row["observacoes"] for row in materials):
         errors.append("Material sem quantidade positiva, referência ou observação.")
 
@@ -317,8 +386,8 @@ def validate(root: Path) -> dict:
         errors.append("Referências oficiais ou transição da NR-10 incompletas.")
     if "não um produto desenvolvido, certificado ou liberado para" not in docs["memorial-descritivo.md"]:
         errors.append("Memorial não limita explicitamente fabricação e certificação.")
-    if "Nenhum componente comercial foi selecionado ou declarado" not in docs["README.md"]:
-        errors.append("README não explicita ausência de seleção e certificação.")
+    if "LM5190 como candidato de referência" not in docs["README.md"] or "compensação" not in docs["README.md"]:
+        errors.append("README não explica o status preliminar do controlador e das redes de compensação.")
     if "saída CC é flutuante" not in docs["criterios-premissas.md"]:
         errors.append("Critérios não declaram a saída flutuante.")
     if "0-40 °C" not in docs["criterios-premissas.md"] or "2.000 m" not in docs["criterios-premissas.md"]:
@@ -355,14 +424,14 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"Metadado de projeto incorreto em {filename}.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/06":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"Metadado de prancha incorreto em {filename}.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION":
             errors.append(f"Status epistemológico incorreto em {filename}.")
         text = extract_text(doc)
         if WARNING not in text:
             errors.append(f"Aviso obrigatório ausente em {filename}.")
-        if f"{index:02d}/06" not in text:
+        if f"{index:02d}/{len(SHEETS):02d}" not in text:
             errors.append(f"Número de prancha ausente em {filename}.")
         for term in SHEET_TERMS[filename]:
             if term.casefold() not in text.casefold():

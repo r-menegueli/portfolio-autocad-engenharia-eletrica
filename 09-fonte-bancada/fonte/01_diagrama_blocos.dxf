@@ -8833,7 +8833,7 @@ AcDbText
  40
 1.8
   1
-Fonte acadêmica 0-30 Vcc / 0-5 A / 150 W com saída isolada e flutuante
+Fonte acadêmica: 0,8-30 Vcc regulados / 0-5 A / 150 W
   7
 PORTFOLIO_TEXTO
  72
@@ -9423,7 +9423,7 @@ AcDbText
  40
 1.45
   1
-01
+02
   7
 PORTFOLIO_TEXTO
  72
@@ -9495,7 +9495,7 @@ AcDbText
  40
 1.45
   1
-REVISAO VISUAL 01
+TOPOLOGIA E PRE-DIMENSIONAMENTO
   7
 PORTFOLIO_TEXTO
  72
@@ -9703,7 +9703,7 @@ AcDbText
  40
 2.25
   1
-01
+02
   7
 PORTFOLIO_TEXTO
  11
@@ -9741,7 +9741,7 @@ AcDbText
  40
 2.25
   1
-01/06
+01/08
   7
 PORTFOLIO_TEXTO
  11
@@ -10499,7 +10499,7 @@ AcDbText
  40
 0.95
   1
-BUCK CC/CV | 0-30 V / 5 A
+LM5190 CC/CV | 0.8-30 V regulado
   7
 PORTFOLIO_TEXTO
  72
@@ -10707,7 +10707,7 @@ AcDbText
  40
 0.95
   1
-0-30 Vcc | 0-5 A / 150 W
+0.8-30 Vcc regulados | 0-5 A / 150 W
   7
 PORTFOLIO_TEXTO
  72
@@ -11147,7 +11147,7 @@ AcDbText
  40
 1.05
   1
-0-30 V
+0.8-30 V regulados
   7
 PORTFOLIO_TEXTO
  72
@@ -19817,7 +19817,7 @@ DictionaryVariables
 280
 0
   1
-01/06
+01/08
   0
 DICTIONARYVAR
   5

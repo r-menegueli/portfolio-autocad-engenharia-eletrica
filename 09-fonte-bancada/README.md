@@ -2,23 +2,25 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 06
+Pranchas: 01 a 08
 
-Formato: A3 paisagem, geometria em milímetros, revisão gráfica 01 (2026-11-05)
+Formato: A3 paisagem, geometria em milímetros, revisão 02 (2026-11-05)
 
-Estado: estudo concluído; apresentação atualizada na revisão gráfica 01
+Estado: estudo acadêmico em revisão 02; topologia e pré-dimensionamento adicionados, sem validação de circuito completo
 
 Este projeto apresenta a documentação eletromecânica acadêmica de uma fonte de
 bancada ajustável. A arquitetura proposta recebe 90 a 264 Vca, 47 a 63 Hz, e fornece
-saída isolada e flutuante ajustável de 0 a 30 Vcc, com limite de corrente de 0 a 5 A e
-potência máxima de 150 W. A conversão combina uma fonte AC/DC isolada de 36 Vcc e um
-regulador buck CC/CV.
+saída isolada da rede e flutuante em relação ao chassi, regulável de 0,8 a 30 Vcc e
+limitada a 5 A, com potência máxima de 150 W. K1 aberto desabilita a entrega de
+potência, mas a tensão residual nos bornes não é garantida sem circuito de descarga.
+O controlador não regula até zero. A conversão combina uma fonte AC/DC
+isolada de 36 Vcc e um buck síncrono CC/CV com LM5190 como candidato de referência.
 
 O estudo cobre proteção de entrada, conversão, regulação, medição, comandos,
 conectores, ventilação, painel frontal, organização interna e interligações. Não
 define PCB, firmware, isolamento construtivo, categoria de sobretensão, coordenação
-de fusíveis, compatibilidade eletromagnética, calibração, ensaios térmicos ou
-homologação de componentes.
+de fusíveis, compatibilidade eletromagnética, calibração, ensaios térmicos, MOSFETs
+finais, redes passivas, compensação das malhas ou homologação de componentes.
 
 ## Pranchas
 
@@ -28,6 +30,8 @@ homologação de componentes.
 4. [Layout interno](fonte/04_layout_interno.dxf)
 5. [Detalhes mecânicos](fonte/05_detalhes_mecanicos.dxf)
 6. [Interligações](fonte/06_interligacoes.dxf)
+7. [Topologia do buck síncrono CC/CV](fonte/07_topologia_regulador_cc_cv.dxf)
+8. [Pré-dimensionamento do estágio buck](fonte/08_predimensionamento_buck.dxf)
 
 Cada DXF tem derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -37,17 +41,19 @@ Cada DXF tem derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 | --- | ---: |
 | entrada | 90-264 Vca, 47-63 Hz, L/N/PE |
 | classe construtiva proposta | classe I, chassi metálico ligado ao PE |
-| saída | 0-30 Vcc, 0-5 A, 150 W máximo |
-| modo de regulação | CV/CC ajustável |
+| saída regulada | 0,8-30 Vcc; até 5 A; 150 W máximo |
+| saída desabilitada | K1 abre o condutor positivo; a tensão residual nos bornes não é garantida |
+| modo de regulação | CC/CV síncrono; U1 LM5190 apenas como candidato de arquitetura |
 | estágio isolado PS1 | 36 Vcc, 7 A, 252 W |
-| regulador REG1 | buck CC/CV, 150 W |
+| regulador REG1 | buck síncrono CC/CV, 150 W propostos; U1 LM5190 como candidato de referência |
 | saída em relação ao chassi | flutuante; negativo não ligado internamente ao PE |
 | invólucro de referência | 320 × 150 × 260 mm |
 | ambiente de premissa | interno, seco, 0-40 °C, até 2.000 m |
 
-Os valores detalhados e sua classificação epistemológica estão em
-[Parâmetros](parametros.csv). Nenhum componente comercial foi selecionado ou declarado
-certificado.
+Os valores e sua classificação epistemológica estão em [Parâmetros](parametros.csv) e
+no [pré-dimensionamento](dimensionamento-regulador.csv). U1 LM5190 é candidato de
+referência; MOSFETs, passivos, compensação, layout e validação do estágio completo
+continuam pendentes. Nenhum conjunto foi declarado certificado.
 
 ## Documentos e dados
 
@@ -61,6 +67,7 @@ certificado.
 - [Lista de recortes](lista-recortes.csv)
 - [Lista de materiais](lista-materiais.csv)
 - [Resultados dos cálculos](resultados-calculo.csv)
+- [Pré-dimensionamento do regulador](dimensionamento-regulador.csv)
 - [Inspeção visual](inspecao-visual.md)
 - [Validação específica](validacao-fonte.json)
 - [Validação estrita](validacao.json)

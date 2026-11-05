@@ -316,7 +316,7 @@ id = "09-fonte-bancada"
 path = "09-fonte-bancada"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -330,6 +330,7 @@ required_files = [
   "lista-interligacoes.csv",
   "lista-recortes.csv",
   "resultados-calculo.csv",
+  "dimensionamento-regulador.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_09.py",
   "fonte/validar_projeto_09.py",
@@ -1106,6 +1107,28 @@ source = "09-fonte-bancada/fonte/06_interligacoes.dxf"
 svg = "09-fonte-bancada/exports/06_interligacoes.svg"
 pdf = "09-fonte-bancada/exports/06_interligacoes.pdf"
 png = "09-fonte-bancada/exports/06_interligacoes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-07-topologia-regulador-cc-cv"
+kind = "sheet"
+title = "Projeto 09 - Topologia do regulador CC/CV"
+source = "09-fonte-bancada/fonte/07_topologia_regulador_cc_cv.dxf"
+svg = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.svg"
+pdf = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.pdf"
+png = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-08-predimensionamento-buck"
+kind = "sheet"
+title = "Projeto 09 - Pré-dimensionamento do buck"
+source = "09-fonte-bancada/fonte/08_predimensionamento_buck.dxf"
+svg = "09-fonte-bancada/exports/08_predimensionamento_buck.svg"
+pdf = "09-fonte-bancada/exports/08_predimensionamento_buck.pdf"
+png = "09-fonte-bancada/exports/08_predimensionamento_buck.png"
 require_a3 = true
 require_notice = true
 

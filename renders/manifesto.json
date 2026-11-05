@@ -1103,114 +1103,152 @@
     {
       "id": "p09-01-diagrama-blocos",
       "source": "09-fonte-bancada/fonte/01_diagrama_blocos.dxf",
-      "source_sha256": "85183baf6b6e0949e45b81596f919e9785d7da4da7375b929b294e5fa36e671a",
+      "source_sha256": "939963a320d1f4bc3d3f9809621c963aa3af470d7b947488b665b35c17d6913f",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.pdf",
-          "sha256": "48968ba54f920534bbbbc261f74ea840413acdfba8aa1861d31de2dc77c7930d"
+          "sha256": "b47c20141e8e27a79e4ebe5ca1053db30b0b61b18c8bf6db48ca65c5f130e745"
         },
         "png": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.png",
-          "sha256": "062be3ba06484fafb730077f6d3dfb64d3f517fd3d0735d085cb3ba032d38603"
+          "sha256": "5e7f2f572318a7ac3924fd3e443fcf5df54f0d790bc8d9153abe72da5ef4f19e"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.svg",
-          "sha256": "cf0b9ffd87e3d6218c11a5ee8118b9dbcd25b22d74dfcd5de7ede43c68412eb4"
+          "sha256": "e8ce7c7e1ae0d5cf436dcbd060b397b828b5b75cf7a0ce9c3d23b98618f032d0"
         }
       }
     },
     {
       "id": "p09-02-diagrama-eletrico",
       "source": "09-fonte-bancada/fonte/02_diagrama_eletrico.dxf",
-      "source_sha256": "0ff4ee697506bcbcfce81c8c0e892f5b37d38d826950ea8c1fa82d1f76a90ffc",
+      "source_sha256": "2e14cdcf9ec749f808be570848ff83a20bff0f6739c43dd6f83812009b1b280b",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.pdf",
-          "sha256": "bae969ef81a88d47b1c6be6126c5b619232962b493aa55d64e3761050444e449"
+          "sha256": "82327f7af413b0b74c05e76f635b4f24dc686e1904d50a3c1dc43d1257ae2136"
         },
         "png": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.png",
-          "sha256": "c2a1aea54e62b03ea9d9bb67037a7b462244556786dedfbb2373e69cd7298e77"
+          "sha256": "8aad7d7efb9406cbfd2c34ec5b1f1e0caa27bf3744c7b6527ef7a79504ef257a"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.svg",
-          "sha256": "5ad1466f1298ccd3d23c182302604375b6c1d128e6aa6093c21e303ae8136a5b"
+          "sha256": "5ef3e2f47542b9b7b5558bbf8fefcec1d07c4f67c6a37c4da1bb692f0339c35b"
         }
       }
     },
     {
       "id": "p09-03-painel-frontal",
       "source": "09-fonte-bancada/fonte/03_painel_frontal.dxf",
-      "source_sha256": "f0f1a1e19c7785a91347170b3db07f6a4dbf9a7b854d50f4cedb66f5410e858f",
+      "source_sha256": "b0a773c396c0110efe3ec0541c6036bcd10f736c5a3b6ba5363ccaf5ed79e2d5",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.pdf",
-          "sha256": "b1153389413e0ff4ddbe82f406a5ef864d5f9a3a6ad38c64b36cf228da2da68b"
+          "sha256": "4ad3e295b5e1e52e1f647f985fd825c5dae6b67e7cee44d7ff3ce3ee0b24f822"
         },
         "png": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.png",
-          "sha256": "ac94980241e7ab0ad22d5a5fd394e16e7acf3f73789414cb4ac843a0394cd817"
+          "sha256": "928f67e427bd124e6b085f49ce56a7734ff56e6330acb29792b1405639f881f3"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.svg",
-          "sha256": "b33feb589be06ab93a2e5bf7f2283fa29b632b2de3161f8dc815d0c6603b7a95"
+          "sha256": "8e453849ef00cf515177c045870ea5f661940be3cbf487b357c127a4ed4f3be5"
         }
       }
     },
     {
       "id": "p09-04-layout-interno",
       "source": "09-fonte-bancada/fonte/04_layout_interno.dxf",
-      "source_sha256": "2b3c808df0d106422efca5b3329b7121f3873749d29b4946b3f41544bfd35b0c",
+      "source_sha256": "fe5c936e4784119b1b1b14e65cc74a8a80ba0f792dccb2ed8966fb962095d2ad",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/04_layout_interno.pdf",
-          "sha256": "e15c4982e8eae1c2d9e3d60e1fd6df2a1d228f330bea456ddf66c6c6c7939e31"
+          "sha256": "bb37488829cf03fd8b2da35543db3858c1357d16b613747a7e59bb17309f55e8"
         },
         "png": {
           "path": "09-fonte-bancada/exports/04_layout_interno.png",
-          "sha256": "8243cb0fb9b43603e99efeb391740c967c6b2ab5dd56adf56d3c2d2160d6835c"
+          "sha256": "8436a7eaa3d98cfcad32d4d8f9ae528ebeaf5f62c42bba2d7f9efaeafd18e8e7"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/04_layout_interno.svg",
-          "sha256": "84c78ddc60271053527f15ea53df66047f8a46cc6c2558416e40de139dabb5ec"
+          "sha256": "c9c20579de466b6ceae15189eddfae0142da53a173a157815e33e7cb69e087a8"
         }
       }
     },
     {
       "id": "p09-05-detalhes-mecanicos",
       "source": "09-fonte-bancada/fonte/05_detalhes_mecanicos.dxf",
-      "source_sha256": "a81eb935d311488432a3fda27e0135f7eeaff3c75650b2cd94f19ed2bc9ade94",
+      "source_sha256": "58bf56c05b3d9d67f2a9229556610cc8062a537c0af4985fce4a53af03557aab",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.pdf",
-          "sha256": "059b2a37e587c74ca84c2dd306f9aa3acfefe0dd91ecd6499faa1b366489fee6"
+          "sha256": "7c7381f8043c233f41e88b14f5913e9b26766e84c553871f6e9d3c88ad47840b"
         },
         "png": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.png",
-          "sha256": "19802e12ebc212982de0e5f2695aca4083569b24e83590811b8613d190eeee8e"
+          "sha256": "a0c31fc65ee231bddd791fc9bcb3a395f855954c2cffa4c19838a8b8eeac8edf"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.svg",
-          "sha256": "3b5f9d50652e82753fe0bc2d8a7feed0992c6f3ffa43ba6b210dd2c76fdbe1e5"
+          "sha256": "a5d433543528e983cf6f964b2d1bbaf0806db761d543afb972e4326fdd6d40e7"
         }
       }
     },
     {
       "id": "p09-06-interligacoes",
       "source": "09-fonte-bancada/fonte/06_interligacoes.dxf",
-      "source_sha256": "bd000f96b44645cc936e3fc96296795b952458f3c282b73a7affe5f89890ee65",
+      "source_sha256": "5c0d2e67af0f95b1673e653f844cff4d17390948cf0d1c6d1a31019214a0319f",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/06_interligacoes.pdf",
-          "sha256": "503517ece2117fa25e0b8983579254359a987e301f62085ec5d01dadfa16b52f"
+          "sha256": "956bdf52324e2ba5681de8b9cb5853e89f577f24179962066a5dc7001f3af386"
         },
         "png": {
           "path": "09-fonte-bancada/exports/06_interligacoes.png",
-          "sha256": "15cdff7cb292c886510a1941a599d31fa1a842902f32db21af64ce500d8c9398"
+          "sha256": "5912a55b98a37ae500104bb7503b9a1d394d968bd491974d2478fe98bee9eb64"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/06_interligacoes.svg",
-          "sha256": "ed5dabc027184e7a3acf691ae443c43ada963175babe3b13daef6d5480c237b7"
+          "sha256": "097ac86b2fd2164ac7cc58dcd28dce1292c24360cbbd272b81546e765ea3ecee"
+        }
+      }
+    },
+    {
+      "id": "p09-07-topologia-regulador-cc-cv",
+      "source": "09-fonte-bancada/fonte/07_topologia_regulador_cc_cv.dxf",
+      "source_sha256": "88c47f1eead8f29dbaa7dec044c220d705ec95b6c6f049468dcc6dba9c1d3060",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.pdf",
+          "sha256": "5a99dc2d36e979776df50a49800546378fb78d9627820664ef79f83248d42f6e"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.png",
+          "sha256": "803c8eb9ae3b59b02f94042de4cd59dcd750c5c9d928bbb6fb657323c500ed0d"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.svg",
+          "sha256": "28e92fd41966b9ca2bef00f1f81f5f3e7ca909f343aad08804f251852a0755b7"
+        }
+      }
+    },
+    {
+      "id": "p09-08-predimensionamento-buck",
+      "source": "09-fonte-bancada/fonte/08_predimensionamento_buck.dxf",
+      "source_sha256": "b57605323fbd5ad6d1be46b2eaf264635fee605fa4209be13a557f97d4ec041d",
+      "outputs": {
+        "pdf": {
+          "path": "09-fonte-bancada/exports/08_predimensionamento_buck.pdf",
+          "sha256": "ec7cb469590e3242faa9d0ef846b52b2ee7a69cdbf872af5d065750811140739"
+        },
+        "png": {
+          "path": "09-fonte-bancada/exports/08_predimensionamento_buck.png",
+          "sha256": "7f23ce0c4de5499fe41ad144ef8042f81d8073b26ee5be18e074b7fe3aa3f5f3"
+        },
+        "svg": {
+          "path": "09-fonte-bancada/exports/08_predimensionamento_buck.svg",
+          "sha256": "a584ba324b431e968e2a87298f9c821477d35abad97a6886aeef8aa680b970e8"
         }
       }
     },

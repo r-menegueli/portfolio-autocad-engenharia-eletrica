@@ -226,7 +226,8 @@ estrita integrada aprovadas.
 acadêmica, desde a entrada de rede até a interface de saída ajustável.
 
 **Escopo.** Entrada universal 90-264 Vca, proteção, fonte AC/DC isolada de 36 V,
-regulador buck CC/CV, saída flutuante de 0-30 Vcc e 0-5 A limitada a 150 W, medição,
+regulador buck CC/CV, saída flutuante regulada de 0,8-30 Vcc e até 5 A, limitada a
+150 W, medição,
 comandos, ventilação, painel frontal, gabinete, organização interna e PE de chassi.
 
 **Pranchas e dados específicos.** Diagrama de blocos; diagrama elétrico; painel

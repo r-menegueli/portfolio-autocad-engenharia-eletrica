@@ -1,0 +1,18 @@
+calculo,formula,resultado,unidade,classificacao,observacao
+F_SW,faixa do datasheet LM5190; minimo adotado,100000,Hz,PREMISSA,Referencia de projeto; valor final depende de perdas e filtro EMI
+RIPPLE_ALVO,5 x 0.30,1.500000,A,DERIVADO,Alvo de 30 por cento da corrente maxima segundo metodo preliminar
+L_MIN_36V,18 x (1-18/36) / (1.5 x 100000),60.000000,uH,DERIVADO,VOUT=VIN/2 e barramento nominal de 36 V
+L_MIN_42V,21 x (1-21/42) / (1.5 x 100000),70.000000,uH,DERIVADO,Cenario de sensibilidade de 42 V; nao e tolerancia declarada de PS1
+L1_PROPOSTA,valor normalizado acima de L_MIN_42V,75,uH,PROPOSTA,Isat minimo proposto de 8 A; perdas e elevacao termica pendentes
+DELTA_IL_36V,18 x (1-18/36) / (75e-6 x 100000),1.200000,A,DERIVADO,Ondulacao pico a pico maxima no barramento nominal de 36 V
+DELTA_IL_42V,21 x (1-21/42) / (75e-6 x 100000),1.400000,A,DERIVADO,Cenario parametrico de sensibilidade de 42 V
+RCS_PROPOSTA,valor normalizado para sensor Kelvin,0.0091,ohm,PROPOSTA,9.1 mOhm 1 por cento; confirmar limiar potencia e temperatura
+I_PEAK_NORMAL,5 + 1.4/2,5.700000,A,DERIVADO,Pico previsto em 5 A no cenario de 42 V
+I_PEAK_CBC,0.060 / 0.0091,6.593407,A,DERIVADO,Estimativa nominal pelo limiar tipico de 60 mV do datasheet
+I_MEDIA_CBC,6.593407 - 1.4/2,5.893407,A,DERIVADO,Estimativa media equivalente no cenario de ripple de 42 V
+RIMON_CALC,1 / (0.0091 x 0.002 x 5 + 25e-6),8620.689655,ohm,DERIVADO,Equacao CC do datasheet com gm=2 uA/mV e offset tipico de 25 uA
+RIMON_PROPOSTA,valor E96 aproximado,8620,ohm,PROPOSTA,8.62 kOhm; tolerancia e exatidao final pendentes
+ISET_5A,8620 x (5 x 0.0091 x 0.002 + 25e-6),0.999920,V,DERIVADO,Valor nominal de referencia para ajuste dinamico de 5 A
+P_RCS_5A,5^2 x 0.0091,0.227500,W,DERIVADO,Perda media ideal no ponto de 5 A
+P_RCS_CBC,5.893407^2 x 0.0091,0.316064,W,DERIVADO,Perda media estimada no limite medio equivalente; sem tolerancias
+V_REG_MIN,referencia interna FB do LM5190,0.8,V,REFERENCIA,Limite inferior de regulacao publicado; K1 aberto desabilita a entrega mas nao garante descarga da saida
