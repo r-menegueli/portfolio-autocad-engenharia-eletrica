@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 87 | 85 pranchas de projeto, template e carimbo |
-| PDF | 86 | 85 pranchas de projeto e template A3 |
-| SVG | 87 | 85 pranchas de projeto, template e carimbo |
-| PNG | 86 | 85 pranchas de projeto e template A3 |
-| CSV | 57 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
+| DXF | 88 | 86 pranchas de projeto, template e carimbo |
+| PDF | 87 | 86 pranchas de projeto e template A3 |
+| SVG | 88 | 86 pranchas de projeto, template e carimbo |
+| PNG | 87 | 86 pranchas de projeto e template A3 |
+| CSV | 58 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **567** | 174.403.102 bytes |
+| **Total** | **572** | 178.535.390 bytes |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -38,11 +38,11 @@ Nenhum arquivo DWG integra o repositório.
 | P09 | 8 | 50 | 6 | 8 | 188 | 2 | 0 |
 | P10 | 6 | 45 | 7 | 9 | 82 | 2 | 0 |
 | P11 | 6 | 36 | 6 | 2 | 40 | 1 | 0 |
-| P12 | 7 | 40 | 6 | 2 | 39 | 1 | 0 |
-| **Total** | **85** | **526** | **83** | **57** | **1.008** | **21** | **2** |
+| P12 | 8 | 45 | 6 | 3 | 48 | 1 | 0 |
+| **Total** | **86** | **531** | **83** | **58** | **1.017** | **21** | **2** |
 
 Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 85
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 86
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

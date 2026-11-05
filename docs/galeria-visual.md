@@ -1,6 +1,6 @@
 # Galeria visual do portfólio
 
-Esta seleção apresenta cinco pranchas representativas da variedade do portfólio.
+Esta seleção apresenta seis pranchas representativas da variedade do portfólio.
 Cada imagem é um PNG de inspeção gerado a partir do mesmo DXF que origina o PDF e o
 SVG. Clique na imagem para abrir o PDF A3.
 
@@ -11,9 +11,9 @@ SVG. Clique na imagem para abrir o PDF A3.
 | P03 — Automação com CLP | P07 — Veículo elétrico |
 | [![Arquitetura do painel de automação com CLP](../03-painel-automacao-clp/exports/01_arquitetura_automacao.png)](../03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf) | [![Arquitetura geral do veículo elétrico](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png)](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf) |
 | Potência, segurança, CLP, processo e sinalização. [Projeto](../03-painel-automacao-clp/README.md) · [DXF](../03-painel-automacao-clp/fonte/01_arquitetura_automacao.dxf) · [SVG](../03-painel-automacao-clp/exports/01_arquitetura_automacao.svg) | Domínios HV/LV, tração, controle, CAN e sensores. [Projeto](../07-arquitetura-veiculo-eletrico/README.md) · [DXF](../07-arquitetura-veiculo-eletrico/fonte/01_arquitetura_geral.dxf) · [SVG](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.svg) |
-| P04 — Nível e causa–efeito |  |
-| [![Sequência de operação e causa–efeito do reservatório](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png)](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf) |  |
-| Partida, regulação PI, permissivos e sete respostas a falhas. [Projeto](../04-controle-nivel-reservatorio/README.md) · [DXF](../04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeito.dxf) · [SVG](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg) |  |
+| P04 — Nível e causa–efeito | P12 — Matriz do GMG/QTA |
+| [![Sequência de operação e causa–efeito do reservatório](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png)](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf) | [![Matriz causa–efeito do GMG e QTA](../12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.png)](../12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.pdf) |
+| Partida, regulação PI, permissivos e sete respostas a falhas. [Projeto](../04-controle-nivel-reservatorio/README.md) · [DXF](../04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeito.dxf) · [SVG](../04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg) | Nove eventos, permissivos e respostas pendentes da USCA/OEM. [Projeto](../12-grupo-gerador-qta/README.md) · [DXF](../12-grupo-gerador-qta/fonte/08_matriz_causa_efeito_qta.dxf) · [SVG](../12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.svg) |
 
 ## Critério da seleção
 
@@ -22,6 +22,7 @@ SVG. Clique na imagem para abrir o PDF A3.
 - P03 representa automação, segurança e interfaces de processo;
 - P07 amplia o escopo para energia, controle e comunicação veicular.
 - P04 mostra sequência de operação rastreada à filosofia e premissas do processo.
+- P12 demonstra como registrar eventos e limites conhecidos sem preencher respostas de fabricante ainda pendentes.
 
 As 68 pranchas citadas no relatório abaixo pertencem à revisão histórica de P01–P10
 em 2026-09-10; P11 e P12 foram adicionados depois. Consulte a

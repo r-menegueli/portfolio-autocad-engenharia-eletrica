@@ -25,7 +25,7 @@ Documentação CAD acadêmica e conceitual de um **Sistema de Grupo Moto-Gerador
 
 ## 2. Índice de Pranchas (A3 Paisagem)
 
-O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
+O conjunto da revisão 02 é composto por 8 pranchas em DXF AC1027/R2013:
 
 1. **`01_diagrama_unifilar_qta.dxf`:** Diagrama unifilar de potência do QTA (Rede, GMG, contatores K1/K2 intertravados, DPS e barramento de cargas essenciais).
 2. **`02_diagrama_trifilar_potencia.dxf`:** Esquema trifilar detalhado de força (3F+N+PE), circuitos de alimentação auxiliar, carregador de baterias e resistor de bloco.
@@ -34,6 +34,7 @@ O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
 5. **`05_layout_painel_qta.dxf`:** Layout frontal da porta com IHM, comutador e sinalizadores, e placa de montagem interna com barramentos e componentes.
 6. **`06_planta_instalacao_gmg.dxf`:** Planta de implantação da sala de geradores, atenuadores acústicos de admissão e descarga, escape de gases com silencioso hospitalar e bacia de contenção de diesel.
 7. **`07_sequencia_transferencia_qta.dxf`:** Sequência por estados, pausas entre partidas, confirmação dos contatos auxiliares, transferência aberta, retorno à rede e arrefecimento.
+8. **`08_matriz_causa_efeito_qta.dxf`:** Matriz com nove eventos de rede, partida, estabilidade do GMG, feedbacks dos contatores, retorno, emergência e proteções do motor. A condição de falha de rede permanece por mais de 3 s, conforme as premissas. Respostas dependentes da USCA/OEM permanecem indicadas como pendentes.
 
 ---
 
@@ -49,6 +50,7 @@ O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
 │   ├── 05_layout_painel_qta.dxf
 │   ├── 06_planta_instalacao_gmg.dxf
 │   ├── 07_sequencia_transferencia_qta.dxf
+│   ├── 08_matriz_causa_efeito_qta.dxf
 │   ├── gerar_projeto_12.py
 │   ├── renderizar_projeto_12.py
 │   └── validar_projeto_12.py
@@ -64,6 +66,7 @@ O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
 ├── inspecao-visual.md
 ├── lista-materiais.csv
 ├── lista-cabos.csv
+├── matriz-causa-efeito.csv
 └── validacao.json
 ```
 
@@ -73,3 +76,7 @@ O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
 
 1. Abra o arquivo desejado diretamente na pasta `fonte/` com o AutoCAD 2013 ou posterior (incluindo o AutoCAD 2027 instalado).
 2. Para salvar como `.dwg`, utilize o comando `SAVEAS` no AutoCAD e selecione o formato DWG padrão.
+
+## Validação da revisão 02
+
+O validador específico confirmou oito pranchas, nove eventos causa–efeito, 24 itens de materiais e 15 cabos. As folhas 07 e 08 foram conferidas no PNG de produção e em PDF rasterizado a 150 dpi. A prancha 08 usa texto de 1,45 mm para melhorar a leitura da tabela. A inspeção integral no AutoCAD e no navegador segue pendente.

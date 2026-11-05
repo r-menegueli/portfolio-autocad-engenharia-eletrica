@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 85 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 86 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -33,14 +33,14 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck síncrona CC/CV e pré-dimensionamento rastreável. | K1 abre só o condutor positivo; sem descarga dedicada, 0 V residual nos bornes não é garantido. Malhas, compensação, escolha térmica dos MOSFETs/indutor, proteções e layout EMI seguem pendentes. | Definir e dimensionar descarga segura da saída; completar conexões por pino, redes externas, limites de falha e dissipação antes de simular ou montar. |
 | P10 — Instrumentação | Boa listagem de instrumentos e arquitetura de rede. | Tags, faixas e endereços são premissas; não há validação com folhas de dados ou protocolo implantado. | Substituir premissas por instrumentos escolhidos, diagramas de loop e matriz de comunicação testada. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA. | A estimativa de 18,72 Ω é apenas aritmética ilustrativa. Não calcula GPR/toque/passo; SPDA e classificação também não foram verificados. | A malha de terra deve ser redesenhada após levantamento de resistividade, dados de falta e estudo de segurança. |
-| P12 — GMG/QTA | Potência, bornes, painel, implantação e sequência de transferência. | Tempos e lógica são referências conceituais; intertravamento, seletores de polo e comandos precisam de confirmação por fabricante e hardware real. | Substituir as premissas por um modelo de QTA/GMG selecionado, diagrama do fabricante e teste de lógica em bancada. |
+| P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
 
 ## Correções desta revisão
 
 - Escureci e separei as cores ACI usadas nas layers de sinal, comando, potência,
   cabos, cotas e arquitetura para que permaneçam distinguíveis sobre folha branca.
 - Reemiti os carimbos em revisão gráfica 01 para a revisão anterior e em revisão 02
-  para as ampliações funcionais; o conjunto atual totaliza 85 folhas.
+  para as ampliações funcionais; o conjunto atual totaliza 86 folhas.
 - Acrescentei P03-09 com sequência de operação e matriz causa-efeito. A prancha
   deixa explícito que a ação sobre bombas já em marcha diante de sensor incoerente
   segue como decisão pendente, sem completar essa lacuna por suposição.
@@ -55,6 +55,10 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
   circuito de descarga, agora registrado como pendência.
 - Acrescentei a P12-07, uma sequência visual com confirmação de falha, partidas,
   espera entre tentativas, transferência aberta, retorno e arrefecimento.
+- Acrescentei P12-08 com nove eventos, resposta conceitual, alarme e retorno/limites.
+  Corrigi a condição de rede para indicar duração superior a 3 s, conforme as
+  premissas, e aumentei a tipografia da tabela para 1,45 mm. A causa de nível baixo
+  de combustível e várias respostas da USCA/OEM continuam sem decisão documentada.
 - Alinhei desenhos e simulação QTA nos tempos de referência e corrigi alegações de
   transferências impossíveis, polos e estados sem correspondência.
 - Removi da documentação P11 os resultados PASS e a aprovação implícita do
@@ -64,11 +68,12 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P09 foram regenerados. `scripts/validar_portfolio.py
---root . --strict` aprovou 448.668 verificações, sem erros ou avisos.
-`scripts/revisar_portfolio.py --root .` aprovou 12 projetos, 85 pranchas, 340 arquivos
-gráficos e 57 CSVs; a similaridade mínima PDF/PNG foi 0,984161. As 12 folhas de
-contato foram regeneradas; revisei as composições P03 (nove folhas) e P04 (sete).
+Os DXFs e derivados PDF/SVG/PNG de P09 e P12 foram regenerados. `scripts/validar_portfolio.py
+--root . --strict` aprovou 455.374 verificações, sem erros ou avisos.
+`scripts/revisar_portfolio.py --root .` aprovou 12 projetos, 86 pranchas, 344 arquivos
+gráficos e 58 CSVs; a similaridade mínima PDF/PNG foi 0,9842. As 12 folhas de
+contato foram regeneradas; revisei as composições P03 (nove folhas), P04 (sete) e
+P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
@@ -76,8 +81,10 @@ e corrigi a tag TK-100 incoerente no fluxograma P04-01. As folhas
 novas P09-07 e P09-08 foram inspecionadas em PNG integral e em PDF rasterizado a 150
 dpi; a composição das oito folhas P09 foi conferida no contato. O parser aceitou os
 SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09-07/08, P03-09 e P04-07 está
-pendente da autorização do usuário. P11-01, P11-05, P11-06 e P12-07 permanecem como
-inspeções integrais documentadas da revisão anterior.
+pendente da autorização do usuário. P11-01, P11-05 e P11-06 permanecem como
+inspeções integrais documentadas da revisão anterior. P12-07 e P12-08 foram
+reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas
+P12 também foi conferido.
 
 A validação do AutoCAD/AcCoreConsole não foi repetida nesta revisão; abrir o DXF no
 AutoCAD e reabrir o PDF no leitor final é uma etapa independente. O mesmo cuidado

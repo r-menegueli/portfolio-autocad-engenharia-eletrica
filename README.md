@@ -39,9 +39,9 @@ em [portfolio.toml](portfolio.toml).
 | P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição e integração mecânica | 8 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos e bornes | 6 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
-| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e intertravamentos | 7 | [abrir](12-grupo-gerador-qta/README.md) |
+| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e matriz causa–efeito | 8 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **85 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **86 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,8 +135,8 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 85 pranchas A3 de P01–P12; a validação estrita aprovou
-448.668 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
+revisão cobre 86 pranchas A3 de P01–P12; a validação estrita aprovou
+455.374 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
 limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
 limites técnicos.
 

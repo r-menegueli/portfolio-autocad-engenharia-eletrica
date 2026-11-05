@@ -396,7 +396,7 @@ id = "12-grupo-gerador-qta"
 path = "12-grupo-gerador-qta"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -406,6 +406,7 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "lista-cabos.csv",
+  "matriz-causa-efeito.csv",
   "fonte/gerar_projeto_12.py",
   "fonte/renderizar_projeto_12.py",
   "fonte/validar_projeto_12.py",
@@ -1362,6 +1363,17 @@ source = "12-grupo-gerador-qta/fonte/07_sequencia_transferencia_qta.dxf"
 svg = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.svg"
 pdf = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.pdf"
 png = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-08-matriz-causa-efeito-qta"
+kind = "sheet"
+title = "Projeto 12 - Matriz causa-efeito do GMG e QTA"
+source = "12-grupo-gerador-qta/fonte/08_matriz_causa_efeito_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.pdf"
+png = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.png"
 require_a3 = true
 require_notice = true
 

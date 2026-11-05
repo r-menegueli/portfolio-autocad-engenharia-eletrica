@@ -19,6 +19,7 @@ SHEETS = (
     "05_layout_painel_qta.dxf",
     "06_planta_instalacao_gmg.dxf",
     "07_sequencia_transferencia_qta.dxf",
+    "08_matriz_causa_efeito_qta.dxf",
 )
 REQUIRED_TAGS = {
     "GMG-01",
@@ -32,6 +33,9 @@ REQUIRED_TAGS = {
     "380/220 V",
     "QCE",
     "INT-MEC",
+    "MATRIZ CAUSA-EFEITO DO GMG E QTA",
+    "E01",
+    "E09",
 }
 
 
@@ -89,14 +93,25 @@ def main() -> int:
 
     materials = read_rows(project_dir / "lista-materiais.csv")
     cables = read_rows(project_dir / "lista-cabos.csv")
+    cause_effect = read_rows(project_dir / "matriz-causa-efeito.csv")
     if len(materials) < 15:
         errors.append("Lista de materiais possui menos de 15 itens.")
     if len(cables) < 10:
         errors.append("Lista de cabos possui menos de 10 itens.")
+    expected_events = [f"E{index:02d}" for index in range(1, 10)]
+    actual_events = [row.get("id", "") for row in cause_effect]
+    if actual_events != expected_events:
+        errors.append("Matriz causa-efeito deve conter exatamente os eventos E01 a E09 em ordem.")
+    for index, row in enumerate(cause_effect, start=1):
+        if any(not row.get(column, "").strip() for column in ("evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")):
+            errors.append(f"Evento E{index:02d} possui campo vazio na matriz causa-efeito.")
+    if not any("pendente" in row.get("resposta_conceitual", "").lower() for row in cause_effect):
+        errors.append("As respostas ainda indefinidas da matriz devem permanecer explicitamente pendentes.")
 
     report = {
         "project": PROJECT_SLUG,
         "sheets_checked": len(SHEETS),
+        "cause_effect_events": len(cause_effect),
         "materials_count": len(materials),
         "cables_count": len(cables),
         "errors": errors,
@@ -110,7 +125,7 @@ def main() -> int:
         for err in errors:
             print(f"[ERRO] {err}")
         return 1
-    print(f"Validacao Projeto 12: PASS ({len(SHEETS)} pranchas, {len(materials)} materiais, {len(cables)} cabos)")
+    print(f"Validacao Projeto 12: PASS ({len(SHEETS)} pranchas, {len(cause_effect)} eventos, {len(materials)} materiais, {len(cables)} cabos)")
     return 0
 
 

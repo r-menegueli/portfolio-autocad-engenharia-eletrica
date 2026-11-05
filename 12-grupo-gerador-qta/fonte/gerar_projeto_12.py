@@ -1,8 +1,9 @@
-"""Gera as sete pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA) de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA)."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -36,7 +37,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "12-grupo-gerador-qta"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -122,6 +123,37 @@ SHEETS = (
         "A manobra exige confirmacao de abertura da fonte anterior e intertravamento fisico independente.",
         "52-R: contato rede | 52-G: contato GMG | FBK: retorno auxiliar | BBM: transicao aberta",
     ),
+    SheetSpec(
+        8,
+        "08_matriz_causa_efeito_qta.dxf",
+        "MATRIZ CAUSA-EFEITO DO GMG E QTA",
+        "Falhas de partida, transferencia, protecoes e retorno a rede",
+        "Limiares repetem as premissas documentadas; respostas indefinidas estao marcadas como pendentes.\\P"
+        "Validar a logica final com a USCA/GMG selecionada; sem classificacao SIL/PL.",
+        "52-R: contator da rede | 52-G: contator do GMG | FBK: retorno auxiliar | OEM: fabricante",
+    ),
+)
+
+
+CAUSE_EFFECT_COLUMNS = (
+    "id",
+    "evento",
+    "deteccao_condicao",
+    "resposta_conceitual",
+    "alarme_indicacao",
+    "retorno_limite",
+)
+
+CAUSE_EFFECT_ROWS = (
+    ("E01", "Falha de rede/fase", "Subtensao <85% ou sobretensao >110% por >3 s; falta de fase", "USCA inicia a sequencia; 52-G aguarda GMG estavel", "Falha de rede; tag USCA pendente", "Rede normal; retorno somente apos 120 s estavel"),
+    ("E02", "GMG nao parte", "Ate 3 pulsos de 5 s, com repouso de 5 s", "Encerra tentativas; nao transfere para o GMG", "Falha de partida; codigo/tag pendente", "Intervencao e rearme conforme OEM; procedimento pendente"),
+    ("E03", "GMG instavel", "380 V +/-2% e 60 Hz +/-1% estaveis por 5 s", "Nao autoriza o fechamento de 52-G; tratamento de falha pendente", "Condicao instavel na USCA; tag pendente", "Permissivo apos estabilidade; reset depende do OEM/USCA"),
+    ("E04", "52-R nao confirma abertura", "FBK nao confirma abertura antes da transferencia para GMG", "Bloqueia 52-G; nao comanda as fontes em paralelo", "Falha de abertura/feedback; tag pendente", "Inspecao e rearme apos confirmar abertura"),
+    ("E05", "52-G nao confirma abertura", "FBK nao confirma abertura antes do retorno a rede", "Bloqueia 52-R; nao comanda as fontes em paralelo", "Falha de abertura/feedback; tag pendente", "Inspecao e rearme apos confirmar abertura"),
+    ("E06", "Rede retorna estavel", "Rede saudavel por 120 s (premissa)", "Abre 52-G, confirma FBK, espera 1,5 s e fecha 52-R; cooldown 180 s", "Indicacao de retorno/cooldown; tags pendentes", "Setpoints e aceite final dependem do OEM/USCA"),
+    ("E07", "Emergencia S0", "Botao de emergencia acionado", "Para o GMG; resposta dos contatores sob carga requer definicao USCA/OEM", "Emergencia; retencao/tag pendentes", "Rearme manual e causa removida conforme fabricante"),
+    ("E08", "Protecao do motor", "Oleo <1,2 bar; arrefecimento >103 C; sobrevelocidade >115%", "Parada do GMG conforme protecoes declaradas; resposta do QTA sob carga pendente", "Trip do motor; entradas/tags dependem do equipamento", "Causa removida e rearme conforme fabricante"),
+    ("E09", "Nivel baixo de diesel", "Alarme de nivel baixo; limiar nao especificado", "Alarme apenas; acao operacional nao definida nesta revisao", "Alarme de combustivel; limiar/tag pendentes", "Reposicao e ACK; procedimento depende do OEM"),
 )
 
 
@@ -667,6 +699,33 @@ def draw_sheet_07(layout) -> None:
     centered(layout, "Nunca comandar 52-R e 52-G juntos. Confirmar abertura por FBK e intertravamento mecanico.", (150, 181.5), 1.05, "12_LEGENDA")
 
 
+# --- Prancha 08: Matriz causa-efeito do GMG e QTA ---
+
+def draw_sheet_08(layout) -> None:
+    panel_box(layout, 20, 104, 400, 256, "MATRIZ CAUSA-EFEITO DO GMG E QTA", "USCA-01: eventos documentados, resposta conceitual e limites pendentes", "06_COMANDO")
+
+    x_edges = (28, 42, 96, 166, 252, 312, 392)
+    y_top = 234
+    header_height = 10
+    row_height = 12.8
+    y_bottom = y_top - header_height - row_height * len(CAUSE_EFFECT_ROWS)
+    add_rect(layout, x_edges[0], y_bottom, x_edges[-1], y_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x_edges[0], y_top - header_height), (x_edges[-1], y_top - header_height), "12_LEGENDA")
+    for idx in range(1, len(CAUSE_EFFECT_ROWS)):
+        y = y_top - header_height - row_height * idx
+        line(layout, (x_edges[0], y), (x_edges[-1], y), "12_LEGENDA")
+
+    headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
+    for idx, value in enumerate(headers):
+        centered(layout, value, ((x_edges[idx] + x_edges[idx + 1]) / 2, y_top - header_height / 2), 1.35, "12_LEGENDA", style=TITLE_STYLE)
+    for row_idx, row in enumerate(CAUSE_EFFECT_ROWS):
+        y = y_top - header_height - row_height * (row_idx + 0.5)
+        for col_idx, value in enumerate(row):
+            centered(layout, value, ((x_edges[col_idx] + x_edges[col_idx + 1]) / 2, y), 1.45, "02_TEXTO")
+
+
 DRAW_MAP = {
     1: draw_sheet_01,
     2: draw_sheet_02,
@@ -675,6 +734,7 @@ DRAW_MAP = {
     5: draw_sheet_05,
     6: draw_sheet_06,
     7: draw_sheet_07,
+    8: draw_sheet_08,
 }
 
 
@@ -689,8 +749,15 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
-    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..6)")
+    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..8)")
     return parser.parse_args()
+
+
+def write_cause_effect_csv(output_path: Path) -> None:
+    with output_path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(CAUSE_EFFECT_COLUMNS)
+        writer.writerows(CAUSE_EFFECT_ROWS)
 
 
 def main() -> int:
@@ -705,6 +772,10 @@ def main() -> int:
             continue
         output_path = source_dir / spec.filename
         build_sheet(config, spec, output_path)
+    matrix_path = root / PROJECT_SLUG / "matriz-causa-efeito.csv"
+    matrix_path.parent.mkdir(parents=True, exist_ok=True)
+    write_cause_effect_csv(matrix_path)
+    print(f"Gerado: {matrix_path.relative_to(root)}")
     return 0
 
 
