@@ -1,4 +1,4 @@
-"""Gera as sete pranchas DXF do Projeto 06 de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 06 de forma deterministica."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "06-centro-controle-motores"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -113,6 +113,37 @@ SHEETS = (
         "Seções não substituem dimensionamento por ampacidade, queda, curto-circuito e EMC.",
         "G: inclui PE | BL: blindado | POT: potência | CMD: comando | SIG: sinal",
     ),
+    SheetSpec(
+        8,
+        "08_matriz_causa_efeito_ccm.dxf",
+        "MATRIZ CAUSA-EFEITO DO CCM-06",
+        "Eventos de emergência, sobrecarga, reversão, VFD e retorno de energia",
+        "Ações repetem a sequência documentada; diagnósticos de fabricante permanecem pendentes.\\P"
+        "Não atribui categoria, PL ou SIL à função de segurança.",
+        "FR: relé de sobrecarga | FC: fim de curso | KSR: relé de segurança | STO: torque seguro desligado",
+    ),
+)
+
+
+CAUSE_EFFECT_COLUMNS = (
+    "id",
+    "evento",
+    "deteccao_condicao",
+    "resposta_conceitual",
+    "alarme_indicacao",
+    "retorno_limite",
+)
+
+CAUSE_EFFECT_ROWS = (
+    ("E01", "Emergencia S0-601", "S0-601 acionado; dois canais interrompidos", "KSR remove permissao; KM-601/602F/602R caem e STO A/B abre", "Indicacao e retencao dependem do KSR escolhido", "Canais integros e reset manual KSR; novo comando para mover"),
+    ("E02", "Falha CH1/CH2", "Canal aberto ou discrepante; diagnostico temporal nao definido", "Diagnostico e bloqueio dependem do modelo KSR; nao presumir permissao", "Falha de canal; codigo/tag pendente", "Aplicar manual do KSR e validar o reset da funcao"),
+    ("E03", "Sobrecarga M-601", "FR-601 abre o permissivo do comando", "KM-601 desenergiza; M-601 perde comando de marcha", "Indicacao local/remota depende da selecao", "Causa removida; rearme conforme FR-601 e novo START"),
+    ("E04", "Sobrecarga M-602", "FR-602 abre o permissivo comum da reversao", "KM-602F/R desenergizam; esteira perde comando de marcha", "Indicacao local/remota depende da selecao", "Causa removida; rearme conforme FR-602 e novo comando"),
+    ("E05", "FC-602F acionado", "Fim de curso de frente abre o respectivo permissivo", "Bloqueia somente KM-602F; sentido reverso permanece permissivel", "Sinalizacao de posicao nao especificada", "Remover causa; novo comando deliberado para frente"),
+    ("E06", "FC-602R acionado", "Fim de curso de reverso abre o respectivo permissivo", "Bloqueia somente KM-602R; sentido frente permanece permissivel", "Sinalizacao de posicao nao especificada", "Remover causa; novo comando deliberado para reverso"),
+    ("E07", "Falha do VFD-603", "RO2 FAULT ativo; codigo nao especificado", "RO2 sinaliza falha; reacao de saida depende do VFD selecionado", "Codigo/tag e acao de processo pendentes", "Diagnosticar no VFD; reset e nova partida conforme fabricante"),
+    ("E08", "Pedidos F/R simultaneos", "Comandos de frente e reverso presentes juntos", "NF cruzados e IM-602 impedem KM-602F/R fechados simultaneamente", "Diagnostico de conflito nao especificado", "Liberar comandos; reverter apos abertura do contator ativo"),
+    ("E09", "Retorno da alimentacao", "Tensao retorna apos perda do comando ou do CCM", "Retorno nao produz partida automatica das cargas", "Evento e retencao de alarmes nao definidos", "Confirmar permissivos; cada motor exige novo comando"),
 )
 
 
@@ -192,7 +223,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("MATRIZ CAUSA-EFEITO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -214,7 +245,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/07",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -230,7 +261,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/07"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -538,6 +569,14 @@ def draw_cable_list(layout, loads: list[dict[str, str]], cables: list[dict[str, 
     centered(layout, "COMPRIMENTO TOTAL ASSUMIDO: 196 m | CONFERIR LISTA-MATERIAIS.CSV PARA QUANTITATIVOS COMPLETOS", (210, 110.5), 1.15, "13_NOTAS")
 
 
+def draw_cause_effect(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) -> None:
+    headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
+    widths = (14, 43, 70, 80, 64, 82)
+    table(layout, 31, 261, widths, headers, list(CAUSE_EFFECT_ROWS), row_height=13.2, text_height=1.25)
+    add_rect(layout, 18, 105, 402, 126, "13_NOTAS")
+    centered(layout, "Rearme, diagnósticos, tempos e indicação dependem dos dispositivos selecionados e da validação da máquina.", (210, 115.5), 1.25, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_dol,
@@ -546,6 +585,7 @@ DRAWERS = {
     5: draw_layout,
     6: draw_terminals,
     7: draw_cable_list,
+    8: draw_cause_effect,
 }
 
 
@@ -566,6 +606,12 @@ def generate(root: Path) -> list[Path]:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix_path = project / "causa-efeito.csv"
+    with matrix_path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(CAUSE_EFFECT_COLUMNS)
+        writer.writerows(CAUSE_EFFECT_ROWS)
+    print(f"Gerado: {matrix_path.relative_to(root)}")
     return outputs
 
 

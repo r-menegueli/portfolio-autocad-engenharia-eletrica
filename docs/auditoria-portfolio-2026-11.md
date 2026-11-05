@@ -27,7 +27,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações e sequência causa-efeito em nove folhas. | O desenho não prova teste em CLP ou segurança funcional certificada; a resposta para sensor incoerente com bomba em marcha ainda não foi definida. | Escolher hardware, definir a ação para incoerência de sensores e validar a sequência em software de fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas e detalhes em folhas separadas. | As rotas e dimensões não vêm de levantamento real nem comprovam coordenação de campo. | Substituir o layout ilustrativo por levantamento cotado e cálculo rastreável de alimentadores. |
-| P06 — CCM | Abrange partida direta, reversão, VFD, bornes e lista de cabos. | Proteções e capacidade de curto dependem de componentes ainda não selecionados. | Substituir as premissas por catálogo e estudo de coordenação do conjunto. |
+| P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação. | A arquitetura é de alto nível; não é esquema veicular homologável nem define segurança funcional. | Desenvolver um diagrama por subsistema com interfaces, limites elétricos e requisitos de segurança definidos. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. | Substituir parâmetros genéricos por local, módulos/inversor escolhidos e cálculo de produção e proteção. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck síncrona CC/CV e pré-dimensionamento rastreável. | K1 abre só o condutor positivo; sem descarga dedicada, 0 V residual nos bornes não é garantido. Malhas, compensação, escolha térmica dos MOSFETs/indutor, proteções e layout EMI seguem pendentes. | Definir e dimensionar descarga segura da saída; completar conexões por pino, redes externas, limites de falha e dissipação antes de simular ou montar. |
@@ -40,7 +40,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Escureci e separei as cores ACI usadas nas layers de sinal, comando, potência,
   cabos, cotas e arquitetura para que permaneçam distinguíveis sobre folha branca.
 - Reemiti os carimbos em revisão gráfica 01 para a revisão anterior e em revisão 02
-  para as ampliações funcionais; o conjunto atual totaliza 86 folhas.
+  para as ampliações funcionais; o conjunto atual totaliza 87 folhas.
 - Acrescentei P03-09 com sequência de operação e matriz causa-efeito. A prancha
   deixa explícito que a ação sobre bombas já em marcha diante de sensor incoerente
   segue como decisão pendente, sem completar essa lacuna por suposição.
@@ -59,6 +59,9 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
   Corrigi a condição de rede para indicar duração superior a 3 s, conforme as
   premissas, e aumentei a tipografia da tabela para 1,45 mm. A causa de nível baixo
   de combustível e várias respostas da USCA/OEM continuam sem decisão documentada.
+- Acrescentei P06-08 com nove eventos para emergência, sobrecargas, fins de curso,
+  VFD, conflito de sentido e retorno de energia. Diagnóstico de KSR/VFD, sinalização
+  e rearme de campo continuam dependentes dos dispositivos selecionados.
 - Alinhei desenhos e simulação QTA nos tempos de referência e corrigi alegações de
   transferências impossíveis, polos e estados sem correspondência.
 - Removi da documentação P11 os resultados PASS e a aprovação implícita do
@@ -68,12 +71,11 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P09 e P12 foram regenerados. `scripts/validar_portfolio.py
---root . --strict` aprovou 455.374 verificações, sem erros ou avisos.
-`scripts/revisar_portfolio.py --root .` aprovou 12 projetos, 86 pranchas, 344 arquivos
-gráficos e 58 CSVs; a similaridade mínima PDF/PNG foi 0,9842. As 12 folhas de
-contato foram regeneradas; revisei as composições P03 (nove folhas), P04 (sete) e
-P12 (oito).
+Os DXFs e derivados PDF/SVG/PNG de P06, P09 e P12 foram regenerados. A validação
+estrita aprovou 461.963 verificações, sem erros nem avisos. O revisor aprovou 12
+projetos, 87 pranchas, 348 arquivos gráficos e 59 CSVs, com similaridade mínima
+PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
+P03 (nove folhas), P04 (sete), P06 (oito) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
@@ -84,7 +86,8 @@ SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09-07/08, P03-09
 pendente da autorização do usuário. P11-01, P11-05 e P11-06 permanecem como
 inspeções integrais documentadas da revisão anterior. P12-07 e P12-08 foram
 reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas
-P12 também foi conferido.
+P12 também foi conferido. P06-08 foi inspecionada em PNG integral e PDF rasterizado a
+150 dpi; a folha de contato atual das oito pranchas também foi conferida.
 
 A validação do AutoCAD/AcCoreConsole não foi repetida nesta revisão; abrir o DXF no
 AutoCAD e reabrir o PDF no leitor final é uma etapa independente. O mesmo cuidado

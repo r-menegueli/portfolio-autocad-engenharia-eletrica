@@ -23,6 +23,7 @@ SHEETS = (
     "05_layout_ccm.dxf",
     "06_diagrama_bornes.dxf",
     "07_lista_cabos.dxf",
+    "08_matriz_causa_efeito_ccm.dxf",
 )
 EXPECTED_LOADS = {"M-601", "M-602", "M-603"}
 EXPECTED_CABLES = {"W600", "W601", "W602", "W603A", "W603B", "W604", "W605", "W606", "W607", "W608"}
@@ -45,6 +46,7 @@ SHEET_TERMS = {
     "05_layout_ccm.dxf": ("GAVETA 601", "GAVETA 602", "VFD-603", "PE-06"),
     "06_diagrama_bornes.dxf": ("X1", "X2", "X3", "X4", "STO A/B"),
     "07_lista_cabos.dxf": ("W600", "W601", "W602", "W603A", "W603B", "W608"),
+    "08_matriz_causa_efeito_ccm.dxf": ("MATRIZ CAUSA-EFEITO DO CCM-06", "E01", "E09", "KSR", "STO A/B"),
 }
 
 
@@ -89,6 +91,7 @@ def validate(root: Path) -> dict:
     cables = read_rows(project / "lista-cabos.csv")
     terminals = read_rows(project / "lista-bornes.csv")
     materials = read_rows(project / "lista-materiais.csv")
+    cause_effect = read_rows(project / "causa-efeito.csv")
     errors: list[str] = []
     checks = 0
 
@@ -224,6 +227,18 @@ def validate(root: Path) -> dict:
         if tag not in material_refs:
             errors.append(f"Material obrigatório ausente: {tag}.")
 
+    expected_events = [f"E{index:02d}" for index in range(1, 10)]
+    actual_events = [row.get("id", "") for row in cause_effect]
+    checks += 3
+    if actual_events != expected_events:
+        errors.append("A matriz causa-efeito deve conter E01-E09 em ordem.")
+    for index, row in enumerate(cause_effect, start=1):
+        checks += 1
+        if any(not row.get(column, "").strip() for column in ("evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")):
+            errors.append(f"Evento E{index:02d} possui campo vazio na matriz causa-efeito.")
+    if not any("pendente" in " ".join(row.values()).casefold() for row in cause_effect):
+        errors.append("Pendências de fabricante devem permanecer explícitas na matriz causa-efeito.")
+
     # Partida direta: todos os permissivos devem existir; sem novo START não há rearme.
     dol_rows = 0
     for safety in (False, True):
@@ -312,7 +327,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         sheet_text = extract_text(doc)
         all_text.append(sheet_text)
@@ -328,6 +343,7 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "sheets": len(SHEETS),
+            "cause_effect_events": len(cause_effect),
             "loads": len(loads),
             "methods": len(methods),
             "cables": len(cables),

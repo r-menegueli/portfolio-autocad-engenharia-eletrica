@@ -1,0 +1,10 @@
+﻿id,evento,deteccao_condicao,resposta_conceitual,alarme_indicacao,retorno_limite
+E01,Emergencia S0-601,S0-601 acionado; dois canais interrompidos,KSR remove permissao; KM-601/602F/602R caem e STO A/B abre,Indicacao e retencao dependem do KSR escolhido,Canais integros e reset manual KSR; novo comando para mover
+E02,Falha CH1/CH2,Canal aberto ou discrepante; diagnostico temporal nao definido,Diagnostico e bloqueio dependem do modelo KSR; nao presumir permissao,Falha de canal; codigo/tag pendente,Aplicar manual do KSR e validar o reset da funcao
+E03,Sobrecarga M-601,FR-601 abre o permissivo do comando,KM-601 desenergiza; M-601 perde comando de marcha,Indicacao local/remota depende da selecao,Causa removida; rearme conforme FR-601 e novo START
+E04,Sobrecarga M-602,FR-602 abre o permissivo comum da reversao,KM-602F/R desenergizam; esteira perde comando de marcha,Indicacao local/remota depende da selecao,Causa removida; rearme conforme FR-602 e novo comando
+E05,FC-602F acionado,Fim de curso de frente abre o respectivo permissivo,Bloqueia somente KM-602F; sentido reverso permanece permissivel,Sinalizacao de posicao nao especificada,Remover causa; novo comando deliberado para frente
+E06,FC-602R acionado,Fim de curso de reverso abre o respectivo permissivo,Bloqueia somente KM-602R; sentido frente permanece permissivel,Sinalizacao de posicao nao especificada,Remover causa; novo comando deliberado para reverso
+E07,Falha do VFD-603,RO2 FAULT ativo; codigo nao especificado,RO2 sinaliza falha; reacao de saida depende do VFD selecionado,Codigo/tag e acao de processo pendentes,Diagnosticar no VFD; reset e nova partida conforme fabricante
+E08,Pedidos F/R simultaneos,Comandos de frente e reverso presentes juntos,NF cruzados e IM-602 impedem KM-602F/R fechados simultaneamente,Diagnostico de conflito nao especificado,Liberar comandos; reverter apos abertura do contator ativo
+E09,Retorno da alimentacao,Tensao retorna apos perda do comando ou do CCM,Retorno nao produz partida automatica das cargas,Evento e retencao de alarmes nao definidos,Confirmar permissivos; cada motor exige novo comando

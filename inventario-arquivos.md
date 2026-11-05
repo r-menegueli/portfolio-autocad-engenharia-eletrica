@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 88 | 86 pranchas de projeto, template e carimbo |
-| PDF | 87 | 86 pranchas de projeto e template A3 |
-| SVG | 88 | 86 pranchas de projeto, template e carimbo |
-| PNG | 87 | 86 pranchas de projeto e template A3 |
-| CSV | 58 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
+| DXF | 89 | 87 pranchas de projeto, template e carimbo |
+| PDF | 88 | 87 pranchas de projeto e template A3 |
+| SVG | 89 | 87 pranchas de projeto, template e carimbo |
+| PNG | 88 | 87 pranchas de projeto e template A3 |
+| CSV | 59 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **572** | 178.535.390 bytes |
+| **Total** | **577** | 182.681.482 bytes |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -32,17 +32,17 @@ Nenhum arquivo DWG integra o repositório.
 | P03 | 9 | 52 | 7 | 5 | 133 | 2 | 0 |
 | P04 | 7 | 47 | 8 | 6 | 79 | 2 | 1 |
 | P05 | 7 | 44 | 6 | 4 | 78 | 2 | 1 |
-| P06 | 7 | 44 | 7 | 5 | 85 | 2 | 0 |
+| P06 | 8 | 49 | 7 | 6 | 94 | 2 | 0 |
 | P07 | 8 | 49 | 8 | 5 | 88 | 2 | 0 |
 | P08 | 6 | 40 | 6 | 6 | 102 | 2 | 0 |
 | P09 | 8 | 50 | 6 | 8 | 188 | 2 | 0 |
 | P10 | 6 | 45 | 7 | 9 | 82 | 2 | 0 |
 | P11 | 6 | 36 | 6 | 2 | 40 | 1 | 0 |
 | P12 | 8 | 45 | 6 | 3 | 48 | 1 | 0 |
-| **Total** | **86** | **531** | **83** | **58** | **1.017** | **21** | **2** |
+| **Total** | **87** | **536** | **83** | **59** | **1.026** | **21** | **2** |
 
 Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 86
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 87
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

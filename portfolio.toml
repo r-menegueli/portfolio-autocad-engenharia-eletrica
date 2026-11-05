@@ -242,7 +242,7 @@ id = "06-centro-controle-motores"
 path = "06-centro-controle-motores"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -256,6 +256,7 @@ required_files = [
   "lista-cabos.csv",
   "lista-bornes.csv",
   "lista-materiais.csv",
+  "causa-efeito.csv",
   "fonte/gerar_projeto_06.py",
   "fonte/validar_projeto_06.py",
   "validacao-integracao.json",
@@ -912,6 +913,17 @@ source = "06-centro-controle-motores/fonte/07_lista_cabos.dxf"
 svg = "06-centro-controle-motores/exports/07_lista_cabos.svg"
 pdf = "06-centro-controle-motores/exports/07_lista_cabos.pdf"
 png = "06-centro-controle-motores/exports/07_lista_cabos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-08-matriz-causa-efeito"
+kind = "sheet"
+title = "Projeto 06 - Matriz causa-efeito do CCM-06"
+source = "06-centro-controle-motores/fonte/08_matriz_causa_efeito_ccm.dxf"
+svg = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.svg"
+pdf = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.pdf"
+png = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.png"
 require_a3 = true
 require_notice = true
 

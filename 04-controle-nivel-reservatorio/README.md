@@ -55,8 +55,8 @@ Cada prancha possui a fonte DXF correspondente em `fonte/` e derivados com o mes
 ## Validação e limites
 
 - Validador funcional específico: `PASS`, 225 verificações e zero erros.
-- Validador estrito do portfólio: `PASS`, 455.374 verificações, zero erros e zero avisos.
-- Revisor consolidado: `PASS`, 12 projetos, 86 pranchas, 344 arquivos gráficos e 58 CSVs; similaridade mínima PDF/PNG de 0,9842.
+- Validador estrito do portfólio: `PASS`, 461.963 verificações, zero erros e zero avisos.
+- Revisor consolidado: `PASS`, 12 projetos, 87 pranchas, 348 arquivos gráficos e 59 CSVs; similaridade mínima PDF/PNG de 0,9842.
 - A revisão 02 foi renderizada em PNG e PDF para inspeção local. A abertura dos SVGs atuais em navegador e dos DXFs atuais no AutoCAD ainda não foi repetida.
 - Os parâmetros PI são iniciais e não representam sintonia definitiva. Divergências persistentes entre LT-101 e chaves bloqueiam o automático; a resposta pós-falta de energia exige confirmação de retenção do alarme no PLC selecionado.
 - Nenhuma função recebe classificação SIL, PL ou categoria de segurança. Consulte [estrategia-pid.md](estrategia-pid.md) e [criterios-premissas.md](criterios-premissas.md).
