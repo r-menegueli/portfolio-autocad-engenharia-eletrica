@@ -65,6 +65,13 @@ trabalho, requisitos da concessionária ou análise de expansão.
 - tomadas industriais e auxiliares: DR 30 mA como premissa;
 - DPS tipo 2: quantidade e configuração conceituais.
 
+O valor de 6 kA no ponto de entrega e o Icu mínimo de 10 kA assumido para DJ-G não
+vieram de curto-circuito informado pela concessionária nem de cálculo com impedâncias
+reais. A matriz [matriz-coordenacao-protecoes.csv](matriz-coordenacao-protecoes.csv)
+registra seis comparações montante-jusante; todas permanecem `PENDENTE` até receber
+curvas dos dispositivos e dados de origem, cabos, motores, drivers e DRs. Não se
+declara interrupção adequada, seletividade ou retaguarda.
+
 Não foram calculados curto-circuito, energia incidente, seletividade, retaguarda,
 coordenação de DPS, partida de motores, harmônicas, correção de fator de potência,
 temperatura dos quadros nem esforços eletrodinâmicos.

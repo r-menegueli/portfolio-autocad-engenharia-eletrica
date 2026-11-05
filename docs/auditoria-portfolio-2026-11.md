@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 90 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 91 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -26,7 +26,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P02 — Residencial | Conjunto mais claro para leitura rápida: plantas, circuitos, quadro de cargas e detalhes. | Continua dependente de arquitetura e cargas assumidas. | Trocar a planta-base fictícia por uma planta cotada e identificar premissas de carga por ambiente. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações e sequência causa-efeito em nove folhas. | O desenho não prova teste em CLP ou segurança funcional certificada; a resposta para sensor incoerente com bomba em marcha ainda não foi definida. | Escolher hardware, definir a ação para incoerência de sensores e validar a sequência em software de fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
-| P05 — Instalação industrial | Traz layout, rotas, cargas e detalhes em folhas separadas. | As rotas e dimensões não vêm de levantamento real nem comprovam coordenação de campo. | Substituir o layout ilustrativo por levantamento cotado e cálculo rastreável de alimentadores. |
+| P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes e a topologia dos seis pares de proteção em P05-08. | As rotas ainda são premissas; Icc, capacidade de interrupção, curvas e seletividade permanecem pendentes. | Substituir as premissas por dados da concessionária, cabos e dispositivos selecionados; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação. | A arquitetura é de alto nível; não é esquema veicular homologável nem define segurança funcional. | Desenvolver um diagrama por subsistema com interfaces, limites elétricos e requisitos de segurança definidos. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. | Substituir parâmetros genéricos por local, módulos/inversor escolhidos e cálculo de produção e proteção. |
@@ -75,6 +75,10 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Na revisão 02 do P11, removi da prancha 05 e da memória de cálculo a estimativa de
   resistência baseada em valores hipotéticos. A folha 07 e um CSV com 22 linhas agora
   registram as entradas e evidências ainda pendentes, sem produzir resultado de segurança.
+- Na revisão 02 do P05, acrescentei P05-08 e uma matriz rastreável com seis pares de
+  proteção; Icc, Icu/Ics, curvas, retaguarda e energia passante continuam pendentes.
+- Reemiti as oito folhas P05 na revisão 02 e conferi P05-08 em PNG integral e PDF
+  rasterizado a 150 dpi; a folha de contato atual mostra as oito composições.
 - A revisão 02 reemitiu as sete folhas P11 como `/07`; a folha 05 deixa explícito que
   não há resultado da malha e P11-07 organiza os dados e entregáveis para o próximo estudo.
 - Identifiquei relatórios de 2026-09-10 como históricos, pois cobrem P01–P10 e 68
@@ -82,11 +86,11 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P06, P09, P10, P11 e P12 foram regenerados. A validação
-estrita aprovou 480.701 verificações, sem erros nem avisos. O revisor aprovou 12
-projetos, 90 pranchas, 360 arquivos gráficos e 62 CSVs, com similaridade mínima
+Os DXFs e derivados PDF/SVG/PNG de P05, P06, P09, P10, P11 e P12 foram regenerados. A
+validação estrita aprovou 485.886 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 91 pranchas, 364 arquivos gráficos e 63 CSVs, com similaridade mínima
 PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
-P03 (nove folhas), P04 (sete), P06 (oito), P10 (sete), P11 (sete) e P12 (oito).
+P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P10 (sete), P11 (sete) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
@@ -113,6 +117,6 @@ vale para FreeCAD, KiCad e uma IDE de CLP: artefatos desses repositórios não f
 aprovados dentro dos aplicativos nativos.
 
 Use esta auditoria para priorizar o próximo ciclo; não use nenhuma das folhas como
-documento de execução. As melhorias mais valiosas agora são completar o circuito e
-suas verificações térmicas/EMI em P09 e desenvolver o estudo de segurança da malha de
-P11, ambos dependentes de dados e componentes reais.
+documento de execução. Os próximos avanços de maior valor são fechar a coordenação de
+P05 com curvas e impedâncias reais, concluir verificações térmicas/EMI em P09 e obter
+dados de campo para o estudo de segurança da malha de P11.

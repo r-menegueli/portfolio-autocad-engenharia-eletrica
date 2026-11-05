@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 92 | 90 pranchas de projeto, template e carimbo |
-| PDF | 91 | 90 pranchas de projeto e template A3 |
-| SVG | 92 | 90 pranchas de projeto, template e carimbo |
-| PNG | 91 | 90 pranchas de projeto e template A3 |
-| CSV | 62 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
+| DXF | 93 | 91 pranchas de projeto, template e carimbo |
+| PDF | 92 | 91 pranchas de projeto e template A3 |
+| SVG | 93 | 91 pranchas de projeto, template e carimbo |
+| PNG | 92 | 91 pranchas de projeto e template A3 |
+| CSV | 63 | entradas, cálculos, cabos, bornes, materiais, proteção e causa–efeito |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **592** | arquivos incluídos nesta revisão, sem caches nem saídas temporárias |
+| **Total** | **597** | arquivos incluídos nesta revisão, sem caches nem saídas temporárias |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -31,7 +31,7 @@ Nenhum arquivo DWG integra o repositório.
 | P02 | 8 | 45 | 6 | 3 | 55 | 2 | 0 |
 | P03 | 9 | 52 | 7 | 5 | 133 | 2 | 0 |
 | P04 | 7 | 47 | 8 | 6 | 79 | 2 | 1 |
-| P05 | 7 | 44 | 6 | 4 | 78 | 2 | 1 |
+| P05 | 8 | 49 | 6 | 5 | 84 | 2 | 1 |
 | P06 | 8 | 49 | 7 | 6 | 94 | 2 | 0 |
 | P07 | 8 | 49 | 8 | 5 | 88 | 2 | 0 |
 | P08 | 6 | 40 | 6 | 6 | 102 | 2 | 0 |
@@ -39,10 +39,10 @@ Nenhum arquivo DWG integra o repositório.
 | P10 | 7 | 50 | 7 | 10 | 90 | 2 | 0 |
 | P11 | 7 | 41 | 6 | 3 | 62 | 1 | 0 |
 | P12 | 8 | 45 | 6 | 3 | 48 | 1 | 0 |
-| **Total** | **90** | **551** | **83** | **62** | **1.078** | **21** | **2** |
+| **Total** | **91** | **556** | **83** | **63** | **1.084** | **21** | **2** |
 
-Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 90
+Cada uma das 91 pranchas de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 91
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

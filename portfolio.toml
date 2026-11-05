@@ -217,7 +217,7 @@ id = "05-instalacao-eletrica-industrial"
 path = "05-instalacao-eletrica-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -227,6 +227,7 @@ required_files = [
   "inspecao-visual.md",
   "quadro-cargas.csv",
   "alimentadores.csv",
+  "matriz-coordenacao-protecoes.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
   "tabelas-projeto-05.xlsx",
@@ -839,6 +840,17 @@ source = "05-instalacao-eletrica-industrial/fonte/07_detalhes_instalacao.dxf"
 svg = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.svg"
 pdf = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.pdf"
 png = "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-08-coordenacao-protecoes"
+kind = "sheet"
+title = "Projeto 05 - Coordenacao das protecoes"
+source = "05-instalacao-eletrica-industrial/fonte/08_coordenacao_protecoes.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.pdf"
+png = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.png"
 require_a3 = true
 require_notice = true
 

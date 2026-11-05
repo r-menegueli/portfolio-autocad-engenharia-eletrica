@@ -23,6 +23,7 @@ SHEETS = (
     "05_diagrama_unifilar.dxf",
     "06_quadro_cargas.dxf",
     "07_detalhes_instalacao.dxf",
+    "08_coordenacao_protecoes.dxf",
 )
 EXPECTED_CIRCUITS = {f"C{number:02d}" for number in range(1, 17)}
 EXPECTED_FEEDERS = {"AL-QGBT", "AL-QDF", "AL-QDL", "AL-QADM"}
@@ -30,6 +31,15 @@ REQUIRED_TAGS = {
     "QGBT-05", "QDF-05", "QDL-05", "QADM-05", "M-501", "M-502",
     "M-503", "M-504", "M-505", "TUE-501", "TI-501", "TI-506",
     "E-501", "E-502", "E-503", "C01", "C08", "C09", "C13", "C16",
+    "DJ-G", "QF-QDF", "QF-QDL", "QF-QADM", "TCC", "PENDENTE",
+}
+EXPECTED_PROTECTION_PAIRS = {
+    "DJ-G > QF-QDF",
+    "DJ-G > QF-QDL",
+    "DJ-G > QF-QADM",
+    "QF-QDF > C01-C08",
+    "QF-QDL > C09-C13",
+    "QF-QADM > C14-C16",
 }
 
 
@@ -64,8 +74,20 @@ def validate(root: Path) -> dict:
     feeders = read_rows(project / "alimentadores.csv")
     cables = read_rows(project / "lista-cabos.csv")
     materials = read_rows(project / "lista-materiais.csv")
+    protection_pairs = read_rows(project / "matriz-coordenacao-protecoes.csv")
     errors: list[str] = []
     checks = 0
+
+    protection_pair_ids = {row["par"] for row in protection_pairs}
+    checks += 3
+    if len(protection_pairs) != 6 or protection_pair_ids != EXPECTED_PROTECTION_PAIRS:
+        errors.append("A matriz de protecoes deve cobrir exatamente os seis pares montante-jusante.")
+    for row in protection_pairs:
+        checks += 3
+        if row["status"] != "PENDENTE":
+            errors.append(f"{row['par']}: estudo de coordenacao nao pode ser declarado aprovado sem evidencias.")
+        if not row["verificacoes"].strip() or not row["dados_necessarios"].strip():
+            errors.append(f"{row['par']}: verificacoes e dados necessarios devem ser rastreados.")
 
     circuits = {row["circuito"] for row in loads}
     checks += 2
@@ -248,7 +270,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         dxf_texts.append(extract_text(doc))
 
@@ -270,6 +292,7 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "sheets": len(SHEETS),
+            "protection_pairs": len(protection_pairs),
             "circuits": len(loads),
             "feeders": len(feeders),
             "cables": len(cables),

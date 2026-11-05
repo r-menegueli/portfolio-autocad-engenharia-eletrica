@@ -4,7 +4,7 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Revisão: 00, emitida em 2026-09-09
+Revisão: 02, emitida em 2026-11-05
 
 O conjunto documenta, para fins acadêmicos, uma instalação elétrica de baixa tensão de
 uma oficina metalmecânica fictícia. Ele demonstra a passagem do levantamento de
@@ -33,8 +33,10 @@ AL-QGBT chega ao QGBT-05. O quadro distribui energia para:
 
 O QGBT-05 inclui, de forma conceitual, proteção geral 4P de 100 A, DPS tipo 2 e barras
 separadas de N e PE. A corrente de curto-circuito foi presumida em 6 kA apenas para
-estabelecer a condição mínima a verificar; capacidade de interrupção e seletividade
-dependem do estudo real.
+estabelecer a condição a verificar; o Icu mínimo de 10 kA atribuído ao DJ-G também é
+uma premissa, sem cálculo de curto-circuito ou confirmação da concessionária. A folha
+08 e a matriz de seis pares registram as comparações que continuam pendentes; não
+demonstram capacidade de interrupção, retaguarda ou seletividade.
 
 ## 4. Cargas de força
 
@@ -88,7 +90,8 @@ real deve confirmar o texto efetivamente vigente.
 As tags C01-C16, QGBT-05, QDF-05, QDL-05, QADM-05, M-501-M-505, TUE-501,
 TI-501-TI-506 e AL-QGBT/AL-QDF/AL-QDL/AL-QADM são comuns aos desenhos, CSVs,
 memória de cálculo e workbook. O validador específico recalcula as grandezas e rejeita
-divergências entre essas fontes.
+divergências entre essas fontes. A matriz P05-08 rastreia os seis pares de proteção
+montante-jusante e seus dados de entrada, todos ainda pendentes.
 
 ## 9. Limitação de responsabilidade
 

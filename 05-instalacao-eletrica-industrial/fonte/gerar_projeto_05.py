@@ -1,8 +1,9 @@
-"""Gera as sete pranchas DXF do Projeto 05 de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 05 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -35,7 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "05-instalacao-eletrica-industrial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
+REVISION_DESCRIPTION = "ESTUDO DE PROTECOES"
 
 
 @dataclass(frozen=True)
@@ -152,6 +154,15 @@ SHEETS = (
         "fixacao, equipotencializacao e ensaios devem ser definidos por profissional.",
         "PE: protecao | N: neutro | BEP: equipotencializacao | IP: grau de protecao",
     ),
+    SheetSpec(
+        8,
+        "08_coordenacao_protecoes.dxf",
+        "COORDENACAO DAS PROTECOES",
+        "Topologia, pares de disjuntores e dados para o estudo de curto-circuito",
+        "Icc max/min, curvas tempo-corrente, Icu/Ics, energia passante e seletividade\\P"
+        "permanecem pendentes; ratings nominais nao demonstram coordenacao real.",
+        "Ik: corrente de curto | TCC: tempo-corrente | Icu/Ics: interrupcao | I2t: energia passante",
+    ),
 )
 
 
@@ -226,7 +237,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (REVISION_DESCRIPTION, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -248,7 +259,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/07",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -264,7 +275,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/07"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -535,6 +546,73 @@ def draw_details(layout) -> None:
         add_text(layout, text, (154, 146 - i * 8.5), 1.22, layer="02_TEXTO")
 
 
+def read_protection_pairs(root: Path) -> list[dict[str, str]]:
+    path = root / PROJECT_SLUG / "matriz-coordenacao-protecoes.csv"
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    if len(rows) != 6:
+        raise ValueError(f"A matriz de protecoes deve conter seis pares; encontrados {len(rows)}")
+    return rows
+
+
+def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
+    centered(layout, "TOPOLOGIA DOS DISPOSITIVOS EM ESTUDO", (210, 262), 1.7, "12_LEGENDA")
+    box(layout, 20, 226, 83, 256, "PONTO DE ENTREGA", "380/220 V | Icc a confirmar", "05_POTENCIA")
+    arrow(layout, (83, 241), (99, 241), "05_POTENCIA")
+    box(layout, 99, 226, 151, 256, "DJ-G", "4P / 100 A*", "05_POTENCIA")
+    arrow(layout, (151, 241), (166, 241), "05_POTENCIA")
+    box(layout, 166, 226, 219, 256, "QGBT-05", "BARRA 125 A", "05_POTENCIA")
+    line(layout, (219, 241), (231, 241), "05_POTENCIA")
+    line(layout, (231, 188), (231, 247), "05_POTENCIA")
+
+    branches = (
+        ("QF-QDF", "3P / 80 A*", "QDF-05", "C01-C08 | 50,242 kVA"),
+        ("QF-QDL", "4P / 16 A*", "QDL-05", "C09-C13 | 3,347 kVA"),
+        ("QF-QADM", "4P / 16 A*", "QADM-05", "C14-C16 | 2,700 kVA"),
+    )
+    centers = (242, 215, 188)
+    for (device, rating, board, circuits), center_y in zip(branches, centers):
+        arrow(layout, (231, center_y), (243, center_y), "05_POTENCIA")
+        box(layout, 243, center_y - 11, 296, center_y + 11, device, rating, "05_POTENCIA")
+        arrow(layout, (296, center_y), (310, center_y), "05_POTENCIA")
+        box(layout, 310, center_y - 11, 400, center_y + 11, board, circuits, "04_EQUIPAMENTOS")
+
+    add_rect(layout, 18, 168, 402, 174, "13_NOTAS")
+    centered(
+        layout,
+        "* Todos os valores nominais sao premissas; Icc 6 kA e Icu do DJ-G >= 10 kA sem calculo/confirmacao.",
+        (210, 171),
+        1.22,
+        "13_NOTAS",
+    )
+
+    x0, y_top, row_h = 18.0, 162.0, 8.0
+    widths = (83, 96, 155, 50)
+    column_keys = ("par", "verificacoes", "dados_necessarios", "status")
+    headers = dict(zip(column_keys, ("PAR MONTANTE > JUSANTE", "VERIFICAR", "DADOS EXIGIDOS", "STATUS")))
+    table_rows = [headers, *rows]
+    y_bottom = y_top - row_h * len(table_rows)
+    total_w = sum(widths)
+    add_rect(layout, x0, y_bottom, x0 + total_w, y_top, "12_LEGENDA")
+    for index in range(1, len(table_rows)):
+        y = y_top - row_h * index
+        line(layout, (x0, y), (x0 + total_w, y), "12_LEGENDA")
+    cursor = x0
+    for width in widths[:-1]:
+        cursor += width
+        line(layout, (cursor, y_bottom), (cursor, y_top), "12_LEGENDA")
+    for row_index, row in enumerate(table_rows):
+        cursor = x0
+        center_y = y_top - row_h * row_index - row_h / 2
+        for key, width in zip(column_keys, widths):
+            value = row[key]
+            if key == "dados_necessarios" and row_index:
+                add_text(layout, value, (cursor + 2, center_y), 1.02, layer="02_TEXTO", align=TextEntityAlignment.MIDDLE_LEFT)
+            else:
+                centered(layout, value, (cursor + width / 2, center_y), 1.08 if row_index else 1.12, "12_LEGENDA")
+            cursor += width
+
+
 DRAWERS = {
     1: draw_layout_industrial,
     2: draw_force,
@@ -553,7 +631,10 @@ def generate(root: Path) -> list[Path]:
     outputs: list[Path] = []
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout)
+        if spec.number == 8:
+            draw_protection_coordination(layout, read_protection_pairs(root))
+        else:
+            DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:

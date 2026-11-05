@@ -93,4 +93,6 @@ O validador específico deve confirmar:
 Faltam dados para curto-circuito, seletividade, coordenação, partida de motores,
 harmônicas, fluxo de potência, fator de potência global corrigido, energia incidente,
 aterramento, fotometria e dimensionamento térmico dos quadros. Esses temas devem ser
-resolvidos antes de qualquer aplicação real.
+resolvidos antes de qualquer aplicação real. A prancha P05-08 e a matriz de seis pares
+de proteção apontam as verificações e evidências necessárias, mas não contêm curvas
+tempo-corrente nem resultados de curto-circuito.

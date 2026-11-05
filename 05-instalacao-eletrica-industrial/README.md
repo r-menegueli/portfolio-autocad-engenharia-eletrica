@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 07
+Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades em milímetros, revisão gráfica 01 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão 02 (2026-11-05)
 
-Estado: concluído e validado em 2026-09-09
+Estado: revisão conceitual 02, com estudo de coordenação ainda pendente
 
 Este projeto acadêmico apresenta a distribuição elétrica conceitual de uma oficina
 metalmecânica fictícia de `30,00 x 18,00 m`, com área de `540,00 m²`. A alimentação
@@ -15,13 +15,14 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 
 ## Entregáveis
 
-- `fonte/`: sete desenhos DXF R2013 e scripts reproduzíveis;
+- `fonte/`: oito desenhos DXF R2013 e scripts reproduzíveis;
 - `exports/`: versões PDF, SVG e PNG derivadas dos DXFs;
 - `memorial-descritivo.md`: descrição do sistema e de suas interfaces;
 - `criterios-premissas.md`: hipóteses, critérios de cálculo e limitações;
 - `memoria-calculo.md`: potências, demandas, correntes e quedas de tensão;
 - `referencias-normativas.md`: referências e condição de uso;
 - `quadro-cargas.csv`: fonte tabular dos 16 circuitos;
+- `matriz-coordenacao-protecoes.csv`: seis pares montante-jusante e dados necessários para verificar curto-circuito, curvas e seletividade;
 - `alimentadores.csv`: consolidação dos quatro alimentadores;
 - `lista-cabos.csv` e `lista-materiais.csv`: rastreabilidade de rotas e quantitativos;
 - `tabelas-projeto-05.xlsx`: workbook técnico com fórmulas e auditoria;
@@ -44,6 +45,8 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 6. [Quadro de cargas](fonte/06_quadro_cargas.dxf): 16 circuitos e resumo elétrico.
 7. [Detalhes de instalação](fonte/07_detalhes_instalacao.dxf): eletrocalha, tomada,
    quadro, equipotencialização e identificação.
+8. [Coordenação das proteções](fonte/08_coordenacao_protecoes.dxf): topologia dos
+   dispositivos, seis pares montante-jusante e evidências ainda pendentes.
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -69,6 +72,7 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Referências normativas](referencias-normativas.md)
 - [Inspeção visual](inspecao-visual.md)
 - [Quadro de cargas](quadro-cargas.csv)
+- [Matriz de coordenação das proteções](matriz-coordenacao-protecoes.csv)
 - [Alimentadores](alimentadores.csv)
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de materiais](lista-materiais.csv)
@@ -91,7 +95,7 @@ e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps inte
 permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
 são as fontes principais.
 
-Resultado registrado: validação específica `PASS` com 294 verificações; validação
-estrita do portfólio `PASS` com 200.489 verificações, zero erros e zero avisos.
+Resultado registrado: validação específica `PASS` com 325 verificações; validação
+estrita do portfólio `PASS` com 485.886 verificações, zero erros e zero avisos.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
