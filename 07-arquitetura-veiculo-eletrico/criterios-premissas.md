@@ -52,6 +52,8 @@ EV-07 nem resultados experimentais do TCC.
 - falha ou timeout mantém os contatores principais abertos e exige novo ciclo de chave;
 - comandos CAN não substituem caminhos físicos de desligamento exigidos pela análise de
   segurança de um veículo real.
+- A matriz P07-09 organiza reações propostas para dez eventos; não comprova caminho
+  independente, estado seguro, diagnóstico, tempo de resposta ou rearme.
 
 ## Limitações
 
@@ -59,5 +61,7 @@ Não foram modelados arco, resistência interna da bateria, indutâncias parasit
 temperatura, envelhecimento, curto-circuito, isolamento, crashworthiness, regeneração,
 limites de aderência, observador FOC, saturação magnética ou identificação de parâmetros.
 As seções de cabos, proteções e componentes não podem ser usadas para fabricação.
+Não há HARA, FMEA, ASIL, FMEDA nem validação de software; os estados da matriz P07-09
+precisam ser confirmados com dispositivos e análise do veículo definidos.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

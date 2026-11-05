@@ -34,6 +34,7 @@ SHEETS = (
     "06_sensores_controle.dxf",
     "07_rede_comunicacao.dxf",
     "08_layout_componentes.dxf",
+    "09_interfaces_resposta_falhas.dxf",
 )
 REQUIRED_MATERIAL_TAGS = {
     "BAT-HV-701", "BMS-701", "MSD-701", "F701", "KMN-701", "KMP-701",
@@ -90,6 +91,10 @@ SHEET_TERMS = {
         "BAT-HV-701", "PDU-HV", "INV-701", "IM-701", "DCDC", "BAT-LV",
         "VCU-701", "BMS-701", "ROTA HV", "CAN-PT",
     ),
+    "09_interfaces_resposta_falhas.dxf": (
+        "MATRIZ DE FALHAS", "SDE / HVIL", "SEN-VDC-701", "APPS1-701",
+        "BMS_LIMITS", "RES-701", "NAO E HARA", "PENDENCIA REAL",
+    ),
 }
 WARNING = (
     "Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, "
@@ -125,6 +130,7 @@ def validate(root: Path) -> dict:
     parameters = read_rows(project / "parametros.csv")
     signals = read_rows(project / "lista-sinais.csv")
     messages = read_rows(project / "rede-can.csv")
+    faults = read_rows(project / "matriz-interfaces-falhas.csv")
     cables = read_rows(project / "lista-cabos.csv")
     materials = read_rows(project / "lista-materiais.csv")
     errors: list[str] = []
@@ -214,8 +220,21 @@ def validate(root: Path) -> dict:
         errors.append("Canais duplos de acelerador e freio estão incompletos.")
     if any(not row["reacao_falha"] or not row["prancha"] for row in signals):
         errors.append("Sinal sem reação de falha ou referência de prancha.")
-    if any(row["prancha"] not in {f"{index:02d}/08" for index in range(1, 9)} for row in signals):
+    if any(row["prancha"] not in {f"{index:02d}/09" for index in range(1, 9)} for row in signals):
         errors.append("Referência de prancha inválida na lista de sinais.")
+
+    expected_fault_fields = {
+        "evento", "entrada_deteccao", "reacao_proposta", "estado_resultante",
+        "lacuna_validacao", "rastreio",
+    }
+    valid_fault_schema = bool(faults) and set(faults[0]) == expected_fault_fields
+    checks += 4
+    if not valid_fault_schema:
+        errors.append("A matriz de interfaces e falhas deve conter os campos rastreáveis esperados.")
+    if valid_fault_schema and (len(faults) < 8 or len({row["evento"] for row in faults}) != len(faults)):
+        errors.append("A matriz deve ter ao menos oito eventos únicos.")
+    if valid_fault_schema and any(not all(row[field].strip() for field in expected_fault_fields) for row in faults):
+        errors.append("Evento da matriz sem detecção, resposta, estado, lacuna ou rastreio.")
 
     cable_ids = {row["cabo"] for row in cables}
     checks += 6
@@ -305,9 +324,9 @@ def validate(root: Path) -> dict:
             errors.append("Torque habilitado sem solicitação.")
 
     required_doc_terms = {
-        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", WARNING),
+        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", "matriz-interfaces-falhas.csv", WARNING),
         "criterios-premissas.md": ("Fatos técnicos", "Premissas acadêmicas", "Propostas conceituais", "Limitações"),
-        "memorial-descritivo.md": ("Fluxo de energia", "Pré-carga", "Não afirma", "TCC"),
+        "memorial-descritivo.md": ("Fluxo de energia", "Pré-carga", "Interfaces e falhas", "Não afirma", "TCC"),
         "estrategias-controle.md": ("controle escalar", "controle vetorial", "Clarke", "Park", "resultados experimentais"),
         "sequencia-funcionamento.md": ("OFF", "PRECHARGE", "READY", "FAULT", "novo ciclo de chave"),
         "memoria-calculo.md": ("206,743421", "0,506569", "176,000000", "222,750000", "não resultados experimentais"),
@@ -348,7 +367,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/09":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NO_EXPERIMENTAL_RESULTS":
             errors.append(f"{filename}: metadado epistemológico ausente.")
@@ -373,6 +392,7 @@ def validate(root: Path) -> dict:
             "can_messages": len(messages),
             "cables": len(cables),
             "materials": len(materials),
+            "fault_scenarios": len(faults),
             "estimated_hv_current_a": f"{bus_current:.6f}",
             "precharge_tau_s": f"{tau:.6f}",
             "precharge_t90_s": f"{t90:.6f}",

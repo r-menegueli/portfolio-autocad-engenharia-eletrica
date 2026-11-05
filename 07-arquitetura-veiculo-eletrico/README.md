@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 08
+Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 01 (2026-11-05)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 02 (2026-11-05)
 
-Estado: concluído e validado em 2026-09-09
+Estado: ampliado e revisado em 2026-11-05
 
 Este projeto apresenta a arquitetura elétrica conceitual do EV-07, um veículo elétrico
 didático com bateria de tração, inversor e motor de indução. O escopo relaciona a
@@ -20,6 +20,7 @@ declarar, reproduzir ou inventar qualquer resultado experimental do trabalho aca
 - conversor CC-CC, bateria auxiliar de 12 V e distribuição de baixa tensão;
 - VCU, sensores, comunicação CAN, HVIL e monitoramento de isolação;
 - permissivos, desligamento de emergência e estados seguros conceituais;
+- interfaces e uma matriz rastreável de dez falhas, reações propostas e pendências;
 - diagramas comparativos das cadeias de controle V/f e FOC.
 
 Não estão incluídos carregador embarcado, conector de recarga, homologação veicular,
@@ -36,6 +37,7 @@ ASIL, HARA, FMEDA ou dimensionamento executivo.
 6. [Sensores e controle](fonte/06_sensores_controle.dxf)
 7. [Rede de comunicação](fonte/07_rede_comunicacao.dxf)
 8. [Layout dos componentes](fonte/08_layout_componentes.dxf)
+9. [Interfaces e resposta conceitual a falhas](fonte/09_interfaces_resposta_falhas.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -59,13 +61,14 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Parâmetros conceituais](parametros.csv)
 - [Lista de sinais](lista-sinais.csv)
 - [Matriz CAN](rede-can.csv)
+- [Matriz de interfaces e falhas](matriz-interfaces-falhas.csv)
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de materiais](lista-materiais.csv)
 - [Inspeção visual](inspecao-visual.md)
 - [Validação específica](validacao-arquitetura.json)
 - [Validação estrita](validacao.json)
 
-## Verificação da revisão 00
+## Verificação da revisão 01
 
 - oito fontes DXF AC1027 abertas e auditadas individualmente pelo Autodesk
   AcCoreConsole 2027, sem erro;
@@ -77,6 +80,24 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - nova geração com hashes idênticos em 32/32 artefatos, sendo oito DXFs e 24
   derivados;
 - nove testes automatizados aprovados.
+
+## Revisão 02
+
+A prancha 09 consolida dez eventos de perda de permissivo, pré-carga, soldagem de
+contator, plausibilidade dos pedais, timeout CAN, limites térmicos/BMS, realimentação e
+alimentação LV. A matriz liga sinais e documentos existentes às reações propostas e
+expõe os dados de hardware e segurança ainda ausentes. Ela não é HARA, FMEA, ASIL,
+validação de software ou comprovação de desligamento seguro. As oito pranchas anteriores
+foram renumeradas para `NN/09` e reemitidas na revisão gráfica 02.
+
+- AcCoreConsole 2027 abriu e auditou individualmente os nove DXFs, `PASS` em 9/9.
+- Validador específico: 4.247 verificações, 0 erros.
+- Validador estrito integrado: 496.492 verificações, 0 erros e 0 avisos.
+- Revisor do portfólio: 12 projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs;
+  similaridade mínima PDF/PNG de 0,9842.
+- P07-09 foi inspecionada no PNG de produção e em raster do PDF; a folha de contato
+  permitiu conferir numeração e composição das nove pranchas.
+- A inspeção visual do SVG P07-09 no navegador aguarda autorização do usuário.
 
 ## Reprodução
 

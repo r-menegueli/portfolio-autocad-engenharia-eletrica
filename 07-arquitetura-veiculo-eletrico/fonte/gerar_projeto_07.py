@@ -1,4 +1,4 @@
-"""Gera as oito pranchas DXF do Projeto 07 de forma determinística."""
+"""Gera as nove pranchas DXF do Projeto 07 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "07-arquitetura-veiculo-eletrico"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -121,6 +121,15 @@ SHEETS = (
         "Envelope, massas, fixações, proteção IP, crash e refrigeração não dimensionados.\\P"
         "Rotas devem ser revistas por isolamento, EMC, abrasão e acesso de serviço.",
         "Laranja/vermelho: HV | Azul: LV | Verde: CAN | Cinza: envelope | CH: chassi",
+    ),
+    SheetSpec(
+        9,
+        "09_interfaces_resposta_falhas.dxf",
+        "INTERFACES E RESPOSTA CONCEITUAL A FALHAS",
+        "Rastreabilidade entre sinais, estados e ações propostas do EV-07",
+        "Respostas são propostas didáticas; não definem função de segurança nem desligamento real.\\P"
+        "Detecção de contato soldado, diagnóstico, latência e rearme dependem de hardware e análise ainda não definidos.",
+        "DI: entrada digital | APPS: pedal do acelerador | BPS: pedal de freio | HV: alta tensão | PWM: modulação",
     ),
 )
 
@@ -298,7 +307,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 02", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.5, "02_TEXTO")
 
 
@@ -320,7 +329,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/09",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -336,7 +345,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/09"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NO_EXPERIMENTAL_RESULTS"
     define_title_block(doc)
     define_symbols(doc)
@@ -680,6 +689,53 @@ def draw_layout(layout, data: dict[str, list[dict[str, str]]]) -> None:
         left(layout, f"{index + 1}. {value}", (325, 226 - index * 10.7), 1.0, "02_TEXTO")
 
 
+def draw_fault_interfaces(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "MATRIZ DE FALHAS E INTERFACES PROPOSTAS", (210, 258), 1.45, "06_COMANDO")
+    centered(
+        layout,
+        "Rastreabilidade entre evento, detecção, reação, estado e dado ainda necessário",
+        (210, 252),
+        1.15,
+        "02_TEXTO",
+    )
+    rows = [
+        (
+            row["evento"],
+            row["entrada_deteccao"],
+            row["reacao_proposta"],
+            row["estado_resultante"],
+            row["lacuna_validacao"],
+        )
+        for row in data["faults"]
+    ]
+    table(
+        layout,
+        20,
+        246,
+        (66, 62, 92, 46, 112),
+        ("EVENTO", "DETECCAO", "REACAO CONCEITUAL", "ESTADO", "PENDENCIA REAL"),
+        rows,
+        row_height=10.0,
+        text_height=1.2,
+    )
+    add_rect(layout, 20, 102, 400, 128, "13_NOTAS")
+    centered(layout, "INTERPRETACAO E LIMITE", (210, 122), 1.2, "13_NOTAS")
+    centered(
+        layout,
+        "A matriz nao e HARA, FMEA, ASIL, validacao de software ou prova de desligamento seguro.",
+        (210, 115),
+        1.05,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Confirmar limiares, tempos, diagnosticos, independencia, resposta e rearme com hardware escolhido.",
+        (210, 108.5),
+        1.0,
+        "02_TEXTO",
+    )
+
+
 DRAWERS = {
     1: draw_architecture,
     2: draw_hv,
@@ -689,6 +745,7 @@ DRAWERS = {
     6: draw_sensors,
     7: draw_network,
     8: draw_layout,
+    9: draw_fault_interfaces,
 }
 
 
@@ -699,6 +756,7 @@ def generate(root: Path) -> list[Path]:
         "parameters": read_rows(project, "parametros.csv"),
         "signals": read_rows(project, "lista-sinais.csv"),
         "can": read_rows(project, "rede-can.csv"),
+        "faults": read_rows(project, "matriz-interfaces-falhas.csv"),
         "cables": read_rows(project, "lista-cabos.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
     }

@@ -1,6 +1,6 @@
 # Inspeção visual - Projeto 07
 
-Estado: aprovado em 2026-09-09, revisão 00.
+Estado: revisão inicial aprovada em 2026-09-09; revisão gráfica 02 em 2026-11-05.
 
 ## Amostra examinada
 
@@ -35,7 +35,16 @@ da segunda revisão.
 
 ## Resultado
 
-As oito pranchas e os 24 derivados foram aprovados. Não foram observados cortes,
+As oito pranchas e os 24 derivados da revisão inicial foram aprovados. Não foram observados cortes,
 desalinhamentos, textos encobertos, perda do aviso obrigatório ou divergências visuais
 entre PNG, PDF e SVG. A inspeção visual complementa, mas não substitui, a validação
 automática e a auditoria dos DXFs no AutoCAD.
+
+## Revisão gráfica 02 - 2026-11-05
+
+As oito folhas existentes foram reemitidas como `NN/09`, revisão 02. P07-09 foi
+inspecionada no PNG integral de produção a 300 dpi e no PDF rasterizado pelo Poppler a
+150 dpi. Também conferi a folha de contato atual das nove pranchas. Tabela, limites,
+notas, aviso obrigatório, legenda e carimbo estão dentro da moldura; não identifiquei
+cortes nem colisões relevantes. A inspeção visual do SVG no navegador continua pendente
+da autorização do usuário.

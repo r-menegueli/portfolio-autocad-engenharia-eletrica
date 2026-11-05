@@ -271,6 +271,20 @@ verificações sem erros ou avisos. Uma nova geração manteve hashes idênticos
 artefatos CAD do projeto, e nove testes automatizados passaram. Nenhum DWG foi
 produzido ou versionado; DXF AC1027 permanece como fonte principal.
 
+### Revisão 02 do Projeto 07 — 2026-11-05
+
+A P07-09 acrescenta uma matriz de dez eventos e rastreia sinais, estados, reações
+propostas e lacunas de validação. Não declara HARA, FMEA, ASIL, diagnóstico implementado
+ou desligamento seguro. As oito folhas existentes foram reemitidas em revisão 02 e
+renumeradas de `NN/08` para `NN/09`.
+
+O validador específico aprovou 4.247 verificações. O AcCoreConsole 2027 abriu e auditou
+as nove fontes, `PASS` em 9/9. P07-09 foi conferida em PNG de produção, PDF rasterizado
+a 150 dpi e na folha de contato das nove pranchas. O revisor consolidado confirmou 12
+projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs; a validação estrita aprovou
+496.492 verificações sem erros nem avisos. A inspeção visual dos SVGs no navegador
+continua pendente da autorização do usuário.
+
 ## Auditoria CAD e visual do Projeto 08
 
 Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
@@ -320,8 +334,8 @@ O validador específico aprovou 8.073 verificações, incluindo as 13 linhas do 
 fórmulas da grade. O AutoCAD AcCoreConsole 2027 abriu e auditou os sete DXFs, `PASS`
 em 7/7. As sete PNGs de produção e os sete PDFs rasterizados a 150 dpi foram
 inspecionados; a composição das sete folhas também foi conferida. A validação estrita
-integrada do portfólio aprovou 490.018 verificações, sem erros ou avisos; o revisor
-consolidado confirmou 12 projetos, 92 pranchas, 368 derivados e 64 CSVs, com similaridade
+integrada do portfólio aprovou 496.492 verificações, sem erros ou avisos; o revisor
+consolidado confirmou 12 projetos, 93 pranchas, 372 derivados e 65 CSVs, com similaridade
 mínima PDF/PNG de 0,9842. A inspeção visual em navegador dos SVGs da revisão 02 aguarda
 autorização do usuário. Nenhum DWG foi produzido; DXF AC1027 permanece como fonte.
 

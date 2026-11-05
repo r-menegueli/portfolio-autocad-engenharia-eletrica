@@ -1,0 +1,11 @@
+evento,entrada_deteccao,reacao_proposta,estado_resultante,lacuna_validacao,rastreio
+SDE / HVIL / colisao invalido,DI fisica / estado proposto,Zerar torque e solicitar abertura HV,FAULT,Independencia categoria e tempo nao definidos,lista-sinais.csv; sequencia-funcionamento.md
+IMD ou permissivo BMS invalido,IMD-701 / BMS_STATUS,Bloquear PRECHARGE e READY,CHECK ou FAULT,Limiar latch e diagnostico pendentes,lista-sinais.csv; rede-can.csv
+Pre-carga sem razao VDC/VBAT >= 90%,SEN-VDC-701 / timeout proposto,Nao fechar KMP; comandar FAULT,FAULT,Tempo real descarga e soldagem pendentes,parametros.csv; sequencia-funcionamento.md
+Contator principal soldado,Retorno auxiliar ainda nao definido,Inibir READY e manter torque zero,FAULT,Deteccao e isolamento de servico pendentes,sequencia-funcionamento.md; memorial-descritivo.md
+APPS fora de plausibilidade,APPS1-701 / APPS2-701,Comandar torque zero,FAULT proposto,Limites e temporizacao dependem do controlador,lista-sinais.csv; estrategias-controle.md
+Conflito entre freio e acelerador,BPS1-701 / BPS2-701 / APPS,Inibir torque positivo,DRIVE limitado,Limite e estrategia de regeneracao pendentes,lista-sinais.csv; estrategias-controle.md
+Timeout ou dado CAN obsoleto,Timeouts propostos da rede CAN,Aplicar acao por mensagem sem rearme automatico,FAULT ou HV bloqueada,Contadores frescor E2E e safe state pendentes,rede-can.csv; sequencia-funcionamento.md
+Limite BMS ou sobretemperatura,BMS_LIMITS / TMOT / TINV / TBAT,Reduzir ou zerar torque conforme limite,DRIVE limitado ou FAULT,Curvas e limiares do fabricante pendentes,lista-sinais.csv; rede-can.csv
+Corrente de fase ou resolver invalido,IU-701 / IV-701 / IW-701 / RES-701,Inibir PWM e comandar torque zero,FAULT,Diagnostico e independencias do hardware pendentes,lista-sinais.csv; criterios-premissas.md
+Perda da alimentacao LV ou reset VCU,Monitor LV / VCU_STATE ainda nao especificado,Perder enable e nao rearma automaticamente,OFF ou FAULT,Energia minima drivers e latencia pendentes,sequencia-funcionamento.md; rede-can.csv

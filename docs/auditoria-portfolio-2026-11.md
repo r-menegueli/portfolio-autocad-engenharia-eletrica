@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 92 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 93 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -28,7 +28,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes e a topologia dos seis pares de proteção em P05-08. | As rotas ainda são premissas; Icc, capacidade de interrupção, curvas e seletividade permanecem pendentes. | Substituir as premissas por dados da concessionária, cabos e dispositivos selecionados; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
-| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação. | A arquitetura é de alto nível; não é esquema veicular homologável nem define segurança funcional. | Desenvolver um diagrama por subsistema com interfaces, limites elétricos e requisitos de segurança definidos. |
+| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck, pré-dimensionamento e estudo paramétrico separado para o nó interno e a porta X2. | KD1/RD1 e KD2/RD2 são apenas conceitos; capacitâncias, tensões máximas, V_SAFE, tempo, rating de pulso e intertravamento não estão definidos. A descarga não garante 0 V. Malhas, compensação, térmica, proteções e layout EMI seguem pendentes. | Especificar o cenário de uso e de fonte externa em X2, completar intertravamento e dimensionar/validar os dois ramos com dados de componente e falhas antes de simular ou montar. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede e matriz de oito eventos de qualidade/falha de sinal. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
@@ -79,6 +79,9 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
   proteção; Icc, Icu/Ics, curvas, retaguarda e energia passante continuam pendentes.
 - Na revisão 02 do P08, acrescentei uma prancha de sensibilidade com 12 cenários e o
   caso-base. HSP e PR são intervalos didáticos, sem dados meteorológicos nem previsão local.
+- Na revisão 02 do P07, acrescentei a folha 09 e uma matriz CSV com dez eventos, detecção,
+  estado, resposta proposta, pendência e rastreio. A matriz organiza interfaces; não é
+  HARA/FMEA nem valida função de segurança. As outras oito folhas foram reemitidas como `/09`.
 - Reemiti as oito folhas P05 na revisão 02 e conferi P05-08 em PNG integral e PDF
   rasterizado a 150 dpi; a folha de contato atual mostra as oito composições.
 - A revisão 02 reemitiu as sete folhas P11 como `/07`; a folha 05 deixa explícito que
@@ -88,18 +91,20 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P05, P06, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 490.018 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 92 pranchas, 368 arquivos gráficos e 64 CSVs, com similaridade mínima
+Os DXFs e derivados PDF/SVG/PNG de P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
+validação estrita aprovou 496.492 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs, com similaridade mínima
 PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
-P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P08 (sete), P10 (sete), P11 (sete) e P12 (oito).
+P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P07 (nove), P08 (sete), P10 (sete), P11 (sete) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
 e corrigi a tag TK-100 incoerente no fluxograma P04-01. As folhas
 novas P09-07 e P09-08 foram inspecionadas em PNG integral e em PDF rasterizado a 150
 dpi; na revisão 03, P09-06 e P09-09 foram inspecionadas no PNG integral e no PDF
-rasterizado, e o contato atualizado das nove folhas P09 foi conferido. O parser aceitou os
+rasterizado, e o contato atualizado das nove folhas P09 foi conferido. P07-09 foi
+inspecionada no PNG de produção a 300 dpi e em PDF rasterizado a 150 dpi; o contato atual
+das nove folhas P07 também foi conferido. O parser aceitou os
 SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09, P03-09 e P04-07 está
 pendente da autorização do usuário. P11-05 e P11-07 foram inspecionadas em PNG integral
 e PDF rasterizado a 150 dpi; o contato das sete folhas confirmou revisão, numeração e
@@ -115,8 +120,9 @@ inspeção integral. O validador P10 passou com 64.261 verificações, 0 erros e
 A matriz evita inventar estados de falha, timeouts ou respostas de processo sem
 hardware definido.
 
-O AutoCAD AcCoreConsole 2027 abriu e auditou os sete DXFs do P08, `PASS` em 7/7. Essa
-auditoria confirma abertura e integridade CAD, sem validar projeto elétrico ou normas.
+O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs do P07 e os sete do P08, `PASS`
+em 9/9 e 7/7. Essa auditoria confirma abertura e integridade CAD, sem validar projeto
+elétrico ou normas.
 A inspeção visual em navegador dos SVGs desta revisão continua aguardando autorização
 do usuário. Os outros projetos não foram reabertos no AutoCAD nesta revisão. O mesmo
 cuidado vale para FreeCAD, KiCad e uma IDE de CLP: seus artefatos não foram aprovados

@@ -269,7 +269,7 @@ id = "07-arquitetura-veiculo-eletrico"
 path = "07-arquitetura-veiculo-eletrico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -282,6 +282,7 @@ required_files = [
   "parametros.csv",
   "lista-sinais.csv",
   "rede-can.csv",
+  "matriz-interfaces-falhas.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_07.py",
@@ -1028,6 +1029,17 @@ source = "07-arquitetura-veiculo-eletrico/fonte/08_layout_componentes.dxf"
 svg = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.svg"
 pdf = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.pdf"
 png = "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-09-interfaces-falhas"
+kind = "sheet"
+title = "Projeto 07 - Interfaces e resposta a falhas"
+source = "07-arquitetura-veiculo-eletrico/fonte/09_interfaces_resposta_falhas.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.png"
 require_a3 = true
 require_notice = true
 

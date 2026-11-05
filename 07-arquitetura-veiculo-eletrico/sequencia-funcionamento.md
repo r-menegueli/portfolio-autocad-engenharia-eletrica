@@ -30,3 +30,11 @@ segurança, acesso de resgate e comportamento pós-colisão não foram validados
 Nenhuma recuperação de comunicação ou retorno de um permissivo causa `READY` ou torque
 automaticamente. É necessário remover a solicitação, reconhecer a falha e executar um
 novo ciclo de chave.
+
+## Matriz de interfaces e falhas
+
+`matriz-interfaces-falhas.csv` e a prancha P07-09 reúnem dez eventos e apontam o sinal,
+a reação proposta, o estado e a pendência de validação. Onde a resposta depende de
+hardware, a matriz mantém essa decisão em aberto. Em especial, contatores soldados,
+perda de alimentação, latência de desligamento e retorno pós-falha exigem análise dos
+circuitos e componentes selecionados; a matriz não valida uma função de segurança.

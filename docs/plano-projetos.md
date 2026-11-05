@@ -195,15 +195,17 @@ monitoramento de isolação, intertravamentos e desconexão de emergência.
 
 **Pranchas e dados específicos.** Arquitetura geral; circuitos de alta e baixa tensão;
 pré-carga e contatores; inversor e motor; sensores e controle; rede de comunicação;
-layout conceitual dos componentes; parâmetros, sinais, mensagens, cabos e materiais.
+layout conceitual dos componentes; interfaces e matriz de dez eventos; parâmetros,
+sinais, mensagens, cabos e materiais.
 
-**Marco de aceitação.** Oito DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
+**Marco de aceitação.** Nove DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
 tabelas estruturadas, demonstrar uma sequência de pré-carga segura por construção,
 separar fatos de premissas e propostas e explicar V/f e FOC sem atribuir resultados
 experimentais ao TCC do autor.
 
-**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
-auditoria dos oito DXFs no AutoCAD e inspeção visual dos 24 derivados aprovadas.
+**Situação.** Revisado na revisão gráfica 02 em 2026-11-05: nove DXFs auditados no
+AcCoreConsole, matriz conceitual de interfaces e falhas, e revisão visual das folhas.
+HARA, FMEA, software, segurança funcional e ensaios veiculares continuam fora do escopo.
 
 ## P08 — Sistema fotovoltaico residencial conectado à rede
 

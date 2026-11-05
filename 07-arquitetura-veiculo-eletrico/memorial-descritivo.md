@@ -2,7 +2,7 @@
 
 ## Finalidade
 
-O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em oito pranchas,
+O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em nove pranchas,
 o fluxo de energia, a alimentação de controle, os permissivos de alta tensão, a rede de
 comunicação e duas estratégias conceituais de acionamento de um motor de indução.
 
@@ -46,6 +46,14 @@ APPS e BPS usam dois canais para plausibilidade. Correntes de fase, tensão do e
 corrente da bateria, posição/velocidade e temperaturas alimentam BMS, VCU e inversor.
 A CAN-PT troca estados e limites entre BMS, VCU, inversor e CC-CC; a CAN-DIAG conecta
 diagnóstico por gateway. IDs, taxas e tempos são premissas propostas.
+
+## Interfaces e falhas
+
+A prancha 09 e `matriz-interfaces-falhas.csv` relacionam sinais já listados, mensagens
+CAN, estados propostos e reações conceituais para dez eventos. A matriz destaca lacunas
+como detecção de contato soldado, temporização, dados obsoletos e rearme. Essas linhas
+organizam requisitos para estudo futuro; não definem função de segurança, falha segura,
+diagnóstico implementado ou desempenho de hardware.
 
 ## Relação com o TCC
 
