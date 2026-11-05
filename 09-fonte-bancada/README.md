@@ -4,9 +4,9 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 06
 
-Formato: A3 paisagem, geometria em milímetros, revisão 00
+Formato: A3 paisagem, geometria em milímetros, revisão gráfica 01 (2026-11-05)
 
-Estado: concluído na revisão 00 em 2026-09-09
+Estado: estudo concluído; apresentação atualizada na revisão gráfica 01
 
 Este projeto apresenta a documentação eletromecânica acadêmica de uma fonte de
 bancada ajustável. A arquitetura proposta recebe 90 a 264 Vca, 47 a 63 Hz, e fornece

@@ -4,7 +4,7 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 06
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão 00
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 01 (2026-11-05)
 
 Estado: concluído e validado em 2026-09-09
 

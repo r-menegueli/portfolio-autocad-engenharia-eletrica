@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-00
+01
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.55
   1
-2026-09-25
+2026-11-05
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-EMISSAO INICIAL DO PROJETO 11
+REVISAO VISUAL 01
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-09-25
+2026-11-05
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-00
+01
   7
 PORTFOLIO_TEXTO
  11
@@ -9285,7 +9285,7 @@ AcDbText
  40
 1.05
   1
-12 kV / 10 kA
+A especificar
   7
 PORTFOLIO_TEXTO
  72
@@ -11697,7 +11697,7 @@ AcDbText
  40
 1.05
   1
-Cl. I+II 40 kA
+A especificar
   7
 PORTFOLIO_TEXTO
  72

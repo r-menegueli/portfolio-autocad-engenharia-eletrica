@@ -65,47 +65,47 @@ lineweight = 18
 linetype = "CONTINUOUS"
 
 [layer_styles."03_COTAS"]
-color = 4
+color = 152
 lineweight = 18
 linetype = "CONTINUOUS"
 
 [layer_styles."04_EQUIPAMENTOS"]
-color = 2
+color = 32
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."05_POTENCIA"]
-color = 1
+color = 12
 lineweight = 50
 linetype = "CONTINUOUS"
 
 [layer_styles."06_COMANDO"]
-color = 3
+color = 94
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."07_INSTRUMENTACAO"]
-color = 6
+color = 202
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."08_CABOS"]
-color = 30
+color = 124
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."09_BORNES"]
-color = 5
+color = 145
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."10_ELETROCALHAS"]
-color = 8
+color = 251
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."11_ARQUITETURA"]
-color = 9
+color = 253
 lineweight = 18
 linetype = "CONTINUOUS"
 
@@ -393,7 +393,7 @@ id = "12-grupo-gerador-qta"
 path = "12-grupo-gerador-qta"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1304,6 +1304,17 @@ source = "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf"
 svg = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg"
 pdf = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf"
 png = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-07-sequencia-transferencia-qta"
+kind = "sheet"
+title = "Projeto 12 - Sequência de operação e intertravamento do QTA"
+source = "12-grupo-gerador-qta/fonte/07_sequencia_transferencia_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.pdf"
+png = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.png"
 require_a3 = true
 require_notice = true
 

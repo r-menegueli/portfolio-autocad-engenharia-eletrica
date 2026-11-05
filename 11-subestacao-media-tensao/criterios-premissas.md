@@ -8,17 +8,17 @@
 | Tensão secundária (baixa tensão) | 380 / 220 V (3F+N+PE) | premissa |
 | Potência nominal do transformador | 500 kVA | premissa |
 | Tipo construtivo do transformador | Imerso em óleo mineral | hipótese |
-| Impedância percentual ($Z\%$) | 4,50% | dado típico de catálogo |
+| Impedância percentual ($Z\%$) | 4,50% | hipótese; confirmar em placa/datasheet |
 | Grupo de ligação | Dyn1 | premissa |
-| Nível Básico de Impulso (NBI - classe 15 kV) | 95 kV | normativo NBR 14039 |
+| Nível Básico de Impulso (NBI - classe 15 kV) | 95 kV | valor de estudo; confirmar coordenação de isolamento |
 | Corrente nominal primária ($I_{n1}$) | 20,92 A | calculada |
 | Corrente nominal secundária ($I_{n2}$) | 759,67 A | calculada |
 | Corrente de curto-circuito no secundário ($I_{cc2}$) | 16,88 kA | calculada |
-| Dimensões externas da alvenaria | 6,00 x 4,00 m (24,00 m²) | premissa civil |
+| Dimensões externas da alvenaria | 6,00 x 4,00 m (24,00 m²) | premissa sem validação arquitetônica/civil |
 | Pé-direito interno útil | 3,50 m | premissa civil |
-| Resistividade aparente do solo ($\rho$) | 250 $\Omega\cdot\text{m}$ | hipótese geotécnica |
-| Resistividade da camada de brita ($\rho_s$) | 3.000 $\Omega\cdot\text{m}$ (h=10 cm) | critério NBR 15751 |
-| Nível de proteção do SPDA | Nível II (Malha 10x10 m, R=30 m) | critério NBR 5419-3 |
+| Resistividade aparente do solo ($\rho$) | 250 $\Omega\cdot\text{m}$ | hipótese não medida; sem uso para aprovar malha |
+| Resistividade da camada superficial ($\rho_s$) | não definida | não medida; não usar para validar segurança |
+| Geometria/classificação do SPDA | retícula e captores esquemáticos | sem análise de risco ou verificação normativa |
 
 ## Critérios eletromecânicos e de segurança
 
@@ -35,8 +35,8 @@
    - Atuação instantânea e temporizada para faltas entre fases e fase-terra, além de trip direto por atuação do relé Buchholz (gás) e sobretemperatura do óleo ($100^\circ\text{C}$).
 
 4. **Aterramento e SPDA:**
-   - Malha subterrânea em cabo de cobre nu $70\text{ mm}^2$ enterrado a $0,60\text{ m}$ com 8 hastes de aço cobreado $5/8" \times 2,40\text{ m}$, interligada por solda exotérmica.
-   - Barramento de Equipotencialização Principal (BEP) interligando neutro do secundário, massas metálicas, blindagens de cabos MT e descidas do SPDA.
+   - A prancha apresenta uma malha conceitual em cobre nu $70\text{ mm}^2$, a $0,60\text{ m}$, com 8 hastes de $5/8" \times 2,40\text{ m}$. Materiais e geometria ainda não foram dimensionados para um local real.
+   - A topologia conceitual prevê um Barramento de Equipotencialização Principal (BEP); conexões e coordenação com o SPDA precisam de projeto e verificação.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

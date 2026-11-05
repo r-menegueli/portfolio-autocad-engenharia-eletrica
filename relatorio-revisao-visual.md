@@ -6,6 +6,10 @@
 
 **Resultado:** **PASS**
 
+> **Relatório histórico:** o escopo é P01–P10, revisão 00, em 2026-09-10. As
+> observações e os resultados não se aplicam automaticamente à revisão gráfica 01
+> nem às pranchas de P11 e P12.
+
 ## Cadeias examinadas
 
 1. Os 68 PNGs de produção foram organizados em dez folhas de contato e examinados

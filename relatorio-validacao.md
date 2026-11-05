@@ -8,6 +8,9 @@
 
 **Resultado:** **PASS**
 
+> **Relatório histórico:** este resultado cobre exclusivamente P01–P10, revisão 00,
+> na data indicada. Não valida a revisão gráfica 01, P11, P12 ou os arquivos atuais.
+
 ## Resumo executivo
 
 | Verificação | Escopo | Resultado |

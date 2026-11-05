@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "11-subestacao-media-tensao"
-PROJECT_DATE = "2026-09-25"
-REVISION = "00"
+PROJECT_DATE = "2026-11-05"
+REVISION = "01"
 
 
 @dataclass(frozen=True)
@@ -97,10 +97,10 @@ SHEETS = (
         5,
         "05_malha_aterramento.dxf",
         "MALHA DE ATERRAMENTO E EQUIPOTENCIALIZACAO",
-        "Malha de terra em anel, hastes copperweld e calculo NBR 15751",
+        "Arranjo conceitual; estimativa preliminar sem estudo de seguranca",
         "Anel perimetral externo e grade interna em cabo de cobre nu 70 mm2 a 0,60 m profundidade.\\P"
         "8 hastes de aco cobreado 5/8 pol. x 2,40 m interligadas por solda exotermica.\\P"
-        "Resistencia de aterramento calculada R <= 3,85 ohms. Interligacao de neutro e massas ao BEP.",
+        "Estimativa geometrica simplificada R = 18,72 ohms, sem validacao de seguranca. Toque/passo pendentes.",
         "Cobre nu 70 mm2 | Haste 5/8\"x2,4m | Caixa de inspecao solo | BEP: barramento equipotencializacao",
         "1:75",
     ),
@@ -108,11 +108,10 @@ SHEETS = (
         6,
         "06_spda_geral.dxf",
         "SISTEMA DE PROTECAO CONTRA DESCARGAS ATMOSFERICAS (SPDA)",
-        "Metodo das malhas (Gaiola de Faraday) e esfera rolante NBR 5419:2015",
-        "Malha captora em cabo de cobre nu 35 mm2 em cobertura com malha 10 x 10 m (Nivel II).\\P"
-        "4 condutores de descida simetricos protegidos por tubo rigido de 2,5 m na base.\\P"
-        "Caixas de inspecao suspensa de medicao e interligacao direta a malha de aterramento.",
-        "Malha 10x10m | Descida Cu 35 mm2 | Terminal aereo 35cm | DPS Classe I/II no QGBT",
+        "Arranjo ilustrativo de captores, descidas e equipotencializacao",
+        "Geometria, classe de protecao e componentes ainda nao selecionados nem verificados.\\P"
+        "A folha nao declara conformidade normativa nem coordena DPS.",
+        "Reticula ilustrativa | Descidas propostas | Captores esquematicos | DPS a especificar",
         "1:75",
     ),
 )
@@ -223,7 +222,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 11", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -281,7 +280,7 @@ def draw_sheet_01(layout) -> None:
     line(layout, (90, 256), (90, 248), "05_POTENCIA")
     # Para-raios MT
     line(layout, (90, 252), (108, 252), "05_POTENCIA")
-    box(layout, 108, 248, 128, 256, "DPS-MT", "12 kV / 10 kA", "05_POTENCIA")
+    box(layout, 108, 248, 128, 256, "DPS-MT", "A especificar", "05_POTENCIA")
     line(layout, (128, 252), (135, 252), "05_POTENCIA")
     ground_symbol(layout, 135, 252, "05_POTENCIA")
 
@@ -351,7 +350,7 @@ def draw_sheet_01(layout) -> None:
 
     # DPS Geral BT
     line(layout, (275, 226), (295, 226), "05_POTENCIA")
-    box(layout, 295, 221, 326, 231, "DPS-BT", "Cl. I+II 40 kA", "05_POTENCIA")
+    box(layout, 295, 221, 326, 231, "DPS-BT", "A especificar", "05_POTENCIA")
     line(layout, (326, 226), (336, 226), "05_POTENCIA")
     ground_symbol(layout, 336, 226, "05_POTENCIA")
 
@@ -654,27 +653,18 @@ def draw_sheet_05(layout) -> None:
     for desc, p1, p2 in bep_links:
         line(layout, p1, p2, "08_CABOS")
 
-    # Painel de calculo de tensao de passo e toque
-    panel_box(layout, 275, 100, 402, 256, "MEMORIA DE CALCULO - NBR 15751", "", "12_LEGENDA")
-
-    calc_params = [
-        "Resistividade solo (rho): 250 ohm.m",
-        "Camada de brita (rho_s): 3.000 ohm.m",
-        "Espessura da brita: 10 cm",
-        "Comprimento cabos malha: 72,0 m",
-        "Numero de hastes (5/8\"x2,4m): 8",
-        "Resistencia malha calc.: 3,82 ohms",
-        "Criterio adotado: R <= 5,0 ohms (PASS)",
-        "Corrente de falta terra: 2,5 kA",
-        "Tempo de atuacao protecao: 0,5 s",
-        "Tensao de toque toleravel: 685 V",
-        "Tensao de toque calculada: 312 V (PASS)",
-        "Tensao de passo toleravel: 2.150 V",
-        "Tensao de passo calculada: 145 V (PASS)",
-        "Solda exotermica em todas conexoes.",
+    # Premissas e limites: nao apresentar a estimativa como dimensionamento normativo.
+    panel_box(layout, 275, 100, 402, 256, "LIMITES DO ESTUDO DE ATERRAMENTO", "SEM APROVACAO DE SEGURANCA", "12_LEGENDA")
+    sections = [
+        (235, "DADOS DE ENTRADA (PREMISSAS)", "Solo homogeneo assumido: 250 ohm.m; geometria e camada superficial ainda nao medidas."),
+        (205, "ARRANJO DESENHADO", "Condutor Cu nu 70 mm2 a 0,60 m; 8 hastes 5/8 x 2,40 m; BEP conceitual."),
+        (175, "ESTIMATIVA ILUSTRATIVA", "Expressao geometrica simplificada: R aproximada = 18,72 ohms. Nao e criterio PASS."),
+        (145, "NAO FOI CALCULADO", "Corrente/tempo de falta, GPR e tensoes de toque e passo; sem estratificacao ou acoplamento."),
+        (115, "PROXIMA ETAPA", "Medir resistividade, confirmar dados de falta e executar estudo de seguranca por profissional habilitado."),
     ]
-    for idx, cp in enumerate(calc_params):
-        left_text(layout, cp, (280, 240 - idx * 10.0), 1.12, "02_TEXTO")
+    for y, heading, detail in sections:
+        left_text(layout, heading, (280, y), 1.1, "12_LEGENDA", style=TITLE_STYLE)
+        add_mtext(layout, detail, (280, y - 5), 116, 1.0, "02_TEXTO")
 
 
 # --- Desenho da Prancha 6: SPDA Geral (NBR 5419) ---
@@ -730,13 +720,13 @@ def draw_sheet_06(layout) -> None:
         left_text(layout, dl, (276, 224 - idx * 8.5), 1.02, "02_TEXTO")
 
     # Medidas contra Surtos (MPS / DPS) usando panel_box
-    panel_box(layout, 273, 106, 395, 170, "PROTECAO CONTRA SURTOS (NBR 5419-4)", "Integracao ZPR 0B -> ZPR 1", "04_EQUIPAMENTOS")
+    panel_box(layout, 273, 106, 395, 170, "INTEGRACAO CONCEITUAL DE DPS", "A especificar no projeto detalhado", "04_EQUIPAMENTOS")
     mps_lines = [
-        "- DPS Classe I+II no QGBT (In=40kA, 12,5kA).",
+        "- Classe, Uc, Up e correntes do DPS: a definir.",
         "- Equipotencializacao de massas no BEP.",
-        "- Cabos em canaletas metalicas aterradas",
-        "  para mitigacao de pulso LEMP.",
-        "- Ensaio de continuidade R <= 0,2 ohm.",
+        "- Coordenar DPS, roteamento e comprimentos",
+        "  com o SPDA e o projeto executivo.",
+        "- Criterio de ensaio de continuidade: a definir.",
     ]
     for idx, ml in enumerate(mps_lines):
         left_text(layout, ml, (276, 152 - idx * 8.5), 1.02, "02_TEXTO")

@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "10-rede-instrumentacao-industrial"
-PROJECT_DATE = "2026-09-10"
-REVISION = "00"
+PROJECT_DATE = "2026-11-05"
+REVISION = "01"
 
 
 @dataclass(frozen=True)
@@ -55,7 +55,7 @@ SHEETS = (
     SheetSpec(3, "03_diagrama_interligacao.dxf", "DIAGRAMA DE INTERLIGAÇÃO", "Cabos, bornes, canais, blindagem e equipotencialização", "Blindagem analógica aterrada apenas em BE-101, no painel; extremidade de campo isolada.\\PPE, 0 V funcional e blindagem têm funções distintas e não devem ser confundidos.", "X2: 24 Vcc | X3: analógicos | X4: digitais | BE-101: barra de blindagem | PE-101: proteção"),
     SheetSpec(4, "04_topologia_comunicacao.dxf", "TOPOLOGIA DE COMUNICAÇÃO", "Ethernet industrial acadêmica em estrela com switch gerenciável", "A comunicação transporta quadros e diagnósticos, não a energia nem o valor 4-20 mA.\\PEndereços são premissas de documentação; VLAN, protocolo e redundância exigem projeto posterior.", "Linha laranja: Ethernet industrial | NET-xxx: identificação do enlace | /24: máscara 255.255.255.0"),
     SheetSpec(5, "05_painel_instrumentacao.dxf", "PAINEL DE INSTRUMENTAÇÃO", "Arranjo conceitual 800 x 600 x 250 mm — PI-101", "Layout não define produto, dissipação, grau IP, folgas ou certificação.\\PConfirmar térmica, EMC, segregação, curvatura, torque e acesso antes de execução.", "PS: fonte | QF: proteção | PLC: controlador | SW: switch | X: bornes | BE/PE: barras"),
-    SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios da revisão 00. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
+    SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios, revisados graficamente em 01. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
 )
 
 
@@ -215,7 +215,7 @@ def add_revision_table(layout):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.6, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSÃO INICIAL DO PROJETO 10", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.35, "02_TEXTO")
 
 

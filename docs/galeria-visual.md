@@ -19,8 +19,10 @@ SVG. Clique na imagem para abrir o PDF A3.
 - P03 representa automação, segurança e interfaces de processo;
 - P07 amplia o escopo para energia, controle e comunicação veicular.
 
-As 68 pranchas foram revisadas; a seleção acima é apenas um índice visual. Consulte a
-[revisão visual consolidada](../relatorio-revisao-visual.md) e a
+As 68 pranchas citadas no relatório abaixo pertencem à revisão histórica de P01–P10
+em 2026-09-10; P11 e P12 foram adicionados depois. Consulte a
+[auditoria atual do portfólio](auditoria-portfolio-2026-11.md), a
+[revisão visual histórica](../relatorio-revisao-visual.md) e a
 [tabela completa de projetos](../README.md#projetos).
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

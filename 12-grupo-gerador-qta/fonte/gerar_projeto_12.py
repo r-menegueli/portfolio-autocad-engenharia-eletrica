@@ -1,4 +1,4 @@
-"""Gera as seis pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA) de forma deterministica."""
+"""Gera as sete pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA) de forma deterministica."""
 
 from __future__ import annotations
 
@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "12-grupo-gerador-qta"
-PROJECT_DATE = "2026-09-25"
-REVISION = "00"
+PROJECT_DATE = "2026-11-05"
+REVISION = "01"
 
 
 @dataclass(frozen=True)
@@ -112,6 +112,15 @@ SHEETS = (
         "Tanque integrado de 250 L sobre bacia de contencao estanque para 297 L (110%).",
         "GMG-01: 250 kVA | ESC-01: silencioso hospitalar | TQ-01: tanque 250L | VIB: amortecedores",
         "1:50",
+    ),
+    SheetSpec(
+        7,
+        "07_sequencia_transferencia_qta.dxf",
+        "SEQUENCIA DE OPERACAO E INTERTRAVAMENTO DO QTA",
+        "Estados, temporizacoes de estudo e condicoes de transferencia aberta",
+        "Temporizacoes sao valores iniciais de estudo, nao garantias de partida ou transferencia.\\P"
+        "A manobra exige confirmacao de abertura da fonte anterior e intertravamento fisico independente.",
+        "52-R: contato rede | 52-G: contato GMG | FBK: retorno auxiliar | BBM: transicao aberta",
     ),
 )
 
@@ -196,7 +205,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 12", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO TECNICA E GRAFICA", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -218,7 +227,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -234,7 +243,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -305,7 +314,7 @@ def draw_sheet_01(layout) -> None:
         "Icc Rede: 25,0 kA",
         "Icc Gerador: 1,14 kA",
         "Transicao: Aberta (BBM)",
-        "Tempo Partida: <= 12 s",
+        "Partida: ate 3 ciclos de 5 s",
         "Tanque Diesel: 250 L",
         "Autonomia 75%: 7,5 h",
         "Esquema Terra: TN-S",
@@ -625,6 +634,39 @@ def draw_sheet_06(layout) -> None:
         left_text(layout, rq, (264, 140 - idx * 8.5), 0.92, "02_TEXTO")
 
 
+# --- Prancha 07: Sequencia de operacao e intertravamento ---
+
+def draw_sheet_07(layout) -> None:
+    # Fluxo em duas linhas: partida e transferência para GMG, depois retorno à rede.
+    panel_box(layout, 28, 110, 402, 256, "SEQUENCIA AUTOMATICA DO QTA", "Estados de referencia para USCA-01; tempos configuraveis", "06_COMANDO")
+
+    cards = [
+        (35, 190, 145, 234, "0 / 1  REDE E FALHA", "52-R fecha com rede saudavel.\\PConfirma falha por 3 s antes da partida."),
+        (155, 190, 265, 234, "2 / 3  ARRANQUE", "Ate 3 tentativas: 5 s partida\\Pe 5 s de repouso entre tentativas."),
+        (275, 190, 395, 234, "4 / 5  ESTABILIZA E TRANSFERE", "GMG estavel por 5 s. Abre 52-R;\\Paguarda 1,5 s e fecha 52-G."),
+        (275, 130, 395, 174, "6 / 7  CARGA / RETORNO", "GMG atende a carga. Rede precisa\\permanecer saudavel por 120 s."),
+        (155, 130, 265, 174, "8  RETRANSFERENCIA", "Abre 52-G; confirma FBK aberto,\\Paguarda 1,5 s e fecha 52-R."),
+        (35, 130, 145, 174, "9  ARREFECIMENTO", "GMG opera sem carga por 180 s;\\Pdepois desenergiza o combustivel."),
+    ]
+    for x0, y0, x1, y1, heading, detail in cards:
+        add_rect(layout, x0, y0, x1, y1, "04_EQUIPAMENTOS")
+        left_text(layout, heading, (x0 + 3, y1 - 8), 1.25, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+        add_mtext(layout, detail, (x0 + 3, y1 - 14), x1 - x0 - 6, 1.15, "02_TEXTO")
+
+    # Setas da ordem de execução (ida pela linha superior e volta pela inferior).
+    arrow(layout, (145, 212), (155, 212), "06_COMANDO")
+    arrow(layout, (265, 212), (275, 212), "06_COMANDO")
+    arrow(layout, (335, 190), (335, 174), "06_COMANDO")
+    arrow(layout, (275, 152), (265, 152), "06_COMANDO")
+    arrow(layout, (155, 152), (145, 152), "06_COMANDO")
+
+    # Ramo de indisponibilidade e premissas de segurança.
+    add_rect(layout, 35, 113, 395, 124, "13_NOTAS")
+    centered(layout, "FALHA: 3 tentativas sem GMG estavel, emergencia, pressao de oleo ou temperatura anormal -> estado de alarme.", (215, 118.5), 1.12, "13_NOTAS")
+    add_rect(layout, 35, 178, 265, 185, "12_LEGENDA")
+    centered(layout, "Nunca comandar 52-R e 52-G juntos. Confirmar abertura por FBK e intertravamento mecanico.", (150, 181.5), 1.05, "12_LEGENDA")
+
+
 DRAW_MAP = {
     1: draw_sheet_01,
     2: draw_sheet_02,
@@ -632,6 +674,7 @@ DRAW_MAP = {
     4: draw_sheet_04,
     5: draw_sheet_05,
     6: draw_sheet_06,
+    7: draw_sheet_07,
 }
 
 

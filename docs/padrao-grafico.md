@@ -1,6 +1,6 @@
 # Padrao grafico do portfolio
 
-Este documento define a linguagem visual comum aos dez projetos do portfólio. O
+Este documento define a linguagem visual comum aos doze projetos do portfólio. O
 arquivo [`portfolio.toml`](../portfolio.toml) e a fonte de verdade legivel por
 maquina; divergencias entre este texto e a configuracao devem ser corrigidas antes
 de uma nova prancha.
@@ -42,23 +42,25 @@ explodidos sem necessidade, pois eles permitem atualizacao e validacao automatic
 
 ## Layers
 
-As cores sao destinadas a organizacao em tela. Uma configuracao monocromatica de
-plotagem pode ser adotada desde que preserve pesos e hierarquia visual.
+As cores ACI usadas no DXF tambem precisam permanecer distinguiveis e escuras na
+renderizacao sobre fundo branco. Evite amarelo, ciano, verde-lima e cinza-claro em
+linhas finas. Para impressao, uma tabela CTB monocromatica e apropriada quando
+preserva os pesos e a hierarquia visual.
 
 | Layer | Uso | ACI | Peso |
 |---|---|---:|---:|
 | `00_MOLDURA` | moldura e referencias de zona | 7 | 0,50 mm |
 | `01_CARIMBO` | linhas do carimbo e revisoes | 7 | 0,25 mm |
 | `02_TEXTO` | titulos, rotulos e identificadores | 7 | 0,18 mm |
-| `03_COTAS` | cotas e linhas auxiliares | 4 | 0,18 mm |
-| `04_EQUIPAMENTOS` | contornos de equipamentos | 2 | 0,35 mm |
-| `05_POTENCIA` | circuitos de potencia | 1 | 0,50 mm |
-| `06_COMANDO` | circuitos de comando | 3 | 0,25 mm |
-| `07_INSTRUMENTACAO` | sinais e instrumentacao | 6 | 0,25 mm |
-| `08_CABOS` | cabos e identificadores associados | 30 | 0,35 mm |
-| `09_BORNES` | bornes e pontos de conexao | 5 | 0,25 mm |
-| `10_ELETROCALHAS` | leitos, eletrocalhas e rotas | 8 | 0,35 mm |
-| `11_ARQUITETURA` | base arquitetonica de apoio | 9 | 0,18 mm |
+| `03_COTAS` | cotas e linhas auxiliares | 152 | 0,18 mm |
+| `04_EQUIPAMENTOS` | contornos de equipamentos | 32 | 0,35 mm |
+| `05_POTENCIA` | circuitos de potencia | 12 | 0,50 mm |
+| `06_COMANDO` | circuitos de comando | 94 | 0,25 mm |
+| `07_INSTRUMENTACAO` | sinais e instrumentacao | 202 | 0,25 mm |
+| `08_CABOS` | cabos e identificadores associados | 124 | 0,35 mm |
+| `09_BORNES` | bornes e pontos de conexao | 145 | 0,25 mm |
+| `10_ELETROCALHAS` | leitos, eletrocalhas e rotas | 251 | 0,35 mm |
+| `11_ARQUITETURA` | base arquitetonica de apoio | 253 | 0,18 mm |
 | `12_LEGENDA` | legenda e chaves de leitura | 7 | 0,18 mm |
 | `13_NOTAS` | notas, ressalvas e aviso obrigatorio | 7 | 0,18 mm |
 
@@ -98,7 +100,7 @@ referencia historica, nunca como conformidade vigente.
 
 ## Nomes e formatos
 
-- Pastas de projeto: `NN-nome-curto`, com numero de `01` a `10`.
+- Pastas de projeto: `NN-nome-curto`, com numero de `01` a `12`.
 - Pranchas-fonte: `NN_nome_da_prancha.dxf`, com `NN` sequencial dentro do projeto.
 - Arquivos derivados conservam exatamente o mesmo nome-base e usam `.pdf`, `.svg`
   e `.png`.

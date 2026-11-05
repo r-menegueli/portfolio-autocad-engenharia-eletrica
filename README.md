@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-doze projetos completos de documentação elétrica. O repositório reúne diagramas,
+doze estudos conceituais de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -39,9 +39,9 @@ em [portfolio.toml](portfolio.toml).
 | P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração mecânica | 6 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos e bornes | 6 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
-| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, barramento 500 A e acústica | 6 | [abrir](12-grupo-gerador-qta/README.md) |
+| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e intertravamentos | 7 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **80 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **81 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -120,36 +120,48 @@ Auditorias complementares da revisão consolidada:
 .\.venv\Scripts\python.exe .\scripts\revisar_workbooks.py --root .
 ```
 
+Para atualizar apenas uma folha, use o ID correspondente em `portfolio.toml`. As
+entradas não selecionadas só são mantidas no manifesto quando suas fontes e saídas
+continuam com os hashes registrados:
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\renderizar.py --root . --artifact p12-07-sequencia-transferencia-qta
+```
+
 Todas as dependências usadas pelos comandos públicos estão fixadas em
 `requirements.txt`. O gerador de cada projeto e seus comandos específicos constam no
 README individual.
 
 ## Validação e relatórios
 
-A revisão consolidada aprovou a estrutura, os dados e os formatos do portfólio. Foram
-reconstruídas as 68 pranchas, auditados 70 DXFs no AutoCAD, reabertos os PDFs,
-renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
+A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
+revisão reconstruiu as 81 pranchas A3 de P01–P12; a validação estrita atual aprovou
+423.833 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
+limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
+limites técnicos.
 
-- [Relatório de validação](relatorio-validacao.md)
+- [Relatório histórico de validação](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)
-- [Revisão visual](relatorio-revisao-visual.md)
+- [Revisão visual histórica](relatorio-revisao-visual.md)
+- [Auditoria de projetos, maturidade e correções](docs/auditoria-portfolio-2026-11.md)
 - [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
 - [Inventário de arquivos](inventario-arquivos.md)
 - [Critérios técnicos](docs/criterios-tecnicos.md)
 - [Padrão gráfico](docs/padrao-grafico.md)
-- [Plano dos dez projetos](docs/plano-projetos.md)
+- [Plano dos projetos](docs/plano-projetos.md)
 
 O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
 layers, dimensões, moldura, elementos fora da folha, textos potencialmente
 sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P10 acrescentam invariantes técnicos próprios; P01 é coberto
-pelo validador comum e pela auditoria consolidada.
+DWG. Os validadores P02–P12 acrescentam invariantes técnicos próprios; P01 é coberto
+pelo validador comum. Aprovação estrutural e gráfica não representa validação técnica
+profissional.
 
 ## Estrutura resumida
 
 ```text
 portfolio-autocad-engenharia-eletrica/
-├── 01-painel-motor-inversor/ ... 10-rede-instrumentacao-industrial/
+├── 01-painel-motor-inversor/ ... 12-grupo-gerador-qta/
 │   ├── fonte/                  # DXFs e scripts-fonte
 │   ├── exports/                # PDF, SVG e PNG
 │   ├── README.md, memorial, critérios e memórias

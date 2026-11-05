@@ -165,6 +165,12 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
     parser.add_argument("--dpi", type=int, default=RENDER_DPI, help="Resolucao do PNG")
+    parser.add_argument(
+        "--artifact",
+        action="append",
+        default=[],
+        help="ID de artefato a renderizar (pode repetir); preserva somente entradas inalteradas do manifesto",
+    )
     return parser.parse_args()
 
 
@@ -172,9 +178,39 @@ def main() -> int:
     args = parse_args()
     root = args.root.resolve()
     config = load_config(root)
-    rendered: list[dict] = []
+    artifacts = config["artifacts"]
+    by_id = {artifact["id"]: artifact for artifact in artifacts}
+    requested = set(args.artifact)
+    unknown = requested - by_id.keys()
+    if unknown:
+        raise SystemExit("Artefato(s) desconhecido(s): " + ", ".join(sorted(unknown)))
+    if requested and args.dpi != RENDER_DPI:
+        raise SystemExit("A renderizacao parcial so aceita a resolucao oficial de 300 dpi.")
+    selected = requested or set(by_id)
+    rendered_by_id: dict[str, dict] = {}
 
-    for artifact in config["artifacts"]:
+    manifest_path = root / "renders" / "manifesto.json"
+    previous_entries: dict[str, dict] = {}
+    if manifest_path.is_file():
+        previous = json.loads(manifest_path.read_text(encoding="utf-8"))
+        previous_entries = {entry["id"]: entry for entry in previous.get("artifacts", [])}
+
+    for artifact in artifacts:
+        if artifact["id"] in selected:
+            continue
+        entry = previous_entries.get(artifact["id"])
+        source = root / artifact["source"]
+        if not entry or entry.get("source") != artifact["source"] or entry.get("source_sha256") != sha256(source):
+            raise SystemExit(f"Sem entrada de manifesto atual para {artifact['id']}; execute a renderizacao completa.")
+        for kind, output_path in ((kind, root / artifact[kind]) for kind in ("svg", "pdf", "png") if kind in artifact):
+            recorded = entry.get("outputs", {}).get(kind, {})
+            if not output_path.is_file() or recorded.get("path") != str(output_path.relative_to(root)).replace("\\", "/") or recorded.get("sha256") != sha256(output_path):
+                raise SystemExit(f"Derivado alterado para {artifact['id']} ({kind}); execute a renderizacao completa.")
+        rendered_by_id[artifact["id"]] = entry
+
+    for artifact in artifacts:
+        if artifact["id"] not in selected:
+            continue
         source = root / artifact["source"]
         outputs = {
             kind: root / artifact[kind]
@@ -182,19 +218,18 @@ def main() -> int:
             if kind in artifact
         }
         render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi, artifact)
-        rendered.append(
-            {
-                "id": artifact["id"],
-                "source": artifact["source"],
-                "source_sha256": sha256(source),
-                "outputs": {
-                    kind: {"path": str(path.relative_to(root)).replace("\\", "/"), "sha256": sha256(path)}
-                    for kind, path in sorted(outputs.items())
-                },
-            }
-        )
+        rendered_by_id[artifact["id"]] = {
+            "id": artifact["id"],
+            "source": artifact["source"],
+            "source_sha256": sha256(source),
+            "outputs": {
+                kind: {"path": str(path.relative_to(root)).replace("\\", "/"), "sha256": sha256(path)}
+                for kind, path in sorted(outputs.items())
+            },
+        }
         print(f"Renderizado: {artifact['id']} -> {', '.join(sorted(outputs))}")
 
+    rendered = [rendered_by_id[artifact["id"]] for artifact in artifacts]
     manifest = build_manifest(root, config, rendered)
     print(f"Manifesto: {manifest.relative_to(root)}")
     return 0

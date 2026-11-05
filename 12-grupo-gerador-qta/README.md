@@ -1,6 +1,6 @@
 # Projeto 12: Grupo Moto-Gerador Diesel (250 kVA) com QTA e USCA
 
-Documentação técnica e projeto executivo em AutoCAD de um **Sistema de Grupo Moto-Gerador (GMG) Diesel de Emergência de 250 kVA / 380–220 V** com **Quadro de Transferência Automática (QTA)** em transição aberta e **Unidade de Supervisão de Corrente Alternada (USCA)** microprocessada.
+Documentação CAD acadêmica e conceitual de um **Sistema de Grupo Moto-Gerador (GMG) Diesel de Emergência de 250 kVA / 380–220 V** com **Quadro de Transferência Automática (QTA)** em transição aberta e **Unidade de Supervisão de Corrente Alternada (USCA)** microprocessada. As pranchas DXF são fontes editáveis; nenhum DWG foi verificado ou distribuído.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -16,8 +16,8 @@ Documentação técnica e projeto executivo em AutoCAD de um **Sistema de Grupo 
 | **Velocidade Nominal** | 1800 rpm | Motor diesel 6 cilindros em linha, injeção eletrônica |
 | **Corrente Nominal ($I_n$)** | 379,8 A | Dimensionamento para barramento e disjuntor de 400 A |
 | **Fator de Potência** | 0,80 indutivo | Padrão NBR ISO 8528 |
-| **Tipo de Transferência** | Transição Aberta (*Break-Before-Make*) | Intertravamento mecânico e elétrico duplo |
-| **Tempo de Comutação Típico** | < 15 segundos | Da detecção de falha de rede até a assunção de carga |
+| **Tipo de Transferência** | Transição Aberta (*Break-Before-Make*) | Intertravamento físico independente e permissivos lógicos conceituais |
+| **Sequência proposta** | até 3 partidas de 5 s com repousos de 5 s | Mais estabilização, tempos mortos e retorno; não fixa tempo total de tomada de carga |
 | **Capacidade do Tanque** | 250 litros | Autonomia de aproximadamente 5,5 horas a 100% de carga |
 | **Nível de Atenuação Acústica** | 75 dB(A) a 1,5 metro | Cabine insonorizada com atenuadores de ruído |
 
@@ -25,7 +25,7 @@ Documentação técnica e projeto executivo em AutoCAD de um **Sistema de Grupo 
 
 ## 2. Índice de Pranchas (A3 Paisagem)
 
-O conjunto é composto por 6 pranchas desenvolvidas em AutoCAD e salvas no formato DXF AC1027/R2013:
+O conjunto é composto por 7 pranchas em DXF AC1027/R2013:
 
 1. **`01_diagrama_unifilar_qta.dxf`:** Diagrama unifilar de potência do QTA (Rede, GMG, contatores K1/K2 intertravados, DPS e barramento de cargas essenciais).
 2. **`02_diagrama_trifilar_potencia.dxf`:** Esquema trifilar detalhado de força (3F+N+PE), circuitos de alimentação auxiliar, carregador de baterias e resistor de bloco.
@@ -33,6 +33,7 @@ O conjunto é composto por 6 pranchas desenvolvidas em AutoCAD e salvas no forma
 4. **`04_regua_bornes_interligacao.dxf`:** Mapeamento de régua de bornes de potência (X1, X2, X3) e de controle/sensoriamento (XC1 e XC2) entre painel e cabine do GMG.
 5. **`05_layout_painel_qta.dxf`:** Layout frontal da porta com IHM, comutador e sinalizadores, e placa de montagem interna com barramentos e componentes.
 6. **`06_planta_instalacao_gmg.dxf`:** Planta de implantação da sala de geradores, atenuadores acústicos de admissão e descarga, escape de gases com silencioso hospitalar e bacia de contenção de diesel.
+7. **`07_sequencia_transferencia_qta.dxf`:** Sequência por estados, pausas entre partidas, confirmação dos contatos auxiliares, transferência aberta, retorno à rede e arrefecimento.
 
 ---
 
@@ -47,6 +48,7 @@ O conjunto é composto por 6 pranchas desenvolvidas em AutoCAD e salvas no forma
 │   ├── 04_regua_bornes_interligacao.dxf
 │   ├── 05_layout_painel_qta.dxf
 │   ├── 06_planta_instalacao_gmg.dxf
+│   ├── 07_sequencia_transferencia_qta.dxf
 │   ├── gerar_projeto_12.py
 │   ├── renderizar_projeto_12.py
 │   └── validar_projeto_12.py

@@ -4,7 +4,7 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 06
 
-Formato: A3 paisagem, unidades em milímetros, revisão 00
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 01 (2026-11-05)
 Estado: concluído e validado em 2026-09-09
 
 Este projeto acadêmico documenta um sistema conceitual de controle de nível para o reservatório TK-101. A variável controlada é o nível medido por LT-101; a variável manipulada é a frequência de VFD-101, que altera a vazão da bomba P-101/M-101. A principal perturbação é a vazão de saída para consumo.

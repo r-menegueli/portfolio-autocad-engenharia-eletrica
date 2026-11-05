@@ -1,5 +1,9 @@
 # Inspeção visual - Projeto 11
 
+Este registro cobre somente a apresentação visual da revisão anterior. Não valida
+dimensionamentos, atendimento normativo, segurança de aterramento ou aptidão
+executiva. A prancha 05 declara que toque e passo ainda não foram calculados.
+
 ## Resumo da inspeção
 
 - **Data da inspeção:** 2026-09-25

@@ -4,7 +4,7 @@ Autor: **Rogério Eduardo Moreira Menegueli**
 
 Data-base: **2026-09-05**
 
-Revisão: **00**
+Revisão: **01 (gráfica; 2026-11-05)**
 
 Unidades dos desenhos: **milímetros (mm)**
 

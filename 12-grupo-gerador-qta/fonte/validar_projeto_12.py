@@ -18,6 +18,7 @@ SHEETS = (
     "04_regua_bornes_interligacao.dxf",
     "05_layout_painel_qta.dxf",
     "06_planta_instalacao_gmg.dxf",
+    "07_sequencia_transferencia_qta.dxf",
 )
 REQUIRED_TAGS = {
     "GMG-01",
@@ -77,7 +78,7 @@ def main() -> int:
             errors.append(f"Erros de auditoria em {filename}: {len(audit.errors)}")
         text = extract_text(doc)
         all_texts.append(text)
-        expected_sheet = f"{index:02d}/06"
+        expected_sheet = f"{index:02d}/{len(SHEETS):02d}"
         if expected_sheet not in text:
             errors.append(f"Numeracao de prancha {expected_sheet} nao encontrada em {filename}")
 

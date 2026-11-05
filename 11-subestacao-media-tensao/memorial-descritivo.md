@@ -4,7 +4,7 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Revisão: 00, emitida em 2026-09-25
+Revisão do conteúdo: conceitual; conferir todas as premissas antes de qualquer uso técnico.
 
 Este projeto documenta, para fins acadêmicos e de portfólio técnico, uma **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)**, contemplando o diagrama unifilar geral, arranjo físico em alvenaria, cortes eletromecânicos, diagrama funcional de proteção secundária (ANSI 50/51/50N/51N), malha de aterramento subterrânea e Sistema de Proteção contra Descargas Atmosféricas (SPDA).
 
@@ -12,7 +12,7 @@ Este projeto documenta, para fins acadêmicos e de portfólio técnico, uma **Su
 
 O fornecimento ocorre em tensão primária de distribuição de `13,8 kV` (`60 Hz`), trifásico, derivado da rede aérea da concessionária através de ramal de entrada subterrâneo em cabos de cobre isolados em EPR `8,7/15 kV` de seção `3x(1x50 mm²)`, dotados de blindagem metálica aterrada em ambas as extremidades e muflas terminais termocontráteis.
 
-No ponto de entrega situam-se os para-raios poliméricos de óxido de zinco (`12 kV / 10 kA`). O **Cubículo 01** abriga a chave seccionadora tripolar de manobra sob carga (`17,5 kV / 630 A`) com lâmina de aterramento rápido intertravada, além dos Transformadores de Corrente (`TC-MED`) e Transformadores de Potencial (`TP-MED`) exclusivos para medição de faturamento da concessionária.
+O desenho reserva a função de para-raios poliméricos de óxido de zinco no ponto de entrega; tensão nominal, MCOV, corrente, nível de proteção e coordenação de isolamento precisam ser definidos a partir dos dados da rede e dos equipamentos. O **Cubículo 01** ilustra uma chave seccionadora de `17,5 kV / 630 A` e os TCs/TPs de medição como premissas, ainda sem aprovação da concessionária ou seleção por fabricante.
 
 ## 3. Proteção primária e transformação
 
@@ -22,13 +22,13 @@ O **Cubículo 03** aloja o transformador de força trifásico imerso em óleo mi
 
 ## 4. Quadro Geral de Baixa Tensão (QGBT)
 
-A interligação entre os terminais secundários do transformador e o **QGBT** é efetuada por condutores de cobre flexível `3x[2x(1x240 mm²)] + N + PE` alojados em canaleta técnica. O QGBT possui disjuntor geral em caixa aberta de `800 A` ($I_{cu} = 50\text{ kA}$ em `380 V`), proteção contra surtos **DPS Classe I+II** (`12,5 kA` / `40 kA`) e barramento de cobre eletrolítico de `1000 A`, alimentando os quadros setoriais da indústria (integrando-se diretamente aos projetos P05 - Instalação Industrial e P06 - Centro de Controle de Motores).
+A interligação entre os terminais secundários do transformador e o **QGBT** é representada por condutores de cobre flexível `3x[2x(1x240 mm²)] + N + PE` em canaleta técnica. As seções e o arranjo são premissas conceituais, sem verificação de ampacidade, queda de tensão, agrupamento, curto-circuito ou instalação real. O desenho propõe um disjuntor geral de `800 A`, capacidade nominal declarada de `50 kA` em `380 V`, e barramento de `1000 A`; os equipamentos não foram selecionados por fabricante nem validados. O DPS consta apenas como função a especificar: classe, tensão máxima contínua, nível de proteção, correntes nominais e coordenação permanecem em aberto. Os alimentadores para P05 e P06 são referências conceituais, sem coordenação confirmada.
 
 ## 5. Malha de aterramento e SPDA
 
-A malha de aterramento da subestação é constituída por cabo de cobre nu recozido de `70 mm²` enterrado a `0,60 m` de profundidade em anel perimetral externo e reticulado interno sob o piso, interligado a `8 hastes` de aço cobreado (*copperweld*) de `5/8" x 2,40 m` por conexões de solda exotérmica. Todas as massas metálicas, telas de proteção, portas corta-fogo, blindagens de cabos de MT e o neutro do secundário do transformador são conectados ao **Barramento de Equipotencialização Principal (BEP)**.
+A prancha mostra, como arranjo conceitual ainda não dimensionado, cabo de cobre nu de `70 mm²` a `0,60 m` de profundidade e `8 hastes` de `5/8" x 2,40 m`. Materiais, seção, espaçamento, conexões e equipotencialização não foram verificados para o local. Não há levantamento de resistividade, dados reais de falta, tempos de eliminação, cálculo de elevação de potencial nem verificação de tensões de toque e passo; a estimativa aritmética de `18,72 Ω` não valida segurança. A topologia mostra a intenção de interligar massas, blindagens e neutro ao **Barramento de Equipotencialização Principal (BEP)**, sem projeto de aterramento final.
 
-O **SPDA** adota o Método das Malhas (Gaiola de Faraday) combinado com captores terminais aéreos de `35 cm` nos vértices da cobertura, dimensionado para **Nível de Proteção II** conforme a ABNT NBR 5419:2015, contando com 4 condutores de descida em cobre nu de `35 mm²`, caixas de inspeção suspensa e proteção mecânica no trecho inferior.
+O **SPDA** ilustra uma disposição conceitual com anel de cobertura, captores terminais e quatro descidas. O nível de proteção, o método, as distâncias, a equipotencialização e a necessidade de proteção não foram determinados por análise de risco nem validados para uma edificação real.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

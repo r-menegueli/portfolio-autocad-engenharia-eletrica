@@ -38,7 +38,7 @@ O disjuntor geral do QGBT deve possuir capacidade de interrupção ($I_{cu}$) su
 
 ---
 
-## 3. Dimensionamento da Malha de Aterramento (NBR 15751)
+## 3. Estimativa geométrica preliminar da malha (não é dimensionamento)
 
 ### 3.1 Parâmetros Geométricos e Geotécnicos
 * Área da malha: $A = 8,00\text{ m} \times 6,00\text{ m} = 48,00\text{ m}^2$.
@@ -48,24 +48,21 @@ O disjuntor geral do QGBT deve possuir capacidade de interrupção ($I_{cu}$) su
 * Número de hastes verticais de $2,40\text{ m}$ ($5/8"$): 8 hastes ($L_v = 8 \times 2,40 = 19,20\text{ m}$).
 * Comprimento total enterrado: $L_T = L_c + L_v = 72,00 + 19,20 = 91,20\text{ m}$.
 
-### 3.2 Cálculo da Resistência da Malha ($R_{malha}$) pela Fórmula de Laurent-Niemann
+### 3.2 Exemplo aritmético simplificado
 $$R_{malha} \approx \frac{\rho}{4 \times r_{eq}} + \frac{\rho}{L_T}$$
 Onde o raio equivalente $r_{eq} = \sqrt{\frac{A}{\pi}} = \sqrt{\frac{48}{\pi}} \approx 3,91\text{ m}$.
-$$R_{malha} \approx \frac{250}{4 \times 3,91} + \frac{250}{91,20} \approx 15,98 + 2,74 \approx 18,72\ \Omega\text{ (sem considerar solo profundo)}$$
-Com as 8 hastes profundas cravadas em paralelo atingindo camadas mais úmidas e o coeficiente de acoplamento do reticulado, a resistência estimada da malha atinge **$R_{malha} \le 3,85\ \Omega$**, atendendo plenamente à meta de **$R \le 5,0\ \Omega$** para subestações e **$R \le 10,0\ \Omega$** para SPDA.
+$$R_{malha,est} \approx \frac{250}{4 \times 3,91} + \frac{250}{91,20} \approx 15,98 + 2,74 \approx 18,72\ \Omega$$
+
+O resultado de **18,72 Ω** é apenas a saída aritmética da expressão ilustrativa indicada, sem validação do método, modelo de camadas ou fator de acoplamento. Não é dimensionamento normativo, resistência medida, critério de aprovação ou evidência de segurança. O valor anterior de **3,85 Ω** não tinha cálculo rastreável e foi removido. Também não foram calculados elevação de potencial da malha nem tensões de toque e passo para uma corrente de falta, tempo de eliminação, geometria final e camada superficial medidos. O estudo de segurança e a validação por profissional habilitado permanecem pendentes.
 
 ---
 
-## 4. Dimensionamento do SPDA (NBR 5419-3:2015)
+## 4. Premissas conceituais de SPDA (sem verificação de conformidade)
 
-* Estrutura: Subestação abrigada em alvenaria com laje impermeabilizada ($6,00\text{ m} \times 4,00\text{ m}$, altura $h = 4,00\text{ m}$).
-* Nível de Proteção Selecionado: **Nível II** (estruturas com equipamentos de alto valor e risco de interrupção de serviço).
-* **Método das Malhas (Gaiola de Faraday):**
-  * Dimensão máxima da malha para Nível II: $10\text{ m} \times 10\text{ m}$.
-  * Como a edificação mede $6,00\text{ m} \times 4,00\text{ m}$, a malha perimetral em anel único de condutor de cobre nu de $35\text{ mm}^2$ com condutor intermediário cobre 100% da área da laje.
-* **Descidas:**
-  * Distância máxima entre descidas para Nível II: $10\text{ m}$.
-  * Com 4 descidas (uma em cada canto/face principal), o espaçamento médio é de $\approx 5\text{ m}$, superando amplamente a exigência normativa.
+* A prancha ilustra uma edificação assumida de $6,00\text{ m} \times 4,00\text{ m}$ e condutores/descidas propostos.
+* A classe, o método, a geometria, os componentes e as distâncias são premissas de estudo, não uma seleção validada.
+* Não há análise de risco, levantamento, projeto de captação/descidas, cálculo de distâncias de segurança ou coordenação completa de DPS.
+* Confirmar as edições vigentes das normas e desenvolver o projeto com dados reais antes de qualquer conclusão de conformidade.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

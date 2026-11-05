@@ -34,8 +34,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "03-painel-automacao-clp"
-PROJECT_DATE = "2026-09-06"
-REVISION = "00"
+PROJECT_DATE = "2026-11-05"
+REVISION = "01"
 
 
 @dataclass(frozen=True)
@@ -194,7 +194,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSÃO INICIAL DO PROJETO 03", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.65, "02_TEXTO")
 
 

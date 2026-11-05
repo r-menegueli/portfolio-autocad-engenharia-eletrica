@@ -148,7 +148,7 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         v.require(doc.header.get("$INSUNITS") == 4, f"$INSUNITS não é mm em {path.name}")
         v.require(required_layers.issubset({layer.dxf.name for layer in doc.layers}), f"layers obrigatórios ausentes em {path.name}")
         text = " ".join(entity_text(entity) for entity in doc.modelspace())
-        for token in (WARNING, "Rogério Eduardo Moreira Menegueli", "mm", "00", "CONCEIT."):
+        for token in (WARNING, "Rogério Eduardo Moreira Menegueli", "mm", "01", "CONCEIT."):
             v.require(token in text, f"texto obrigatório ausente em {path.name}: {token}")
         extents = bbox.extents(doc.modelspace(), fast=True)
         v.require(extents.has_data, f"DXF sem geometria: {path.name}")
@@ -198,7 +198,7 @@ def main():
     validate_exports(validation, project)
     report = {
         "project": "P10",
-        "date": "2026-09-10",
+        "date": "2026-11-05",
         "status": "PASS" if not validation.errors else "FAIL",
         "checks": validation.checks,
         "errors": validation.errors,

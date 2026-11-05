@@ -2,7 +2,7 @@
 
 - **Autor:** Rogério Eduardo Moreira Menegueli
 - **Data:** 2026-09-05
-- **Revisão:** 00
+- **Revisão:** 01 (gráfica; 2026-11-05)
 - **Estado:** concluído e validado
 - **Unidades:** milímetros no DXF; metros, volts, ampères, watts e volt-ampères quando indicados
 

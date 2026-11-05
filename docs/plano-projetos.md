@@ -1,14 +1,14 @@
-# Plano dos dez projetos acadêmicos
+# Plano original dos dez projetos acadêmicos
 
 Autor: Rogério Eduardo Moreira Menegueli
 Estado: P01 a P10 concluídos
 
 ## Propósito
 
-Este documento organiza a evolução do portfólio em dez projetos acadêmicos de
-Engenharia Elétrica, do desenho de baixa tensão à integração de sistemas
-industriais. A ordem foi escolhida para reaproveitar componentes já validados e
-introduzir complexidade gradualmente.
+Este documento registra o plano original de dez projetos acadêmicos de Engenharia
+Elétrica, do desenho de baixa tensão à integração de sistemas industriais. P11 e
+P12 foram acrescentados depois e não fazem parte do plano original; a lista atual
+de doze estudos está no [README do repositório](../README.md#projetos).
 
 As regras permanentes estão no [AGENTS.md](../AGENTS.md), e os critérios comuns
 estão descritos no [padrão gráfico](./padrao-grafico.md) e nos

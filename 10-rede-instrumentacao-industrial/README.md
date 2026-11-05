@@ -3,8 +3,8 @@
 **Código:** P10  
 **Autor:** Rogério Eduardo Moreira Menegueli  
 **Estado:** concluído  
-**Data:** 2026-09-10  
-**Revisão:** 00  
+**Data:** 2026-11-05
+**Revisão:** 01 (revisão gráfica)
 **Folha:** A3 paisagem  
 **Unidades:** milímetros nos desenhos; grandezas de processo indicadas por instrumento
 
@@ -72,4 +72,5 @@ Inkscape não estavam disponíveis; as limitações completas constam no
 Não há seleção de fabricante, protocolo industrial, hardware de segurança, estudo de
 disponibilidade, classificação de áreas, SIL/PL, proteção contra surtos detalhada,
 coordenação, ensaio EMC, cálculo térmico ou liberação executiva. Endereços, faixas,
-cabos, bornes e dimensões são dados acadêmicos da revisão 00.
+cabos, bornes e dimensões continuam dados acadêmicos; esta revisão atualiza a
+apresentação gráfica e não valida tecnicamente o projeto.
