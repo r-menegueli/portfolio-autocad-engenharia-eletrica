@@ -9031,7 +9031,7 @@ AcDbMText
  71
 1
   1
-PE é permanente e não passa por chave ou fusível. Saída CC sem ligação interna ao PE.\PValores de proteção são propostas; Icn, isolação, inrush e coordenação estão pendentes.
+PE é permanente e não passa por chave ou fusível. Saída CC sem ligação interna ao PE.\PK1 isolado não prova tensão zero; o estudo paramétrico de descarga está na prancha 09.
   7
 PORTFOLIO_TEXTO
  44
@@ -9423,7 +9423,7 @@ AcDbText
  40
 1.45
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  72
@@ -9703,7 +9703,7 @@ AcDbText
  40
 2.25
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  11
@@ -9741,7 +9741,7 @@ AcDbText
  40
 2.25
   1
-02/08
+02/09
   7
 PORTFOLIO_TEXTO
  11
@@ -20399,7 +20399,7 @@ DictionaryVariables
 280
 0
   1
-02/08
+02/09
   0
 DICTIONARYVAR
   5

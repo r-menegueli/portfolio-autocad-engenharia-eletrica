@@ -2,7 +2,7 @@
 
 ## Fatos do artefato
 
-- São exigidas oito pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
+- São exigidas nove pranchas A3 paisagem, DXF AC1027 como fonte e derivados PDF,
   SVG e PNG.
 - A documentação deve incluir entrada e proteção, conversão, regulação, medição,
   conectores, comandos, ventilação, painel frontal e organização interna.
@@ -16,11 +16,21 @@
 - REG1 é um estágio proposto de buck síncrono CC/CV. U1 LM5190 é candidato de
   arquitetura documentado pela TI, com 36 Vcc nominais na entrada, 0,8-30 Vcc
   regulados, até 5 A e 150 W máximos. K1 aberto desabilita a entrega de potência;
-  sem circuito de descarga, a tensão residual nos bornes não é garantida.
+  sem circuito de descarga dimensionado e validado, a tensão residual nos bornes não
+  é garantida.
 - O controlador LM5190 requer entrada de 5-80 V e não regula abaixo de 0,8 V. K1
   interrompe o condutor positivo, mas não curto-circuita nem descarrega a saída. A
   faixa publicada não substitui a validação de tolerância, transitórios, MOSFETs e
   térmica.
+- A revisão 03 separa a capacitância interna da porta X2 e registra equações RC
+  ideais em `dimensionamento-descarga.csv`. C_INT_MAX, C_EXT_MAX, tensões máximas
+  iniciais, V_SAFE, T_REQ e ratings dos componentes continuam pendentes; 30 V é só o
+  limite nominal de ajuste proposto, não o máximo em falha ou transitório.
+- KD1/RD1 e KD2/RD2 são blocos conceituais. O ramo KD2 exige porta isolada de toda
+  fonte externa e um permissivo/intertravamento validado; não deve fechar se houver
+  alimentação ou retorno de energia em X2. Não há alegação de tensão zero ou tempo de
+  descarga garantido. Verificar energia e potência de pulso, repetição, temperatura,
+  tolerâncias, estados de falha e comportamento dos contatos antes de qualquer seleção.
 - O pré-dimensionamento acadêmico assume fSW=100 kHz, L1=75 uH, RCS=9,1 mOhm e
   RIMON=8,62 kOhm. O cenário de 42 V é apenas uma sensibilidade paramétrica; PS1
   continua sem uma curva real de tolerância.

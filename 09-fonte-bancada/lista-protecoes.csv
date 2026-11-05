@@ -1,9 +1,9 @@
 tag,lado,tipo,polos,corrente_nominal_a,tensao_nominal,funcao,classificacao,observacoes,prancha
-F1,CA,Fusivel retardado,1,4,250 Vca,Sobrecorrente de entrada,PROPOSTA,Capacidade de interrupcao e inrush a coordenar,02/08
-S1,CA,Chave geral,2,10,250 Vca,Seccionar L e N,PROPOSTA,PE nunca seccionado,02/08
-MOV1,CA,Varistor,2,0,275 Vca,Limitar surto entre L e N,PROPOSTA,Coordenar energia com F1 e filtro,02/08
-FL1,CA,Filtro EMI,2,10,250 Vca,Atenuar emissao conduzida,PROPOSTA,Nao comprova EMC,02/08
-F2,CC,Fusivel,1,7.5,60 Vcc,Proteger barramento de 36 V,PROPOSTA,Capacidade em CC a confirmar,02/08
-ILIM,CC,Limitacao eletronica,1,5,30 Vcc,Regular corrente de saida,PROPOSTA,Nao e dispositivo de seguranca certificado,02/08
-TS1,CONTROLE,Termostato NF,1,0,12 Vcc,Retirar habilitacao a 75 C,PROPOSTA,Falha unica e histerese a testar,02/08
-PE1,CA,Ligacao de protecao,1,0,250 Vca,Equipotencializar chassi,PROPOSTA,Continuidade e torque a ensaiar,04/08
+F1,CA,Fusivel retardado,1,4,250 Vca,Sobrecorrente de entrada,PROPOSTA,Capacidade de interrupcao e inrush a coordenar,02/09
+S1,CA,Chave geral,2,10,250 Vca,Seccionar L e N,PROPOSTA,PE nunca seccionado,02/09
+MOV1,CA,Varistor,2,0,275 Vca,Limitar surto entre L e N,PROPOSTA,Coordenar energia com F1 e filtro,02/09
+FL1,CA,Filtro EMI,2,10,250 Vca,Atenuar emissao conduzida,PROPOSTA,Nao comprova EMC,02/09
+F2,CC,Fusivel,1,7.5,60 Vcc,Proteger barramento de 36 V,PROPOSTA,Capacidade em CC a confirmar,02/09
+ILIM,CC,Limitacao eletronica,1,5,30 Vcc,Regular corrente de saida,PROPOSTA,Nao e dispositivo de seguranca certificado,02/09
+TS1,CONTROLE,Termostato NF,1,0,12 Vcc,Retirar habilitacao a 75 C,PROPOSTA,Falha unica e histerese a testar,02/09
+PE1,CA,Ligacao de protecao,1,0,250 Vca,Equipotencializar chassi,PROPOSTA,Continuidade e torque a ensaiar,04/09

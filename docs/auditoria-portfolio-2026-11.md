@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 88 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 89 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -30,7 +30,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação. | A arquitetura é de alto nível; não é esquema veicular homologável nem define segurança funcional. | Desenvolver um diagrama por subsistema com interfaces, limites elétricos e requisitos de segurança definidos. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. | Substituir parâmetros genéricos por local, módulos/inversor escolhidos e cálculo de produção e proteção. |
-| P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck síncrona CC/CV e pré-dimensionamento rastreável. | K1 abre só o condutor positivo; sem descarga dedicada, 0 V residual nos bornes não é garantido. Malhas, compensação, escolha térmica dos MOSFETs/indutor, proteções e layout EMI seguem pendentes. | Definir e dimensionar descarga segura da saída; completar conexões por pino, redes externas, limites de falha e dissipação antes de simular ou montar. |
+| P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck, pré-dimensionamento e estudo paramétrico separado para o nó interno e a porta X2. | KD1/RD1 e KD2/RD2 são apenas conceitos; capacitâncias, tensões máximas, V_SAFE, tempo, rating de pulso e intertravamento não estão definidos. A descarga não garante 0 V. Malhas, compensação, térmica, proteções e layout EMI seguem pendentes. | Especificar o cenário de uso e de fonte externa em X2, completar intertravamento e dimensionar/validar os dois ramos com dados de componente e falhas antes de simular ou montar. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede e matriz de oito eventos de qualidade/falha de sinal. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA. | A estimativa de 18,72 Ω é apenas aritmética ilustrativa. Não calcula GPR/toque/passo; SPDA e classificação também não foram verificados. | A malha de terra deve ser redesenhada após levantamento de resistividade, dados de falta e estudo de segurança. |
 | P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
@@ -40,19 +40,20 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Escureci e separei as cores ACI usadas nas layers de sinal, comando, potência,
   cabos, cotas e arquitetura para que permaneçam distinguíveis sobre folha branca.
 - Reemiti os carimbos em revisão gráfica 01 para a revisão anterior e em revisão 02
-  para as ampliações funcionais; o conjunto atual totaliza 88 folhas.
+  para as ampliações funcionais; a revisão 03 do P09 elevou o conjunto a 89 folhas.
 - Acrescentei P03-09 com sequência de operação e matriz causa-efeito. A prancha
   deixa explícito que a ação sobre bombas já em marcha diante de sensor incoerente
   segue como decisão pendente, sem completar essa lacuna por suposição.
 - Acrescentei P04-07 com a sequência de partida e matriz de nove eventos e respostas,
   conforme a filosofia existente. A retenção de alarmes após perda de energia
   permanece dependente do PLC a selecionar; as respostas a LA-L/LA-H seguem pendentes.
-- P09 recebeu as folhas 07 (topologia buck síncrona CC/CV) e 08 (ondulação e
-  pré-dimensionamento), além da lista de dimensionamento e referências ao controlador
-  LM5190 como candidato, sem apresentá-lo como circuito validado.
+- P09 recebeu as folhas 07 (topologia buck síncrona CC/CV), 08 (ondulação e
+  pré-dimensionamento) e 09 (equações e estados paramétricos de descarga), além das
+  listas de cálculo. LM5190 segue como candidato, não circuito validado.
 - Em P09, 42 V aparece apenas como cenário de sensibilidade e a saída regulada inicia
-  em 0,8 V. K1 aberto desabilita a entrega; 0 V residual não está garantido sem
-  circuito de descarga, agora registrado como pendência.
+  em 0,8 V. A folha 09 mantém as capacitâncias, tensões de falha, V_SAFE, tempo e
+  ratings pendentes; K1 aberto não garante tensão zero, e KD2 depende de uma porta
+  sem fonte externa e de intertravamento ainda não especificado.
 - Acrescentei a P12-07, uma sequência visual com confirmação de falha, partidas,
   espera entre tentativas, transferência aberta, retorno e arrefecimento.
 - Acrescentei P12-08 com nove eventos, resposta conceitual, alarme e retorno/limites.
@@ -75,8 +76,8 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 ## Limites e validação
 
 Os DXFs e derivados PDF/SVG/PNG de P06, P09, P10 e P12 foram regenerados. A validação
-estrita aprovou 467.885 verificações, sem erros nem avisos. O revisor aprovou 12
-projetos, 88 pranchas, 352 arquivos gráficos e 60 CSVs, com similaridade mínima
+estrita aprovou 475.517 verificações, sem erros nem avisos. O revisor aprovou 12
+projetos, 89 pranchas, 356 arquivos gráficos e 61 CSVs, com similaridade mínima
 PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
 P03 (nove folhas), P04 (sete), P06 (oito), P10 (sete) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
@@ -84,8 +85,9 @@ rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
 e corrigi a tag TK-100 incoerente no fluxograma P04-01. As folhas
 novas P09-07 e P09-08 foram inspecionadas em PNG integral e em PDF rasterizado a 150
-dpi; a composição das oito folhas P09 foi conferida no contato. O parser aceitou os
-SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09-07/08, P03-09 e P04-07 está
+dpi; na revisão 03, P09-06 e P09-09 foram inspecionadas no PNG integral e no PDF
+rasterizado, e o contato atualizado das nove folhas P09 foi conferido. O parser aceitou os
+SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09, P03-09 e P04-07 está
 pendente da autorização do usuário. P11-01, P11-05 e P11-06 permanecem como
 inspeções integrais documentadas da revisão anterior. P12-07 e P12-08 foram
 reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas

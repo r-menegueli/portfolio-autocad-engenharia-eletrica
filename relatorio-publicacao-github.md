@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | P04/P06/P10/P12 revisão 02 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio, inclui P09 revisão 03 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 582 arquivos incluídos; 388 links relativos de Markdown verificados; 0 erros; 186.842.910 bytes na árvore atual.
+- 587 arquivos incluídos; 389 links relativos de Markdown verificados; 0 erros; 189.722.536 bytes na árvore atual.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -30,8 +30,9 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Evidência de revisão CAD
 
-- `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: oito
-  pranchas P09 regeneradas em DXF, PDF, SVG e PNG.
+- `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: nove
+  pranchas P09 regeneradas em DXF, PDF, SVG e PNG; P09-09 documenta descarga RC
+  paramétrica sem inventar componentes nem valores ainda desconhecidos.
 - `03-painel-automacao-clp/fonte/gerar_projeto_03.py`: P03 ampliado a nove folhas;
   P03-09 mostra sequência de operação, matriz causa-efeito e pendências explícitas.
 - P03 validador lógico: 151 verificações, 0 erros.
@@ -48,12 +49,12 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - P10 ampliado a sete folhas: P10-07 registra oito eventos de qualidade de sinal,
   falha de loop, remotas, SCADA, dados obsoletos, 24 Vcc e DI; limites e ações de
   processo continuam pendentes dos equipamentos e da análise de risco.
-- `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.616 verificações, 0 erros.
+- `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 467.885 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 475.517 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 88 pranchas, 352 arquivos
-  gráficos e 60 CSVs; similaridade mínima PDF/PNG de 0,9842.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 89 pranchas, 356 arquivos
+  gráficos e 61 CSVs; similaridade mínima PDF/PNG de 0,9842.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
@@ -66,16 +67,18 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
   conferi também a composição das oito folhas no contato P06.
 - P10-07 foi inspecionada no PNG de produção a 300 dpi e em PDF rasterizado a 150 dpi;
   os oito eventos cabem na tabela sem cortes. Revisei também o contato das sete folhas.
-- AutoCAD/AcCoreConsole não foi reaberto; a inspeção visual dos SVGs no navegador
-  continua aguardando autorização do usuário.
+- P09-06 e P09-09 foram inspecionadas em PNG integral e PDF rasterizado a 150 dpi;
+  o contato das nove folhas P09 também foi conferido.
+- AutoCAD/AcCoreConsole e simulação elétrica não foram executados nesta revisão; a
+  inspeção visual dos SVGs no navegador continua aguardando autorização do usuário.
 
 ## Limites conhecidos
 
 P11 continua um estudo conceitual: aterramento, toque/passo, GPR, SPDA e seleção de
-DPS não estão validados. P09 agora tem topologia e pré-dimensionamento, mas K1 apenas
-desabilita a alimentação: sem descarga dedicada, 0 V residual nos bornes não é
-garantido. Malhas, compensação, seleção térmica, proteções e layout EMI seguem
-pendentes. KiCad, FreeCAD
+DPS não estão validados. P09 agora tem topologia, pré-dimensionamento e estudo
+paramétrico de descarga, mas nenhum ramo foi dimensionado ou validado; K1 abre apenas
+o positivo e não garante 0 V residual. Malhas, compensação, seleção térmica, proteções
+e layout EMI seguem pendentes. KiCad, FreeCAD
 e IDE de CLP não foram abertos nesta revisão; os respectivos PRs descrevem os artefatos
 como scaffold, placeholders ou rascunhos quando aplicável. Os rascunhos permitem
 revisar os diffs sem publicar essas mudanças nos branches padrão.

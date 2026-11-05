@@ -37,3 +37,7 @@ CB-POT,4,m,Cabo 2.5 mm2,W10-W16,Vermelho e preto
 CB-SIN,8,m,Cabo 0.5 mm2,W17-W24,Pares Kelvin segregados
 ETQ-01,1,conj,Etiquetas de identificacao,TAGS,Material duravel a selecionar
 GRD-01,2,un,Grelha e protecao do ventilador,FAN1,Entrada e saida de ar
+KD1,1,un,Chave do ramo de descarga interna,KD1,Selecao e permissivo dependem de analise de falhas
+RD1,1,un,Resistor de descarga interna,RD1,Valor curva de pulso energia montagem e temperatura a definir
+KD2,1,un,Chave do ramo de descarga da porta,KD2,Bloqueio para fonte externa obrigatorio a especificar e validar
+RD2,1,un,Resistor de descarga da porta,RD2,Sem dimensionamento enquanto limites da porta forem desconhecidos

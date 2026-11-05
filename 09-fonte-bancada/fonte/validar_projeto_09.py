@@ -33,13 +33,15 @@ SHEETS = (
     "06_interligacoes.dxf",
     "07_topologia_regulador_cc_cv.dxf",
     "08_predimensionamento_buck.dxf",
+    "09_descarga_saida_parametrica.dxf",
 )
 REQUIRED_EQUIPMENT = {
     "X1", "PS1", "REG1", "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1",
     "RV1", "RV2", "S2", "X2", "X3", "U1", "QH", "QL", "L1", "RCS",
+    "KD1", "RD1", "KD2", "RD2",
 }
 REQUIRED_PROTECTIONS = {"F1", "S1", "MOV1", "FL1", "F2", "ILIM", "TS1", "PE1"}
-REQUIRED_INTERCONNECTIONS = {f"W{index:02d}" for index in range(1, 26)}
+REQUIRED_INTERCONNECTIONS = {f"W{index:02d}" for index in range(1, 32)}
 REQUIRED_CUTOUTS = {
     "S1", "M1", "RV1", "RV2", "LED-CV", "LED-CC", "S2", "X2-PLUS", "X2-MINUS",
     "X3-PE", "X1", "FAN1", "FAN1-H1", "FAN1-H2", "FAN1-H3", "FAN1-H4",
@@ -49,6 +51,7 @@ REQUIRED_MATERIALS = {
     "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1", "RV1", "RV2", "S2",
     "LED-01", "LED-02", "LED-03", "X2", "X3", "PE1", "CB-LN", "CB-PE", "CB-POT",
     "CB-SIN", "ETQ-01", "GRD-01", "U1", "QH", "QL", "L1", "RCS", "RIMON", "REG-PASSIVOS",
+    "KD1", "RD1", "KD2", "RD2",
 }
 REQUIRED_REFERENCES = (
     "IEC 61010-1:2010+A1:2016",
@@ -90,7 +93,7 @@ SHEET_TERMS = {
     ),
     "06_interligacoes.dxf": (
         "W01-W06", "W08-W09", "W10-W12", "W13-W16", "0,8-30 V regulados", "W17/W18 SENSE KELVIN",
-        "W19-W21", "W22-W24", "W25", "SEÇÕES EM mm²",
+        "W19-W21", "W22-W24", "W25", "W26-W28", "W29-W31", "W01-W31", "SEÇÕES EM mm²",
     ),
     "07_topologia_regulador_cc_cv.dxf": (
         "U1 | LM5190 (CANDIDATO)", "QH", "QL", "L1", "75 uH", "RCS", "9.1 mOhm",
@@ -99,6 +102,11 @@ SHEET_TERMS = {
     "08_predimensionamento_buck.dxf": (
         "100 kHz", "75 uH", "1.20 A / 24%", "1.40 A / 28%", "5.70 A",
         "9.1 mOhm", "6.59 A pico", "8.62 kOhm", "42 V é apenas um cenário",
+    ),
+    "09_descarga_saida_parametrica.dxf": (
+        "C_INT", "C_EXT", "V0_INT_MAX", "V0_PORT_MAX", "V_SAFE", "T_REQ",
+        "R_INT_MIN", "R_PORT_MIN", "KD1", "KD2", "A DEFINIR",
+        "FONTE EXTERNA CONECTADA", "NÃO GARANTE 0 V",
     ),
 }
 WARNING = (
@@ -144,6 +152,7 @@ def validate(root: Path) -> dict:
     materials = read_rows(project / "lista-materiais.csv")
     calculations = read_rows(project / "resultados-calculo.csv")
     regulator_calculations = read_rows(project / "dimensionamento-regulador.csv")
+    discharge_calculations = read_rows(project / "dimensionamento-descarga.csv")
     errors: list[str] = []
     checks = 0
 
@@ -290,6 +299,39 @@ def validate(root: Path) -> dict:
     if any(not row["formula"] or not row["observacao"] for row in regulator_calculations):
         errors.append("Pré-dimensionamento sem fórmula ou observação.")
 
+    discharge_map = {row["calculo"]: row for row in discharge_calculations}
+    expected_discharge = {
+        "C_INT_MAX", "C_EXT_MAX", "V_NOM_INT_MAX", "V0_INT_MAX", "V0_PORT_MAX",
+        "V_SAFE", "T_REQ", "PULSE_RD1_MAX", "PULSE_RD2_MAX", "E_INT_MAX",
+        "E_EXT_MAX", "R_INT_MAX", "R_PORT_MAX", "R_INT_MIN", "R_PORT_MIN",
+        "E_RD1_MIN", "E_RD2_MIN", "I_INT_0", "I_PORT_0", "P_INT_0", "P_PORT_0",
+        "FEASIBILITY",
+    }
+    checks += len(expected_discharge) + 4
+    if set(discharge_map) != expected_discharge or len(discharge_calculations) != len(discharge_map):
+        errors.append("dimensionamento-descarga.csv deve conter exatamente os 22 cálculos esperados sem duplicatas.")
+    if any(not row["formula"] or not row["observacao"] for row in discharge_calculations):
+        errors.append("Dimensionamento de descarga sem fórmula ou observação.")
+    for key, row in discharge_map.items():
+        checks += 1
+        if key == "V_NOM_INT_MAX":
+            if decimal(row["resultado"]) != Decimal(30) or row["classificacao"] != "PROPOSTA":
+                errors.append("V_NOM_INT_MAX deve registrar apenas o setpoint nominal proposto de 30 V.")
+        elif row["resultado"] != "A DEFINIR" or row["classificacao"] != "PENDENTE":
+            errors.append(f"{key} deve permanecer A DEFINIR/PENDENTE sem dados de projeto.")
+    expected_formulas = {
+        "E_INT_MAX": "0.5*C_INT_MAX*V0_INT_MAX*V0_INT_MAX",
+        "E_EXT_MAX": "0.5*C_EXT_MAX*V0_PORT_MAX*V0_PORT_MAX",
+        "R_INT_MAX": "T_REQ/[C_INT_MAX*ln(V0_INT_MAX/V_SAFE)]",
+        "R_PORT_MAX": "T_REQ/[C_EXT_MAX*ln(V0_PORT_MAX/V_SAFE)]",
+        "R_INT_MIN": "V0_INT_MAX*V0_INT_MAX/PULSE_RD1_MAX",
+        "R_PORT_MIN": "V0_PORT_MAX*V0_PORT_MAX/PULSE_RD2_MAX",
+    }
+    for key, formula in expected_formulas.items():
+        checks += 1
+        if key not in discharge_map or discharge_map[key]["formula"] != formula:
+            errors.append(f"Equação paramétrica incorreta ou ausente em {key}.")
+
     checks += 10
     if p_out != Decimal(150):
         errors.append("Potência máxima de saída deve ser 150 W.")
@@ -314,8 +356,8 @@ def validate(root: Path) -> dict:
 
     checks += 12
     equipment_tags = {row["tag"] for row in equipment}
-    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 20:
-        errors.append("lista-equipamentos.csv deve conter exatamente os 20 tags previstos.")
+    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 24:
+        errors.append("lista-equipamentos.csv deve conter exatamente os 24 tags previstos.")
     if any(row["classificacao"] != "PROPOSTA" for row in equipment):
         errors.append("Equipamentos devem ser classificados como PROPOSTA.")
     if any(not row["especificacao"] or not row["observacoes"] for row in equipment):
@@ -330,8 +372,8 @@ def validate(root: Path) -> dict:
         errors.append("Proteção sem função ou limitação.")
 
     wire_ids = {row["id"] for row in interconnections}
-    if wire_ids != REQUIRED_INTERCONNECTIONS or len(interconnections) != 25:
-        errors.append("lista-interligacoes.csv deve conter W01 a W25 sem duplicatas.")
+    if wire_ids != REQUIRED_INTERCONNECTIONS or len(interconnections) != 31:
+        errors.append("lista-interligacoes.csv deve conter W01 a W31 sem duplicatas.")
     if any(not row["cor_identificacao"] or not row["terminal"] for row in interconnections):
         errors.append("Interligação sem cor de identificação ou terminal.")
     if any(row["classificacao"] != "PROPOSTA" for row in interconnections):
@@ -344,8 +386,8 @@ def validate(root: Path) -> dict:
         errors.append("Recortes devem ser classificados como PROPOSTA.")
 
     material_ids = {row["item"] for row in materials}
-    if material_ids != REQUIRED_MATERIALS or len(materials) != 38:
-        errors.append("lista-materiais.csv deve conter exatamente os 38 itens esperados.")
+    if material_ids != REQUIRED_MATERIALS or len(materials) != 42:
+        errors.append("lista-materiais.csv deve conter exatamente os 42 itens esperados.")
     if any(decimal(row["quantidade"]) <= 0 or not row["referencia"] or not row["observacoes"] for row in materials):
         errors.append("Material sem quantidade positiva, referência ou observação.")
 

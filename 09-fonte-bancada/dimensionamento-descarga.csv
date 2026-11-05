@@ -1,0 +1,23 @@
+calculo,formula,resultado,unidade,classificacao,observacao
+C_INT_MAX,capacitancia equivalente maxima do no interno,A DEFINIR,F,PENDENTE,Obter COUT total e parasitas incluindo tolerancia
+C_EXT_MAX,capacitancia equivalente maxima da porta X2,A DEFINIR,F,PENDENTE,Carga conectada e cabos variam; nao presumir apenas capacitancia propria
+V_NOM_INT_MAX,limite nominal de ajuste do regulador,30,Vcc,PROPOSTA,Nao representa sobretensao de falha nem valor maximo transitorio
+V0_INT_MAX,maximo inicial no no interno incluindo tolerancias e falhas,A DEFINIR,V,PENDENTE,Definir com analise de transitorios e falha
+V0_PORT_MAX,maximo inicial na porta incluindo fonte externa,A DEFINIR,V,PENDENTE,Nao existe limite sem especificar fontes conectaveis e condicoes de uso
+V_SAFE,limite de tensao residual para o criterio de verificacao,A DEFINIR,V,PENDENTE,Definir por analise de risco e requisitos do produto
+T_REQ,tempo maximo para atingir V_SAFE,A DEFINIR,s,PENDENTE,Requisito ainda nao definido
+PULSE_RD1_MAX,potencia de pulso admissivel para RD1,A DEFINIR,W,PENDENTE,Depende do componente curva de pulso montagem e temperatura
+PULSE_RD2_MAX,potencia de pulso admissivel para RD2,A DEFINIR,W,PENDENTE,Depende do componente curva de pulso montagem e temperatura
+E_INT_MAX,0.5*C_INT_MAX*V0_INT_MAX*V0_INT_MAX,A DEFINIR,J,PENDENTE,Energia inicial ideal armazenada no no interno
+E_EXT_MAX,0.5*C_EXT_MAX*V0_PORT_MAX*V0_PORT_MAX,A DEFINIR,J,PENDENTE,Energia inicial ideal na porta; nao inclui fonte externa ativa
+R_INT_MAX,T_REQ/[C_INT_MAX*ln(V0_INT_MAX/V_SAFE)],A DEFINIR,ohm,PENDENTE,Limite RC ideal para o no interno; requer V0 maior que V_SAFE
+R_PORT_MAX,T_REQ/[C_EXT_MAX*ln(V0_PORT_MAX/V_SAFE)],A DEFINIR,ohm,PENDENTE,Limite RC ideal da porta; requer ausencia de fonte externa ativa
+R_INT_MIN,V0_INT_MAX*V0_INT_MAX/PULSE_RD1_MAX,A DEFINIR,ohm,PENDENTE,Limite pelo pico de potencia inicial de RD1
+R_PORT_MIN,V0_PORT_MAX*V0_PORT_MAX/PULSE_RD2_MAX,A DEFINIR,ohm,PENDENTE,Limite pelo pico de potencia inicial de RD2
+E_RD1_MIN,E_RD1_PULSE>=E_INT_MAX,A DEFINIR,J,PENDENTE,Verificar energia de pulso por evento e vida util
+E_RD2_MIN,E_RD2_PULSE>=E_EXT_MAX,A DEFINIR,J,PENDENTE,Somente apos bloquear fonte externa; verificar energia por evento
+I_INT_0,V0_INT_MAX/R_INT,A DEFINIR,A,PENDENTE,Corrente inicial ideal do ramo interno
+I_PORT_0,V0_PORT_MAX/R_PORT,A DEFINIR,A,PENDENTE,Corrente inicial ideal do ramo da porta
+P_INT_0,V0_INT_MAX^2/R_INT,A DEFINIR,W,PENDENTE,Potencia inicial ideal do resistor RD1
+P_PORT_0,V0_PORT_MAX^2/R_PORT,A DEFINIR,W,PENDENTE,Potencia inicial ideal do resistor RD2
+FEASIBILITY,R_MIN<=R<=R_MAX e verificacao de energia termica e repeticao,A DEFINIR,criterio,PENDENTE,Todos os requisitos e componentes devem ser definidos antes de escolher valores

@@ -36,12 +36,12 @@ em [portfolio.toml](portfolio.toml).
 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO, cabos e causa–efeito | 8 | [abrir](06-centro-controle-motores/README.md) |
 | P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f e FOC | 8 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA e aterramento | 6 | [abrir](08-sistema-fotovoltaico/README.md) |
-| P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição e integração mecânica | 8 | [abrir](09-fonte-bancada/README.md) |
+| P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição, integração mecânica e descarga paramétrica | 9 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos, qualidade de sinais e causa–efeito | 7 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e matriz causa–efeito | 8 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **88 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **89 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,9 +135,9 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 88 pranchas A3 de P01–P12. A validação estrita atual passou por
-467.885 verificações, sem erros ou avisos; o revisor visual confirmou 12 projetos,
-88 pranchas, 352 arquivos gráficos e 60 CSVs. Veja o [relatório de auditoria e
+revisão cobre 89 pranchas A3 de P01–P12. A validação estrita passou por 475.517
+verificações, sem erros ou avisos; o revisor visual confirmou 12 projetos, 89
+pranchas, 356 arquivos gráficos e 61 CSVs. Veja o [relatório de auditoria e
 limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
 limites técnicos.
 

@@ -319,7 +319,7 @@ id = "09-fonte-bancada"
 path = "09-fonte-bancada"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -334,6 +334,7 @@ required_files = [
   "lista-recortes.csv",
   "resultados-calculo.csv",
   "dimensionamento-regulador.csv",
+  "dimensionamento-descarga.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_09.py",
   "fonte/validar_projeto_09.py",
@@ -1167,6 +1168,17 @@ source = "09-fonte-bancada/fonte/08_predimensionamento_buck.dxf"
 svg = "09-fonte-bancada/exports/08_predimensionamento_buck.svg"
 pdf = "09-fonte-bancada/exports/08_predimensionamento_buck.pdf"
 png = "09-fonte-bancada/exports/08_predimensionamento_buck.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-09-descarga-parametrica"
+kind = "sheet"
+title = "Projeto 09 - Análise paramétrica da descarga da saída"
+source = "09-fonte-bancada/fonte/09_descarga_saida_parametrica.dxf"
+svg = "09-fonte-bancada/exports/09_descarga_saida_parametrica.svg"
+pdf = "09-fonte-bancada/exports/09_descarga_saida_parametrica.pdf"
+png = "09-fonte-bancada/exports/09_descarga_saida_parametrica.png"
 require_a3 = true
 require_notice = true
 

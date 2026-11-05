@@ -1,4 +1,4 @@
-"""Gera as oito pranchas DXF do Projeto 09 de forma determinística."""
+"""Gera as nove pranchas DXF do Projeto 09 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "09-fonte-bancada"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
-SHEET_COUNT = 8
+REVISION = "03"
+SHEET_COUNT = 9
 
 
 @dataclass(frozen=True)
@@ -66,7 +66,7 @@ SHEETS = (
         "DIAGRAMA ELÉTRICO",
         "Entrada, proteção, conversão, regulação, medição e comando térmico",
         "PE é permanente e não passa por chave ou fusível. Saída CC sem ligação interna ao PE.\\P"
-        "Valores de proteção são propostas; Icn, isolação, inrush e coordenação estão pendentes.",
+        "K1 isolado não prova tensão zero; o estudo paramétrico de descarga está na prancha 09.",
         "F: fusível | S: chave/comando | PS: fonte | REG: regulador | K: relé | X: borne",
     ),
     SheetSpec(
@@ -101,7 +101,7 @@ SHEETS = (
         "06_interligacoes.dxf",
         "INTERLIGAÇÕES",
         "Conectividade de rede, barramentos, saída, Kelvin, comandos e PE",
-        "A lista W01-W25 define intenção de ligação, não chicote liberado.\\P"
+        "A lista W01-W31 define intenção de ligação, não chicote liberado.\\P"
         "Confirmar terminais, crimpagem, torque, isolação, cores, proteção e alívio mecânico.",
         "Preto/azul: L/N | Verde-amarelo: PE | Vermelho/preto: CC | Branco: comando",
     ),
@@ -111,7 +111,8 @@ SHEETS = (
         "TOPOLOGIA DO REGULADOR CC/CV",
         "REG1 síncrono com U1 LM5190 como candidato de arquitetura",
         "U1 regula de 0,8 a 30 V. K1 aberto desabilita a entrega de potência; sem descarga dedicada, a tensão residual nos bornes não é garantida.\\P"
-        "L1, RCS e redes passivas são pré-dimensionamentos; estabilidade, layout e térmica pendentes.",
+        "Prancha 09 estuda os nós de descarga, sem selecionar valores ou provar estado seguro.\\P"
+        "L1, RCS e redes passivas seguem pré-dimensionados; estabilidade, layout e térmica pendentes.",
         "QH/QL: chaves externas | RCS: sensor Kelvin do regulador | SH1: medição externa | 0V36 não ligado ao PE",
     ),
     SheetSpec(
@@ -122,6 +123,16 @@ SHEETS = (
         "42 V é apenas um cenário paramétrico de sensibilidade, não a tolerância de PS1.\\P"
         "O datasheet usa limiar típico; tolerâncias, resposta transitória, estabilidade e perdas reais pendem de validação.",
         "DELTA IL: ondulação pico a pico | linha tracejada: alvo de 30% | valores acadêmicos, sem liberação para montagem",
+    ),
+    SheetSpec(
+        9,
+        "09_descarga_saida_parametrica.dxf",
+        "ANÁLISE PARAMÉTRICA DA DESCARGA DA SAÍDA",
+        "Nós internos e de borne, energia armazenada e critérios de dimensionamento",
+        "C_INT_MAX, C_EXT_MAX, V0_INT_MAX, V0_PORT_MAX, V_SAFE, T_REQ e ratings de pulso: A DEFINIR; RC ideal.\\P"
+        "KD2: impedir fechamento com fonte externa conectada; permissivo e intertravamento a validar.\\P"
+        "Verificar tolerância, derating, energia de pulso, repetição, temperatura e estados de falha. Não garante 0 V.",
+        "V_INT: saída interna do REG1 | V_PORT: bornes X2 | R: resistência | C: capacitância equivalente",
     ),
 )
 
@@ -295,14 +306,15 @@ def define_project_symbols(doc: ezdxf.document.Drawing) -> None:
     terminal.add_circle((0.0, 0.0), 1.3, dxfattribs={"layer": "09_BORNES"})
 
 
-def add_revision_table(layout) -> None:
+def add_revision_table(layout, spec: SheetSpec) -> None:
     add_rect(layout, 230, 72, 410, 94, "01_CARIMBO")
     line(layout, (230, 86), (410, 86), "01_CARIMBO")
     for x in (248, 280, 352):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("TOPOLOGIA E PRE-DIMENSIONAMENTO", 316), ("R.E.M.M.", 381)):
+    description = "DESCARGA PARAMÉTRICA" if spec.number == 9 else "TOPOLOGIA E PRE-DIMENSIONAMENTO"
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (description, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -350,7 +362,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     centered(layout, spec.title, (210, 277), 3.85, "02_TEXTO")
     centered(layout, spec.subtitle, (210, 270.8), 1.8, "02_TEXTO")
     add_bottom_information(layout, spec, config["portfolio"]["warning"])
-    add_revision_table(layout)
+    add_revision_table(layout, spec)
     add_title_block(layout, spec, config)
     return doc, layout
 
@@ -588,6 +600,98 @@ def draw_regulator_predesign(layout, data: dict[str, list[dict[str, str]]]) -> N
     centered(layout, "36 V nominal: ondulação máxima em VOUT = 18 V; 42 V é apenas sensibilidade.", (147, 108), 0.9, "02_TEXTO")
 
 
+def draw_output_discharge(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "K1 ABRE O POSITIVO; ANALISAR A ENERGIA EM DOIS NÓS", (210, 251), 1.3, "05_POTENCIA")
+
+    # Internal regulator output and external terminals are distinct discharge domains.
+    component(layout, 20, 216, 72, 245, "REG1 / COUT", "NÓ INTERNO", "04_EQUIPAMENTOS")
+    line(layout, (72, 231), (160, 231), "05_POTENCIA")
+    layout.add_blockref("P09_CHAVE", (166, 231), dxfattribs={"layer": "05_POTENCIA"})
+    centered(layout, "K1", (166, 241), 1.0, "05_POTENCIA")
+    centered(layout, "K1 ABRE APENAS +", (166, 222), 0.8, "02_TEXTO")
+    line(layout, (172, 231), (350, 231), "05_POTENCIA")
+    component(layout, 350, 216, 400, 245, "X2", "PORTA + / -", "09_BORNES")
+    line(layout, (20, 205), (400, 205), "08_CABOS")
+    line(layout, (375, 216), (375, 205), "08_CABOS")
+    centered(layout, "0V36 / RETORNO X2-", (210, 199), 0.9, "08_CABOS")
+
+    centered(layout, "V_INT", (91, 237), 0.9, "05_POTENCIA")
+    line(layout, (91, 231), (91, 225), "05_POTENCIA")
+    line(layout, (85, 225), (97, 225), "05_POTENCIA")
+    line(layout, (85, 221), (97, 221), "05_POTENCIA")
+    line(layout, (91, 221), (91, 205), "05_POTENCIA")
+    centered(layout, "C_INT", (91, 213), 0.8, "04_EQUIPAMENTOS")
+
+    line(layout, (122, 231), (122, 227), "05_POTENCIA")
+    add_rect(layout, 111, 221, 133, 227, "06_COMANDO")
+    centered(layout, "KD1", (122, 224), 0.78, "06_COMANDO")
+    add_rect(layout, 111, 211, 133, 217, "04_EQUIPAMENTOS")
+    centered(layout, "RD1", (122, 214), 0.8, "04_EQUIPAMENTOS")
+    line(layout, (122, 221), (122, 217), "05_POTENCIA")
+    line(layout, (122, 211), (122, 205), "05_POTENCIA")
+    centered(layout, "RAMO INTERNO", (122, 201), 0.75, "02_TEXTO")
+
+    centered(layout, "V_PORT", (308, 237), 0.9, "05_POTENCIA")
+    line(layout, (308, 231), (308, 225), "05_POTENCIA")
+    line(layout, (302, 225), (314, 225), "05_POTENCIA")
+    line(layout, (302, 221), (314, 221), "05_POTENCIA")
+    line(layout, (308, 221), (308, 205), "05_POTENCIA")
+    centered(layout, "C_EXT", (308, 213), 0.8, "04_EQUIPAMENTOS")
+
+    line(layout, (277, 231), (277, 227), "05_POTENCIA")
+    add_rect(layout, 266, 221, 288, 227, "06_COMANDO")
+    centered(layout, "KD2", (277, 224), 0.78, "06_COMANDO")
+    add_rect(layout, 266, 211, 288, 217, "04_EQUIPAMENTOS")
+    centered(layout, "RD2", (277, 214), 0.8, "04_EQUIPAMENTOS")
+    line(layout, (277, 221), (277, 217), "05_POTENCIA")
+    line(layout, (277, 211), (277, 205), "05_POTENCIA")
+    centered(layout, "RAMO PORTA", (277, 201), 0.75, "02_TEXTO")
+
+    discharge = {row["calculo"]: row for row in data["discharge"]}
+    sizing_rows = [
+        (
+            "INTERNA",
+            "C_INT_MAX",
+            discharge["E_INT_MAX"]["formula"],
+            f"R_INT_MIN={discharge['R_INT_MIN']['formula']} <= R <= R_INT_MAX={discharge['R_INT_MAX']['formula']}",
+        ),
+        (
+            "PORTA X2",
+            "C_EXT_MAX",
+            discharge["E_EXT_MAX"]["formula"],
+            f"R_PORT_MIN={discharge['R_PORT_MIN']['formula']} <= R <= R_PORT_MAX={discharge['R_PORT_MAX']['formula']}",
+        ),
+    ]
+    table(
+        layout,
+        20,
+        184,
+        (36, 45, 100, 199),
+        ("RAMO", "C_EQ", "E = 0.5*C*V0*V0", "FAIXA IDEAL DE R: MÍN. PULSO <= R <= MÁX. TEMPO"),
+        sizing_rows,
+        row_height=9.0,
+        text_height=1.25,
+    )
+
+    state_rows = [
+        ("OPERAR", "K1 fechado", "KD1 aberto", "KD2 aberto; fonte REG1 habilitada"),
+        ("DESLIGAR", "REG1 inibido; abrir K1", "Confirmar abertura antes de fechar KD1", "Não descarregar com fonte externa conectada"),
+        ("DESCARGA", "K1 aberto", "KD1 fecha; medir V_INT", "KD2 só com porta isolada e permissivo definido"),
+        ("VERIFICAR", "K1 aberto", "Medir V_INT <= V_SAFE no tempo requerido", "Medir V_PORT <= V_SAFE no tempo requerido"),
+        ("RETORNAR", "Fechar só ao final", "Abrir e confirmar KD1", "Abrir e confirmar KD2 antes de fechar K1"),
+    ]
+    table(
+        layout,
+        20,
+        145,
+        (36, 56, 138, 150),
+        ("FASE", "K1", "NÓ INTERNO", "PORTA X2"),
+        state_rows,
+        row_height=8.0,
+        text_height=1.15,
+    )
+
+
 def draw_front_panel(layout, data: dict[str, list[dict[str, str]]]) -> None:
     x0, y0, width, height = 45.0, 105.0, 320.0, 150.0
     add_rect(layout, x0, y0, x0 + width, y0 + height, "11_ARQUITETURA")
@@ -809,11 +913,13 @@ def draw_interconnections(layout, data: dict[str, list[dict[str, str]]]) -> None
             ("W19-W21", "PS2/TH1", "FAN1", "0,5", "vermelho/preto", "ventilação"),
             ("W22-W24", "PS2/TS1/S2", "K1", "0,5", "vermelho/branco", "habilitação"),
             ("W25", "X3", "PE1", "1,5", "verde-amarelo", "borne de chassi"),
+            ("W26-W28", "REG1 OUT+/RET", "KD1+RD1", "A DEFINIR", "vermelho/preto", "descarga interna parametrizada"),
+            ("W29-W31", "X2+/X2-", "KD2+RD2", "A DEFINIR", "vermelho/preto", "bloquear se fonte externa conectada"),
         ],
-        row_height=4.0,
-        text_height=1.5,
+        row_height=3.2,
+        text_height=1.25,
     )
-    centered(layout, "LISTA COMPLETA W01-W25 EM lista-interligacoes.csv | SEÇÕES EM mm²", (210, 95), 1.0, "13_NOTAS")
+    centered(layout, "LISTA COMPLETA W01-W31 EM lista-interligacoes.csv | SEÇÕES EM mm²", (210, 95), 1.0, "13_NOTAS")
 
 
 DRAWERS = {
@@ -825,6 +931,7 @@ DRAWERS = {
     6: draw_interconnections,
     7: draw_regulator_topology,
     8: draw_regulator_predesign,
+    9: draw_output_discharge,
 }
 
 
@@ -839,6 +946,7 @@ def generate(root: Path) -> list[Path]:
         "cutouts": read_rows(project, "lista-recortes.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
+        "discharge": read_rows(project, "dimensionamento-descarga.csv"),
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

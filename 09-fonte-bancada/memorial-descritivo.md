@@ -19,7 +19,11 @@ preliminarmente esse barramento. REG1 é representado por um buck síncrono CC/C
 LM5190 como candidato de arquitetura, MOSFETs externos QH/QL, indutor L1 e shunt RCS.
 Os valores L1/RCS/RIMON são apenas pré-dimensionamentos. K1 habilita ou remove a saída
 positiva; K1 aberto desabilita a entrega de potência, mas a tensão residual nos
-bornes não é garantida sem circuito de descarga, que ainda não está definido. Em
+bornes não é garantida. A revisão 03 acrescenta o conceito paramétrico KD1/RD1 no nó
+interno e KD2/RD2 na porta X2. KD1 pressupõe REG1 inibido e K1 aberto confirmados.
+KD2 só poderia atuar com a porta isolada de fontes externas e permissivo/intertravamento
+validado; o circuito não define como verificar isso. Capacitâncias, limite residual,
+tempo, valores de resistência e capacidade de pulso continuam pendentes. Em
 regulação, o limite inferior de U1 é 0,8 V. SH1 mede corrente no
 retorno e é distinto de RCS. X2 oferece bornes positivo e negativo flutuantes em
 relação ao chassi; X3 oferece conexão separada ao chassi/PE.
@@ -53,6 +57,8 @@ F1, S1, FL1, MOV1, F2, TS1 e a limitação eletrônica são propostas funcionais
 capacidade de interrupção, seletividade, energia passante, descargas dos capacitores,
 isolação, corrente de toque, continuidade do PE, acesso a partes vivas, temperatura e
 propagação de chama exigem projeto detalhado e ensaios.
+O estudo RC de descarga não substitui isolamento, medição, procedimento de segurança
+ou validação de falhas; não garante tensão zero ou tempo de descarga.
 
 A saída nominal é inferior a 30 Vcc, mas isso não autoriza classificar o equipamento
 como SELV, PELV, fonte limitada ou produto seguro sem a avaliação completa do estágio

@@ -73,3 +73,25 @@ vista nos PNGs.
 O validador estrito aprovou o portfólio inteiro. A revisão 02 ainda não teve abertura
 dos DXFs no AutoCAD/AcCoreConsole nem validação da implementação em ferramenta de
 simulação ou bancada.
+
+## Revisão 03 — 2026-11-05
+
+A folha de contato das nove pranchas foi examinada para conferir a sequência, os
+carimbos `01/09` a `09/09`, as margens e a consistência do conjunto. As pranchas
+06 (interligações) e 09 (descarga paramétrica) foram inspecionadas integralmente nos
+PNGs de produção de 4.960 × 3.507 px a 300 dpi e nos PDFs rasterizados pelo Poppler
+26.07.0 a 150 dpi, com 2.481 × 1.754 px.
+
+- P09-06 apresenta os grupos W26-W28 e W29-W31 sem invadir a legenda, o carimbo ou
+  as notas inferiores. As seções dos novos ramos permanecem explicitamente
+  `A DEFINIR`.
+- P09-09 distingue o nó interno REG1/COUT da porta X2 e mostra KD1/RD1 e KD2/RD2
+  como propostas. As equações RC, a sequência, a pendência de valores e o bloqueio
+  condicional da porta aparecem legíveis, sem cortes ou sobreposição relevante.
+- As notas dizem que KD2 não deve fechar com fonte externa conectada e que a análise
+  não garante 0 V. A prancha não apresenta valores calculados nem declara segurança.
+- `revisar_portfolio.py` aprovou 12 projetos, 89 folhas, 356 arquivos gráficos e
+  61 CSVs; similaridade mínima PDF/PNG de 0,9842. A validação estrita aprovou
+  475.517 verificações, sem erros ou avisos.
+- A abertura visual dos SVGs no navegador continua pendente de autorização. O
+  AutoCAD/AcCoreConsole e a simulação elétrica não foram executados nesta revisão.
