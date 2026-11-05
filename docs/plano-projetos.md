@@ -111,8 +111,9 @@ sobrecargas, relés de interface, níveis baixo-baixo/baixo/alto/alto-alto, emer
 dois canais, bloqueio físico por funcionamento a seco, sinalização e alarme remoto.
 
 **Pranchas e dados específicos.** Arquitetura de automação; alimentação 24 Vcc;
-entradas; saídas; comando; layout do painel; bornes; interligações de campo; listas CSV
-de I/O, bornes, cabos e materiais; sequência, estados e pseudocódigo.
+entradas; saídas; comando; layout do painel; bornes; interligações de campo; sequência;
+plano CSV de verificação e evidências com 12 itens ainda não executados; listas CSV de
+I/O, bornes, cabos e materiais; estados e pseudocódigo.
 
 **Marco de aceitação.** Concluído na revisão 00. Oito DXFs AC1027 auditados no AutoCAD
 2027, derivados PDF/SVG/PNG inspecionados, invariantes lógicos e validação estrita
@@ -123,6 +124,11 @@ operação/intertravamentos e a matriz causa-efeito em CSV. A tabela distingue a
 respostas definidas das decisões de processo ainda pendentes, como a reação a sensores
 incoerentes durante uma marcha. As nove folhas foram regeneradas; a nova revisão não
 foi reaberta no AutoCAD nesta rodada.
+
+**Revisão 03 (2026-11-05).** Acrescentada a prancha 10 com plano de verificação e
+evidências para processo, hardware, I/O, permissivos, falhas e entrega. Todos os 12
+itens permanecem `NÃO EXECUTADO`; a resposta à incoerência de sensores com bomba em
+marcha continua bloqueada por decisão formal do processo.
 
 ## P04 — Controle de nível de reservatório
 

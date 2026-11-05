@@ -21,6 +21,7 @@ SHEETS = (
     "07_diagrama_bornes.dxf",
     "08_interligacoes_campo.dxf",
     "09_sequencia_operacao_intertravamentos.dxf",
+    "10_plano_verificacao_evidencias.dxf",
 )
 REQUIRED_CAUSE_EFFECTS = {
     "EMERGÊNCIA",
@@ -74,6 +75,25 @@ def validate(root: Path) -> dict:
     cable_rows = read_rows(project / "lista-cabos.csv")
     material_rows = read_rows(project / "lista-materiais.csv")
     cause_effect_rows = read_rows(project / "matriz-causa-efeito.csv")
+    verification_rows = read_rows(project / "plano-verificacao.csv")
+
+    verification_fields = ("codigo", "ponto", "dados_requeridos", "evidencia_para_encerrar", "status")
+    verification_codes = [row.get("codigo", "").strip() for row in verification_rows]
+    checks += 4 + len(verification_rows) * len(verification_fields)
+    if len(verification_rows) != 12:
+        errors.append(f"Plano de verificação contém {len(verification_rows)} linhas; esperadas 12.")
+    if verification_codes != [f"V{index:02d}" for index in range(1, 13)]:
+        errors.append("Plano de verificação deve conter códigos únicos e ordenados V01-V12.")
+    for index, row in enumerate(verification_rows, start=1):
+        if any(not row.get(field, "").strip() for field in verification_fields):
+            errors.append(f"V{index:02d}: há campo obrigatório vazio no plano de verificação.")
+        if row.get("status", "").strip() != "NÃO EXECUTADO":
+            errors.append(f"V{index:02d}: o status deve permanecer NÃO EXECUTADO.")
+    if len(verification_rows) >= 10 and (
+        "sensor incoerente" not in verification_rows[9].get("ponto", "").casefold()
+        or "decisão formal" not in verification_rows[9].get("evidencia_para_encerrar", "").casefold()
+    ):
+        errors.append("V10 deve manter pendente a decisão sobre sensor incoerente com bomba em marcha.")
 
     addresses = [row["endereco"] for row in io_rows]
     checks += 3
@@ -193,6 +213,16 @@ def validate(root: Path) -> dict:
         if row["evento"].casefold() not in merged:
             errors.append(f"Evento da matriz não aparece no desenho: {row['evento']}.")
 
+    verification_drawing = all_dxf_text[-1].casefold() if all_dxf_text else ""
+    checks += 2 + len(verification_rows)
+    if "não executado" not in verification_drawing:
+        errors.append("A prancha 10 deve identificar o status NÃO EXECUTADO.")
+    if "sensor incoerente" not in verification_drawing:
+        errors.append("A prancha 10 deve explicitar a decisão pendente para sensor incoerente.")
+    for row in verification_rows:
+        if row.get("codigo", "").casefold() not in verification_drawing:
+            errors.append(f"Código ausente da prancha 10: {row.get('codigo', '')}.")
+
     result = {
         "status": "PASS" if not errors else "FAIL",
         "checks": checks,
@@ -204,6 +234,8 @@ def validate(root: Path) -> dict:
             "terminals": len(terminal_rows),
             "cables": len(cable_rows),
             "materials": len(material_rows),
+            "verification_items": len(verification_rows),
+            "verification_status": "NÃO EXECUTADO",
             "safety_truth_table_rows": truth_rows,
             "supply_24v_load_a": "6.00",
             "supply_24v_capacity_a": "10.00",

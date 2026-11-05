@@ -167,7 +167,7 @@ id = "03-painel-automacao-clp"
 path = "03-painel-automacao-clp"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -180,6 +180,7 @@ required_files = [
   "lista-bornes.csv",
   "lista-cabos.csv",
   "matriz-causa-efeito.csv",
+  "plano-verificacao.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_03.py",
   "fonte/validar_projeto_03.py",
@@ -724,6 +725,17 @@ source = "03-painel-automacao-clp/fonte/09_sequencia_operacao_intertravamentos.d
 svg = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.svg"
 pdf = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.pdf"
 png = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-10-plano-verificacao-evidencias"
+kind = "sheet"
+title = "Projeto 03 - Plano de verificação e evidências"
+source = "03-painel-automacao-clp/fonte/10_plano_verificacao_evidencias.dxf"
+svg = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.svg"
+pdf = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.pdf"
+png = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.png"
 require_a3 = true
 require_notice = true
 

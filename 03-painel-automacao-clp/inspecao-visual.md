@@ -38,3 +38,17 @@ entidades fora da moldura, clipping ou dimensões incompatíveis.
   resposta para uma bomba em marcha diante de sensores incoerentes.
 - Esta revisão não foi aberta no AutoCAD/AcCoreConsole. A inspeção visual do SVG no
   navegador segue pendente de autorização do usuário.
+
+## Complemento da revisão 03 — prancha 10
+
+- A prancha de verificação foi inspecionada no PNG de produção a 300 dpi e em raster
+  independente do PDF a 150 dpi. A tabela mantém os 12 itens e seus estados
+  `NÃO EXECUTADO`; cabeçalho, corpo, nota, aviso acadêmico e carimbo estão dentro da
+  moldura, sem cortes visíveis.
+- Os dois formatos conferidos mostram a mesma composição. O carimbo identifica a
+  revisão 03 como “PLANO DE VERIFICAÇÃO”; a resposta para sensor incoerente com bomba
+  em marcha continua explicitamente pendente.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou as dez fontes DXF do P03 (`PASS`, 10/10).
+  Isso confirma abertura e integridade CAD, não valida cálculos, lógica de processo,
+  instalação ou segurança funcional.
+- A inspeção visual do SVG no navegador continua aguardando autorização do usuário.

@@ -503,3 +503,19 @@ desta revisão; a etapa aguarda autorização.
 A validação estrita integrada passou por 521.224 verificações, sem erros nem avisos.
 O revisor confirmou 12 projetos, 96 pranchas, 384 arquivos gráficos e 68 CSVs; a
 similaridade mínima PDF/PNG do portfólio foi 0,984095.
+
+## Atualização P03-10 — 2026-11-05
+
+O Projeto 03 passou a dez pranchas na revisão 03. A nova folha organiza doze pontos de
+verificação para processo, hardware, alimentação, I/O, permissivos, sequência, falhas,
+rearme e entrega. Todos permanecem `NÃO EXECUTADO`; as premissas de tempo precisam de
+confirmação e a resposta a sensor incoerente com bomba em marcha continua pendente.
+
+O validador lógico específico passou em 232 verificações. O AutoCAD AcCoreConsole 2027
+abriu e auditou 10/10 DXFs. Conferi a folha de contato P03 com dez folhas, o PNG de
+produção a 300 dpi e o PDF rasterizado pelo Poppler a 150 dpi; não observei cortes na
+tabela, carimbo ou aviso. Os SVGs não foram inspecionados em navegador nesta etapa.
+
+A reconstrução completa do portfólio e a validação estrita passaram por 529.645
+verificações, sem erros nem avisos. O revisor confirmou 12 projetos, 97 pranchas, 388
+arquivos gráficos e 69 CSVs, com similaridade mínima PDF/PNG de 0,984061.

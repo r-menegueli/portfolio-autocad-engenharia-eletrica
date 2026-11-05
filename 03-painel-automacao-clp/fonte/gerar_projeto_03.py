@@ -1,4 +1,4 @@
-"""Gera as nove pranchas DXF do Projeto 03 de forma determinística."""
+"""Gera as dez pranchas DXF do Projeto 03 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "03-painel-automacao-clp"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -95,6 +95,11 @@ SHEETS = (
               "Lógica funcional conceitual; não é programa executável nem função de segurança validada.\\P"
               "S1 MAN usa S2/S3 e S4/S5 sob os mesmos permissivos; sensores incoerentes bloqueiam novas partidas AUTO, e a resposta para bomba em marcha segue pendente.",
               "LSL: encerra demanda | LSHH por 10 s: solicita reserva | Kx/KMx_FB: comando/retorno | S6: reconhecer e rearmar"),
+    SheetSpec(10, "10_plano_verificacao_evidencias.dxf", "PLANO DE VERIFICAÇÃO E EVIDÊNCIAS",
+              "Pontos de parada, dados necessários e registros para fechar o projeto",
+              "Plano acadêmico; itens permanecem NÃO EXECUTADOS. Critérios dependem dos dados reais,\\P"
+              "fabricantes e decisões aprovadas; esta folha não autoriza energização ou comissionamento.",
+              "Status: não executado | evidência: registro rastreável | decisão: responsável do projeto"),
 )
 
 
@@ -212,7 +217,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("SEQUENCIA OPERACIONAL", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("PLANO DE VERIFICAÇÃO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.65, "02_TEXTO")
 
 
@@ -621,6 +626,74 @@ def draw_sequence(layout) -> None:
     draw_matrix(layout)
 
 
+def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
+    stages = (
+        ("1  PROCESSO", "dados e critérios"),
+        ("2  HARDWARE", "modelos e manuais"),
+        ("3  DOCUMENTOS", "cálculos e I/O"),
+        ("4  VERIFICAÇÃO", "ensaios registrados"),
+        ("5  ENTREGA", "as-built e pendências"),
+    )
+    stage_x = (18.0, 98.0, 178.0, 258.0, 338.0)
+    for index, ((title, subtitle), x0) in enumerate(zip(stages, stage_x)):
+        add_rect(layout, x0, 247.0, x0 + 70.0, 262.0, "04_EQUIPAMENTOS")
+        centered(layout, title, (x0 + 35.0, 257.7), 1.75, "04_EQUIPAMENTOS")
+        centered(layout, subtitle, (x0 + 35.0, 251.1), 1.35, "02_TEXTO")
+        if index < len(stages) - 1:
+            x1 = x0 + 70.0
+            x2 = stage_x[index + 1]
+            line(layout, (x1 + 1.0, 254.5), (x2 - 2.0, 254.5), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 256.3), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 252.7), "05_POTENCIA")
+
+    x_edges = (18.0, 37.0, 100.0, 235.0, 380.0, 410.0)
+    table_top = 236.0
+    header_height = 8.0
+    row_height = 9.3
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "01_CARIMBO")
+    headers = ("ID", "PONTO / ETAPA", "DADOS REQUERIDOS", "EVIDÊNCIA PARA ENCERRAR", "STATUS")
+    for index, header in enumerate(headers):
+        add_mtext(
+            layout,
+            header,
+            (x_edges[index] + 1.5, table_top - 1.8),
+            x_edges[index + 1] - x_edges[index] - 3.0,
+            1.45,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered(layout, row["codigo"], ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0), 1.35, "04_EQUIPAMENTOS")
+        for index, key in ((1, "ponto"), (2, "dados_requeridos"), (3, "evidencia_para_encerrar")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 1.5, row_top - 1.2),
+                x_edges[index + 1] - x_edges[index] - 3.0,
+                1.4,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+        centered(layout, row["status"], ((x_edges[4] + x_edges[5]) / 2.0, (row_top + row_bottom) / 2.0), 1.25, "13_NOTAS")
+
+    add_rect(layout, 18.0, 102.0, 410.0, 111.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "NÃO EXECUTADO: nenhum ensaio de campo foi realizado. O caso de sensor incoerente com bomba em marcha exige decisão formal antes de definir critério ou ensaiar essa resposta.",
+        (21.0, 108.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_architecture,
     2: draw_24v,
@@ -632,6 +705,27 @@ DRAWERS = {
     8: draw_field,
     9: draw_sequence,
 }
+
+
+def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "plano-verificacao.csv"
+    expected_fields = ("codigo", "ponto", "dados_requeridos", "evidencia_para_encerrar", "status")
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabeçalho inesperado em {source}")
+        rows = list(reader)
+    codes = [row.get("codigo", "").strip() for row in rows]
+    if (
+        len(rows) != 12
+        or len(set(codes)) != len(rows)
+        or codes != [f"V{index:02d}" for index in range(1, 13)]
+        or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows)
+        or any(row["status"] != "NÃO EXECUTADO" for row in rows)
+        or "sensor incoerente" not in rows[9]["ponto"].casefold()
+    ):
+        raise ValueError(f"O plano deve conter V01-V12 completos, com sensor pendente e não executados: {source}")
+    return rows
 
 
 def write_matrix_csv(project_dir: Path) -> Path:
@@ -648,9 +742,13 @@ def generate(root: Path) -> list[Path]:
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
+    verification_rows = read_verification_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout)
+        if spec.number == 10:
+            draw_verification_plan(layout, verification_rows)
+        else:
+            DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:

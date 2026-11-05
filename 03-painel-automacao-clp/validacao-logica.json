@@ -1,5 +1,5 @@
 {
-  "checks": 151,
+  "checks": 232,
   "errors": [],
   "results": {
     "cables": 12,
@@ -10,7 +10,9 @@
     "safety_truth_table_rows": 16,
     "supply_24v_capacity_a": "10.00",
     "supply_24v_load_a": "6.00",
-    "terminals": 46
+    "terminals": 46,
+    "verification_items": 12,
+    "verification_status": "NÃO EXECUTADO"
   },
   "status": "PASS"
 }

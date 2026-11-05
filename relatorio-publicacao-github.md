@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas e P02 rev. 02 tem nove, incluindo rastreabilidade por ambiente — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas, P02 rev. 02 tem nove, e P03 rev. 03 tem dez, incluindo plano de verificação ainda não executado — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 622 arquivos; 416 links de Markdown verificados; 0 erros; 213005494 bytes.
+- 627 arquivos; 421 links de Markdown verificados; 0 erros; 218364106 bytes.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -59,9 +59,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: nove
   pranchas P09 regeneradas em DXF, PDF, SVG e PNG; P09-09 documenta descarga RC
   paramétrica sem inventar componentes nem valores ainda desconhecidos.
-- `03-painel-automacao-clp/fonte/gerar_projeto_03.py`: P03 ampliado a nove folhas;
-  P03-09 mostra sequência de operação, matriz causa-efeito e pendências explícitas.
-- P03 validador lógico: 151 verificações, 0 erros.
+- `03-painel-automacao-clp/fonte/gerar_projeto_03.py`: P03 ampliado a dez folhas;
+  P03-09 mostra a sequência e matriz causa-efeito; P03-10 organiza doze verificações,
+  todas declaradas como não executadas, com a decisão de sensor incoerente pendente.
+- P03 validador lógico: 232 verificações, 0 erros; AcCoreConsole 2027 auditou 10/10 DXFs.
 - `04-controle-nivel-reservatorio/fonte/gerar_projeto_04.py`: P04 ampliado a sete
   folhas; P04-07 registra a sequência de partida e nove respostas causa–efeito.
 - P04 validador funcional: 225 verificações, 0 erros; o fluxograma P04-01 agora
@@ -82,14 +83,15 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
 - `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 521.224 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 529.645 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 96 pranchas, 384 arquivos
-  gráficos e 68 CSVs; similaridade mínima PDF/PNG de 0,984095.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 97 pranchas, 388 arquivos
+  gráficos e 69 CSVs; similaridade mínima PDF/PNG de 0,984061.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
-  folha de contato das nove páginas P03.
+  folha de contato das nove páginas P03 na revisão 02; P03-10 foi conferida nos PNG e
+  PDF da revisão 03 e na composição atual das dez folhas. Os itens permanecem não executados.
 - P04-07 foi inspecionada em PNG e PDF rasterizado a 150 dpi; a folha de contato
   P04 e a identificação corrigida de P04-01 também foram conferidas.
 - P12-07/08 foram inspecionadas em PNG de produção e PDF rasterizado a 150 dpi;
@@ -110,8 +112,9 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
   Poppler a 150 dpi; a tabela, os totais, o aviso de premissas e o carimbo cabem na folha.
 - P07-09 foi inspecionada no PNG de produção a 300 dpi e PDF rasterizado a 150 dpi;
   conferi também a folha de contato atual das nove pranchas.
-- AcCoreConsole 2027 auditou os nove DXFs P07 e os sete P08. Simulação elétrica não foi
-  executada. A inspeção visual dos SVGs no navegador continua aguardando autorização.
+- AcCoreConsole 2027 auditou 10/10 DXFs do P03, além de 8/8 do P01, 9/9 do P02,
+  9/9 do P07 e 7/7 do P08. Simulação elétrica não foi executada. A inspeção visual dos
+  SVGs no navegador continua aguardando autorização.
 
 ## Limites conhecidos
 
