@@ -136,7 +136,7 @@ README individual.
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
 revisão reconstruiu as 81 pranchas A3 de P01–P12; a validação estrita atual aprovou
-423.833 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
+423.829 verificações, sem erros nem avisos. Veja o [relatório de auditoria e
 limitações](docs/auditoria-portfolio-2026-11.md) para escopo, conclusões visuais e
 limites técnicos.
 

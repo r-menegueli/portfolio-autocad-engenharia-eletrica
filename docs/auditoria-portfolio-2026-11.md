@@ -53,7 +53,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 O comando `scripts/construir.py --root . --strict` reconstruiu os DXFs e os derivados
 PDF/SVG/PNG. Em seguida, `scripts/validar_portfolio.py --root . --strict` aprovou
-423.833 verificações, sem erros ou avisos. `scripts/revisar_portfolio.py --root .`
+423.829 verificações, sem erros ou avisos. `scripts/revisar_portfolio.py --root .`
 aprovou 12 projetos, 81 pranchas, 324 arquivos gráficos e 54 CSVs; a similaridade
 mínima entre PDFs e PNGs foi 0,9842. As 12 folhas de contato foram geradas; o conjunto
 foi revisto por composição e as folhas técnicas P11-01, P11-05, P11-06 e P12-07 foram

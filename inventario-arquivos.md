@@ -19,7 +19,7 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **548** | 162.619.143 bytes (155,06 MiB) |
+| **Total** | **548** | 162.594.307 bytes (155,06 MiB) |
 
 Nenhum arquivo DWG integra o repositório.
 

@@ -37,6 +37,7 @@ LOCAL_PATH = re.compile(
     r"file:" + r"//(?:/[A-Z]:[\\/]|/(?:home|Users)/|[A-Z0-9._-]+/)[^\s\"'<>]+)"
 )
 CPF_CANDIDATE = re.compile(r"(?<!\d)(\d{3}[. -]?\d{3}[. -]?\d{3}[-. ]?\d{2})(?!\d)")
+SHA256_HEX = re.compile(r"(?i)\b[0-9a-f]{64}\b")
 RG_LABELED = re.compile(
     r"(?i)\b(?:RG|registro\s+geral)\s*[:#=-]\s*([0-9]{1,2}\.?[0-9]{3}\.?[0-9]{3}[- ]?[0-9X])\b"
 )
@@ -183,7 +184,9 @@ def scan_numeric_pii(
     historical: bool = False,
 ) -> None:
     prefix = "history_" if historical else ""
-    for match in CPF_CANDIDATE.finditer(text):
+    # A valid-looking CPF can occur by chance in a hexadecimal content hash.
+    numeric_text = SHA256_HEX.sub(lambda match: " " * len(match.group(0)), text)
+    for match in CPF_CANDIDATE.finditer(numeric_text):
         if is_valid_cpf(match.group(1)):
             add_match(findings, "ERROR", f"{prefix}cpf", location, text, match)
     for pattern, category in ((RG_LABELED, "rg"), (PHONE, "phone"), (ADDRESS, "address")):
