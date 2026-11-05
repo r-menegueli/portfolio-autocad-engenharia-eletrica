@@ -1,8 +1,8 @@
 # Inspeção visual - Projeto 08
 
-Estado: `PASS` em 2026-09-09.
+Estado: revisão 02 em 2026-11-05.
 
-As seis pranchas foram examinadas nos PNGs de produção a 300 dpi, com 4960 × 3507
+As seis pranchas da revisão anterior foram examinadas nos PNGs de produção a 300 dpi, com 4960 × 3507
 pixels; nos PDFs A3 de uma página, rasterizados pelo Poppler a 150 dpi em 2481 × 1754
 pixels; e nos SVGs abertos pelo Google Chrome e rasterizados em 1600 × 1131 pixels.
 
@@ -16,10 +16,16 @@ pixels; e nos SVGs abertos pelo Google Chrome e rasterizados em 1600 × 1131 pix
 
 ## Resultado final
 
-A segunda passagem confirmou moldura e carimbo íntegros, aviso obrigatório legível,
+A segunda passagem da revisão anterior confirmou moldura e carimbo íntegros, aviso obrigatório legível,
 numeração 01/06 a 06/06, símbolos e cores consistentes, duas strings independentes,
 polaridades identificadas, proteções CC/CA, DPS, seccionamento, aterramento, rotas e
 tabelas sem cortes, desalinhamentos, sobreposições aparentes ou textos ilegíveis.
 
-Os 18 derivados visuais foram aprovados. A inspeção não transforma o estudo acadêmico
-em documentação executiva e não substitui verificação de engenharia no local.
+Na revisão 02, as sete pranchas foram geradas em DXF, PDF, SVG e PNG. As sete PNGs de
+produção a 300 dpi e os sete PDFs A3 rasterizados foram inspecionados. A prancha 07
+apresenta grade de HSP/PR, caso-base atual, fórmula, unidade e ausência de dados locais;
+os rótulos da escala foram conferidos contra os 13 registros do CSV. A inspeção visual
+adicional dos SVGs da revisão 02 em navegador aguarda autorização do usuário.
+
+O resultado visual não transforma o estudo acadêmico em documentação executiva e não
+substitui verificação de engenharia no local.

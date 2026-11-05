@@ -31,6 +31,7 @@ SHEETS = (
     "04_string_box.dxf",
     "05_aterramento.dxf",
     "06_layout_equipamentos.dxf",
+    "07_sensibilidade_energia.dxf",
 )
 REQUIRED_PROTECTIONS = {
     "F-S1-P", "F-S1-N", "F-S2-P", "F-S2-N", "DPS-CC-1", "DPS-CC-2",
@@ -82,6 +83,11 @@ SHEET_TERMS = {
     "06_layout_equipamentos.dxf": (
         "12 MÓDULOS", "SB-FV-801", "INV-FV-801", "QD-FV-801", "MED-801",
         "PCC-801", "R-CC-801/802", "R-CA-801", "ROTAS CC E CA SEGREGADAS",
+    ),
+    "07_sensibilidade_energia.dxf": (
+        "SENSIBILIDADE DA ENERGIA ANUAL", "CENÁRIOS PARAMÉTRICOS",
+        "PR 0,70", "PR 0,78", "PR 0,86", "BASE ATUAL: 9,771 MWh/ano",
+        "DADOS NECESSÁRIOS PARA UM ESTUDO LOCAL", "NÃO SÃO CLIMATOLOGIA",
     ),
 }
 WARNING = (
@@ -190,7 +196,9 @@ def validate(root: Path) -> dict:
     ac_drop = Decimal(2) * Decimal("15") * iac * rho / Decimal("10")
     ac_drop_pct = ac_drop / vac * Decimal(100)
     total_drop_pct = dc_drop_pct + ac_drop_pct
-    annual_energy = (pdc / Decimal(1000)) * Decimal("5.2") * Decimal(365) * Decimal("0.78")
+    hsp = decimal(expected_parameters["HSP"])
+    performance_ratio = decimal(expected_parameters["PR"])
+    annual_energy = (pdc / Decimal(1000)) * hsp * Decimal(365) * performance_ratio
     monthly_energy = annual_energy / Decimal(12)
     derived = {
         "POTENCIA_CC": pdc,
@@ -222,6 +230,35 @@ def validate(root: Path) -> dict:
         checks += 1
         if key not in result_map or not close(decimal(result_map[key]["resultado"]), value):
             errors.append(f"Resultado {key} divergente: esperado {value}.")
+
+    sensitivity = read_rows(project / "sensibilidade-energia.csv")
+    expected_grid = {
+        (Decimal(hsp_value), Decimal(pr_value))
+        for hsp_value in ("3", "4", "5", "6")
+        for pr_value in ("0.70", "0.78", "0.86")
+    }
+    scenario_rows = [row for row in sensitivity if row["classificacao"] == "PARAMETRICO_SEM_LOCAL"]
+    base_rows = [row for row in sensitivity if row["classificacao"] == "BASE_ATUAL_DIDATICA"]
+    checks += 7 + len(sensitivity)
+    if len(sensitivity) != 13 or len(scenario_rows) != 12 or len(base_rows) != 1:
+        errors.append("sensibilidade-energia.csv deve conter 12 cenários e uma linha-base.")
+    if any(not row["observacoes"] for row in sensitivity):
+        errors.append("Cenário de energia sem observação epistemológica.")
+    actual_grid = {(decimal(row["hsp_h_dia"]), decimal(row["pr"])) for row in scenario_rows}
+    if actual_grid != expected_grid:
+        errors.append("Grade paramétrica HSP/PR ausente ou com combinações duplicadas.")
+    for row in sensitivity:
+        row_hsp = decimal(row["hsp_h_dia"])
+        row_pr = decimal(row["pr"])
+        expected_energy = (pdc / Decimal(1000)) * row_hsp * Decimal(365) * row_pr
+        if not close(decimal(row["energia_anual_kwh"]), expected_energy):
+            errors.append(f"Energia paramétrica divergente para HSP={row_hsp}, PR={row_pr}.")
+    if base_rows:
+        base = base_rows[0]
+        if decimal(base["hsp_h_dia"]) != hsp or decimal(base["pr"]) != performance_ratio:
+            errors.append("Linha-base não acompanha HSP e PR didáticos de parametros.csv.")
+        if not close(decimal(base["energia_anual_kwh"]), annual_energy):
+            errors.append("Energia da linha-base diverge da estimativa reproduzida.")
 
     checks += 11
     if nseries * nstrings != nmod:
@@ -257,6 +294,8 @@ def validate(root: Path) -> dict:
         errors.append("Cada string deve possuir seis módulos.")
     if any(decimal(row["potencia_wp"]) != pmod for row in modules):
         errors.append("Potência de módulo divergente na lista.")
+    if any(row["prancha"] != "01/07" for row in modules):
+        errors.append("Referência de prancha inválida em lista-modulos.csv.")
     if sum(decimal(row["potencia_wp"]) for row in modules) != pdc:
         errors.append("Soma das potências dos módulos divergente.")
     if any(row["orientacao"] != "Norte" or row["inclinacao_graus"] != "20" for row in modules):
@@ -278,7 +317,7 @@ def validate(root: Path) -> dict:
         errors.append("Devem existir dois seccionadores CC e um CA.")
     if not {"CC", "CA"} <= {row["lado"] for row in protections}:
         errors.append("Proteções CC e CA não estão ambas representadas.")
-    if any(row["prancha"] not in {f"{index:02d}/06" for index in range(1, 7)} for row in protections):
+    if any(row["prancha"] not in {f"{index:02d}/07" for index in range(1, 8)} for row in protections):
         errors.append("Referência de prancha inválida em lista-protecoes.csv.")
 
     cable_tags = {row["cabo"] for row in cables}
@@ -374,7 +413,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"Metadado de projeto incorreto em {filename}.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/06":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
             errors.append(f"Metadado de prancha incorreto em {filename}.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION":
             errors.append(f"Status epistemológico incorreto em {filename}.")
@@ -398,6 +437,7 @@ def validate(root: Path) -> dict:
             "modules": len(modules),
             "protections": len(protections),
             "sheets": len(SHEETS),
+            "energy_sensitivity_rows": len(sensitivity),
             "strings": int(nstrings),
             "voc_cold_v": f"{voc_cold:.6f}",
             "vmp_hot_v": f"{vmp_hot:.6f}",

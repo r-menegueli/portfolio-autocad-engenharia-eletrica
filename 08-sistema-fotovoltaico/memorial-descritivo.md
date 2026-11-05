@@ -56,6 +56,15 @@ locais consomem parte da geração e o excedente pode circular pelo medidor conf
 regras aplicáveis. Abertura de seccionadores, atuação de proteção, perda de rede ou
 autodiagnóstico deve impedir a injeção conforme o equipamento homologado.
 
+## Estudo de energia
+
+A prancha 07 demonstra como a estimativa didática anual muda quando se variam HSP e PR,
+mantendo a potência CC em 6,60 kWp. O caso-base preserva 5,2 h/dia e PR 0,78. As demais
+combinações são cenários matemáticos escolhidos para estudo, sem vínculo com localidade,
+clima observado ou probabilidade de ocorrência. A tabela e os resultados reproduzíveis
+estão em [sensibilidade-energia.csv](sensibilidade-energia.csv). Uma previsão local
+depende de dados meteorológicos e de implantação ainda não fornecidos.
+
 ## Limites
 
 Não há simulação eletromagnética, medição solar, curva diária, ensaio, produção real,

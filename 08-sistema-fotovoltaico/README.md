@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 06
+Pranchas: 01 a 07
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 01 (2026-11-05)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão 02 (2026-11-05)
 
-Estado: concluído e validado em 2026-09-09
+Estado: revisado e validado em 2026-11-05
 
 Este projeto apresenta um sistema fotovoltaico residencial conceitual, conectado à
 rede, com 6,60 kWp no lado CC e inversor string acadêmico de 6 kWca em 220 V. O arranjo
@@ -17,6 +17,11 @@ O estudo não seleciona fabricante, não substitui levantamento de campo, projet
 estrutural, consulta à distribuidora, análise de sombreamento, coordenação de proteção,
 comissionamento ou responsabilidade técnica.
 
+A estimativa anterior de 9.770,904 kWh/ano permanece como caso didático calculado com
+HSP 5,2 e PR 0,78. A nova análise mostra a sensibilidade a outros pares de parâmetros;
+os intervalos escolhidos são matemáticos e não representam recurso solar de uma região,
+faixa provável ou previsão de geração.
+
 ## Pranchas
 
 1. [Disposição dos módulos](fonte/01_disposicao_modulos.dxf)
@@ -25,6 +30,7 @@ comissionamento ou responsabilidade técnica.
 4. [String box](fonte/04_string_box.dxf)
 5. [Aterramento e equipotencialização](fonte/05_aterramento.dxf)
 6. [Layout dos equipamentos](fonte/06_layout_equipamentos.dxf)
+7. [Sensibilidade da energia anual](fonte/07_sensibilidade_energia.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -58,6 +64,7 @@ um modelo comercial homologado.
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de equipamentos e materiais](lista-materiais.csv)
 - [Resultados dos cálculos](resultados-calculo.csv)
+- [Sensibilidade da energia](sensibilidade-energia.csv)
 - [Inspeção visual](inspecao-visual.md)
 - [Validação específica](validacao-fotovoltaico.json)
 - [Validação estrita](validacao.json)
@@ -75,15 +82,14 @@ Na raiz do portfólio:
 
 O DXF AC1027 é a fonte principal. Nenhum DWG é fornecido nesta revisão.
 
-## Verificação da revisão 00
+## Verificação da revisão 02
 
-- validador específico: `PASS`, 8.036 verificações e nenhum erro;
-- validação estrita integrada: `PASS`, 297.598 verificações, nenhum erro e nenhum aviso;
-- AutoCAD AcCoreConsole 2027: seis DXFs abertos e auditados, `PASS` em 6/6;
-- derivados: 18 arquivos gerados e inspecionados (seis PDF, seis SVG e seis PNG);
+- validador específico: consulte [validacao-fotovoltaico.json](validacao-fotovoltaico.json);
+- validação estrita integrada: consulte [validacao.json](validacao.json);
+- AutoCAD AcCoreConsole 2027: os sete DXFs da revisão 02 foram abertos e auditados, `PASS` em 7/7;
+- derivados: 21 arquivos gerados (sete PDF, sete SVG e sete PNG); as sete PNGs e os sete PDFs foram inspecionados visualmente;
 - PDFs: uma página A3 por prancha, reabertos e rasterizados pelo Poppler;
-- SVGs: abertos e rasterizados pelo Google Chrome;
-- reprodutibilidade: hashes idênticos em 24/24 artefatos após nova geração;
-- suíte automatizada do portfólio: nove testes aprovados.
+- os SVGs da revisão 02 foram gerados; a inspeção adicional em navegador permanece pendente de autorização;
+- reprodutibilidade: consulte o registro de hashes atualizado no manifesto de renders.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

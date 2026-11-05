@@ -1,4 +1,4 @@
-"""Gera as seis pranchas DXF do Projeto 08 de forma determinística."""
+"""Gera as sete pranchas DXF do Projeto 08 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "08-sistema-fotovoltaico"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -103,6 +103,15 @@ SHEETS = (
         "Posições e folgas são propostas, não instruções de montagem.\\P"
         "Validar acesso, ventilação, IP, raios de curvatura, estrutura e padrão da distribuidora.",
         "Laranja: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | Tracejado: folga",
+    ),
+    SheetSpec(
+        7,
+        "07_sensibilidade_energia.dxf",
+        "SENSIBILIDADE DA ENERGIA ANUAL",
+        "Cenários paramétricos para 6,60 kWp | sem localização ou previsão de geração",
+        "HSP e PR variam apenas para demonstrar sensibilidade.\\P"
+        "Os intervalos escolhidos não representam clima, faixa de confiança ou produção de um imóvel.",
+        "Vermelho: PR 0,70 | Verde: PR 0,78 | Magenta: PR 0,86 | marcador: premissa didática atual",
     ),
 )
 
@@ -269,7 +278,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO DE SENSIBILIDADE 02", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -291,7 +300,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -307,7 +316,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION"
     define_title_block(doc)
     define_symbols(doc)
@@ -609,6 +618,82 @@ def draw_equipment_layout(layout, data: dict[str, list[dict[str, str]]]) -> None
     centered(layout, "ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS", (317, 103), 1.1, "13_NOTAS")
 
 
+def draw_energy_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    rows = data["energy_sensitivity"]
+    scenario_rows = [row for row in rows if row["classificacao"] == "PARAMETRICO_SEM_LOCAL"]
+    base_row = next(row for row in rows if row["classificacao"] == "BASE_ATUAL_DIDATICA")
+    colors = {"0.70": "05_POTENCIA", "0.78": "08_CABOS", "0.86": "07_INSTRUMENTACAO"}
+    plot_left, plot_right = 52.0, 226.0
+    plot_bottom, plot_top = 113.0, 239.0
+    hsp_min, hsp_max = 3.0, 6.0
+    energy_min, energy_max = 4.5, 13.0  # MWh/ano, escala gráfica
+
+    def point(hsp: float, kwh: float) -> tuple[float, float]:
+        x = plot_left + (hsp - hsp_min) / (hsp_max - hsp_min) * (plot_right - plot_left)
+        mwh = kwh / 1000.0
+        y = plot_bottom + (mwh - energy_min) / (energy_max - energy_min) * (plot_top - plot_bottom)
+        return x, y
+
+    centered(layout, "ENERGIA ANUAL | MWh/ano", (133, 255), 1.15, "02_TEXTO")
+    # Grade e eixos: a origem truncada é declarada por ticks e faixa da tabela.
+    for tick in (5, 7, 9, 11, 13):
+        y = plot_bottom + (tick - energy_min) / (energy_max - energy_min) * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "12_LEGENDA")
+        centered(layout, f"{tick},0", (41, y), 0.95, "02_TEXTO")
+    for hsp in (3.0, 4.0, 5.0, 6.0):
+        x = plot_left + (hsp - hsp_min) / (hsp_max - hsp_min) * (plot_right - plot_left)
+        line(layout, (x, plot_bottom), (x, plot_top), "12_LEGENDA")
+        centered(layout, f"{hsp:.0f}", (x, 106), 1.0, "02_TEXTO")
+    line(layout, (plot_left, plot_bottom), (plot_right, plot_bottom), "03_COTAS")
+    line(layout, (plot_left, plot_bottom), (plot_left, plot_top), "03_COTAS")
+    centered(layout, "HSP equivalente (h/dia)", (139, 101), 0.95, "02_TEXTO")
+
+    for pr, layer in colors.items():
+        points = sorted(
+            (point(float(row["hsp_h_dia"]), float(row["energia_anual_kwh"]))
+             for row in scenario_rows if row["pr"] == pr),
+            key=lambda xy: xy[0],
+        )
+        layout.add_lwpolyline(points, dxfattribs={"layer": layer})
+        for x, y in points:
+            layout.add_circle((x, y), 1.3, dxfattribs={"layer": layer})
+
+    base_x, base_y = point(float(base_row["hsp_h_dia"]), float(base_row["energia_anual_kwh"]))
+    layout.add_circle((base_x, base_y), 2.7, dxfattribs={"layer": "01_CARIMBO"})
+    line(layout, (base_x, base_y), (base_x - 12, base_y - 13), "01_CARIMBO")
+    centered(layout, "BASE ATUAL: 9,771 MWh/ano", (base_x - 28, base_y - 16), 1.0, "01_CARIMBO")
+    centered(layout, "HSP=5,2 | PR=0,78", (base_x - 28, base_y - 20), 0.95, "01_CARIMBO")
+
+    table(
+        layout,
+        248,
+        244,
+        (33, 38, 38, 38),
+        ("HSP", "PR 0,70", "PR 0,78", "PR 0,86"),
+        [
+            (f"{hsp:.0f}", *(f"{float(row['energia_anual_kwh']) / 1000:.3f}" for row in sorted(
+                (r for r in scenario_rows if float(r["hsp_h_dia"]) == hsp),
+                key=lambda r: float(r["pr"]),
+            )))
+            for hsp in (3.0, 4.0, 5.0, 6.0)
+        ],
+        row_height=10.5,
+        text_height=0.98,
+    )
+    centered(layout, "ENERGIA EM MWh/ano | EQUAÇÃO: 6,60 x HSP x 365 x PR", (322, 185), 1.0, "02_TEXTO")
+    add_rect(layout, 248, 112, 400, 181, "13_NOTAS")
+    centered(layout, "DADOS NECESSÁRIOS PARA UM ESTUDO LOCAL", (324, 173), 1.05, "13_NOTAS")
+    add_mtext(
+        layout,
+        "- Coordenadas e período representativo\\P- Fonte meteorológica e intervalo dos dados\\P- Azimute, inclinação e sombras por horário\\P- Modelos e limites de módulo e inversor\\P- Perdas, disponibilidade e degradação",
+        (254, 164),
+        138,
+        1.18,
+        "13_NOTAS",
+    )
+    centered(layout, "OS CENÁRIOS NÃO SÃO CLIMATOLOGIA NEM FAIXA DE CONFIANÇA", (324, 119), 0.98, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_module_arrangement,
     2: draw_dc_single_line,
@@ -616,6 +701,7 @@ DRAWERS = {
     4: draw_string_box,
     5: draw_grounding,
     6: draw_equipment_layout,
+    7: draw_energy_sensitivity,
 }
 
 
@@ -629,6 +715,7 @@ def generate(root: Path) -> list[Path]:
         "cables": read_rows(project, "lista-cabos.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
+        "energy_sensitivity": read_rows(project, "sensibilidade-energia.csv"),
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

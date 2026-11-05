@@ -25,6 +25,9 @@
   irradiância máxima de cálculo de 1.100 W/m²;
 - 5,2 horas de sol pleno por dia e performance ratio de 0,78 exclusivamente para uma
   estimativa didática de energia;
+- grade de sensibilidade com HSP entre 3 e 6 h/dia e PR entre 0,70 e 0,86, escolhidos
+  somente como intervalos paramétricos didáticos, sem representar local, clima ou
+  probabilidade;
 - cabos CC de cobre fotovoltaico com 6 mm² e percurso elétrico de ida de 20 m;
 - circuito CA de cobre com 10 mm² e percurso elétrico de ida de 15 m;
 - instalação existente com 220 V entre fases e condutores PE e ativos separados no
@@ -54,6 +57,8 @@
 ## Limitações e dados a confirmar
 
 - endereço, coordenadas, distribuidora, padrão de entrada e tensão efetiva do imóvel;
+- fonte meteorológica e período representativo, orientação e inclinação medidas,
+  levantamento horário de sombras e perdas reais para qualquer estudo de produção local;
 - modelo comercial, registro no Inmetro, firmware e aprovação do inversor pela
   distribuidora;
 - levantamento de sombras, recurso solar local, sujidade e degradação;

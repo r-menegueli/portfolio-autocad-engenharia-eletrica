@@ -1,5 +1,5 @@
 {
-  "checks": 8036,
+  "checks": 8073,
   "errors": [],
   "results": {
     "ac_current_a": "27.272727",
@@ -10,7 +10,8 @@
     "materials": 21,
     "modules": 12,
     "protections": 11,
-    "sheets": 6,
+    "sheets": 7,
+    "energy_sensitivity_rows": 13,
     "strings": 2,
     "voc_cold_v": "324.549600",
     "vmp_hot_v": "216.942000"

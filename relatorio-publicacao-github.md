@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio, inclui P05 revisão 02, P09 revisão 03 e P11 revisão 02 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio, inclui P05 revisão 02, P08 revisão 02, P09 revisão 03 e P11 revisão 02 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 597 arquivos incluídos; 394 links relativos de Markdown verificados; 0 erros; 195.375.069 bytes na árvore atual.
+- 602 arquivos incluídos; 400 links relativos de Markdown verificados; 0 erros; 197.615.796 bytes na árvore atual.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -32,6 +32,16 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 - P05 revisado para a revisão 02 e oito folhas: P05-08 traça a topologia e seis pares
   de proteção para estudo; o CSV marca todas as comparações pendentes.
+- P08 revisado para a revisão 02 e sete folhas: P08-07 expõe a sensibilidade da
+  estimativa de energia a HSP/PR e lista os dados que faltam para estudo local. Os
+  cenários não representam clima ou previsão de geração.
+- P08 validador específico: 8.073 verificações, 0 erros; AcCoreConsole 2027 auditou
+  7/7 DXFs; PNG e PDF das sete folhas foram inspecionados visualmente.
+- P08 revisado para a revisão 02 e sete folhas: P08-07 expõe a sensibilidade da
+  estimativa de energia a HSP/PR e lista os dados que faltam para um estudo local.
+  Os cenários são didáticos, sem previsão meteorológica ou produção de imóvel.
+- P08 validador específico: 8.073 verificações, 0 erros; AutoCAD AcCoreConsole 2027
+  abriu e auditou 7/7 DXFs; as sete PNGs e os sete PDFs foram inspecionados visualmente.
 - P05 validador específico: 325 verificações, 0 erros; 8 DXFs, 24 derivados e manifesto
   reproduziram hashes SHA-256 idênticos.
 - `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: nove
@@ -60,10 +70,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
 - `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 485.886 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 490.018 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 91 pranchas, 364 arquivos
-  gráficos e 63 CSVs; similaridade mínima PDF/PNG de 0,9842.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 92 pranchas, 368 arquivos
+  gráficos e 64 CSVs; similaridade mínima PDF/PNG de 0,9842.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
@@ -82,12 +92,15 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
   150 dpi e no contato das sete folhas; as outras cinco folhas foram avaliadas no contato.
 - P05-08 foi inspecionada no PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e no
   contato das oito folhas; a tabela cabe sem cortes e todos os seis status são pendentes.
+- P08-07 foi inspecionada no PNG de produção e no PDF rasterizado a 150 dpi; a grade
+  paramétrica, os dados necessários e o carimbo cabem na folha sem cortes.
 - AutoCAD/AcCoreConsole e simulação elétrica não foram executados nesta revisão; a
   inspeção visual dos SVGs no navegador continua aguardando autorização do usuário.
 
 ## Limites conhecidos
 
-P11 continua um estudo conceitual: os 22 dados necessários para calcular e validar
+P08 continua sem previsão local: a grade não deriva de clima nem de um levantamento de
+sombras. P11 continua um estudo conceitual: os 22 dados necessários para calcular e validar
 aterramento seguem pendentes; toque/passo, GPR, SPDA e seleção de DPS não estão
 validados. P05 continua sem Icc calculado nem curvas de seletividade. P09 agora tem
 topologia, pré-dimensionamento e estudo

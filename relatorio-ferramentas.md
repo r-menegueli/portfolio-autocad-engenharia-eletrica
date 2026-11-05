@@ -307,6 +307,24 @@ NBR 5410:2004 versão corrigida 2008 e série NBR 5419:2026; o Inmetro para as P
 são critérios de consulta; sua aplicação executiva permanece condicionada à edição
 vigente, ao acesso integral às normas e à responsabilidade profissional.
 
+## Revisão 02 do Projeto 08 — 2026-11-05
+
+A revisão ampliou o P08 para sete pranchas e acrescentou P08-07, uma comparação
+paramétrica da energia anual para 6,60 kWp. A grade de 12 cenários usa HSP de 3 a
+6 h/dia e PR de 0,70 a 0,86; seus extremos calculados são 5.058,900 e 12.430,440
+kWh/ano. São combinações matemáticas escolhidas para estudo, sem dados meteorológicos,
+probabilidade ou previsão de um local. O caso didático existente permanece em
+9.770,904 kWh/ano (HSP 5,2; PR 0,78).
+
+O validador específico aprovou 8.073 verificações, incluindo as 13 linhas do CSV e as
+fórmulas da grade. O AutoCAD AcCoreConsole 2027 abriu e auditou os sete DXFs, `PASS`
+em 7/7. As sete PNGs de produção e os sete PDFs rasterizados a 150 dpi foram
+inspecionados; a composição das sete folhas também foi conferida. A validação estrita
+integrada do portfólio aprovou 490.018 verificações, sem erros ou avisos; o revisor
+consolidado confirmou 12 projetos, 92 pranchas, 368 derivados e 64 CSVs, com similaridade
+mínima PDF/PNG de 0,9842. A inspeção visual em navegador dos SVGs da revisão 02 aguarda
+autorização do usuário. Nenhum DWG foi produzido; DXF AC1027 permanece como fonte.
+
 ## Auditoria CAD e visual do Projeto 09
 
 Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou

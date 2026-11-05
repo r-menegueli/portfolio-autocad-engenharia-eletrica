@@ -295,7 +295,7 @@ id = "08-sistema-fotovoltaico"
 path = "08-sistema-fotovoltaico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -308,6 +308,7 @@ required_files = [
   "lista-protecoes.csv",
   "lista-cabos.csv",
   "resultados-calculo.csv",
+  "sensibilidade-energia.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_08.py",
   "fonte/validar_projeto_08.py",
@@ -1093,6 +1094,17 @@ source = "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf"
 svg = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg"
 pdf = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf"
 png = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-07-sensibilidade-energia"
+kind = "sheet"
+title = "Projeto 08 - Sensibilidade da energia anual"
+source = "08-sistema-fotovoltaico/fonte/07_sensibilidade_energia.dxf"
+svg = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.svg"
+pdf = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.pdf"
+png = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.png"
 require_a3 = true
 require_notice = true
 

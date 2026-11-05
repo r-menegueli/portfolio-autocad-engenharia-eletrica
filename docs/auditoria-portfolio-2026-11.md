@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 91 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 92 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -29,7 +29,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes e a topologia dos seis pares de proteção em P05-08. | As rotas ainda são premissas; Icc, capacidade de interrupção, curvas e seletividade permanecem pendentes. | Substituir as premissas por dados da concessionária, cabos e dispositivos selecionados; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação. | A arquitetura é de alto nível; não é esquema veicular homologável nem define segurança funcional. | Desenvolver um diagrama por subsistema com interfaces, limites elétricos e requisitos de segurança definidos. |
-| P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. | Substituir parâmetros genéricos por local, módulos/inversor escolhidos e cálculo de produção e proteção. |
+| P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; agora inclui topologia buck, pré-dimensionamento e estudo paramétrico separado para o nó interno e a porta X2. | KD1/RD1 e KD2/RD2 são apenas conceitos; capacitâncias, tensões máximas, V_SAFE, tempo, rating de pulso e intertravamento não estão definidos. A descarga não garante 0 V. Malhas, compensação, térmica, proteções e layout EMI seguem pendentes. | Especificar o cenário de uso e de fonte externa em X2, completar intertravamento e dimensionar/validar os dois ramos com dados de componente e falhas antes de simular ou montar. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede e matriz de oito eventos de qualidade/falha de sinal. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
@@ -77,6 +77,8 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
   registram as entradas e evidências ainda pendentes, sem produzir resultado de segurança.
 - Na revisão 02 do P05, acrescentei P05-08 e uma matriz rastreável com seis pares de
   proteção; Icc, Icu/Ics, curvas, retaguarda e energia passante continuam pendentes.
+- Na revisão 02 do P08, acrescentei uma prancha de sensibilidade com 12 cenários e o
+  caso-base. HSP e PR são intervalos didáticos, sem dados meteorológicos nem previsão local.
 - Reemiti as oito folhas P05 na revisão 02 e conferi P05-08 em PNG integral e PDF
   rasterizado a 150 dpi; a folha de contato atual mostra as oito composições.
 - A revisão 02 reemitiu as sete folhas P11 como `/07`; a folha 05 deixa explícito que
@@ -86,11 +88,11 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P05, P06, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 485.886 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 91 pranchas, 364 arquivos gráficos e 63 CSVs, com similaridade mínima
+Os DXFs e derivados PDF/SVG/PNG de P05, P06, P08, P09, P10, P11 e P12 foram regenerados. A
+validação estrita aprovou 490.018 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 92 pranchas, 368 arquivos gráficos e 64 CSVs, com similaridade mínima
 PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
-P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P10 (sete), P11 (sete) e P12 (oito).
+P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P08 (sete), P10 (sete), P11 (sete) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
 colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
@@ -101,7 +103,9 @@ rasterizado, e o contato atualizado das nove folhas P09 foi conferido. O parser 
 SVGs e seus viewBox; a inspeção visual no navegador dos SVGs P09, P03-09 e P04-07 está
 pendente da autorização do usuário. P11-05 e P11-07 foram inspecionadas em PNG integral
 e PDF rasterizado a 150 dpi; o contato das sete folhas confirmou revisão, numeração e
-composição geral das demais. P12-07 e P12-08 foram
+composição geral das demais. P08-07 foi inspecionada em PNG a 300 dpi e PDF rasterizado
+a 150 dpi; conferi também a composição e a numeração das sete folhas no contato atualizado.
+P12-07 e P12-08 foram
 reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas
 P12 também foi conferido. P06-08 foi inspecionada em PNG integral e PDF rasterizado a
 150 dpi; a folha de contato atual das oito pranchas também foi conferida. P10-07 foi
@@ -111,12 +115,15 @@ inspeção integral. O validador P10 passou com 64.261 verificações, 0 erros e
 A matriz evita inventar estados de falha, timeouts ou respostas de processo sem
 hardware definido.
 
-A validação do AutoCAD/AcCoreConsole não foi repetida nesta revisão; abrir o DXF no
-AutoCAD e reabrir o PDF no leitor final é uma etapa independente. O mesmo cuidado
-vale para FreeCAD, KiCad e uma IDE de CLP: artefatos desses repositórios não foram
-aprovados dentro dos aplicativos nativos.
+O AutoCAD AcCoreConsole 2027 abriu e auditou os sete DXFs do P08, `PASS` em 7/7. Essa
+auditoria confirma abertura e integridade CAD, sem validar projeto elétrico ou normas.
+A inspeção visual em navegador dos SVGs desta revisão continua aguardando autorização
+do usuário. Os outros projetos não foram reabertos no AutoCAD nesta revisão. O mesmo
+cuidado vale para FreeCAD, KiCad e uma IDE de CLP: seus artefatos não foram aprovados
+dentro dos aplicativos nativos.
 
 Use esta auditoria para priorizar o próximo ciclo; não use nenhuma das folhas como
 documento de execução. Os próximos avanços de maior valor são fechar a coordenação de
-P05 com curvas e impedâncias reais, concluir verificações térmicas/EMI em P09 e obter
-dados de campo para o estudo de segurança da malha de P11.
+P05 com curvas e impedâncias reais, fazer análise local de produção e sombras para P08,
+concluir verificações térmicas/EMI em P09 e obter dados de campo para o estudo de
+segurança da malha de P11.
