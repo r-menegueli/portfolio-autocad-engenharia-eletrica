@@ -92,3 +92,19 @@ Levantamento da rede, corrente de curto-circuito, coordenação e seletividade; 
 placa e curva da carga; método de instalação dos cabos; harmônicas e EMC; filtro de
 entrada ou saída; resistor de frenagem; ventilação e balanço térmico; análise de risco;
 PL/SIL e tempo de parada; arquitetura do PLC; ensaios, inspeções e comissionamento.
+
+### 8.1 Proteção e coordenação
+
+O valor de 5 kA é uma hipótese de curto-circuito, e 10 kA é a capacidade de interrupção
+indicada para Q1 sem modelo ou curva selecionados. A comparação numérica entre esses
+valores não comprova adequação. Para avançar, obter a corrente de curto-circuito máxima
+e mínima no painel, selecionar os modelos e consultar Icu/Ics na tensão aplicável,
+curvas/ajustes, energia passante e tabelas do fabricante para seletividade e retaguarda.
+Confirmar também a suportabilidade do conjunto e a corrente condicional de Q0, a
+proteção de entrada recomendada para o VFD, o ajuste térmico pelos dados de placa do
+motor, a curva de Q2 conforme a partida da fonte, e os parâmetros Uc/Up/TOV e proteção
+de retaguarda do DPS. Cabos e barramentos exigem método de instalação, fatores de
+correção, queda de tensão e verificação térmica de curto-circuito.
+
+A relação linha a linha está em [protecao-coordenacao.csv](protecao-coordenacao.csv)
+e na prancha 07. Todos os itens dessa matriz permanecem pendentes.

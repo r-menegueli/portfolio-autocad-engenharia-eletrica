@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "strict": true,
-  "checks": 27983,
+  "checks": 501282,
   "errors": 0,
   "warnings": 0,
   "diagnostics": []

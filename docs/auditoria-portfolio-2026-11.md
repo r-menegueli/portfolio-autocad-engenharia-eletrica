@@ -2,7 +2,7 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 93 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 94 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
@@ -22,7 +22,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
-| P01 — Painel com inversor | Separa unifilar, potência, comando, layout e campo. | O unifilar isolado é apenas uma visão geral; seleção de proteção/coordenação não está demonstrada. | Um estudo de coordenação e ligação baseado em equipamento escolhido, sem reaproveitar valores fictícios como projeto final. |
+| P01 — Painel com inversor | Separa unifilar, potência, comando, layout e campo; P01-07 mapeia sete grupos de premissas às evidências necessárias. | O mapeamento ainda não é estudo de coordenação: Icc, modelos, curvas, ratings e tabelas de fabricante seguem ausentes. | Substituir as premissas por dados do local e modelos escolhidos; calcular e comparar curvas antes de afirmar seletividade, retaguarda ou capacidade. |
 | P02 — Residencial | Conjunto mais claro para leitura rápida: plantas, circuitos, quadro de cargas e detalhes. | Continua dependente de arquitetura e cargas assumidas. | Trocar a planta-base fictícia por uma planta cotada e identificar premissas de carga por ambiente. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações e sequência causa-efeito em nove folhas. | O desenho não prova teste em CLP ou segurança funcional certificada; a resposta para sensor incoerente com bomba em marcha ainda não foi definida. | Escolher hardware, definir a ação para incoerência de sensores e validar a sequência em software de fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
@@ -82,6 +82,9 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Na revisão 02 do P07, acrescentei a folha 09 e uma matriz CSV com dez eventos, detecção,
   estado, resposta proposta, pendência e rastreio. A matriz organiza interfaces; não é
   HARA/FMEA nem valida função de segurança. As outras oito folhas foram reemitidas como `/09`.
+- Na revisão 02 do P01, acrescentei P01-07 e uma matriz CSV com sete grupos de premissas,
+  dados que devem substituí-las e verificações abertas. A folha não declara coordenação;
+  a razão Icu/Icc de 2:1 é explicitamente identificada como aritmética, sem prova técnica.
 - Reemiti as oito folhas P05 na revisão 02 e conferi P05-08 em PNG integral e PDF
   rasterizado a 150 dpi; a folha de contato atual mostra as oito composições.
 - A revisão 02 reemitiu as sete folhas P11 como `/07`; a folha 05 deixa explícito que
@@ -91,9 +94,9 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 ## Limites e validação
 
-Os DXFs e derivados PDF/SVG/PNG de P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 496.492 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs, com similaridade mínima
+Os DXFs e derivados PDF/SVG/PNG de P01, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
+validação estrita aprovou 501.282 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 94 pranchas, 376 arquivos gráficos e 66 CSVs, com similaridade mínima
 PDF/PNG de 0,9842. As 12 folhas de contato foram regeneradas; revisei as composições
 P03 (nove folhas), P04 (sete), P05 (oito), P06 (oito), P07 (nove), P08 (sete), P10 (sete), P11 (sete) e P12 (oito).
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF

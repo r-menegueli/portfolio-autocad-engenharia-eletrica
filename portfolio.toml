@@ -124,7 +124,7 @@ id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -134,6 +134,7 @@ required_files = [
   "inspecao-visual.md",
   "lista-cabos.csv",
   "lista-materiais.csv",
+  "protecao-coordenacao.csv",
   "fonte/gerar_projeto_01.py",
 ]
 
@@ -501,6 +502,17 @@ source = "01-painel-motor-inversor/fonte/06_interligacoes_campo.dxf"
 svg = "01-painel-motor-inversor/exports/06_interligacoes_campo.svg"
 pdf = "01-painel-motor-inversor/exports/06_interligacoes_campo.pdf"
 png = "01-painel-motor-inversor/exports/06_interligacoes_campo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-07-protecao-coordenacao"
+kind = "sheet"
+title = "Projeto 01 - Proteção e dados para coordenação"
+source = "01-painel-motor-inversor/fonte/07_protecao_coordenacao.dxf"
+svg = "01-painel-motor-inversor/exports/07_protecao_coordenacao.svg"
+pdf = "01-painel-motor-inversor/exports/07_protecao_coordenacao.pdf"
+png = "01-painel-motor-inversor/exports/07_protecao_coordenacao.png"
 require_a3 = true
 require_notice = true
 

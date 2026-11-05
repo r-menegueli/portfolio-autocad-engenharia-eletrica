@@ -4,7 +4,7 @@
 
 Projeto acadêmico 01: painel de acionamento de motor de indução trifásico com inversor
 de frequência. Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-05.
-Revisão: 00.
+Revisão: 02 (gráfica; 2026-11-05).
 
 ## 2. Finalidade e limites
 
@@ -77,5 +77,19 @@ de instalação, raios de curvatura, bornes selecionados e recomendações do fa
 ## 9. Interfaces documentais
 
 As referências Q0, Q1, Q2, DPS1, PS1, VFD1, KSR1, S0-S4, P1, H1-H4, X1-X3, M1 e
-W01-W06 são mantidas nas seis pranchas, na lista de materiais e na lista de cabos. Os
-DXFs são as fontes principais; PDF, SVG e PNG servem à revisão visual.
+W01-W06 são mantidas nas sete pranchas, nas listas de materiais e de cabos e na matriz
+de coordenação. Os DXFs são as fontes principais; PDF, SVG e PNG servem à revisão visual.
+
+## 10. Proteção e dados para coordenação
+
+A prancha 07 rastreia sete grupos de premissas: corrente de curto-circuito presumida,
+seccionamento Q0, disjuntor Q1, proteção do VFD e do motor, circuito auxiliar Q2/PS1,
+DPS1 e cabos W01/W02. O CSV vinculado lista, para cada grupo, o dado que deve substituir
+a hipótese atual e a verificação ainda aberta.
+
+A divisão de 10 kA de Icu pela hipótese de 5 kA de Icc resulta em 2:1 apenas como
+operação aritmética. Sem o valor real de curto-circuito no ponto, tensão e ratings
+específicos do dispositivo, curvas e tabelas de coordenação do fabricante, essa razão
+não demonstra capacidade de interrupção, seletividade, retaguarda ou energia passante.
+Q0 é representado como seccionador; a sobrecarga do motor depende do ajuste do VFD e
+da placa real. Nenhum desses itens foi dimensionado para execução.

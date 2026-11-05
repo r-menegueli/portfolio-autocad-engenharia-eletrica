@@ -1,8 +1,9 @@
-"""Gera as seis pranchas DXF do Projeto 01 de forma deterministica."""
+"""Gera as sete pranchas DXF do Projeto 01 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 import math
 from pathlib import Path
@@ -37,7 +38,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "01-painel-motor-inversor"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -104,6 +105,15 @@ SHEETS = (
         "Comprimentos são premissas para documentação e orçamento conceitual.\\P"
         "Rotas, segregação, queda de tensão e EMC dependem de levantamento em campo.",
         "W01/W02: potência | W03/W04/W05/W06: comando e instrumentação",
+    ),
+    SheetSpec(
+        7,
+        "07_protecao_coordenacao.dxf",
+        "PROTEÇÃO E DADOS PARA COORDENAÇÃO",
+        "Mapa das premissas e evidências que ainda precisam ser obtidas",
+        "Os valores atuais são didáticos e não provam seleção, capacidade de interrupção,\\P"
+        "seletividade, retaguarda, proteção térmica ou coordenação entre fabricantes.",
+        "Icc: curto-circuito presumido | Icu/Ics: capacidade do dispositivo | SCPD: proteção contra curto",
     ),
 )
 
@@ -192,7 +202,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72.0), (x, 94.0), "01_CARIMBO")
     for value, x in (("REV.", 239.0), ("DATA", 264.0), ("DESCRIÇÃO", 316.0), ("RESP.", 381.0)):
         centered_text(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("REVISAO VISUAL 01", 316.0), ("R.E.M.M.", 381.0)):
+    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), (f"REVISAO VISUAL {REVISION}", 316.0), ("R.E.M.M.", 381.0)):
         centered_text(layout, value, (x, 78.5), 1.7, "02_TEXTO")
 
 
@@ -216,7 +226,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -232,7 +242,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -523,6 +533,79 @@ def draw_field(layout) -> None:
     centered_text(layout, "TB-PE", (141.0, 162.0), 1.6, "09_BORNES")
 
 
+def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
+    nodes = (
+        (20.0, 68.0, "QDG", "origem"),
+        (99.0, 147.0, "Q0", "secciona"),
+        (178.0, 226.0, "Q1", "disjuntor"),
+        (257.0, 315.0, "VFD1", "inversor"),
+        (346.0, 404.0, "M1", "motor"),
+    )
+    for x0, x1, tag, function in nodes:
+        add_rect(layout, x0, 249.0, x1, 261.0, "04_EQUIPAMENTOS")
+        centered_text(layout, tag, ((x0 + x1) / 2.0, 257.0), 2.0, "04_EQUIPAMENTOS")
+        centered_text(layout, function, ((x0 + x1) / 2.0, 252.0), 1.2, "02_TEXTO")
+    for (_, x0_next, _, _), (x1_prev, _, _, _) in zip(nodes, nodes[1:]):
+        y = 255.0
+        line(layout, (x1_prev, y), (x0_next - 2.0, y), "05_POTENCIA")
+        line(layout, (x0_next - 2.0, y), (x0_next - 5.0, y + 1.8), "05_POTENCIA")
+        line(layout, (x0_next - 2.0, y), (x0_next - 5.0, y - 1.8), "05_POTENCIA")
+    centered_text(
+        layout,
+        "AUXILIAR: Q2 → PS1 / 24 Vcc     |     DPS1 → PE",
+        (210.0, 241.5),
+        1.7,
+        "02_TEXTO",
+    )
+
+    x_edges = (18.0, 60.0, 143.0, 279.0, 410.0)
+    table_top = 232.0
+    header_height = 10.0
+    row_height = 15.0
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "01_CARIMBO")
+
+    headers = ("ELEMENTO", "PREMISSA ATUAL", "DADO PARA SUBSTITUIR", "O QUE AINDA NÃO ESTÁ COMPROVADO")
+    for index, label in enumerate(headers):
+        add_mtext(
+            layout,
+            label,
+            (x_edges[index] + 2.0, table_top - 2.0),
+            x_edges[index + 1] - x_edges[index] - 4.0,
+            1.5,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered_text(layout, row["elemento"], ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0), 1.7, "02_TEXTO")
+        for index, key in ((1, "premissa_atual"), (2, "dado_para_substituir"), (3, "verificacao_pendente")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 2.0, row_top - 1.8),
+                x_edges[index + 1] - x_edges[index] - 4.0,
+                1.45,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+
+    add_rect(layout, 18.0, 98.0, 410.0, 109.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "Icu = 10 kA / Icc presumida = 5 kA resulta apenas em uma razão aritmética de 2:1; sem dados, curvas e tabelas do fabricante, isso não prova capacidade, seletividade, retaguarda ou coordenação.",
+        (21.0, 106.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_power,
@@ -533,14 +616,36 @@ DRAWERS = {
 }
 
 
+def read_coordination_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "protecao-coordenacao.csv"
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        expected_fields = (
+            "elemento",
+            "premissa_atual",
+            "dado_para_substituir",
+            "verificacao_pendente",
+        )
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        rows = list(reader)
+    if len(rows) != 7 or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows):
+        raise ValueError(f"A matriz de protecao deve conter sete linhas completas: {source}")
+    return rows
+
+
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
+    coordination_rows = read_coordination_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout)
+        if spec.number == 7:
+            draw_protection_coordination(layout, coordination_rows)
+        else:
+            DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:

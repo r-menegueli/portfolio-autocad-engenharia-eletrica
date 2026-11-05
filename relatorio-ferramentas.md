@@ -445,3 +445,23 @@ O workbook P05 regenerado preservou sete abas e 209 fórmulas, passou nas 294
 verificações específicas e foi novamente renderizado e inspecionado com a ferramenta
 disponível no ambiente de revisão. Duas execuções independentes do novo gerador
 produziram o mesmo SHA-256 após a normalização dos metadados internos.
+
+## Revisão 02 do Projeto 01 — 2026-11-05
+
+O P01 passou a sete folhas; as seis fontes anteriores foram reemitidas em `/07` e
+revisão gráfica 02. A nova P01-07 apresenta a cadeia QDG–Q0–Q1–VFD1–M1 e organiza em
+sete linhas os dados necessários para revisar Icc, seccionador, disjuntor, VFD/motor,
+fonte auxiliar, DPS e cabos. O CSV vinculado mantém cada premissa, dado substituto e
+análise pendente. A comparação aritmética 10 kA/5 kA está explicitamente marcada como
+insuficiente para provar coordenação.
+
+O AcCoreConsole do AutoCAD 2027 auditou 7/7 DXFs. P01-07 foi conferida no PNG de
+produção a 300 dpi, em PDF rasterizado pelo Poppler a 150 dpi e na folha de contato das
+sete páginas. Não observei corte ou colisão relevante. O revisor atribuiu similaridade
+PDF/PNG de 0,987268 à nova folha. A validação estrita integrada aprovou 501.282
+verificações, sem erros nem avisos; a revisão consolidada aprovou 12 projetos, 94
+pranchas, 376 arquivos gráficos e 66 CSVs, com similaridade mínima de 0,9842.
+
+A inspeção visual dos SVGs no navegador segue pendente da autorização do usuário. A
+revisão confirma integridade CAD e apresentação, mas não dimensionamento ou coordenação
+elétrica para execução.

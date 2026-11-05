@@ -92,8 +92,8 @@ foram renumeradas para `NN/09` e reemitidas na revisão gráfica 02.
 
 - AcCoreConsole 2027 abriu e auditou individualmente os nove DXFs, `PASS` em 9/9.
 - Validador específico: 4.247 verificações, 0 erros.
-- Validador estrito integrado: 496.492 verificações, 0 erros e 0 avisos.
-- Revisor do portfólio: 12 projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs;
+- Validador estrito integrado: 501.282 verificações, 0 erros e 0 avisos.
+- Revisor do portfólio: 12 projetos, 94 pranchas, 376 arquivos gráficos e 66 CSVs;
   similaridade mínima PDF/PNG de 0,9842.
 - P07-09 foi inspecionada no PNG de produção e em raster do PDF; a folha de contato
   permitiu conferir numeração e composição das nove pranchas.

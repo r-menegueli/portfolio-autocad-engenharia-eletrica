@@ -49,3 +49,24 @@ versão 26.0.118.0.0, em 2026-09-05. Todas retornaram `AUTOCAD_AUDIT=PASS`.
 Não permaneceram cortes, desalinhamentos, linhas desconectadas, textos ilegíveis ou
 colisões visuais relevantes na revisão 00. A inspeção visual complementa a validação
 geométrica automática e não constitui validação de engenharia para execução real.
+
+## Revisão gráfica 02 — 2026-11-05
+
+A revisão acrescentou a prancha 07, com a cadeia QDG–Q0–Q1–VFD1–M1 e uma matriz de
+sete grupos: corrente de curto-circuito, Q0, Q1, VFD1/M1, Q2/PS1, DPS1 e cabos W01/W02.
+Cada linha identifica a premissa atual, os dados reais necessários e a análise em
+aberto. A razão numérica entre a capacidade presumida de Q1 e a Icc didática foi
+explicitamente marcada como insuficiente para provar coordenação.
+
+As sete folhas foram inspecionadas nos PNGs de produção a 300 dpi e na composição P01;
+P01-07 também foi rasterizada independentemente do PDF com Poppler a 150 dpi. A tabela,
+as notas, o aviso e o carimbo permanecem dentro da folha e sem sobreposição relevante.
+O revisor do portfólio atribuiu similaridade PDF/PNG de 0,987268 a P01-07.
+
+O Autodesk AcCoreConsole 2027 abriu e auditou os sete DXFs: `AUTOCAD_AUDIT=PASS` em
+7/7. A validação estrita integrada passou por 501.282 verificações, sem erros nem
+avisos; o revisor consolidado aprovou 12 projetos, 94 pranchas, 376 arquivos gráficos
+e 66 CSVs. A inspeção visual dos SVGs em navegador continua pendente de autorização.
+
+Essa revisão confirma apresentação, integridade CAD e consistência documental. Não
+confirma dimensionamento, coordenação elétrica, seletividade ou conformidade normativa.

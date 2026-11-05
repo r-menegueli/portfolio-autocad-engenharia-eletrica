@@ -1,0 +1,8 @@
+elemento,premissa_atual,dado_para_substituir,verificacao_pendente
+Icc no painel,"5 kA presumidos","Icc máximo e mínimo calculados no ponto, com dados da fonte, transformador e impedâncias do trajeto","O nível de curto não foi levantado nem calculado para os terminais do painel"
+Q0,"32 A; categoria AC-23A","Modelo selecionado e classificação de suportabilidade ou corrente condicional do conjunto","Q0 é seccionamento; não substitui proteção contra curto-circuito"
+Q1,"25 A; 10 kA presumidos","Modelo, tensão, curva e ajustes; Icu/Ics em 380 V e tabelas de coordenação do fabricante","Icu/Ics, seletividade, retaguarda e energia passante não foram confrontados"
+VFD1/M1,"VFD 11 kW e saída ≥17 A; M1 7,5 kW e 15,5 A","Modelos dos equipamentos, placa do motor e proteção de entrada admitida pelo fabricante do VFD","Compatibilidade da proteção a montante, ajuste térmico e combinação com motor/cabos não foram verificados"
+Q2/PS1,"Q2 2 A; fonte 24 Vcc/2,5 A","Modelo da fonte, corrente de entrada, corrente de partida e proteção máxima recomendada","Curva, magnetização e coordenação da proteção do circuito auxiliar seguem abertas"
+DPS1,"Tipo 2, 3 polos, rede 380 V TN-S","Rede real, Uc, Up, TOV, proteção de retaguarda e modelo indicado pelo fabricante","Seleção, distância, aterramento e coordenação com a proteção a montante não foram avaliados"
+W01/W02,"W01 4G4 mm²; W02 3x4 + 3G2,5 mm²; comprimentos assumidos","Rotas, método de instalação, agrupamento, temperatura, comprimentos e dados do cabo/VFD","Ampacidade, queda de tensão, curto-circuito térmico e EMC não foram calculados"

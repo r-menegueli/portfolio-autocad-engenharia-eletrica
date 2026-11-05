@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio, inclui P05 rev. 02, P07 rev. 02, P08 rev. 02, P09 rev. 03 e P11 rev. 02 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio, inclui P01 rev. 02, P05 rev. 02, P07 rev. 02, P08 rev. 02, P09 rev. 03 e P11 rev. 02 — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 607 arquivos incluídos; 402 links relativos de Markdown verificados; 0 erros; 201.296.938 bytes na árvore atual.
+- 612 arquivos incluídos; 408 links relativos de Markdown verificados; 0 erros; 205.049.133 bytes na árvore atual.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -30,6 +30,12 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Evidência de revisão CAD
 
+- P01 revisado para a revisão 02 e sete folhas: P01-07 relaciona sete grupos de
+  premissas aos dados necessários para sua substituição e às verificações abertas.
+  O mapeamento não declara coordenação nem usa 10 kA/5 kA como prova de adequação.
+- AcCoreConsole 2027 auditou 7/7 DXFs do P01; a nova folha foi inspecionada em PNG a
+  300 dpi, PDF rasterizado a 150 dpi e na composição das sete páginas. Similaridade
+  PDF/PNG de P01-07: 0,987268.
 - P05 revisado para a revisão 02 e oito folhas: P05-08 traça a topologia e seis pares
   de proteção para estudo; o CSV marca todas as comparações pendentes.
 - P07 revisado para a revisão 02 e nove folhas: P07-09 relaciona dez eventos aos sinais,
@@ -70,10 +76,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
 - `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 496.492 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 501.282 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 93 pranchas, 372 arquivos
-  gráficos e 65 CSVs; similaridade mínima PDF/PNG de 0,9842.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 94 pranchas, 376 arquivos
+  gráficos e 66 CSVs; similaridade mínima PDF/PNG de 0,9842.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
