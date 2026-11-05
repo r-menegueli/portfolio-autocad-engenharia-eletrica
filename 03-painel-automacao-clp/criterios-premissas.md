@@ -23,6 +23,10 @@
 - Rearme exige causa removida; o reconhecimento silencia o alarme sonoro, mas não
   elimina o registro de falha.
 - Combinações impossíveis dos níveis (por exemplo LSHH sem LSH) geram falha de sensor.
+- Falha de sensor incoerente bloqueia novas partidas automáticas; a resposta para bomba
+  já em marcha é uma decisão de processo pendente e não deve ser inferida desta prancha.
+- A prancha 09 e `matriz-causa-efeito.csv` resumem a sequência e os eventos tratados;
+  tempos de 2 s, 10 s, 30 min e 0,5 s permanecem premissas acadêmicas.
 
 ## Orçamento da fonte 24 Vcc
 

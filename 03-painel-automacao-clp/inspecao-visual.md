@@ -2,7 +2,7 @@
 
 Data: 2026-09-06
 
-Status: **APROVADO**
+Status: **APROVADO PARA A REVISÃO 00 DE OITO FOLHAS (2026-09-06)**
 
 ## Método
 
@@ -27,3 +27,14 @@ corte, títulos, legendas e notas alinhados. As regiões densas das listas de I/
 bornes permanecem legíveis em A3, sem colisões visuais relevantes. PDF, SVG e PNG
 representam a mesma revisão 00. O detector automático não registrou sobreposições,
 entidades fora da moldura, clipping ou dimensões incompatíveis.
+
+## Complemento da revisão 02 — prancha 09
+
+- A nova folha de sequência foi inspecionada no PNG de produção a 300 dpi e em
+  rasterização independente do PDF a 150 dpi. O fluxo, a matriz causa-efeito, o aviso,
+  as notas e o carimbo permanecem dentro da moldura; os textos da matriz foram
+  ampliados para conferência e não apresentam cortes ou colisões visuais relevantes.
+- A sequência diferencia falhas tratadas de decisões ainda pendentes, em especial a
+  resposta para uma bomba em marcha diante de sensores incoerentes.
+- Esta revisão não foi aberta no AutoCAD/AcCoreConsole. A inspeção visual do SVG no
+  navegador segue pendente de autorização do usuário.

@@ -305,152 +305,171 @@
     {
       "id": "p03-01-arquitetura-automacao",
       "source": "03-painel-automacao-clp/fonte/01_arquitetura_automacao.dxf",
-      "source_sha256": "d0fc5b72c2528800d60e9aa4bb80c09a460056e3ef2fb00ce39d36e84eb6a818",
+      "source_sha256": "0c47fa1d7b0316748ec76182c8670466f2b8911680879379e15c65550eb892bb",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf",
-          "sha256": "ee8d071955cade82df4620cdabe3e17350acf02f0ce86d7731093424cc01ca4d"
+          "sha256": "de98828345897dec115c4e0f2d1a08141917cf946ad8ab33eb6bb908bf88b857"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/01_arquitetura_automacao.png",
-          "sha256": "877c29e7785db08d99aa90e6d065f26630f944efd171dcb77b11e37010090c1e"
+          "sha256": "937ec5096101111c3cabadeb1c918d610cfb1bcbb4dd864254cb3e408107a997"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/01_arquitetura_automacao.svg",
-          "sha256": "3d4d2dee3039613e25b34038d998b0ab5d4930c3a311c781fb08b6a5824b80cf"
+          "sha256": "91c275922f61697f56a6e21c49870b607a095e7c1da280cf365ef55c837e53cb"
         }
       }
     },
     {
       "id": "p03-02-alimentacao-24v",
       "source": "03-painel-automacao-clp/fonte/02_alimentacao_24v.dxf",
-      "source_sha256": "9e7856166d467eeb61cceddf0b0d364f946730da2fb692370332248e830e0241",
+      "source_sha256": "2140dd7469a98fef3f6ba565eed86d81eca2e373d352e4cbff085f8ed20f2aff",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/02_alimentacao_24v.pdf",
-          "sha256": "2e7f922b795c5b2537dc6bc8ee1a5d4f19505ce7e03d126a93dcd5d4c481c283"
+          "sha256": "7ee968c9bdef1f46b7f765ce664a6259f3d1031b8488157aede0e7062e0ef58f"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/02_alimentacao_24v.png",
-          "sha256": "bc45949340a2fb04c31b14458d94f4e6ee9ac07e438dbf2de330140dc7029186"
+          "sha256": "e189875c01669e7055d03ad4eebc3a1f2bc45eee56bf45f5c33fc2ef323af9b5"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/02_alimentacao_24v.svg",
-          "sha256": "aac557cdc2e375f50be118263c31273a31ffb44ec182701f988764a41b1db50c"
+          "sha256": "36555093be20b30b2af4a2ef62d32c6d9869a6a1651dcafd7cd59286653aeab7"
         }
       }
     },
     {
       "id": "p03-03-entradas-clp",
       "source": "03-painel-automacao-clp/fonte/03_entradas_clp.dxf",
-      "source_sha256": "77327a5724bfa484c5e2bc928e6b4bf5e0b655a80410aefebcfec9e7267058aa",
+      "source_sha256": "9fe4161d461d438e42cc21a8c48411c75746a4a6cf773035c9c30ba01d0d4490",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/03_entradas_clp.pdf",
-          "sha256": "5b727e1635e4efefe6b6748b2b48a8c67a989650d8a2e16740d8c31200260df1"
+          "sha256": "92cfedafcb10caeb2f7000520c525f4709737eb07b01e5d4ffde61d266a72643"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/03_entradas_clp.png",
-          "sha256": "5a2ebf2841d73b36502459602070071b7c6908597a5673fbf0711cfc776856a2"
+          "sha256": "ed2a94ac8c38cf3c5f4dd4d1c8eccaea883f60cf03cad2d9a55a82fed65a0812"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/03_entradas_clp.svg",
-          "sha256": "310b18af96486c29dd9a870c9d139d28afbb65b91aee9a368963fc53f879e8d4"
+          "sha256": "a29dc0589f08c439817af829f62fdebe40503bab3f073485d3eaf25d443711bb"
         }
       }
     },
     {
       "id": "p03-04-saidas-clp",
       "source": "03-painel-automacao-clp/fonte/04_saidas_clp.dxf",
-      "source_sha256": "acfcf28135c755ab74ea7560557be51531ef08214dc5383a7423c18225fa8017",
+      "source_sha256": "4ef77d4ef03408488a381d387a6866db84db47c48a2d5555d99cbc01813e1c30",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/04_saidas_clp.pdf",
-          "sha256": "a0ed129cf89690412f211f5712611975c577d57e6070d3f7fd753bcbba50dd84"
+          "sha256": "71da1f463f36e33bb9a805c7ca8eb6cbcfd7024a55497562c8943a91857a0e70"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/04_saidas_clp.png",
-          "sha256": "19bf45978ef90d672256a97b91a18ac970f2eee27789213b661ec373c5dfb5a4"
+          "sha256": "6765a5e28cb4176c34eedf9f07ff1ab64db8a8bf28fc43e8e08aa324ed737786"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/04_saidas_clp.svg",
-          "sha256": "f52b20c04fa07b0550297c115ef579325ce3ef9741f3e0db30a5382977dd4416"
+          "sha256": "8cec3c77722b27423e39207979b6c7e6fc04827cb0a7a0014b515f5cdea0321d"
         }
       }
     },
     {
       "id": "p03-05-diagrama-comando",
       "source": "03-painel-automacao-clp/fonte/05_diagrama_comando.dxf",
-      "source_sha256": "7b701aaa12d01c2ddcd896a25722131895ef8dc7c8bc517cd9381bace0fc434b",
+      "source_sha256": "2764f6e3a505e7d44dc52f2fcb7e7e3d13e7b69f8fe4482c8a85fddf877b1406",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/05_diagrama_comando.pdf",
-          "sha256": "0771cfa1207fc77feeda11665d4a6e38f07bdd871bd41fea6da0b0f21c5949b5"
+          "sha256": "34bead592e07a814ef404fac3354a99c8306ff48ad16cf0009ca987bdf099f6d"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/05_diagrama_comando.png",
-          "sha256": "8ec868b77038b2dd5743525a11940e813faa273bb04bc70dcdec4591c385ceb3"
+          "sha256": "40b1fb4ed0e2de43bb011f4ee671b04359f8201d2852f1ba47f880675480dc04"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/05_diagrama_comando.svg",
-          "sha256": "0762e5768aa3d201d3afe2247c6053d9313ee780f6a0466af9d4b1b207d2ed6e"
+          "sha256": "b39cd78bf32380a11a0c4e516e7485a98e93c4d31a0e76ac9a11edbebaeea644"
         }
       }
     },
     {
       "id": "p03-06-layout-painel",
       "source": "03-painel-automacao-clp/fonte/06_layout_painel.dxf",
-      "source_sha256": "32d8a6dcbfcc2cc38d0be683d63c147245ec0b1d7697ab1964de93a6ee3b73a6",
+      "source_sha256": "78c8dd1646c20c0a931de04cada884f0eeb6f5d49422e9542fd5ccdbb3bd5e5e",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/06_layout_painel.pdf",
-          "sha256": "5936d7832225a5332c71afbef882f94477ef7e3c771af357b26a77bb103cab61"
+          "sha256": "e9fd72bb824882cd3f26529d3fd60df3e69074f039ba0947bceda8a165716d28"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/06_layout_painel.png",
-          "sha256": "5891566966f3c025a75e22394e0dd10bc6700b9a5ce229561fbfefbb9854b32f"
+          "sha256": "d93d60872790ca0482aa76e0d18b7a6f7bc00da96e8d68c281d2cdc1d73b98e0"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/06_layout_painel.svg",
-          "sha256": "fae92fb4502ea74cd0e1fffc34109254190b903697ff91a7307e05aa5dbd583b"
+          "sha256": "ef73d2a603e34d5c91b1e538f72ca7763ec7014310a33084759f5abf4717810c"
         }
       }
     },
     {
       "id": "p03-07-diagrama-bornes",
       "source": "03-painel-automacao-clp/fonte/07_diagrama_bornes.dxf",
-      "source_sha256": "e9c3aaf76c725630440109c1f835823365c4070a3b21c9388ae204189ac5da82",
+      "source_sha256": "0a2c01374b4ff5a3e05e48595dfc0deddd75b656b4676252ea6378ca11805b18",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/07_diagrama_bornes.pdf",
-          "sha256": "f9bbb8fd73d719d96614b3af754440ceb61816f338baa4b35bcb5ce78e79025d"
+          "sha256": "f80a8367790df14fe555a5d817f0903e6a6a6afb3b39a05bfed7e76c218b5d45"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/07_diagrama_bornes.png",
-          "sha256": "e579b760d6208542ee009a0a7a5153b9bc3747d2cdd41fb41cf22b1036cee9ab"
+          "sha256": "dd149ebc92e0c80bda792e64000e6541e1ae3b95d471b520879c639396e85f7e"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/07_diagrama_bornes.svg",
-          "sha256": "58363b2246d9f77e2310ededba7db1b24d80815b2c9263b955b2a834527efb14"
+          "sha256": "03c718c99f7319c198795884070aff7945327334711bd7a1dc88f4e85c09ab95"
         }
       }
     },
     {
       "id": "p03-08-interligacoes-campo",
       "source": "03-painel-automacao-clp/fonte/08_interligacoes_campo.dxf",
-      "source_sha256": "05da691a05bc0596174cc374cf3e568983b3ca06e106abc86a1f0b1248f27f24",
+      "source_sha256": "83abcf4de20352a9f650eccc264d3a222f7faa74f99f56505d3a30a58c81f0bb",
       "outputs": {
         "pdf": {
           "path": "03-painel-automacao-clp/exports/08_interligacoes_campo.pdf",
-          "sha256": "27a46876fa5db4c35213d437de361e88491c89439bd46dbd0c602767c4178748"
+          "sha256": "d57297d76388a3ce9a64d514d6cf300c8bab7df6c98fe3ff29ae20e084e2de01"
         },
         "png": {
           "path": "03-painel-automacao-clp/exports/08_interligacoes_campo.png",
-          "sha256": "82b2cf9748314d2e54c885f9a0c577a3ea1c61d6a627474d55730505236b709d"
+          "sha256": "ca4c9bd4f5421d5384365329dbf641e2a9da3108187dfeb3978b760ec1f999d0"
         },
         "svg": {
           "path": "03-painel-automacao-clp/exports/08_interligacoes_campo.svg",
-          "sha256": "81ad316078302c1af588f5b43fe31c9356358e80088fc848700f3d942c872998"
+          "sha256": "27d522c0aff41add9180ec6a6e05e4fddb021a4f64de49c266d2885623f6b4fa"
+        }
+      }
+    },
+    {
+      "id": "p03-09-sequencia-operacao-intertravamentos",
+      "source": "03-painel-automacao-clp/fonte/09_sequencia_operacao_intertravamentos.dxf",
+      "source_sha256": "4dc55bea1619c4c3cdb4908a41ac0ba7200f04a8f90235b42365c752bff265f3",
+      "outputs": {
+        "pdf": {
+          "path": "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.pdf",
+          "sha256": "0e30f80ec1bfc7bffdaa4fe63054d1cc893ca10986000cd1dd0b54be34d49d9f"
+        },
+        "png": {
+          "path": "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.png",
+          "sha256": "38731c725cb659a51c2afd12ebccdb170fb719c4fad4cea79fb95c3931e2c893"
+        },
+        "svg": {
+          "path": "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.svg",
+          "sha256": "2bc538a26ffc12c34af972a00bc16c5c687034801150b579f41015f20fb134a1"
         }
       }
     },

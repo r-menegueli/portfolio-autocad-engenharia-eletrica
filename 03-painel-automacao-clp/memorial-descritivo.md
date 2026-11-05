@@ -4,7 +4,7 @@
 
 Projeto 03 - Painel de automação com CLP para duas bombas de reservatório.
 
-Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 00.
+Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 02 em 2026-11-05.
 
 ## 2. Finalidade e solução conceitual
 
@@ -32,6 +32,10 @@ seletividade, queda de tensão, temperatura, método de instalação e dados de 
 CLP1 determina alternância, demanda, temporizações, supervisão e alarmes. K1 e K2 são
 relés de interface entre as saídas transistorizadas e as bobinas KM1/KM2. Diodos de
 supressão devem ser instalados nas bobinas CC compatíveis.
+
+A prancha 09 resume os estados de operação e a matriz causa-efeito. A lógica para
+combinações incoerentes dos sensores bloqueia novas partidas automáticas, mas a ação
+para uma bomba já em marcha ainda requer decisão de processo antes de programar o CLP.
 
 S0 atua em dois canais sobre KSR1. Os contatos seguros de KSR1 retiram a energia das
 cadeias de KM1 e KM2 sem depender do programa. O CLP apenas monitora o estado de KSR1.

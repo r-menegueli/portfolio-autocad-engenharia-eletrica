@@ -1,8 +1,9 @@
-"""Gera as oito pranchas DXF do Projeto 03 de forma determinística."""
+"""Gera as nove pranchas DXF do Projeto 03 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -35,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "03-painel-automacao-clp"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -89,6 +90,23 @@ SHEETS = (
               "Comprimentos de W01-W12 são premissas. Confirmar rotas, segregação, EMC, queda\\P"
               "de tensão, tipo de sensor e equipotencialização após levantamento de campo.",
               "Linha cheia: potência | tracejado funcional: controle | LS: nível | PE: proteção"),
+    SheetSpec(9, "09_sequencia_operacao_intertravamentos.dxf", "SEQUÊNCIA DE OPERAÇÃO E INTERTRAVAMENTOS",
+              "Estados do CLP, demanda, alternância, confirmação e resposta a falhas",
+              "Lógica funcional conceitual; não é programa executável nem função de segurança validada.\\P"
+              "S1 MAN usa S2/S3 e S4/S5 sob os mesmos permissivos; sensores incoerentes bloqueiam novas partidas AUTO, e a resposta para bomba em marcha segue pendente.",
+              "LSL: encerra demanda | LSHH por 10 s: solicita reserva | Kx/KMx_FB: comando/retorno | S6: reconhecer e rearmar"),
+)
+
+
+CAUSE_EFFECTS = (
+    ("EMERGÊNCIA", "S0 acionado / KSR1_OK = 0", "KSR1 abre as cadeias de KM1 e KM2; falha memorizada", "Liberar S0, confirmar retornos e reconhecer em S6"),
+    ("NÍVEL CRÍTICO", "LSL_LL / KDRY_OK = 0", "KDRY bloqueia fisicamente as duas bobinas", "Nível de captação recuperado e rearme permitido"),
+    ("SOBRECARGA", "RT1_OK ou RT2_OK = 0", "Remove a bomba afetada; em AUTO solicita a reserva disponível", "Rearmar RT e conferir o retorno do contator"),
+    ("FALHA DE PARTIDA", "Kx_CMD sem KMx_FB em até 2 s", "Bloqueia a bomba e tenta a reserva se houver demanda", "Remover causa e reconhecer; validar KMx_FB"),
+    ("RETORNO INDEVIDO", "KMx_FB ativo sem Kx_CMD", "Memoriza falha e exige intervenção", "Investigar circuito/retorno antes de S6"),
+    ("SENSOR INCOERENTE", "Combinação de nível impossível", "Bloqueia nova partida AUTO; efeito sobre bomba em marcha não definido", "Decisão de projeto pendente; validar plausibilidade antes do rearme"),
+    ("TEMPO / SEM BOMBA", "Demanda > 30 min ou nenhuma bomba disponível", "Para as bombas e mantém H5/BZ1 como alarme retentivo", "Remover causa, alinhar retornos e reconhecer em S6"),
+    ("ACK / REARME", "S6 mantido por pelo menos 0,5 s", "Silencia BZ1; só limpa falha após remoção da causa e coerência dos retornos", "H5 permanece ativo enquanto houver falha ativa ou memorizada"),
 )
 
 
@@ -194,7 +212,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("SEQUENCIA OPERACIONAL", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.65, "02_TEXTO")
 
 
@@ -216,7 +234,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -232,7 +250,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -522,6 +540,87 @@ def draw_field(layout) -> None:
     centered(layout, "PE contínuo para painel, porta e carcaças M1/M2", (210, 106), 1.45, "05_POTENCIA")
 
 
+def draw_sequence_box(layout, x0: float, x1: float, tag: str, description: str) -> None:
+    add_rect(layout, x0, 232, x1, 260, "06_COMANDO")
+    centered(layout, tag, ((x0 + x1) / 2, 252.5), 1.55, "06_COMANDO")
+    centered(layout, description, ((x0 + x1) / 2, 239), 1.18, "02_TEXTO")
+
+
+def flow_arrow(layout, x0: float, x1: float, y: float) -> None:
+    line(layout, (x0, y), (x1 - 2.0, y), "06_COMANDO")
+    layout.add_lwpolyline(
+        [(x1, y), (x1 - 2.0, y + 1.4), (x1 - 2.0, y - 1.4)],
+        close=True,
+        dxfattribs={"layer": "06_COMANDO"},
+    )
+
+
+def down_arrow(layout, x: float, y_top: float, y_bottom: float) -> None:
+    line(layout, (x, y_top), (x, y_bottom + 2.0), "06_COMANDO")
+    layout.add_lwpolyline(
+        [(x, y_bottom), (x - 1.4, y_bottom + 2.0), (x + 1.4, y_bottom + 2.0)],
+        close=True,
+        dxfattribs={"layer": "06_COMANDO"},
+    )
+
+
+def draw_matrix(layout) -> None:
+    x0, x1, y_top = 18.0, 402.0, 188.0
+    header_h, row_h = 10.0, 10.0
+    widths = (48.0, 78.0, 156.0, 102.0)
+    y_bottom = y_top - header_h - row_h * len(CAUSE_EFFECTS)
+    add_rect(layout, x0, y_bottom, x1, y_top, "12_LEGENDA")
+    columns = [x0]
+    for width in widths:
+        columns.append(columns[-1] + width)
+    for x in columns[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x0, y_top - header_h), (x1, y_top - header_h), "12_LEGENDA")
+    headers = ("EVENTO", "DETECÇÃO", "RESPOSTA CONCEITUAL", "RETORNO / PENDÊNCIA")
+    for index, header in enumerate(headers):
+        centered(layout, header, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.35, "12_LEGENDA")
+    for row_index, row in enumerate(CAUSE_EFFECTS):
+        y1 = y_top - header_h - row_index * row_h
+        y0 = y1 - row_h
+        if row_index:
+            line(layout, (x0, y1), (x1, y1), "12_LEGENDA")
+        for col_index, value in enumerate(row):
+            centered(
+                layout,
+                value,
+                ((columns[col_index] + columns[col_index + 1]) / 2, (y0 + y1) / 2),
+                1.22,
+                "02_TEXTO",
+            )
+
+
+def draw_sequence(layout) -> None:
+    boxes = ((18, 74, "01 ENERGIZAR", "Q0 + PSU1 / 24 V"),
+             (80, 136, "02 DIAGNÓSTICO", "KSR1, KDRY, RTs, LS"),
+             (142, 194, "03 PRONTO", "H1; sem falha travada"),
+             (200, 264, "04 AUTO", "LSH memoriza demanda"),
+             (270, 330, "05 TITULAR", "Comanda K1 ou K2"),
+             (336, 402, "06 RETORNO?", "KMx_FB em até 2 s"))
+    for x0, x1, tag, description in boxes:
+        draw_sequence_box(layout, x0, x1, tag, description)
+    for left_box, right_box in zip(boxes, boxes[1:]):
+        flow_arrow(layout, left_box[1], right_box[0], 246)
+
+    add_rect(layout, 18, 198, 205, 222, "06_COMANDO")
+    centered(layout, "SEM RETORNO EM 2 s", (111.5, 216), 1.55, "06_COMANDO")
+    centered(layout, "Bloqueia bomba; tenta reserva sob demanda", (111.5, 204.5), 1.18, "02_TEXTO")
+    add_rect(layout, 212, 198, 402, 222, "07_INSTRUMENTACAO")
+    centered(layout, "CICLO AUTOMÁTICO", (307, 216), 1.55, "07_INSTRUMENTACAO")
+    centered(layout, "LSL encerra; sem falha, alterna. LSHH ≥ 10 s solicita reserva", (307, 204.5), 1.18, "02_TEXTO")
+    line(layout, (369, 232), (369, 227), "06_COMANDO")
+    line(layout, (111.5, 227), (369, 227), "06_COMANDO")
+    down_arrow(layout, 111.5, 227, 222)
+    down_arrow(layout, 307, 227, 222)
+    centered(layout, "NÃO", (103, 224.5), 1.0, "06_COMANDO")
+    centered(layout, "SIM", (316, 224.5), 1.0, "06_COMANDO")
+    draw_matrix(layout)
+
+
 DRAWERS = {
     1: draw_architecture,
     2: draw_24v,
@@ -531,7 +630,17 @@ DRAWERS = {
     6: draw_layout,
     7: draw_terminals,
     8: draw_field,
+    9: draw_sequence,
 }
+
+
+def write_matrix_csv(project_dir: Path) -> Path:
+    path = project_dir / "matriz-causa-efeito.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("evento", "deteccao", "resposta_conceitual", "retorno_ou_pendencia"))
+        writer.writerows(CAUSE_EFFECTS)
+    return path
 
 
 def generate(root: Path) -> list[Path]:
@@ -548,6 +657,9 @@ def generate(root: Path) -> list[Path]:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix = write_matrix_csv(root / PROJECT_SLUG)
+    outputs.append(matrix)
+    print(f"Gerado: {matrix.relative_to(root)}")
     return outputs
 
 

@@ -30,6 +30,8 @@ a ensaio e manutenção controlada, não a burlar proteções.
 - **Falha de partida:** ausência do retorno KM em 2 s bloqueia a bomba e tenta a reserva.
 - **Partida indevida:** retorno KM sem comando gera falha e exige intervenção.
 - **Sensor incoerente:** combinações impossíveis de nível impedem nova partida automática.
+- A ação para uma bomba que já esteja em marcha quando surgir incoerência de sensores
+  não está definida; resolver com dados do processo antes de implementar a lógica.
 - **Tempo excedido:** demanda acima de 30 min para as bombas e gera alarme retentivo.
 - **Falha total:** se nenhuma bomba estiver disponível durante demanda, H5 e BZ1 atuam.
 
@@ -39,3 +41,7 @@ S6 reconhece/silencia BZ1 quando mantido por pelo menos 0,5 s. O rearme só remo
 quando emergência foi liberada, nível de captação recuperou, RTs foram rearmados e os
 retornos dos contatores coincidem com os comandos. H5 permanece aceso enquanto existir
 falha ativa ou memorizada.
+
+A prancha 09 e `matriz-causa-efeito.csv` dão uma visão visual e tabular da sequência;
+os tempos e as respostas continuam conceituais e requerem validação pelo responsável
+pelo processo e pelo hardware selecionado.

@@ -20,7 +20,18 @@ SHEETS = (
     "06_layout_painel.dxf",
     "07_diagrama_bornes.dxf",
     "08_interligacoes_campo.dxf",
+    "09_sequencia_operacao_intertravamentos.dxf",
 )
+REQUIRED_CAUSE_EFFECTS = {
+    "EMERGÊNCIA",
+    "NÍVEL CRÍTICO",
+    "SOBRECARGA",
+    "FALHA DE PARTIDA",
+    "RETORNO INDEVIDO",
+    "SENSOR INCOERENTE",
+    "TEMPO / SEM BOMBA",
+    "ACK / REARME",
+}
 REQUIRED_INPUT_TAGS = {
     "KSR1_OK", "S1_AUTO", "S1_MAN", "S2_P1", "S3_P1", "S4_P2", "S5_P2",
     "LSL_LL", "LSL", "LSH", "LSHH", "RT1_OK", "RT2_OK", "KM1_FB", "KM2_FB", "S6_ACK",
@@ -62,6 +73,7 @@ def validate(root: Path) -> dict:
     terminal_rows = read_rows(project / "lista-bornes.csv")
     cable_rows = read_rows(project / "lista-cabos.csv")
     material_rows = read_rows(project / "lista-materiais.csv")
+    cause_effect_rows = read_rows(project / "matriz-causa-efeito.csv")
 
     addresses = [row["endereco"] for row in io_rows]
     checks += 3
@@ -104,6 +116,17 @@ def validate(root: Path) -> dict:
     checks += len(REQUIRED_MATERIALS)
     for tag in sorted(REQUIRED_MATERIALS - material_ids):
         errors.append(f"Material obrigatório ausente: {tag}.")
+
+    cause_effect_tags = {row["evento"] for row in cause_effect_rows}
+    checks += 3
+    if cause_effect_tags != REQUIRED_CAUSE_EFFECTS:
+        errors.append("A matriz causa-efeito não contém exatamente os oito eventos previstos.")
+    if len(cause_effect_rows) != len(REQUIRED_CAUSE_EFFECTS):
+        errors.append("Há evento duplicado ou ausente na matriz causa-efeito.")
+    if any(not all(row[field].strip() for field in (
+        "deteccao", "resposta_conceitual", "retorno_ou_pendencia"
+    )) for row in cause_effect_rows):
+        errors.append("Há evento sem detecção, resposta ou retorno/pendência documentado.")
 
     # Propriedade lógica: nenhum comando físico pode existir sem os três permissivos.
     truth_rows = 0
@@ -151,7 +174,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         all_dxf_text.append(extract_text(doc))
 
@@ -160,6 +183,15 @@ def validate(root: Path) -> dict:
         checks += 1
         if tag not in merged:
             errors.append(f"Identificação não localizada no conjunto DXF: {tag}.")
+
+    for event in REQUIRED_CAUSE_EFFECTS:
+        checks += 1
+        if event.casefold() not in merged:
+            errors.append(f"Evento da matriz não aparece nas pranchas: {event}.")
+    checks += len(cause_effect_rows)
+    for row in cause_effect_rows:
+        if row["evento"].casefold() not in merged:
+            errors.append(f"Evento da matriz não aparece no desenho: {row['evento']}.")
 
     result = {
         "status": "PASS" if not errors else "FAIL",

@@ -118,6 +118,12 @@ de I/O, bornes, cabos e materiais; sequência, estados e pseudocódigo.
 2027, derivados PDF/SVG/PNG inspecionados, invariantes lógicos e validação estrita
 aprovados.
 
+**Revisão 02 (2026-11-05).** Acrescentada a prancha 09 com sequência visual de
+operação/intertravamentos e a matriz causa-efeito em CSV. A tabela distingue as
+respostas definidas das decisões de processo ainda pendentes, como a reação a sensores
+incoerentes durante uma marcha. As nove folhas foram regeneradas; a nova revisão não
+foi reaberta no AutoCAD nesta rodada.
+
 ## P04 — Controle de nível de reservatório
 
 **Objetivo.** Documentar uma malha acadêmica de nível com bomba, instrumentação,

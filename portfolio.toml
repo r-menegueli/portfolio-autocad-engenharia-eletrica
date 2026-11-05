@@ -164,7 +164,7 @@ id = "03-painel-automacao-clp"
 path = "03-painel-automacao-clp"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -176,6 +176,7 @@ required_files = [
   "lista-io.csv",
   "lista-bornes.csv",
   "lista-cabos.csv",
+  "matriz-causa-efeito.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_03.py",
   "fonte/validar_projeto_03.py",
@@ -667,6 +668,17 @@ source = "03-painel-automacao-clp/fonte/08_interligacoes_campo.dxf"
 svg = "03-painel-automacao-clp/exports/08_interligacoes_campo.svg"
 pdf = "03-painel-automacao-clp/exports/08_interligacoes_campo.pdf"
 png = "03-painel-automacao-clp/exports/08_interligacoes_campo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-09-sequencia-operacao-intertravamentos"
+kind = "sheet"
+title = "Projeto 03 - Sequência de operação e intertravamentos"
+source = "03-painel-automacao-clp/fonte/09_sequencia_operacao_intertravamentos.dxf"
+svg = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.svg"
+pdf = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.pdf"
+png = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.png"
 require_a3 = true
 require_notice = true
 
