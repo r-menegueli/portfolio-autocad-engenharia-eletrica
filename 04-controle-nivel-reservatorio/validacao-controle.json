@@ -1,10 +1,11 @@
 {
-  "checks": 169,
+  "checks": 225,
   "errors": [],
   "results": {
     "analog_inputs": 2,
     "analog_outputs": 1,
     "cables": 9,
+    "cause_effect_events": 9,
     "digital_inputs": 10,
     "digital_outputs": 10,
     "instruments_and_equipment": 10,
@@ -17,7 +18,7 @@
     },
     "safety_truth_table_rows": 64,
     "setpoint_percent": 60,
-    "sheets": 6,
+    "sheets": 7,
     "terminals": 11
   },
   "status": "PASS"

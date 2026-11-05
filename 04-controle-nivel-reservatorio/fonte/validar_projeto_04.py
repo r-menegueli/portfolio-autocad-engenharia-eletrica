@@ -18,6 +18,7 @@ SHEETS = (
     "04_diagrama_eletrico.dxf",
     "05_interligacoes_instrumentos.dxf",
     "06_layout_sistema.dxf",
+    "07_sequencia_operacao_causa_efeito.dxf",
 )
 REQUIRED_INSTRUMENTS = {
     "LT-101", "LSL-101", "LSH-101", "LSHH-101", "LIC-101",
@@ -62,6 +63,32 @@ def validate(root: Path) -> dict:
     cable_rows = read_rows(project / "lista-cabos.csv")
     terminal_rows = read_rows(project / "lista-bornes.csv")
     material_rows = read_rows(project / "lista-materiais.csv")
+    effect_rows = read_rows(project / "matriz-causa-efeito.csv")
+
+    expected_events = {f"E{index:02d}" for index in range(1, 10)}
+    effect_ids = {row["id"] for row in effect_rows}
+    checks += len(expected_events) + 2
+    if effect_ids != expected_events or len(effect_rows) != len(expected_events):
+        errors.append("Matriz causa–efeito deve conter exatamente os eventos E01 a E09.")
+    required_effect_text = {
+        "E01": ("STOP", "Retira comando de marcha"),
+        "E02": ("95%", "fora do PI"),
+        "E03": ("3,6 mA", "Desabilita PI"),
+        "E04": ("Falha do VFD", "bloqueia partida"),
+        "E05": ("60 min", "TA-101"),
+        "E06": ("Perda de energia", "Sem repartida automática"),
+        "E07": ("divergência persistente", "bloqueia AUTO"),
+        "E08": ("15%", "ação de processo pendente"),
+        "E09": ("85%", "ação de processo pendente"),
+    }
+    for row in effect_rows:
+        expected = required_effect_text.get(row["id"])
+        if expected:
+            checks += len(expected)
+            combined = " ".join(row.values()).casefold()
+            for term in expected:
+                if term.casefold() not in combined:
+                    errors.append(f"{row['id']}: resposta causa–efeito ausente: {term}.")
 
     instrument_tags = {row["tag"] for row in instrument_rows}
     checks += len(REQUIRED_INSTRUMENTS)
@@ -152,9 +179,29 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/06":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
             errors.append(f"{filename}: metadado de prancha incorreto.")
-        all_dxf_text.append(extract_text(doc))
+        sheet_text = extract_text(doc)
+        all_dxf_text.append(sheet_text)
+        if index == 1:
+            checks += 2
+            if "tk-101" not in sheet_text.casefold():
+                errors.append(f"{filename}: identificação do reservatório TK-101 ausente.")
+            if "tk-100" in sheet_text.casefold():
+                errors.append(f"{filename}: identificação inconsistente TK-100 encontrada.")
+        if index == 7:
+            required_sequence_terms = (
+                "emergência liberada", "kSR / vfd prontos", "lt válido; lshh inativo",
+                "operador seleciona auto", "lic assume saída rastreada", "anti-windup",
+                "pv < sp", "pv > sp", "falhas", "e01", "e02", "e03", "e04",
+                "e05", "e06", "e07", "e08", "e09", "ação de processo pendente",
+                "sem repartida automática", "sil/pl",
+            )
+            normalized_sheet = sheet_text.casefold()
+            checks += len(required_sequence_terms)
+            for term in required_sequence_terms:
+                if term.casefold() not in normalized_sheet:
+                    errors.append(f"{filename}: texto funcional ausente: {term}.")
 
     merged = " ".join(all_dxf_text).casefold()
     for tag in ("tk-101", "p-101", "m-101", "lt-101", "lsl-101", "lsh-101", "lshh-101", "plc-101", "vfd-101", "lic-101"):
@@ -168,6 +215,7 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "sheets": len(SHEETS),
+            "cause_effect_events": len(effect_rows),
             "instruments_and_equipment": len(instrument_rows),
             "io_points": len(io_rows),
             "analog_inputs": sum(row["tipo"] == "AI" for row in io_rows),

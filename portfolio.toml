@@ -189,7 +189,7 @@ id = "04-controle-nivel-reservatorio"
 path = "04-controle-nivel-reservatorio"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -204,6 +204,7 @@ required_files = [
   "lista-bornes.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
+  "matriz-causa-efeito.csv",
   "tabelas-projeto-04.xlsx",
   "fonte/gerar_projeto_04.py",
   "fonte/validar_projeto_04.py",
@@ -745,6 +746,17 @@ source = "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf"
 svg = "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg"
 pdf = "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf"
 png = "04-controle-nivel-reservatorio/exports/06_layout_sistema.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-07-sequencia-causa-efeito"
+kind = "sheet"
+title = "Projeto 04 - Sequência de operação e causa–efeito"
+source = "04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeito.dxf"
+svg = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg"
+pdf = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf"
+png = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png"
 require_a3 = true
 require_notice = true
 

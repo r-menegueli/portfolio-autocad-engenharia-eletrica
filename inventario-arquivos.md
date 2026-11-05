@@ -8,18 +8,18 @@ Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 86 | 84 pranchas de projeto, template e carimbo |
-| PDF | 85 | 84 pranchas de projeto e template A3 |
-| SVG | 86 | 84 pranchas de projeto, template e carimbo |
-| PNG | 85 | 84 pranchas de projeto e template A3 |
-| CSV | 56 | entradas, cálculos, cabos, bornes e materiais |
+| DXF | 87 | 85 pranchas de projeto, template e carimbo |
+| PDF | 86 | 85 pranchas de projeto e template A3 |
+| SVG | 87 | 85 pranchas de projeto, template e carimbo |
+| PNG | 86 | 85 pranchas de projeto e template A3 |
+| CSV | 57 | entradas, cálculos, cabos, bornes, materiais e causa–efeito |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
 | Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
 | JSON | 22 | validações e manifesto |
 | Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total** | **562** | 171.058.420 bytes (163,13 MiB) |
+| **Total** | **567** | 174.403.102 bytes |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -30,7 +30,7 @@ Nenhum arquivo DWG integra o repositório.
 | P01 | 6 | 34 | 6 | 2 | 39 | 1 | 0 |
 | P02 | 8 | 45 | 6 | 3 | 55 | 2 | 0 |
 | P03 | 9 | 52 | 7 | 5 | 133 | 2 | 0 |
-| P04 | 6 | 42 | 8 | 5 | 70 | 2 | 1 |
+| P04 | 7 | 47 | 8 | 6 | 79 | 2 | 1 |
 | P05 | 7 | 44 | 6 | 4 | 78 | 2 | 1 |
 | P06 | 7 | 44 | 7 | 5 | 85 | 2 | 0 |
 | P07 | 8 | 49 | 8 | 5 | 88 | 2 | 0 |
@@ -39,10 +39,10 @@ Nenhum arquivo DWG integra o repositório.
 | P10 | 6 | 45 | 7 | 9 | 82 | 2 | 0 |
 | P11 | 6 | 36 | 6 | 2 | 40 | 1 | 0 |
 | P12 | 7 | 40 | 6 | 2 | 39 | 1 | 0 |
-| **Total** | **84** | **521** | **83** | **56** | **999** | **21** | **2** |
+| **Total** | **85** | **526** | **83** | **57** | **1.008** | **21** | **2** |
 
 Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 83
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 85
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental

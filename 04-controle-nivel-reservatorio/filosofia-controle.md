@@ -31,6 +31,10 @@ Em automático, LIC-101 calcula a referência do VFD. Se PV ficar abaixo de SP, 
 - UA-101: sinal LT-101 fora de faixa ou diagnóstico inválido.
 - TA-101: tempo máximo de enchimento, premissa inicial de 60 min.
 
+As respostas de processo aos alarmes LA-L-101 e LA-H-101 não estão definidas nesta
+revisão. A matriz causa–efeito registra essa pendência sem associar partida ou parada
+automática aos limites de 15% e 85%.
+
 ## Falhas
 
 Sinal LT-101 abaixo de 3,6 mA ou acima de 21 mA desabilita o PI, solicita parada da bomba e gera alarme. Operação manual excepcional exige procedimento aprovado e observação local. Divergência persistente entre LT-101 e chaves de nível gera diagnóstico e bloqueio do automático. Perda de alimentação resulta em saída desenergizada e necessidade de rearme.

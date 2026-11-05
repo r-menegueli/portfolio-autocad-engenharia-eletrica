@@ -1,8 +1,9 @@
-"""Gera as seis pranchas DXF do Projeto 04 de forma determinística."""
+"""Gera as sete pranchas DXF do Projeto 04 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -35,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "04-controle-nivel-reservatorio"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -103,6 +104,28 @@ SHEETS = (
         "manutenção, NPSH, ventilação do painel, EMC, drenagem e segurança.",
         "P: potência | I: instrumentação | C: controle | E: eletrocalha | Área hachurada: acesso",
     ),
+    SheetSpec(
+        7,
+        "07_sequencia_operacao_causa_efeito.dxf",
+        "SEQUÊNCIA DE OPERAÇÃO E CAUSA–EFEITO",
+        "Partida, controle de nível, permissivos e resposta a falhas",
+        "Sequência conceitual; ação operacional de LA-L/LA-H permanece pendente.\\P"
+        "Sem classificação SIL/PL. Retenção após falta de energia depende do PLC selecionado.",
+        "PV/SP: nível/setpoint | LA-L/LA-H: alarmes em 15%/85% | ACK: reconhecimento/rearme | LSHH: alto-alto",
+    ),
+)
+
+
+CAUSE_EFFECTS = (
+    ("E01", "STOP / emergência", "STOP ou emergência atuada", "Retira comando de marcha", "Alarme retido", "Causa removida + ACK consciente"),
+    ("E02", "LSHH-101", "Nível ≥ 95%", "Bloqueia permissivo e solicita parada fora do PI", "LA-HH-101 retido", "Condição normal + ACK"),
+    ("E03", "LT-101 inválido", "Sinal < 3,6 mA ou > 21 mA", "Desabilita PI e solicita parada", "UA-101 retido", "Sinal válido + ACK"),
+    ("E04", "Falha do VFD", "VFD indica falha", "Retira marcha e bloqueia partida", "YA-101 retido", "VFD pronto + ACK"),
+    ("E05", "Tempo excedido", "Máx. 60 min (premissa)", "Retira marcha e bloqueia partida", "TA-101 retido", "Causa removida + ACK"),
+    ("E06", "Perda de energia", "Alimentação ausente", "Saídas desenergizadas", "Retenção depende do PLC", "Sem repartida automática"),
+    ("E07", "LT / chaves divergentes", "Divergência persistente", "Diagnóstico; bloqueia AUTO", "Diagnóstico indicado", "Causa removida + ACK"),
+    ("E08", "LA-L-101", "LT-101 ≤ 15%", "Alarme; ação de processo pendente", "LA-L-101 retido", "Causa removida + ACK"),
+    ("E09", "LA-H-101", "LT-101 ≥ 85%", "Alarme; ação de processo pendente", "LA-H-101 retido", "Causa removida + ACK"),
 )
 
 
@@ -199,7 +222,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("PRANCHA 07 ADICIONADA", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.62, "02_TEXTO")
 
 
@@ -221,7 +244,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/07",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -237,7 +260,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/07"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -253,7 +276,7 @@ def create_sheet(config: dict, spec: SheetSpec):
 def draw_process(layout) -> None:
     centered(layout, "FONTE DE ÁGUA", (55, 250), 2.0, "11_ARQUITETURA")
     tank(layout, 25, 178, 83, 240, 0.70)
-    centered(layout, "TK-100", (54, 169), 1.8, "04_EQUIPAMENTOS")
+    centered(layout, "TK-101", (54, 169), 1.8, "04_EQUIPAMENTOS")
     line(layout, (83, 190), (111, 190), "05_POTENCIA")
     pump(layout, (128, 190), "P-101")
     motor(layout, (128, 224), "M-101 / 4 kW")
@@ -471,6 +494,51 @@ def draw_layout(layout) -> None:
     centered(layout, "Confirmar drenagem, ventilação, NPSH e acesso", (107.5, 115), 1.25, "13_NOTAS")
 
 
+def draw_cause_effect_table(layout) -> None:
+    x0, x1, y_top = 18.0, 402.0, 178.0
+    columns = (x0, 43.0, 108.0, 177.0, 267.0, 328.0, x1)
+    headers = ("ID", "EVENTO", "DETECÇÃO", "AÇÃO CONCEITUAL", "ALARME / MEMÓRIA", "RETORNO")
+    header_h, row_h = 9.0, 7.5
+    bottom = y_top - header_h - len(CAUSE_EFFECTS) * row_h
+    add_rect(layout, x0, bottom, x1, y_top, "09_BORNES")
+    line(layout, (x0, y_top - header_h), (x1, y_top - header_h), "09_BORNES")
+    for x in columns[1:-1]:
+        line(layout, (x, bottom), (x, y_top), "09_BORNES")
+    for index, title in enumerate(headers):
+        centered(layout, title, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.2, "12_LEGENDA")
+    for row_index, row in enumerate(CAUSE_EFFECTS):
+        top = y_top - header_h - row_index * row_h
+        if row_index:
+            line(layout, (x0, top), (x1, top), "09_BORNES")
+        center_y = top - row_h / 2
+        for col_index, value in enumerate(row):
+            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), 1.1, "02_TEXTO")
+
+
+def draw_operating_sequence(layout) -> None:
+    steps = (
+        (22, 87, "01  VERIFICAR", "Emergência liberada\nKSR / VFD prontos\nLT válido; LSHH inativo"),
+        (99, 164, "02  HABILITAR", "Operador seleciona AUTO\ne confirma habilitação"),
+        (176, 241, "03  TRANSFERIR", "LIC assume saída rastreada\nLimites + anti-windup"),
+        (253, 318, "04  CONTROLAR", "PI: PV < SP → sobe Hz\nPV > SP → reduz Hz"),
+        (330, 397, "05  MONITORAR", "VFD / LT / LSHH\nFalhas → matriz abaixo"),
+    )
+    top, bottom = 250.0, 207.0
+    for x0, x1, title, detail in steps:
+        add_rect(layout, x0, bottom, x1, top, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, top - 8), 1.65, "04_EQUIPAMENTOS")
+        lines = detail.splitlines()
+        for line_index, value in enumerate(lines):
+            centered(layout, value, ((x0 + x1) / 2, top - 20 - line_index * 8), 1.35, "02_TEXTO")
+    for left, right in zip(steps, steps[1:]):
+        arrow(layout, (left[1], 228.5), (right[0], 228.5), "08_CABOS")
+    add_rect(layout, 22, 184, 397, 198, "13_NOTAS")
+    centered(layout, "OPERAÇÃO NORMAL: PI regula a frequência; STOP, LSHH, LT inválido, falha do VFD ou tempo excedido retiram a marcha.", (209.5, 194), 1.15, "13_NOTAS")
+    centered(layout, "LA-L/LA-H em 15%/85% são alarmes; a ação operacional permanece pendente nesta revisão.", (209.5, 190), 1.15, "13_NOTAS")
+    centered(layout, "Após falta de energia, não há repartida automática. Aplicar permissivos e rearme consciente antes de nova partida.", (209.5, 186), 1.15, "13_NOTAS")
+    draw_cause_effect_table(layout)
+
+
 DRAWERS = {
     1: draw_process,
     2: draw_pid,
@@ -478,7 +546,17 @@ DRAWERS = {
     4: draw_electrical,
     5: draw_interconnections,
     6: draw_layout,
+    7: draw_operating_sequence,
 }
+
+
+def write_matrix_csv(project_dir: Path) -> Path:
+    path = project_dir / "matriz-causa-efeito.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("id", "evento", "deteccao", "acao_conceitual", "alarme_memoria", "retorno"))
+        writer.writerows(CAUSE_EFFECTS)
+    return path
 
 
 def generate(root: Path) -> list[Path]:
@@ -495,6 +573,9 @@ def generate(root: Path) -> list[Path]:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix = write_matrix_csv(root / PROJECT_SLUG)
+    outputs.append(matrix)
+    print(f"Gerado: {matrix.relative_to(root)}")
     return outputs
 
 

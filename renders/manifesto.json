@@ -476,114 +476,133 @@
     {
       "id": "p04-01-fluxograma-processo",
       "source": "04-controle-nivel-reservatorio/fonte/01_fluxograma_processo.dxf",
-      "source_sha256": "78a9d191ecd04a30d29d5fa3bceab7344bdbc11e069093c7619bccaa8e29d962",
+      "source_sha256": "3e63620ee67a95ed717df88b650125a2e10127f8cbfcde83ad0b1fffb9744967",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.pdf",
-          "sha256": "3a57d1f2045dbd095112dbea6eb0163f6df73aa816edddba5575de1f724b42b9"
+          "sha256": "2dd353bdd279532daf3059a1a61559036513eeb78a15e2c883487376dd24ae04"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.png",
-          "sha256": "25d76cf450feb640bdee20ee79e89ef461206e07be4c0132afe64669156ea7d0"
+          "sha256": "ca21959ff3371d736fe5d6a735b5e3ae4cb1343384ad940871ffdb2f5240cc5d"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/01_fluxograma_processo.svg",
-          "sha256": "f4cff34000968f86ea04691a80a828c66dca5abd490b3166b9e4535758adbb9a"
+          "sha256": "d769463bbd6f7a5eec7e08660a64e0612c23eab65b9a7250529493318c5af5eb"
         }
       }
     },
     {
       "id": "p04-02-pid-instrumentacao",
       "source": "04-controle-nivel-reservatorio/fonte/02_pid_instrumentacao.dxf",
-      "source_sha256": "b384c2d612166304ed362445cd81fe600849a432b756f2e80639b959710504e5",
+      "source_sha256": "3a8af4abdec7ecc48e9e73ec015891ec9a13804b766ad1f5b0ddb14c5be5bf9f",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.pdf",
-          "sha256": "2208405bfed590e334525885c6a9830bdfb0bf77132957d10ae451eb6213a782"
+          "sha256": "8791bf54145aae76d177de4ade905e844117b092cf8efc34c3c6fcde396bdd5b"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.png",
-          "sha256": "c3af93c5e5198c395d101089ba5b133bd43778d6e3a2ff2127f88ceace81ddfc"
+          "sha256": "acb74f7bd188b24032ce4812c8f702c434f79f718564a3a7b5279afcefab6ebd"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/02_pid_instrumentacao.svg",
-          "sha256": "1525c24cd4c6e283a2c8f2554042a68a940f251fbc23624ae02c01cdcd4eb925"
+          "sha256": "7ed28ddc23994c17c9499b36a2c9a72c23fcec942c2cd8780c6a8fcb597ae693"
         }
       }
     },
     {
       "id": "p04-03-malha-controle",
       "source": "04-controle-nivel-reservatorio/fonte/03_malha_controle.dxf",
-      "source_sha256": "81fef0135b440a82f4ff6dca1cf8af33401929cf25ace62a92dcd955968c0f24",
+      "source_sha256": "087cccf32d5d8977cd4785123e8ef40b401a25f4fb475deabe5203d9901dae48",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.pdf",
-          "sha256": "cea382f78b30c20076645e57dbe1d768eeb121ae6b4a6e015a18f092c432ea58"
+          "sha256": "4e10401595d4f97554a310fe0fa1a8b33fd7752c158843515058dcfbb0483ea4"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.png",
-          "sha256": "218cddd3030440839402f66c563f7e0631868707b5a1615bb707a62a5fc98d28"
+          "sha256": "448415b63bf17ddae2958abd51ca197eb4808cef0b8e3927bdff0dfde9a5f439"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/03_malha_controle.svg",
-          "sha256": "3bc2436641d2512778c262861470c727e6083554903bf7c129c829d8e73f275d"
+          "sha256": "13ee84866a1d442a687b782ac348c2d7a84574a5571f6f52219866eca253b13a"
         }
       }
     },
     {
       "id": "p04-04-diagrama-eletrico",
       "source": "04-controle-nivel-reservatorio/fonte/04_diagrama_eletrico.dxf",
-      "source_sha256": "eb605cc9f1928fd33c98aef24a46aca3944d9f32329c45f7e588302fe22eb561",
+      "source_sha256": "12e2dfa0a1cb554a9f025e4508a6d7f6e1566bde356075aaf7c2553e363901fc",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.pdf",
-          "sha256": "fc2b8106ae04ff13fa4bf6dfa321d90d7bf1344d47697fb92a1032f828b077be"
+          "sha256": "c33179654d4afb98a8321c915a07c3c6a26df658a958a7d1ccca8164c8eca708"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.png",
-          "sha256": "b5a7c3f2791dc0b9d26071075504a900e928c0526c00702d1ce941f137bbb3fa"
+          "sha256": "c84e0e23190c3d7138fca4c8d62fc87306d66f8e9b1b789ff0faf4474b34e9a2"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/04_diagrama_eletrico.svg",
-          "sha256": "c1489f271be7679d8b2b21f073f5b610d7c95ecfab66c3f67ec8bf4044df6b5e"
+          "sha256": "25ec27bb9f512b42ed7027e1c3cbfa6ed6ec8ffb84d1d79e902c5bd44ed28a1a"
         }
       }
     },
     {
       "id": "p04-05-interligacoes-instrumentos",
       "source": "04-controle-nivel-reservatorio/fonte/05_interligacoes_instrumentos.dxf",
-      "source_sha256": "763a576b6e9599ee4c47e854d791657e10733c378c3d5e75dd35e362a067c721",
+      "source_sha256": "073c264ce8a7e24f89c75e85ccc91ff812bb01bee04ebdadb6cdd937fef8ca84",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.pdf",
-          "sha256": "7d07fd9faa19e496f75380dee2ba46f166c0fe66c9688bac9ad003c85f0ef828"
+          "sha256": "9dab4d51027ff12a0cd2d1d502cea1d0583267ae514d5bdec719cc26a3e1a5aa"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.png",
-          "sha256": "817047b30998cbaf6c7722d3ff93d731704e2fcdbe7409e97271dd20b8a73e62"
+          "sha256": "ffb2682319dab4ddee00fb518945b20c96a4d0e83d44608e2468c96f44ec89e4"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/05_interligacoes_instrumentos.svg",
-          "sha256": "6e685651461df73f5e353e918cc254ed833934b08adc6f214fe1110fd0f90d88"
+          "sha256": "0b3620cd8d6635230975425a07a67b458e9a7eb371c5c8f4b8f661cc3cc30181"
         }
       }
     },
     {
       "id": "p04-06-layout-sistema",
       "source": "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf",
-      "source_sha256": "60ad5384f6e9a09e21e1c326ad6ba0f3bfe2322f791911077908dca32cbd3e00",
+      "source_sha256": "0ccb761c114ceec6219f9ef1f9ecff8176bc67ad6433cd4b2893dfca6336fd06",
       "outputs": {
         "pdf": {
           "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf",
-          "sha256": "b7bcb0c2811e60fb9f4ae74e6575995293eb5a0f76f54c216e72530f0151b595"
+          "sha256": "86107d6bf5350a05f61b0eb00b62742e917c1e141cdb4dd7265e379e1b8acd80"
         },
         "png": {
           "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.png",
-          "sha256": "2994858d7ecddf369d7406a07e45b629ad3dd42a854dc4c0fefd0fcdf07ede30"
+          "sha256": "05c690ef309b6e8f145dcc30debdcc602cb1c69243bff2a4f592a3d9ffdcf818"
         },
         "svg": {
           "path": "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg",
-          "sha256": "6cf9e0ed9826fdb7e804baead8f9ecd1b89d0fb3a5afab3502270894468e7501"
+          "sha256": "1fc65fa50d0de196ba613a73fc57b04bdff255f4f11af447b86c1f1d8dfab10c"
+        }
+      }
+    },
+    {
+      "id": "p04-07-sequencia-causa-efeito",
+      "source": "04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeito.dxf",
+      "source_sha256": "1c7407d3953253e1927729a555787ba0dc9feb69924d4889422a6d93be64c6c8",
+      "outputs": {
+        "pdf": {
+          "path": "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf",
+          "sha256": "80f1ed0a53a9da6b4700f6bd15508eb7ec013731c316f08cbf9cd01d16a9b14f"
+        },
+        "png": {
+          "path": "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png",
+          "sha256": "0c72188ff398ed3e1a7202f1a43bb9d004a06c65e5918fb4cf4dc39612814e2c"
+        },
+        "svg": {
+          "path": "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg",
+          "sha256": "1f6f49c7cfb252612a90be13b3434ce8850dd4870c07e16b1ce40264055f3fff"
         }
       }
     },

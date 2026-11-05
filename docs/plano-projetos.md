@@ -135,12 +135,13 @@ A variável controlada é o nível; a variável manipulada é a frequência do i
 a vazão de consumo é a perturbação principal.
 
 **Pranchas e dados específicos.** Fluxograma do processo; P&ID; malha de controle;
-diagrama elétrico; interligações dos instrumentos; layout do sistema; listas de
-instrumentos, I/O, cabos, bornes e materiais.
+diagrama elétrico; interligações dos instrumentos; layout do sistema; sequência de
+operação e matriz causa–efeito; listas de instrumentos, I/O, cabos, bornes e materiais.
 
-**Marco de aceitação.** Concluído na revisão 00. Seis DXFs AC1027, derivados
-PDF/SVG/PNG, validação funcional da malha, auditoria CAD e inspeção visual devem
-estar aprovados e registrados.
+**Marco de aceitação.** Revisão 02 com sete DXFs AC1027 e derivados PDF/SVG/PNG;
+validadores funcionais e estrito devem passar. A revisão local de PNG e PDF é
+registrada em `inspecao-visual.md`; a abertura dos SVGs atuais no navegador e a
+reabertura no AutoCAD ainda são verificações pendentes.
 
 ## P05 — Instalação elétrica industrial
 

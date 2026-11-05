@@ -18,6 +18,10 @@ Maior vazão de consumo reduz o nível; LIC-101 eleva gradualmente a frequência
 - Retorno de energia não provoca repartida automática.
 - Operação manual mantém limites, alarmes e intertravamentos essenciais.
 
+LA-L-101 em 15% e LA-H-101 em 85% são alarmes declarados na filosofia. A resposta de
+processo para esses dois alarmes permanece pendente; esta documentação não lhes atribui
+comando de partida ou parada automática. Consulte `matriz-causa-efeito.csv`.
+
 ## Testes funcionais mínimos
 
 - Simulação de LT-101 em 4, 12 e 20 mA.
