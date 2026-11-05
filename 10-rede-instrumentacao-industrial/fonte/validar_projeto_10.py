@@ -30,13 +30,15 @@ SHEETS = (
     "04_topologia_comunicacao",
     "05_painel_instrumentacao",
     "06_lista_instrumentos",
+    "07_matriz_causa_efeito_sinais",
 )
+CAUSE_EFFECT_COLUMNS = ("id", "evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")
 REQUIRED_DOCS = (
     "README.md", "memorial-descritivo.md", "criterios-premissas.md",
     "memoria-calculo.md", "filosofia-sinais.md", "referencias-normativas.md",
     "inspecao-visual.md", "parametros.csv", "lista-instrumentos.csv", "lista-io.csv",
     "lista-cabos.csv", "lista-bornes.csv", "lista-redes.csv",
-    "lista-alimentacao.csv", "lista-materiais.csv", "resultados-calculo.csv",
+    "lista-alimentacao.csv", "lista-materiais.csv", "resultados-calculo.csv", "causa-efeito.csv",
 )
 REQUIRED_TAGS = {"TT-101", "PT-102", "FT-103", "LT-104", "LSH-105", "PSL-106"}
 
@@ -93,6 +95,7 @@ def validate_tables(v: Validation, project: Path):
     networks = read_csv(project / "lista-redes.csv")
     power = read_csv(project / "lista-alimentacao.csv")
     results = read_csv(project / "resultados-calculo.csv")
+    cause_effect = read_csv(project / "causa-efeito.csv")
 
     tags = {row["tag"] for row in instruments}
     v.require(tags == REQUIRED_TAGS, f"tags de instrumentos divergentes: {sorted(tags)}")
@@ -102,6 +105,16 @@ def validate_tables(v: Validation, project: Path):
     v.require({"BE-101", "PE-101"}.issubset({row["borne"] for row in terminals}), "barras BE-101/PE-101 ausentes")
     v.require({"PLC-101", "RIO-201", "RIO-202", "SCADA-101", "SW-101"}.issubset({row["no"] for row in networks}), "nós obrigatórios ausentes")
     v.require(len({row["ip"] for row in networks}) == len(networks), "endereços IP duplicados")
+
+    expected_events = [f"E{index:02d}" for index in range(1, 9)]
+    v.require([row.get("id", "") for row in cause_effect] == expected_events, "matriz deve conter E01-E08 em ordem")
+    v.require(all(set(CAUSE_EFFECT_COLUMNS).issubset(row) for row in cause_effect), "colunas obrigatórias ausentes na matriz causa-efeito")
+    for index, row in enumerate(cause_effect, start=1):
+        v.require(all(row.get(column, "").strip() for column in CAUSE_EFFECT_COLUMNS), f"evento E{index:02d} possui campo vazio")
+    v.require(
+        all(any(term in " ".join(row.values()).casefold() for term in ("pendente", "dependem", "nao especificado")) for row in cause_effect),
+        "cada evento deve manter explícitos os limites de hardware/projeto",
+    )
 
     for row in instruments:
         if "4-20" in row["sinal"]:
@@ -147,6 +160,9 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         v.require(doc.dxfversion == "AC1027", f"versão DXF incorreta em {path.name}: {doc.dxfversion}")
         v.require(doc.header.get("$INSUNITS") == 4, f"$INSUNITS não é mm em {path.name}")
         v.require(required_layers.issubset({layer.dxf.name for layer in doc.layers}), f"layers obrigatórios ausentes em {path.name}")
+        metadata = doc.ezdxf_metadata()
+        v.require(metadata.get("PORTFOLIO_PROJECT") == "10-rede-instrumentacao-industrial", f"metadado de projeto incorreto em {path.name}")
+        v.require(metadata.get("PORTFOLIO_SHEET") == f"{SHEETS.index(stem) + 1:02d}/{len(SHEETS):02d}", f"metadado de prancha incorreto em {path.name}")
         text = " ".join(entity_text(entity) for entity in doc.modelspace())
         for token in (WARNING, "Rogério Eduardo Moreira Menegueli", "mm", "01", "CONCEIT."):
             v.require(token in text, f"texto obrigatório ausente em {path.name}: {token}")
@@ -158,6 +174,9 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         for required in ("PLC-101", "RIO-201", "RIO-202", "SCADA-101", "24 Vcc"):
             if stem in {"01_arquitetura_rede", "04_topologia_comunicacao"}:
                 v.require(required in text, f"conteúdo de arquitetura ausente em {path.name}: {required}")
+        if stem == "07_matriz_causa_efeito_sinais":
+            for required in ("MATRIZ CAUSA-EFEITO DE SINAIS", "E01", "E08", "AI-001", "RIO-201", "SCADA-101"):
+                v.require(required in text, f"conteúdo da matriz ausente em {path.name}: {required}")
 
 
 def validate_exports(v: Validation, project: Path):

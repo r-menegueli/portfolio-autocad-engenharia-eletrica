@@ -23,8 +23,9 @@ tratamento de falhas.
   depende do sensor selecionado e da análise de falha segura.
 - O SCADA apresenta e registra dados, mas não é camada de proteção.
 - PLC-101 executa controle normal; nenhuma função de segurança é atribuída.
-- Perda de rede, perda de I/O, valor inválido e falha de alimentação precisam de uma
-  matriz de causas e efeitos em uma etapa executiva.
+- A revisão acadêmica 02 registra esses eventos em `causa-efeito.csv` e na prancha 07.
+  A matriz preserva como pendentes os limites de diagnóstico, timeouts, alarmes,
+  fail state e ações de processo que dependem do hardware escolhido.
 
 ## Blindagem e referência
 

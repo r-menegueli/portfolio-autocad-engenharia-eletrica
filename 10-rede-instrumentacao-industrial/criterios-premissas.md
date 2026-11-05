@@ -45,3 +45,8 @@ Fabricante, modelos, ranges calibrados, materiais molhados, classe de exatidão,
 isolação galvânica, tipo de entrada digital, protocolo, tempo de ciclo, VLAN,
 redundância, cybersecurity, proteção contra surtos, potência real, dissipação,
 conectores, prensa-cabos e método executivo de aterramento.
+
+A matriz causa–efeito da revisão 02 é um registro conceitual desses eventos. Ela não
+define limites de diagnóstico, timeout, retenção de alarme, fail state ou resposta
+específica de processo sem os modelos selecionados, a estratégia do PLC e a análise
+de risco da aplicação.

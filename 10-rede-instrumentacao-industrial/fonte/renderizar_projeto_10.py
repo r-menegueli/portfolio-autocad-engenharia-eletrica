@@ -1,4 +1,4 @@
-"""Renderiza apenas os seis artefatos do Projeto 10 para ciclos rápidos de revisão."""
+"""Renderiza apenas os sete artefatos do Projeto 10 para ciclos rápidos de revisão."""
 
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ def main() -> int:
     root = args.root.resolve()
     config = load_config(root)
     artifacts = [item for item in config["artifacts"] if item["id"].startswith("p10-")]
-    if len(artifacts) != 6:
-        raise RuntimeError(f"esperados 6 artefatos P10; encontrados {len(artifacts)}")
+    if len(artifacts) != 7:
+        raise RuntimeError(f"esperados 7 artefatos P10; encontrados {len(artifacts)}")
     for artifact in artifacts:
         source = root / artifact["source"]
         outputs = {kind: root / artifact[kind] for kind in ("svg", "pdf", "png")}

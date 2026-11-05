@@ -2,9 +2,9 @@
 
 **Código:** P10  
 **Autor:** Rogério Eduardo Moreira Menegueli  
-**Estado:** concluído  
+**Estado:** revisão acadêmica 02; respostas de processo e diagnósticos finais pendentes
 **Data:** 2026-11-05
-**Revisão:** 01 (revisão gráfica)
+**Revisão:** 02 (matriz conceitual de falhas)
 **Folha:** A3 paisagem  
 **Unidades:** milímetros nos desenhos; grandezas de processo indicadas por instrumento
 
@@ -12,7 +12,9 @@ Este projeto fecha a série acadêmica do portfólio com uma rede original e fic
 instrumentação industrial. A arquitetura integra quatro transmissores 4–20 mA, duas
 entradas digitais, duas remotas, CLP, switch, SCADA e distribuição 24 Vcc. O DXF
 AC1027 é a fonte principal; PDF, SVG e PNG são derivados de visualização da mesma
-revisão.
+revisão. A revisão 02 acrescenta uma matriz conceitual para falhas de valor analógico,
+remotas, supervisão, comunicação sem atualização, alimentação 24 Vcc e entradas
+digitais, explicitando os comportamentos que ainda dependem de hardware e processo.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -20,12 +22,13 @@ revisão.
 
 | Prancha | Fonte DXF | Visualizações | Conteúdo |
 | ---: | --- | --- | --- |
-| 01/06 | [arquitetura da rede](fonte/01_arquitetura_rede.dxf) | [PDF](exports/01_arquitetura_rede.pdf), [SVG](exports/01_arquitetura_rede.svg), [PNG](exports/01_arquitetura_rede.png) | SCADA, switch, PLC, remotas, instrumentos e 24 Vcc |
-| 02/06 | [diagrama de instrumentação](fonte/02_diagrama_instrumentacao.dxf) | [PDF](exports/02_diagrama_instrumentacao.pdf), [SVG](exports/02_diagrama_instrumentacao.svg), [PNG](exports/02_diagrama_instrumentacao.png) | malhas TT, PT, FT, LT e entradas LSH/PSL |
-| 03/06 | [diagrama de interligação](fonte/03_diagrama_interligacao.dxf) | [PDF](exports/03_diagrama_interligacao.pdf), [SVG](exports/03_diagrama_interligacao.svg), [PNG](exports/03_diagrama_interligacao.png) | cabos, bornes, canais, shield e PE |
-| 04/06 | [topologia de comunicação](fonte/04_topologia_comunicacao.dxf) | [PDF](exports/04_topologia_comunicacao.pdf), [SVG](exports/04_topologia_comunicacao.svg), [PNG](exports/04_topologia_comunicacao.png) | Ethernet industrial acadêmica em estrela |
-| 05/06 | [painel de instrumentação](fonte/05_painel_instrumentacao.dxf) | [PDF](exports/05_painel_instrumentacao.pdf), [SVG](exports/05_painel_instrumentacao.svg), [PNG](exports/05_painel_instrumentacao.png) | layout conceitual de PI-101 |
-| 06/06 | [lista de instrumentos](fonte/06_lista_instrumentos.dxf) | [PDF](exports/06_lista_instrumentos.pdf), [SVG](exports/06_lista_instrumentos.svg), [PNG](exports/06_lista_instrumentos.png) | tags, faixas, sinais, canais e escalas |
+| 01/07 | [arquitetura da rede](fonte/01_arquitetura_rede.dxf) | [PDF](exports/01_arquitetura_rede.pdf), [SVG](exports/01_arquitetura_rede.svg), [PNG](exports/01_arquitetura_rede.png) | SCADA, switch, PLC, remotas, instrumentos e 24 Vcc |
+| 02/07 | [diagrama de instrumentação](fonte/02_diagrama_instrumentacao.dxf) | [PDF](exports/02_diagrama_instrumentacao.pdf), [SVG](exports/02_diagrama_instrumentacao.svg), [PNG](exports/02_diagrama_instrumentacao.png) | malhas TT, PT, FT, LT e entradas LSH/PSL |
+| 03/07 | [diagrama de interligação](fonte/03_diagrama_interligacao.dxf) | [PDF](exports/03_diagrama_interligacao.pdf), [SVG](exports/03_diagrama_interligacao.svg), [PNG](exports/03_diagrama_interligacao.png) | cabos, bornes, canais, shield e PE |
+| 04/07 | [topologia de comunicação](fonte/04_topologia_comunicacao.dxf) | [PDF](exports/04_topologia_comunicacao.pdf), [SVG](exports/04_topologia_comunicacao.svg), [PNG](exports/04_topologia_comunicacao.png) | Ethernet industrial acadêmica em estrela |
+| 05/07 | [painel de instrumentação](fonte/05_painel_instrumentacao.dxf) | [PDF](exports/05_painel_instrumentacao.pdf), [SVG](exports/05_painel_instrumentacao.svg), [PNG](exports/05_painel_instrumentacao.png) | layout conceitual de PI-101 |
+| 06/07 | [lista de instrumentos](fonte/06_lista_instrumentos.dxf) | [PDF](exports/06_lista_instrumentos.pdf), [SVG](exports/06_lista_instrumentos.svg), [PNG](exports/06_lista_instrumentos.png) | tags, faixas, sinais, canais e escalas |
+| 07/07 | [matriz causa–efeito de sinais](fonte/07_matriz_causa_efeito_sinais.dxf) | [PDF](exports/07_matriz_causa_efeito_sinais.pdf), [SVG](exports/07_matriz_causa_efeito_sinais.svg), [PNG](exports/07_matriz_causa_efeito_sinais.png) | qualidade analógica, perda de remotas, SCADA, dados obsoletos, 24 Vcc e DI |
 
 ## Documentos e dados
 
@@ -35,7 +38,7 @@ revisão.
 - [Filosofia e separação dos sinais](filosofia-sinais.md)
 - [Referências normativas](referencias-normativas.md)
 - [Inspeção visual](inspecao-visual.md)
-- [Parâmetros](parametros.csv)
+- [Parâmetros](parametros.csv), [matriz causa–efeito](causa-efeito.csv)
 - [Instrumentos](lista-instrumentos.csv), [I/O](lista-io.csv), [cabos](lista-cabos.csv), [bornes](lista-bornes.csv), [rede](lista-redes.csv), [alimentação](lista-alimentacao.csv), [materiais](lista-materiais.csv) e [resultados](resultados-calculo.csv)
 - [Relatório específico](validacao-instrumentacao.json) e [relatório integrado](validacao.json)
 
@@ -72,5 +75,19 @@ Inkscape não estavam disponíveis; as limitações completas constam no
 Não há seleção de fabricante, protocolo industrial, hardware de segurança, estudo de
 disponibilidade, classificação de áreas, SIL/PL, proteção contra surtos detalhada,
 coordenação, ensaio EMC, cálculo térmico ou liberação executiva. Endereços, faixas,
-cabos, bornes e dimensões continuam dados acadêmicos; esta revisão atualiza a
-apresentação gráfica e não valida tecnicamente o projeto.
+cabos, bornes, dimensões, limiares de diagnóstico, timeouts e ações de processo
+continuam premissas ou decisões pendentes; a matriz documenta requisitos conceituais,
+não comprova diagnóstico nem comportamento de equipamentos reais.
+
+## Revisão 02 — validação e inspeção
+
+O validador específico confirmou as sete folhas e a matriz CSV com **64.261
+verificações, sem erros ou avisos**. O portfólio inteiro passou por **467.885
+verificações estritas**, sem erros ou avisos; o revisor visual confirmou 12 projetos,
+88 pranchas, 352 arquivos gráficos e 60 CSVs. A revisão visual da folha 07 foi feita
+no PNG de produção e em uma rasterização independente do PDF a 150 dpi. Os oito eventos e o
+carimbo ficaram dentro da moldura, sem cortes ou colisões visíveis. As seis folhas
+anteriores foram revistas na composição geral; a inspeção integral descrita acima
+pertence à revisão 00. A abertura dos SVGs no navegador e uma nova inspeção visual no
+AutoCAD ainda não foram feitas nesta revisão. O relatório integrado do repositório
+registra a contagem estrita atual.

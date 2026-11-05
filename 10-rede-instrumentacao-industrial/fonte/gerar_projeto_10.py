@@ -1,4 +1,4 @@
-"""Gera dados estruturados e seis pranchas DXF do Projeto 10."""
+"""Gera dados estruturados e sete pranchas DXF do Projeto 10."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "10-rede-instrumentacao-industrial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "01"
+REVISION = "02"
 
 
 @dataclass(frozen=True)
@@ -56,6 +56,21 @@ SHEETS = (
     SheetSpec(4, "04_topologia_comunicacao.dxf", "TOPOLOGIA DE COMUNICAÇÃO", "Ethernet industrial acadêmica em estrela com switch gerenciável", "A comunicação transporta quadros e diagnósticos, não a energia nem o valor 4-20 mA.\\PEndereços são premissas de documentação; VLAN, protocolo e redundância exigem projeto posterior.", "Linha laranja: Ethernet industrial | NET-xxx: identificação do enlace | /24: máscara 255.255.255.0"),
     SheetSpec(5, "05_painel_instrumentacao.dxf", "PAINEL DE INSTRUMENTAÇÃO", "Arranjo conceitual 800 x 600 x 250 mm — PI-101", "Layout não define produto, dissipação, grau IP, folgas ou certificação.\\PConfirmar térmica, EMC, segregação, curvatura, torque e acesso antes de execução.", "PS: fonte | QF: proteção | PLC: controlador | SW: switch | X: bornes | BE/PE: barras"),
     SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios, revisados graficamente em 01. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
+    SheetSpec(7, "07_matriz_causa_efeito_sinais.dxf", "MATRIZ CAUSA-EFEITO DE SINAIS", "Falhas analógicas, I/O remota, rede, supervisão e 24 Vcc", "Resposta de processo e diagnósticos de fabricante não estão definidos.\\PNão converter canal inválido em variável válida nem presumir comportamento de retorno.", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | SCADA: supervisão"),
+)
+
+
+CAUSE_EFFECT_COLUMNS = ("id", "evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")
+
+CAUSE_EFFECT_ROWS = (
+    ("E01", "Qualidade AI invalida", "AI-001 a AI-004: diagnostico ou valor fora do range; limites do modulo pendentes", "Marcar o canal como invalido; nao tratar valor retido como medida atual", "Tag, codigo e retencao dependem do modulo/PLC", "Verificar transmissor, escala e criterio do fabricante"),
+    ("E02", "Perda do loop 4-20 mA", "Corrente ausente ou anomala em C-101 a C-104; deteccao depende do hardware", "Nao inferir zero de processo; marcar qualidade conforme diagnostico disponivel", "Canal afetado e modo de diagnostico pendentes", "Inspecionar cabos, borne, alimentacao de malha e transmissor"),
+    ("E03", "Perda de RIO-201", "NET-102 ou RIO-201 sem comunicacao; AI-001/002 e DI-001 afetados", "Invalidar dados da remota; acao de processo depende da criticidade", "Timeout, tag e historico dependem do protocolo/PLC", "Restabelecer link e validar qualidade antes de liberar uso"),
+    ("E04", "Perda de RIO-202", "NET-103 ou RIO-202 sem comunicacao; AI-003/004 e DI-002 afetados", "Invalidar dados da remota; acao de processo depende da criticidade", "Timeout, tag e historico dependem do protocolo/PLC", "Restabelecer link e validar qualidade antes de liberar uso"),
+    ("E05", "Perda do link SCADA", "NET-104 sem dados atualizados entre PLC-101 e SCADA-101", "Supervisao fica desatualizada; tarefa local do PLC nao deve depender da tela", "Alarme, buffering e recuperacao dependem da plataforma", "Confirmar conexao e reconciliar historico apos retorno"),
+    ("E06", "Dado recebido obsoleto", "Valor sem atualizacao dentro do timeout a definir; tempo nao especificado", "Assinalar dado como obsoleto; nao usar amostra antiga como atual", "Timestamp, heartbeat e timeout dependem do protocolo", "Validar sequencia e qualidade apos recuperar comunicacao"),
+    ("E07", "Perda da alimentacao 24 Vcc", "PS1, barramento ou protecao fora da condicao; pontos de monitoramento pendentes", "Instrumentos/remotas afetados deixam de fornecer dados validos", "Deteccao remota e tag de falha dependem da arquitetura", "Inspecionar causa, tensao e protecoes antes de liberar os nos"),
+    ("E08", "Falha de DI de campo", "C-105/C-106 ou entrada DI sem diagnostico de linha definido", "Estado 0/1 pode nao distinguir falha de campo; tratamento depende do sensor", "PNP/NPN, contato e indicacao de circuito aberto pendentes", "Testar entrada e instrumento; nao presumir estado seguro"),
 )
 
 
@@ -215,7 +230,7 @@ def add_revision_table(layout):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.6, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 01", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("MATRIZ CAUSA-EFEITO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.35, "02_TEXTO")
 
 
@@ -232,7 +247,7 @@ def add_bottom_information(layout, spec, warning):
 
 
 def add_title_block(layout, spec, config):
-    values = {"TITULO": spec.title, "AUTOR": config["portfolio"]["author"], "DATA": PROJECT_DATE, "REVISAO": REVISION, "PRANCHA": f"{spec.number:02d}/06", "ARQUIVO": spec.filename, "UNIDADES": "mm", "ESCALA": "S/ESC.", "FOLHA": "A3", "STATUS": "CONCEIT."}
+    values = {"TITULO": spec.title, "AUTOR": config["portfolio"]["author"], "DATA": PROJECT_DATE, "REVISAO": REVISION, "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}", "ARQUIVO": spec.filename, "UNIDADES": "mm", "ESCALA": "S/ESC.", "FOLHA": "A3", "STATUS": "CONCEIT."}
     insert = layout.add_blockref(TITLE_BLOCK_NAME, (230, 10), dxfattribs={"layer": "01_CARIMBO"})
     insert.add_auto_attribs(values)
 
@@ -242,7 +257,7 @@ def create_sheet(config, spec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     meta = doc.ezdxf_metadata()
     meta["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    meta["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    meta["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     meta["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION"
     define_title_block(doc)
     define_symbols(doc)
@@ -368,7 +383,15 @@ def draw_instrument_list(layout):
     centered(layout, "4 mA = LRV | 12 mA = 50 % da faixa | 20 mA = URV | DI = somente 0/1", (205,99), 1.0, "13_NOTAS")
 
 
-DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list)
+def draw_cause_effect(layout):
+    headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
+    widths = (14, 43, 70, 80, 64, 82)
+    table(layout, 31, 261, widths, headers, CAUSE_EFFECT_ROWS, 13.2, 1.15)
+    add_rect(layout, 18, 105, 402, 126, "13_NOTAS")
+    centered(layout, "Tempos, limites, alarmes, fail state e acoes de processo dependem dos dispositivos e da analise de risco.", (210,115.5), 1.2, "13_NOTAS")
+
+
+DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect)
 
 
 def write_csv(path, headers, rows):
@@ -388,6 +411,7 @@ def write_data(project):
     write_csv(project / "lista-alimentacao.csv", ("carga","tensao_vcc","corrente_a","potencia_w"), POWER_ROWS)
     material_rows = [(item, quantity, unit, description, tag, note) for item, tag, description, unit, quantity, note in MATERIAL_ROWS]
     write_csv(project / "lista-materiais.csv", ("item","quantidade","unidade","descricao","referencia","observacoes"), material_rows)
+    write_csv(project / "causa-efeito.csv", CAUSE_EFFECT_COLUMNS, CAUSE_EFFECT_ROWS)
     flat = []
     for tag, _, lrv, urv, unit, signal, _, _ in INSTRUMENTS:
         if "4-20" not in signal:

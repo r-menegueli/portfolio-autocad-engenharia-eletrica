@@ -1,5 +1,28 @@
 # Inspeção visual — P10
 
+## Revisão 02 — matriz de qualidade e falhas de sinal
+
+- Data: 2026-11-05
+- Escopo: sete folhas regeneradas em DXF AC1027, PDF A3, SVG e PNG de produção a
+  300 dpi.
+- Folhas 01–06: conferidas na folha de contato atual. A inspeção integral registrada
+  acima se refere à revisão 00; não repeti nesta revisão a inspeção integral dessas
+  seis folhas.
+- Folha 07: conferida no PNG de produção e no PDF rasterizado pelo Poppler a 150 dpi.
+  Os oito eventos, cabeçalhos, notas, aviso e carimbo permanecem dentro da moldura,
+  sem cortes ou colisões visíveis.
+- Composição geral: a folha de contato atual mostra as sete pranchas A3 completas,
+  com escala e hierarquia visual consistentes.
+- SVG: o parser e o `viewBox` foram validados pelo fluxo automatizado; a abertura e
+  inspeção no navegador permanecem pendentes de autorização do usuário.
+- AutoCAD: a inspeção nativa desta revisão não foi repetida. A auditoria pelo
+  AcCoreConsole registrada anteriormente não equivale a uma inspeção visual atual.
+
+Resultado visual limitado ao escopo acima: sem defeitos de composição observados na
+folha nova. A tabela usa texto compacto e deve ser lida em escala ampliada ou PDF; a
+resposta de processo, os limiares, timeouts, latches e fail state seguem pendentes de
+seleção de hardware e decisão de engenharia.
+
 ## Registro da revisão 00
 
 - Data: 2026-09-10

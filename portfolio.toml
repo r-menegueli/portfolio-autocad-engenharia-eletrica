@@ -346,7 +346,7 @@ id = "10-rede-instrumentacao-industrial"
 path = "10-rede-instrumentacao-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 7
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -364,6 +364,7 @@ required_files = [
   "lista-alimentacao.csv",
   "lista-materiais.csv",
   "resultados-calculo.csv",
+  "causa-efeito.csv",
   "fonte/gerar_projeto_10.py",
   "fonte/renderizar_projeto_10.py",
   "fonte/validar_projeto_10.py",
@@ -1232,6 +1233,17 @@ source = "10-rede-instrumentacao-industrial/fonte/06_lista_instrumentos.dxf"
 svg = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.svg"
 pdf = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf"
 png = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-07-matriz-causa-efeito-sinais"
+kind = "sheet"
+title = "Projeto 10 - Matriz causa-efeito de sinais"
+source = "10-rede-instrumentacao-industrial/fonte/07_matriz_causa_efeito_sinais.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.pdf"
+png = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.png"
 require_a3 = true
 require_notice = true
 

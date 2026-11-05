@@ -55,8 +55,8 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 ## Validação da revisão 02
 
 - Validador específico: `PASS`, 849 verificações e zero erros; oito folhas e nove eventos causa–efeito.
-- Validador estrito do portfólio: `PASS`, 461.963 verificações, zero erros e zero avisos.
-- Revisor consolidado: `PASS`, 12 projetos, 87 folhas, 348 arquivos gráficos e 59 CSVs;
+- Validador estrito do portfólio: `PASS`, 467.885 verificações, zero erros e zero avisos.
+- Revisor consolidado: `PASS`, 12 projetos, 88 folhas, 352 arquivos gráficos e 60 CSVs;
   similaridade mínima PDF/PNG de 0,9842.
 - P06-08 foi conferida em PNG integral e PDF rasterizado a 150 dpi; o contato das
   oito pranchas foi revisado.
