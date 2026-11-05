@@ -9,7 +9,7 @@ nenhum PR foi mesclado.
 | Repositório | Commit | PR de revisão |
 | --- | --- | --- |
 | [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
-| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas, P02 rev. 02 tem nove, e P03 rev. 03 tem dez, incluindo plano de verificação ainda não executado — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas, P02 rev. 02 tem nove, P03 rev. 03 tem dez e P05 rev. 03 tem nove, incluindo planos de dados/verificação sem execução declarada — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
 | [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
 | [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
 | [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 627 arquivos; 421 links de Markdown verificados; 0 erros; 218364106 bytes.
+- 632 arquivos; 423 links de Markdown verificados; 0 erros; 221935367 bytes.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
@@ -42,8 +42,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - AcCoreConsole 2027 auditou 8/8 DXFs do P01. A composição de oito páginas foi conferida;
   P01-07 e P01-08 foram inspecionadas em PNG integral e PDF rasterizado a 150 dpi.
   Similaridades PDF/PNG: 0,987268 em P01-07 e 0,984095 em P01-08.
-- P05 revisado para a revisão 02 e oito folhas: P05-08 traça a topologia e seis pares
-  de proteção para estudo; o CSV marca todas as comparações pendentes.
+- P05 revisado para a revisão 03 e nove folhas: P05-08 traça seis pares; P05-09 organiza
+  doze grupos de dados/cálculos/evidências. O CSV mantém todos como `PENDENTE`.
+- P05 validador específico: 378 verificações, 0 erros; AcCoreConsole 2027 abriu e auditou
+  9/9 DXFs. P05-09 foi inspecionada no PNG 300 dpi, no PDF Poppler 150 dpi e no contato.
 - P07 revisado para a revisão 02 e nove folhas: P07-09 relaciona dez eventos aos sinais,
   estados, respostas propostas e dados ainda necessários. Não declara validação de segurança.
 - P07 validador específico: 4.247 verificações, 0 erros; AcCoreConsole 2027 auditou
@@ -54,8 +56,8 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - P08 validador específico: 8.073 verificações, 0 erros; AutoCAD AcCoreConsole 2027
   abriu e auditou 7/7 DXFs; P08-07 foi inspecionada em PNG e PDF rasterizado, e o contato
   das sete folhas foi conferido.
-- P05 validador específico: 325 verificações, 0 erros; 8 DXFs, 24 derivados e manifesto
-  reproduziram hashes SHA-256 idênticos.
+- P05 validador específico da revisão 02: 325 verificações, 0 erros; os oito DXFs,
+  24 derivados e manifesto reproduziram hashes SHA-256 idênticos antes da nova revisão.
 - `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: nove
   pranchas P09 regeneradas em DXF, PDF, SVG e PNG; P09-09 documenta descarga RC
   paramétrica sem inventar componentes nem valores ainda desconhecidos.
@@ -83,10 +85,10 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 - Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
 - `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
 - P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
-- `scripts/validar_portfolio.py --root . --strict`: 529.645 verificações, 0 erros,
+- `scripts/validar_portfolio.py --root . --strict`: 537.428 verificações, 0 erros,
   0 avisos.
-- `scripts/revisar_portfolio.py --root .`: 12 projetos, 97 pranchas, 388 arquivos
-  gráficos e 69 CSVs; similaridade mínima PDF/PNG de 0,984061.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 98 pranchas, 392 arquivos
+  gráficos e 70 CSVs; similaridade mínima PDF/PNG de 0,984061.
 - P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
   também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
 - P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e

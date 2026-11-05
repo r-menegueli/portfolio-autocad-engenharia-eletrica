@@ -32,7 +32,7 @@ em [portfolio.toml](portfolio.toml).
 | P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas e aterramento | 9 | [abrir](02-projeto-eletrico-residencial/README.md) |
 | P03 | Painel de automação com CLP | I/O, duas bombas, alternância, sequência, intertravamentos e verificação | 10 | [abrir](03-painel-automacao-clp/README.md) |
 | P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD, sequência e causa–efeito | 7 | [abrir](04-controle-nivel-reservatorio/README.md) |
-| P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação, eletrocalhas e coordenação das proteções | 8 | [abrir](05-instalacao-eletrica-industrial/README.md) |
+| P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação, eletrocalhas, curto-circuito e coordenação das proteções | 9 | [abrir](05-instalacao-eletrica-industrial/README.md) |
 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO, cabos e causa–efeito | 8 | [abrir](06-centro-controle-motores/README.md) |
 | P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f, FOC e matriz de falhas | 9 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA, aterramento e sensibilidade de energia | 7 | [abrir](08-sistema-fotovoltaico/README.md) |
@@ -41,7 +41,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e plano de dados para estudo de aterramento/SPDA | 7 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e matriz causa–efeito | 8 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **97 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **98 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,9 +135,9 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 97 pranchas A3 de P01–P12. A validação estrita passou por 529.645
-verificações, sem erros nem avisos; o revisor confirmou 12 projetos, 97 pranchas,
-388 arquivos gráficos e 69 CSVs, com similaridade mínima PDF/PNG de 0,984061.
+revisão cobre 98 pranchas A3 de P01–P12. A validação estrita passou por 537.428
+verificações, sem erros nem avisos; o revisor confirmou 12 projetos, 98 pranchas,
+392 arquivos gráficos e 70 CSVs, com similaridade mínima PDF/PNG de 0,984061.
 Consulte o [relatório de auditoria e limitações](docs/auditoria-portfolio-2026-11.md)
 para escopo, conclusões visuais e limites técnicos.
 

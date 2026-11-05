@@ -163,11 +163,19 @@ ampacidade e queda de tensão.
 **Pranchas e dados específicos.** Layout industrial; distribuição de força;
 distribuição de iluminação; eletrocalhas e rotas; diagrama unifilar; quadro de cargas;
 detalhes de instalação; quadro de cargas, alimentadores, cabos e materiais em CSV e
-workbook técnico.
+workbook técnico. A revisão 03 acrescenta P05-09, um roteiro de dados e evidências
+para calcular curto-circuito, verificar cabos e comparar os seis pares de proteção;
+todos os grupos permanecem pendentes até que existam dados rastreáveis.
 
 **Marco de aceitação.** Concluído na revisão 00. Sete DXFs AC1027, derivados
 PDF/SVG/PNG, validação dos cálculos, auditoria CAD e inspeção visual devem permanecer
 coerentes.
+
+**Revisão 03 (2026-11-05).** Acrescentada P05-09 e `dados-estudo-coordenacao.csv`
+com doze grupos para entradas da concessionária e dos equipamentos, modelo de faltas,
+Icc máximo/mínimo, verificação térmica, curvas, seletividade e revisão documental.
+Não foram criados valores de curto-circuito, modelos de proteção ou resultados de
+coordenação; os doze grupos continuam `PENDENTE`.
 
 ## P06 — Centro de Controle de Motores
 

@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 08
+Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades em milímetros, revisão 02 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão 03 (2026-11-05)
 
-Estado: revisão conceitual 02, com estudo de coordenação ainda pendente
+Estado: revisão conceitual 03, com dados do estudo de coordenação ainda pendentes
 
 Este projeto acadêmico apresenta a distribuição elétrica conceitual de uma oficina
 metalmecânica fictícia de `30,00 x 18,00 m`, com área de `540,00 m²`. A alimentação
@@ -23,6 +23,7 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 - `referencias-normativas.md`: referências e condição de uso;
 - `quadro-cargas.csv`: fonte tabular dos 16 circuitos;
 - `matriz-coordenacao-protecoes.csv`: seis pares montante-jusante e dados necessários para verificar curto-circuito, curvas e seletividade;
+- `dados-estudo-coordenacao.csv`: doze grupos de dados, cálculos e evidências necessários para concluir o estudo; todos permanecem `PENDENTE`;
 - `alimentadores.csv`: consolidação dos quatro alimentadores;
 - `lista-cabos.csv` e `lista-materiais.csv`: rastreabilidade de rotas e quantitativos;
 - `tabelas-projeto-05.xlsx`: workbook técnico com fórmulas e auditoria;
@@ -47,6 +48,7 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
    quadro, equipotencialização e identificação.
 8. [Coordenação das proteções](fonte/08_coordenacao_protecoes.dxf): topologia dos
    dispositivos, seis pares montante-jusante e evidências ainda pendentes.
+9. [Plano de dados para curto-circuito e coordenação](fonte/09_plano_dados_coordenacao.dxf): entradas de rede e equipamentos, verificações de Icc/cabos, comparação de curvas para os seis pares e registro da revisão. Não mostra resultados calculados.
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -73,6 +75,7 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Inspeção visual](inspecao-visual.md)
 - [Quadro de cargas](quadro-cargas.csv)
 - [Matriz de coordenação das proteções](matriz-coordenacao-protecoes.csv)
+- [Dados para o estudo de coordenação](dados-estudo-coordenacao.csv)
 - [Alimentadores](alimentadores.csv)
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de materiais](lista-materiais.csv)
@@ -95,7 +98,9 @@ e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps inte
 permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
 são as fontes principais.
 
-Resultado registrado: validação específica `PASS` com 325 verificações; validação
-estrita do portfólio `PASS` com 485.886 verificações, zero erros e zero avisos.
+Resultado registrado na revisão 03: validador específico `PASS` com 378 verificações;
+AcCoreConsole 2027 abriu e auditou 9/9 DXFs; validação estrita do portfólio `PASS` com
+537.428 verificações, zero erros e zero avisos. O revisor confirmou 12 projetos, 98
+pranchas, 392 arquivos gráficos, 70 CSVs e similaridade mínima PDF/PNG de 0,984061.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

@@ -24,6 +24,7 @@ SHEETS = (
     "06_quadro_cargas.dxf",
     "07_detalhes_instalacao.dxf",
     "08_coordenacao_protecoes.dxf",
+    "09_plano_dados_coordenacao.dxf",
 )
 EXPECTED_CIRCUITS = {f"C{number:02d}" for number in range(1, 17)}
 EXPECTED_FEEDERS = {"AL-QGBT", "AL-QDF", "AL-QDL", "AL-QADM"}
@@ -41,6 +42,15 @@ EXPECTED_PROTECTION_PAIRS = {
     "QF-QDL > C09-C13",
     "QF-QADM > C14-C16",
 }
+EXPECTED_STUDY_STAGES = (
+    "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA",
+    "CALCULO", "CALCULO", "CALCULO", "CALCULO", "CALCULO", "REVISAO",
+)
+REQUIRED_STUDY_TERMS = (
+    "PLANO DE DADOS PARA CURTO-CIRCUITO E COORDENACAO",
+    "D01", "D06", "D07", "D11", "D12", "Icc MAX",
+    "CURVAS / PARES", "I2t", "PENDENTE", "DADOS DE REDE",
+)
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -75,6 +85,7 @@ def validate(root: Path) -> dict:
     cables = read_rows(project / "lista-cabos.csv")
     materials = read_rows(project / "lista-materiais.csv")
     protection_pairs = read_rows(project / "matriz-coordenacao-protecoes.csv")
+    study_inputs = read_rows(project / "dados-estudo-coordenacao.csv")
     errors: list[str] = []
     checks = 0
 
@@ -88,6 +99,20 @@ def validate(root: Path) -> dict:
             errors.append(f"{row['par']}: estudo de coordenacao nao pode ser declarado aprovado sem evidencias.")
         if not row["verificacoes"].strip() or not row["dados_necessarios"].strip():
             errors.append(f"{row['par']}: verificacoes e dados necessarios devem ser rastreados.")
+
+    expected_study_ids = [f"D{index:02d}" for index in range(1, 13)]
+    checks += 2 + len(expected_study_ids) * 3
+    if [row.get("id") for row in study_inputs] != expected_study_ids:
+        errors.append("O plano de coordenacao deve conter D01 a D12 em ordem, sem duplicatas.")
+    if len(study_inputs) != len(expected_study_ids):
+        errors.append("O plano de coordenacao deve conter exatamente 12 grupos de dados.")
+    if [row.get("etapa") for row in study_inputs] != list(EXPECTED_STUDY_STAGES):
+        errors.append("Os grupos D01-D06, D07-D11 e D12 devem separar entrada, calculo e revisao.")
+    for row in study_inputs:
+        if any(not row.get(field, "").strip() for field in ("entrada_ou_verificacao", "evidencia")):
+            errors.append(f"{row.get('id', 'ID ausente')}: dado e evidencia devem estar descritos.")
+        if row.get("status") != "PENDENTE":
+            errors.append(f"{row.get('id', 'ID ausente')}: nao ha dados/evidencias suficientes para fechar o estudo.")
 
     circuits = {row["circuito"] for row in loads}
     checks += 2
@@ -270,9 +295,15 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         dxf_texts.append(extract_text(doc))
+        if index == 9:
+            sheet_text = extract_text(doc).casefold()
+            checks += len(REQUIRED_STUDY_TERMS)
+            for term in REQUIRED_STUDY_TERMS:
+                if term.casefold() not in sheet_text:
+                    errors.append(f"{filename}: informacao do plano de coordenacao ausente: {term}.")
 
     merged_text = " ".join(dxf_texts).casefold()
     for tag in sorted(REQUIRED_TAGS):
@@ -293,6 +324,7 @@ def validate(root: Path) -> dict:
         "results": {
             "sheets": len(SHEETS),
             "protection_pairs": len(protection_pairs),
+            "coordination_study_inputs": len(study_inputs),
             "circuits": len(loads),
             "feeders": len(feeders),
             "cables": len(cables),

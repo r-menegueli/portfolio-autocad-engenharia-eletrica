@@ -95,4 +95,5 @@ harmônicas, fluxo de potência, fator de potência global corrigido, energia in
 aterramento, fotometria e dimensionamento térmico dos quadros. Esses temas devem ser
 resolvidos antes de qualquer aplicação real. A prancha P05-08 e a matriz de seis pares
 de proteção apontam as verificações e evidências necessárias, mas não contêm curvas
-tempo-corrente nem resultados de curto-circuito.
+tempo-corrente nem resultados de curto-circuito. A prancha P05-09 organiza, em doze
+grupos, os dados de entrada, cálculos e documentos que faltam; todos seguem `PENDENTE`.

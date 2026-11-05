@@ -91,7 +91,9 @@ As tags C01-C16, QGBT-05, QDF-05, QDL-05, QADM-05, M-501-M-505, TUE-501,
 TI-501-TI-506 e AL-QGBT/AL-QDF/AL-QDL/AL-QADM são comuns aos desenhos, CSVs,
 memória de cálculo e workbook. O validador específico recalcula as grandezas e rejeita
 divergências entre essas fontes. A matriz P05-08 rastreia os seis pares de proteção
-montante-jusante e seus dados de entrada, todos ainda pendentes.
+montante-jusante. A prancha P05-09 e `dados-estudo-coordenacao.csv` organizam os dados
+e evidências necessários ao futuro cálculo; nenhum dado de concessionária ou curva de
+dispositivo foi recebido e os doze grupos continuam `PENDENTE`.
 
 ## 9. Limitação de responsabilidade
 

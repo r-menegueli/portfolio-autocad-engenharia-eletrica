@@ -221,7 +221,7 @@ id = "05-instalacao-eletrica-industrial"
 path = "05-instalacao-eletrica-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -232,6 +232,7 @@ required_files = [
   "quadro-cargas.csv",
   "alimentadores.csv",
   "matriz-coordenacao-protecoes.csv",
+  "dados-estudo-coordenacao.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
   "tabelas-projeto-05.xlsx",
@@ -901,6 +902,17 @@ source = "05-instalacao-eletrica-industrial/fonte/08_coordenacao_protecoes.dxf"
 svg = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.svg"
 pdf = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.pdf"
 png = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-09-plano-dados-coordenacao"
+kind = "sheet"
+title = "Projeto 05 - Plano de dados para curto-circuito e coordenacao"
+source = "05-instalacao-eletrica-industrial/fonte/09_plano_dados_coordenacao.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.pdf"
+png = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.png"
 require_a3 = true
 require_notice = true
 

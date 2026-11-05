@@ -1,9 +1,10 @@
 {
-  "checks": 325,
+  "checks": 378,
   "errors": [],
   "results": {
     "cables": 20,
     "circuits": 16,
+    "coordination_study_inputs": 12,
     "demand_active_kw": "48.068716",
     "demand_apparent_kva": "56.289178",
     "equivalent_demand_current_a": "85.522558",
@@ -20,7 +21,7 @@
     },
     "phase_imbalance_pct": "2.686228",
     "protection_pairs": 6,
-    "sheets": 8
+    "sheets": 9
   },
   "status": "PASS"
 }

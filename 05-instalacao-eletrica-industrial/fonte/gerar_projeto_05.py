@@ -1,4 +1,4 @@
-"""Gera as oito pranchas DXF do Projeto 05 de forma deterministica."""
+"""Gera as nove pranchas DXF do Projeto 05 de forma deterministica."""
 
 from __future__ import annotations
 
@@ -36,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "05-instalacao-eletrica-industrial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
-REVISION_DESCRIPTION = "ESTUDO DE PROTECOES"
+REVISION = "03"
+REVISION_DESCRIPTION = "PLANO DE DADOS PARA COORDENACAO"
 
 
 @dataclass(frozen=True)
@@ -162,6 +162,15 @@ SHEETS = (
         "Icc max/min, curvas tempo-corrente, Icu/Ics, energia passante e seletividade\\P"
         "permanecem pendentes; ratings nominais nao demonstram coordenacao real.",
         "Ik: corrente de curto | TCC: tempo-corrente | Icu/Ics: interrupcao | I2t: energia passante",
+    ),
+    SheetSpec(
+        9,
+        "09_plano_dados_coordenacao.dxf",
+        "PLANO DE DADOS PARA CURTO-CIRCUITO E COORDENACAO",
+        "Entradas e evidencias necessarias para revisar os seis pares da prancha 08",
+        "O estudo ainda nao foi calculado. Os doze grupos de dados permanecem pendentes.\\P"
+        "Nao declarar capacidade, seletividade ou coordenacao sem modelo, curvas e evidencias verificaveis.",
+        "D01-D06: entradas | D07-D11: calculos e comparacoes | D12: registro/revisao | PENDENTE: sem evidencia",
     ),
 )
 
@@ -555,6 +564,18 @@ def read_protection_pairs(root: Path) -> list[dict[str, str]]:
     return rows
 
 
+def read_coordination_inputs(root: Path) -> list[dict[str, str]]:
+    path = root / PROJECT_SLUG / "dados-estudo-coordenacao.csv"
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    expected = [f"D{index:02d}" for index in range(1, 13)]
+    if [row["id"] for row in rows] != expected:
+        raise ValueError("O plano deve conter os registros D01 a D12 em ordem.")
+    if any(row["status"] != "PENDENTE" for row in rows):
+        raise ValueError("O estudo de coordenacao nao possui evidencias executadas.")
+    return rows
+
+
 def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
     centered(layout, "TOPOLOGIA DOS DISPOSITIVOS EM ESTUDO", (210, 262), 1.7, "12_LEGENDA")
     box(layout, 20, 226, 83, 256, "PONTO DE ENTREGA", "380/220 V | Icc a confirmar", "05_POTENCIA")
@@ -613,6 +634,69 @@ def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
             cursor += width
 
 
+def draw_coordination_data_plan(layout, rows: list[dict[str, str]]) -> None:
+    centered(layout, "FLUXO DO ESTUDO — ENTRADA, CALCULO, COMPARACAO E REVISAO", (210, 265), 1.65, "12_LEGENDA")
+    stages = (
+        "01  DADOS DE REDE",
+        "02  Icc MAX / MIN",
+        "03  CABOS E PROTECAO",
+        "04  CURVAS / PARES",
+        "05  RELATORIO / REVISAO",
+    )
+    x0, stage_y0, stage_y1, stage_w, gap = 18.0, 249.0, 261.0, 70.0, 8.5
+    for index, label in enumerate(stages):
+        left = x0 + index * (stage_w + gap)
+        add_rect(layout, left, stage_y0, left + stage_w, stage_y1, "12_LEGENDA")
+        centered(layout, label, (left + stage_w / 2, (stage_y0 + stage_y1) / 2), 1.15, "12_LEGENDA")
+        if index < len(stages) - 1:
+            arrow(layout, (left + stage_w, (stage_y0 + stage_y1) / 2), (left + stage_w + gap, (stage_y0 + stage_y1) / 2), "03_COTAS")
+
+    column_keys = ("id", "etapa", "entrada_ou_verificacao", "evidencia", "status")
+    headers = {
+        "id": "ID",
+        "etapa": "GRUPO",
+        "entrada_ou_verificacao": "DADO OU VERIFICACAO NECESSARIA",
+        "evidencia": "FONTE / REGISTRO",
+        "status": "STATUS",
+    }
+    table_rows = [headers, *rows]
+    widths = (25.0, 55.0, 190.0, 76.0, 38.0)
+    x_left, y_top, row_h = 18.0, 244.0, 10.8
+    y_bottom = y_top - len(table_rows) * row_h
+    x_right = x_left + sum(widths)
+    add_rect(layout, x_left, y_bottom, x_right, y_top, "12_LEGENDA")
+    for row_index in range(1, len(table_rows)):
+        y = y_top - row_h * row_index
+        line(layout, (x_left, y), (x_right, y), "12_LEGENDA")
+    cursor = x_left
+    for width in widths[:-1]:
+        cursor += width
+        line(layout, (cursor, y_bottom), (cursor, y_top), "12_LEGENDA")
+
+    group_layers = {"ENTRADA": "06_COMANDO", "CALCULO": "05_POTENCIA", "REVISAO": "12_LEGENDA"}
+    for row_index, row in enumerate(table_rows):
+        center_y = y_top - row_h * row_index - row_h / 2
+        cursor = x_left
+        for key, width in zip(column_keys, widths):
+            value = row[key]
+            if row_index == 0:
+                centered(layout, value, (cursor + width / 2, center_y), 1.03, "12_LEGENDA")
+            elif key in {"entrada_ou_verificacao", "evidencia"}:
+                add_text(
+                    layout,
+                    value,
+                    (cursor + 1.6, center_y),
+                    1.08,
+                    layer="02_TEXTO",
+                    align=TextEntityAlignment.MIDDLE_LEFT,
+                )
+            elif key == "id":
+                centered(layout, value, (cursor + width / 2, center_y), 1.2, group_layers[row["etapa"]])
+            else:
+                centered(layout, value, (cursor + width / 2, center_y), 1.05, "12_LEGENDA")
+            cursor += width
+
+
 DRAWERS = {
     1: draw_layout_industrial,
     2: draw_force,
@@ -633,6 +717,8 @@ def generate(root: Path) -> list[Path]:
         doc, layout = create_sheet(config, spec)
         if spec.number == 8:
             draw_protection_coordination(layout, read_protection_pairs(root))
+        elif spec.number == 9:
+            draw_coordination_data_plan(layout, read_coordination_inputs(root))
         else:
             DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
