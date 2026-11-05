@@ -58,15 +58,21 @@ Cada linha identifica a premissa atual, os dados reais necessários e a análise
 aberto. A razão numérica entre a capacidade presumida de Q1 e a Icc didática foi
 explicitamente marcada como insuficiente para provar coordenação.
 
-Inspecionei visualmente a composição das sete folhas. P01-07 também foi inspecionada em PNG de
-produção a 300 dpi e rasterizada independentemente do PDF com Poppler a 150 dpi. A tabela,
-as notas, o aviso e o carimbo permanecem dentro da folha e sem sobreposição relevante.
-O revisor do portfólio atribuiu similaridade PDF/PNG de 0,987268 a P01-07.
+Inspecionei visualmente a composição atual das oito folhas. P01-07 foi conferida em PNG
+integral a 300 dpi e em PDF rasterizado independentemente pelo Poppler a 150 dpi.
+P01-08 também foi examinada nos dois formatos; a tabela, os avisos e o carimbo cabem
+na folha sem cortes ou colisões relevantes. Similaridades PDF/PNG: 0,987268 em P01-07
+e 0,984095 em P01-08.
 
-O Autodesk AcCoreConsole 2027 abriu e auditou os sete DXFs: `AUTOCAD_AUDIT=PASS` em
-7/7. A validação estrita integrada passou por 501.282 verificações, sem erros nem
-avisos; o revisor consolidado aprovou 12 projetos, 94 pranchas, 376 arquivos gráficos
-e 66 CSVs. A inspeção visual dos SVGs em navegador continua pendente de autorização.
+A prancha 08 acrescenta um fluxo de cinco etapas e uma matriz com doze pontos, do
+fechamento documental ao pacote as-built. O CSV relacionado registra os dados e as
+evidências requeridas; todos os itens aparecem como `NÃO EXECUTADO`, sem resultados de
+campo nem alegações de aprovação.
+
+O Autodesk AcCoreConsole 2027 abriu e auditou os oito DXFs: `AUTOCAD_AUDIT=PASS` em
+8/8. A validação estrita integrada passou por 509.704 verificações, sem erros nem
+avisos; o revisor consolidado aprovou 12 projetos, 95 pranchas, 380 arquivos gráficos
+e 67 CSVs. A inspeção visual dos SVGs em navegador continua pendente de autorização.
 
 Essa revisão confirma apresentação, integridade CAD e consistência documental. Não
 confirma dimensionamento, coordenação elétrica, seletividade ou conformidade normativa.

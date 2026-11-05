@@ -13,7 +13,7 @@ Unidades dos desenhos: **milímetros (mm)**
 Documentar, para fins acadêmicos, um painel de acionamento de um motor de indução
 trifásico de 7,5 kW por inversor de frequência. O conjunto reúne potência, comando,
 segurança funcional conceitual, terminais, arranjo interno e interfaces de campo em
-sete pranchas A3 independentes.
+oito pranchas A3 independentes.
 
 ## Escopo representado
 
@@ -35,13 +35,14 @@ instalação e comissionamento.
 
 | Prancha | Fonte DXF | PDF | SVG | PNG |
 |---|---|---|---|---|
-| 01/07 | [Diagrama unifilar](fonte/01_diagrama_unifilar.dxf) | [PDF](exports/01_diagrama_unifilar.pdf) | [SVG](exports/01_diagrama_unifilar.svg) | [PNG](exports/01_diagrama_unifilar.png) |
-| 02/07 | [Diagrama de potência](fonte/02_diagrama_potencia.dxf) | [PDF](exports/02_diagrama_potencia.pdf) | [SVG](exports/02_diagrama_potencia.svg) | [PNG](exports/02_diagrama_potencia.png) |
-| 03/07 | [Diagrama de comando](fonte/03_diagrama_comando.dxf) | [PDF](exports/03_diagrama_comando.pdf) | [SVG](exports/03_diagrama_comando.svg) | [PNG](exports/03_diagrama_comando.png) |
-| 04/07 | [Layout interno](fonte/04_layout_interno_painel.dxf) | [PDF](exports/04_layout_interno_painel.pdf) | [SVG](exports/04_layout_interno_painel.svg) | [PNG](exports/04_layout_interno_painel.png) |
-| 05/07 | [Diagrama de bornes](fonte/05_diagrama_bornes.dxf) | [PDF](exports/05_diagrama_bornes.pdf) | [SVG](exports/05_diagrama_bornes.svg) | [PNG](exports/05_diagrama_bornes.png) |
-| 06/07 | [Interligações de campo](fonte/06_interligacoes_campo.dxf) | [PDF](exports/06_interligacoes_campo.pdf) | [SVG](exports/06_interligacoes_campo.svg) | [PNG](exports/06_interligacoes_campo.png) |
-| 07/07 | [Proteção e dados para coordenação](fonte/07_protecao_coordenacao.dxf) | [PDF](exports/07_protecao_coordenacao.pdf) | [SVG](exports/07_protecao_coordenacao.svg) | [PNG](exports/07_protecao_coordenacao.png) |
+| 01/08 | [Diagrama unifilar](fonte/01_diagrama_unifilar.dxf) | [PDF](exports/01_diagrama_unifilar.pdf) | [SVG](exports/01_diagrama_unifilar.svg) | [PNG](exports/01_diagrama_unifilar.png) |
+| 02/08 | [Diagrama de potência](fonte/02_diagrama_potencia.dxf) | [PDF](exports/02_diagrama_potencia.pdf) | [SVG](exports/02_diagrama_potencia.svg) | [PNG](exports/02_diagrama_potencia.png) |
+| 03/08 | [Diagrama de comando](fonte/03_diagrama_comando.dxf) | [PDF](exports/03_diagrama_comando.pdf) | [SVG](exports/03_diagrama_comando.svg) | [PNG](exports/03_diagrama_comando.png) |
+| 04/08 | [Layout interno](fonte/04_layout_interno_painel.dxf) | [PDF](exports/04_layout_interno_painel.pdf) | [SVG](exports/04_layout_interno_painel.svg) | [PNG](exports/04_layout_interno_painel.png) |
+| 05/08 | [Diagrama de bornes](fonte/05_diagrama_bornes.dxf) | [PDF](exports/05_diagrama_bornes.pdf) | [SVG](exports/05_diagrama_bornes.svg) | [PNG](exports/05_diagrama_bornes.png) |
+| 06/08 | [Interligações de campo](fonte/06_interligacoes_campo.dxf) | [PDF](exports/06_interligacoes_campo.pdf) | [SVG](exports/06_interligacoes_campo.svg) | [PNG](exports/06_interligacoes_campo.png) |
+| 07/08 | [Proteção e dados para coordenação](fonte/07_protecao_coordenacao.dxf) | [PDF](exports/07_protecao_coordenacao.pdf) | [SVG](exports/07_protecao_coordenacao.svg) | [PNG](exports/07_protecao_coordenacao.png) |
+| 08/08 | [Plano de verificação e evidências](fonte/08_plano_verificacao_evidencias.dxf) | [PDF](exports/08_plano_verificacao_evidencias.pdf) | [SVG](exports/08_plano_verificacao_evidencias.svg) | [PNG](exports/08_plano_verificacao_evidencias.png) |
 
 ## Documentação
 
@@ -53,6 +54,7 @@ instalação e comissionamento.
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de materiais](lista-materiais.csv)
 - [Matriz de proteção e dados pendentes](protecao-coordenacao.csv)
+- [Plano de verificação e evidências pendentes](plano-verificacao.csv)
 - [Script-fonte](fonte/gerar_projeto_01.py)
 - [Relatório de validação](validacao.json)
 
@@ -74,11 +76,13 @@ O comando integrado também regenera a infraestrutura compartilhada:
 
 ## Estado de qualidade
 
-As sete fontes são DXF R2013/AC1027 reais, em milímetros, com os layers obrigatórios.
-PDF, SVG e PNG são derivados do DXF. As sete fontes passaram pela auditoria do AutoCAD
+As oito fontes são DXF R2013/AC1027 reais, em milímetros, com os layers obrigatórios.
+PDF, SVG e PNG são derivados do DXF. As oito fontes passaram pela auditoria do AutoCAD
 2027 na revisão 02. A folha 07 organiza os dados ainda necessários para selecionar e
-coordenar as proteções, sem substituir cálculo ou documentação de fabricante. A validação
-estrita e a inspeção visual desta revisão estão aprovadas; os resultados são
+coordenar as proteções; a folha 08 organiza evidências e etapas de verificação ainda não
+executadas. Nenhuma das folhas substitui cálculos, documentação do fabricante ou ensaios.
+A validação estrita e a inspeção visual de PNG/PDF desta revisão estão aprovadas; a
+inspeção dos SVGs em navegador permanece pendente de autorização. Os resultados são
 registrados em `validacao.json` e em [inspecao-visual.md](inspecao-visual.md).
 
 ## Aviso obrigatório

@@ -465,3 +465,22 @@ pranchas, 376 arquivos gráficos e 66 CSVs, com similaridade mínima de 0,9842.
 A inspeção visual dos SVGs no navegador segue pendente da autorização do usuário. A
 revisão confirma integridade CAD e apresentação, mas não dimensionamento ou coordenação
 elétrica para execução.
+
+## Atualização P01-08 — 2026-11-05
+
+A prancha P01-08 acrescenta um plano de verificação com cinco etapas e doze pontos de
+fechamento, rastreando dados, evidências e estado. A matriz vinculada mantém todos os
+itens como `NÃO EXECUTADO`; não há resultados de campo nem aprovação implícita. O
+gerador valida o cabeçalho, a unicidade dos códigos e as doze linhas completas do CSV.
+
+As oito fontes DXF foram regeneradas deterministicamente: uma segunda execução
+reproduziu os oito SHA-256. O AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 fontes. As
+oito folhas foram renderizadas em PDF, SVG e PNG; o contato atualizado do P01 foi
+conferido e P01-08 foi examinada integralmente no PNG de produção a 300 dpi e em raster
+independente do PDF, feito pelo Poppler a 150 dpi. Não observei cortes ou colisões
+relevantes na nova folha; sua similaridade PDF/PNG foi 0,984095.
+
+A validação estrita integrada passou por 509.704 verificações, sem erros nem avisos.
+O revisor confirmou 12 projetos, 95 pranchas, 380 arquivos gráficos e 67 CSVs; a
+similaridade mínima PDF/PNG foi 0,984095. A inspeção visual dos SVGs em navegador
+continua pendente de autorização.

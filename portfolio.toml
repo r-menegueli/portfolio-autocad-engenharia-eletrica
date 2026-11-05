@@ -124,7 +124,7 @@ id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -135,6 +135,7 @@ required_files = [
   "lista-cabos.csv",
   "lista-materiais.csv",
   "protecao-coordenacao.csv",
+  "plano-verificacao.csv",
   "fonte/gerar_projeto_01.py",
 ]
 
@@ -513,6 +514,17 @@ source = "01-painel-motor-inversor/fonte/07_protecao_coordenacao.dxf"
 svg = "01-painel-motor-inversor/exports/07_protecao_coordenacao.svg"
 pdf = "01-painel-motor-inversor/exports/07_protecao_coordenacao.pdf"
 png = "01-painel-motor-inversor/exports/07_protecao_coordenacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-08-plano-verificacao-evidencias"
+kind = "sheet"
+title = "Projeto 01 - Plano de verificação e evidências"
+source = "01-painel-motor-inversor/fonte/08_plano_verificacao_evidencias.dxf"
+svg = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.svg"
+pdf = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.pdf"
+png = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.png"
 require_a3 = true
 require_notice = true
 

@@ -77,7 +77,7 @@ de instalação, raios de curvatura, bornes selecionados e recomendações do fa
 ## 9. Interfaces documentais
 
 As referências Q0, Q1, Q2, DPS1, PS1, VFD1, KSR1, S0-S4, P1, H1-H4, X1-X3, M1 e
-W01-W06 são mantidas nas sete pranchas, nas listas de materiais e de cabos e na matriz
+W01-W06 são mantidas nas oito pranchas, nas listas de materiais e de cabos e nas matrizes
 de coordenação. Os DXFs são as fontes principais; PDF, SVG e PNG servem à revisão visual.
 
 ## 10. Proteção e dados para coordenação
@@ -93,3 +93,15 @@ específicos do dispositivo, curvas e tabelas de coordenação do fabricante, es
 não demonstra capacidade de interrupção, seletividade, retaguarda ou energia passante.
 Q0 é representado como seccionador; a sobrecarga do motor depende do ajuste do VFD e
 da placa real. Nenhum desses itens foi dimensionado para execução.
+
+## 11. Plano de verificação e evidências
+
+A prancha 08 organiza os documentos, dados de campo/OEM, cálculos, verificações
+funcionais e registros necessários para encerrar cada etapa. A matriz vinculada
+`plano-verificacao.csv` mantém todos os doze pontos no estado `NÃO EXECUTADO`; isso
+significa que este estudo não contém ensaios nem aceite de uma instalação real.
+
+Os critérios de aceitação, tolerâncias e instrumentos devem ser definidos a partir dos
+equipamentos e requisitos efetivamente selecionados. O plano não é procedimento de
+trabalho energizado, não autoriza comissionamento e não declara desempenho funcional,
+coordenação, categoria de segurança, PL ou SIL.

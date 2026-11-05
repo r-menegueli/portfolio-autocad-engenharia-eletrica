@@ -1,4 +1,4 @@
-"""Gera as sete pranchas DXF do Projeto 01 de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 01 de forma deterministica."""
 
 from __future__ import annotations
 
@@ -114,6 +114,15 @@ SHEETS = (
         "Os valores atuais são didáticos e não provam seleção, capacidade de interrupção,\\P"
         "seletividade, retaguarda, proteção térmica ou coordenação entre fabricantes.",
         "Icc: curto-circuito presumido | Icu/Ics: capacidade do dispositivo | SCPD: proteção contra curto",
+    ),
+    SheetSpec(
+        8,
+        "08_plano_verificacao_evidencias.dxf",
+        "PLANO DE VERIFICAÇÃO E EVIDÊNCIAS",
+        "Matriz de encerramento documental e funcional — sem ensaios executados",
+        "Critérios e tolerâncias devem vir dos documentos e fabricantes selecionados.\\P"
+        "A matriz não registra resultados de campo nem autoriza energização ou comissionamento.",
+        "ID: ponto de verificação | evidência: registro necessário | status: não executado",
     ),
 )
 
@@ -606,6 +615,91 @@ def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
     )
 
 
+def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
+    stages = (
+        ("1  BASE E REVISÕES", "documentos coerentes"),
+        ("2  DADOS REAIS / OEM", "rede, placas e manuais"),
+        ("3  CÁLCULO / SELEÇÃO", "critérios documentados"),
+        ("4  VERIFICAÇÃO", "ensaios registrados"),
+        ("5  AS-BUILT", "pendências encerradas"),
+    )
+    stage_x = (18.0, 98.0, 178.0, 258.0, 338.0)
+    for index, ((title, subtitle), x0) in enumerate(zip(stages, stage_x)):
+        add_rect(layout, x0, 247.0, x0 + 70.0, 262.0, "04_EQUIPAMENTOS")
+        centered_text(layout, title, (x0 + 35.0, 257.7), 1.75, "04_EQUIPAMENTOS")
+        centered_text(layout, subtitle, (x0 + 35.0, 251.1), 1.35, "02_TEXTO")
+        if index < len(stages) - 1:
+            x1 = x0 + 70.0
+            x2 = stage_x[index + 1]
+            line(layout, (x1 + 1.0, 254.5), (x2 - 2.0, 254.5), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 256.3), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 252.7), "05_POTENCIA")
+
+    x_edges = (18.0, 37.0, 100.0, 235.0, 380.0, 410.0)
+    table_top = 236.0
+    header_height = 8.0
+    row_height = 9.3
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(
+        layout,
+        (x_edges[0], table_top - header_height),
+        (x_edges[-1], table_top - header_height),
+        "01_CARIMBO",
+    )
+    headers = ("ID", "PONTO / ETAPA", "DADOS REQUERIDOS", "EVIDÊNCIA PARA ENCERRAR", "STATUS")
+    for index, label in enumerate(headers):
+        add_mtext(
+            layout,
+            label,
+            (x_edges[index] + 1.5, table_top - 1.8),
+            x_edges[index + 1] - x_edges[index] - 3.0,
+            1.45,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered_text(
+            layout,
+            row["codigo"],
+            ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0),
+            1.35,
+            "04_EQUIPAMENTOS",
+        )
+        for index, key in ((1, "ponto"), (2, "dados_requeridos"), (3, "evidencia_para_encerrar")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 1.5, row_top - 1.2),
+                x_edges[index + 1] - x_edges[index] - 3.0,
+                1.4,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+        centered_text(
+            layout,
+            row["status"],
+            ((x_edges[4] + x_edges[5]) / 2.0, (row_top + row_bottom) / 2.0),
+            1.35,
+            "13_NOTAS",
+        )
+
+    add_rect(layout, 18.0, 102.0, 410.0, 111.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "STATUS NÃO EXECUTADO: nenhum ensaio/aceite de campo foi registrado neste estudo. O status não equivale a aprovação; não energizar ou comissionar com base nesta prancha.",
+        (21.0, 108.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_power,
@@ -634,16 +728,44 @@ def read_coordination_rows(project_dir: Path) -> list[dict[str, str]]:
     return rows
 
 
+def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "plano-verificacao.csv"
+    expected_fields = (
+        "codigo",
+        "ponto",
+        "dados_requeridos",
+        "evidencia_para_encerrar",
+        "status",
+    )
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        rows = list(reader)
+    codes = [row.get("codigo", "").strip() for row in rows]
+    if (
+        len(rows) != 12
+        or len(set(codes)) != len(rows)
+        or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows)
+        or any(row["status"] != "NÃO EXECUTADO" for row in rows)
+    ):
+        raise ValueError(f"A matriz de verificacao deve conter doze linhas completas e nao executadas: {source}")
+    return rows
+
+
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
     coordination_rows = read_coordination_rows(root / PROJECT_SLUG)
+    verification_rows = read_verification_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
         if spec.number == 7:
             draw_protection_coordination(layout, coordination_rows)
+        elif spec.number == 8:
+            draw_verification_plan(layout, verification_rows)
         else:
             DRAWERS[spec.number](layout)
         output = source_dir / spec.filename

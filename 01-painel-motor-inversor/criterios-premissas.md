@@ -108,3 +108,17 @@ correção, queda de tensão e verificação térmica de curto-circuito.
 
 A relação linha a linha está em [protecao-coordenacao.csv](protecao-coordenacao.csv)
 e na prancha 07. Todos os itens dessa matriz permanecem pendentes.
+
+### 8.2 Plano de verificação e evidências
+
+A prancha 08 e [plano-verificacao.csv](plano-verificacao.csv) são um plano de
+fechamento documental e funcional, não um registro de testes aprovados. Os doze itens
+permanecem como `NÃO EXECUTADO`, pois não foram apresentados dados de campo nem
+resultados de ensaio. O status não deve ser convertido em aprovado por inferência.
+
+Antes de encerrar qualquer linha, devem existir os dados e as evidências indicados,
+critérios e tolerâncias aplicáveis, identificação do modelo e revisão do fabricante,
+instrumentos adequados e responsável habilitado. Ensaios de STO e funções de segurança
+dependem de requisitos derivados da análise de risco e de validação documentada; esta
+matriz não prescreve como executá-los nem estabelece PL/SIL. O desenho também não
+autoriza energização ou comissionamento.
