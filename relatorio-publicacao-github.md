@@ -19,7 +19,7 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
 
 ## Auditoria de publicação desta revisão
 
-- 612 arquivos incluídos; 408 links relativos de Markdown verificados; 0 erros; 205.049.133 bytes na árvore atual.
+- 612 arquivos incluídos; 408 links relativos de Markdown verificados; 0 erros; 205.049.145 bytes na árvore atual.
 - Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
   atuais; nenhum arquivo excede 50 MiB.
 - Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit

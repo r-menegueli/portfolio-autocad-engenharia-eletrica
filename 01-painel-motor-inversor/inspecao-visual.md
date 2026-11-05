@@ -58,8 +58,8 @@ Cada linha identifica a premissa atual, os dados reais necessários e a análise
 aberto. A razão numérica entre a capacidade presumida de Q1 e a Icc didática foi
 explicitamente marcada como insuficiente para provar coordenação.
 
-As sete folhas foram inspecionadas nos PNGs de produção a 300 dpi e na composição P01;
-P01-07 também foi rasterizada independentemente do PDF com Poppler a 150 dpi. A tabela,
+Inspecionei visualmente a composição das sete folhas. P01-07 também foi inspecionada em PNG de
+produção a 300 dpi e rasterizada independentemente do PDF com Poppler a 150 dpi. A tabela,
 as notas, o aviso e o carimbo permanecem dentro da folha e sem sobreposição relevante.
 O revisor do portfólio atribuiu similaridade PDF/PNG de 0,987268 a P01-07.
 
