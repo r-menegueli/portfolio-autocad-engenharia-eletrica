@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 08
+Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades em milímetros, revisão gráfica 02 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 03 (2026-11-05)
 
-Estado: revisão acadêmica 02; validação de fonte e derivados registrada abaixo.
+Estado: revisão acadêmica 03; validação de fonte e derivados registrada abaixo.
 
 O CCM-06 acadêmico integra três métodos de acionamento em uma instalação fictícia
 380/220 V, 3F+N+PE, 60 Hz: partida direta da bomba M-601, reversão da esteira M-602 e
@@ -15,7 +15,7 @@ repetir o painel individual do Projeto 01.
 
 ## Entregáveis
 
-- `fonte/`: oito desenhos DXF AC1027 e scripts reproduzíveis;
+- `fonte/`: nove desenhos DXF AC1027 e scripts reproduzíveis;
 - `exports/`: derivados PDF, SVG e PNG;
 - `lista-cargas.csv`: três cargas e respectivos critérios elétricos;
 - `alimentador.csv`: alimentador geral W600;
@@ -36,6 +36,7 @@ repetir o painel individual do Projeto 01.
 6. [Diagrama de bornes](fonte/06_diagrama_bornes.dxf)
 7. [Lista de cabos](fonte/07_lista_cabos.dxf)
 8. [Matriz causa–efeito do CCM-06](fonte/08_matriz_causa_efeito_ccm.dxf)
+9. [Balanço de demanda do CCM-06](fonte/09_balanco_demanda_ccm.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -52,16 +53,21 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 | Alimentador preliminar | 4 x 10 mm² + PE 10 mm² Cu |
 | Maior queda combinada | 2,038% em M-601 |
 
-## Validação da revisão 02
+## Validação da revisão 03
 
-- Validador específico: `PASS`, 849 verificações e zero erros; oito folhas e nove eventos causa–efeito.
-- Validador estrito do portfólio: `PASS`, 467.885 verificações, zero erros e zero avisos.
-- Revisor consolidado: `PASS`, 12 projetos, 88 folhas, 352 arquivos gráficos e 60 CSVs;
-  similaridade mínima PDF/PNG de 0,9842.
-- P06-08 foi conferida em PNG integral e PDF rasterizado a 150 dpi; o contato das
-  oito pranchas foi revisado.
-- AutoCAD/AcCoreConsole não foi reaberto e os SVGs ainda aguardam inspeção visual no navegador.
-- Respostas de falha e reset dependentes dos modelos KSR/VFD permanecem pendentes; esta prancha registra uma sequência conceitual.
+- Validador específico: `PASS`, 864 verificações e zero erros; nove folhas e nove eventos causa–efeito.
+- Validador estrito do portfólio: `PASS`, 561.440 verificações, zero erros e zero avisos.
+- Revisor consolidado: `PASS`, 12 projetos, 102 folhas, 408 arquivos gráficos e 71 CSVs;
+  similaridade mínima PDF/PNG de 0,9841.
+- P06-09 consolida a demanda aplicada a cada motor, os totais instalados/demandados e
+  a relação aritmética declarada para W600. Os fatores, o disjuntor e Iz continuam
+  premissas; isso não valida curto-circuito, seletividade nem instalação.
+- P06-09 foi conferida no PNG de produção a 300 dpi e em PDF rasterizado a 150 dpi; a
+  tabela, as barras comparativas, os limites do alimentador e o carimbo ficaram legíveis,
+  sem cortes ou colisões visíveis. O contato atualizado das nove pranchas foi conferido.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs. A inspeção visual de SVGs no
+  navegador segue aguardando autorização do usuário.
+- Respostas de falha e reset dependentes dos modelos KSR/VFD permanecem pendentes; P06-08 registra uma sequência conceitual.
 
 ## Documentação
 

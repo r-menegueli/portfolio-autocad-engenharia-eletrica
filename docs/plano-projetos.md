@@ -187,15 +187,19 @@ mecanicamente intertravada e ventilador com inversor de frequência e STO. Inclu
 alimentador, proteções, aterramento, layout, bornes, cabos e sequência funcional.
 
 **Pranchas e dados específicos.** Unifilar do CCM; partida direta; partida reversora;
-acionamento por inversor; layout do CCM; diagrama de bornes; lista de cabos; listas
-estruturadas de cargas, alimentador, bornes, cabos e materiais.
+acionamento por inversor; layout do CCM; diagrama de bornes; lista de cabos; matriz
+causa-efeito e balanço de demanda; listas estruturadas de cargas, alimentador, bornes,
+cabos e materiais.
 
-**Marco de aceitação.** Sete DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
-listas estruturadas, comprovar a exclusão mútua dos contatores reversores, a parada
-comum e a ausência de rearme automático.
+**Marco de aceitação.** Nove DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
+listas estruturadas, mostrar os totais instalados e demandados sem somar correntes de
+ramais para representar W600, e documentar a exclusão mútua dos contatores reversores,
+a parada comum e a ausência de rearme automático.
 
-**Situação.** Concluído na revisão 00 em 2026-09-09, com validação específica,
-auditoria dos sete DXFs no AutoCAD e inspeção visual dos 21 derivados aprovadas.
+**Revisão 03.** Acrescentada P06-09 com a comparação das três cargas, fatores de
+demanda, totais P/S instalados e demandados e corrente equivalente de W600. Os dados
+de proteção e fatores continuam premissas; a relação aritmética não valida o método
+de instalação, fatores de correção, capacidade térmica, Icc ou seletividade.
 
 ## P07 — Arquitetura elétrica acadêmica de veículo elétrico
 

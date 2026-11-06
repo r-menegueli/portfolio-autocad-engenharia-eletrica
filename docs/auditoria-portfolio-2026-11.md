@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 101 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 102 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão atual, o revisor confirmou 12 projetos, 101 pranchas, 404 arquivos gráficos
-e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita passou em
-555.195 verificações, sem erros ou avisos.
+Na revisão atual, o revisor confirmou 12 projetos, 102 pranchas, 408 arquivos gráficos
+e 71 CSVs, com similaridade mínima PDF/PNG de 0,9841. A validação estrita passou em
+561.440 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -31,7 +31,7 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita p
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. | O plano registra evidências necessárias, não resultados: nenhum teste de CLP ou segurança funcional foi executado; a resposta a sensor incoerente com bomba em marcha segue sem decisão. | Escolher hardware, fechar a decisão de processo e preencher o plano com critérios e evidências reais; validar a sequência no software do fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
-| P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos e matriz de nove eventos. | Proteções e capacidade de curto ainda dependem de componentes; diagnóstico KSR, falha VFD e rearme permanecem sem dados de fabricante. | Substituir tags e respostas pendentes por modelos escolhidos, diagrama do fabricante e análise de risco antes de validar segurança funcional. |
+| P06 — CCM | Abrange partida direta, reversão, VFD, bornes, cabos, matriz de nove eventos e balanço P/S instalado/demandado por motor. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
@@ -115,10 +115,10 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita p
 ## Limites e validação
 
 Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 555.195 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 101 pranchas, 404 arquivos gráficos e 71 CSVs, com similaridade mínima
-PDF/PNG de 0,984061. As 12 folhas de contato foram regeneradas; revisei as composições
-P01 (oito folhas), P03 (dez), P04 (sete), P05 (nove), P06 (oito), P07 (nove), P08
+validação estrita aprovou 561.440 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 102 pranchas, 408 arquivos gráficos e 71 CSVs, com similaridade mínima
+PDF/PNG de 0,9841. As 12 folhas de contato foram regeneradas; revisei as composições
+P01 (oito folhas), P03 (dez), P04 (sete), P05 (nove), P06 (nove), P07 (nove), P08
 (sete), P09 (dez), P10 (nove), P11 (sete) e P12 (oito).
 O contato P02 foi conferido após a expansão para nove folhas. P02-01 foi conferida no
 PNG integral; P02-09 foi inspecionada em PNG integral e PDF rasterizado a 150 dpi. O
@@ -140,8 +140,11 @@ composição geral das demais. P08-07 foi inspecionada em PNG a 300 dpi e PDF ra
 a 150 dpi; conferi também a composição e a numeração das sete folhas no contato atualizado.
 P12-07 e P12-08 foram
 reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas
-P12 também foi conferido. P06-08 foi inspecionada em PNG integral e PDF rasterizado a
-150 dpi; a folha de contato atual das oito pranchas também foi conferida. P10-07 foi
+P12 também foi conferido. P06-08 havia sido inspecionada em PNG integral e PDF rasterizado a
+150 dpi; nesta revisão, P06-09 foi conferida em PNG integral e PDF rasterizado a 150 dpi,
+e o contato atualizado das nove pranchas foi conferido. O AcCoreConsole 2027 abriu e
+auditou 9/9 DXFs P06; o validador específico passou em 864 verificações, sem erros.
+P10-07 foi
 inspecionada em PNG de produção e PDF rasterizado a 150 dpi; as oito linhas cabem sem
 cortes. Na revisão 04, P10-09 foi conferida no PNG de produção e em PDF rasterizado a
 150 dpi; tabela, barra de carga, textos, notas e carimbo não apresentam cortes nem
@@ -233,3 +236,17 @@ conferida no PNG a 300 dpi, em PDF rasterizado a 150 dpi e no contato das nove f
 sem cortes ou colisões visíveis. A inspeção de SVGs no navegador segue aguardando
 autorização do usuário. O revisor integrado confirmou 12 projetos, 101 folhas, 404
 arquivos gráficos, 71 CSVs e similaridade mínima PDF/PNG de 0,984061.
+
+### Atualização P06-09 — revisão 03
+
+A nova folha consolida os fatores de demanda registrados por motor, potências ativa
+e aparente instaladas e demandadas e as correntes de projeto dos ramais. O W600 usa
+19,133709 kVA demandados para obter 29,070663 A; o disjuntor de 50 A e Iz de 57 A são
+dados assumidos dos CSVs. A relação aritmética `Ib <= In <= Iz` não valida instalação,
+capacidade térmica, correções, Icc ou seletividade. P06-09 foi inspecionada no PNG a
+300 dpi, no PDF rasterizado a 150 dpi e no contato das nove folhas, sem cortes ou
+colisões visíveis. O AcCoreConsole 2027 auditou 9/9 DXFs; o validador P06 passou em
+864 verificações e o estrito em 561.440, sem erros ou avisos. O revisor integrado
+confirmou 12 projetos, 102 folhas, 408 arquivos gráficos e 71 CSVs, com similaridade
+mínima PDF/PNG de 0,9841. A inspeção visual dos SVGs no navegador permanece pendente
+de autorização do usuário.

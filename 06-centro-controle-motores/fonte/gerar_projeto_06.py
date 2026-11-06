@@ -1,10 +1,11 @@
-"""Gera as oito pranchas DXF do Projeto 06 de forma deterministica."""
+"""Gera as nove pranchas DXF do Projeto 06 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -36,7 +37,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "06-centro-controle-motores"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -121,6 +122,14 @@ SHEETS = (
         "Ações repetem a sequência documentada; diagnósticos de fabricante permanecem pendentes.\\P"
         "Não atribui categoria, PL ou SIL à função de segurança.",
         "FR: relé de sobrecarga | FC: fim de curso | KSR: relé de segurança | STO: torque seguro desligado",
+    ),
+    SheetSpec(
+        9,
+        "09_balanco_demanda_ccm.dxf",
+        "BALANÇO DE DEMANDA DO CCM-06",
+        "Potências instaladas e demandadas por carga; corrente equivalente do W600",
+        "Fatores de demanda, disjuntor e Iz são premissas dos arquivos de entrada. Esta folha resume os dados; não valida Icc, seletividade, método de instalação, fatores de correção ou operação simultânea.",
+        "Barra superior: potência instalada | inferior: potência demandada | FD: fator de demanda | Ib dos ramais usa S instalada; não somar para obter a corrente do W600.",
     ),
 )
 
@@ -223,7 +232,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("MATRIZ CAUSA-EFEITO", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("BALANCO DE DEMANDA", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -577,6 +586,71 @@ def draw_cause_effect(layout, loads: list[dict[str, str]], cables: list[dict[str
     centered(layout, "Rearme, diagnósticos, tempos e indicação dependem dos dispositivos selecionados e da validação da máquina.", (210, 115.5), 1.25, "13_NOTAS")
 
 
+def decimal_text(value: str | Decimal, places: int = 6) -> str:
+    quantizer = Decimal(1).scaleb(-places)
+    return f"{Decimal(value).quantize(quantizer):.{places}f}".replace(".", ",")
+
+
+def draw_demand_balance(layout, loads: list[dict[str, str]], feeder: dict[str, str]) -> None:
+    headers = ("CARGA", "ACIONAMENTO", "FD", "P INST. kW", "P DEM. kW", "S INST. kVA", "S DEM. kVA", "Ib RAMAL A")
+    rows: list[tuple[str, ...]] = []
+    for load in loads:
+        rows.append((
+            load["tag"],
+            load["metodo_acionamento"],
+            decimal_text(load["fator_demanda"], 2),
+            decimal_text(load["potencia_ativa_instalada_kw"]),
+            decimal_text(load["potencia_ativa_demandada_kw"]),
+            decimal_text(load["potencia_aparente_instalada_kva"]),
+            decimal_text(load["potencia_aparente_demandada_kva"]),
+            decimal_text(load["corrente_projeto_a"]),
+        ))
+    totals = {
+        key: sum((Decimal(load[key]) for load in loads), Decimal(0))
+        for key in (
+            "potencia_ativa_instalada_kw",
+            "potencia_ativa_demandada_kw",
+            "potencia_aparente_instalada_kva",
+            "potencia_aparente_demandada_kva",
+        )
+    }
+    rows.append((
+        "TOTAL",
+        "—",
+        "—",
+        decimal_text(totals["potencia_ativa_instalada_kw"]),
+        decimal_text(totals["potencia_ativa_demandada_kw"]),
+        decimal_text(totals["potencia_aparente_instalada_kva"]),
+        decimal_text(totals["potencia_aparente_demandada_kva"]),
+        "—",
+    ))
+    table(layout, 18, 253, (34, 80, 30, 48, 48, 48, 48, 48), headers, rows, row_height=13.3, text_height=1.03)
+
+    add_rect(layout, 18, 101, 224, 181, "12_LEGENDA")
+    centered(layout, "POTÊNCIA ATIVA POR CARGA (kW)", (121, 173), 1.55, "12_LEGENDA")
+    left(layout, "INSTALADA", (73, 164), 1.0, "05_POTENCIA")
+    left(layout, "DEMANDADA", (136, 164), 1.0, "08_CABOS")
+    for load, y in zip(loads, (151, 132, 113)):
+        left(layout, load["tag"], (23, y + 2), 1.05, "02_TEXTO")
+        installed = Decimal(load["potencia_ativa_instalada_kw"])
+        demanded = Decimal(load["potencia_ativa_demandada_kw"])
+        installed_length = float(installed) * 10.5
+        demanded_length = float(demanded) * 10.5
+        line(layout, (59, y + 2), (59 + installed_length, y + 2), "05_POTENCIA")
+        line(layout, (59, y - 2), (59 + demanded_length, y - 2), "08_CABOS")
+        left(layout, decimal_text(load["potencia_ativa_instalada_kw"], 3), (61 + installed_length, y + 1), 0.9, "05_POTENCIA")
+        left(layout, decimal_text(load["potencia_ativa_demandada_kw"], 3), (61 + demanded_length, y - 3), 0.9, "08_CABOS")
+
+    add_rect(layout, 230, 101, 402, 181, "12_LEGENDA")
+    centered(layout, "ALIMENTADOR W600 - DADOS DECLARADOS", (316, 172), 1.35, "12_LEGENDA")
+    left(layout, f"Ib calculada: {decimal_text(feeder['corrente_projeto_a'])} A", (239, 158), 1.3, "05_POTENCIA")
+    left(layout, f"In assumida: {decimal_text(feeder['disjuntor_a'], 0)} A", (239, 146), 1.3, "05_POTENCIA")
+    left(layout, f"Iz assumida: {decimal_text(feeder['iz_assumida_a'], 0)} A", (239, 134), 1.3, "05_POTENCIA")
+    line(layout, (239, 126), (393, 126), "12_LEGENDA")
+    centered(layout, "Ib <= In <= Iz: relação aritmética atendida nos dados", (316, 118), 1.1, "02_TEXTO")
+    centered(layout, "Isso não confirma o dimensionamento do alimentador.", (316, 109), 1.05, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_dol,
@@ -586,6 +660,7 @@ DRAWERS = {
     6: draw_terminals,
     7: draw_cable_list,
     8: draw_cause_effect,
+    9: draw_demand_balance,
 }
 
 
@@ -594,12 +669,18 @@ def generate(root: Path) -> list[Path]:
     project = root / PROJECT_SLUG
     loads = read_rows(project, "lista-cargas.csv")
     cables = read_rows(project, "lista-cabos.csv")
+    feeder_rows = read_rows(project, "alimentador.csv")
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout, loads, cables)
+        if spec.number == 9:
+            if len(feeder_rows) != 1:
+                raise ValueError("alimentador.csv deve conter uma única linha para W600.")
+            DRAWERS[spec.number](layout, loads, feeder_rows[0])
+        else:
+            DRAWERS[spec.number](layout, loads, cables)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:

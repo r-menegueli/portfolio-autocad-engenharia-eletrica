@@ -3,8 +3,8 @@
 ## Identificação
 
 - Autor: Rogério Eduardo Moreira Menegueli
-- Data: 2026-09-09
-- Revisão: 00
+- Data: 2026-11-05
+- Revisão: 03
 - Unidades dos desenhos: milímetros
 - Natureza: acadêmica e conceitual
 
@@ -40,6 +40,13 @@ PE-06 recebe o condutor de proteção do alimentador e atende invólucro, portas
 componentes e motores. N-06 permanece isolada de PE-06. O cabo W603B é blindado, com
 terminação de 360 graus nas duas extremidades como premissa EMC. Potência, comando,
 STO e sinais analógicos ocupam rotas e canaletas segregadas.
+
+O balanço P06-09 relaciona, para cada carga, o fator de demanda declarado e as
+potências ativa e aparente instaladas e demandadas. A corrente de cada ramal é exibida
+com base na potência aparente instalada; para W600, a corrente equivalente usa a
+potência aparente demandada total. Os fatores e os dados de proteção do alimentador
+continuam premissas acadêmicas, sem verificação de simultaneidade ou dimensionamento
+executivo.
 
 ## Limitações e responsabilidade
 

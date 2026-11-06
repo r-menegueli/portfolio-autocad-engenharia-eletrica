@@ -248,7 +248,7 @@ id = "06-centro-controle-motores"
 path = "06-centro-controle-motores"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1002,6 +1002,17 @@ source = "06-centro-controle-motores/fonte/08_matriz_causa_efeito_ccm.dxf"
 svg = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.svg"
 pdf = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.pdf"
 png = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-09-balanco-demanda"
+kind = "sheet"
+title = "Projeto 06 - Balanço de demanda do CCM-06"
+source = "06-centro-controle-motores/fonte/09_balanco_demanda_ccm.dxf"
+svg = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.svg"
+pdf = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.pdf"
+png = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.png"
 require_a3 = true
 require_notice = true
 

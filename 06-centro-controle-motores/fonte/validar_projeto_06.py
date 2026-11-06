@@ -24,6 +24,7 @@ SHEETS = (
     "06_diagrama_bornes.dxf",
     "07_lista_cabos.dxf",
     "08_matriz_causa_efeito_ccm.dxf",
+    "09_balanco_demanda_ccm.dxf",
 )
 EXPECTED_LOADS = {"M-601", "M-602", "M-603"}
 EXPECTED_CABLES = {"W600", "W601", "W602", "W603A", "W603B", "W604", "W605", "W606", "W607", "W608"}
@@ -47,6 +48,17 @@ SHEET_TERMS = {
     "06_diagrama_bornes.dxf": ("X1", "X2", "X3", "X4", "STO A/B"),
     "07_lista_cabos.dxf": ("W600", "W601", "W602", "W603A", "W603B", "W608"),
     "08_matriz_causa_efeito_ccm.dxf": ("MATRIZ CAUSA-EFEITO DO CCM-06", "E01", "E09", "KSR", "STO A/B"),
+    "09_balanco_demanda_ccm.dxf": (
+        "BALANÇO DE DEMANDA DO CCM-06",
+        "18,184584",
+        "20,893255",
+        "16,645368",
+        "19,133709",
+        "29,070663",
+        "0,80",
+        "0,90",
+        "Ib <= In <= Iz",
+    ),
 }
 
 
@@ -300,7 +312,7 @@ def validate(root: Path) -> dict:
         "memorial-descritivo.md": ("partida direta", "IM-602", "STO A/B", "não causa partida automática"),
         "criterios-premissas.md": ("Ib <= In <= Iz", "4,0%", "intertravamentos elétrico e mecânico"),
         "sequencia-funcionamento.md": ("novo comando", "comandos simultâneos", "não existe contator de manobra"),
-        "memoria-calculo.md": ("19,133709", "29,070663", "2,037810%", "196 m"),
+        "memoria-calculo.md": ("19,133709", "29,070663", "2,037810%", "196 m", "P instalada", "P demandada"),
     }
     for filename, terms in required_doc_terms.items():
         content = (project / filename).read_text(encoding="utf-8").casefold()
