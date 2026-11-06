@@ -2011,6 +2011,63 @@
           "sha256": "27ce2098d693d89ad0c9b7302a04b00bd5808e0422f3f8d9c2f4ee555ee50551"
         }
       }
+    },
+    {
+      "id": "p21-01-planta-clinica",
+      "source": "21-instalacao-clinica-ambulatorial/fonte/01_planta_eletrica_clinica.dxf",
+      "source_sha256": "624b903506c7ff723c8eaac6e36d820e3d4cd10012bfc51fc0f6374dfabb7a31",
+      "outputs": {
+        "pdf": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.pdf",
+          "sha256": "cad6edb8700ad11669834ee17d0c5f621787fd992950875381a2e820526a516c"
+        },
+        "png": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.png",
+          "sha256": "9d6c3bbf254055160069f9fd744012261792b38507039c02637de7ee9b056d6f"
+        },
+        "svg": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.svg",
+          "sha256": "715c669250b32c9e8d8dc2d54bfad8405c14be4fe9cc424040e744f6996401e1"
+        }
+      }
+    },
+    {
+      "id": "p21-02-unifilar-fontes-clinica",
+      "source": "21-instalacao-clinica-ambulatorial/fonte/02_unifilar_fontes_quadro_clinica.dxf",
+      "source_sha256": "738973a8f185873f4531f125fa50ae08a679882e44345ca2942413bb2698b814",
+      "outputs": {
+        "pdf": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.pdf",
+          "sha256": "5de75e6305f8bff93da0048c3d0268a8c08b4f9e9c37fe8489021f4d39e89443"
+        },
+        "png": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.png",
+          "sha256": "9d349f695ef98f58273f93a5126e006fc5564434dc2009ec7e6c9e12d4084917"
+        },
+        "svg": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.svg",
+          "sha256": "3c53ba87f6329c85e805147470939ff36c0ea0840da32cac29b347dd89faa929"
+        }
+      }
+    },
+    {
+      "id": "p21-03-matriz-continuidade-clinica",
+      "source": "21-instalacao-clinica-ambulatorial/fonte/03_matriz_continuidade_e_transferencia.dxf",
+      "source_sha256": "6f7180c823b90d76e3e67e9b37faf0a294155106152640fd31dd4653f49d9bcf",
+      "outputs": {
+        "pdf": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.pdf",
+          "sha256": "0ecdc9ef25294d8e7f641f1bd2bf9e6d5e75500a931eff1fe9fa12664d63ec57"
+        },
+        "png": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.png",
+          "sha256": "c30c44358fdb92df8526bc3f53fb0136251263003e739bbf879ebf3d046a6263"
+        },
+        "svg": {
+          "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.svg",
+          "sha256": "fda0db2ad098dcf06fe53037f7d219d195ea141f0dbff94ea173f104e7bd627e"
+        }
+      }
     }
   ]
 }

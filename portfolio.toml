@@ -563,6 +563,26 @@ required_files = [
   "fonte/gerar_projeto_20.py",
   "fonte/validar_projeto_20.py",
 ]
+[[projects]]
+id = "21-instalacao-clinica-ambulatorial"
+path = "21-instalacao-clinica-ambulatorial"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-cargas.csv",
+  "plano-estudos.csv",
+  "validacao-projeto-21.json",
+  "fonte/gerar_projeto_21.py",
+  "fonte/validar_projeto_21.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1700,5 +1720,35 @@ source = "20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_trac
 svg = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.svg"
 pdf = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.pdf"
 png = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p21-01-planta-clinica"
+kind = "sheet"
+title = "Projeto 21 - Planta elétrica esquemática da clínica"
+source = "21-instalacao-clinica-ambulatorial/fonte/01_planta_eletrica_clinica.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p21-02-unifilar-fontes-clinica"
+kind = "sheet"
+title = "Projeto 21 - Unifilar de fontes e quadros da clínica"
+source = "21-instalacao-clinica-ambulatorial/fonte/02_unifilar_fontes_quadro_clinica.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p21-03-matriz-continuidade-clinica"
+kind = "sheet"
+title = "Projeto 21 - Matriz de continuidade e transferência"
+source = "21-instalacao-clinica-ambulatorial/fonte/03_matriz_continuidade_e_transferencia.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.png"
 require_a3 = true
 require_notice = true

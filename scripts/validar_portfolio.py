@@ -347,8 +347,11 @@ class Validator:
                 self.add("ERROR", "CSV_DUPLICATE", path, f"Identificador duplicado na linha {line_number}: {identifier}")
             identifiers.add(identifier)
             for column in numeric_columns:
+                raw_number = str(row.get(column, "")).strip()
+                if raw_number.casefold() in {"tbd", "a definir", "pendente", "nao medido", "não medido"}:
+                    continue
                 try:
-                    if float(str(row.get(column, "")).replace(",", ".")) <= 0:
+                    if float(raw_number.replace(",", ".")) <= 0:
                         raise ValueError
                 except ValueError:
                     self.add("ERROR", "CSV_NUMBER", path, f"Valor numerico invalido em {column}, linha {line_number}.")
