@@ -108,9 +108,9 @@ esta precisa ser confirmada com curvas/dados OEM do módulo e do inversor.
 - A tabela reproduzível está em `envelope-termico.csv` e é gerada a partir de
   `parametros.csv`; todas as entradas continuam classificadas como premissas/propostas.
 - O validador P08 passou em 8.119 verificações, sem erros; o AutoCAD AcCoreConsole
-  2027 auditou 8/8 DXFs. A validação estrita integrada mais recente passou em 637.814
+  2027 auditou 8/8 DXFs. A validação estrita integrada mais recente passou em 641.852
   verificações, sem erros ou avisos.
-- O revisor mais recente confirmou 12 projetos, 108 folhas, 432 arquivos gráficos e
+- O revisor mais recente confirmou 12 projetos, 109 folhas, 436 arquivos gráficos e
   74 CSVs; similaridade mínima PDF/PNG de 0,981493; P08-08 obteve 0,989722.
 - P08-08 e o contato das oito folhas foram examinados em PNG; a folha nova também foi
   inspecionada em PDF rasterizado independentemente a 150 dpi, sem cortes ou colisões.

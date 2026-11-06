@@ -67,3 +67,17 @@ entidades fora da moldura, clipping ou dimensões incompatíveis.
   passou em 235 verificações; o validador estrito do portfólio passou em 624.834,
   ambos sem erros. Os 12 itens do plano continuam `NÃO EXECUTADO`.
 - A inspeção visual do SVG no navegador segue aguardando autorização do usuário.
+
+## Complemento da revisão 05 — prancha 11
+
+- A prancha 11 foi conferida na renderização PNG de produção a 300 dpi e em rasterização
+  independente do PDF pelo Poppler a 150 dpi. Os exemplos de enchimento/esgotamento,
+  a tabela de decisões pendentes, o aviso obrigatório e o carimbo permanecem dentro da
+  moldura, sem cortes ou colisões visíveis. Similaridade PDF/PNG: 0,987946.
+- O contato atualizado das onze folhas foi inspecionado. O AcCoreConsole 2027 abriu e
+  auditou 11/11 fontes DXF; o validador lógico passou em 246 verificações. A revisão
+  estrita integrada passou em 641.852 verificações, sem erros ou avisos; o revisor
+  confirmou 109 pranchas, 436 derivados gráficos e similaridade mínima de 0,981493.
+- Nenhum processo foi escolhido pela comparação: V01, posição/função dos sensores,
+  LSHH e a resposta a sensor incoerente continuam pendentes. A inspeção de SVGs no
+  navegador segue aguardando autorização do usuário.

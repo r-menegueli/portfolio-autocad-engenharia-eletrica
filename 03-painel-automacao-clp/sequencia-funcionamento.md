@@ -16,7 +16,20 @@ LSL-LL, antes de implementar ou ensaiar a sequência.
 3. Não há partida automática após energização enquanto houver falha latente ou demanda
    não reconhecida; a condição pronta é indicada por H1.
 
-## Modo automático — hipótese conceitual não aprovada
+## Comparação de processos — prancha 11
+
+A prancha 11 registra duas leituras incompatíveis da mesma instalação. Se o processo
+for **enchimento**, o exemplo didático gera demanda em LSL e a encerra em LSH; LSHH
+aparece como bloqueio/alarme a confirmar. Se for **esgotamento**, o exemplo parte da
+lógica atual — demanda em LSH, encerramento em LSL e eventual chamada de reserva em
+LSHH, ainda pendente de aprovação. São alternativas para orientar a V01, não uma
+seleção automática de lógica.
+
+A origem/destino dos tanques, posição de cada sensor, função de LSL-LL e reação a
+sensor incoerente com bomba em marcha precisam ser aprovados. Não alterar programa,
+sequência, I/O nem resposta de falha até fechar essas decisões.
+
+## Modo automático atual — alternativa de esgotamento não aprovada
 
 1. Com S1 em AUTO e os permissivos válidos, a ativação de LSH memoriza demanda.
 2. A bomba indicada por `titular_proxima` recebe ordem de partida.

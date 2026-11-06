@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 108 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 109 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 108 pranchas, 432 arquivos
+Na revisão corrente, o revisor confirmou 12 projetos, 109 pranchas, 436 arquivos
 gráficos e 74 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 637.814 verificações, sem erros ou avisos.
+passou em 641.852 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -19,7 +19,8 @@ passou em 637.814 verificações, sem erros ou avisos.
   entrada: associam planta/arquitetura a diagramas e tabelas rastreáveis.
 - P04, P06 e P10 mostram variedade de instrumentação, acionamentos e interfaces;
   P07 amplia o portfólio para sistemas veiculares; P07-11 separa o tempo RC ideal,
-  o retorno dos contatores e o timeout sem afirmar validação veicular.
+  o retorno dos contatores e o timeout sem afirmar validação veicular. P03-11 coloca
+  lado a lado as interpretações de enchimento e esgotamento sem escolher uma lógica.
 - O DXF como fonte e PDF/SVG/PNG reproduzidos a partir dele dão bons formatos de
   leitura, edição e conferência.
 
@@ -29,7 +30,7 @@ passou em 637.814 verificações, sem erros ou avisos.
 | --- | --- | --- | --- |
 | P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
-| P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. A revisão 04 evidencia na prancha a divergência entre a descrição de enchimento e a sequência LSH-inicia/LSL-encerra/LSHH-reserva. | O sentido do processo, tanques e função de LSL-LL permanecem pendentes; a sequência pode corresponder a esgotamento e não deve ser aplicada a enchimento sem revisão. Nenhum teste de CLP ou segurança funcional foi executado; também falta decidir a resposta a sensor incoerente com bomba em marcha. | Aprovar o processo, identificar os tanques e sensores em V01, corrigir sequência e proteções conforme os dados; escolher hardware e registrar critérios e evidências antes de ensaiar. |
+| P03 — Painel com CLP | Onze folhas cobrem alimentação, I/O, comando, bornes, interligações, sequência, plano de verificação e a comparação P03-11 entre enchimento e esgotamento. | O sentido real, tanques e função de LSL-LL continuam pendentes; LSHH e a resposta a sensor incoerente em marcha não foram decididos. Nenhum teste de CLP ou segurança funcional foi executado. | Aprovar V01 com dados do processo, localizar cada sensor, confirmar reservatório/captação e revisar demanda/parada, LSHH, falhas, I/O e matriz antes de implementar ou ensaiar. |
 | P04 — Nível | Sete folhas cobrem processo, malha, elétrica, interligações, layout e nove eventos causa–efeito; a revisão 03 deixa a origem a montante explicitamente indefinida e alinha HV-102 ao cadastro de materiais. | Sistema de uma bomba e um tanque com valores assumidos; fonte, sucção, vazão/carga, tubulação, curva/NPSH e dados da válvula não estão selecionados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir valores didáticos por levantamento hidráulico e equipamentos selecionados; definir fonte, sucção/descarga e válvulas; completar dados e respostas operacionais antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
@@ -397,3 +398,17 @@ similaridade mínima de 0,981493. A validação estrita passou em 637.814 verifi
 sem erros ou avisos. Tempos de contatores, retorno auxiliar e critérios de segurança
 seguem pendentes de hardware e validação veicular; SVGs aguardam autorização para
 inspeção no navegador.
+
+### Atualização P03-11 — revisão 05
+
+P03-11 compara dois exemplos condicionais para a instalação de duas bombas: demanda em
+LSL e parada em LSH para enchimento; demanda em LSH e parada em LSL para esgotamento.
+Nenhuma alternativa foi selecionada. Ação de LSHH, localização de LSL-LL e resposta a
+sensor incoerente com bomba em marcha continuam pendentes de V01.
+
+O validador específico passou em 246 verificações; o AcCoreConsole 2027 abriu e auditou
+11/11 DXFs. Conferi P03-11 no PNG de produção a 300 dpi, PDF rasterizado pelo Poppler a
+150 dpi e no contato das onze folhas; similaridade PDF/PNG: 0,987946. A revisão estrita
+passou em 641.852 verificações sem erros ou avisos; o revisor confirmou 12 projetos,
+109 folhas, 436 arquivos gráficos e 74 CSVs, com similaridade mínima de 0,981493. Os
+SVGs permanecem pendentes de inspeção no navegador até autorização.

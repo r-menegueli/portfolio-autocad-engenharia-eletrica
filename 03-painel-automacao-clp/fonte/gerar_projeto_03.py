@@ -1,4 +1,4 @@
-"""Gera as dez pranchas DXF do Projeto 03 de forma determinística."""
+"""Gera as onze pranchas DXF do Projeto 03 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "03-painel-automacao-clp"
 PROJECT_DATE = "2026-11-06"
-REVISION = "04"
+REVISION = "05"
 
 
 @dataclass(frozen=True)
@@ -100,6 +100,11 @@ SHEETS = (
               "Plano acadêmico; itens permanecem NÃO EXECUTADOS. Critérios dependem dos dados reais,\\P"
               "fabricantes e decisões aprovadas; esta folha não autoriza energização ou comissionamento.",
               "Status: não executado | evidência: registro rastreável | decisão: responsável do projeto"),
+    SheetSpec(11, "11_alternativas_filosofia_processo.dxf", "ALTERNATIVAS DA FILOSOFIA DE PROCESSO",
+              "Enchimento versus esgotamento — decisão de processo V01 ainda pendente",
+              "Os dois fluxos são exemplos comparativos; nenhum foi selecionado para implementação.\\P"
+              "Confirmar tanques, sentido, posição/função de cada sensor e respostas antes de alterar a lógica.",
+              "V01: processo e sensores pendentes | LSL/LSH/LSHH: função depende da posição | LSL-LL: origem a confirmar"),
 )
 
 
@@ -217,7 +222,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("PLANO DE VERIFICAÇÃO", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ALTERNATIVAS DO PROCESSO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.65, "02_TEXTO")
 
 
@@ -626,6 +631,82 @@ def draw_sequence(layout) -> None:
     draw_matrix(layout)
 
 
+def draw_process_options(layout) -> None:
+    """Compara duas leituras possíveis sem aprovar nem implementar uma filosofia."""
+    options = (
+        {
+            "x0": 18.0,
+            "x1": 207.0,
+            "title": "A | ENCHIMENTO",
+            "flow": ("NÍVEL <= LSL", "COMANDA P1", "PARA EM LSH"),
+            "high": "LSHH: bloquear + alarmar? validar processo",
+            "source": "LSL-LL: confirmar se mede a sucção",
+            "layer": "04_EQUIPAMENTOS",
+        },
+        {
+            "x0": 213.0,
+            "x1": 402.0,
+            "title": "B | ESGOTAMENTO",
+            "flow": ("NÍVEL >= LSH", "COMANDA P1", "PARA EM LSL"),
+            "high": "LSHH: reserva? manter pendente de aprovação",
+            "source": "LSL-LL: confirmar se mede a sucção",
+            "layer": "06_COMANDO",
+        },
+    )
+    centered(layout, "EXEMPLOS FUNCIONAIS — NÃO APROVADOS", (210, 260), 1.75, "13_NOTAS")
+    for option in options:
+        x0, x1 = option["x0"], option["x1"]
+        add_rect(layout, x0, 184, x1, 253, option["layer"])
+        centered(layout, option["title"], ((x0 + x1) / 2, 246), 1.7, option["layer"])
+        centered(layout, "sequência ilustrativa, sujeita a V01", ((x0 + x1) / 2, 239), 1.15, "02_TEXTO")
+        box_width = 48.0
+        box_y0, box_y1 = 218.0, 233.0
+        lefts = (x0 + 6.0, x0 + 70.0, x0 + 134.0)
+        for left_edge, label_text in zip(lefts, option["flow"]):
+            add_rect(layout, left_edge, box_y0, left_edge + box_width, box_y1, option["layer"])
+            centered(layout, label_text, (left_edge + box_width / 2, (box_y0 + box_y1) / 2), 1.4, "02_TEXTO")
+        flow_arrow(layout, lefts[0] + box_width, lefts[1], 225.5)
+        flow_arrow(layout, lefts[1] + box_width, lefts[2], 225.5)
+        centered(layout, option["high"], ((x0 + x1) / 2, 209.5), 1.4, "13_NOTAS")
+        centered(layout, option["source"], ((x0 + x1) / 2, 199.5), 1.4, "13_NOTAS")
+        centered(layout, "Falha de sensor com bomba em marcha: resposta não definida", ((x0 + x1) / 2, 189.5), 1.3, "13_NOTAS")
+
+    x_edges = (18.0, 94.0, 248.0, 402.0)
+    table_top, header_height, row_height = 177.0, 8.0, 8.0
+    rows = (
+        ("Gatilho da demanda", "LSL ativo", "LSH ativo"),
+        ("Parada normal", "LSH ativo", "LSL ativo"),
+        ("LSHH", "Bloquear + alarmar?", "Reserva? confirmar"),
+        ("LSL-LL", "Local/função pendentes", "Local/função pendentes"),
+        ("Sensor incoerente em marcha", "Resposta pendente", "Resposta pendente"),
+    )
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "12_LEGENDA")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "12_LEGENDA")
+    headers = ("DECISÃO", "EXEMPLO A | ENCHIMENTO", "EXEMPLO B | ESGOTAMENTO")
+    for index, value in enumerate(headers):
+        centered(layout, value, ((x_edges[index] + x_edges[index + 1]) / 2, table_top - header_height / 2), 1.35, "12_LEGENDA")
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        if row_index:
+            line(layout, (x_edges[0], row_top), (x_edges[-1], row_top), "12_LEGENDA")
+        for column, value in enumerate(row):
+            centered(layout, value, ((x_edges[column] + x_edges[column + 1]) / 2, (row_top + row_bottom) / 2), 1.35, "02_TEXTO")
+
+    add_rect(layout, 18, 111, 402, 123, "13_NOTAS")
+    add_mtext(
+        layout,
+        "V01 antes de programar: aprovar sentido do fluxo, tanques, localização/função de cada sensor, limite de demanda/parada, ação de LSHH e resposta a sensor incoerente. Depois revisar P03-01/08/09/11, I/O e causa-efeito. Todos seguem pendentes.",
+        (21, 120),
+        378,
+        1.5,
+        "13_NOTAS",
+    )
+
+
 def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
     stages = (
         ("1  PROCESSO", "dados e critérios"),
@@ -704,6 +785,7 @@ DRAWERS = {
     7: draw_terminals,
     8: draw_field,
     9: draw_sequence,
+    11: draw_process_options,
 }
 
 

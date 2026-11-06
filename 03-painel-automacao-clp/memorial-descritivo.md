@@ -4,7 +4,7 @@
 
 Projeto 03 - Painel de automação com CLP para duas bombas de reservatório.
 
-Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 04 em 2026-11-06.
+Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 05 em 2026-11-06.
 
 ## 2. Finalidade e solução conceitual
 
@@ -21,6 +21,11 @@ a esgotamento; aplicada a enchimento, pode manter ou ampliar uma condição de n
 LSL-LL também precisa ser associado ao tanque de sucção/captação correto antes de ser
 usado como proteção contra funcionamento a seco. Estes pontos compõem a V01 e bloqueiam
 a implementação da lógica até aprovação do processo.
+
+A prancha 11 compara dois exemplos condicionais: em enchimento, demanda abaixo de LSL e
+parada em LSH; em esgotamento, a hipótese atual de demanda em LSH e parada em LSL. O
+desenho não escolhe uma alternativa nem define a ação de LSHH, a bomba reserva, LSL-LL
+ou a resposta durante marcha a uma combinação incoerente. A V01 segue aberta.
 
 ## 3. Potência e proteção
 

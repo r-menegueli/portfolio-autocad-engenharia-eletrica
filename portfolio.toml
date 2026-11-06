@@ -168,7 +168,7 @@ id = "03-painel-automacao-clp"
 path = "03-painel-automacao-clp"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 10
+sheet_count = 11
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -742,6 +742,17 @@ source = "03-painel-automacao-clp/fonte/10_plano_verificacao_evidencias.dxf"
 svg = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.svg"
 pdf = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.pdf"
 png = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-11-alternativas-filosofia-processo"
+kind = "sheet"
+title = "Projeto 03 - Alternativas da filosofia de processo"
+source = "03-painel-automacao-clp/fonte/11_alternativas_filosofia_processo.dxf"
+svg = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.svg"
+pdf = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.pdf"
+png = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.png"
 require_a3 = true
 require_notice = true
 

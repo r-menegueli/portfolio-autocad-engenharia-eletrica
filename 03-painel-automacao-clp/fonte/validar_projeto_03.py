@@ -22,6 +22,7 @@ SHEETS = (
     "08_interligacoes_campo.dxf",
     "09_sequencia_operacao_intertravamentos.dxf",
     "10_plano_verificacao_evidencias.dxf",
+    "11_alternativas_filosofia_processo.dxf",
 )
 REQUIRED_CAUSE_EFFECTS = {
     "EMERGÊNCIA",
@@ -185,6 +186,8 @@ def validate(root: Path) -> dict:
                 errors.append(f"{filename}: termo obrigatório ausente: {term}.")
 
     all_dxf_text: list[str] = []
+    verification_drawing = ""
+    process_options_drawing = ""
     for index, filename in enumerate(SHEETS, start=1):
         path = project / "fonte" / filename
         checks += 3
@@ -201,7 +204,12 @@ def validate(root: Path) -> dict:
             errors.append(f"{filename}: metadado de projeto incorreto.")
         if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
-        all_dxf_text.append(extract_text(doc))
+        drawing_text = extract_text(doc)
+        all_dxf_text.append(drawing_text)
+        if filename == "10_plano_verificacao_evidencias.dxf":
+            verification_drawing = drawing_text.casefold()
+        if filename == "11_alternativas_filosofia_processo.dxf":
+            process_options_drawing = drawing_text.casefold()
 
     merged = " ".join(all_dxf_text).casefold()
     for tag in ("clp1", "psu1", "ksr1", "kdry", "km1", "km2", "lsl-ll", "lshh", "bz1", "x4"):
@@ -218,7 +226,6 @@ def validate(root: Path) -> dict:
         if row["evento"].casefold() not in merged:
             errors.append(f"Evento da matriz não aparece no desenho: {row['evento']}.")
 
-    verification_drawing = all_dxf_text[-1].casefold() if all_dxf_text else ""
     checks += 2 + len(verification_rows)
     if "não executado" not in verification_drawing:
         errors.append("A prancha 10 deve identificar o status NÃO EXECUTADO.")
@@ -227,6 +234,11 @@ def validate(root: Path) -> dict:
     for row in verification_rows:
         if row.get("codigo", "").casefold() not in verification_drawing:
             errors.append(f"Código ausente da prancha 10: {row.get('codigo', '')}.")
+
+    for term in ("enchimento", "esgotamento", "lsl", "lsh", "lshh", "lsl-ll", "v01", "pendente"):
+        checks += 1
+        if term not in process_options_drawing:
+            errors.append(f"Prancha 11 não documenta alternativa ou decisão pendente: {term}.")
 
     result = {
         "status": "PASS" if not errors else "FAIL",

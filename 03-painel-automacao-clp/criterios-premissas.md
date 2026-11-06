@@ -11,7 +11,7 @@
 | CLP | Genérico, 16 DI e 16 DO, memória retentiva para alternância |
 | Painel | Invólucro conceitual 800 x 600 x 300 mm; IP e material não definidos |
 | Ambiente | Interno, sem atmosfera explosiva; temperatura/altitude não levantadas |
-| Processo | Sentido (enchimento ou esgotamento), tanques de origem/destino e função/localização dos quatro sensores ainda pendentes; a lógica LSH-inicia / LSL-encerra é apenas uma hipótese de esgotamento |
+| Processo | Sentido (enchimento ou esgotamento), tanques de origem/destino e função/localização dos quatro sensores ainda pendentes; P03-11 compara as duas lógicas sem selecionar uma |
 
 ## Critérios de operação
 
@@ -26,7 +26,10 @@
 - A V01 deve confirmar se as bombas enchem ou esvaziam o reservatório. A sequência
   atualmente desenhada (LSH inicia, LSL encerra e LSHH solicita reserva) pode agravar
   uma condição de nível alto se aplicada a enchimento; não implementar antes de aprovar
-  o processo e identificar tanques e sensores, inclusive a origem de LSL-LL.
+  o processo e identificar tanques e sensores, inclusive a origem de LSL-LL. P03-11
+  mostra o contraste didático LSL-inicia/LSH-encerra para enchimento e LSH-inicia/
+  LSL-encerra para esgotamento; ação de LSHH, bomba reserva e resposta a falha não
+  ficam aprovadas por essa comparação.
 - Falha de sensor incoerente bloqueia novas partidas automáticas; a resposta para bomba
   já em marcha é uma decisão de processo pendente e não deve ser inferida desta prancha.
 - A prancha 09 e `matriz-causa-efeito.csv` resumem a sequência e os eventos tratados;
