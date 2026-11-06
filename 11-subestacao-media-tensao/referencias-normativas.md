@@ -17,5 +17,12 @@ O projeto possui caráter acadêmico e conceitual. Antes de qualquer execução 
 - **NR-10** - Segurança em Instalações e Serviços em Eletricidade;
 - **Normas Técnicas da Concessionária (GED 2859 / NT-01)** - Fornecimento de energia elétrica em tensão primária de distribuição.
 
+## Referências suplementares para estudo de aterramento
+
+- **IEEE Std 80-2013** - *IEEE Guide for Safety in AC Substation Grounding*. A IEEE SA registra P80 como projeto ativo de revisão desta edição; confirmar a edição aplicável ao estudo antes de adotar critérios.
+- **IEEE Std 81-2025** - *IEEE Guide for Measuring Earth Resistivity, Ground Impedance, and Earth Surface Potentials of a Grounding System*. Guia de métodos de medição; não substitui o dimensionamento nem define, por si só, a aprovação da malha.
+
+Status consultado nas páginas oficiais da IEEE SA em 2026-11-06. Estas referências são suplementares e não afirmam conformidade normativa do projeto.
+
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

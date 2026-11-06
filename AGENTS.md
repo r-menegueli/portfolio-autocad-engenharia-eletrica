@@ -1,7 +1,6 @@
 # Regras permanentes do portfólio
 
-Este arquivo rege todo o repositório e todos os dez projetos acadêmicos que serão
-desenvolvidos nele. As instruções explícitas do usuário prevalecem; em seguida,
+Este arquivo rege todo o repositório e seus doze projetos acadêmicos atuais. As instruções explícitas do usuário prevalecem; em seguida,
 `portfolio.toml` é a fonte normativa para metadados, geometria, layers, artefatos e
 parâmetros de validação. Não altere esses contratos silenciosamente.
 
@@ -110,14 +109,15 @@ Todo DXF de prancha deve conter, com esta grafia exata, no mínimo os layers aba
 
 ## Convenção dos projetos
 
-Os Projetos 01 a 10 ocupam, por instrução explícita,
+Os Projetos 01 a 12 ocupam,
 `01-painel-motor-inversor/`, `02-projeto-eletrico-residencial/` e
 `03-painel-automacao-clp/`, `04-controle-nivel-reservatorio/` e
 `05-instalacao-eletrica-industrial/`, `06-centro-controle-motores/` e
 `07-arquitetura-veiculo-eletrico/`, `08-sistema-fotovoltaico/`,
-`09-fonte-bancada/` e `10-rede-instrumentacao-industrial/` na raiz. Não mova nem
-duplique essas pastas. Este portfólio está limitado aos dez projetos; qualquer
-extensão exige nova instrução explícita. A estrutura mínima existente é:
+`09-fonte-bancada/`, `10-rede-instrumentacao-industrial/`,
+`11-subestacao-media-tensao/` e `12-grupo-gerador-qta/` na raiz. Não mova nem
+duplique essas pastas. A lista atual contém doze projetos; extensões novas devem
+ser registradas no manifesto e nos índices do repositório. A estrutura mínima existente é:
 
 ```text
 NN-slug/

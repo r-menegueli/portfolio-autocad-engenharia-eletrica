@@ -9,13 +9,12 @@
 | Sistema | 127/220 V, 60 Hz, 2F+N+PE | premissa acadêmica |
 | Esquema a jusante | TN-S conceitual | premissa a confirmar |
 | Quadro | QD1, 24 módulos | reserva física didática |
-| Disjuntor geral | 2P, 63 A | seleção preliminar |
-| DR | 2P, 63 A, 30 mA, tipo A | proteção adicional global adotada |
+| Disjuntor geral | 2P; In, curva e Icu/Ics pendentes | a selecionar após estudo de demanda, instalação e curto-circuito |
+| DR | 2P; In pendente; IΔn 30 mA como premissa | tipo e divisão de circuitos a confirmar |
 | DPS | tipo 2, Uc 275 V, Imax 20 kA | seleção preliminar, 2 unidades |
 | Temperatura do cobre | resistividade 0,0225 ohm.mm²/m | hipótese para queda de tensão |
 | Queda admissível usada | 4% por circuito, incluindo alimentador | critério acadêmico conservador |
-| Demanda geral | 100% dos primeiros 1 000 VA + 35% do excedente | hipótese didática, não regra de concessionária |
-| TUE na demanda | 100% de C6, C7 e C8 | hipótese conservadora |
+| Demanda e simultaneidade | pendentes | método aplicável e uso real não definidos |
 | Eletrodo | haste cobreada de 2,40 m | detalhe indicativo, sujeito a projeto local |
 
 ## Critérios de pontos
@@ -28,6 +27,21 @@
 - Todo ponto utiliza condutor PE; tomadas são representadas como 2P+T.
 - Pontos, potências e circuitos têm uma única fonte tabular em [lista-pontos.csv](lista-pontos.csv).
 
+## Premissas arquitetônicas da revisão 03
+
+- A planta representa oito ambientes e conserva 75,00 m². A inclusão do closet de
+  2,40 m² foi compensada pela revisão das áreas declaradas em
+  [rastreabilidade-ambientes.csv](rastreabilidade-ambientes.csv); todas continuam
+  `PREMISSA`.
+- [esquadrias.csv](esquadrias.csv) registra oito portas e sete janelas, com dimensões
+  e posições didáticas. Não há levantamento de fachada, orientação solar, peitoris,
+  ventilação calculada, acessibilidade ou compatibilização com estrutura.
+- A planta mobiliada é ilustrativa. Dimensões de mobiliário/aparelhos, áreas livres,
+  circulação, ergonomia, zonas molhadas e afastamentos não foram verificados em campo
+  ou contra código de obras.
+- O Quarto 2 e o banheiro têm acesso pela circulação; o closet está ligado ao Quarto 1.
+  A geometria e os sentidos de abertura servem apenas à representação acadêmica.
+
 ## Critérios de dimensionamento
 
 O cálculo de corrente usa `I = S/V`. A queda de tensão monofásica/bipolar simplificada
@@ -35,9 +49,11 @@ usa `deltaV = 2 x rho x L x I / A`, sem reatância. A capacidade de condução a
 apenas uma verificação preliminar conservadora; método de referência, agrupamento,
 temperatura, terminais e proteção precisam ser confirmados em projeto executivo.
 
-O alimentador assumido tem 8 m, cobre 16 mm² para fases e neutro, PE 16 mm² e QG1 de
-63 A. O disjuntor geral foi escolhido a partir da corrente de demanda calculada, não da
-soma aritmética de correntes de todos os circuitos.
+O comprimento, a seção e a proteção do alimentador permanecem pendentes. A revisão 04
+retira as premissas anteriores de 8 m, 16 mm² e QG1 de 63 A porque a corrente de serviço
+foi obtida dividindo por 220 V uma potência que também inclui ramais de 127 V. P02-10
+mostra apenas uma cota superior aritmética sem diversidade, calculada por condutor; ela
+não substitui a demanda, a soma fasorial nem o dimensionamento de proteção e condutores.
 
 ## Critérios gráficos
 

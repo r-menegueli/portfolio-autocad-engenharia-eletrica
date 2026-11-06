@@ -1,8 +1,9 @@
-"""Gera as seis pranchas DXF do Projeto 01 de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 01 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 import math
 from pathlib import Path
@@ -36,8 +37,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "01-painel-motor-inversor"
-PROJECT_DATE = "2026-09-05"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -73,9 +74,9 @@ SHEETS = (
         3,
         "03_diagrama_comando.dxf",
         "DIAGRAMA DE COMANDO",
-        "Comandos em 24 Vcc, seleção local/remoto e STO",
-        "Emergência em dois canais via KSR1 e STO de VFD1; categoria de segurança\\P"
-        "não declarada sem análise de risco. Rearme automático desabilitado.",
+        "Comandos funcionais separados, seleção local/remoto e STO",
+        "S5 rearma KSR1; S4/X3:9 reiniciam falha do VFD.\\P"
+        "Pinagem e categoria de segurança dependem de seleção e análise.",
         "S: botão/seletor | H: sinalizador | KSR: relé de segurança | DI/AI/RO: I/O",
     ),
     SheetSpec(
@@ -104,6 +105,33 @@ SHEETS = (
         "Comprimentos são premissas para documentação e orçamento conceitual.\\P"
         "Rotas, segregação, queda de tensão e EMC dependem de levantamento em campo.",
         "W01/W02: potência | W03/W04/W05/W06: comando e instrumentação",
+    ),
+    SheetSpec(
+        7,
+        "07_protecao_coordenacao.dxf",
+        "PROTEÇÃO E DADOS PARA COORDENAÇÃO",
+        "Mapa das premissas e evidências que ainda precisam ser obtidas",
+        "Os valores atuais são didáticos e não provam seleção, capacidade de interrupção,\\P"
+        "seletividade, retaguarda, proteção térmica ou coordenação entre fabricantes.",
+        "Icc: curto-circuito presumido | Icu/Ics: capacidade do dispositivo | SCPD: proteção contra curto",
+    ),
+    SheetSpec(
+        8,
+        "08_plano_verificacao_evidencias.dxf",
+        "PLANO DE VERIFICAÇÃO E EVIDÊNCIAS",
+        "Matriz de encerramento documental e funcional — sem ensaios executados",
+        "Critérios e tolerâncias devem vir dos documentos e fabricantes selecionados.\\P"
+        "A matriz não registra resultados de campo nem autoriza energização ou comissionamento.",
+        "ID: ponto de verificação | evidência: registro necessário | status: não executado",
+    ),
+    SheetSpec(
+        9,
+        "09_sequencia_operacional_estados.dxf",
+        "SEQUÊNCIA OPERACIONAL E ESTADOS",
+        "Habilitação, operação normal, parada e respostas a eventos",
+        "Sequência conceitual; a implementação depende dos equipamentos, lógica e ensaios.\\P"
+        "Não define tempo de parada, categoria/PL/SIL nem validação em campo.",
+        "S5: rearme KSR1 | S4/X3:9: reset do VFD | H2: pronto | H3: marcha | H4: falha",
     ),
 )
 
@@ -192,7 +220,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72.0), (x, 94.0), "01_CARIMBO")
     for value, x in (("REV.", 239.0), ("DATA", 264.0), ("DESCRIÇÃO", 316.0), ("RESP.", 381.0)):
         centered_text(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("EMISSÃO INICIAL DO PROJETO 01", 316.0), ("R.E.M.M.", 381.0)):
+    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), (f"REVISAO VISUAL {REVISION}", 316.0), ("R.E.M.M.", 381.0)):
         centered_text(layout, value, (x, 78.5), 1.7, "02_TEXTO")
 
 
@@ -216,7 +244,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -232,7 +260,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -332,56 +360,64 @@ def add_contact(layout, x: float, y: float, tag: str, *, nc: bool = False, detai
 
 
 def draw_command(layout) -> None:
-    line(layout, (25.0, 107.0), (25.0, 257.0), "06_COMANDO")
-    line(layout, (270.0, 107.0), (270.0, 257.0), "06_COMANDO")
+    line(layout, (25.0, 103.0), (25.0, 257.0), "06_COMANDO")
     centered_text(layout, "+24 Vcc", (25.0, 263.0), 1.9, "06_COMANDO")
-    centered_text(layout, "0 V", (270.0, 263.0), 1.9, "06_COMANDO")
-
-    for y in (239.0, 219.0):
+    # S0/KSR1/STO: interface funcional; bornes concretos dependem dos OEMs selecionados.
+    for y, tag in ((246.0, "S0A"), (234.0, "S0B")):
         line(layout, (25.0, y), (51.0, y), "06_COMANDO")
-    add_contact(layout, 58.0, 239.0, "S0A", nc=True, detail="EMERG. CH1")
-    add_contact(layout, 58.0, 219.0, "S0B", nc=True, detail="EMERG. CH2")
-    line(layout, (65.0, 239.0), (128.0, 239.0), "06_COMANDO")
-    line(layout, (65.0, 219.0), (128.0, 219.0), "06_COMANDO")
-    equipment_box(layout, 128.0, 208.0, 201.0, 250.0, "KSR1", "Relé segurança 24 Vcc", layer="06_COMANDO")
-    line(layout, (201.0, 239.0), (270.0, 239.0), "06_COMANDO")
-    line(layout, (201.0, 219.0), (270.0, 219.0), "06_COMANDO")
-    add_text(layout, "STO-A", (223.0, 242.0), 1.7, layer="07_INSTRUMENTACAO")
-    add_text(layout, "STO-B", (223.0, 222.0), 1.7, layer="07_INSTRUMENTACAO")
+        add_contact(layout, 58.0, y, tag, nc=True)
+        line(layout, (65.0, y), (135.0, y), "06_COMANDO")
+        line(layout, (202.0, y), (270.0, y), "06_COMANDO")
+    add_rect(layout, 135.0, 225.0, 202.0, 257.0, "06_COMANDO")
+    centered_text(layout, "KSR1", (168.5, 251.0), 2.3, "06_COMANDO")
+    centered_text(layout, "2 CANAIS", (168.5, 244.0), 1.5, "02_TEXTO")
+    centered_text(layout, "RESET MON.", (168.5, 237.0), 1.4, "02_TEXTO")
+    add_text(layout, "STO-A", (216.0, 249.0), 1.5, layer="07_INSTRUMENTACAO")
+    add_text(layout, "STO-B", (216.0, 237.0), 1.5, layer="07_INSTRUMENTACAO")
 
-    for y in (190.0, 168.0):
+    # S5 is the dedicated manual reset for KSR1. It is separate from VFD fault reset.
+    line(layout, (25.0, 220.0), (53.0, 220.0), "06_COMANDO")
+    add_contact(layout, 60.0, 220.0, "S5", detail="REARME KSR1")
+    line(layout, (67.0, 220.0), (125.0, 220.0), "06_COMANDO")
+    line(layout, (125.0, 220.0), (125.0, 229.0), "06_COMANDO")
+    line(layout, (125.0, 229.0), (135.0, 229.0), "06_COMANDO")
+
+    # Separate RUN, STOP and VFD-reset functions. S3's mutually exclusive
+    # LOCAL/0/REMOTE contacts select the source; exact DI mapping is OEM-dependent.
+    command_rows = (
+        (204.0, "S3-L", "S1", False, "VFD1-RUN"),
+        (192.0, "S3-L", "S2", True, "VFD1-STOP"),
+        (180.0, "S3-R", "X3:7", False, "VFD1-RUN"),
+        (168.0, "S3-R", "X3:8", True, "VFD1-STOP"),
+        (156.0, "S3-L", "S4", False, "VFD1-RESET"),
+        (144.0, "S3-R", "X3:9", False, "VFD1-RESET"),
+    )
+    for y, mode_tag, command_tag, normally_closed, function in command_rows:
         line(layout, (25.0, y), (48.0, y), "06_COMANDO")
-    line(layout, (25.0, 146.0), (65.0, 146.0), "06_COMANDO")
-    add_contact(layout, 55.0, 190.0, "S3-L", detail="LOCAL")
-    add_contact(layout, 91.0, 190.0, "S2", nc=True, detail="PARAR")
-    add_contact(layout, 127.0, 190.0, "S1", detail="PARTIR")
-    line(layout, (62.0, 190.0), (84.0, 190.0), "06_COMANDO")
-    line(layout, (98.0, 190.0), (120.0, 190.0), "06_COMANDO")
-    line(layout, (134.0, 190.0), (270.0, 190.0), "06_COMANDO")
-    add_text(layout, "VFD1-DI1 RUN 3 FIOS", (171.0, 194.0), 1.7, layer="07_INSTRUMENTACAO")
-
-    add_contact(layout, 55.0, 168.0, "S3-R", detail="REMOTO")
-    add_contact(layout, 103.0, 168.0, "X3:7", detail="RUN REMOTO")
-    add_contact(layout, 151.0, 168.0, "X3:8", nc=True, detail="STOP REMOTO")
-    line(layout, (62.0, 168.0), (96.0, 168.0), "06_COMANDO")
-    line(layout, (110.0, 168.0), (144.0, 168.0), "06_COMANDO")
-    line(layout, (158.0, 168.0), (270.0, 168.0), "06_COMANDO")
-
-    add_contact(layout, 72.0, 146.0, "S4", detail="RESET")
-    line(layout, (79.0, 146.0), (270.0, 146.0), "06_COMANDO")
-    add_text(layout, "VFD1-DI2 RESET", (157.0, 150.0), 1.7, layer="07_INSTRUMENTACAO")
+        add_contact(layout, 55.0, y, mode_tag)
+        line(layout, (62.0, y), (94.0, y), "06_COMANDO")
+        add_contact(layout, 101.0, y, command_tag, nc=normally_closed)
+        line(layout, (108.0, y), (177.0, y), "06_COMANDO")
+        add_text(layout, function, (184.0, y + 2.0), 1.45, layer="07_INSTRUMENTACAO")
 
     line(layout, (25.0, 128.0), (64.0, 128.0), "07_INSTRUMENTACAO")
     layout.add_blockref("P01_POT", (72.0, 128.0), dxfattribs={"layer": "07_INSTRUMENTACAO"})
     line(layout, (80.0, 128.0), (145.0, 128.0), "07_INSTRUMENTACAO")
-    centered_text(layout, "P1 / 0-10 V LOCAL", (105.0, 134.0), 1.5, "07_INSTRUMENTACAO")
-    line(layout, (25.0, 110.0), (145.0, 110.0), "07_INSTRUMENTACAO")
-    centered_text(layout, "X3:10-11 / 4-20 mA REMOTO", (85.0, 116.0), 1.5, "07_INSTRUMENTACAO")
+    centered_text(layout, "P1 / 0-10 V LOCAL", (105.0, 130.0), 1.45, "07_INSTRUMENTACAO")
+    line(layout, (25.0, 109.0), (145.0, 109.0), "07_INSTRUMENTACAO")
+    centered_text(layout, "X3:10-11 / 4-20 mA REMOTO", (85.0, 115.0), 1.4, "07_INSTRUMENTACAO")
     add_rect(layout, 145.0, 104.0, 207.0, 134.0, "07_INSTRUMENTACAO")
-    centered_text(layout, "S3 - FONTE DE REFERÊNCIA", (176.0, 129.0), 1.7, "07_INSTRUMENTACAO")
-    centered_text(layout, "LOCAL / REMOTO", (176.0, 118.5), 1.6, "02_TEXTO")
-    line(layout, (207.0, 118.5), (270.0, 118.5), "07_INSTRUMENTACAO")
-    centered_text(layout, "VFD1-AI1", (238.5, 125.0), 1.6, "07_INSTRUMENTACAO")
+    centered_text(layout, "S3 - FONTE DE REFERÊNCIA", (176.0, 128.0), 1.55, "07_INSTRUMENTACAO")
+    centered_text(layout, "LOCAL / REMOTO", (176.0, 118.0), 1.5, "02_TEXTO")
+    line(layout, (207.0, 118.0), (270.0, 118.0), "07_INSTRUMENTACAO")
+    centered_text(layout, "VFD1-AI1 (OEM)", (238.5, 124.0), 1.4, "07_INSTRUMENTACAO")
+    centered_text(
+        layout,
+        "DI/STO E PINAGEM: DEFINIR CONFORME MANUAIS DO VFD1 E KSR1",
+        (210.0, 99.0),
+        1.35,
+        "13_NOTAS",
+    )
 
     add_rect(layout, 292.0, 112.0, 401.0, 254.0, "12_LEGENDA")
     centered_text(layout, "SINALIZAÇÃO", (346.5, 247.0), 2.3, "12_LEGENDA")
@@ -523,6 +559,209 @@ def draw_field(layout) -> None:
     centered_text(layout, "TB-PE", (141.0, 162.0), 1.6, "09_BORNES")
 
 
+def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
+    nodes = (
+        (20.0, 68.0, "QDG", "origem"),
+        (99.0, 147.0, "Q0", "secciona"),
+        (178.0, 226.0, "Q1", "disjuntor"),
+        (257.0, 315.0, "VFD1", "inversor"),
+        (346.0, 404.0, "M1", "motor"),
+    )
+    for x0, x1, tag, function in nodes:
+        add_rect(layout, x0, 249.0, x1, 261.0, "04_EQUIPAMENTOS")
+        centered_text(layout, tag, ((x0 + x1) / 2.0, 257.0), 2.0, "04_EQUIPAMENTOS")
+        centered_text(layout, function, ((x0 + x1) / 2.0, 252.0), 1.2, "02_TEXTO")
+    for (_, x0_next, _, _), (x1_prev, _, _, _) in zip(nodes, nodes[1:]):
+        y = 255.0
+        line(layout, (x1_prev, y), (x0_next - 2.0, y), "05_POTENCIA")
+        line(layout, (x0_next - 2.0, y), (x0_next - 5.0, y + 1.8), "05_POTENCIA")
+        line(layout, (x0_next - 2.0, y), (x0_next - 5.0, y - 1.8), "05_POTENCIA")
+    centered_text(
+        layout,
+        "AUXILIAR: Q2 → PS1 / 24 Vcc     |     DPS1 → PE",
+        (210.0, 241.5),
+        1.7,
+        "02_TEXTO",
+    )
+
+    x_edges = (18.0, 60.0, 143.0, 279.0, 410.0)
+    table_top = 232.0
+    header_height = 10.0
+    row_height = 15.0
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "01_CARIMBO")
+
+    headers = ("ELEMENTO", "PREMISSA ATUAL", "DADO PARA SUBSTITUIR", "O QUE AINDA NÃO ESTÁ COMPROVADO")
+    for index, label in enumerate(headers):
+        add_mtext(
+            layout,
+            label,
+            (x_edges[index] + 2.0, table_top - 2.0),
+            x_edges[index + 1] - x_edges[index] - 4.0,
+            1.5,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered_text(layout, row["elemento"], ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0), 1.7, "02_TEXTO")
+        for index, key in ((1, "premissa_atual"), (2, "dado_para_substituir"), (3, "verificacao_pendente")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 2.0, row_top - 1.8),
+                x_edges[index + 1] - x_edges[index] - 4.0,
+                1.45,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+
+    add_rect(layout, 18.0, 98.0, 410.0, 109.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "Icu = 10 kA / Icc presumida = 5 kA resulta apenas em uma razão aritmética de 2:1; sem dados, curvas e tabelas do fabricante, isso não prova capacidade, seletividade, retaguarda ou coordenação.",
+        (21.0, 106.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
+def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
+    stages = (
+        ("1  BASE E REVISÕES", "documentos coerentes"),
+        ("2  DADOS REAIS / OEM", "rede, placas e manuais"),
+        ("3  CÁLCULO / SELEÇÃO", "critérios documentados"),
+        ("4  VERIFICAÇÃO", "ensaios registrados"),
+        ("5  AS-BUILT", "pendências encerradas"),
+    )
+    stage_x = (18.0, 98.0, 178.0, 258.0, 338.0)
+    for index, ((title, subtitle), x0) in enumerate(zip(stages, stage_x)):
+        add_rect(layout, x0, 247.0, x0 + 70.0, 262.0, "04_EQUIPAMENTOS")
+        centered_text(layout, title, (x0 + 35.0, 257.7), 1.75, "04_EQUIPAMENTOS")
+        centered_text(layout, subtitle, (x0 + 35.0, 251.1), 1.35, "02_TEXTO")
+        if index < len(stages) - 1:
+            x1 = x0 + 70.0
+            x2 = stage_x[index + 1]
+            line(layout, (x1 + 1.0, 254.5), (x2 - 2.0, 254.5), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 256.3), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 252.7), "05_POTENCIA")
+
+    x_edges = (18.0, 37.0, 100.0, 235.0, 380.0, 410.0)
+    table_top = 236.0
+    header_height = 8.0
+    row_height = 8.3
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(
+        layout,
+        (x_edges[0], table_top - header_height),
+        (x_edges[-1], table_top - header_height),
+        "01_CARIMBO",
+    )
+    headers = ("ID", "PONTO / ETAPA", "DADOS REQUERIDOS", "EVIDÊNCIA PARA ENCERRAR", "STATUS")
+    for index, label in enumerate(headers):
+        add_mtext(
+            layout,
+            label,
+            (x_edges[index] + 1.5, table_top - 1.8),
+            x_edges[index + 1] - x_edges[index] - 3.0,
+            1.45,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered_text(
+            layout,
+            row["codigo"],
+            ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0),
+            1.35,
+            "04_EQUIPAMENTOS",
+        )
+        for index, key in ((1, "ponto"), (2, "dados_requeridos"), (3, "evidencia_para_encerrar")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 1.5, row_top - 1.2),
+                x_edges[index + 1] - x_edges[index] - 3.0,
+                1.4,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+        centered_text(
+            layout,
+            row["status"],
+            ((x_edges[4] + x_edges[5]) / 2.0, (row_top + row_bottom) / 2.0),
+            1.35,
+            "13_NOTAS",
+        )
+
+    add_rect(layout, 18.0, 102.0, 410.0, 111.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "STATUS NÃO EXECUTADO: nenhum ensaio/aceite de campo foi registrado neste estudo. O status não equivale a aprovação; não energizar ou comissionar com base nesta prancha.",
+        (21.0, 108.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
+def draw_operational_sequence(layout, rows: dict[str, list[dict[str, str]]]) -> None:
+    def arrow_right(x0: float, x1: float, y: float) -> None:
+        line(layout, (x0, y), (x1, y), "06_COMANDO")
+        line(layout, (x1, y), (x1 - 3.0, y + 1.8), "06_COMANDO")
+        line(layout, (x1, y), (x1 - 3.0, y - 1.8), "06_COMANDO")
+
+    setup_x = (18.0, 116.0, 214.0, 312.0)
+    for index, (row, x0) in enumerate(zip(rows["habilitacao"], setup_x)):
+        add_rect(layout, x0, 239.0, x0 + 88.0, 262.0, "04_EQUIPAMENTOS")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + 44.0, 256.5), 1.6, "04_EQUIPAMENTOS")
+        add_mtext(layout, row["descricao"], (x0 + 4.0, 251.0), 80.0, 1.3, "02_TEXTO")
+        if index < len(setup_x) - 1:
+            arrow_right(x0 + 89.0, setup_x[index + 1] - 2.0, 250.5)
+
+    operation_x = (18.0, 118.0, 218.0, 318.0)
+    for index, (row, x0) in enumerate(zip(rows["operacao"], operation_x)):
+        width = 90.0 if index < len(operation_x) - 1 else 92.0
+        add_rect(layout, x0, 190.0, x0 + width, 220.0, "04_EQUIPAMENTOS")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + width / 2.0, 213.5), 1.65, "04_EQUIPAMENTOS")
+        add_mtext(layout, row["descricao"], (x0 + 3.0, 208.5), width - 6.0, 1.35, "02_TEXTO")
+        if index < len(operation_x) - 1:
+            arrow_right(x0 + width + 1.0, operation_x[index + 1] - 2.0, 205.0)
+
+    stop_center = operation_x[-1] + 46.0
+    ready_center = operation_x[0] + 45.0
+    line(layout, (stop_center, 189.0), (stop_center, 178.0), "06_COMANDO")
+    line(layout, (stop_center, 178.0), (ready_center, 178.0), "06_COMANDO")
+    line(layout, (ready_center, 178.0), (ready_center, 187.0), "06_COMANDO")
+    line(layout, (ready_center, 187.0), (ready_center - 3.0, 184.0), "06_COMANDO")
+    line(layout, (ready_center, 187.0), (ready_center + 3.0, 184.0), "06_COMANDO")
+    centered_text(layout, "comando inativo: retorno ao estado PRONTO", (210.0, 181.5), 1.35, "02_TEXTO")
+
+    event_x = (18.0, 117.0, 216.0, 315.0)
+    event_width = 95.0
+    for row, x0 in zip(rows["evento"], event_x):
+        add_rect(layout, x0, 128.0, x0 + event_width, 168.0, "01_CARIMBO")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + event_width / 2.0, 163.0), 1.45, "13_NOTAS")
+        add_mtext(layout, row["descricao"], (x0 + 3.0, 157.5), event_width - 6.0, 1.35, "02_TEXTO")
+
+    add_rect(layout, 18.0, 104.0, 410.0, 120.0, "13_NOTAS")
+    note = rows["nota"][0]
+    centered_text(layout, f"{note['codigo']}  {note['titulo']}", (31.0, 113.0), 1.45, "13_NOTAS")
+    add_mtext(layout, note["descricao"], (48.0, 116.0), 358.0, 1.35, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_power,
@@ -533,14 +772,94 @@ DRAWERS = {
 }
 
 
+def read_coordination_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "protecao-coordenacao.csv"
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        expected_fields = (
+            "elemento",
+            "premissa_atual",
+            "dado_para_substituir",
+            "verificacao_pendente",
+        )
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        rows = list(reader)
+    if len(rows) != 7 or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows):
+        raise ValueError(f"A matriz de protecao deve conter sete linhas completas: {source}")
+    return rows
+
+
+def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "plano-verificacao.csv"
+    expected_fields = (
+        "codigo",
+        "ponto",
+        "dados_requeridos",
+        "evidencia_para_encerrar",
+        "status",
+    )
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        rows = list(reader)
+    codes = [row.get("codigo", "").strip() for row in rows]
+    if (
+        len(rows) != 13
+        or len(set(codes)) != len(rows)
+        or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows)
+        or any(row["status"] != "NÃO EXECUTADO" for row in rows)
+    ):
+        raise ValueError(f"A matriz de verificacao deve conter treze linhas completas e nao executadas: {source}")
+    return rows
+
+
+def read_operational_sequence_rows(project_dir: Path) -> dict[str, list[dict[str, str]]]:
+    source = project_dir / "sequencia-estados.csv"
+    expected_fields = ("grupo", "ordem", "codigo", "titulo", "descricao")
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        source_rows = list(reader)
+
+    grouped: dict[str, list[dict[str, str]]] = {"habilitacao": [], "operacao": [], "evento": [], "nota": []}
+    for row in source_rows:
+        if row.get("grupo") not in grouped:
+            raise ValueError(f"Grupo inesperado em {source}: {row.get('grupo')}")
+        if not all(row.get(field, "").strip() for field in expected_fields):
+            raise ValueError(f"Linha incompleta em {source}: {row}")
+        grouped[row["grupo"]].append(row)
+
+    expected_counts = {"habilitacao": 4, "operacao": 4, "evento": 4, "nota": 1}
+    for group, expected_count in expected_counts.items():
+        group_rows = grouped[group]
+        orders = [int(row["ordem"]) for row in group_rows]
+        codes = [row["codigo"] for row in group_rows]
+        if len(group_rows) != expected_count or orders != list(range(1, expected_count + 1)) or len(set(codes)) != len(codes):
+            raise ValueError(f"Grupo {group} deve ter {expected_count} linhas ordenadas e codigos unicos: {source}")
+    return grouped
+
+
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
+    coordination_rows = read_coordination_rows(root / PROJECT_SLUG)
+    verification_rows = read_verification_rows(root / PROJECT_SLUG)
+    sequence_rows = read_operational_sequence_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout)
+        if spec.number == 7:
+            draw_protection_coordination(layout, coordination_rows)
+        elif spec.number == 8:
+            draw_verification_plan(layout, verification_rows)
+        elif spec.number == 9:
+            draw_operational_sequence(layout, sequence_rows)
+        else:
+            DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:

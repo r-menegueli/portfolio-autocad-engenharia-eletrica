@@ -1,10 +1,11 @@
-"""Gera as seis pranchas DXF do Projeto 08 de forma determinística."""
+"""Gera as oito pranchas DXF do Projeto 08 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -35,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "08-sistema-fotovoltaico"
-PROJECT_DATE = "2026-09-09"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -57,7 +58,7 @@ SHEETS = (
         "Arranjo acadêmico de 6,60 kWp em duas strings independentes",
         "Implantação esquemática, sem levantamento de sombras ou validação estrutural.\\P"
         "Orientação, inclinação, afastamentos e acesso devem ser confirmados no local.",
-        "Amarelo: módulos | Laranja: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento",
+        "Laranja: módulos | Turquesa: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento",
     ),
     SheetSpec(
         2,
@@ -101,8 +102,27 @@ SHEETS = (
         "LAYOUT DOS EQUIPAMENTOS",
         "Telhado, parede técnica, rotas segregadas e ponto de conexão",
         "Posições e folgas são propostas, não instruções de montagem.\\P"
+        "Comprimentos indicados são assumidos, não medidos; trajetos não representam imóvel levantado.\\P"
         "Validar acesso, ventilação, IP, raios de curvatura, estrutura e padrão da distribuidora.",
-        "Laranja: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | Tracejado: folga",
+    "Turquesa: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | * comprimento assumido",
+    ),
+    SheetSpec(
+        7,
+        "07_sensibilidade_energia.dxf",
+        "SENSIBILIDADE DA ENERGIA ANUAL",
+        "Cenários paramétricos para 6,60 kWp | sem localização ou previsão de geração",
+        "HSP e PR variam apenas para demonstrar sensibilidade.\\P"
+        "Os intervalos escolhidos não representam clima, faixa de confiança ou produção de um imóvel.",
+        "Vermelho: PR 0,70 | Verde: PR 0,78 | Magenta: PR 0,86 | marcador: premissa didática atual",
+    ),
+    SheetSpec(
+        8,
+        "08_envelope_termico_string.dxf",
+        "ENVELOPE TÉRMICO DA STRING",
+        "Vmp/Voc corrigidas por temperatura | limites do inversor são propostas",
+        "Temperaturas, coeficientes e especificação do inversor são premissas acadêmicas.\\P"
+        "Isc corrigida não substitui Imp; validar tensão, corrente e operação com dados OEM.",
+        "Voc: circuito aberto | Vmp: máxima potência | MPPT/VDC: limites propostos | STC: referência",
     ),
 )
 
@@ -124,6 +144,59 @@ def centered(
     layer: str = "02_TEXTO",
 ) -> None:
     add_text(layout, value, point, height, layer=layer, align=TextEntityAlignment.MIDDLE_CENTER)
+
+
+def pt(value: Decimal, places: int = 3) -> str:
+    return f"{value:.{places}f}".replace(".", ",")
+
+
+def make_thermal_envelope(parameter_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    values = {row["parametro"]: Decimal(row["valor"]) for row in parameter_rows}
+    nseries = values["MODULOS_POR_STRING"]
+    tref = values["TEMP_REF"]
+    irradiance = values["IRRAD_MAX"]
+    voc_stc = values["VOC_MODULO"] * nseries
+    vmp_stc = values["VMP_MODULO"] * nseries
+    conditions = (
+        ("FRIA", values["TEMP_MIN"]),
+        ("STC", tref),
+        ("QUENTE", values["TEMP_CEL_MAX"]),
+    )
+    rows: list[dict[str, str]] = []
+    for condition, temperature in conditions:
+        delta = temperature - tref
+        voc = voc_stc * (Decimal(1) + values["COEF_VOC"] * delta)
+        vmp = vmp_stc * (Decimal(1) + values["COEF_VMP"] * delta)
+        isc = (
+            values["ISC_MODULO"]
+            * (irradiance / Decimal(1000))
+            * (Decimal(1) + values["COEF_ISC"] * delta)
+        )
+        in_mppt_range = values["INV_MPPT_MIN"] <= vmp <= values["INV_MPPT_MAX"]
+        rows.append({
+            "condicao": condition,
+            "temperatura_c": f"{temperature:g}",
+            "irradiancia_w_m2": f"{irradiance:g}",
+            "voc_string_v": f"{voc:.6f}",
+            "vmp_string_v": f"{vmp:.6f}",
+            "isc_string_a": f"{isc:.6f}",
+            "faixa_mppt_proposta": "DENTRO" if in_mppt_range else "FORA",
+            "classificacao": "PREMISSA_ACADEMICA",
+        })
+    return rows
+
+
+def write_thermal_envelope(project: Path, rows: list[dict[str, str]]) -> Path:
+    output = project / "envelope-termico.csv"
+    fields = (
+        "condicao", "temperatura_c", "irradiancia_w_m2", "voc_string_v",
+        "vmp_string_v", "isc_string_a", "faixa_mppt_proposta", "classificacao",
+    )
+    with output.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    return output
 
 
 def left(
@@ -269,7 +342,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 08", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ROTAS CC/CA RASTREÁVEIS", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -291,7 +364,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -307,7 +380,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION"
     define_title_block(doc)
     define_symbols(doc)
@@ -573,22 +646,37 @@ def draw_equipment_layout(layout, data: dict[str, list[dict[str, str]]]) -> None
 
     add_rect(layout, 235, 112, 400, 252, "11_ARQUITETURA")
     centered(layout, "PAREDE TÉCNICA CONCEITUAL", (317.5, 246), 1.3, "11_ARQUITETURA")
-    component(layout, 252, 205, 302, 235, "SB-FV-801", "CC / DPS / QDC", "04_EQUIPAMENTOS")
+    component(layout, 252, 205, 302, 235, "SB-FV-801", "DPS CC / SECCIONAMENTO", "04_EQUIPAMENTOS")
     component(layout, 325, 185, 385, 235, "INV-FV-801", "6 kWca / 2 MPPT", "04_EQUIPAMENTOS")
     component(layout, 252, 142, 302, 174, "QD-FV-801", "CA / DPS / QF", "04_EQUIPAMENTOS")
     layout.add_blockref("P08_MEDIDOR", (355, 156), dxfattribs={"layer": "07_INSTRUMENTACAO"})
     centered(layout, "MED-801", (355, 143), 1.0, "07_INSTRUMENTACAO")
     component(layout, 325, 112, 385, 134, "PCC-801", "INSTALAÇÃO / REDE", "09_BORNES")
 
-    orthogonal(layout, ((202, 205), (230, 205), (230, 220), (252, 220)), "08_CABOS")
-    centered(layout, "R-CC-801/802", (225, 212), 0.9, "08_CABOS")
-    arrow(layout, (302, 220), (325, 220), "08_CABOS", "2 MPPT")
+    cables = {row["cabo"]: row for row in data["cables"]}
+
+    def route_label(cable_id: str) -> str:
+        cable = cables[cable_id]
+        length = float(cable["comprimento_assumido_m"])
+        return f'{cable_id} | {cable["rota"]} / {length:g} m*'
+
+    # Cada string mantém sua própria rota até a string box e seu MPPT.
+    orthogonal(layout, ((202, 218), (222, 218), (222, 226), (247, 226)), "08_CABOS")
+    arrow(layout, (247, 226), (252, 226), "08_CABOS")
+    centered(layout, route_label("FV-S1"), (226, 232), 0.9, "08_CABOS")
+    orthogonal(layout, ((202, 192), (232, 192), (232, 211), (247, 211)), "08_CABOS")
+    arrow(layout, (247, 211), (252, 211), "08_CABOS")
+    centered(layout, route_label("FV-S2"), (226, 204), 0.9, "08_CABOS")
+    arrow(layout, (302, 228), (325, 228), "08_CABOS", "S1 -> MPPT 1", (0.0, 3.0))
+    arrow(layout, (302, 213), (325, 213), "08_CABOS", "S2 -> MPPT 2", (0.0, -4.0))
     orthogonal(layout, ((355, 185), (355, 180), (312, 180), (312, 158), (302, 158)), "05_POTENCIA")
-    centered(layout, "R-CA-801", (333, 184), 0.9, "05_POTENCIA")
+    centered(layout, route_label("CA-INV"), (333, 184), 0.9, "05_POTENCIA")
     arrow(layout, (302, 158), (348, 158), "05_POTENCIA", "220 V")
+    centered(layout, route_label("CA-PCC"), (325, 150), 0.9, "05_POTENCIA")
     arrow(layout, (355, 149), (355, 134), "05_POTENCIA")
-    line(layout, (245, 138), (392, 138), "06_COMANDO")
-    centered(layout, "PE -> BEP-801", (276, 135), 0.9, "06_COMANDO")
+    line(layout, (245, 138), (340, 138), "06_COMANDO")
+    centered(layout, route_label("PE-MOD"), (271, 135), 0.9, "06_COMANDO")
+    centered(layout, route_label("PE-EQP"), (319, 135), 0.9, "06_COMANDO")
 
     table(
         layout,
@@ -606,7 +694,172 @@ def draw_equipment_layout(layout, data: dict[str, list[dict[str, str]]]) -> None
         row_height=9.0,
         text_height=0.82,
     )
-    centered(layout, "ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS", (317, 103), 1.1, "13_NOTAS")
+    centered(layout, "PE-MOD = MÓDULOS | PE-EQP = EQUIPAMENTOS -> BEP-801", (317, 106), 0.9, "06_COMANDO")
+    centered(
+        layout,
+        f'{route_label("COM-INV")} | OPCIONAL; TRAJETO NÃO DETALHADO',
+        (317, 100),
+        0.9,
+        "08_CABOS",
+    )
+    centered(layout, "ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS", (317, 95.5), 0.9, "13_NOTAS")
+
+
+def draw_energy_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    rows = data["energy_sensitivity"]
+    scenario_rows = [row for row in rows if row["classificacao"] == "PARAMETRICO_SEM_LOCAL"]
+    base_row = next(row for row in rows if row["classificacao"] == "BASE_ATUAL_DIDATICA")
+    colors = {"0.70": "05_POTENCIA", "0.78": "08_CABOS", "0.86": "07_INSTRUMENTACAO"}
+    plot_left, plot_right = 52.0, 226.0
+    plot_bottom, plot_top = 113.0, 239.0
+    hsp_min, hsp_max = 3.0, 6.0
+    energy_min, energy_max = 4.5, 13.0  # MWh/ano, escala gráfica
+
+    def point(hsp: float, kwh: float) -> tuple[float, float]:
+        x = plot_left + (hsp - hsp_min) / (hsp_max - hsp_min) * (plot_right - plot_left)
+        mwh = kwh / 1000.0
+        y = plot_bottom + (mwh - energy_min) / (energy_max - energy_min) * (plot_top - plot_bottom)
+        return x, y
+
+    centered(layout, "ENERGIA ANUAL | MWh/ano", (133, 255), 1.15, "02_TEXTO")
+    # Grade e eixos: a origem truncada é declarada por ticks e faixa da tabela.
+    for tick in (5, 7, 9, 11, 13):
+        y = plot_bottom + (tick - energy_min) / (energy_max - energy_min) * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "12_LEGENDA")
+        centered(layout, f"{tick},0", (41, y), 0.95, "02_TEXTO")
+    for hsp in (3.0, 4.0, 5.0, 6.0):
+        x = plot_left + (hsp - hsp_min) / (hsp_max - hsp_min) * (plot_right - plot_left)
+        line(layout, (x, plot_bottom), (x, plot_top), "12_LEGENDA")
+        centered(layout, f"{hsp:.0f}", (x, 106), 1.0, "02_TEXTO")
+    line(layout, (plot_left, plot_bottom), (plot_right, plot_bottom), "03_COTAS")
+    line(layout, (plot_left, plot_bottom), (plot_left, plot_top), "03_COTAS")
+    centered(layout, "HSP equivalente (h/dia)", (139, 101), 0.95, "02_TEXTO")
+
+    for pr, layer in colors.items():
+        points = sorted(
+            (point(float(row["hsp_h_dia"]), float(row["energia_anual_kwh"]))
+             for row in scenario_rows if row["pr"] == pr),
+            key=lambda xy: xy[0],
+        )
+        layout.add_lwpolyline(points, dxfattribs={"layer": layer})
+        for x, y in points:
+            layout.add_circle((x, y), 1.3, dxfattribs={"layer": layer})
+
+    base_x, base_y = point(float(base_row["hsp_h_dia"]), float(base_row["energia_anual_kwh"]))
+    layout.add_circle((base_x, base_y), 2.7, dxfattribs={"layer": "01_CARIMBO"})
+    line(layout, (base_x, base_y), (base_x - 12, base_y - 13), "01_CARIMBO")
+    centered(layout, "BASE ATUAL: 9,771 MWh/ano", (base_x - 28, base_y - 16), 1.0, "01_CARIMBO")
+    centered(layout, "HSP=5,2 | PR=0,78", (base_x - 28, base_y - 20), 0.95, "01_CARIMBO")
+
+    table(
+        layout,
+        248,
+        244,
+        (33, 38, 38, 38),
+        ("HSP", "PR 0,70", "PR 0,78", "PR 0,86"),
+        [
+            (f"{hsp:.0f}", *(f"{float(row['energia_anual_kwh']) / 1000:.3f}" for row in sorted(
+                (r for r in scenario_rows if float(r["hsp_h_dia"]) == hsp),
+                key=lambda r: float(r["pr"]),
+            )))
+            for hsp in (3.0, 4.0, 5.0, 6.0)
+        ],
+        row_height=10.5,
+        text_height=0.98,
+    )
+    centered(layout, "ENERGIA EM MWh/ano | EQUAÇÃO: 6,60 x HSP x 365 x PR", (322, 185), 1.0, "02_TEXTO")
+    add_rect(layout, 248, 112, 400, 181, "13_NOTAS")
+    centered(layout, "DADOS NECESSÁRIOS PARA UM ESTUDO LOCAL", (324, 173), 1.05, "13_NOTAS")
+    add_mtext(
+        layout,
+        "- Coordenadas e período representativo\\P- Fonte meteorológica e intervalo dos dados\\P- Azimute, inclinação e sombras por horário\\P- Modelos e limites de módulo e inversor\\P- Perdas, disponibilidade e degradação",
+        (254, 164),
+        138,
+        1.18,
+        "13_NOTAS",
+    )
+    centered(layout, "OS CENÁRIOS NÃO SÃO CLIMATOLOGIA NEM FAIXA DE CONFIANÇA", (324, 119), 0.98, "13_NOTAS")
+
+
+def draw_thermal_envelope(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    rows = data["thermal_envelope"]
+    params = {row["parametro"]: Decimal(row["valor"]) for row in data["parameters"]}
+    tref = params["TEMP_REF"]
+    tmin = params["TEMP_MIN"]
+    tmax = params["TEMP_CEL_MAX"]
+    voc_stc = params["VOC_MODULO"] * params["MODULOS_POR_STRING"]
+    vmp_stc = params["VMP_MODULO"] * params["MODULOS_POR_STRING"]
+    beta_voc = params["COEF_VOC"]
+    beta_vmp = params["COEF_VMP"]
+    voc_min = params["INV_VDC_MAX"]
+    mppt_min = params["INV_MPPT_MIN"]
+    mppt_max = params["INV_MPPT_MAX"]
+    isc_limit = params["INV_ISC_MPPT_MAX"]
+    max_row = next(row for row in rows if row["condicao"] == "QUENTE")
+
+    plot_left, plot_right = 48.0, 225.0
+    plot_bottom, plot_top = 118.0, 238.0
+    voltage_max = 620.0
+
+    def point(temp: Decimal, voltage: Decimal) -> tuple[float, float]:
+        x = plot_left + float((temp - tmin) / (tmax - tmin)) * (plot_right - plot_left)
+        y = plot_bottom + float(voltage / Decimal(str(voltage_max))) * (plot_top - plot_bottom)
+        return x, y
+
+    centered(layout, "TENSÃO DA STRING [Vcc] x TEMPERATURA DE CÉLULA", (137, 255), 1.15, "02_TEXTO")
+    for voltage in (0, 100, 200, 300, 400, 500, 600):
+        y = plot_bottom + voltage / voltage_max * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "12_LEGENDA")
+        centered(layout, str(voltage), (40, y), 0.9, "02_TEXTO")
+    for temperature in (tmin, tref, tmax):
+        x = plot_left + float((temperature - tmin) / (tmax - tmin)) * (plot_right - plot_left)
+        line(layout, (x, plot_bottom), (x, plot_top), "12_LEGENDA")
+        centered(layout, f"{temperature:g}", (x, 112), 0.95, "02_TEXTO")
+    line(layout, (plot_left, plot_bottom), (plot_right, plot_bottom), "03_COTAS")
+    line(layout, (plot_left, plot_bottom), (plot_left, plot_top), "03_COTAS")
+    centered(layout, "temperatura [°C]", (137, 103), 0.95, "02_TEXTO")
+
+    for limit, label in (
+        (mppt_min, "MPPT MIN 90 V"),
+        (mppt_max, "MPPT MAX 550 V"),
+        (voc_min, "VDC MAX 600 V"),
+    ):
+        y = plot_bottom + float(limit / Decimal(str(voltage_max))) * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "13_NOTAS")
+        centered(layout, label, (plot_right - 23, y + 2.0), 0.85, "13_NOTAS")
+
+    temperatures = (tmin, tref, tmax)
+    voc_points = [point(temp, voc_stc * (Decimal(1) + beta_voc * (temp - tref))) for temp in temperatures]
+    vmp_points = [point(temp, vmp_stc * (Decimal(1) + beta_vmp * (temp - tref))) for temp in temperatures]
+    layout.add_lwpolyline(voc_points, dxfattribs={"layer": "05_POTENCIA"})
+    layout.add_lwpolyline(vmp_points, dxfattribs={"layer": "07_INSTRUMENTACAO"})
+    for xy in voc_points:
+        layout.add_circle(xy, 1.15, dxfattribs={"layer": "05_POTENCIA"})
+    for xy in vmp_points:
+        layout.add_circle(xy, 1.15, dxfattribs={"layer": "07_INSTRUMENTACAO"})
+
+    table(
+        layout,
+        248,
+        246,
+        (34, 39, 40, 40),
+        ("CÉLULA", "T [°C]", "VOC [V]", "VMP [V]"),
+        [
+            (row["condicao"], row["temperatura_c"], pt(Decimal(row["voc_string_v"])), pt(Decimal(row["vmp_string_v"])))
+            for row in rows
+        ],
+        row_height=11.0,
+        text_height=1.0,
+    )
+    centered(layout, "ISC@1.100 W/m² E LIMITES PROPOSTOS", (326, 193), 1.0, "02_TEXTO")
+    add_rect(layout, 248, 116, 402, 187, "13_NOTAS")
+    left(layout, "INV-FV-801 PROPOSTA", (254, 177), 1.35, "13_NOTAS")
+    left(layout, f"Faixa MPPT: {mppt_min:g}-{mppt_max:g} V", (254, 167), 1.2, "13_NOTAS")
+    left(layout, f"VDC máximo: {voc_min:g} V", (254, 158), 1.2, "13_NOTAS")
+    left(layout, f"VOC fria: {pt(Decimal(rows[0]['voc_string_v']))} V", (254, 146), 1.2, "05_POTENCIA")
+    left(layout, f"VMP quente: {pt(Decimal(rows[-1]['vmp_string_v']))} V", (254, 137), 1.2, "07_INSTRUMENTACAO")
+    left(layout, f"ISC corrigida quente: {pt(Decimal(max_row['isc_string_a']))} A / limite Isc MPPT {isc_limit:g} A", (254, 127), 1.05, "13_NOTAS")
+    centered(layout, "IMP operacional precisa de dados OEM; não é inferida de ISC.", (325, 120), 0.85, "13_NOTAS")
 
 
 DRAWERS = {
@@ -616,19 +869,26 @@ DRAWERS = {
     4: draw_string_box,
     5: draw_grounding,
     6: draw_equipment_layout,
+    7: draw_energy_sensitivity,
+    8: draw_thermal_envelope,
 }
 
 
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     project = root / PROJECT_SLUG
+    parameters = read_rows(project, "parametros.csv")
+    thermal_rows = make_thermal_envelope(parameters)
+    write_thermal_envelope(project, thermal_rows)
     data = {
-        "parameters": read_rows(project, "parametros.csv"),
+        "parameters": parameters,
         "modules": read_rows(project, "lista-modulos.csv"),
         "protections": read_rows(project, "lista-protecoes.csv"),
         "cables": read_rows(project, "lista-cabos.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
+        "energy_sensitivity": read_rows(project, "sensibilidade-energia.csv"),
+        "thermal_envelope": thermal_rows,
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

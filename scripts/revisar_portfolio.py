@@ -296,7 +296,11 @@ def main() -> int:
         if PHONE_PATTERN.search(content):
             errors.append(f"{relative(root, path)}: possivel telefone encontrado")
 
-    contact_sheet(project_contacts, output / "contatos" / "portfolio-completo.png", "Portfolio completo — 10 projetos")
+    contact_sheet(
+        project_contacts,
+        output / "contatos" / "portfolio-completo.png",
+        f"Portfolio completo — {len(project_contacts)} projetos",
+    )
 
     with (output / "inventario.csv").open("w", encoding="utf-8", newline="") as stream:
         fieldnames = ["project", "sheet", "artifact", "kind", "path", "bytes", "rows", "columns"]

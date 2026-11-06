@@ -1,25 +1,25 @@
 # Inventário de arquivos
 
-Inventário consolidado em 2026-09-10 para o portfólio de Rogério Eduardo Moreira
-Menegueli. A contagem considera os arquivos versionados após esta revisão e exclui
+Inventário consolidado em 2026-11-05 para o portfólio de Rogério Eduardo Moreira
+Menegueli. A contagem considera os arquivos incluídos nesta revisão e exclui
 `.git/`, `.venv/`, `node_modules/`, caches e saídas temporárias em `work/`.
 
 ## Resumo do repositório
 
 | Tipo | Quantidade | Função |
 | --- | ---: | --- |
-| DXF | 70 | 68 pranchas de projeto, template e carimbo |
-| PDF | 69 | 68 pranchas de projeto e template A3 |
-| SVG | 70 | 68 pranchas de projeto, template e carimbo |
-| PNG | 69 | 68 pranchas de projeto e template A3 |
-| CSV | 50 | entradas, cálculos, cabos, bornes e materiais |
+| DXF | 100 | 98 pranchas de projeto, template e carimbo |
+| PDF | 99 | 98 pranchas de projeto e template A3 |
+| SVG | 100 | 98 pranchas de projeto, template e carimbo |
+| PNG | 99 | 98 pranchas de projeto e template A3 |
+| CSV | 70 | entradas, cálculos, cabos, bornes, materiais, proteção, verificação, causa–efeito, rastreabilidade por ambiente e dados para coordenação |
 | XLSX | 2 | workbooks técnicos dos Projetos 04 e 05 |
-| Markdown | 82 | READMEs, memoriais, critérios, memórias e relatórios |
-| JSON | 20 | validações e manifesto |
-| Python | 31 | geração, renderização, revisão, validadores e testes |
+| Markdown | 95 | READMEs, memoriais, critérios, memórias e relatórios |
+| JSON | 22 | validações e manifesto |
+| Python | 37 | geração, renderização, revisão, validadores e testes |
 | PowerShell / SCR | 2 | automação e auditoria pelo AutoCAD |
 | Outros arquivos de configuração/licença | 6 | Git, Python, licença e configuração |
-| **Total versionado** | **471** | inventário após a preparação para publicação |
+| **Total** | **632** | arquivos incluídos nesta revisão, sem caches nem saídas temporárias |
 
 Nenhum arquivo DWG integra o repositório.
 
@@ -27,25 +27,27 @@ Nenhum arquivo DWG integra o repositório.
 
 | Projeto | Pranchas | Arquivos | Markdown | CSV | Linhas de dados CSV | JSON | XLSX |
 | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| P01 | 6 | 34 | 6 | 2 | 39 | 1 | 0 |
-| P02 | 8 | 45 | 6 | 3 | 55 | 2 | 0 |
-| P03 | 8 | 47 | 7 | 4 | 125 | 2 | 0 |
-| P04 | 6 | 42 | 8 | 5 | 70 | 2 | 1 |
-| P05 | 7 | 44 | 6 | 4 | 78 | 2 | 1 |
-| P06 | 7 | 44 | 7 | 5 | 85 | 2 | 0 |
-| P07 | 8 | 49 | 8 | 5 | 88 | 2 | 0 |
-| P08 | 6 | 40 | 6 | 6 | 102 | 2 | 0 |
-| P09 | 6 | 41 | 6 | 7 | 160 | 2 | 0 |
-| P10 | 6 | 45 | 7 | 9 | 82 | 2 | 0 |
-| **Total** | **68** | **431** | **67** | **50** | **884** | **19** | **2** |
+| P01 | 8 | 44 | 6 | 4 | 58 | 1 | 0 |
+| P02 | 9 | 50 | 6 | 4 | 63 | 2 | 0 |
+| P03 | 10 | 57 | 7 | 6 | 145 | 2 | 0 |
+| P04 | 7 | 47 | 8 | 6 | 79 | 2 | 1 |
+| P05 | 9 | 54 | 6 | 6 | 96 | 2 | 1 |
+| P06 | 8 | 49 | 7 | 6 | 94 | 2 | 0 |
+| P07 | 9 | 54 | 8 | 6 | 98 | 2 | 0 |
+| P08 | 7 | 45 | 6 | 7 | 115 | 2 | 0 |
+| P09 | 9 | 55 | 6 | 9 | 210 | 2 | 0 |
+| P10 | 7 | 50 | 7 | 10 | 90 | 2 | 0 |
+| P11 | 7 | 41 | 6 | 3 | 62 | 1 | 0 |
+| P12 | 8 | 45 | 6 | 3 | 48 | 1 | 0 |
+| **Total** | **98** | **591** | **83** | **70** | **1.158** | **21** | **2** |
 
-Cada prancha de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
-`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 68
+Cada uma das 98 pranchas de projeto forma um conjunto de quatro arquivos homônimos: um DXF em
+`fonte/` e PDF, SVG e PNG em `exports/`. A auditoria consolidada confirmou os 98
 conjuntos completos, sem nomes-base divergentes.
 
 ## Contrato documental
 
-Todos os dez projetos contêm:
+Todos os doze projetos contêm:
 
 - README individual, memorial descritivo e critérios/premissas;
 - `lista-materiais.csv` e demais listas específicas;

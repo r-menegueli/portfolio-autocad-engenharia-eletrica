@@ -22,6 +22,11 @@ reproduzidas e sua simples citação não implica conformidade.
 - IEC 60529: `https://webstore.iec.ch/en/publication/2452`
 - NR-10: `https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-10-nr-10`
 
+## Referência do componente candidato
+
+- Texas Instruments, **LM5190 80-V Synchronous Buck Controller With Constant-Current and Constant-Voltage Regulation**, datasheet SNVSCG7, novembro de 2024, especialmente seções 5.3, 6.3.9-6.3.14 e 7.1-7.2. Fonte oficial: `https://www.ti.com/lit/ds/symlink/lm5190.pdf`.
+- A folha de dados informa entrada recomendada de 5-80 V, saída ajustável de 0,8-79 V, operação CC/CV, frequência de 100 kHz a 2,2 MHz e uso de MOSFETs externos. Essa referência só sustenta a escolha preliminar de arquitetura; não valida a implementação P09.
+
 ## Limitação de uso
 
 A seleção de componentes e o produto real devem ser avaliados contra os textos

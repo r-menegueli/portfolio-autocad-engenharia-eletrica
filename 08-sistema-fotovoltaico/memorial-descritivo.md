@@ -41,6 +41,20 @@ quadro dedicado, medição bidirecional e ponto de conexão com a instalação. 
 anti-ilhamento e qualidade da energia são funções do equipamento e da conexão
 regulamentada; o estudo não inventa limiares ou tempos de atuação.
 
+## Identificação de cabos e rotas conceituais
+
+A prancha 06 relaciona `FV-S1 / R-CC-801` e `FV-S2 / R-CC-802` à string box, mostrando
+cada saída até seu MPPT correspondente. O trecho CA inversor–quadro usa a referência
+`CA-INV / R-CA-801`; quadro–ponto de conexão usa `CA-PCC / R-CA-802`. Também constam
+`PE-MOD / R-PE-801` e `PE-EQP / R-PE-802`, associados conceitualmente ao BEP-801. Os
+comprimentos indicados reproduzem as hipóteses de `lista-cabos.csv`: 20 m por string CC,
+15 m para CA-INV, 5 m para CA-PCC, 25 m para PE-MOD e 8 m para PE-EQP.
+
+`COM-INV / R-COM-801`, com 10 m assumidos, é opcional e aparece apenas como referência;
+seu ponto remoto e trajeto não foram definidos. Nenhuma dessas distâncias veio de
+levantamento do imóvel. As linhas servem para rastrear os circuitos no estudo e não
+representam posições, comprimentos ou caminhos de instalação reais.
+
 ## Aterramento e proteção contra surtos
 
 Molduras, estrutura de suporte, invólucros metálicos, string box, inversor e quadro são
@@ -55,6 +69,15 @@ potência das duas entradas e injeta energia na instalação conectada à rede. 
 locais consomem parte da geração e o excedente pode circular pelo medidor conforme as
 regras aplicáveis. Abertura de seccionadores, atuação de proteção, perda de rede ou
 autodiagnóstico deve impedir a injeção conforme o equipamento homologado.
+
+## Estudo de energia
+
+A prancha 07 demonstra como a estimativa didática anual muda quando se variam HSP e PR,
+mantendo a potência CC em 6,60 kWp. O caso-base preserva 5,2 h/dia e PR 0,78. As demais
+combinações são cenários matemáticos escolhidos para estudo, sem vínculo com localidade,
+clima observado ou probabilidade de ocorrência. A tabela e os resultados reproduzíveis
+estão em [sensibilidade-energia.csv](sensibilidade-energia.csv). Uma previsão local
+depende de dados meteorológicos e de implantação ainda não fornecidos.
 
 ## Limites
 

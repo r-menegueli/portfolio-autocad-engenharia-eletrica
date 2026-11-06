@@ -14,7 +14,16 @@
 | Condutores | cobre | hipótese |
 | Resistividade para queda | 0,0225 ohm.mm²/m | critério conservador |
 | Queda combinada máxima | 4,0% | critério acadêmico |
-| Corrente de curto-circuito | 6 kA presumidos | dado a confirmar |
+| Corrente de curto-circuito | PENDENTE | depende de dados de rede e cálculo rastreável |
+
+## Coordenadas do croqui P05-01
+
+- A origem `O=(0,0)` está no canto interno inferior esquerdo da planta, em `(24,108)` mm no DXF.
+- As posições da tabela usam o centro gráfico de cada símbolo; para o retângulo TUE-501, usa-se o centro da caixa.
+- A planta está desenhada em escala 1:125, então `X = (x_DXF - 24) x 0,125` e `Y = (y_DXF - 108) x 0,125`, em metros.
+- As coordenadas são derivadas do croqui fictício e servem para rastrear o desenho. Não são coordenadas topográficas nem confirmam a implantação de máquinas reais.
+- As cargas `S_inst` vêm dos circuitos C01-C06 do quadro de cargas. Os valores são preliminares e não comprovam seleção de equipamento.
+- Envelopes de fabricante, áreas de operação/manutenção, circulação, acessos, interferências, ventilação e rotas de processo dependem de dados reais e levantamento.
 
 ## Critérios de cálculo
 
@@ -59,11 +68,20 @@ trabalho, requisitos da concessionária ou análise de expansão.
 
 ## Proteções e coordenação
 
-- DJ-G: 4P, 100 A, capacidade de interrupção mínima assumida de 10 kA;
+- DJ-G: 4P, 100 A como premissa didática; modelo, unidade de disparo e capacidade de interrupção PENDENTES;
 - QF-QDF: 3P, 80 A; QF-QDL e QF-QADM: 4P, 16 A;
 - circuitos de motores: proteção ajustável e método de partida a selecionar;
 - tomadas industriais e auxiliares: DR 30 mA como premissa;
 - DPS tipo 2: quantidade e configuração conceituais.
+
+Não há valor presumido de Icc nem capacidade de interrupção atribuída a DJ-G. A matriz
+[matriz-coordenacao-protecoes.csv](matriz-coordenacao-protecoes.csv) registra seis
+comparações montante-jusante; todas permanecem `PENDENTE` até receber dados de origem,
+cálculo por ponto, curvas e identificações dos dispositivos, cabos, motores, drivers e
+DRs. A prancha P05-09 separa entradas, modelo, cálculo de Icc máximo/mínimo,
+verificações de suportabilidade, curvas dos pares e revisão documental. Retaguarda ou
+cascata só pode ser registrada com a combinação e as condições verificadas pelo
+fabricante. Não se declara interrupção adequada, seletividade ou retaguarda.
 
 Não foram calculados curto-circuito, energia incidente, seletividade, retaguarda,
 coordenação de DPS, partida de motores, harmônicas, correção de fator de potência,

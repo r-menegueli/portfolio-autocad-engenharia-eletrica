@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-150
+151
   9
 $SURFTAB1
  70
@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-14D
+14E
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-14E
+14F
 330
 3
 100
@@ -7951,7 +7951,7 @@ AcDbText
  40
 4.2
   1
-PLANTA DE INSTALACAO E DETALHES DO GMG
+ARRANJO CONCEITUAL E INTERFACES DO GMG
   7
 PORTFOLIO_TITULO
  72
@@ -7987,7 +7987,7 @@ AcDbText
  40
 2.0
   1
-Arranjo fisico da sala do gerador, atenuacao acustica, escape e contencao
+Sala, cabine e interfaces dependem de levantamento e dados do fabricante
   7
 PORTFOLIO_TEXTO
  72
@@ -8185,7 +8185,7 @@ AcDbMText
  71
 1
   1
-Base de concreto isolada com 6 amortecedores elastomericos antivibratorios.\PCabine silenciada 75 dB(A) com venezianas de admissao e descarga atenuadas.\PTanque integrado de 250 L sobre bacia de contencao estanque para 297 L (110%).
+Dimensoes internas de 6,50 x 4,00 m sao premissas do estudo.\PCabine, ventilacao, escape e folgas dependem de selecao OEM.\PRota fisica, acessos e manutencao devem ser confirmados em campo.
   7
 PORTFOLIO_TEXTO
  44
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.55
   1
-2026-09-25
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-EMISSAO INICIAL DO PROJETO 12
+REVISAO TECNICA E GRAFICA
   7
 PORTFOLIO_TEXTO
  72
@@ -8743,7 +8743,7 @@ AcDbText
  40
 3.3
   1
-PLANTA DE INSTALACAO E DETALHES DO GMG
+ARRANJO CONCEITUAL E INTERFACES DO GMG
   7
 PORTFOLIO_TEXTO
  11
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-09-25
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -8895,7 +8895,7 @@ AcDbText
  40
 2.25
   1
-06/06
+06/09
   7
 PORTFOLIO_TEXTO
  11
@@ -9009,7 +9009,7 @@ AcDbText
  40
 1.9
   1
-1:50
+S/ESC.
   7
 PORTFOLIO_TEXTO
  11
@@ -9165,7 +9165,7 @@ AcDbText
  40
 1.45
   1
-PLANTA BAIXA - SALA DO GERADOR
+LAYOUT CONCEITUAL - SALA GMG
   7
 PORTFOLIO_TITULO
  72
@@ -9201,7 +9201,7 @@ AcDbText
  40
 1.05
   1
-Dimensoes Internas: 6,50 x 4,00 m (Escala 1:50)
+Dimensoes adotadas: 6,50 x 4,00 m; escala grafica nao valida
   7
 PORTFOLIO_TEXTO
  72
@@ -10129,7 +10129,7 @@ AcDbText
  40
 1.45
   1
-ESCAPE HOSPITALAR E REQUISITOS
+INTERFACES DO ESCAPE E CRITERIOS
   7
 PORTFOLIO_TITULO
  72
@@ -10165,7 +10165,7 @@ AcDbText
  40
 1.05
   1
-Atenuacao Acustica e Gases
+Premissas; confirmar por fabricante
   7
 PORTFOLIO_TEXTO
  72
@@ -10681,7 +10681,7 @@ AcDbText
  40
 0.92
   1
-- Nivel sonoro externo <= 75 dB(A) a 1,5m (NBR 10151).
+- Nivel sonoro <= 75 dB(A) a 1,5 m: criterio premissa.
   7
 PORTFOLIO_TEXTO
  11
@@ -10713,7 +10713,7 @@ AcDbText
  40
 0.92
   1
-- Vazao de ar do radiador: 5,2 m3/s (18.720 m3/h).
+- Vazao do radiador 5,2 m3/s: confirmar no manual OEM.
   7
 PORTFOLIO_TEXTO
  11
@@ -10745,7 +10745,7 @@ AcDbText
  40
 0.92
   1
-- Autonomia do tanque 250 L: 5,7 h (100%) / 7,6 h (75%).
+- Autonomia do tanque: consumo e regime ainda nao validados.
   7
 PORTFOLIO_TEXTO
  11
@@ -10777,13 +10777,45 @@ AcDbText
  40
 0.92
   1
-- Aterramento da carcaca e neutro em Cu 120 mm2 ao BEP.
+- Escape, contrapressao e temperatura: confirmar com OEM.
   7
 PORTFOLIO_TEXTO
  11
 264.0
  21
 114.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+14D
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+264.0
+ 20
+106.0
+ 30
+0.0
+ 40
+0.92
+  1
+- Envelopes, acessos e rotas de ar/escape: pendentes.
+  7
+PORTFOLIO_TEXTO
+ 11
+264.0
+ 21
+106.0
  31
 0.0
 100
@@ -11899,7 +11931,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-14F
+150
   0
 DICTIONARYVAR
   5
@@ -18521,11 +18553,11 @@ DictionaryVariables
 280
 0
   1
-06/06
+06/09
   0
 DICTIONARYVAR
   5
-14F
+150
 330
 2D
 100

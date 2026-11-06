@@ -1,185 +1,278 @@
-# Relatório de preparação para publicação no GitHub
+# Relatório de GitHub e revisão — 2026-11-05
 
-**Data:** 2026-09-10
+## Estado da publicação
 
-**Escopo:** branch `main`, árvore atual e histórico Git completo
+Os cinco branches desta revisão foram enviados aos repositórios existentes e estão
+abertos como pull requests em rascunho. Os branches `main` permanecem sem alterações;
+nenhum PR foi mesclado.
 
-**Estado:** pronto para publicação, aguardando autorização explícita
+| Repositório | Commit | PR de revisão |
+| --- | --- | --- |
+| [Perfil](https://github.com/r-menegueli/r-menegueli) | `ed62f17` | [#1 — Clarify engineering portfolio claims](https://github.com/r-menegueli/r-menegueli/pull/1) |
+| [Portfólio AutoCAD](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica) | Atualização do portfólio; P01 rev. 02 tem oito folhas, P02 rev. 02 tem nove, P03 rev. 03 tem dez e P05 rev. 03 tem nove, incluindo planos de dados/verificação sem execução declarada — PR #1 | [#1 — Refresh CAD portfolio drawings and technical audit](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/pull/1) |
+| [Automação PLC/SCADA](https://github.com/r-menegueli/automacao-clp-scada-iec61131) | `40e336d` | [#1 — Align QTA logic and document PLCopen draft](https://github.com/r-menegueli/automacao-clp-scada-iec61131/pull/1) |
+| [PCB/KiCad](https://github.com/r-menegueli/hardware-pcb-kicad-industrial) | `fd09bf1` | [#1 — Mark PCB repository as a conceptual scaffold](https://github.com/r-menegueli/hardware-pcb-kicad-industrial/pull/1) |
+| [BIM/MEP](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep) | `db078cd` | [#1 — Clarify BIM model as volumetric placeholders](https://github.com/r-menegueli/modelagem-bim-3d-eletrica-mep/pull/1) |
 
-Nenhum repositório remoto foi criado, nenhum `remote` foi configurado e nenhum `push`
-foi executado.
+Branch comum: `codex/professional-portfolio-2026-11`. Cada PR foi anexado à tarefa
+para acompanhamento. Os cinco estão abertos e marcados como draft.
 
-## Identidade recomendada
+## Auditoria de publicação desta revisão
 
-**Nome do repositório:** `portfolio-autocad-engenharia-eletrica`
+- 632 arquivos; 423 links de Markdown verificados; 0 erros; 221935367 bytes.
+- Sem achados de CPF, telefone, endereço, credenciais ou caminhos locais nos arquivos
+  atuais; nenhum arquivo excede 50 MiB.
+- Resultado: `WARN`, com uma observação no endereço de e-mail registrado num commit
+  preexistente do `main`. Não reescrevi o histórico compartilhado.
+- Um primeiro resultado `FAIL` foi uma colisão de dígitos dentro de um SHA-256 do
+  manifesto. O detector foi ajustado para ignorar hashes hexadecimais de 64 caracteres;
+  a repetição eliminou esse falso positivo e manteve apenas o aviso histórico acima.
 
-**Descrição:** Portfólio acadêmico de Engenharia Elétrica com 68 pranchas A3 em DXF,
-PDF, SVG e PNG, geradas e validadas de forma reproduzível.
+## Evidência de revisão CAD
 
-**Tópicos recomendados:**
+- P02 revisado graficamente para revisão 02 e nove folhas. P02-09 liga oito áreas,
+  19 linhas de pontos e cargas atribuídas a `lista-pontos.csv` e `quadro-cargas.csv`;
+  dimensões, usos e potências permanecem premissas declaradas.
+- O validador matemático do P02 passou por 63 verificações, sem erros; o AutoCAD
+  AcCoreConsole 2027 abriu e auditou 9/9 DXFs. Conferi o contato das nove folhas,
+  P02-01 em PNG integral e P02-09 em PNG integral e PDF rasterizado independente.
+- P01 revisado para a revisão 02 e oito folhas: P01-07 mapeia premissas de proteção;
+  P01-08 organiza dados e evidências de verificação, com os doze pontos marcados como
+  `NÃO EXECUTADO`.
+- AcCoreConsole 2027 auditou 8/8 DXFs do P01. A composição de oito páginas foi conferida;
+  P01-07 e P01-08 foram inspecionadas em PNG integral e PDF rasterizado a 150 dpi.
+  Similaridades PDF/PNG: 0,987268 em P01-07 e 0,984095 em P01-08.
+- P05 revisado para a revisão 03 e nove folhas: P05-08 traça seis pares; P05-09 organiza
+  doze grupos de dados/cálculos/evidências. O CSV mantém todos como `PENDENTE`.
+- P05 validador específico: 378 verificações, 0 erros; AcCoreConsole 2027 abriu e auditou
+  9/9 DXFs. P05-09 foi inspecionada no PNG 300 dpi, no PDF Poppler 150 dpi e no contato.
+- P07 revisado para a revisão 02 e nove folhas: P07-09 relaciona dez eventos aos sinais,
+  estados, respostas propostas e dados ainda necessários. Não declara validação de segurança.
+- P07 validador específico: 4.247 verificações, 0 erros; AcCoreConsole 2027 auditou
+  9/9 DXFs. P07-09 foi inspecionada em PNG, PDF rasterizado e na composição das nove folhas.
+- P08 revisado para a revisão 02 e sete folhas: P08-07 expõe a sensibilidade da
+  estimativa de energia a HSP/PR e lista os dados que faltam para estudo local. Os
+  cenários não representam clima ou previsão de geração.
+- P08 validador específico: 8.073 verificações, 0 erros; AutoCAD AcCoreConsole 2027
+  abriu e auditou 7/7 DXFs; P08-07 foi inspecionada em PNG e PDF rasterizado, e o contato
+  das sete folhas foi conferido.
+- P05 validador específico da revisão 02: 325 verificações, 0 erros; os oito DXFs,
+  24 derivados e manifesto reproduziram hashes SHA-256 idênticos antes da nova revisão.
+- `09-fonte-bancada/fonte/gerar_projeto_09.py` e `scripts/renderizar.py`: nove
+  pranchas P09 regeneradas em DXF, PDF, SVG e PNG; P09-09 documenta descarga RC
+  paramétrica sem inventar componentes nem valores ainda desconhecidos.
+- `03-painel-automacao-clp/fonte/gerar_projeto_03.py`: P03 ampliado a dez folhas;
+  P03-09 mostra a sequência e matriz causa-efeito; P03-10 organiza doze verificações,
+  todas declaradas como não executadas, com a decisão de sensor incoerente pendente.
+- P03 validador lógico: 232 verificações, 0 erros; AcCoreConsole 2027 auditou 10/10 DXFs.
+- `04-controle-nivel-reservatorio/fonte/gerar_projeto_04.py`: P04 ampliado a sete
+  folhas; P04-07 registra a sequência de partida e nove respostas causa–efeito.
+- P04 validador funcional: 225 verificações, 0 erros; o fluxograma P04-01 agora
+  identifica consistentemente o reservatório como TK-101.
+- P12 ampliado a oito folhas: P12-08 acrescenta matriz de nove eventos e CSV
+  rastreável; o validador específico confirmou 8 folhas, 9 eventos, 24 materiais e
+  15 cabos.
+- P06 ampliado a oito folhas: P06-08 acrescenta matriz de nove eventos para CCM,
+  incluindo emergência, sobrecarga, reversão, falha do VFD e retorno de energia;
+  comportamento dependente dos modelos KSR/VFD continua declarado como pendente.
+- P10 ampliado a sete folhas: P10-07 registra oito eventos de qualidade de sinal,
+  falha de loop, remotas, SCADA, dados obsoletos, 24 Vcc e DI; limites e ações de
+  processo continuam pendentes dos equipamentos e da análise de risco.
+- P11 revisado para a revisão 02 e ampliado a sete folhas: P11-05 remove a estimativa
+  hipotética de resistência da malha; P11-07 e o CSV registram 22 dados de entrada
+  ainda pendentes e deixam explícito que o estudo não calcula nem aprova o aterramento.
+- P11 validador específico: 7 pranchas, 23 materiais, 17 cabos e 22 dados pendentes.
+- Regeneração P11 repetida: DXFs, PDFs, SVGs, PNGs e manifesto SHA-256 idênticos.
+- `09-fonte-bancada/fonte/validar_projeto_09.py`: 18.696 verificações, 0 erros.
+- P10 validador específico: 64.261 verificações, 0 erros, 0 avisos.
+- `scripts/validar_portfolio.py --root . --strict`: 537.428 verificações, 0 erros,
+  0 avisos.
+- `scripts/revisar_portfolio.py --root .`: 12 projetos, 98 pranchas, 392 arquivos
+  gráficos e 70 CSVs; similaridade mínima PDF/PNG de 0,984061.
+- P09-07/08 foram inspecionadas em PNG integral e PDF rasterizado; P09-02/03/06/07
+  também foram conferidas nos PNGs após as correções de rótulos e legibilidade.
+- P03-09 foi inspecionada em PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e
+  folha de contato das nove páginas P03 na revisão 02; P03-10 foi conferida nos PNG e
+  PDF da revisão 03 e na composição atual das dez folhas. Os itens permanecem não executados.
+- P04-07 foi inspecionada em PNG e PDF rasterizado a 150 dpi; a folha de contato
+  P04 e a identificação corrigida de P04-01 também foram conferidas.
+- P12-07/08 foram inspecionadas em PNG de produção e PDF rasterizado a 150 dpi;
+  conferi também a composição das oito folhas no contato P12.
+- P06-08 foi inspecionada em PNG de produção e PDF rasterizado a 150 dpi;
+  conferi também a composição das oito folhas no contato P06.
+- P10-07 foi inspecionada no PNG de produção a 300 dpi e em PDF rasterizado a 150 dpi;
+  os oito eventos cabem na tabela sem cortes. Revisei também o contato das sete folhas.
+- P09-06 e P09-09 foram inspecionadas em PNG integral e PDF rasterizado a 150 dpi;
+  o contato das nove folhas P09 também foi conferido.
+- P11-05 e P11-07 foram conferidas nos PNGs integrais a 300 dpi, PDFs rasterizados a
+  150 dpi e no contato das sete folhas; as outras cinco folhas foram avaliadas no contato.
+- P05-08 foi inspecionada no PNG de produção a 300 dpi, PDF rasterizado a 150 dpi e no
+  contato das oito folhas; a tabela cabe sem cortes e todos os seis status são pendentes.
+- P08-07 foi inspecionada no PNG de produção e no PDF rasterizado a 150 dpi; a grade
+  paramétrica, os dados necessários e o carimbo cabem na folha sem cortes.
+- P02-09 foi inspecionada no PNG de produção a 300 dpi e em PDF rasterizado pelo
+  Poppler a 150 dpi; a tabela, os totais, o aviso de premissas e o carimbo cabem na folha.
+- P07-09 foi inspecionada no PNG de produção a 300 dpi e PDF rasterizado a 150 dpi;
+  conferi também a folha de contato atual das nove pranchas.
+- AcCoreConsole 2027 auditou 10/10 DXFs do P03, além de 8/8 do P01, 9/9 do P02,
+  9/9 do P07 e 7/7 do P08. Simulação elétrica não foi executada. A inspeção visual dos
+  SVGs no navegador continua aguardando autorização.
 
-`engenharia-eletrica`, `autocad`, `dxf`, `cad`, `projetos-eletricos`,
-`automacao-industrial`, `instrumentacao`, `instalacoes-eletricas`,
-`sistemas-fotovoltaicos`, `veiculo-eletrico`, `python`, `ezdxf`, `portfolio`.
+## Atualização CAD — P10 revisão 05, 2026-11-06
 
-Os tópicos respeitam as regras atuais do GitHub: letras minúsculas, hífens, no máximo
-50 caracteres por tópico e no máximo 20 tópicos. Consulte a
-[documentação oficial sobre tópicos](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics).
+- P10 passou de nove para dez folhas. P10-10 registra bornes e rotas de alimentação
+  das remotas RIO-201/RIO-202. X2:01/02 alimenta o trilho comum de campo via FU4;
+  X2:03/04 e X2:05/06 seguem via FU2/FU3 para as remotas. FU1 fica dedicado a PLC/SW.
+- O validador P10 passou em 64.395 verificações; o validador estrito do portfólio
+  passou em 613.579 verificações, ambos sem erros nem avisos.
+- O revisor integrado aprovou 12 projetos, 105 folhas, 420 arquivos gráficos e 72 CSVs;
+  similaridade mínima PDF/PNG de 0,981493; P10-10 obteve 0,988205. O AutoCAD
+  AcCoreConsole 2027 auditou 10/10 DXFs P10.
+- Conferi P10-10 no PNG de produção e em PDF rasterizado independente; revisei também
+  o contato das dez folhas e as pranchas P10-01/P10-03. O teste visual de SVG no
+  navegador segue aguardando autorização.
+- A auditoria de publicação do workspace antes do commit encontrou 662 arquivos,
+  30 commits, 2.070 blobs e 439 links verificados: 0 erros e um aviso histórico de
+  e-mail mascarado no commit base `14c30d95098d`.
 
-## O que será publicado
+## Limites conhecidos
 
-- branch `main`, com 13 commits após o commit desta preparação;
-- 471 arquivos versionados e 131.985.877 bytes (125,87 MiB) de
-  conteúdo descompactado na revisão final;
-- 10 projetos acadêmicos, 68 pranchas e os documentos comuns do portfólio;
-- 70 DXFs, 69 PDFs, 70 SVGs, 69 PNGs, 50 CSVs e 2 XLSXs;
-- scripts Python de geração, renderização, validação e auditoria;
-- histórico completo desde a criação da infraestrutura.
+P08 continua sem previsão local: a grade não deriva de clima nem de um levantamento de
+sombras. P11 continua um estudo conceitual: os 22 dados necessários para calcular e validar
+aterramento seguem pendentes; toque/passo, GPR, SPDA e seleção de DPS não estão
+validados. P05 continua sem Icc calculado nem curvas de seletividade. P09 agora tem
+topologia, pré-dimensionamento e estudo
+paramétrico de descarga, mas nenhum ramo foi dimensionado ou validado; K1 abre apenas
+o positivo e não garante 0 V residual. Malhas, compensação, seleção térmica, proteções
+e layout EMI seguem pendentes. KiCad, FreeCAD
+e IDE de CLP não foram abertos nesta revisão; os respectivos PRs descrevem os artefatos
+como scaffold, placeholders ou rascunhos quando aplicável. Os rascunhos permitem
+revisar os diffs sem publicar essas mudanças nos branches padrão.
 
-Não serão publicados `.venv/`, `node_modules/`, caches, logs, `tmp/`, `work/`,
-arquivos de IDE, credenciais ou bundles locais, pois esses caminhos estão cobertos pelo
-[`.gitignore`](.gitignore) e não aparecem no conjunto versionado.
+> Para integrar as mudanças, revise os cinco PRs e faça o merge no GitHub depois da
+> revisão técnica desejada.
 
-## Auditoria de privacidade e segredos
+## Atualização da revisão técnica P03/P04 — 2026-11-06
 
-O auditor [auditar_publicacao.py](scripts/auditar_publicacao.py) examinou os arquivos
-atuais, 356 links relativos e todos os blobs alcançáveis nos 12 commits anteriores à
-preparação final. A execução vigente será repetida depois do commit.
+- P03 revisão 04 registra um ponto de parada antes da implementação: confirmar se o
+  processo é enchimento ou esgotamento e identificar tanques e função dos sensores.
+- P04 revisão 03 removeu o TK-101 duplicado do fluxograma e declara indefinida a origem
+  de água a montante. HV-102 agora aparece coerentemente na legenda, no CSV de materiais
+  e no workbook; tipo, diâmetro e pressão seguem pendentes de seleção hidráulica.
+- As sete fontes DXF do P04 passaram pela auditoria do AutoCAD AcCoreConsole 2027; o
+  validador específico passou em 228 verificações. O workbook passou na revisão conjunta
+  de planilhas: dois arquivos, 13 abas, 214 fórmulas e nenhum erro.
+- O revisor integrado passou em 12 projetos, 105 pranchas, 420 arquivos gráficos e 73
+  CSVs; similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em 624.766
+  verificações, sem erros ou avisos.
+- Os desenhos permanecem acadêmicos e conceituais. A origem hidráulica, a seleção de
+  equipamentos e as respostas operacionais ainda precisam de dados e decisões do processo.
+  A inspeção visual dos SVGs no navegador segue aguardando autorização do usuário.
 
-| Categoria | Árvore atual | Histórico |
-| --- | :---: | :---: |
-| CPF válido | nenhum | nenhum |
-| RG associado a valor | nenhum | nenhum |
-| Telefone formatado | nenhum | nenhum |
-| Endereço pessoal | nenhum | nenhum |
-| E-mail em arquivos | nenhum | nenhum |
-| Senha, token ou chave conhecida | nenhum | nenhum |
-| Atribuição suspeita de credencial | nenhuma | nenhuma |
-| Caminho absoluto local ou `file://` real | nenhum | nenhum |
-| Nome de arquivo temporário ou sensível | nenhum | nenhum |
+## Atualização CAD — P07 revisão 03, 2026-11-06
 
-Os commits usam o nome de Rogério Eduardo Moreira Menegueli e o endereço local
-mascarado `p***@localhost`. Esse endereço não é um contato pessoal publicável. Como
-efeito colateral, os commits podem não ser atribuídos automaticamente ao perfil do
-autor no GitHub. Para commits futuros, pode-se configurar o endereço `noreply` fornecido
-pelo próprio GitHub, sem reescrever o histórico atual.
+- P07 passou de nove para dez folhas. P07-10 mostra a resposta RC normalizada e calcula
+  corrente inicial, potência instantânea e energia dissipada até 90% para 320/400/450 V.
+  Com as premissas existentes de 100 Ω e 2,2 mF, `t90=0,506569 s`; no extremo de 450 V,
+  `I0=4,50 A`, `P0=2,025 kW` e `ER@90%=220,52 J`.
+- O validador específico passou em 4.288 verificações; o AcCoreConsole 2027 auditou
+  10/10 DXFs. P07-10 foi conferida no PNG de produção a 300 dpi e em raster independente
+  do PDF a 150 dpi.
+- O modelo é ideal e não comprova tolerâncias, potência/pulso repetitivo do resistor,
+  temporização do contator, desempenho térmico, segurança funcional ou adequação veicular.
+  O componente RPR-701 não foi selecionado nem validado por esta prancha.
+- O revisor integrado confirma 12 projetos, 106 folhas, 424 arquivos gráficos e 73 CSVs;
+  similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649. A validação estrita
+  passou em 630.151 verificações, sem erros ou avisos. A inspeção visual de SVGs no
+  navegador continua aguardando autorização do usuário.
 
-Gitleaks, TruffleHog, detect-secrets e git-secrets não estão instalados. O auditor local
-usa regras explícitas para padrões brasileiros, chaves PEM, tokens conhecidos,
-atribuições de credenciais, caminhos locais e nomes suspeitos. Ao publicar, recomenda-se
-manter também a proteção de `push` contra segredos oferecida pelo GitHub.
+## Atualização CAD — P08 revisão 03, 2026-11-06
 
-## Metadados
+- P08 passou de sete para oito folhas. P08-08 plota e tabula Voc/Vmp corrigidas para
+  célula a -5 °C, STC e 70 °C; a tabela ainda registra Isc em 1.100 W/m². Para a string
+  de seis módulos: Voc fria 324,5496 V, Vmp quente 216,942 V e Isc quente 15,65652 A.
+- O validador específico passou em 8.119 verificações e o AcCoreConsole 2027 auditou
+  8/8 DXFs. P08-08 foi examinada no PNG de produção a 300 dpi e no PDF rasterizado
+  independentemente a 150 dpi; similaridade PDF/PNG de 0,989722. Também revisei o
+  contato das oito folhas.
+- O revisor integrado confirma 12 projetos, 107 folhas, 428 arquivos gráficos e 74 CSVs;
+  similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em 634.464
+  verificações, sem erros ou avisos. Os limites do inversor seguem fictícios e Imp
+  operacional não foi validada; inspeção de SVG no navegador aguarda autorização.
 
-- **PDF:** 69 arquivos com título, autor, ferramenta geradora e datas fixas; nenhum
-  caminho local, e-mail ou credencial.
-- **PNG:** 69 arquivos com título, autor, software e resolução; nenhum EXIF pessoal ou
-  geolocalização.
-- **SVG:** 70 arquivos com autor, gerador e data; sem comentários ocultos, caminhos
-  locais ou e-mails.
-- **DXF:** 70 arquivos com metadados técnicos normais do formato — AC1027, unidades,
-  GUIDs e `LASTSAVEDBY=ezdxf`; sem nome de usuário ou diretório local.
-- **XLSX:** o P04 não contém propriedades pessoais no pacote; o P05 contém apenas
-  autor, título, descrição técnica e datas determinísticas.
+## Atualização CAD — P07 revisão 04, 2026-11-06
 
-Os nomes e versões das ferramentas são intencionais porque documentam proveniência e
-reprodutibilidade. Não foram encontrados metadados confidenciais que precisassem ser
-removidos.
+- P07 passou de dez para onze folhas. P07-11 apresenta a curva normalizada VDC/VBAT,
+  o t90 ideal de 0,506569 s, o timeout proposto de 1,5 s e a transição proposta por
+  confirmação auxiliar de KMP antes da abertura de KPR e da liberação de READY.
+- O retorno auxiliar, o tempo mecânico, a janela para detectar falhas e a ordem de
+  abertura real continuam pendentes de fabricante e análise de segurança; não foram
+  apresentados como hardware ou lógica validados.
+- O validador P07 passou em 4.313 verificações; o AcCoreConsole 2027 auditou 11/11
+  DXFs. P07-11 foi conferida no PNG a 300 dpi e no PDF rasterizado independentemente
+  pelo Poppler a 150 dpi; similaridade PDF/PNG: 0,989502. Também conferi o contato P07.
+- A validação estrita passou em 637.814 verificações, sem erros ou avisos. O revisor
+  integrou 12 projetos, 108 folhas, 432 arquivos gráficos e 74 CSVs; similaridade
+  mínima PDF/PNG: 0,981493. A inspeção de SVGs no navegador continua aguardando
+  autorização.
 
-## Tamanho e arquivos grandes
+## Atualização CAD — P04 revisão 04, 2026-11-06
 
-O maior blob atual é
-`05-instalacao-eletrica-industrial/exports/06_quadro_cargas.svg`, com 1,33 MiB. Há 11
-SVGs acima de 1 MiB, nenhum arquivo acima de 50 MiB e nenhum acima de 100 MiB, tanto na
-árvore atual quanto no histórico alcançável.
+- P04 passou de sete para oito folhas. P04-08 lista cinco grupos D01–D05 para levantar
+  a fonte, a faixa de operação, a geometria da sucção, as curvas Q-H/NPSHr e a
+  necessidade de proteção. Os campos permanecem sem valor; nenhuma solução hidráulica
+  foi selecionada.
+- O validador P04 passou em 260 verificações; o AcCoreConsole 2027 auditou 8/8 DXFs.
+  P04-08 foi conferida no PNG de produção, em PDF rasterizado independentemente a
+  150 dpi e no contato das oito folhas; similaridade PDF/PNG: 0,99014.
+- A revisão estrita passou em 646.736 verificações, sem erros ou avisos. O revisor
+  integrado confirmou 12 projetos, 110 folhas, 440 arquivos gráficos e 75 CSVs; a
+  similaridade mínima PDF/PNG foi 0,981493. A inspeção de SVGs no navegador aguarda
+  autorização.
 
-Distribuição aproximada do conteúdo atual:
+## Atualização CAD — P04 revisão 05, 2026-11-06
 
-| Tipo | Tamanho |
-| --- | ---: |
-| SVG | 61,19 MiB |
-| PNG | 30,84 MiB |
-| PDF | 26,43 MiB |
-| DXF | 6,41 MiB |
-| Demais arquivos | menos de 1 MiB |
+- P04 passou de oito para nove folhas. P04-08 ampliou o registro para D01–D07,
+  incluindo geometria da fonte quando necessária, propriedades do fluido,
+  temperatura e pressão absoluta/barométrica; todos os grupos seguem PENDENTE.
+- P04-09 acrescenta o balanço paramétrico de sucção, cálculo conceitual de NPSHa,
+  perdas na linha, curva OEM de NPSHr e margem aplicável. Não há entrada numérica,
+  seleção de bomba nem resultado hidráulico.
+- O validador P04 passou em 279 verificações; o AcCoreConsole 2027 auditou 9/9 DXFs.
+  P04-08 e P04-09 foram conferidas no PNG de produção, em PDF rasterizado pelo Poppler
+  a 150 dpi e no contato das nove folhas; similaridades PDF/PNG: 0,989404 e 0,989947.
+- A validação estrita passou em 650.961 verificações, sem erros ou avisos. O revisor
+  integrado confirmou 12 projetos, 111 folhas, 444 arquivos gráficos e 75 CSVs; a
+  similaridade mínima PDF/PNG foi 0,981493. PR #1 permanece aberto como rascunho e
+  sem merge; SVGs continuam aguardando autorização para inspeção no navegador.
 
-O tamanho é aceitável para o GitHub. A plataforma alerta para arquivos individuais
-acima de 50 MiB, bloqueia arquivos acima de 100 MiB e recomenda manter repositórios
-abaixo de 1 GiB. Consulte os [limites oficiais para arquivos e repositórios](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
+## Publicação CAD — P01 revisão 04 — 2026-11-06
 
-Os derivados gráficos explicam a maior parte do volume e são parte deliberada do
-portfólio visual. Git LFS não é necessário nesta versão; migrá-los agora acrescentaria
-complexidade sem resolver um limite real.
+- Commit `f4690bb` acrescenta P01-09 como DXF editável e seus derivados, atualiza os nove carimbos para revisão 04, os índices, o manifesto e a documentação.
+- AcCoreConsole 2027 auditou 9/9 DXFs; a repetição do gerador reproduziu os nove SHA-256.
+- PNG integral, PDF rasterizado pelo Poppler a 150 dpi e contato das nove folhas foram inspecionados. P01-09 teve similaridade PDF/PNG de 0,990330.
+- Validação estrita: 663.880 verificações, 0 erros, 0 avisos. Revisão integrada: 12 projetos, 114 folhas, 456 arquivos gráficos, 77 CSVs; similaridade mínima de 0,981493.
+- O commit foi enviado para `codex/professional-portfolio-2026-11`. O PR #1 foi atualizado e permanece aberto como rascunho, sem merge; a branch principal não foi alterada.
+- A inspeção dos SVGs no navegador continua aguardando autorização. A sequência é conceitual e não afirma ensaios, categoria/PL/SIL, tempo de parada ou comportamento final para perda de sinal.
 
-## Licenças e materiais de terceiros
+## Publicação CAD — P05 revisão 05, P11/P12 revisão 04 — 2026-11-06
 
-O [licenciamento dual](LICENSE) foi conferido e seu escopo foi corrigido para as dez
-pastas reais de projeto:
-
-- MIT para scripts, testes, validadores e configurações executáveis;
-- CC BY-NC 4.0 para desenhos, documentos, imagens, tabelas e artefatos acadêmicos.
-
-As dependências Python são instaladas pelo gerenciador de pacotes e não são copiadas
-para o repositório. Os metadados instalados declaram licenças permissivas como MIT,
-BSD, Apache-2.0, PSF-2.0, Zlib e CC0; não foi identificada dependência incompatível com
-o uso declarado. A antiga dependência privada `@oai/artifact-tool` foi removida do
-HEAD e substituída por `openpyxl 3.1.5` e `et-xmlfile 2.0.0`, ambos MIT.
-
-Como a licença do repositório é mista, o GitHub pode mostrá-la como licença não
-identificada em vez de exibir um único selo. Isso é uma consequência esperada da
-separação entre código e conteúdo, não uma incompatibilidade. A própria documentação
-do GitHub alerta que múltiplas licenças podem dificultar a detecção automática:
-[licenciamento de repositórios](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
-
-Não foram encontrados logotipos, fotografias, fontes, bibliotecas vendorizadas ou
-trechos extensos de normas técnicas. As referências externas apontam para páginas
-oficiais de ABNT, IEC, ISO, ISA, Confea, Governo Federal e Planalto; 25/25 destinos
-foram conferidos em 2026-09-10. Os desenhos e imagens possuem cadeia de geração local
-DXF → PDF/SVG/PNG. A auditoria técnica não substitui uma declaração humana de autoria;
-antes da publicação, o autor deve confirmar que não incorporou material de terceiros
-fora do que está identificado nas referências.
-
-## Arquivos potencialmente problemáticos
-
-Não existe bloqueador técnico conhecido. Permanecem quatro observações transparentes:
-
-1. os 11 SVGs acima de 1 MiB são maiores que o ideal para navegação web, mas o maior
-   possui apenas 1,33 MiB e nenhum se aproxima do alerta de 50 MiB;
-2. o licenciamento dual pode aparecer como “Other” na interface do GitHub;
-3. o e-mail `p***@localhost` é seguro, porém não associa os commits ao perfil GitHub;
-4. commits anteriores conservam referências históricas ao pacote privado removido,
-   mas não contêm o pacote, credenciais ou dados confidenciais. Não há motivo de
-   segurança para reescrever o histórico.
-
-## Quatro imagens principais
-
-| P01 — painel com inversor | P02 — projeto residencial |
-| --- | --- |
-| [![Diagrama unifilar](01-painel-motor-inversor/exports/01_diagrama_unifilar.png)](01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf) | [![Planta de iluminação](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png)](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf) |
-| P03 — painel com CLP | P07 — veículo elétrico |
-| [![Arquitetura de automação](03-painel-automacao-clp/exports/01_arquitetura_automacao.png)](03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf) | [![Arquitetura veicular](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png)](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf) |
-
-## Comandos de verificação
-
-```powershell
-.\.venv\Scripts\python.exe .\scripts\auditar_publicacao.py --root .
-.\.venv\Scripts\python.exe .\scripts\validar_portfolio.py --root . --strict
-.\.venv\Scripts\python.exe .\scripts\revisar_workbooks.py --root .
-git fsck --full --strict
-git status --short
-```
-
-## Ação necessária para publicar
-
-Após criar manualmente no GitHub um repositório público **vazio**, sem README, licença
-ou `.gitignore` adicionais, executar somente após autorização explícita:
-
-```powershell
-git remote add origin https://github.com/USUARIO/portfolio-autocad-engenharia-eletrica.git
-git push -u origin main
-```
-
-Substitua `USUARIO` pelo proprietário real da conta. A alternativa por GitHub CLI não
-foi indicada porque `gh` não está instalado neste ambiente.
-
-> Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
+- Commit `ff59ed07e47decd7270b01867e54c52781b55db5` atualiza os desenhos editáveis DXF,
+  derivados PDF/SVG/PNG, manifesto, validadores e documentação dos projetos P05, P11 e
+  P12 na branch `codex/professional-portfolio-2026-11`.
+- P05-01 agora relaciona C01–C06 às cargas e coordenadas X/Y derivadas do croqui, sem
+  apresentar esses dados como levantamento. P11-02 e P12-06 removem a escala gráfica
+  inválida e declaram premissas, limites e pendências de campo/OEM.
+- AcCoreConsole 2027 auditou 9/9 DXFs P05, 8/8 P11 e 9/9 P12: zero erros encontrados e
+  zero corrigidos. Os três renders principais foram conferidos no PNG de produção, PDF
+  rasterizado independentemente e contato do projeto; similaridades PDF/PNG: P05-01
+  0,992284; P11-02 0,990676; P12-06 0,991573.
+- Validadores específicos: P05, 443 verificações sem erros; P11, oito folhas, 23
+  materiais, 17 cabos e 22 dados pendentes; P12, nove folhas, nove eventos, quatro
+  alimentadores QCE, 24 materiais e 15 cabos. A revisão integrada confirmou 12 projetos,
+  114 folhas, 456 arquivos gráficos e 77 CSVs; a validação estrita passou em 668.075
+  verificações, sem erros ou avisos.
+- Os geradores P11/P12 gravam DXF em LF conforme `.gitattributes`; 26 fontes e 78 saídas
+  renderizadas conferem com os hashes do manifesto no conteúdo staged.
+- PR #1 foi verificada aberta, como rascunho, não mesclada e mergeable. A inspeção de SVGs
+  no navegador continua aguardando autorização do usuário.

@@ -1,4 +1,4 @@
-"""Gera as seis pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
 
 from __future__ import annotations
 
@@ -35,8 +35,9 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "11-subestacao-media-tensao"
-PROJECT_DATE = "2026-09-25"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
+REVISION_DESCRIPTION = "CLAREZA DE ESCALAS E LIMITES"
 
 
 @dataclass(frozen=True)
@@ -64,13 +65,13 @@ SHEETS = (
     SheetSpec(
         2,
         "02_planta_baixa_subestacao.dxf",
-        "PLANTA BAIXA DA SUBESTACAO ABRIGADA",
-        "Arranjo fisico, alvenaria, acessos e afastamentos normativos NBR 14039",
-        "Dimensoes civis: 6,00 x 4,00 m externo. Portas corta-fogo P-90 abrindo para fora.\\P"
-        "Piso com canaletas tecnicas para cabos de MT e BT. Ventilacao natural cruzada.\\P"
-        "Bacia de contencao de oleo sob o transformador com brita n. 1 e dreno sifonado.",
+        "ARRANJO CONCEITUAL DA SUBESTACAO ABRIGADA",
+        "Cotas externas adotadas no estudo; geometria da planta sem escala valida",
+        "Cotas externas 6,00 x 4,00 m sao premissas do estudo.\\P"
+        "A geometria interna e a escala grafica nao representam levantamento.\\P"
+        "Confirmar dimensoes, acessos e afastamentos com dados civis e OEM.",
         "Vermelho: equipamentos MT/BT | Cinza: alvenaria/portas | Azul: canaletas | Verde: seguranca",
-        "1:50",
+        "S/ESC.",
     ),
     SheetSpec(
         3,
@@ -97,10 +98,10 @@ SHEETS = (
         5,
         "05_malha_aterramento.dxf",
         "MALHA DE ATERRAMENTO E EQUIPOTENCIALIZACAO",
-        "Malha de terra em anel, hastes copperweld e calculo NBR 15751",
-        "Anel perimetral externo e grade interna em cabo de cobre nu 70 mm2 a 0,60 m profundidade.\\P"
-        "8 hastes de aco cobreado 5/8 pol. x 2,40 m interligadas por solda exotermica.\\P"
-        "Resistencia de aterramento calculada R <= 3,85 ohms. Interligacao de neutro e massas ao BEP.",
+        "Arranjo conceitual; resistividade e seguranca sem estudo",
+        "Anel e grade conceituais em cobre nu 70 mm2 a 0,60 m de profundidade.\\P"
+        "8 hastes 5/8 pol. x 2,40 m sao premissas, sem dimensionamento do local.\\P"
+        "Resistividade e dados de falta nao medidos; resistencia, GPR, toque e passo nao determinados.",
         "Cobre nu 70 mm2 | Haste 5/8\"x2,4m | Caixa de inspecao solo | BEP: barramento equipotencializacao",
         "1:75",
     ),
@@ -108,12 +109,31 @@ SHEETS = (
         6,
         "06_spda_geral.dxf",
         "SISTEMA DE PROTECAO CONTRA DESCARGAS ATMOSFERICAS (SPDA)",
-        "Metodo das malhas (Gaiola de Faraday) e esfera rolante NBR 5419:2015",
-        "Malha captora em cabo de cobre nu 35 mm2 em cobertura com malha 10 x 10 m (Nivel II).\\P"
-        "4 condutores de descida simetricos protegidos por tubo rigido de 2,5 m na base.\\P"
-        "Caixas de inspecao suspensa de medicao e interligacao direta a malha de aterramento.",
-        "Malha 10x10m | Descida Cu 35 mm2 | Terminal aereo 35cm | DPS Classe I/II no QGBT",
+        "Arranjo ilustrativo de captores, descidas e equipotencializacao",
+        "Geometria, classe de protecao e componentes ainda nao selecionados nem verificados.\\P"
+        "A folha nao declara conformidade normativa nem coordena DPS.",
+        "Reticula ilustrativa | Descidas propostas | Captores esquematicos | DPS a especificar",
         "1:75",
+    ),
+    SheetSpec(
+        7,
+        "07_plano_dados_estudo_aterramento.dxf",
+        "PLANO DE DADOS PARA ESTUDO DE ATERRAMENTO",
+        "Subestacao 13,8 kV | entradas, analises e portoes de revisao",
+        "Resistividade do solo, corrente/tempo de falta e geometria final permanecem pendentes.\\P"
+        "Esta folha organiza evidencias necessarias; nao calcula nem aprova a malha.\\P"
+        "O valor hipotetico de solo e a estimativa aritmetica anteriores foram retirados do desenho.",
+        "ENTRADAS PENDENTES | EVIDENCIA DE CAMPO/FABRICANTE | NAO E CRITERIO DE APROVACAO",
+    ),
+    SheetSpec(
+        8,
+        "08_matriz_analise_malha_aterramento.dxf",
+        "MATRIZ DE ANALISE DA MALHA DE ATERRAMENTO",
+        "Entradas de solo, falta e geometria mapeadas as verificacoes requeridas",
+        "Esta folha relaciona entradas e resultados requeridos, mas nao calcula a malha.\\P"
+        "Metodo, criterios, dados e geometria permanecem pendentes de evidencia e revisao.\\P"
+        "Nao infere seguranca, atendimento a limites ou aprovacao.",
+        "I_f = corrente de falta | S_g = fracao da corrente para a malha.\\PIEEE Std 80-2013 / P80 em revisao; IEEE Std 81-2025: guia de medicao. Confirmar edicoes e criterios aplicaveis.",
     ),
 )
 
@@ -223,7 +243,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 11", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (REVISION_DESCRIPTION, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -245,7 +265,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -261,7 +281,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -281,7 +301,7 @@ def draw_sheet_01(layout) -> None:
     line(layout, (90, 256), (90, 248), "05_POTENCIA")
     # Para-raios MT
     line(layout, (90, 252), (108, 252), "05_POTENCIA")
-    box(layout, 108, 248, 128, 256, "DPS-MT", "12 kV / 10 kA", "05_POTENCIA")
+    box(layout, 108, 248, 128, 256, "DPS-MT", "A especificar", "05_POTENCIA")
     line(layout, (128, 252), (135, 252), "05_POTENCIA")
     ground_symbol(layout, 135, 252, "05_POTENCIA")
 
@@ -351,7 +371,7 @@ def draw_sheet_01(layout) -> None:
 
     # DPS Geral BT
     line(layout, (275, 226), (295, 226), "05_POTENCIA")
-    box(layout, 295, 221, 326, 231, "DPS-BT", "Cl. I+II 40 kA", "05_POTENCIA")
+    box(layout, 295, 221, 326, 231, "DPS-BT", "A especificar", "05_POTENCIA")
     line(layout, (326, 226), (336, 226), "05_POTENCIA")
     ground_symbol(layout, 336, 226, "05_POTENCIA")
 
@@ -449,20 +469,19 @@ def draw_sheet_02(layout) -> None:
     centered(layout, "4 000 mm", (x0 - 18, y0 + h / 2), 1.3, "03_COTAS")
 
     # Painel de informacoes laterais
-    panel_box(layout, 302, 100, 402, 256, "PREMISSAS NBR 14039", "", "12_LEGENDA")
+    panel_box(layout, 302, 100, 402, 256, "PREMISSAS E PENDENCIAS DE ARRANJO", "", "12_LEGENDA")
     notes_p2 = [
-        "1. Pe-direito livre: 3,50 m.",
-        "2. Corredor de manobra >= 1,20 m.",
-        "3. Abertura das portas para fora.",
-        "4. Bacia com volume >= 1,2 m3",
-        "   (oleo total trafo = 850 L).",
-        "5. Brita n. 1 h=10 cm abafa-chama.",
-        "6. Ventilacao natural cruzada:",
-        "   - venezianas com tela 2 mm;",
-        "   - area util calculada: 1,8 m2.",
-        "7. Tapete de seguranca 20 kV.",
-        "8. Iluminacao normal e emergencia.",
-        "9. Placas 'ALTA TENSAO 13.800 V'.",
+        "Cotas externas 6,00 x 4,00 m: premissa do estudo.",
+        "Planta sem escala grafica valida; cotas prevalecem.",
+        "Geometria interna e portas: confirmar no levantamento.",
+        "Cubiculos e TR-01: envelopes e manutencao dependem do OEM.",
+        "Afastamentos e rotas: validar com NBR 14039 e fabricante.",
+        "Corredor frontal >= 1,20 m: criterio preliminar.",
+        "Bacia 1,20 m3; oleo 850 L: premissas a confirmar.",
+        "Ventilacao e area util 1,8 m2: estudo nao verificado.",
+        "Canaletas, cruzamentos e acesso de retirada: levantar.",
+        "Portas P-90 e equipamentos de seguranca: especificar.",
+        "A planta nao demonstra conformidade ou liberacao executiva.",
     ]
     for idx, nt in enumerate(notes_p2):
         left_text(layout, nt, (306, 241 - idx * 11.2), 1.12, "02_TEXTO")
@@ -614,11 +633,11 @@ def draw_sheet_04(layout) -> None:
 # --- Desenho da Prancha 5: Malha de Aterramento e Equipotencializacao ---
 def draw_sheet_05(layout) -> None:
     add_rect(layout, 30, 100, 260, 256, "11_ARQUITETURA")
-    centered(layout, "PLANTA DA MALHA DE ATERRAMENTO (ANEL E QUADRICULAS)", (145, 249), 1.6, "11_ARQUITETURA", style=TITLE_STYLE)
+    centered(layout, "PLANTA DA MALHA DE ATERRAMENTO (ANEL E QUADRICULAS)", (145, 249), 1.6, "12_LEGENDA", style=TITLE_STYLE)
 
     # Subestacao civil no centro
     add_rect(layout, 80, 135, 200, 215, "11_ARQUITETURA")
-    centered(layout, "PROJECAO CIVIL DA SUBESTACAO", (160, 182), 1.25, "11_ARQUITETURA")
+    centered(layout, "PROJECAO CIVIL DA SUBESTACAO", (160, 182), 1.25, "12_LEGENDA")
 
     # Anel externo de aterramento
     add_rect(layout, 60, 115, 220, 235, "05_POTENCIA")
@@ -654,27 +673,141 @@ def draw_sheet_05(layout) -> None:
     for desc, p1, p2 in bep_links:
         line(layout, p1, p2, "08_CABOS")
 
-    # Painel de calculo de tensao de passo e toque
-    panel_box(layout, 275, 100, 402, 256, "MEMORIA DE CALCULO - NBR 15751", "", "12_LEGENDA")
-
-    calc_params = [
-        "Resistividade solo (rho): 250 ohm.m",
-        "Camada de brita (rho_s): 3.000 ohm.m",
-        "Espessura da brita: 10 cm",
-        "Comprimento cabos malha: 72,0 m",
-        "Numero de hastes (5/8\"x2,4m): 8",
-        "Resistencia malha calc.: 3,82 ohms",
-        "Criterio adotado: R <= 5,0 ohms (PASS)",
-        "Corrente de falta terra: 2,5 kA",
-        "Tempo de atuacao protecao: 0,5 s",
-        "Tensao de toque toleravel: 685 V",
-        "Tensao de toque calculada: 312 V (PASS)",
-        "Tensao de passo toleravel: 2.150 V",
-        "Tensao de passo calculada: 145 V (PASS)",
-        "Solda exotermica em todas conexoes.",
+    # Premissas e limites: nao apresentar a estimativa como dimensionamento normativo.
+    panel_box(layout, 275, 100, 402, 256, "LIMITES DO ESTUDO DE ATERRAMENTO", "SEM APROVACAO DE SEGURANCA", "12_LEGENDA")
+    sections = [
+        (235, "DADOS DE SOLO", "Resistividade, camadas e camada superficial nao foram medidas."),
+        (205, "ARRANJO ILUSTRATIVO", "Cu nu 70 mm2 e 8 hastes sao premissas, sem dimensionamento do local."),
+        (175, "RESULTADO DA MALHA", "Resistencia e elevacao de potencial nao determinadas; sem valor de aprovacao."),
+        (145, "POTENCIAIS", "GPR, toque, passo e transferencia ainda nao calculados."),
+        (115, "PROXIMA ETAPA", "Consolidar dados de campo e de falta conforme a prancha 07."),
     ]
-    for idx, cp in enumerate(calc_params):
-        left_text(layout, cp, (280, 240 - idx * 10.0), 1.12, "02_TEXTO")
+    for y, heading, detail in sections:
+        left_text(layout, heading, (280, y), 1.1, "12_LEGENDA", style=TITLE_STYLE)
+        add_mtext(layout, detail, (280, y - 5), 116, 1.0, "02_TEXTO")
+
+
+# --- Desenho da Prancha 7: Dados para estudo de aterramento ---
+def draw_sheet_07(layout) -> None:
+    panels = [
+        (18, 140, "DADOS DE SOLO", "levantamento medido", [
+            "Resistividade por pontos/profundidades",
+            "Camadas e espessuras do perfil",
+            "Resistividade/camada superficial",
+            "Umidade e condicao sazonal",
+            "Relatorio, local e data do ensaio",
+        ]),
+        (149, 271, "FALTA E PROTECAO", "dados da rede e ajustes", [
+            "Corrente de falta e cenarios",
+            "Parcela que circula pela malha",
+            "Tempo de eliminacao rele + DJ",
+            "Aterramento do neutro da fonte",
+            "Fonte e rastreio de cada valor",
+        ]),
+        (280, 402, "GEOMETRIA E INTERFACES", "levantamento real/as-built", [
+            "Perimetro, cotas e zonas acessiveis",
+            "Malha, secoes e profundidades",
+            "Hastes, conexoes e condicoes",
+            "BEP e massas equipotencializadas",
+            "Cercas e metais que cruzam limites",
+        ]),
+    ]
+    for x0, x1, title, subtitle, items in panels:
+        panel_box(layout, x0, 184, x1, 256, title, subtitle, "12_LEGENDA")
+        for index, item in enumerate(items):
+            left_text(layout, item, (x0 + 4, 238 - index * 10), 1.38, "02_TEXTO")
+
+    arrow(layout, (141, 219), (148, 219), "08_CABOS")
+    arrow(layout, (272, 219), (279, 219), "08_CABOS")
+
+    flow = [
+        (18, 109, "LEVANTAR", "solo, falta e sitio"),
+        (116, 207, "MODELAR", "entradas rastreaveis"),
+        (214, 305, "VERIFICAR", "condutor e potenciais"),
+        (312, 402, "REVISAR", "memoria e criterios"),
+    ]
+    for x0, x1, title, detail in flow:
+        add_rect(layout, x0, 160, x1, 181, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, 173.5), 1.55, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+        centered(layout, detail, ((x0 + x1) / 2, 166), 1.25, "02_TEXTO")
+    for x1, x2 in ((109, 116), (207, 214), (305, 312)):
+        arrow(layout, (x1, 170.5), (x2, 170.5), "08_CABOS")
+
+    add_rect(layout, 18, 101, 402, 154, "12_LEGENDA")
+    centered(layout, "ENTREGAS PARA DECISAO DOCUMENTADA", (210, 149), 1.45, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "ANALISE / ENTREGAVEL", (79, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "DADO OU EVIDENCIA A ANEXAR", (239, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    centered(layout, "STATUS", (368, 140.5), 1.3, "12_LEGENDA", style=TITLE_STYLE)
+    line(layout, (18, 137), (402, 137), "12_LEGENDA")
+    line(layout, (143, 101), (143, 137), "12_LEGENDA")
+    line(layout, (335, 101), (335, 137), "12_LEGENDA")
+    deliverables = [
+        ("Modelo do solo", "Perfil medido, camadas e camada superficial"),
+        ("Corrente e tempo de falta", "Fonte, parcela na malha e tempo de eliminacao"),
+        ("Condutor e conexoes", "Material, secao, geometria e condicoes instaladas"),
+        ("GPR, toque, passo e transferencia", "Calculo rastreavel com criterios e geometria definida"),
+        ("Decisao tecnica", "Memoria, limites, revisao e evidencias anexas"),
+    ]
+    for index, (analysis, evidence) in enumerate(deliverables):
+        y = 132.5 - index * 7
+        left_text(layout, analysis, (22, y), 1.3, "02_TEXTO")
+        left_text(layout, evidence, (147, y), 1.3, "02_TEXTO")
+        centered(layout, "PENDENTE", (368, y), 1.3, "13_NOTAS", style=TITLE_STYLE)
+
+
+# --- Desenho da Prancha 8: Matriz de analise da malha ---
+def draw_sheet_08(layout) -> None:
+    inputs = [
+        (18, 140, "MODELO DE SOLO", "perfil medido e superficie", [
+            "rho(z), camadas e sazonalidade",
+            "rho_s e espessura superficial",
+            "metodo, pontos e profundidades",
+        ]),
+        (149, 271, "CENARIO DE FALTA", "rede, retorno e protecao", [
+            "I_f, S_g e tempo de eliminacao",
+            "contribuicoes remotas e neutro",
+            "caso, fonte, unidade e revisao",
+        ]),
+        (280, 402, "GEOMETRIA / EXPOSICAO", "levantamento real/as-built", [
+            "perimetro, profundidade e secoes",
+            "hastes, conexoes e limites acessiveis",
+            "BEP, cercas e metais remotos",
+        ]),
+    ]
+    for x0, x1, title, subtitle, items in inputs:
+        panel_box(layout, x0, 213, x1, 256, title, subtitle, "12_LEGENDA")
+        for index, item in enumerate(items):
+            left_text(layout, item, (x0 + 3, 230 - index * 7), 1.35, "02_TEXTO")
+
+    add_rect(layout, 18, 190, 402, 207, "04_EQUIPAMENTOS")
+    centered(layout, "MODELO RASTREAVEL POR CENARIO: SOLO + CORRENTE INJETADA/TEMPO + MALHA + ZONAS", (210, 198.5), 1.35, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+    for x in (79, 210, 341):
+        arrow(layout, (x, 213), (x, 207), "08_CABOS")
+
+    add_rect(layout, 18, 112, 402, 188, "12_LEGENDA")
+    centered(layout, "VERIFICACOES, RESULTADOS REQUERIDOS E EVIDENCIAS", (210, 181.5), 1.6, "12_LEGENDA", style=TITLE_STYLE)
+    xs = (18, 104, 212, 337, 402)
+    for x in xs[1:-1]:
+        line(layout, (x, 112), (x, 176), "12_LEGENDA")
+    for y in (176, 160, 144, 128, 112):
+        line(layout, (18, y), (402, y), "12_LEGENDA")
+    headers = ((61, "VERIFICACAO"), (158, "RESULTADO REQUERIDO"), (274.5, "DADOS / EVIDENCIA"), (369.5, "ESTADO"))
+    for x, value in headers:
+        centered(layout, value, (x, 171.5), 1.35, "12_LEGENDA", style=TITLE_STYLE)
+    rows = [
+        ("Condutor / conexoes", "Integridade e solicitacao termica", "Material, secao, juntas, I_f, t_f"),
+        ("Resposta da malha", "Resistencia/impedancia e GPR por cenario", "rho(z), geometria, I_f, S_g"),
+        ("Exposicao", "Perfil de superficie, toque e passo", "rho_s/h_s, zonas, metodo/criterio"),
+        ("Transferencia", "Potencial em interfaces alem da malha", "Cercas, metais, cabos, retornos"),
+    ]
+    for index, (check, output, evidence) in enumerate(rows):
+        y = 168 - index * 16
+        left_text(layout, check, (21, y), 1.45, "02_TEXTO")
+        left_text(layout, output, (107, y), 1.4, "02_TEXTO")
+        left_text(layout, evidence, (215, y), 1.4, "02_TEXTO")
+        centered(layout, "PENDENTE", (369.5, y), 1.3, "13_NOTAS", style=TITLE_STYLE)
+
+    left_text(layout, "Antes de comparar: registrar metodo/edicao, limites, tempo e condicoes de exposicao.", (20, 98), 1.3, "13_NOTAS")
 
 
 # --- Desenho da Prancha 6: SPDA Geral (NBR 5419) ---
@@ -730,13 +863,13 @@ def draw_sheet_06(layout) -> None:
         left_text(layout, dl, (276, 224 - idx * 8.5), 1.02, "02_TEXTO")
 
     # Medidas contra Surtos (MPS / DPS) usando panel_box
-    panel_box(layout, 273, 106, 395, 170, "PROTECAO CONTRA SURTOS (NBR 5419-4)", "Integracao ZPR 0B -> ZPR 1", "04_EQUIPAMENTOS")
+    panel_box(layout, 273, 106, 395, 170, "INTEGRACAO CONCEITUAL DE DPS", "A especificar no projeto detalhado", "04_EQUIPAMENTOS")
     mps_lines = [
-        "- DPS Classe I+II no QGBT (In=40kA, 12,5kA).",
+        "- Classe, Uc, Up e correntes do DPS: a definir.",
         "- Equipotencializacao de massas no BEP.",
-        "- Cabos em canaletas metalicas aterradas",
-        "  para mitigacao de pulso LEMP.",
-        "- Ensaio de continuidade R <= 0,2 ohm.",
+        "- Coordenar DPS, roteamento e comprimentos",
+        "  com o SPDA e o projeto executivo.",
+        "- Criterio de ensaio de continuidade: a definir.",
     ]
     for idx, ml in enumerate(mps_lines):
         left_text(layout, ml, (276, 152 - idx * 8.5), 1.02, "02_TEXTO")
@@ -749,6 +882,8 @@ DRAW_MAP = {
     4: draw_sheet_04,
     5: draw_sheet_05,
     6: draw_sheet_06,
+    7: draw_sheet_07,
+    8: draw_sheet_08,
 }
 
 
@@ -756,14 +891,15 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
     doc, layout = create_sheet(config, spec)
     DRAW_MAP[spec.number](layout)
     prepare_deterministic_write(doc)
-    doc.saveas(output_path)
+    with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
+        doc.write(stream)
     print(f"Gerado: {output_path.relative_to(ROOT)}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
-    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..6)")
+    parser.add_argument("--sheet", type=int, help=f"Gera apenas a prancha especificada (1..{len(SHEETS)})")
     return parser.parse_args()
 
 

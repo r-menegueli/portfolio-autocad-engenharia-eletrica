@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-1AE
+1BD
   9
 $SURFTAB1
  70
@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-1AB
+1BA
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-1AC
+1BB
 330
 3
 100
@@ -9275,7 +9275,7 @@ AcDbMText
  71
 1
   1
-Posições e folgas são propostas, não instruções de montagem.\PValidar acesso, ventilação, IP, raios de curvatura, estrutura e padrão da distribuidora.
+Posições e folgas são propostas, não instruções de montagem.\PComprimentos indicados são assumidos, não medidos; trajetos não representam imóvel levantado.\PValidar acesso, ventilação, IP, raios de curvatura, estrutura e padrão da distribuidora.
   7
 PORTFOLIO_TEXTO
  44
@@ -9369,7 +9369,7 @@ AcDbMText
  71
 1
   1
-Laranja: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | Tracejado: folga
+Turquesa: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | * comprimento assumido
   7
 PORTFOLIO_TEXTO
  44
@@ -9667,7 +9667,7 @@ AcDbText
  40
 1.45
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9703,7 +9703,7 @@ AcDbText
  40
 1.45
   1
-2026-09-09
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9739,7 +9739,7 @@ AcDbText
  40
 1.45
   1
-EMISSAO INICIAL DO PROJETO 08
+ROTAS CC/CA RASTREÁVEIS
   7
 PORTFOLIO_TEXTO
  72
@@ -9909,7 +9909,7 @@ AcDbText
  40
 2.25
   1
-2026-09-09
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9947,7 +9947,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9985,7 +9985,7 @@ AcDbText
  40
 2.25
   1
-06/06
+06/08
   7
 PORTFOLIO_TEXTO
  11
@@ -11147,7 +11147,7 @@ AcDbText
  40
 1.0
   1
-CC / DPS / QDC
+DPS CC / SECCIONAMENTO
   7
 PORTFOLIO_TEXTO
  72
@@ -11545,13 +11545,13 @@ AcDbLine
  10
 202.0
  20
-205.0
+218.0
  30
 0.0
  11
-230.0
+222.0
  21
-205.0
+218.0
  31
 0.0
   0
@@ -11567,15 +11567,15 @@ AcDbEntity
 100
 AcDbLine
  10
-230.0
+222.0
  20
-205.0
+218.0
  30
 0.0
  11
-230.0
+222.0
  21
-220.0
+226.0
  31
 0.0
   0
@@ -11591,19 +11591,19 @@ AcDbEntity
 100
 AcDbLine
  10
-230.0
+222.0
  20
-220.0
+226.0
  30
 0.0
  11
-252.0
+247.0
  21
-220.0
+226.0
  31
 0.0
   0
-TEXT
+LINE
   5
 180
 330
@@ -11613,25 +11613,77 @@ AcDbEntity
   8
 08_CABOS
 100
+AcDbLine
+ 10
+247.0
+ 20
+226.0
+ 30
+0.0
+ 11
+252.0
+ 21
+226.0
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+181
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbPolyline
+ 90
+3
+ 70
+1
+ 10
+252.0
+ 20
+226.0
+ 10
+248.0
+ 20
+227.6
+ 10
+248.0
+ 20
+224.4
+  0
+TEXT
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
 AcDbText
  10
-225.0
+226.0
  20
-212.0
+232.0
  30
 0.0
  40
 0.9
   1
-R-CC-801/802
+FV-S1 | R-CC-801 / 20 m*
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-225.0
+226.0
  21
-212.0
+232.0
  31
 0.0
 100
@@ -11641,7 +11693,167 @@ AcDbText
   0
 LINE
   5
-181
+183
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbLine
+ 10
+202.0
+ 20
+192.0
+ 30
+0.0
+ 11
+232.0
+ 21
+192.0
+ 31
+0.0
+  0
+LINE
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbLine
+ 10
+232.0
+ 20
+192.0
+ 30
+0.0
+ 11
+232.0
+ 21
+211.0
+ 31
+0.0
+  0
+LINE
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbLine
+ 10
+232.0
+ 20
+211.0
+ 30
+0.0
+ 11
+247.0
+ 21
+211.0
+ 31
+0.0
+  0
+LINE
+  5
+186
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbLine
+ 10
+247.0
+ 20
+211.0
+ 30
+0.0
+ 11
+252.0
+ 21
+211.0
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+187
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbPolyline
+ 90
+3
+ 70
+1
+ 10
+252.0
+ 20
+211.0
+ 10
+248.0
+ 20
+212.6
+ 10
+248.0
+ 20
+209.4
+  0
+TEXT
+  5
+188
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbText
+ 10
+226.0
+ 20
+204.0
+ 30
+0.0
+ 40
+0.9
+  1
+FV-S2 | R-CC-802 / 20 m*
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+226.0
+ 21
+204.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+189
 330
 17
 100
@@ -11653,19 +11865,19 @@ AcDbLine
  10
 302.0
  20
-220.0
+228.0
  30
 0.0
  11
 325.0
  21
-220.0
+228.0
  31
 0.0
   0
 LWPOLYLINE
   5
-182
+18A
 330
 17
 100
@@ -11681,19 +11893,19 @@ AcDbPolyline
  10
 325.0
  20
-220.0
+228.0
  10
 321.0
  20
-221.6
+229.6
  10
 321.0
  20
-218.4
+226.4
   0
 TEXT
   5
-183
+18B
 330
 17
 100
@@ -11705,13 +11917,13 @@ AcDbText
  10
 313.5
  20
-224.0
+231.0
  30
 0.0
  40
 1.1
   1
-2 MPPT
+S1 -> MPPT 1
   7
 PORTFOLIO_TEXTO
  72
@@ -11719,7 +11931,7 @@ PORTFOLIO_TEXTO
  11
 313.5
  21
-224.0
+231.0
  31
 0.0
 100
@@ -11729,7 +11941,95 @@ AcDbText
   0
 LINE
   5
-184
+18C
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbLine
+ 10
+302.0
+ 20
+213.0
+ 30
+0.0
+ 11
+325.0
+ 21
+213.0
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+18D
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbPolyline
+ 90
+3
+ 70
+1
+ 10
+325.0
+ 20
+213.0
+ 10
+321.0
+ 20
+214.6
+ 10
+321.0
+ 20
+211.4
+  0
+TEXT
+  5
+18E
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbText
+ 10
+313.5
+ 20
+209.0
+ 30
+0.0
+ 40
+1.1
+  1
+S2 -> MPPT 2
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+313.5
+ 21
+209.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+18F
 330
 17
 100
@@ -11753,7 +12053,7 @@ AcDbLine
   0
 LINE
   5
-185
+190
 330
 17
 100
@@ -11777,7 +12077,7 @@ AcDbLine
   0
 LINE
   5
-186
+191
 330
 17
 100
@@ -11801,7 +12101,7 @@ AcDbLine
   0
 LINE
   5
-187
+192
 330
 17
 100
@@ -11825,7 +12125,7 @@ AcDbLine
   0
 TEXT
   5
-188
+193
 330
 17
 100
@@ -11843,7 +12143,7 @@ AcDbText
  40
 0.9
   1
-R-CA-801
+CA-INV | R-CA-801 / 15 m*
   7
 PORTFOLIO_TEXTO
  72
@@ -11861,7 +12161,7 @@ AcDbText
   0
 LINE
   5
-189
+194
 330
 17
 100
@@ -11885,7 +12185,7 @@ AcDbLine
   0
 LWPOLYLINE
   5
-18A
+195
 330
 17
 100
@@ -11913,7 +12213,7 @@ AcDbPolyline
   0
 TEXT
   5
-18B
+196
 330
 17
 100
@@ -11947,9 +12247,45 @@ AcDbText
  73
 2
   0
+TEXT
+  5
+197
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+325.0
+ 20
+150.0
+ 30
+0.0
+ 40
+0.9
+  1
+CA-PCC | R-CA-802 / 5 m*
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+325.0
+ 21
+150.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
 LINE
   5
-18C
+198
 330
 17
 100
@@ -11973,7 +12309,7 @@ AcDbLine
   0
 LWPOLYLINE
   5
-18D
+199
 330
 17
 100
@@ -12001,7 +12337,7 @@ AcDbPolyline
   0
 LINE
   5
-18E
+19A
 330
 17
 100
@@ -12017,7 +12353,7 @@ AcDbLine
  30
 0.0
  11
-392.0
+340.0
  21
 138.0
  31
@@ -12025,7 +12361,7 @@ AcDbLine
   0
 TEXT
   5
-18F
+19B
 330
 17
 100
@@ -12035,7 +12371,7 @@ AcDbEntity
 100
 AcDbText
  10
-276.0
+271.0
  20
 135.0
  30
@@ -12043,13 +12379,49 @@ AcDbText
  40
 0.9
   1
-PE -> BEP-801
+PE-MOD | R-PE-801 / 25 m*
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-276.0
+271.0
+ 21
+135.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+19C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+319.0
+ 20
+135.0
+ 30
+0.0
+ 40
+0.9
+  1
+PE-EQP | R-PE-802 / 8 m*
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+319.0
  21
 135.0
  31
@@ -12061,7 +12433,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-190
+19D
 330
 17
 100
@@ -12093,7 +12465,7 @@ AcDbPolyline
   0
 LINE
   5
-191
+19E
 330
 17
 100
@@ -12117,7 +12489,7 @@ AcDbLine
   0
 LINE
   5
-192
+19F
 330
 17
 100
@@ -12141,7 +12513,7 @@ AcDbLine
   0
 LINE
   5
-193
+1A0
 330
 17
 100
@@ -12165,7 +12537,7 @@ AcDbLine
   0
 LINE
   5
-194
+1A1
 330
 17
 100
@@ -12189,7 +12561,7 @@ AcDbLine
   0
 LINE
   5
-195
+1A2
 330
 17
 100
@@ -12213,7 +12585,7 @@ AcDbLine
   0
 LINE
   5
-196
+1A3
 330
 17
 100
@@ -12237,7 +12609,7 @@ AcDbLine
   0
 LINE
   5
-197
+1A4
 330
 17
 100
@@ -12261,7 +12633,7 @@ AcDbLine
   0
 TEXT
   5
-198
+1A5
 330
 17
 100
@@ -12297,7 +12669,7 @@ AcDbText
   0
 TEXT
   5
-199
+1A6
 330
 17
 100
@@ -12333,7 +12705,7 @@ AcDbText
   0
 TEXT
   5
-19A
+1A7
 330
 17
 100
@@ -12369,7 +12741,7 @@ AcDbText
   0
 TEXT
   5
-19B
+1A8
 330
 17
 100
@@ -12405,7 +12777,7 @@ AcDbText
   0
 TEXT
   5
-19C
+1A9
 330
 17
 100
@@ -12441,7 +12813,7 @@ AcDbText
   0
 TEXT
   5
-19D
+1AA
 330
 17
 100
@@ -12477,7 +12849,7 @@ AcDbText
   0
 TEXT
   5
-19E
+1AB
 330
 17
 100
@@ -12513,7 +12885,7 @@ AcDbText
   0
 TEXT
   5
-19F
+1AC
 330
 17
 100
@@ -12549,7 +12921,7 @@ AcDbText
   0
 TEXT
   5
-1A0
+1AD
 330
 17
 100
@@ -12585,7 +12957,7 @@ AcDbText
   0
 TEXT
   5
-1A1
+1AE
 330
 17
 100
@@ -12621,7 +12993,7 @@ AcDbText
   0
 TEXT
   5
-1A2
+1AF
 330
 17
 100
@@ -12657,7 +13029,7 @@ AcDbText
   0
 TEXT
   5
-1A3
+1B0
 330
 17
 100
@@ -12693,7 +13065,7 @@ AcDbText
   0
 TEXT
   5
-1A4
+1B1
 330
 17
 100
@@ -12729,7 +13101,7 @@ AcDbText
   0
 TEXT
   5
-1A5
+1B2
 330
 17
 100
@@ -12765,7 +13137,7 @@ AcDbText
   0
 TEXT
   5
-1A6
+1B3
 330
 17
 100
@@ -12801,7 +13173,7 @@ AcDbText
   0
 TEXT
   5
-1A7
+1B4
 330
 17
 100
@@ -12837,7 +13209,7 @@ AcDbText
   0
 TEXT
   5
-1A8
+1B5
 330
 17
 100
@@ -12873,7 +13245,7 @@ AcDbText
   0
 TEXT
   5
-1A9
+1B6
 330
 17
 100
@@ -12909,7 +13281,79 @@ AcDbText
   0
 TEXT
   5
-1AA
+1B7
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+317.0
+ 20
+106.0
+ 30
+0.0
+ 40
+0.9
+  1
+PE-MOD = MÓDULOS | PE-EQP = EQUIPAMENTOS -> BEP-801
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+317.0
+ 21
+106.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1B8
+330
+17
+100
+AcDbEntity
+  8
+08_CABOS
+100
+AcDbText
+ 10
+317.0
+ 20
+100.0
+ 30
+0.0
+ 40
+0.9
+  1
+COM-INV | R-COM-801 / 10 m* | OPCIONAL; TRAJETO NÃO DETALHADO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+317.0
+ 21
+100.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1B9
 330
 17
 100
@@ -12921,11 +13365,11 @@ AcDbText
  10
 317.0
  20
-103.0
+95.5
  30
 0.0
  40
-1.1
+0.9
   1
 ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS
   7
@@ -12935,7 +13379,7 @@ PORTFOLIO_TEXTO
  11
 317.0
  21
-103.0
+95.5
  31
 0.0
 100
@@ -14057,7 +14501,7 @@ PORTFOLIO_EPISTEMIC_STATUS
   3
 WRITTEN_BY_EZDXF
 350
-1AD
+1BC
   0
 DICTIONARYVAR
   5
@@ -20679,7 +21123,7 @@ DictionaryVariables
 280
 0
   1
-06/06
+06/08
   0
 DICTIONARYVAR
   5
@@ -20695,7 +21139,7 @@ ACADEMIC_CONCEPT_NOT_FOR_EXECUTION
   0
 DICTIONARYVAR
   5
-1AD
+1BC
 330
 2D
 100

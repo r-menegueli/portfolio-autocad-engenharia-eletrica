@@ -4,7 +4,7 @@
 
 Projeto 03 - Painel de automação com CLP para duas bombas de reservatório.
 
-Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 00.
+Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-06. Revisão: 05 em 2026-11-06.
 
 ## 2. Finalidade e solução conceitual
 
@@ -13,11 +13,19 @@ bombas centrífugas M1 e M2, cada uma com seccionamento/proteção, contator e r
 sobrecarga. A automação é alimentada por PSU1, fonte de 24 Vcc / 10 A, e executada por
 CLP1 genérico com 16 entradas e 16 saídas digitais PNP.
 
-Quatro contatos discretos representam o nível do reservatório: LSL-LL (baixo-baixo),
-LSL (baixo), LSH (alto) e LSHH (alto-alto). O arranjo foi concebido para enchimento do
-reservatório: a demanda inicia em LSH, encerra em LSL e é bloqueada em LSL-LL para
-evitar funcionamento a seco da fonte de captação. A interpretação física final dos
-sensores depende do processo real e deve ser confirmada em campo.
+Quatro contatos discretos representam níveis baixo-baixo, baixo, alto e alto-alto. A
+direção do processo (enchimento ou esgotamento), os tanques de origem/destino e a função
+de cada sensor ainda não foram definidos. Há uma divergência a resolver: a sequência
+atual inicia em LSH, encerra em LSL e solicita a reserva em LSHH, o que pode corresponder
+a esgotamento; aplicada a enchimento, pode manter ou ampliar uma condição de nível alto.
+LSL-LL também precisa ser associado ao tanque de sucção/captação correto antes de ser
+usado como proteção contra funcionamento a seco. Estes pontos compõem a V01 e bloqueiam
+a implementação da lógica até aprovação do processo.
+
+A prancha 11 compara dois exemplos condicionais: em enchimento, demanda abaixo de LSL e
+parada em LSH; em esgotamento, a hipótese atual de demanda em LSH e parada em LSL. O
+desenho não escolhe uma alternativa nem define a ação de LSHH, a bomba reserva, LSL-LL
+ou a resposta durante marcha a uma combinação incoerente. A V01 segue aberta.
 
 ## 3. Potência e proteção
 
@@ -33,6 +41,10 @@ CLP1 determina alternância, demanda, temporizações, supervisão e alarmes. K1
 relés de interface entre as saídas transistorizadas e as bobinas KM1/KM2. Diodos de
 supressão devem ser instalados nas bobinas CC compatíveis.
 
+A prancha 09 resume os estados de operação e a matriz causa-efeito. A lógica para
+combinações incoerentes dos sensores bloqueia novas partidas automáticas, mas a ação
+para uma bomba já em marcha ainda requer decisão de processo antes de programar o CLP.
+
 S0 atua em dois canais sobre KSR1. Os contatos seguros de KSR1 retiram a energia das
 cadeias de KM1 e KM2 sem depender do programa. O CLP apenas monitora o estado de KSR1.
 O relé KDRY, associado a LSL-LL, também mantém contatos em série com ambas as bobinas;
@@ -41,12 +53,12 @@ declara categoria, PL ou SIL: isso depende de análise de risco e validação es
 
 ## 5. Operação
 
-Em automático, LSH cria a demanda e a bomba escalada como titular parte se todos os
-permissivos estiverem verdadeiros. Ao atingir LSL, a demanda termina e a preferência
-é transferida à outra bomba para o próximo ciclo. LSHH, falha de partida ou sobrecarga
-da titular solicitam a bomba disponível de reserva. Em manual, S2/S3 comandam M1 e
-S4/S5 comandam M2, mas emergência, sobrecarga e proteção contra funcionamento a seco
-continuam ativos.
+Como hipótese ainda não aprovada, em automático LSH cria a demanda, LSL a encerra e
+LSHH solicita a reserva. Essa sequência não pode ser interpretada como lógica de
+enchimento até que o sentido do processo e a posição dos sensores sejam confirmados
+em V01. Falha de partida e sobrecarga solicitam a bomba disponível de reserva. Em
+manual, S2/S3 comandam M1 e S4/S5 comandam M2, mas emergência, sobrecarga e proteção
+contra funcionamento a seco continuam ativos.
 
 ## 6. Interfaces e manutenção
 

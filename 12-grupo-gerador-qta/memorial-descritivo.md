@@ -20,7 +20,7 @@ Este memorial descritivo estabelece as premissas funcionais, características el
 
 ### 2.2 Quadro de Transferência Automática (QTA)
 * **Invólucro:** Painel autoportante em chapa de aço carbono 14 MSG (espessura 1,9 mm), grau de proteção IP54 para montagem abrigada, dimensões de $1800 \times 800 \times 400\text{ mm}$ (A x L x P).
-* **Elementos de Potência:** Dois contatores tripolares de potência eletromecânicos (K1 para Rede e K2 para Gerador), categoria de emprego AC-1/AC-3, corrente nominal de 400 A, dotados de **intertravamento duplo**:
+* **Elementos de Potência:** Dois contatores tetrapolares de potência eletromecânicos (K1 para Rede e K2 para Gerador), comutando 3 fases e neutro, categoria de emprego AC-1/AC-3, corrente nominal proposta de 400 A, dotados de **intertravamento físico e lógico conceituais**:
   1. **Intertravamento Mecânico:** Tirante/barra rígida montada entre os chassis de K1 e K2 que impede fisicamente a manobra simultânea dos dois mecanismos.
   2. **Intertravamento Elétrico:** Contatos auxiliares normalmente fechados (NF) cruzados nas bobinas de comando de K1 e K2, além do gerenciamento lógico independente executado pelo software da USCA.
 * **Barramentos:** Em cobre eletrolítico eletroestanhado $40 \times 5\text{ mm}$ com capacidade para $500\text{ A}$ contínuos, fixados sobre isoladores de epóxi tipo castanha 1 kV.
@@ -32,11 +32,22 @@ Este memorial descritivo estabelece as premissas funcionais, características el
   * **Sobretensão de Rede:** Atuação se $V > 1,10 \times V_n$.
   * **Assimetria de Fase e Falha de Sequência:** Detecção imediata de falta de fase.
   * **Temporizador de Confirmação de Falha:** 3 segundos.
-  * **Pulso de Partida:** Ciclo de até 3 tentativas de arranque de 5 s com repouso de 5 s.
+  * **Pulso de Partida:** Até 3 tentativas de arranque de 5 s, com repouso de 5 s entre tentativas.
   * **Estabilização de Tensão e Frequência do GMG:** Verificação em 5 segundos antes da transferência.
   * **Tempo Morto de Transição (*Dead Time*):** 1,5 segundo entre a abertura de K1 e o fechamento de K2 para extinção de arco elétrico e desaceleração de cargas motrizes.
-  * **Retorno da Rede:** Temporizador de estabilização de rede (60 a 180 segundos).
+  * **Retorno da Rede:** Temporizador de estabilização de rede proposto em 120 s.
   * **Arrefecimento do Motor (*Cool-down*):** 180 segundos operando em vazio antes da parada total.
+
+Os tempos são setpoints conceituais para demonstrar a sequência, sujeitos às recomendações do fabricante do motor e da USCA. Eles não estabelecem um tempo total garantido para assumir a carga.
+
+### 2.4 Cadastro de cargas essenciais
+
+A revisão 03 organiza em cadastro-cargas-qce.csv e na prancha 09 os quatro
+alimentadores de cargas essenciais identificados na lista de cabos: iluminação e
+rotas de fuga, bomba de incêndio, UPS da sala de servidores e utilidades. Potências,
+correntes, partidas, simultaneidade e prioridade de entrada ainda não foram
+informadas. A lista atual não comprova que todos os ramais do QCE foram identificados
+e não permite verificar a capacidade do GMG para a demanda real.
 
 ---
 

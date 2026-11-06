@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -8941,7 +8941,7 @@ AcDbMText
  71
 1
   1
-Demanda adotada é didática, não regra de concessionária. As seções de C3\Pe C8 foram ajustadas para 4 mm²; quedas combinadas abaixo de 4%.
+Demanda e corrente do alimentador não estão selecionadas.\PAs seções e quedas dos circuitos ainda dependem de método e dados reais.
   7
 PORTFOLIO_TEXTO
  44
@@ -9333,7 +9333,7 @@ AcDbText
  40
 1.7
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9369,7 +9369,7 @@ AcDbText
  40
 1.7
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9405,7 +9405,7 @@ AcDbText
  40
 1.7
   1
-EMISSÃO INICIAL DO PROJETO 02
+CORRENTE POR FASE
   7
 PORTFOLIO_TEXTO
  72
@@ -9575,7 +9575,7 @@ AcDbText
  40
 2.25
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9613,7 +9613,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9651,7 +9651,7 @@ AcDbText
  40
 2.25
   1
-07/08
+07/10
   7
 PORTFOLIO_TEXTO
  11
@@ -10665,7 +10665,7 @@ AcDbText
  40
 1.45
   1
-Ilum. sala/quartos/circ.
+Ilum. sala/quartos/circ./closet
   7
 PORTFOLIO_TEXTO
  72
@@ -10773,7 +10773,7 @@ AcDbText
  40
 1.45
   1
-75.000
+84.782
   7
 PORTFOLIO_TEXTO
  72
@@ -10809,7 +10809,7 @@ AcDbText
  40
 1.45
   1
-0.591
+0.668
   7
 PORTFOLIO_TEXTO
  72
@@ -10917,7 +10917,7 @@ AcDbText
  40
 1.45
   1
-0.391%
+0.442%
   7
 PORTFOLIO_TEXTO
  72
@@ -13253,7 +13253,7 @@ AcDbText
  40
 1.9
   1
-INSTALADA: 15 548,913 VA
+INSTALADA: 15 558,696 VA
   7
 PORTFOLIO_TEXTO
  72
@@ -13287,9 +13287,9 @@ AcDbText
  30
 0.0
  40
-1.9
+1.8
   1
-DEMANDA ACADÊMICA: 12 592,120 VA
+DEMANDA / CORRENTE DO ALIMENTADOR: PENDENTES
   7
 PORTFOLIO_TEXTO
  72
@@ -13325,7 +13325,7 @@ AcDbText
  40
 1.9
   1
-QG1: 2P 63 A | ALIM.: 16 mm²
+QG1 / ALIMENTADOR: DIMENSIONAR
   7
 PORTFOLIO_TEXTO
  72
@@ -21109,7 +21109,7 @@ DictionaryVariables
 280
 0
   1
-07/08
+07/10
   0
 DICTIONARYVAR
   5

@@ -23,6 +23,8 @@ SHEETS = (
     "05_diagrama_unifilar.dxf",
     "06_quadro_cargas.dxf",
     "07_detalhes_instalacao.dxf",
+    "08_coordenacao_protecoes.dxf",
+    "09_plano_dados_coordenacao.dxf",
 )
 EXPECTED_CIRCUITS = {f"C{number:02d}" for number in range(1, 17)}
 EXPECTED_FEEDERS = {"AL-QGBT", "AL-QDF", "AL-QDL", "AL-QADM"}
@@ -30,7 +32,29 @@ REQUIRED_TAGS = {
     "QGBT-05", "QDF-05", "QDL-05", "QADM-05", "M-501", "M-502",
     "M-503", "M-504", "M-505", "TUE-501", "TI-501", "TI-506",
     "E-501", "E-502", "E-503", "C01", "C08", "C09", "C13", "C16",
+    "DJ-G", "QF-QDF", "QF-QDL", "QF-QADM", "TCC", "PENDENTE",
 }
+EXPECTED_PROTECTION_PAIRS = {
+    "DJ-G > QF-QDF",
+    "DJ-G > QF-QDL",
+    "DJ-G > QF-QADM",
+    "QF-QDF > C01-C08",
+    "QF-QDL > C09-C13",
+    "QF-QADM > C14-C16",
+}
+EXPECTED_STUDY_STAGES = (
+    "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA", "ENTRADA",
+    "CALCULO", "CALCULO", "CALCULO", "CALCULO", "CALCULO", "REVISAO",
+)
+REQUIRED_STUDY_TERMS = (
+    "PLANO DE DADOS PARA CURTO-CIRCUITO E COORDENACAO",
+    "D01", "D06", "D07", "D11", "D12", "Icc MAX",
+    "I2t", "PENDENTE", "REDE, TRAFO, CABOS",
+    "ROTEIRO DE VERIFICACAO", "D01-D06 | ENTRADAS", "D07 | MODELO",
+    "D08 | CALCULO", "D09-D11 | TESTES", "D12 | FECHAMENTO",
+    "CAPACIDADE / SUPORTABILIDADE", "CURVAS, PARES E RETAGUARDA",
+    "MODELO, AJUSTES, REVISAO", "Icu/Ics de disjuntores", "Icw/Ipk de conjuntos",
+)
 
 
 def read_rows(path: Path) -> list[dict[str, str]]:
@@ -64,8 +88,35 @@ def validate(root: Path) -> dict:
     feeders = read_rows(project / "alimentadores.csv")
     cables = read_rows(project / "lista-cabos.csv")
     materials = read_rows(project / "lista-materiais.csv")
+    protection_pairs = read_rows(project / "matriz-coordenacao-protecoes.csv")
+    study_inputs = read_rows(project / "dados-estudo-coordenacao.csv")
     errors: list[str] = []
     checks = 0
+
+    protection_pair_ids = {row["par"] for row in protection_pairs}
+    checks += 3
+    if len(protection_pairs) != 6 or protection_pair_ids != EXPECTED_PROTECTION_PAIRS:
+        errors.append("A matriz de protecoes deve cobrir exatamente os seis pares montante-jusante.")
+    for row in protection_pairs:
+        checks += 3
+        if row["status"] != "PENDENTE":
+            errors.append(f"{row['par']}: estudo de coordenacao nao pode ser declarado aprovado sem evidencias.")
+        if not row["verificacoes"].strip() or not row["dados_necessarios"].strip():
+            errors.append(f"{row['par']}: verificacoes e dados necessarios devem ser rastreados.")
+
+    expected_study_ids = [f"D{index:02d}" for index in range(1, 13)]
+    checks += 2 + len(expected_study_ids) * 3
+    if [row.get("id") for row in study_inputs] != expected_study_ids:
+        errors.append("O plano de coordenacao deve conter D01 a D12 em ordem, sem duplicatas.")
+    if len(study_inputs) != len(expected_study_ids):
+        errors.append("O plano de coordenacao deve conter exatamente 12 grupos de dados.")
+    if [row.get("etapa") for row in study_inputs] != list(EXPECTED_STUDY_STAGES):
+        errors.append("Os grupos D01-D06, D07-D11 e D12 devem separar entrada, calculo e revisao.")
+    for row in study_inputs:
+        if any(not row.get(field, "").strip() for field in ("entrada_ou_verificacao", "evidencia")):
+            errors.append(f"{row.get('id', 'ID ausente')}: dado e evidencia devem estar descritos.")
+        if row.get("status") != "PENDENTE":
+            errors.append(f"{row.get('id', 'ID ausente')}: nao ha dados/evidencias suficientes para fechar o estudo.")
 
     circuits = {row["circuito"] for row in loads}
     checks += 2
@@ -248,9 +299,66 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
-        dxf_texts.append(extract_text(doc))
+        sheet_text = extract_text(doc)
+        dxf_texts.append(sheet_text)
+        checks += 2
+        if "6 kA" in sheet_text or "10 kA" in sheet_text:
+            errors.append(f"{filename}: capacidade de curto/interrupcao nao pode permanecer como valor presumido.")
+        if index == 1:
+            required_layout_terms = (
+                "REGISTRO DO LAYOUT",
+                "EQUIPAMENTOS, CIRCUITOS E POSICAO",
+                "S_inst",
+                "X (m)",
+                "Y (m)",
+                "Nao representam levantamento topografico.",
+            )
+            checks += len(required_layout_terms)
+            for term in required_layout_terms:
+                if term.casefold() not in sheet_text.casefold():
+                    errors.append(f"{filename}: registro do layout sem o campo/limite {term!r}.")
+
+            layout_records = {
+                "M-501": ("C01", Decimal("6.000"), Decimal("13.375")),
+                "M-502": ("C02", Decimal("12.750"), Decimal("13.375")),
+                "M-503": ("C03", Decimal("19.500"), Decimal("13.375")),
+                "M-504": ("C04", Decimal("6.000"), Decimal("6.250")),
+                "M-505": ("C05", Decimal("12.750"), Decimal("6.250")),
+                "TUE-501": ("C06", Decimal("21.000"), Decimal("6.125")),
+            }
+            loads_by_circuit = {row["circuito"]: row for row in loads}
+            checks += len(layout_records) * 5
+            for tag, (circuit, x_m, y_m) in layout_records.items():
+                load = loads_by_circuit[circuit]
+                fields = (
+                    tag,
+                    circuit,
+                    f"{number(load, 'potencia_aparente_instalada_kva'):.3f}".replace(".", ","),
+                    f"{x_m:.3f}".replace(".", ","),
+                    f"{y_m:.3f}".replace(".", ","),
+                )
+                for field in fields:
+                    if field not in sheet_text:
+                        errors.append(f"{filename}: registro {tag} nao corresponde ao dado {field}.")
+
+            origin_found = any(
+                entity.dxftype() == "CIRCLE"
+                and close(Decimal(str(entity.dxf.center.x)), Decimal("24"))
+                and close(Decimal(str(entity.dxf.center.y)), Decimal("108"))
+                and close(Decimal(str(entity.dxf.radius)), Decimal("1.4"))
+                for entity in doc.modelspace()
+            )
+            checks += 1
+            if not origin_found:
+                errors.append(f"{filename}: marcador da origem do croqui O=(0,0) ausente.")
+        if index == 9:
+            sheet_text = sheet_text.casefold()
+            checks += len(REQUIRED_STUDY_TERMS)
+            for term in REQUIRED_STUDY_TERMS:
+                if term.casefold() not in sheet_text:
+                    errors.append(f"{filename}: informacao do plano de coordenacao ausente: {term}.")
 
     merged_text = " ".join(dxf_texts).casefold()
     for tag in sorted(REQUIRED_TAGS):
@@ -270,6 +378,8 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "sheets": len(SHEETS),
+            "protection_pairs": len(protection_pairs),
+            "coordination_study_inputs": len(study_inputs),
             "circuits": len(loads),
             "feeders": len(feeders),
             "cables": len(cables),

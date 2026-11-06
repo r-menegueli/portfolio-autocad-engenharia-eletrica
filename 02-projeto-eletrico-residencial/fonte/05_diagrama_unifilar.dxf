@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -9333,7 +9333,7 @@ AcDbText
  40
 1.7
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9369,7 +9369,7 @@ AcDbText
  40
 1.7
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9405,7 +9405,7 @@ AcDbText
  40
 1.7
   1
-EMISSÃO INICIAL DO PROJETO 02
+CORRENTE POR FASE
   7
 PORTFOLIO_TEXTO
  72
@@ -9575,7 +9575,7 @@ AcDbText
  40
 2.25
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9613,7 +9613,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9651,7 +9651,7 @@ AcDbText
  40
 2.25
   1
-05/08
+05/10
   7
 PORTFOLIO_TEXTO
  11
@@ -10145,7 +10145,7 @@ AcDbText
  40
 1.35
   1
-2P C63 A
+2P | In PEND.
   7
 PORTFOLIO_TEXTO
  72
@@ -10273,7 +10273,7 @@ AcDbText
  40
 1.35
   1
-2P 63 A / 30 mA
+2P | In? / 30 mA
   7
 PORTFOLIO_TEXTO
  72
@@ -10845,7 +10845,7 @@ AcDbText
  40
 1.55
   1
-Ilum. sala/quartos/circ.
+Ilum. sala/quartos/circ./closet
   7
 PORTFOLIO_TEXTO
  11
@@ -12125,7 +12125,7 @@ AcDbMText
  71
 1
   1
-QG1: 2P 63 A curva C.\PDR1: 2P 63 A, 30 mA, tipo A.\PDPS1: tipo 2, Uc 275 V, Imax 20 kA.\PCapacidade de interrupção: a calcular.
+QG1: polos, In e curva a dimensionar.\PDR1: IΔn 30 mA como premissa; In e tipo a confirmar.\PDPS1: tipo 2, Uc 275 V, Imax 20 kA como premissas.\PCapacidade de interrupção: a calcular.
   7
 PORTFOLIO_TEXTO
  44
@@ -19863,7 +19863,7 @@ DictionaryVariables
 280
 0
   1
-05/08
+05/10
   0
 DICTIONARYVAR
   5

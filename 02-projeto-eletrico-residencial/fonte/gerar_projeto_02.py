@@ -1,9 +1,11 @@
-"""Gera as oito pranchas DXF do Projeto 02 de forma deterministica."""
+"""Gera as dez pranchas DXF do Projeto 02 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -34,8 +36,9 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "02-projeto-eletrico-residencial"
-PROJECT_DATE = "2026-09-05"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
+PHASE_ANALYSIS_CSV = "analise-corrente-por-fase.csv"
 
 
 @dataclass(frozen=True)
@@ -65,7 +68,7 @@ class Circuit:
 
 
 CIRCUITS = (
-    Circuit("C1", "Ilum. sala/quartos/circ.", 127, "A", 75.000, 0.591, 1.5, 10, 1, "B", 0.391),
+    Circuit("C1", "Ilum. sala/quartos/circ./closet", 127, "A", 84.7825, 0.668, 1.5, 10, 1, "B", 0.442),
     Circuit("C2", "Ilum. coz./banh./lav.", 127, "B", 73.913, 0.582, 1.5, 10, 1, "B", 0.330),
     Circuit("C3", "TUG sala/quartos/circ.", 127, "A", 1500.000, 11.811, 4.0, 16, 1, "C", 2.093),
     Circuit("C4", "TUG cozinha", 127, "B", 2100.000, 16.535, 4.0, 20, 1, "C", 2.637),
@@ -76,15 +79,67 @@ CIRCUITS = (
 )
 
 
+def build_phase_current_analysis(root: Path) -> list[dict[str, str]]:
+    source = root / PROJECT_SLUG / "quadro-cargas.csv"
+    neutral_va = {"A": Decimal("0"), "B": Decimal("0")}
+    neutral_circuits = {"A": [], "B": []}
+    phase_phase_va = Decimal("0")
+    phase_phase_circuits: list[str] = []
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        for row in csv.DictReader(stream):
+            voltage = int(row["tensao_v"])
+            apparent = Decimal(row["potencia_aparente_va"])
+            phases = row["fases"].strip().upper()
+            tag = row["circuito"].strip().upper()
+            if voltage == 127 and phases in neutral_va:
+                neutral_va[phases] += apparent
+                neutral_circuits[phases].append(tag)
+            elif voltage == 220 and phases == "AB":
+                phase_phase_va += apparent
+                phase_phase_circuits.append(tag)
+            else:
+                raise ValueError(f"Topologia fora do escopo didatico: {tag} {voltage} V fase(s) {phases}.")
+
+    phase_phase_current = phase_phase_va / Decimal("220")
+    output: list[dict[str, str]] = []
+    for phase in ("A", "B"):
+        neutral_current = neutral_va[phase] / Decimal("127")
+        arithmetic_bound = neutral_current + phase_phase_current
+        output.append({
+            "fase": phase,
+            "ramais_fase_neutro": "+".join(neutral_circuits[phase]),
+            "va_fase_neutro": f"{neutral_va[phase]:.4f}",
+            "tensao_fase_neutro_v": "127",
+            "soma_magnitudes_fase_neutro_a": f"{neutral_current:.6f}",
+            "ramais_fase_fase": "+".join(phase_phase_circuits),
+            "va_fase_fase": f"{phase_phase_va:.4f}",
+            "tensao_fase_fase_v": "220",
+            "soma_magnitudes_fase_fase_a": f"{phase_phase_current:.6f}",
+            "cota_superior_aritmetica_a": f"{arithmetic_bound:.6f}",
+            "metodo": "Sem diversidade; soma de magnitudes S/V; nao e demanda nem corrente fasorial exata",
+        })
+    return output
+
+
+def write_phase_current_analysis(root: Path, rows: list[dict[str, str]]) -> Path:
+    path = root / PROJECT_SLUG / PHASE_ANALYSIS_CSV
+    fields = tuple(rows[0])
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    return path
+
+
 SHEETS = (
     SheetSpec(
         1,
         "01_planta_arquitetonica.dxf",
         "PLANTA ARQUITETÔNICA",
-        "Residência térrea fictícia de 75,00 m²",
-        "Arquitetura original criada para o portfólio. Dimensões e vãos são premissas.\\P"
-        "Não usar como projeto arquitetônico, estrutural ou cadastral.",
-        "Linha cinza: arquitetura | Ciano: cotas | Arco: sentido de abertura",
+        "Planta mobiliada e esquadrias — residência fictícia de 75,00 m²",
+        "Arquitetura original para estudo. Dimensões, vãos e mobiliário são premissas.\\P"
+        "Confirmar medidas e aberturas em levantamento; não usar como projeto executivo.",
+        "Cinza: paredes/mobiliário | Azul: esquadrias/cotas | Arco: sentido de abertura",
         "1:50",
     ),
     SheetSpec(
@@ -140,8 +195,8 @@ SHEETS = (
         "07_quadro_cargas.dxf",
         "QUADRO DE CARGAS",
         "Potências, correntes, condutores, proteção e queda de tensão",
-        "Demanda adotada é didática, não regra de concessionária. As seções de C3\\P"
-        "e C8 foram ajustadas para 4 mm²; quedas combinadas abaixo de 4%.",
+        "Demanda e corrente do alimentador não estão selecionadas.\\P"
+        "As seções e quedas dos circuitos ainda dependem de método e dados reais.",
         "VA: potência aparente | Ib: corrente | S: seção Cu | DJ: disjuntor",
     ),
     SheetSpec(
@@ -152,6 +207,24 @@ SHEETS = (
         "A haste de 2,40 m é detalhe didático. Quantidade, arranjo e desempenho dependem\\P"
         "de solo, corrosão, conexões, ensaio e projeto específico.",
         "BEP: equipotencialização | PE: proteção | N: neutro | símbolo: terra",
+    ),
+    SheetSpec(
+        9,
+        "09_rastreabilidade_ambientes_cargas.dxf",
+        "RASTREABILIDADE DE CARGAS POR AMBIENTE",
+        "Áreas e cargas atribuídas ligadas às tabelas de pontos e circuitos",
+        "Áreas, potências e uso são premissas acadêmicas.\\P"
+        "Substituir por planta levantada e cargas reais antes de redimensionar.",
+        "IDs remetem a lista-pontos.csv | circuitos remetem a quadro-cargas.csv",
+    ),
+    SheetSpec(
+        10,
+        "10_corrente_por_fase.dxf",
+        "ANÁLISE ARITMÉTICA DE CORRENTE POR FASE",
+        "Cota superior sem diversidade a partir das cargas aparentes declaradas",
+        "Soma de magnitudes S/V não é demanda nem corrente fasorial exata.\\P"
+        "QG1, demanda, alimentador e método de simultaneidade permanecem pendentes.",
+        "A/B: condutores de fase | AB: ramal fase-fase contado em ambos | cota: soma de módulos",
     ),
 )
 
@@ -252,7 +325,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72.0), (x, 94.0), "01_CARIMBO")
     for value, x in (("REV.", 239.0), ("DATA", 264.0), ("DESCRIÇÃO", 316.0), ("RESP.", 381.0)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("EMISSÃO INICIAL DO PROJETO 02", 316.0), ("R.E.M.M.", 381.0)):
+    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("CORRENTE POR FASE", 316.0), ("R.E.M.M.", 381.0)):
         centered(layout, value, (x, 78.5), 1.7, "02_TEXTO")
 
 
@@ -274,7 +347,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -290,7 +363,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -304,78 +377,198 @@ def create_sheet(config: dict, spec: SheetSpec):
     return doc, msp
 
 
-def door(layout, hinge: tuple[float, float], radius: float, start: float, end: float) -> None:
+def door(
+    layout,
+    hinge: tuple[float, float],
+    radius: float,
+    start: float,
+    end: float,
+    leaf_angle: float | None = None,
+) -> None:
     x, y = hinge
     import math
 
-    end_point = (x + radius * math.cos(math.radians(end)), y + radius * math.sin(math.radians(end)))
+    angle = end if leaf_angle is None else leaf_angle
+    end_point = (x + radius * math.cos(math.radians(angle)), y + radius * math.sin(math.radians(angle)))
     line(layout, hinge, end_point, "11_ARQUITETURA")
     layout.add_arc(hinge, radius, start, end, dxfattribs={"layer": "11_ARQUITETURA"})
 
 
+def draw_wall(layout, a: tuple[float, float], b: tuple[float, float], openings=()) -> None:
+    """Draw an axis-aligned wall while leaving the listed door/window gaps open."""
+    horizontal = abs(a[1] - b[1]) < 1e-9
+    vertical = abs(a[0] - b[0]) < 1e-9
+    if not (horizontal or vertical):
+        raise ValueError(f"Parede fora dos eixos ortogonais: {a} -> {b}")
+    axis = 0 if horizontal else 1
+    fixed = a[1] if horizontal else a[0]
+    low, high = sorted((a[axis], b[axis]))
+    cursor = low
+    relevant_openings = []
+    for start, end in openings:
+        gap_low, gap_high = sorted((start, end))
+        if gap_high <= low or gap_low >= high:
+            continue
+        if gap_low < low or gap_high > high:
+            raise ValueError(f"Abertura atravessa o limite da parede {a} -> {b}: {(gap_low, gap_high)}")
+        relevant_openings.append((gap_low, gap_high))
+    for gap_low, gap_high in sorted(relevant_openings):
+        if gap_low < cursor:
+            raise ValueError(f"Abertura inválida na parede {a} -> {b}: {(gap_low, gap_high)}")
+        if gap_low > cursor:
+            p1 = (cursor, fixed) if horizontal else (fixed, cursor)
+            p2 = (gap_low, fixed) if horizontal else (fixed, gap_low)
+            line(layout, p1, p2, "11_ARQUITETURA")
+        cursor = gap_high
+    if cursor < high:
+        p1 = (cursor, fixed) if horizontal else (fixed, cursor)
+        p2 = (high, fixed) if horizontal else (fixed, high)
+        line(layout, p1, p2, "11_ARQUITETURA")
+
+
+def opening_jambs(
+    layout,
+    *,
+    horizontal_wall: bool,
+    fixed: float,
+    interval: tuple[float, float],
+    offset: float = 2.0,
+) -> None:
+    """Join the two wall faces at the ends of a door or window opening."""
+    for position in interval:
+        if horizontal_wall:
+            line(layout, (position, fixed), (position, fixed + offset), "11_ARQUITETURA")
+        else:
+            line(layout, (fixed, position), (fixed + offset, position), "11_ARQUITETURA")
+
+
 def window(layout, a: tuple[float, float], b: tuple[float, float]) -> None:
-    line(layout, a, b, "03_COTAS")
-    if a[1] == b[1]:
-        line(layout, (a[0], a[1] + 1.2), (b[0], b[1] + 1.2), "03_COTAS")
+    horizontal = abs(a[1] - b[1]) < 1e-9
+    if horizontal:
+        x1, x2 = sorted((a[0], b[0]))
+        y = a[1]
+        inside = y + 2.0 if y < 200.0 else y - 2.0
+        opening_jambs(layout, horizontal_wall=True, fixed=y, interval=(x1, x2), offset=inside - y)
+        line(layout, (x1, y), (x2, y), "03_COTAS")
+        line(layout, (x1, inside), (x2, inside), "03_COTAS")
+        line(layout, ((x1 + x2) / 2.0, y), ((x1 + x2) / 2.0, inside), "03_COTAS")
     else:
-        line(layout, (a[0] + 1.2, a[1]), (b[0] + 1.2, b[1]), "03_COTAS")
+        y1, y2 = sorted((a[1], b[1]))
+        x = a[0]
+        inside = x - 2.0 if x > 200.0 else x + 2.0
+        opening_jambs(layout, horizontal_wall=False, fixed=x, interval=(y1, y2), offset=inside - x)
+        line(layout, (x, y1), (x, y2), "03_COTAS")
+        line(layout, (inside, y1), (inside, y2), "03_COTAS")
+        line(layout, (x, (y1 + y2) / 2.0), (inside, (y1 + y2) / 2.0), "03_COTAS")
+
+
+DOORS = (
+    {"id": "D01", "hinge": (82.0, 105.0), "radius": 18.0, "start": 0.0, "end": 90.0, "wall": "h", "fixed": 105.0, "gap": (82.0, 100.0)},
+    {"id": "D02", "hinge": (101.0, 185.0), "radius": 16.0, "start": 90.0, "end": 180.0, "leaf_angle": 90.0, "wall": "h", "fixed": 185.0, "gap": (85.0, 101.0)},
+    {"id": "D03", "hinge": (115.0, 151.0), "radius": 16.0, "start": -90.0, "end": 0.0, "wall": "v", "fixed": 115.0, "gap": (135.0, 151.0)},
+    {"id": "D04", "hinge": (143.0, 165.0), "radius": 16.0, "start": 90.0, "end": 180.0, "leaf_angle": 90.0, "wall": "h", "fixed": 165.0, "gap": (127.0, 143.0)},
+    {"id": "D05", "hinge": (203.0, 165.0), "radius": 16.0, "start": 180.0, "end": 270.0, "leaf_angle": 270.0, "wall": "h", "fixed": 165.0, "gap": (187.0, 203.0)},
+    {"id": "D06", "hinge": (143.0, 185.0), "radius": 14.0, "start": 180.0, "end": 270.0, "leaf_angle": 270.0, "wall": "h", "fixed": 185.0, "gap": (129.0, 143.0)},
+    {"id": "D07", "hinge": (215.0, 185.0), "radius": 16.0, "start": 90.0, "end": 180.0, "leaf_angle": 90.0, "wall": "h", "fixed": 185.0, "gap": (199.0, 215.0)},
+    {"id": "D08", "hinge": (115.0, 237.0), "radius": 16.0, "start": 0.0, "end": 90.0, "leaf_angle": 0.0, "wall": "v", "fixed": 115.0, "gap": (237.0, 253.0)},
+)
+
+WINDOWS = (
+    {"id": "W01", "a": (48.0, 105.0), "b": (72.0, 105.0), "wall": "h", "fixed": 105.0, "gap": (48.0, 72.0)},
+    {"id": "W02", "a": (48.0, 255.0), "b": (72.0, 255.0), "wall": "h", "fixed": 255.0, "gap": (48.0, 72.0)},
+    {"id": "W03", "a": (185.0, 255.0), "b": (213.0, 255.0), "wall": "h", "fixed": 255.0, "gap": (185.0, 213.0)},
+    {"id": "W04", "a": (235.0, 120.0), "b": (235.0, 144.0), "wall": "v", "fixed": 235.0, "gap": (120.0, 144.0)},
+    {"id": "W05", "a": (235.0, 208.0), "b": (235.0, 232.0), "wall": "v", "fixed": 235.0, "gap": (208.0, 232.0)},
+    {"id": "W06", "a": (124.0, 255.0), "b": (144.0, 255.0), "wall": "h", "fixed": 255.0, "gap": (124.0, 144.0)},
+    {"id": "W07", "a": (126.0, 105.0), "b": (150.0, 105.0), "wall": "h", "fixed": 105.0, "gap": (126.0, 150.0)},
+)
 
 
 def draw_floorplan(layout, *, dimensions: bool = False, room_details: bool = False) -> None:
-    add_rect(layout, 35.0, 105.0, 235.0, 255.0, "11_ARQUITETURA")
-    add_rect(layout, 37.0, 107.0, 233.0, 253.0, "11_ARQUITETURA")
-    line(layout, (115.0, 105.0), (115.0, 255.0), "11_ARQUITETURA")
-    line(layout, (117.0, 107.0), (117.0, 253.0), "11_ARQUITETURA")
-    line(layout, (35.0, 185.0), (115.0, 185.0), "11_ARQUITETURA")
-    line(layout, (37.0, 187.0), (115.0, 187.0), "11_ARQUITETURA")
-    line(layout, (115.0, 165.0), (235.0, 165.0), "11_ARQUITETURA")
-    line(layout, (117.0, 167.0), (233.0, 167.0), "11_ARQUITETURA")
-    line(layout, (115.0, 185.0), (235.0, 185.0), "11_ARQUITETURA")
-    line(layout, (117.0, 187.0), (233.0, 187.0), "11_ARQUITETURA")
-    line(layout, (185.0, 105.0), (185.0, 165.0), "11_ARQUITETURA")
-    line(layout, (187.0, 107.0), (187.0, 165.0), "11_ARQUITETURA")
-    line(layout, (155.0, 185.0), (155.0, 255.0), "11_ARQUITETURA")
-    line(layout, (157.0, 187.0), (157.0, 253.0), "11_ARQUITETURA")
-    line(layout, (115.0, 231.0), (155.0, 231.0), "11_ARQUITETURA")
+    door_gaps = {(item["wall"], item["fixed"]): [] for item in DOORS}
+    for item in DOORS:
+        door_gaps[(item["wall"], item["fixed"])].append(item["gap"])
+    window_gaps = {(item["wall"], item["fixed"]): [] for item in WINDOWS}
+    for item in WINDOWS:
+        window_gaps[(item["wall"], item["fixed"])].append(item["gap"])
 
-    door(layout, (82.0, 105.0), 14.0, 0.0, 90.0)
-    door(layout, (101.0, 185.0), 12.0, 90.0, 180.0)
-    door(layout, (115.0, 151.0), 12.0, -90.0, 0.0)
-    door(layout, (143.0, 165.0), 12.0, 0.0, 90.0)
-    door(layout, (203.0, 165.0), 12.0, 0.0, 90.0)
-    door(layout, (143.0, 185.0), 12.0, 90.0, 180.0)
-    door(layout, (157.0, 200.0), 12.0, 0.0, 90.0)
-    door(layout, (133.0, 231.0), 10.0, 0.0, 90.0)
+    def holes(wall_type: str, fixed: float):
+        return door_gaps.get((wall_type, fixed), []) + window_gaps.get((wall_type, fixed), [])
 
-    window(layout, (48.0, 105.0), (70.0, 105.0))
-    window(layout, (48.0, 255.0), (72.0, 255.0))
-    window(layout, (186.0, 255.0), (214.0, 255.0))
-    window(layout, (235.0, 122.0), (235.0, 145.0))
-    window(layout, (235.0, 208.0), (235.0, 230.0))
-    window(layout, (124.0, 255.0), (143.0, 255.0))
+    outer_bottom = holes("h", 105.0)
+    outer_top = holes("h", 255.0)
+    outer_right = holes("v", 235.0)
+    draw_wall(layout, (35.0, 105.0), (235.0, 105.0), outer_bottom)
+    draw_wall(layout, (35.0, 107.0), (235.0, 107.0), outer_bottom)
+    draw_wall(layout, (35.0, 255.0), (235.0, 255.0), outer_top)
+    draw_wall(layout, (35.0, 253.0), (235.0, 253.0), outer_top)
+    draw_wall(layout, (35.0, 105.0), (35.0, 255.0))
+    draw_wall(layout, (37.0, 107.0), (37.0, 253.0))
+    draw_wall(layout, (235.0, 105.0), (235.0, 255.0), outer_right)
+    draw_wall(layout, (233.0, 107.0), (233.0, 253.0), outer_right)
+
+    vertical_openings = holes("v", 115.0)
+    draw_wall(layout, (115.0, 105.0), (115.0, 255.0), vertical_openings)
+    draw_wall(layout, (117.0, 107.0), (117.0, 253.0), vertical_openings)
+    left_upper = holes("h", 185.0)
+    draw_wall(layout, (35.0, 185.0), (115.0, 185.0), left_upper)
+    draw_wall(layout, (37.0, 187.0), (115.0, 187.0), left_upper)
+    lower_division = holes("h", 165.0)
+    draw_wall(layout, (115.0, 165.0), (235.0, 165.0), lower_division)
+    draw_wall(layout, (117.0, 167.0), (233.0, 167.0), lower_division)
+    upper_division = holes("h", 185.0)
+    draw_wall(layout, (115.0, 185.0), (235.0, 185.0), upper_division)
+    draw_wall(layout, (117.0, 187.0), (233.0, 187.0), upper_division)
+    draw_wall(layout, (185.0, 105.0), (185.0, 165.0))
+    draw_wall(layout, (187.0, 107.0), (187.0, 165.0))
+    draw_wall(layout, (155.0, 185.0), (155.0, 255.0))
+    draw_wall(layout, (157.0, 187.0), (157.0, 253.0))
+    draw_wall(layout, (115.0, 231.0), (155.0, 231.0))
+    draw_wall(layout, (117.0, 233.0), (155.0, 233.0))
+
+    for item in DOORS:
+        door(
+            layout,
+            item["hinge"],
+            item["radius"],
+            item["start"],
+            item["end"],
+            item.get("leaf_angle"),
+        )
+        opening_jambs(
+            layout,
+            horizontal_wall=item["wall"] == "h",
+            fixed=item["fixed"],
+            interval=item["gap"],
+            offset=2.0,
+        )
+    for item in WINDOWS:
+        window(layout, item["a"], item["b"])
 
     if room_details:
-        room_labels = (
-            ("SALA / JANTAR", (76.0, 145.0), "4,00 x 4,00 m"),
-            ("QUARTO 1", (76.0, 220.0), "4,00 x 3,50 m"),
-            ("COZINHA", (151.0, 133.0), "3,50 x 3,00 m"),
-            ("LAVANDERIA", (210.0, 133.0), "2,50 x 3,00 m"),
-            ("CIRCULAÇÃO", (176.0, 176.0), "6,00 x 1,00 m"),
-            ("BANHEIRO", (135.0, 208.0), "2,00 x 2,30 m"),
-            ("HALL", (135.0, 243.0), "2,00 x 1,20 m"),
-            ("QUARTO 2", (196.0, 220.0), "4,00 x 3,50 m"),
-        )
-        for name, point, size in room_labels:
-            centered(layout, name, (point[0], point[1] + 2.6), 1.9, "02_TEXTO")
-            centered(layout, size, (point[0], point[1] - 1.2), 1.35, "02_TEXTO")
+        room_positions = {
+            "Sala / jantar": (76.0, 172.0),
+            "Quarto 1": (64.0, 194.0),
+            "Quarto 2": (190.0, 196.0),
+            "Cozinha": (149.0, 135.0),
+            "Lavanderia": (210.0, 139.0),
+            "Circulação": (176.0, 176.0),
+            "Banheiro": (124.0, 207.0),
+            "Closet Q1": (137.0, 245.0),
+        }
+        for room in read_csv_rows(PROJECT_DIR / "rastreabilidade-ambientes.csv"):
+            point = room_positions[room["ambiente"]]
+            centered(layout, room["ambiente"].upper(), (point[0], point[1] + 2.6), 1.9, "02_TEXTO")
+            centered(layout, f"{room['dimensoes_adotadas_m']} m", (point[0], point[1] - 1.2), 1.35, "02_TEXTO")
     else:
         for name, point in (
             ("SALA / JANTAR", (70.0, 135.0)), ("QUARTO 1", (70.0, 210.0)),
             ("COZINHA", (145.0, 122.0)), ("LAVANDERIA", (207.0, 122.0)),
             ("CIRCULAÇÃO", (197.0, 171.0)), ("BANHEIRO", (128.0, 193.0)),
-            ("HALL", (127.0, 242.0)), ("QUARTO 2", (195.0, 210.0)),
+            ("QUARTO 2", (195.0, 210.0)),
         ):
             centered(layout, name, point, 1.45, "02_TEXTO")
+        centered(layout, "CLOSET Q1", (148.0, 251.0), 0.95, "02_TEXTO")
 
     if dimensions:
         line(layout, (35.0, 100.5), (235.0, 100.5), "03_COTAS")
@@ -390,38 +583,109 @@ def draw_floorplan(layout, *, dimensions: bool = False, room_details: bool = Fal
 
 def draw_architecture(layout) -> None:
     draw_floorplan(layout, dimensions=True, room_details=True)
-    centered(layout, "PLANTA-BASE ORIGINAL - ÁREA 75,00 m²", (135.0, 262.0), 1.8, "02_TEXTO")
+    draw_furniture(layout)
+    centered(layout, "PLANTA MOBILIADA - ABERTURAS E AMBIENTES", (135.0, 262.0), 1.8, "02_TEXTO")
     add_rect(layout, 248.0, 105.0, 402.0, 260.0, "12_LEGENDA")
     centered(layout, "QUADRO DE AMBIENTES", (325.0, 253.0), 2.4, "12_LEGENDA")
+    rooms = read_csv_rows(PROJECT_DIR / "rastreabilidade-ambientes.csv")
+    room_rows = [
+        (row["ambiente"], format_area(Decimal(row["area_declarada_m2"])), row["uso"])
+        for row in rooms
+    ]
+    room_rows.append(("TOTAL", format_area(sum((Decimal(row["area_declarada_m2"]) for row in rooms), Decimal("0"))), "m²"))
     draw_table(
         layout,
         254.0,
         244.0,
         (70.0, 25.0, 53.0),
         ("AMBIENTE", "ÁREA", "USO"),
-        (
-            ("Sala / jantar", "16,00", "social"),
-            ("Quarto 1", "14,00", "privativo"),
-            ("Quarto 2", "14,00", "privativo"),
-            ("Cozinha", "10,50", "serviço"),
-            ("Lavanderia", "7,50", "serviço"),
-            ("Banheiro", "4,60", "molhado"),
-            ("Circulação/hall", "8,40", "circulação"),
-            ("TOTAL", "75,00", "m²"),
-        ),
-        row_h=10.0,
-        text_h=1.55,
+        tuple(room_rows),
+        row_h=7.8,
+        text_h=1.45,
     )
-    add_text(layout, "PREMISSAS", (254.0, 145.0), 2.2, layer="13_NOTAS", style=TITLE_STYLE)
-    add_mtext(
+    centered(layout, "ESQUADRIAS — DIMENSÕES ADOTADAS (m)", (325.0, 159.0), 1.8, "12_LEGENDA")
+    opening_rows = read_csv_rows(PROJECT_DIR / "esquadrias.csv")
+    draw_table(
         layout,
-        "- Paredes representadas de modo esquemático.\\P- Vãos e mobiliário não foram levantados.\\P"
-        "- Escala gráfica 1:50 na folha A3.\\P- Cotas escritas prevalecem sobre medição.",
-        (254.0, 139.0),
-        140.0,
-        1.65,
-        "13_NOTAS",
+        254.0,
+        153.0,
+        (22.0, 44.0, 82.0),
+        ("ID", "VÃO L × H", "AMBIENTE"),
+        tuple(
+            (
+                row["id"],
+                f"{row['largura_m'].replace('.', ',')} × {row['altura_m'].replace('.', ',')}",
+                row["ambiente"],
+            )
+            for row in opening_rows
+        ),
+        row_h=3.0,
+        text_h=1.1,
     )
+
+
+def draw_furniture(layout) -> None:
+    """Add a restrained, explicitly indicative furniture/equipment layer."""
+    # Sala/jantar: sofa and six-seat dining table.
+    add_rect(layout, 42.0, 143.0, 76.0, 163.0, "11_ARQUITETURA")
+    line(layout, (45.0, 143.0), (45.0, 163.0), "11_ARQUITETURA")
+    line(layout, (73.0, 143.0), (73.0, 163.0), "11_ARQUITETURA")
+    line(layout, (57.0, 143.0), (57.0, 163.0), "11_ARQUITETURA")
+    add_rect(layout, 80.0, 128.0, 106.0, 146.0, "11_ARQUITETURA")
+    for x, y in ((84.0, 124.0), (98.0, 124.0), (84.0, 150.0), (98.0, 150.0)):
+        add_rect(layout, x, y, x + 4.0, y + 4.0, "11_ARQUITETURA")
+
+    # Bedrooms: beds, paired pillows, and built-in wardrobes.
+    for x0, y0 in ((42.0, 202.0), (183.0, 202.0)):
+        add_rect(layout, x0, y0, x0 + 36.0, y0 + 38.0, "11_ARQUITETURA")
+        add_rect(layout, x0 + 2.0, y0 + 32.0, x0 + 17.0, y0 + 36.0, "11_ARQUITETURA")
+        add_rect(layout, x0 + 19.0, y0 + 32.0, x0 + 34.0, y0 + 36.0, "11_ARQUITETURA")
+    add_rect(layout, 84.0, 210.0, 109.0, 236.0, "11_ARQUITETURA")
+    line(layout, (96.5, 210.0), (96.5, 236.0), "11_ARQUITETURA")
+    add_rect(layout, 160.0, 235.0, 181.0, 253.0, "11_ARQUITETURA")
+    line(layout, (170.5, 235.0), (170.5, 253.0), "11_ARQUITETURA")
+
+    # Kitchen and laundry counters/appliances.
+    add_rect(layout, 118.0, 111.0, 131.0, 127.0, "11_ARQUITETURA")
+    add_rect(layout, 151.0, 108.0, 181.0, 120.0, "11_ARQUITETURA")
+    add_rect(layout, 153.0, 110.0, 164.0, 118.0, "11_ARQUITETURA")
+    line(layout, (155.0, 112.0), (162.0, 116.0), "11_ARQUITETURA")
+    add_rect(layout, 168.0, 110.0, 179.0, 118.0, "11_ARQUITETURA")
+    for center in ((171.0, 112.0), (176.0, 112.0), (171.0, 116.0), (176.0, 116.0)):
+        layout.add_circle(center, 1.2, dxfattribs={"layer": "11_ARQUITETURA"})
+    add_rect(layout, 190.0, 111.0, 207.0, 131.0, "11_ARQUITETURA")
+    layout.add_circle((198.5, 121.0), 5.0, dxfattribs={"layer": "11_ARQUITETURA"})
+    add_rect(layout, 211.0, 111.0, 231.0, 131.0, "11_ARQUITETURA")
+    add_rect(layout, 214.0, 114.0, 228.0, 123.0, "11_ARQUITETURA")
+
+    # Bathroom fixtures and a shallow closet cabinet.
+    add_rect(layout, 117.0, 214.0, 131.0, 229.0, "11_ARQUITETURA")
+    line(layout, (117.0, 214.0), (131.0, 229.0), "11_ARQUITETURA")
+    line(layout, (117.0, 229.0), (131.0, 214.0), "11_ARQUITETURA")
+    add_rect(layout, 137.0, 202.0, 152.0, 210.0, "11_ARQUITETURA")
+    add_rect(layout, 137.0, 215.0, 152.0, 229.0, "11_ARQUITETURA")
+    layout.add_ellipse((144.5, 222.0), major_axis=(0.0, 5.0), ratio=0.62, dxfattribs={"layer": "11_ARQUITETURA"})
+    add_rect(layout, 132.0, 233.0, 153.0, 237.0, "11_ARQUITETURA")
+
+    for label, point in (
+        ("SOFÁ", (59.0, 153.0)), ("MESA", (93.0, 137.0)),
+        ("REFR.", (124.5, 119.0)), ("LAVADORA", (198.5, 134.0)),
+        ("TANQUE", (221.0, 134.0)), ("CHUVEIRO", (124.0, 222.0)),
+        ("LAVATÓRIO", (144.5, 198.0)), ("VASO", (144.5, 231.0)),
+        ("ARMÁRIO", (142.5, 235.0)),
+    ):
+        centered(layout, label, point, 1.0, "02_TEXTO")
+
+    # Door and window IDs correspond to the schedule on this sheet.
+    for label, point in (
+        ("D01", (91.0, 125.0)), ("D02", (92.0, 204.0)), ("D03", (118.0, 155.0)),
+        ("D04", (130.0, 169.0)), ("D05", (190.0, 169.0)), ("D06", (132.0, 202.0)),
+        ("D07", (203.0, 202.0)), ("D08", (119.0, 248.0)),
+        ("W01", (60.0, 111.0)), ("W02", (60.0, 249.0)), ("W03", (199.0, 249.0)),
+        ("W04", (220.0, 148.0)), ("W05", (219.0, 233.0)), ("W06", (127.0, 249.0)),
+        ("W07", (138.0, 111.0)),
+    ):
+        centered(layout, label, point, 1.05, "03_COTAS")
 
 
 def command_line(layout, points: list[tuple[float, float]]) -> None:
@@ -433,14 +697,14 @@ def draw_lighting(layout) -> None:
     lights = (
         ((63.0, 145.0), "C1", "15 W"), ((91.0, 145.0), "C1", "15 W"),
         ((76.0, 220.0), "C1", "15 W"), ((196.0, 220.0), "C1", "15 W"),
-        ((176.0, 176.0), "C1", "9 W"), ((140.0, 133.0), "C2", "18 W"),
+        ((176.0, 176.0), "C1", "9 W"), ((142.0, 243.0), "C1", "9 W"), ((140.0, 133.0), "C2", "18 W"),
         ((164.0, 133.0), "C2", "18 W"), ((210.0, 133.0), "C2", "12 W"),
         ((135.0, 208.0), "C2", "12 W"), ((149.0, 202.0), "C2", "8 W"),
     )
     for point, circuit, power in lights:
         layout.add_blockref("P02_LUMINARIA", point, dxfattribs={"layer": "04_EQUIPAMENTOS"})
         centered(layout, f"{circuit} / {power}", (point[0], point[1] + 5.8), 1.25, "02_TEXTO")
-    switches = ((94.0, 111.0), (102.0, 191.0), (163.0, 199.0), (126.0, 160.0), (198.0, 160.0), (150.0, 191.0), (158.0, 173.0), (218.0, 173.0))
+    switches = ((94.0, 111.0), (102.0, 191.0), (163.0, 199.0), (126.0, 160.0), (198.0, 160.0), (150.0, 191.0), (158.0, 173.0), (218.0, 173.0), (109.0, 235.0))
     for point in switches:
         layout.add_blockref("P02_INTERRUPT", point, dxfattribs={"layer": "06_COMANDO"})
     command_line(layout, [(94.0, 111.0), (94.0, 145.0), (63.0, 145.0), (91.0, 145.0)])
@@ -450,17 +714,18 @@ def draw_lighting(layout) -> None:
     command_line(layout, [(198.0, 160.0), (210.0, 160.0), (210.0, 133.0)])
     command_line(layout, [(150.0, 191.0), (135.0, 191.0), (135.0, 208.0), (149.0, 202.0)])
     command_line(layout, [(158.0, 173.0), (176.0, 173.0), (176.0, 176.0), (218.0, 173.0)])
+    command_line(layout, [(109.0, 235.0), (109.0, 246.0), (115.0, 246.0), (142.0, 246.0), (142.0, 243.0)])
     add_rect(layout, 248.0, 105.0, 402.0, 260.0, "12_LEGENDA")
     centered(layout, "RESUMO DE ILUMINAÇÃO", (325.0, 253.0), 2.3, "12_LEGENDA")
     draw_table(
         layout, 254.0, 244.0, (20.0, 62.0, 22.0, 44.0),
         ("CIRC.", "AMBIENTES", "PONTOS", "POTÊNCIA"),
-        (("C1", "sala/quartos/circ.", "5", "69 W / 75 VA"), ("C2", "coz./banh./lav.", "5", "68 W / 73,913 VA")),
+        (("C1", "sala/quartos/circ./closet", "6", "78 W / 84,783 VA"), ("C2", "coz./banh./lav.", "5", "68 W / 73,913 VA")),
         row_h=13.0, text_h=1.4,
     )
     add_text(layout, "COMANDOS", (254.0, 197.0), 2.2, layer="13_NOTAS", style=TITLE_STYLE)
     add_mtext(layout, "Sala, quartos, cozinha, banheiro e lavanderia: interruptor simples.\\P"
-              "Circulação: dois interruptores paralelos indicativos.\\PTotal: 10 pontos LED e 8 comandos.",
+              "Circulação: dois interruptores paralelos indicativos; closet Q1 com comando simples.\\PTotal: 11 pontos LED e 9 comandos.",
               (254.0, 191.0), 140.0, 1.65, "13_NOTAS")
     layout.add_blockref("P02_LUMINARIA", (268.0, 145.0))
     add_text(layout, "Luminária de teto", (278.0, 143.5), 1.7, layer="12_LEGENDA")
@@ -514,11 +779,15 @@ def draw_conduits(layout) -> None:
     draw_floorplan(layout)
     qd = (121.0, 175.0)
     layout.add_blockref("P02_QD", qd)
-    boxes = ((76.0, 145.0), (76.0, 220.0), (176.0, 176.0), (152.0, 133.0), (210.0, 133.0), (135.0, 208.0), (196.0, 220.0))
+    boxes = (
+        (76.0, 145.0), (76.0, 220.0), (176.0, 176.0), (152.0, 133.0),
+        (210.0, 133.0), (135.0, 208.0), (196.0, 220.0), (142.0, 243.0),
+    )
     for point in boxes:
         layout.add_blockref("P02_CAIXA", point)
     conduit(layout, [(121.0, 175.0), (100.0, 175.0), (100.0, 145.0), (76.0, 145.0)], "DN25 C1/C3", (88.0, 153.0))
     conduit(layout, [(76.0, 145.0), (76.0, 220.0)], "DN20 C1/C3", (80.0, 205.0))
+    conduit(layout, [(76.0, 220.0), (109.0, 220.0), (109.0, 246.0), (115.0, 246.0), (142.0, 246.0), (142.0, 243.0)], "DN20 C1", (96.0, 230.0))
     conduit(layout, [(121.0, 175.0), (176.0, 175.0), (176.0, 176.0), (196.0, 176.0), (196.0, 220.0)], "DN25 C1/C3", (196.0, 179.5))
     conduit(layout, [(121.0, 175.0), (121.0, 133.0), (152.0, 133.0)], "DN25 C2/C4/C6", (139.0, 137.0))
     conduit(layout, [(152.0, 133.0), (210.0, 133.0)], "DN25 C2/C5/C8", (201.0, 137.0))
@@ -545,9 +814,9 @@ def draw_unifilar(layout) -> None:
     line(layout, (25.0, 235.0), (48.0, 235.0), "05_POTENCIA")
     boxed_label(layout, 48.0, 224.0, 83.0, 246.0, "MED1", "medição")
     line(layout, (83.0, 235.0), (94.0, 235.0), "05_POTENCIA")
-    boxed_label(layout, 94.0, 224.0, 125.0, 246.0, "QG1", "2P C63 A")
+    boxed_label(layout, 94.0, 224.0, 125.0, 246.0, "QG1", "2P | In PEND.")
     line(layout, (125.0, 235.0), (137.0, 235.0), "05_POTENCIA")
-    boxed_label(layout, 137.0, 224.0, 168.0, 246.0, "DR1", "2P 63 A / 30 mA")
+    boxed_label(layout, 137.0, 224.0, 168.0, 246.0, "DR1", "2P | In? / 30 mA")
     line(layout, (168.0, 235.0), (185.0, 235.0), "05_POTENCIA")
     line(layout, (185.0, 112.0), (185.0, 245.0), "05_POTENCIA")
     centered(layout, "BARRAMENTO QD1", (185.0, 252.0), 1.7, "05_POTENCIA")
@@ -572,8 +841,8 @@ def draw_unifilar(layout) -> None:
                  (262.0, y - 2.1), 1.35, layer="08_CABOS")
     add_rect(layout, 238.0, 105.0, 402.0, 252.0, "12_LEGENDA")
     add_text(layout, "PROTEÇÕES GERAIS", (25.0, 135.0), 2.0, layer="13_NOTAS", style=TITLE_STYLE)
-    add_mtext(layout, "QG1: 2P 63 A curva C.\\PDR1: 2P 63 A, 30 mA, tipo A.\\P"
-              "DPS1: tipo 2, Uc 275 V, Imax 20 kA.\\PCapacidade de interrupção: a calcular.",
+    add_mtext(layout, "QG1: polos, In e curva a dimensionar.\\PDR1: IΔn 30 mA como premissa; In e tipo a confirmar.\\P"
+              "DPS1: tipo 2, Uc 275 V, Imax 20 kA como premissas.\\PCapacidade de interrupção: a calcular.",
               (25.0, 130.0), 135.0, 1.55, "13_NOTAS")
 
 
@@ -594,9 +863,9 @@ def draw_distribution_board(layout) -> None:
         line(layout, (34.0, y), (266.0, y), "10_ELETROCALHAS")
         line(layout, (34.0, y + 32.0), (266.0, y + 32.0), "10_ELETROCALHAS")
     x = 38.0
-    x = module_box(layout, x, 218.0, 2, "QG1", "2P C63") + 4.0
+    x = module_box(layout, x, 218.0, 2, "QG1", "2P In PEND.") + 4.0
     x = module_box(layout, x, 218.0, 2, "DPS1", "2 x 275 V") + 4.0
-    x = module_box(layout, x, 218.0, 2, "DR1", "2P 63/0,03") + 4.0
+    x = module_box(layout, x, 218.0, 2, "DR1", "In? / 0,03") + 4.0
     module_box(layout, x, 218.0, 2, "RESERVA", "2 módulos")
     x = 38.0
     for circuit in CIRCUITS[:5]:
@@ -647,10 +916,81 @@ def draw_load_schedule(layout) -> None:
         text_h=1.45,
     )
     add_rect(layout, 18.0, 105.0, 402.0, 125.0, "12_LEGENDA")
-    centered(layout, "INSTALADA: 15 548,913 VA", (86.0, 115.0), 1.9, "12_LEGENDA")
-    centered(layout, "DEMANDA ACADÊMICA: 12 592,120 VA", (226.0, 115.0), 1.9, "12_LEGENDA")
-    centered(layout, "QG1: 2P 63 A | ALIM.: 16 mm²", (349.0, 115.0), 1.9, "12_LEGENDA")
+    circuit_va = [Decimal(str(circuit.va)) for circuit in CIRCUITS]
+    installed_va = sum(circuit_va, Decimal("0"))
+    centered(layout, f"INSTALADA: {format_va(installed_va)} VA", (86.0, 115.0), 1.9, "12_LEGENDA")
+    centered(layout, "DEMANDA / CORRENTE DO ALIMENTADOR: PENDENTES", (226.0, 115.0), 1.8, "12_LEGENDA")
+    centered(layout, "QG1 / ALIMENTADOR: DIMENSIONAR", (349.0, 115.0), 1.9, "12_LEGENDA")
     centered(layout, "QUEDA COMBINADA CONSERVADORA: C3 = 3,107% | C8 = 3,316%", (210.0, 100.0), 1.65, "13_NOTAS")
+
+
+def draw_phase_current_analysis(layout, rows: list[dict[str, str]]) -> None:
+    add_rect(layout, 18.0, 105.0, 244.0, 260.0, "12_LEGENDA")
+    centered(layout, "DECOMPOSIÇÃO DAS CARGAS POR CONDUTOR", (131.0, 251.0), 2.0, "12_LEGENDA")
+    table_rows = tuple(
+        (
+            row["fase"],
+            row["ramais_fase_neutro"],
+            f"{Decimal(row['va_fase_neutro']):.1f}".replace(".", ","),
+            f"{Decimal(row['soma_magnitudes_fase_neutro_a']):.2f}".replace(".", ","),
+            row["ramais_fase_fase"],
+            f"{Decimal(row['soma_magnitudes_fase_fase_a']):.2f}".replace(".", ","),
+            f"{Decimal(row['cota_superior_aritmetica_a']):.2f}".replace(".", ","),
+        )
+        for row in rows
+    )
+    draw_table(
+        layout,
+        20.0,
+        244.0,
+        (16.0, 34.0, 28.0, 25.0, 34.0, 28.0, 30.0),
+        ("FASE", "RAMOS 127 V", "VA", "SOMA |I|", "RAMOS 220 V", "SOMA |I|", "COTA |I|"),
+        table_rows,
+        row_h=24.0,
+        text_h=1.12,
+    )
+    centered(layout, "MÉTODO E LIMITES", (131.0, 160.0), 1.9, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "127 V: C1/C3/C5 em A; C2/C4/C8 em B.\\P"
+        "220 V: C6/C7 contribuem em ambos os condutores.\\P"
+        "Cota = soma aritmética de S/V por ramal, sem diversidade.\\P"
+        "É um limite superior por soma de módulos, não demanda nem corrente fasorial exata.",
+        (23.0, 153.0), 212.0, 1.5, "13_NOTAS",
+    )
+
+    add_rect(layout, 250.0, 105.0, 402.0, 260.0, "12_LEGENDA")
+    centered(layout, "COMPARAÇÃO COM A PREMISSA RETIRADA", (326.0, 251.0), 1.7, "12_LEGENDA")
+    chart_x = 272.0
+    chart_scale = 1.16
+    chart_top = 226.0
+    chart_bottom = 169.0
+    for amperes in (0, 20, 40, 60, 80):
+        x = chart_x + amperes * chart_scale
+        line(layout, (x, chart_bottom), (x, chart_top), "12_LEGENDA")
+        centered(layout, str(amperes), (x, 163.0), 1.1, "02_TEXTO")
+    reference_x = chart_x + 63.0 * chart_scale
+    y = chart_bottom
+    while y < chart_top:
+        line(layout, (reference_x, y), (reference_x, min(y + 2.0, chart_top)), "03_COTAS")
+        y += 4.0
+    centered(layout, "63 A ANTIGA", (reference_x, 233.0), 1.15, "03_COTAS")
+    for phase, bar_y, layer in (("A", 207.0, "05_POTENCIA"), ("B", 181.0, "07_INSTRUMENTACAO")):
+        row = next(item for item in rows if item["fase"] == phase)
+        bound = Decimal(row["cota_superior_aritmetica_a"])
+        bar_end = chart_x + float(bound) * chart_scale
+        centered(layout, phase, (260.0, bar_y + 3.5), 1.7, layer)
+        add_rect(layout, chart_x, bar_y, bar_end, bar_y + 7.0, layer)
+        centered(layout, f"{bound:.2f} A".replace(".", ","), (384.0, bar_y + 3.5), 1.45, layer)
+    add_rect(layout, 258.0, 111.0, 394.0, 151.0, "13_NOTAS")
+    centered(layout, "QG1 E ALIMENTADOR", (326.0, 144.0), 1.7, "13_NOTAS")
+    add_mtext(
+        layout,
+        "A antiga indicação de QG1 63 A foi retirada.\\P"
+        "Os valores da barra são cotas aritméticas, não correntes de projeto.\\P"
+        "In, curva, seção e demanda ficam pendentes de método e dados reais.",
+        (262.0, 136.0), 128.0, 1.25, "13_NOTAS",
+    )
 
 
 def detail_title(layout, x0: float, x1: float, value: str) -> None:
@@ -704,6 +1044,140 @@ def draw_grounding_details(layout) -> None:
               (288.0, 122.0), 106.0, 1.45, "13_NOTAS")
 
 
+def read_csv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
+def format_va(value: Decimal) -> str:
+    whole, fraction = f"{value:,.3f}".split(".")
+    return f"{whole.replace(',', ' ')},{fraction}"
+
+
+def format_area(value: Decimal) -> str:
+    return f"{value:.2f}".replace(".", ",")
+
+
+def draw_room_load_traceability(layout) -> None:
+    project_dir = PROJECT_DIR
+    rooms = read_csv_rows(project_dir / "rastreabilidade-ambientes.csv")
+    points = read_csv_rows(project_dir / "lista-pontos.csv")
+    room_by_point_name = {row["ambiente_lista_pontos"]: row for row in rooms}
+    totals = {
+        row["ambiente"]: {
+            "lighting_va": Decimal("0"),
+            "tug_va": Decimal("0"),
+            "tue_va": Decimal("0"),
+            "lighting_ids": [],
+            "tug_ids": [],
+            "tue_ids": [],
+            "lighting_circuits": set(),
+            "tug_circuits": set(),
+            "tue_circuits": set(),
+        }
+        for row in rooms
+    }
+
+    for point in points:
+        room = room_by_point_name.get(point["ambiente"])
+        if room is None:
+            raise ValueError(f"Ambiente sem correspondência na rastreabilidade: {point['ambiente']}")
+        bucket = totals[room["ambiente"]]
+        kind = point["tipo"]
+        amount = Decimal(point["potencia_total_va"])
+        token = f"{point['id']}x{point['quantidade']}"
+        if kind.startswith("Luminaria"):
+            family = "lighting"
+            bucket["lighting_va"] += amount
+        elif kind.startswith("TUG"):
+            family = "tug"
+            bucket["tug_va"] += amount
+        elif kind.startswith("TUE"):
+            family = "tue"
+            bucket["tue_va"] += amount
+        else:
+            raise ValueError(f"Tipo de ponto sem família de carga: {kind}")
+        bucket[f"{family}_ids"].append(token)
+        bucket[f"{family}_circuits"].add(point["circuito"])
+
+    add_rect(layout, 24.0, 153.0, 396.0, 254.0, "12_LEGENDA")
+    table_rows: list[tuple[str, ...]] = []
+    for room in rooms:
+        bucket = totals[room["ambiente"]]
+        light_va = bucket["lighting_va"]
+        tug_va = bucket["tug_va"]
+        tue_va = bucket["tue_va"]
+        total_va = light_va + tug_va + tue_va
+        light_ids = ";".join(bucket["lighting_ids"])
+        tug_ids = ";".join(bucket["tug_ids"])
+        tue_ids = ";".join(bucket["tue_ids"])
+        light_circuits = "/".join(sorted(bucket["lighting_circuits"]))
+        tug_circuits = "/".join(sorted(bucket["tug_circuits"]))
+        tue_circuits = "/".join(sorted(bucket["tue_circuits"]))
+        label = f"{room['ambiente']} {room['dimensoes_adotadas_m'].replace(' x ', 'x').replace(' + ', '+')}"
+        table_rows.append((
+            label,
+            format_area(Decimal(room["area_declarada_m2"])),
+            f"{light_circuits} {light_ids}".strip() or "—",
+            format_va(light_va),
+            f"{tug_circuits} {tug_ids}".strip() or "—",
+            format_va(tug_va),
+            f"{tue_circuits} {tue_ids}".strip() or "—",
+            format_va(tue_va),
+            format_va(total_va),
+        ))
+
+    area_total = sum((Decimal(row["area_declarada_m2"]) for row in rooms), Decimal("0"))
+    light_total = sum((item["lighting_va"] for item in totals.values()), Decimal("0"))
+    tug_total = sum((item["tug_va"] for item in totals.values()), Decimal("0"))
+    tue_total = sum((item["tue_va"] for item in totals.values()), Decimal("0"))
+    table_rows.append((
+        "TOTAL",
+        format_area(area_total),
+        "C1/C2",
+        format_va(light_total),
+        "C3/C4/C5",
+        format_va(tug_total),
+        "C6/C7/C8",
+        format_va(tue_total),
+        format_va(light_total + tug_total + tue_total),
+    ))
+    draw_table(
+        layout,
+        27.0,
+        248.0,
+        (52.0, 20.0, 50.0, 34.0, 50.0, 34.0, 48.0, 34.0, 40.0),
+        ("AMBIENTE / DIMENSÕES (m)", "m²", "LUZ C / IDs", "LUZ VA", "TUG C / IDs", "TUG VA", "TUE C / IDs", "TUE VA", "TOTAL VA"),
+        tuple(table_rows),
+        row_h=9.2,
+        text_h=1.25,
+    )
+    line(layout, (166.0, 112.0), (166.0, 151.0), "12_LEGENDA")
+    line(layout, (286.0, 112.0), (286.0, 151.0), "12_LEGENDA")
+    centered(layout, "CRITÉRIO", (92.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "VA e quantidades são premissas da lista-pontos.csv.\\P"
+        "Totais por ambiente somam as linhas identificadas por Lxx/Txx.",
+        (30.0, 136.0), 130.0, 1.35, "13_NOTAS",
+    )
+    centered(layout, "DADOS A SUBSTITUIR", (226.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "Planta arquitetônica levantada, vãos e cotas internas.\\P"
+        "Equipamentos, potências reais, uso e simultaneidade.",
+        (172.0, 136.0), 108.0, 1.35, "13_NOTAS",
+    )
+    centered(layout, "RASTREABILIDADE", (344.0, 144.0), 1.8, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "Lxx/Txx: lista-pontos.csv.\\P"
+        "C1-C8: quadro-cargas.csv.\\P"
+        "Nenhuma carga foi medida.",
+        (292.0, 136.0), 96.0, 1.35, "13_NOTAS",
+    )
+
+
 DRAWERS = (
     draw_architecture,
     draw_lighting,
@@ -713,6 +1187,7 @@ DRAWERS = (
     draw_distribution_board,
     draw_load_schedule,
     draw_grounding_details,
+    draw_room_load_traceability,
 )
 
 
@@ -721,8 +1196,11 @@ def generate(root: Path) -> list[Path]:
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     (root / PROJECT_SLUG / "exports").mkdir(parents=True, exist_ok=True)
+    phase_analysis = build_phase_current_analysis(root)
+    write_phase_current_analysis(root, phase_analysis)
+    drawers = (*DRAWERS, lambda layout: draw_phase_current_analysis(layout, phase_analysis))
     outputs: list[Path] = []
-    for spec, drawer in zip(SHEETS, DRAWERS):
+    for spec, drawer in zip(SHEETS, drawers):
         doc, layout = create_sheet(config, spec)
         drawer(layout)
         prepare_deterministic_write(doc)

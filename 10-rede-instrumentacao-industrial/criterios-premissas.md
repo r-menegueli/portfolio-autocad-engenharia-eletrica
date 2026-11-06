@@ -45,3 +45,35 @@ Fabricante, modelos, ranges calibrados, materiais molhados, classe de exatidão,
 isolação galvânica, tipo de entrada digital, protocolo, tempo de ciclo, VLAN,
 redundância, cybersecurity, proteção contra surtos, potência real, dissipação,
 conectores, prensa-cabos e método executivo de aterramento.
+
+A matriz causa–efeito da revisão 02 é um registro conceitual desses eventos. Ela não
+define limites de diagnóstico, timeout, retenção de alarme, fail state ou resposta
+específica de processo sem os modelos selecionados, a estratégia do PLC e a análise
+de risco da aplicação.
+
+## Revisão 03 — pontos de escala analógica
+
+Para as quatro faixas fictícias declaradas, a matriz apresenta os valores ideais em
+4, 8, 12, 16 e 20 mA. Os pontos intermediários correspondem a 25 %, 50 % e 75 % da
+faixa linear. Não há dados de exatidão, resolução ou tolerância dos instrumentos e
+cartões; portanto, os valores não são limites de aceitação, calibração ou evidência
+de comissionamento.
+
+## Revisão 04 — balanço da fonte 24 Vcc
+
+A prancha 09 representa os sete grupos da lista de alimentação. A soma declarada é
+3,10 A e 74,40 W; a capacidade proposta de PS1 é 10 A e 240 W. O saldo de 6,90 A e
+165,60 W é aritmético, e a reserva auxiliar de 1,05 A já pertence aos 3,10 A
+previstos. Não se deduzem ramais, fusíveis ou margem térmica. Seleção de fabricante,
+inrush, derating, curto-circuito, proteção, continuidade e ensaio continuam pendentes.
+
+## Revisão 05 — interligações e proteção conceitual
+
+P24-201 usa os terminais X2:03/04, protegidos pelo identificador FU2; P24-202 usa
+X2:05/06, identificados por FU3. O condutor PE de ambos é levado a PE-101 e às
+carcaças das remotas. X2:01/02 fornece a distribuição comum de campo, associada ao
+identificador FU4; FU1 fica reservado a PLC/SW no esquema de arquitetura. Esses nomes
+organizam a documentação e não definem rating, curva, capacidade de interrupção,
+seletividade, seção validada ou proteção final. Corrente por ramal, queda de tensão,
+dados de curto-circuito, dados dos dispositivos e instruções do fabricante seguem
+pendentes.

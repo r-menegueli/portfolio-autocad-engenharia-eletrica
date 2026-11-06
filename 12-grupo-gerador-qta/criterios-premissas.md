@@ -21,11 +21,35 @@
 * **Sistema de Descarga de Gases:** Tubulação em aço carbono sem costura ASTM A53 Grau B, diâmetro nominal 4" (DN 100 mm), isolada termicamente com manta de lã de rocha (espessura 50 mm, densidade $64\text{ kg/m}^3$) revestida com chapa de alumínio corrugado 0,5 mm. Silencioso de absorção e reatividade com atenuação de 30 dB(A) e dreno de água condensada na base.
 * **Combustível e Segurança Ambiental:** Tanque diário de 250 litros integrado na base do grupo gerador, provido de bacia de contenção em chapa de aço estanque soldada com volume útil mínimo de 275 litros (110% da capacidade total do reservatório).
 
+### Limites geométricos da P12-06
+
+- As dimensões internas de 6,50 x 4,00 m são premissas; a geometria desenhada não representa escala gráfica válida, indicada como `S/ESC.`.
+- A cabine, venezianas, atenuadores, portas, base e bacia são representações esquemáticas, sem envelope de um modelo OEM selecionado.
+- Vazão de ventilação, sentido do ar, contrapressão e temperatura do escape, ruído, áreas de manutenção e rota física devem ser confirmados nos documentos do fabricante e no levantamento do local.
+- A P12-06 não comprova desempenho acústico, troca de calor, circulação, autonomia sob carga ou atendimento a requisitos de implantação.
+
 ---
 
 ## 3. Filosofia de Controle e Automação
 
 1. **Modo Automático:** A USCA permanece monitorando as tensões de linha e de fase da rede da concessionária. Havendo sub/sobretensão prolongada (> 3 s) ou falta de fase, o comando de partida do GMG é ativado. Quando a tensão e frequência do gerador atingem a faixa estável nominal ($380\text{ V} \pm 2\%$ e $60\text{ Hz} \pm 1\%$), o contator K1 é aberto e, após o *dead time* de 1,5 s, o contator K2 é fechado.
-2. **Modo Manual:** Permite a partida do motor via tecla de teste e manobra manual local dos contatores de transferência pelo painel frontal.
-3. **Modo Teste com Carga e Sem Carga:** Permite a realização de rotinas semanais de teste programado do grupo gerador para verificação da saúde das baterias e integridade mecânica do motor.
-4. **Circuito Auxiliar de Bateria:** Tensão de 12 Vcc com 1 bateria chumbo-ácido selada AGM de 150 Ah / 1000 CCA. O painel inclui carregador inteligente de flutuação de 12 Vcc / 5 A alimentado permanentemente pela rede da concessionária.
+2. **Modos manual e de teste:** não implementados nesta sequência automática e não documentados como funções disponíveis nas pranchas. Exigem projeto e validação próprios.
+3. **Circuito Auxiliar de Bateria:** Tensão proposta de 12 Vcc com bateria AGM de 150 Ah / 1000 CCA e carregador de flutuação de 12 Vcc / 5 A. Autonomia e compatibilidade não foram verificadas.
+
+## 4. Sequência e temporizações
+
+- Confirmar falha da rede: 3 s.
+- Arranque: até 3 tentativas, 5 s por tentativa, com pausa de 5 s entre tentativas.
+- Estabilização do GMG: 5 s; tempo morto em cada transferência aberta: 1,5 s.
+- Estabilização da rede antes do retorno: 120 s; arrefecimento sem carga: 180 s.
+- Os setpoints são premissas de estudo, não garantias de desempenho. Seleção e validação devem considerar as instruções do fabricante do GMG/USCA e as condições da carga.
+
+## 5. Cadastro de cargas essenciais do QCE
+
+O cadastro da revisão 03 reproduz quatro ramais existentes em lista-cabos.csv.
+As formações e os comprimentos continuam como premissas registradas, não como
+dimensionamento validado. Potência instalada, corrente nominal, método de partida,
+regime/simultaneidade e prioridade de sequenciamento ficam marcados como pendentes.
+Também é necessário confirmar com o responsável do processo se o cadastro cobre
+todos os ramais do QCE. Sem essas entradas não se calcula demanda, degrau de carga
+nem autonomia associada à carga real do grupo gerador.

@@ -1,38 +1,52 @@
-regua,borne,potencial,funcao,cabo,destino
-X1,1,L1,Entrada fase L1,W600,QG-06
-X1,2,L2,Entrada fase L2,W600,QG-06
-X1,3,L3,Entrada fase L3,W600,QG-06
-X1,4,N,Entrada neutro,W600,Barra N
-X1,5,PE,Entrada protecao,W600,PE-06
-X2,1,U,Motor bomba U,W601,M-601 U
-X2,2,V,Motor bomba V,W601,M-601 V
-X2,3,W,Motor bomba W,W601,M-601 W
-X2,4,PE,Motor bomba PE,W601,M-601 PE
-X2,5,U,Motor esteira U,W602,M-602 U
-X2,6,V,Motor esteira V,W602,M-602 V
-X2,7,W,Motor esteira W,W602,M-602 W
-X2,8,PE,Motor esteira PE,W602,M-602 PE
-X2,9,U,Motor ventilador U,W603B,M-603 U
-X2,10,V,Motor ventilador V,W603B,M-603 V
-X2,11,W,Motor ventilador W,W603B,M-603 W
-X2,12,PE,Motor ventilador PE,W603B,M-603 PE
-X3,1,+24V,Partida bomba,W605,S-601L
-X3,2,DI,Parada bomba,W605,S-601P
-X3,3,+24V,Partida frente,W606,S-602F
-X3,4,+24V,Partida reverso,W606,S-602R
-X3,5,DI,Fim de curso frente,W606,FC-602F
-X3,6,DI,Fim de curso reverso,W606,FC-602R
-X3,7,SAFE1,Emergencia canal 1,W604,S0-601 CH1
-X3,8,SAFE2,Emergencia canal 2,W604,S0-601 CH2
-X3,9,+24V,Sinal bomba em marcha,W608,H-601
-X3,10,+24V,Sinal esteira em marcha,W608,H-602
-X4,1,STO-A,Torque seguro canal A,W604,VFD-603 STO-A
-X4,2,STO-B,Torque seguro canal B,W604,VFD-603 STO-B
-X4,3,+24V,Partida ventilador,W607,VFD-603 DI1
-X4,4,0V,Parada ventilador,W607,VFD-603 DI2
-X4,5,AI1,Referencia velocidade 0-10 V,W607,VFD-603 AI1
-X4,6,COM,Comum analogico,W607,VFD-603 COM
-X4,7,SH,Blindagem sinal analogico,W607,Barra SH
-X4,8,RO1,Estado ventilador em marcha,W608,H-603
-X4,9,RO1,Comum rele de estado,W608,0 V
-X4,10,RO2,Falha do inversor,W608,H-604
+regua,borne,potencial,condutor,funcao,cabo,destino
+X1,1,L1,L1,Fase L1 do alimentador,W600,QG-06 L1
+X1,2,L2,L2,Fase L2 do alimentador,W600,QG-06 L2
+X1,3,L3,L3,Fase L3 do alimentador,W600,QG-06 L3
+X1,4,N,N,Neutro do alimentador,W600,Barra N-06
+X1,5,PE,PE,Protecao do alimentador,W600,Barra PE-06
+X2,1,U,U,Fase U do motor bomba,W601,M-601 U
+X2,2,V,V,Fase V do motor bomba,W601,M-601 V
+X2,3,W,W,Fase W do motor bomba,W601,M-601 W
+X2,4,PE,PE,Protecao do motor bomba,W601,M-601 PE
+X2,5,U,U,Fase U do motor esteira,W602,M-602 U
+X2,6,V,V,Fase V do motor esteira,W602,M-602 V
+X2,7,W,W,Fase W do motor esteira,W602,M-602 W
+X2,8,PE,PE,Protecao do motor esteira,W602,M-602 PE
+X2,9,U,U,Fase U de saida do inversor,W603B,M-603 U
+X2,10,V,V,Fase V de saida do inversor,W603B,M-603 V
+X2,11,W,W,Fase W de saida do inversor,W603B,M-603 W
+X2,12,PE,PE,Protecao do motor ventilador,W603B,M-603 PE
+X3,1,+24V,+24V,Alimentacao comum das botoeiras,W605,PB-601 comum
+X3,2,DI-START,START,Retorno da botoeira ligar,W605,S-601L
+X3,3,DI-STOP,STOP,Retorno da botoeira parar,W605,S-601P
+X3,4,RES,RES,Reserva nao conectada,W605,PB-601
+X3,5,+24V,+24V,Alimentacao comum dos comandos,W606,PB-602 comum
+X3,6,DI-F,F,Pedido de movimento frente,W606,S-602F
+X3,7,DI-R,R,Pedido de movimento reverso,W606,S-602R
+X3,8,DI-FCF,FCF,Permissivo fim de curso frente,W606,FC-602F
+X3,9,DI-FCR,FCR,Permissivo fim de curso reverso,W606,FC-602R
+X3,10,0V,0V,Comum do circuito de comando,W606,PB-602 / FC
+X3,11,RES1,RES1,Reserva nao conectada,W606,PB-602
+X3,12,RES2,RES2,Reserva nao conectada,W606,PB-602
+X3,13,CH1A,CH1A,Canal 1 contato A do botao de emergencia,W604,S0-601 contato CH1-A
+X3,14,CH1B,CH1B,Canal 1 contato B do botao de emergencia,W604,S0-601 contato CH1-B
+X3,15,CH2A,CH2A,Canal 2 contato A do botao de emergencia,W604,S0-601 contato CH2-A
+X3,16,CH2B,CH2B,Canal 2 contato B do botao de emergencia,W604,S0-601 contato CH2-B
+X3,17,RES1,RES1,Reserva nao conectada,W604,S0-601
+X3,18,RES2,RES2,Reserva nao conectada,W604,S0-601
+X3,19,H-601,H601,Sinalizador bomba em marcha,W608,Porta do CCM H-601
+X3,20,H-602,H602,Sinalizador esteira em marcha,W608,Porta do CCM H-602
+X3,21,H-603,H603,Sinalizador ventilador em marcha,W608,Porta do CCM H-603
+X3,22,H-604,H604,Sinalizador falha do inversor,W608,Porta do CCM H-604
+X3,23,0V,0V,Comum dos sinalizadores,W608,Porta do CCM comum
+X3,24,RES,RES,Reserva nao conectada,W608,Porta do CCM
+X4,1,STO-A,STO-A,Canal A de desabilitacao segura de torque,INTERNO,VFD-603 STO-A via KSR-601
+X4,2,STO-B,STO-B,Canal B de desabilitacao segura de torque,INTERNO,VFD-603 STO-B via KSR-601
+X4,3,+24V,+24V,Alimentacao comum da estacao local,W607,PB-603 comum
+X4,4,DI1,DI1,Pedido START do ventilador,W607,S-603L / VFD-603 DI1
+X4,5,DI2,DI2,Pedido STOP do ventilador,W607,S-603P / VFD-603 DI2
+X4,6,DI3,DI3,Selecao local ou remoto,W607,SA-603 / VFD-603 DI3
+X4,7,AI1,AI1,Referencia analogica de velocidade,W607,P-603 / VFD-603 AI1
+X4,8,COM,COM,Comum analogico e digital,W607,PB-603 / VFD-603 COM
+X4,9,SH,SH,Dreno da blindagem da referencia analogica,W607,Barra SH-06
+X4,10,RES,RES,Reserva nao conectada,W607,PB-603

@@ -1,0 +1,14 @@
+grupo,ordem,codigo,titulo,descricao
+habilitacao,1,INI-01,ISOLADO,Q0 aberto; sem torque
+habilitacao,2,INI-02,PRÉ-CHECK,S0 liberada; comandos inativos
+habilitacao,3,INI-03,ENERGIZAR,Fechar Q0/Q1/Q2; PS1 = 24 Vcc
+habilitacao,4,INI-04,REARMAR / PRONTO,"KSR1 valida 2 canais S0; S5 rearma; STO habilitado; autoteste VFD; H2 pronto; sem RUN automático"
+operacao,1,OP-01,PRONTO,H2 aceso; S3 seleciona LOCAL / 0 / REMOTO
+operacao,2,OP-02,PARTIDA,S1 (LOCAL) ou X3:7 (REMOTO); exige novo comando
+operacao,3,OP-03,MARCHA,H3 aceso; P1 0-10 V ou W06 4-20 mA
+operacao,4,OP-04,PARADA CONTROLADA,S2 (LOCAL) ou X3:8 (REMOTO)
+evento,1,EV-01,EMERGÊNCIA S0,"S0 abre canal; KSR1 cai; STO removido; M1 coasta. Liberar S0 não rearma. Após confirmar condição segura, S5 rearma KSR1; exigir novo RUN."
+evento,2,EV-02,FALHA DO VFD,"H4 aceso / H3 apagado. Eliminar causa; S4 (LOCAL) ou X3:9 (REMOTO) reinicia só o VFD. Sem RUN automático."
+evento,3,EV-03,FALTA DE ENERGIA,"VFD1 e PS1 desenergizam. No retorno: verificar, sem reset/repartida automáticos; exige novo comando."
+evento,4,EV-04,TROCA / SINAL,"Troca de S3 em marcha: remover comando e parar; novo modo após inativo + novo comando. Perda 4-20 mA: hipótese descrita abaixo."
+nota,1,NOT-01,PREMISSAS,"Fluxo funcional acadêmico; implementação, pinagem, rampas, categoria/PL/SIL e tempo de parada dependem do projeto e de ensaios. Perda remota de 4-20 mA: parada controlada + alarme é hipótese a confirmar no VFD; ensaios de campo não executados."

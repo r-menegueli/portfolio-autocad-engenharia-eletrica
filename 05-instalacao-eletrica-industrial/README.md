@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 07
+Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades em milímetros, revisão 00
+Formato: A3 paisagem, unidades em milímetros, revisão 05 (2026-11-06)
 
-Estado: concluído e validado em 2026-09-09
+Estado: revisão conceitual 05; curto-circuito, capacidade de interrupção e coordenação continuam pendentes
 
 Este projeto acadêmico apresenta a distribuição elétrica conceitual de uma oficina
 metalmecânica fictícia de `30,00 x 18,00 m`, com área de `540,00 m²`. A alimentação
@@ -15,13 +15,15 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 
 ## Entregáveis
 
-- `fonte/`: sete desenhos DXF R2013 e scripts reproduzíveis;
+- `fonte/`: nove desenhos DXF R2013 e scripts reproduzíveis;
 - `exports/`: versões PDF, SVG e PNG derivadas dos DXFs;
 - `memorial-descritivo.md`: descrição do sistema e de suas interfaces;
 - `criterios-premissas.md`: hipóteses, critérios de cálculo e limitações;
 - `memoria-calculo.md`: potências, demandas, correntes e quedas de tensão;
 - `referencias-normativas.md`: referências e condição de uso;
 - `quadro-cargas.csv`: fonte tabular dos 16 circuitos;
+- `matriz-coordenacao-protecoes.csv`: seis pares montante-jusante e dados necessários para verificar curto-circuito, curvas e seletividade;
+- `dados-estudo-coordenacao.csv`: doze grupos de dados, cálculos e evidências necessários para concluir o estudo; todos permanecem `PENDENTE`;
 - `alimentadores.csv`: consolidação dos quatro alimentadores;
 - `lista-cabos.csv` e `lista-materiais.csv`: rastreabilidade de rotas e quantitativos;
 - `tabelas-projeto-05.xlsx`: workbook técnico com fórmulas e auditoria;
@@ -32,7 +34,9 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 ## Pranchas
 
 1. [Layout industrial](fonte/01_layout_industrial.dxf): implantação, dimensões,
-   máquinas, tomadas e quadros.
+   máquinas, tomadas, quadros e tabela dos circuitos C01-C06 com cargas e coordenadas
+   derivadas da escala do croqui. As coordenadas não são levantamento topográfico;
+   pegadas, folgas e acessos reais continuam pendentes.
 2. [Distribuição de força](fonte/02_distribuicao_forca.dxf): circuitos C01 a C08,
    cargas trifásicas e tomadas industriais.
 3. [Distribuição de iluminação](fonte/03_distribuicao_iluminacao.dxf): luminárias,
@@ -44,6 +48,10 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 6. [Quadro de cargas](fonte/06_quadro_cargas.dxf): 16 circuitos e resumo elétrico.
 7. [Detalhes de instalação](fonte/07_detalhes_instalacao.dxf): eletrocalha, tomada,
    quadro, equipotencialização e identificação.
+8. [Coordenação das proteções](fonte/08_coordenacao_protecoes.dxf): topologia dos
+   dispositivos, seis pares montante-jusante e evidências ainda pendentes.
+9. [Plano de dados para curto-circuito e coordenação](fonte/09_plano_dados_coordenacao.dxf): entradas de rede e equipamentos, verificações de Icc/cabos, comparação de curvas para os seis pares e registro da revisão. Não mostra resultados calculados.
+   O fluxo indica as evidências necessárias para modelar a rede, calcular Icc máximo/mínimo por ponto, verificar capacidade e suportabilidade, comparar pares e fechar a revisão.
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -69,6 +77,8 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Referências normativas](referencias-normativas.md)
 - [Inspeção visual](inspecao-visual.md)
 - [Quadro de cargas](quadro-cargas.csv)
+- [Matriz de coordenação das proteções](matriz-coordenacao-protecoes.csv)
+- [Dados para o estudo de coordenação](dados-estudo-coordenacao.csv)
 - [Alimentadores](alimentadores.csv)
 - [Lista de cabos](lista-cabos.csv)
 - [Lista de materiais](lista-materiais.csv)
@@ -91,7 +101,22 @@ e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps inte
 permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
 são as fontes principais.
 
-Resultado registrado: validação específica `PASS` com 294 verificações; validação
-estrita do portfólio `PASS` com 200.489 verificações, zero erros e zero avisos.
+Na revisão 05, o layout relaciona cada equipamento a circuito, potência aparente
+instalada e coordenadas do croqui, todas calculadas da geometria existente em escala
+1:125. A verificação de campo, os envelopes OEM, as folgas, o fluxo de processo e os
+acessos continuam pendentes; o desenho não representa implantação real. Nenhum valor
+presumido de Icc/Icu é tratado como seleção; os dados de rede e fabricante continuam
+pendentes. Os resultados atuais de validação e auditoria são registrados em
+`validacao-calculos.json`, `validacao.json` e `inspecao-visual.md`.
+
+## Verificação da revisão 05
+
+O validador específico passou em 443 verificações, sem erros. O AutoCAD AcCoreConsole
+2027 abriu e auditou 9/9 DXFs, sem erros encontrados ou corrigidos. A P05-01 foi
+inspecionada no PNG de produção a 300 dpi e no PDF rasterizado independentemente a
+150 dpi; sua similaridade PDF/PNG foi 0,992284. A tabela de circuitos, cargas e
+coordenadas está legível, mas coordenadas são do croqui e não substituem levantamento,
+envelopes de máquinas, folgas, áreas de operação ou fluxo real. O contato das nove
+folhas foi conferido; a inspeção dos SVGs no navegador aguarda autorização do usuário.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

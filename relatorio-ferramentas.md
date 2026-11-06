@@ -271,6 +271,20 @@ verificações sem erros ou avisos. Uma nova geração manteve hashes idênticos
 artefatos CAD do projeto, e nove testes automatizados passaram. Nenhum DWG foi
 produzido ou versionado; DXF AC1027 permanece como fonte principal.
 
+### Revisão 02 do Projeto 07 — 2026-11-05
+
+A P07-09 acrescenta uma matriz de dez eventos e rastreia sinais, estados, reações
+propostas e lacunas de validação. Não declara HARA, FMEA, ASIL, diagnóstico implementado
+ou desligamento seguro. As oito folhas existentes foram reemitidas em revisão 02 e
+renumeradas de `NN/08` para `NN/09`.
+
+O validador específico aprovou 4.247 verificações. O AcCoreConsole 2027 abriu e auditou
+as nove fontes, `PASS` em 9/9. P07-09 foi conferida em PNG de produção, PDF rasterizado
+a 150 dpi e na folha de contato das nove pranchas. O revisor consolidado confirmou 12
+projetos, 93 pranchas, 372 arquivos gráficos e 65 CSVs; a validação estrita aprovou
+496.492 verificações sem erros nem avisos. A inspeção visual dos SVGs no navegador
+continua pendente da autorização do usuário.
+
 ## Auditoria CAD e visual do Projeto 08
 
 Em 2026-09-09, o Autodesk AcCoreConsole 2027, versão 26.0.118.0.0, abriu e auditou
@@ -306,6 +320,24 @@ NBR 5410:2004 versão corrigida 2008 e série NBR 5419:2026; o Inmetro para as P
 61643-31:2018/COR1:2022, 62852:2014+A1:2020 e 62446-1:2016+A1:2018. As referências
 são critérios de consulta; sua aplicação executiva permanece condicionada à edição
 vigente, ao acesso integral às normas e à responsabilidade profissional.
+
+## Revisão 02 do Projeto 08 — 2026-11-05
+
+A revisão ampliou o P08 para sete pranchas e acrescentou P08-07, uma comparação
+paramétrica da energia anual para 6,60 kWp. A grade de 12 cenários usa HSP de 3 a
+6 h/dia e PR de 0,70 a 0,86; seus extremos calculados são 5.058,900 e 12.430,440
+kWh/ano. São combinações matemáticas escolhidas para estudo, sem dados meteorológicos,
+probabilidade ou previsão de um local. O caso didático existente permanece em
+9.770,904 kWh/ano (HSP 5,2; PR 0,78).
+
+O validador específico aprovou 8.073 verificações, incluindo as 13 linhas do CSV e as
+fórmulas da grade. O AutoCAD AcCoreConsole 2027 abriu e auditou os sete DXFs, `PASS`
+em 7/7. As sete PNGs de produção e os sete PDFs rasterizados a 150 dpi foram
+inspecionados; a composição das sete folhas também foi conferida. A validação estrita
+integrada do portfólio aprovou 496.492 verificações, sem erros ou avisos; o revisor
+consolidado confirmou 12 projetos, 93 pranchas, 372 derivados e 65 CSVs, com similaridade
+mínima PDF/PNG de 0,9842. A inspeção visual em navegador dos SVGs da revisão 02 aguarda
+autorização do usuário. Nenhum DWG foi produzido; DXF AC1027 permanece como fonte.
 
 ## Auditoria CAD e visual do Projeto 09
 
@@ -413,3 +445,148 @@ O workbook P05 regenerado preservou sete abas e 209 fórmulas, passou nas 294
 verificações específicas e foi novamente renderizado e inspecionado com a ferramenta
 disponível no ambiente de revisão. Duas execuções independentes do novo gerador
 produziram o mesmo SHA-256 após a normalização dos metadados internos.
+
+## Revisão 02 do Projeto 01 — 2026-11-05
+
+O P01 passou a sete folhas; as seis fontes anteriores foram reemitidas em `/07` e
+revisão gráfica 02. A nova P01-07 apresenta a cadeia QDG–Q0–Q1–VFD1–M1 e organiza em
+sete linhas os dados necessários para revisar Icc, seccionador, disjuntor, VFD/motor,
+fonte auxiliar, DPS e cabos. O CSV vinculado mantém cada premissa, dado substituto e
+análise pendente. A comparação aritmética 10 kA/5 kA está explicitamente marcada como
+insuficiente para provar coordenação.
+
+O AcCoreConsole do AutoCAD 2027 auditou 7/7 DXFs. P01-07 foi conferida no PNG de
+produção a 300 dpi, em PDF rasterizado pelo Poppler a 150 dpi e na folha de contato das
+sete páginas. Não observei corte ou colisão relevante. O revisor atribuiu similaridade
+PDF/PNG de 0,987268 à nova folha. A validação estrita integrada aprovou 501.282
+verificações, sem erros nem avisos; a revisão consolidada aprovou 12 projetos, 94
+pranchas, 376 arquivos gráficos e 66 CSVs, com similaridade mínima de 0,9842.
+
+A inspeção visual dos SVGs no navegador segue pendente da autorização do usuário. A
+revisão confirma integridade CAD e apresentação, mas não dimensionamento ou coordenação
+elétrica para execução.
+
+## Atualização P01-08 — 2026-11-05
+
+A prancha P01-08 acrescenta um plano de verificação com cinco etapas e doze pontos de
+fechamento, rastreando dados, evidências e estado. A matriz vinculada mantém todos os
+itens como `NÃO EXECUTADO`; não há resultados de campo nem aprovação implícita. O
+gerador valida o cabeçalho, a unicidade dos códigos e as doze linhas completas do CSV.
+
+As oito fontes DXF foram regeneradas deterministicamente: uma segunda execução
+reproduziu os oito SHA-256. O AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 fontes. As
+oito folhas foram renderizadas em PDF, SVG e PNG; o contato atualizado do P01 foi
+conferido e P01-08 foi examinada integralmente no PNG de produção a 300 dpi e em raster
+independente do PDF, feito pelo Poppler a 150 dpi. Não observei cortes ou colisões
+relevantes na nova folha; sua similaridade PDF/PNG foi 0,984095.
+
+A validação estrita integrada passou por 509.704 verificações, sem erros nem avisos.
+O revisor confirmou 12 projetos, 95 pranchas, 380 arquivos gráficos e 67 CSVs; a
+similaridade mínima PDF/PNG foi 0,984095. A inspeção visual dos SVGs em navegador
+continua pendente de autorização.
+
+## Atualização P02-09 — 2026-11-05
+
+A revisão gráfica 02 amplia o P02 para nove folhas e acrescenta uma rastreabilidade
+por ambiente ligada à lista de pontos e ao quadro de cargas. O CSV declara como
+`PREMISSA` dimensões, usos, equipamentos ainda não selecionados e potências atribuídas;
+os 19 pontos somam 15.548,913 VA em oito ambientes e 75 m². O validador específico
+passou em 63 verificações, sem erros.
+
+O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs. A regeneração repetida
+reproduziu os nove hashes SHA-256. As nove folhas foram renderizadas em PDF, SVG e PNG;
+conferi o contato atualizado, P02-01 no PNG integral a 300 dpi e P02-09 no PNG integral
+e PDF rasterizado independentemente pelo Poppler a 150 dpi. A similaridade mínima
+PDF/PNG do projeto foi 0,986556. O navegador não foi usado para inspecionar os SVGs
+desta revisão; a etapa aguarda autorização.
+
+A validação estrita integrada passou por 521.224 verificações, sem erros nem avisos.
+O revisor confirmou 12 projetos, 96 pranchas, 384 arquivos gráficos e 68 CSVs; a
+similaridade mínima PDF/PNG do portfólio foi 0,984095.
+
+## Atualização P03-10 — 2026-11-05
+
+O Projeto 03 passou a dez pranchas na revisão 03. A nova folha organiza doze pontos de
+verificação para processo, hardware, alimentação, I/O, permissivos, sequência, falhas,
+rearme e entrega. Todos permanecem `NÃO EXECUTADO`; as premissas de tempo precisam de
+confirmação e a resposta a sensor incoerente com bomba em marcha continua pendente.
+
+O validador lógico específico passou em 232 verificações. O AutoCAD AcCoreConsole 2027
+abriu e auditou 10/10 DXFs. Conferi a folha de contato P03 com dez folhas, o PNG de
+produção a 300 dpi e o PDF rasterizado pelo Poppler a 150 dpi; não observei cortes na
+tabela, carimbo ou aviso. Os SVGs não foram inspecionados em navegador nesta etapa.
+
+A reconstrução completa do portfólio e a validação estrita passaram por 529.645
+verificações, sem erros nem avisos. O revisor confirmou 12 projetos, 97 pranchas, 388
+arquivos gráficos e 69 CSVs, com similaridade mínima PDF/PNG de 0,984061.
+
+## Revisão 05 do Projeto 10 — 2026-11-06
+
+O AcCoreConsole 2027 abriu e auditou 10/10 DXFs P10. A folha nova P10-10 foi
+renderizada em PDF/SVG/PNG; Poppler `pdftoppm` 26.07.0 rasterizou o PDF
+independentemente a 150 dpi e a inspeção não encontrou cortes ou colisões. O PNG de
+produção a 300 dpi e o contato das dez folhas também foram conferidos. O validador
+específico passou em 64.395 verificações; o estrito passou em 613.579 sem erros ou
+avisos. O revisor integrado confirmou 12 projetos, 105 pranchas, 420 arquivos
+gráficos e 72 CSVs, com similaridade mínima de 0,981493; P10-10 obteve 0,988205.
+Edge/Chrome não foram usados para inspeção visual dos SVGs; essa etapa segue
+aguardando autorização do usuário.
+
+## Atualização P01-09 — revisão 04 — 2026-11-06
+
+A nova sequência operacional foi gerada em `09_sequencia_operacional_estados.dxf`, com
+`sequencia-estados.csv` como fonte dos estados e eventos. A segunda geração do P01
+reproduziu os nove SHA-256. O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs.
+
+O PNG de produção, o contato das nove folhas e a rasterização independente do PDF pelo
+Poppler a 150 dpi foram inspecionados; não encontrei cortes ou colisões. A similaridade
+PDF/PNG de P01-09 foi 0,990330. A revisão integrada passou: 12 projetos, 114 folhas,
+456 arquivos gráficos, 77 CSVs e similaridade mínima de 0,981493. O validador estrito
+passou por 663.880 verificações, sem erros ou avisos. A inspeção de SVGs no navegador
+continua aguardando autorização.
+
+## Auditoria CAD — P05 revisão 05, P11/P12 revisão 04 — 2026-11-06
+
+O AutoCAD AcCoreConsole 2027 (26.0.118.0.0) abriu e auditou os 26 DXFs dos projetos
+P05, P11 e P12. A execução em lote registrou zero erros encontrados e zero corrigidos.
+Os geradores P11/P12 agora gravam DXF em LF, conforme `.gitattributes`; os 26 hashes de
+origem no manifesto conferem com os arquivos que serão versionados.
+Os três renders de produção P05-01, P11-02 e P12-06 foram comparados a PDFs rasterizados
+independentemente pelo `pypdfium2`; também conferi o PNG integral e o contato do
+respectivo conjunto. Não encontrei cortes ou colisões relevantes.
+
+P05-01 obteve similaridade PDF/PNG de 0,992284; P11-02, 0,990676; P12-06, 0,991573.
+Os validadores específicos passaram (P05: 443 verificações; P11: oito folhas, 23
+materiais, 17 cabos e 22 entradas pendentes; P12: nove folhas, nove eventos, quatro
+alimentadores QCE, 24 materiais e 15 cabos). A revisão integrada confirmou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; validação estrita: 668.075 verificações,
+zero erros e zero avisos. Essas verificações não demonstram dimensionamento ou aptidão
+executiva. A inspeção de SVGs no navegador continua aguardando autorização.
+
+## P09 revisão 05 — detalhamento mecânico — 2026-11-06
+
+P09-05 passou a desenhar cada registro de `lista-recortes.csv`; a geometria é gerada
+diretamente dos centros, dimensões e classificações do CSV. A prancha separa dez itens
+frontais e seis traseiros, incluindo LED-CV, LED-CC e FAN1-H1 a FAN1-H4. A origem de
+coordenadas, a unidade e o caráter proposto aparecem na folha; materiais, tolerâncias,
+acabamento e processo continuam indefinidos.
+
+O validador específico passou em 18.916 verificações. O AcCoreConsole 2027 abriu/auditou
+10/10 DXFs P09 com resultado `PASS`. P09-05 foi conferida no PNG a 300 dpi, no PDF
+rasterizado independentemente pelo Poppler 26.07.0 a 150 dpi e no contato das dez folhas.
+Não observei cortes ou colisões relevantes. O revisor integrado aprovou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; validação estrita: 673.894 verificações,
+zero erros e zero avisos. O teste visual de SVGs no navegador ainda aguarda autorização;
+simulação elétrica não foi executada.
+
+## P08 revisão 04 — rotas do sistema fotovoltaico — 2026-11-06
+
+A legenda de P08-01 agora corresponde à camada CC turquesa. P08-06 separa os dois
+percursos de string, associa cada saída ao MPPT correto, identifica rotas CA/PE e
+registra a comunicação opcional sem inventar um trajeto físico. Os comprimentos são
+marcados como assumidos. O validador P08 passou em 8.131 verificações; o AcCoreConsole
+2027 auditou 8/8 DXFs. As folhas P08-01 e P08-06 foram conferidas em PNG a 300 dpi e
+PDF A3 rasterizado pelo Poppler a 150 dpi. A revisão integrada confirmou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; P08-06 teve similaridade de 0,989889. A
+validação estrita passou em 674.521 verificações, sem erros ou avisos. A inspeção SVG
+em navegador continua aguardando autorização do usuário.

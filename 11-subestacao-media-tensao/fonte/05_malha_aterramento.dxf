@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-15D
+15A
   9
 $SURFTAB1
  70
@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-15A
+157
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-15B
+158
 330
 3
 100
@@ -7987,7 +7987,7 @@ AcDbText
  40
 2.0
   1
-Malha de terra em anel, hastes copperweld e calculo NBR 15751
+Arranjo conceitual; resistividade e seguranca sem estudo
   7
 PORTFOLIO_TEXTO
  72
@@ -8184,10 +8184,8 @@ AcDbMText
 198.0
  71
 1
-  3
-Anel perimetral externo e grade interna em cabo de cobre nu 70 mm2 a 0,60 m profundidade.\P8 hastes de aco cobreado 5/8 pol. x 2,40 m interligadas por solda exotermica.\PResistencia de aterramento calculada R <= 3,85 ohms. Interligacao de neutro e ma
   1
-ssas ao BEP.
+Anel e grade conceituais em cobre nu 70 mm2 a 0,60 m de profundidade.\P8 hastes 5/8 pol. x 2,40 m sao premissas, sem dimensionamento do local.\PResistividade e dados de falta nao medidos; resistencia, GPR, toque e passo nao determinados.
   7
 PORTFOLIO_TEXTO
  44
@@ -8579,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -8615,7 +8613,7 @@ AcDbText
  40
 1.55
   1
-2026-09-25
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8651,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-EMISSAO INICIAL DO PROJETO 11
+CLAREZA DE ESCALAS E LIMITES
   7
 PORTFOLIO_TEXTO
  72
@@ -8821,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-09-25
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8859,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -8897,7 +8895,7 @@ AcDbText
  40
 2.25
   1
-05/06
+05/08
   7
 PORTFOLIO_TEXTO
  11
@@ -9155,7 +9153,7 @@ TEXT
 100
 AcDbEntity
   8
-11_ARQUITETURA
+12_LEGENDA
 100
 AcDbText
  10
@@ -9223,7 +9221,7 @@ TEXT
 100
 AcDbEntity
   8
-11_ARQUITETURA
+12_LEGENDA
 100
 AcDbText
  10
@@ -10537,13 +10535,13 @@ AcDbText
  10
 338.5
  20
-251.0
+251.5
  30
 0.0
  40
 1.45
   1
-MEMORIA DE CALCULO - NBR 15751
+LIMITES DO ESTUDO DE ATERRAMENTO
   7
 PORTFOLIO_TITULO
  72
@@ -10551,7 +10549,43 @@ PORTFOLIO_TITULO
  11
 338.5
  21
-251.0
+251.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+14B
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+338.5
+ 20
+247.8
+ 30
+0.0
+ 40
+1.05
+  1
+SEM APROVACAO DE SEGURANCA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+338.5
+ 21
+247.8
  31
 0.0
 100
@@ -10561,7 +10595,7 @@ AcDbText
   0
 LINE
   5
-14B
+14C
 330
 17
 100
@@ -10573,47 +10607,15 @@ AcDbLine
  10
 275.0
  20
-247.5
+245.0
  30
 0.0
  11
 402.0
  21
-247.5
+245.0
  31
 0.0
-  0
-TEXT
-  5
-14C
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-280.0
- 20
-240.0
- 30
-0.0
- 40
-1.12
-  1
-Resistividade solo (rho): 250 ohm.m
-  7
-PORTFOLIO_TEXTO
- 11
-280.0
- 21
-240.0
- 31
-0.0
-100
-AcDbText
   0
 TEXT
   5
@@ -10623,31 +10625,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
 280.0
  20
-230.0
+235.0
  30
 0.0
  40
-1.12
+1.1
   1
-Camada de brita (rho_s): 3.000 ohm.m
+DADOS DE SOLO
   7
-PORTFOLIO_TEXTO
+PORTFOLIO_TITULO
  11
 280.0
  21
-230.0
+235.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+MTEXT
   5
 14E
 330
@@ -10657,27 +10659,25 @@ AcDbEntity
   8
 02_TEXTO
 100
-AcDbText
+AcDbMText
  10
 280.0
  20
-220.0
+230.0
  30
 0.0
  40
-1.12
+1.0
+ 41
+116.0
+ 71
+1
   1
-Espessura da brita: 10 cm
+Resistividade, camadas e camada superficial nao foram medidas.
   7
 PORTFOLIO_TEXTO
- 11
-280.0
- 21
-220.0
- 31
-0.0
-100
-AcDbText
+ 44
+1.18
   0
 TEXT
   5
@@ -10687,31 +10687,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
 280.0
  20
-210.0
+205.0
  30
 0.0
  40
-1.12
+1.1
   1
-Comprimento cabos malha: 72,0 m
+ARRANJO ILUSTRATIVO
   7
-PORTFOLIO_TEXTO
+PORTFOLIO_TITULO
  11
 280.0
  21
-210.0
+205.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+MTEXT
   5
 150
 330
@@ -10721,7 +10721,7 @@ AcDbEntity
   8
 02_TEXTO
 100
-AcDbText
+AcDbMText
  10
 280.0
  20
@@ -10729,19 +10729,17 @@ AcDbText
  30
 0.0
  40
-1.12
+1.0
+ 41
+116.0
+ 71
+1
   1
-Numero de hastes (5/8"x2,4m): 8
+Cu nu 70 mm2 e 8 hastes sao premissas, sem dimensionamento do local.
   7
 PORTFOLIO_TEXTO
- 11
-280.0
- 21
-200.0
- 31
-0.0
-100
-AcDbText
+ 44
+1.18
   0
 TEXT
   5
@@ -10751,31 +10749,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
 280.0
  20
-190.0
+175.0
  30
 0.0
  40
-1.12
+1.1
   1
-Resistencia malha calc.: 3,82 ohms
+RESULTADO DA MALHA
   7
-PORTFOLIO_TEXTO
+PORTFOLIO_TITULO
  11
 280.0
  21
-190.0
+175.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+MTEXT
   5
 152
 330
@@ -10785,27 +10783,25 @@ AcDbEntity
   8
 02_TEXTO
 100
-AcDbText
+AcDbMText
  10
 280.0
  20
-180.0
+170.0
  30
 0.0
  40
-1.12
+1.0
+ 41
+116.0
+ 71
+1
   1
-Criterio adotado: R <= 5,0 ohms (PASS)
+Resistencia e elevacao de potencial nao determinadas; sem valor de aprovacao.
   7
 PORTFOLIO_TEXTO
- 11
-280.0
- 21
-180.0
- 31
-0.0
-100
-AcDbText
+ 44
+1.18
   0
 TEXT
   5
@@ -10815,31 +10811,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
 280.0
  20
-170.0
+145.0
  30
 0.0
  40
-1.12
+1.1
   1
-Corrente de falta terra: 2,5 kA
+POTENCIAIS
   7
-PORTFOLIO_TEXTO
+PORTFOLIO_TITULO
  11
 280.0
  21
-170.0
+145.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+MTEXT
   5
 154
 330
@@ -10849,27 +10845,25 @@ AcDbEntity
   8
 02_TEXTO
 100
-AcDbText
+AcDbMText
  10
 280.0
  20
-160.0
+140.0
  30
 0.0
  40
-1.12
+1.0
+ 41
+116.0
+ 71
+1
   1
-Tempo de atuacao protecao: 0,5 s
+GPR, toque, passo e transferencia ainda nao calculados.
   7
 PORTFOLIO_TEXTO
- 11
-280.0
- 21
-160.0
- 31
-0.0
-100
-AcDbText
+ 44
+1.18
   0
 TEXT
   5
@@ -10879,31 +10873,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
 280.0
  20
-150.0
+115.0
  30
 0.0
  40
-1.12
+1.1
   1
-Tensao de toque toleravel: 685 V
+PROXIMA ETAPA
   7
-PORTFOLIO_TEXTO
+PORTFOLIO_TITULO
  11
 280.0
  21
-150.0
+115.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+MTEXT
   5
 156
 330
@@ -10913,103 +10907,7 @@ AcDbEntity
   8
 02_TEXTO
 100
-AcDbText
- 10
-280.0
- 20
-140.0
- 30
-0.0
- 40
-1.12
-  1
-Tensao de toque calculada: 312 V (PASS)
-  7
-PORTFOLIO_TEXTO
- 11
-280.0
- 21
-140.0
- 31
-0.0
-100
-AcDbText
-  0
-TEXT
-  5
-157
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-280.0
- 20
-130.0
- 30
-0.0
- 40
-1.12
-  1
-Tensao de passo toleravel: 2.150 V
-  7
-PORTFOLIO_TEXTO
- 11
-280.0
- 21
-130.0
- 31
-0.0
-100
-AcDbText
-  0
-TEXT
-  5
-158
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-280.0
- 20
-120.0
- 30
-0.0
- 40
-1.12
-  1
-Tensao de passo calculada: 145 V (PASS)
-  7
-PORTFOLIO_TEXTO
- 11
-280.0
- 21
-120.0
- 31
-0.0
-100
-AcDbText
-  0
-TEXT
-  5
-159
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
+AcDbMText
  10
 280.0
  20
@@ -11017,19 +10915,17 @@ AcDbText
  30
 0.0
  40
-1.12
+1.0
+ 41
+116.0
+ 71
+1
   1
-Solda exotermica em todas conexoes.
+Consolidar dados de campo e de falta conforme a prancha 07.
   7
 PORTFOLIO_TEXTO
- 11
-280.0
- 21
-110.0
- 31
-0.0
-100
-AcDbText
+ 44
+1.18
   0
 ENDSEC
   0
@@ -12141,7 +12037,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-15C
+159
   0
 DICTIONARYVAR
   5
@@ -18763,11 +18659,11 @@ DictionaryVariables
 280
 0
   1
-05/06
+05/08
   0
 DICTIONARYVAR
   5
-15C
+159
 330
 2D
 100

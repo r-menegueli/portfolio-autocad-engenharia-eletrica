@@ -73,3 +73,27 @@ Queda interna indicativa no ponto de 30 V e 5 A:
 
 O sensoriamento Kelvin pode compensar parte da queda, mas estabilidade, resposta
 transitória e limites de compensação não foram modelados.
+
+## Pré-dimensionamento do buck CC/CV
+
+O controlador candidato U1 é o LM5190. A equação do indutor no datasheet é
+`L = Vout / (Delta_IL x fSW) x (1 - Vout/Vin)`. Adoto `fSW = 100 kHz` e ondulação
+alvo de 30% de 5 A, ou 1,5 A pico a pico. A 36 V nominais, o maior valor de
+ondulação ocorre em 18 V e exige 60 uH. O cenário paramétrico de 42 V (não especificado
+por PS1) produz o máximo em 21 V e exige 70 uH. L1=75 uH produz 1,20 A (24%) em 36 V
+e 1,40 A (28%) no cenário de 42 V. O pico normal calculado a 5 A é 5,70 A.
+
+Com RCS=9,1 mOhm, o limiar típico de 60 mV do LM5190 corresponde a 6,59 A de pico.
+Subtraindo metade da ondulação de 1,40 A, a corrente média equivalente de intervenção
+é 5,89 A. A perda ideal de RCS é 0,228 W a 5 A e 0,316 W no limite médio equivalente;
+foi proposto resistor Kelvin de pelo menos 1 W, ainda sujeito a tolerância e verificação
+térmica. A equação do datasheet para RIMON resulta em 8,62 kOhm para o alvo nominal
+de 5 A, usando ganho e offset típicos; o ajuste e a exatidão final não foram validados.
+
+O LM5190 regula a partir de 0,8 V. K1 aberto interrompe a alimentação positiva da
+saída, mas não garante 0 V residual nos bornes; um circuito de descarga precisa ser
+definido e dimensionado. As equações e valores completos estão em
+[dimensionamento do regulador](dimensionamento-regulador.csv).
+O cenário de 42 V é somente análise de sensibilidade. A tolerância e os transitórios
+reais de PS1, compensação das malhas, capacitâncias, perdas, térmica, EMC e layout
+precisam ser definidos e verificados antes de qualquer implementação.

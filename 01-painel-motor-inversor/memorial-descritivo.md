@@ -4,7 +4,7 @@
 
 Projeto acadêmico 01: painel de acionamento de motor de indução trifásico com inversor
 de frequência. Autor: Rogério Eduardo Moreira Menegueli. Data-base: 2026-09-05.
-Revisão: 00.
+Revisão: 02 (gráfica; 2026-11-05).
 
 ## 2. Finalidade e limites
 
@@ -38,20 +38,24 @@ Os circuitos digitais e analógicos são segregados fisicamente dos cabos de pot
 
 ## 5. Comando e modos de operação
 
-O seletor S3 escolhe LOCAL ou REMOTO. Em LOCAL, S1 inicia, S2 para e P1 fornece a
-referência de velocidade de 0-10 V. Em REMOTO, contatos do PLC usam X3 para partida,
-parada e rearme, enquanto W06 fornece a referência de 4-20 mA. A troca de modo não
-produz partida automática: o comando de marcha deve ser reaplicado no modo selecionado.
+S3 seleciona LOCAL, posição central 0 ou REMOTO. Em LOCAL, S1 e S2 enviam comandos RUN e
+STOP separados, e P1 fornece a referência de velocidade de 0-10 V. Em REMOTO, contatos
+do PLC em X3:7 e X3:8 enviam RUN e STOP separados; X3:9 solicita reset de falha do VFD,
+enquanto W06 fornece a referência de 4-20 mA. Os contatos e a parametrização do VFD
+precisam ser compatibilizados com o modelo selecionado; o desenho não fixa terminais.
 
-S4 solicita rearme apenas quando a causa da falha foi eliminada. Os sinalizadores H1 a
-H4 indicam, respectivamente, painel energizado, VFD pronto, motor em marcha e falha.
+S4 (LOCAL) e X3:9 (REMOTO) solicitam somente o reset de falha de VFD1. S5 é o botão
+dedicado de rearme manual monitorado do KSR1 e não comanda o VFD. O rearme de segurança,
+a troca de modo e o retorno de energia exigem novo comando de partida. Os sinalizadores
+H1 a H4 indicam painel energizado, VFD pronto, motor em marcha e falha.
 
 ## 6. Emergência e STO
 
-S0 possui dois contatos normalmente fechados monitorados por KSR1. As duas saídas de
-KSR1 alimentam STO-A e STO-B de VFD1. A atuação remove a capacidade de produzir torque,
-mas não garante parada instantânea: o conjunto pode parar por inércia. O rearme é
-manual e não comanda nova partida.
+S0 possui dois contatos normalmente fechados monitorados por KSR1. S5 solicita o rearme
+manual monitorado depois da liberação de S0; esta função é separada do reset de falha do
+VFD, feito por S4 ou X3:9. As duas saídas de KSR1 alimentam STO-A e STO-B de VFD1. A
+atuação remove a capacidade de produzir torque, mas não garante parada instantânea: o
+conjunto pode parar por inércia. O rearme de S5 não comanda nova partida.
 
 Esta representação não declara categoria, PL ou SIL. A arquitetura real depende de
 análise de risco, tempo de parada, diagnóstico, dados certificados do inversor e relé,
@@ -76,6 +80,32 @@ de instalação, raios de curvatura, bornes selecionados e recomendações do fa
 
 ## 9. Interfaces documentais
 
-As referências Q0, Q1, Q2, DPS1, PS1, VFD1, KSR1, S0-S4, P1, H1-H4, X1-X3, M1 e
-W01-W06 são mantidas nas seis pranchas, na lista de materiais e na lista de cabos. Os
-DXFs são as fontes principais; PDF, SVG e PNG servem à revisão visual.
+As referências Q0, Q1, Q2, DPS1, PS1, VFD1, KSR1, S0-S5, P1, H1-H4, X1-X3, M1 e
+W01-W06 são mantidas nas oito pranchas, nas listas de materiais e de cabos e nas matrizes
+de coordenação. Os DXFs são as fontes principais; PDF, SVG e PNG servem à revisão visual.
+
+## 10. Proteção e dados para coordenação
+
+A prancha 07 rastreia sete grupos de premissas: corrente de curto-circuito presumida,
+seccionamento Q0, disjuntor Q1, proteção do VFD e do motor, circuito auxiliar Q2/PS1,
+DPS1 e cabos W01/W02. O CSV vinculado lista, para cada grupo, o dado que deve substituir
+a hipótese atual e a verificação ainda aberta.
+
+A divisão de 10 kA de Icu pela hipótese de 5 kA de Icc resulta em 2:1 apenas como
+operação aritmética. Sem o valor real de curto-circuito no ponto, tensão e ratings
+específicos do dispositivo, curvas e tabelas de coordenação do fabricante, essa razão
+não demonstra capacidade de interrupção, seletividade, retaguarda ou energia passante.
+Q0 é representado como seccionador; a sobrecarga do motor depende do ajuste do VFD e
+da placa real. Nenhum desses itens foi dimensionado para execução.
+
+## 11. Plano de verificação e evidências
+
+A prancha 08 organiza os documentos, dados de campo/OEM, cálculos, verificações
+funcionais e registros necessários para encerrar cada etapa. A matriz vinculada
+`plano-verificacao.csv` mantém todos os treze pontos no estado `NÃO EXECUTADO`; isso
+significa que este estudo não contém ensaios nem aceite de uma instalação real.
+
+Os critérios de aceitação, tolerâncias e instrumentos devem ser definidos a partir dos
+equipamentos e requisitos efetivamente selecionados. O plano não é procedimento de
+trabalho energizado, não autoriza comissionamento e não declara desempenho funcional,
+coordenação, categoria de segurança, PL ou SIL.

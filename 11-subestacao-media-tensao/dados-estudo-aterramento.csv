@@ -1,0 +1,23 @@
+grupo,parametro,simbolo,unidade,valor,status,fonte_requerida,observacao
+SOLO,perfil_resistividade_solo,rho(z),ohm.m,A DEFINIR,PENDENTE,relatorio de campo com pontos e profundidades,Perfil medido e rastreavel; nao usar valor hipotetico como medicao
+SOLO,estratos_solo,n_camadas_e_h_i,m,A DEFINIR,PENDENTE,relatorio de interpretacao geotecnica,Registrar modelo e limites de cada camada
+SOLO,resistividade_superficial,rho_s,ohm.m,A DEFINIR,PENDENTE,medicao ou especificacao rastreavel de material,Sem esta entrada nao concluir condicoes de superficie
+SOLO,espessura_superficial,h_s,m,A DEFINIR,PENDENTE,levantamento de campo e especificacao do revestimento,Identificar variacao nas zonas de acesso
+SOLO,condicao_sazonal,condicao_sazonal,texto,A DEFINIR,PENDENTE,registro de campo e condicoes ambientais,Documentar data e estado do solo na campanha
+FALTA,corrente_falta_solo,I_f,kA,A DEFINIR,PENDENTE,dados da concessionaria e estudo de curto-circuito,Separar cenarios e contribuicoes de fontes
+FALTA,fracao_corrente_malha,S_g,%,A DEFINIR,PENDENTE,modelo de rede e retorno de falta,Registrar como a parcela injetada foi obtida
+FALTA,tempo_eliminacao,t_f,s,A DEFINIR,PENDENTE,ajustes/curvas do rele e tempo do disjuntor,Usar evidencias do esquema de protecao selecionado
+FALTA,contribuicao_remota,I_rem,kA,A DEFINIR,PENDENTE,modelo de rede e fontes remotas,Considerar contribuicoes e retornos documentados
+FALTA,aterramento_neutro_fonte,tipo_neutro,texto,A DEFINIR,PENDENTE,diagrama da concessionaria e dados do transformador,Confirmar topologia real da fonte e do neutro
+GEOMETRIA,geometria_patio,Lx_Ly_zonas,m,A DEFINIR,PENDENTE,levantamento topografico/as-built,Substituir dimensoes ilustrativas por cotas do local
+GEOMETRIA,limite_acessivel_malha,limites_acessiveis,texto,A DEFINIR,PENDENTE,levantamento de cercas acessos e areas externas,Registrar pontos de contato e limites do estudo
+GEOMETRIA,material_secao_condutor,material_secao,mm2,A DEFINIR,PENDENTE,ficha tecnica e memorial de instalacao,Premissa atual nao equivale a dimensionamento termico
+GEOMETRIA,profundidade_condutor,h_cond,m,A DEFINIR,PENDENTE,levantamento e desenho executivo aprovado,Registrar profundidade instalada e tolerancias
+GEOMETRIA,espacamento_condutores,Dx_Dy,m,A DEFINIR,PENDENTE,planta coordenada da malha,Registrar geometria e revisao do desenho
+GEOMETRIA,hastes_quantidade_comprimento,n_hastes_L,m,A DEFINIR,PENDENTE,planta e dados do eletrodo instalado,Substituir a quantidade e dimensoes conceituais por evidencia
+GEOMETRIA,conexoes_malha,tipo_conexao,texto,A DEFINIR,PENDENTE,especificacao e plano de inspecao,Registrar material compatibilidade e inspecao
+INTERFACES,interfaces_bep,ligacoes_bep,texto,A DEFINIR,PENDENTE,diagrama de equipotencializacao e inspecao,Identificar massas neutro e condutores de protecao
+INTERFACES,interfaces_cercas,ligacoes_cercas,texto,A DEFINIR,PENDENTE,levantamento de limite e detalhe de equipotencializacao,Registrar cerca portoes e transicoes acessiveis
+INTERFACES,interfaces_metalicas_remotas,interfaces_remotas,texto,A DEFINIR,PENDENTE,levantamento de tubulacoes blindagens e cabos,Identificar caminhos de potencial para fora da malha
+INTERFACES,zonas_pessoas_acesso,zonas_acesso,texto,A DEFINIR,PENDENTE,planta de operacao e levantamento de campo,Delimitar locais de permanencia e contato previsiveis
+REVISAO,criterios_metodo_revisao,criterios_versao,texto,A DEFINIR,PENDENTE,memoria de calculo e revisao tecnica documentada,Definir criterios antes de apresentar qualquer decisao

@@ -31,6 +31,8 @@ SHEETS = (
     "04_string_box.dxf",
     "05_aterramento.dxf",
     "06_layout_equipamentos.dxf",
+    "07_sensibilidade_energia.dxf",
+    "08_envelope_termico_string.dxf",
 )
 REQUIRED_PROTECTIONS = {
     "F-S1-P", "F-S1-N", "F-S2-P", "F-S2-N", "DPS-CC-1", "DPS-CC-2",
@@ -60,7 +62,7 @@ REQUIRED_REFERENCES = (
 SHEET_TERMS = {
     "01_disposicao_modulos.dxf": (
         "6,60 kWp", "12 x 550 Wp", "S1: 6 MÓDULOS EM SÉRIE",
-        "S2: 6 MÓDULOS EM SÉRIE", "NORTE", "M01", "M12",
+        "S2: 6 MÓDULOS EM SÉRIE", "NORTE", "M01", "M12", "TURQUESA: CC",
     ),
     "02_diagrama_unifilar_cc.dxf": (
         "SEM PARALELISMO", "2 x gPV 20 A", "DPS T2 FV 600 V",
@@ -81,7 +83,20 @@ SHEET_TERMS = {
     ),
     "06_layout_equipamentos.dxf": (
         "12 MÓDULOS", "SB-FV-801", "INV-FV-801", "QD-FV-801", "MED-801",
-        "PCC-801", "R-CC-801/802", "R-CA-801", "ROTAS CC E CA SEGREGADAS",
+        "PCC-801", "S1 -> MPPT 1", "S2 -> MPPT 2",
+        "PE-MOD = MÓDULOS", "PE-EQP = EQUIPAMENTOS -> BEP-801",
+        "OPCIONAL; TRAJETO NÃO DETALHADO", "ROTAS CC E CA SEGREGADAS", "TURQUESA: CC",
+    ),
+    "07_sensibilidade_energia.dxf": (
+        "SENSIBILIDADE DA ENERGIA ANUAL", "CENÁRIOS PARAMÉTRICOS",
+        "PR 0,70", "PR 0,78", "PR 0,86", "BASE ATUAL: 9,771 MWh/ano",
+        "DADOS NECESSÁRIOS PARA UM ESTUDO LOCAL", "NÃO SÃO CLIMATOLOGIA",
+    ),
+    "08_envelope_termico_string.dxf": (
+        "ENVELOPE TÉRMICO DA STRING", "TENSÃO DA STRING [Vcc] x TEMPERATURA DE CÉLULA",
+        "VOC FRIA: 324,550 V", "VMP QUENTE: 216,942 V", "INV-FV-801 PROPOSTA",
+        "FAIXA MPPT: 90-550 V", "VDC MÁXIMO: 600 V",
+        "ISC CORRIGIDA QUENTE: 15,657 A", "IMP operacional precisa de dados OEM",
     ),
 }
 WARNING = (
@@ -120,6 +135,7 @@ def validate(root: Path) -> dict:
     project = root / PROJECT_SLUG
     config = load_config(root)
     parameters = read_rows(project / "parametros.csv")
+    thermal_envelope = read_rows(project / "envelope-termico.csv")
     modules = read_rows(project / "lista-modulos.csv")
     protections = read_rows(project / "lista-protecoes.csv")
     cables = read_rows(project / "lista-cabos.csv")
@@ -190,7 +206,9 @@ def validate(root: Path) -> dict:
     ac_drop = Decimal(2) * Decimal("15") * iac * rho / Decimal("10")
     ac_drop_pct = ac_drop / vac * Decimal(100)
     total_drop_pct = dc_drop_pct + ac_drop_pct
-    annual_energy = (pdc / Decimal(1000)) * Decimal("5.2") * Decimal(365) * Decimal("0.78")
+    hsp = decimal(expected_parameters["HSP"])
+    performance_ratio = decimal(expected_parameters["PR"])
+    annual_energy = (pdc / Decimal(1000)) * hsp * Decimal(365) * performance_ratio
     monthly_energy = annual_energy / Decimal(12)
     derived = {
         "POTENCIA_CC": pdc,
@@ -210,6 +228,36 @@ def validate(root: Path) -> dict:
         "ENERGIA_ANUAL": annual_energy,
         "ENERGIA_MENSAL_MEDIA": monthly_energy,
     }
+
+    thermal_conditions = (("FRIA", tmin), ("STC", tref), ("QUENTE", tmax))
+    checks += 4 + len(thermal_conditions) * 8
+    if len(thermal_envelope) != len(thermal_conditions):
+        errors.append("envelope-termico.csv deve conter FRIA, STC e QUENTE.")
+    for index, (condition, temperature) in enumerate(thermal_conditions):
+        if index >= len(thermal_envelope):
+            break
+        row = thermal_envelope[index]
+        delta = temperature - tref
+        expected_voc = voc_string * (Decimal(1) + beta_voc * delta)
+        expected_vmp = vmp_string * (Decimal(1) + beta_vmp * delta)
+        expected_isc = isc * (gmax / Decimal(1000)) * (Decimal(1) + alpha_isc * delta)
+        expected_mppt = "DENTRO" if decimal(expected_parameters["INV_MPPT_MIN"]) <= expected_vmp <= decimal(expected_parameters["INV_MPPT_MAX"]) else "FORA"
+        if row["condicao"] != condition:
+            errors.append(f"Condição térmica incorreta na linha {index + 1}.")
+        if decimal(row["temperatura_c"]) != temperature:
+            errors.append(f"Temperatura divergente na condição {condition}.")
+        if decimal(row["irradiancia_w_m2"]) != gmax:
+            errors.append(f"Irradiância divergente na condição {condition}.")
+        if not close(decimal(row["voc_string_v"]), expected_voc):
+            errors.append(f"Voc térmica divergente na condição {condition}.")
+        if not close(decimal(row["vmp_string_v"]), expected_vmp):
+            errors.append(f"Vmp térmica divergente na condição {condition}.")
+        if not close(decimal(row["isc_string_a"]), expected_isc):
+            errors.append(f"Isc corrigida divergente na condição {condition}.")
+        if row["faixa_mppt_proposta"] != expected_mppt:
+            errors.append(f"Avaliação da faixa MPPT divergente na condição {condition}.")
+        if row["classificacao"] != "PREMISSA_ACADEMICA":
+            errors.append(f"Classificação térmica ausente na condição {condition}.")
     result_map = {row["calculo"]: row for row in calculations}
     checks += 3
     if set(result_map) != set(derived) or len(result_map) != len(calculations):
@@ -222,6 +270,35 @@ def validate(root: Path) -> dict:
         checks += 1
         if key not in result_map or not close(decimal(result_map[key]["resultado"]), value):
             errors.append(f"Resultado {key} divergente: esperado {value}.")
+
+    sensitivity = read_rows(project / "sensibilidade-energia.csv")
+    expected_grid = {
+        (Decimal(hsp_value), Decimal(pr_value))
+        for hsp_value in ("3", "4", "5", "6")
+        for pr_value in ("0.70", "0.78", "0.86")
+    }
+    scenario_rows = [row for row in sensitivity if row["classificacao"] == "PARAMETRICO_SEM_LOCAL"]
+    base_rows = [row for row in sensitivity if row["classificacao"] == "BASE_ATUAL_DIDATICA"]
+    checks += 7 + len(sensitivity)
+    if len(sensitivity) != 13 or len(scenario_rows) != 12 or len(base_rows) != 1:
+        errors.append("sensibilidade-energia.csv deve conter 12 cenários e uma linha-base.")
+    if any(not row["observacoes"] for row in sensitivity):
+        errors.append("Cenário de energia sem observação epistemológica.")
+    actual_grid = {(decimal(row["hsp_h_dia"]), decimal(row["pr"])) for row in scenario_rows}
+    if actual_grid != expected_grid:
+        errors.append("Grade paramétrica HSP/PR ausente ou com combinações duplicadas.")
+    for row in sensitivity:
+        row_hsp = decimal(row["hsp_h_dia"])
+        row_pr = decimal(row["pr"])
+        expected_energy = (pdc / Decimal(1000)) * row_hsp * Decimal(365) * row_pr
+        if not close(decimal(row["energia_anual_kwh"]), expected_energy):
+            errors.append(f"Energia paramétrica divergente para HSP={row_hsp}, PR={row_pr}.")
+    if base_rows:
+        base = base_rows[0]
+        if decimal(base["hsp_h_dia"]) != hsp or decimal(base["pr"]) != performance_ratio:
+            errors.append("Linha-base não acompanha HSP e PR didáticos de parametros.csv.")
+        if not close(decimal(base["energia_anual_kwh"]), annual_energy):
+            errors.append("Energia da linha-base diverge da estimativa reproduzida.")
 
     checks += 11
     if nseries * nstrings != nmod:
@@ -257,6 +334,8 @@ def validate(root: Path) -> dict:
         errors.append("Cada string deve possuir seis módulos.")
     if any(decimal(row["potencia_wp"]) != pmod for row in modules):
         errors.append("Potência de módulo divergente na lista.")
+    if any(row["prancha"] != "01/08" for row in modules):
+        errors.append("Referência de prancha inválida em lista-modulos.csv.")
     if sum(decimal(row["potencia_wp"]) for row in modules) != pdc:
         errors.append("Soma das potências dos módulos divergente.")
     if any(row["orientacao"] != "Norte" or row["inclinacao_graus"] != "20" for row in modules):
@@ -278,7 +357,7 @@ def validate(root: Path) -> dict:
         errors.append("Devem existir dois seccionadores CC e um CA.")
     if not {"CC", "CA"} <= {row["lado"] for row in protections}:
         errors.append("Proteções CC e CA não estão ambas representadas.")
-    if any(row["prancha"] not in {f"{index:02d}/06" for index in range(1, 7)} for row in protections):
+    if any(row["prancha"] not in {f"{index:02d}/08" for index in range(1, 9)} for row in protections):
         errors.append("Referência de prancha inválida em lista-protecoes.csv.")
 
     cable_tags = {row["cabo"] for row in cables}
@@ -355,6 +434,8 @@ def validate(root: Path) -> dict:
     for index, filename in enumerate(SHEETS, start=1):
         path = source_dir / filename
         checks += 9 + len(SHEET_TERMS[filename])
+        if filename == "06_layout_equipamentos.dxf":
+            checks += len(cables)
         try:
             doc = ezdxf.readfile(path)
         except Exception as exc:  # pragma: no cover - evidência de falha externa
@@ -374,7 +455,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"Metadado de projeto incorreto em {filename}.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/06":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
             errors.append(f"Metadado de prancha incorreto em {filename}.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION":
             errors.append(f"Status epistemológico incorreto em {filename}.")
@@ -384,6 +465,12 @@ def validate(root: Path) -> dict:
         for term in SHEET_TERMS[filename]:
             if term.casefold() not in text.casefold():
                 errors.append(f"Termo obrigatório ausente em {filename}: {term}.")
+        if filename == "06_layout_equipamentos.dxf":
+            for cable in cables:
+                length = float(cable["comprimento_assumido_m"])
+                label = f'{cable["cabo"]} | {cable["rota"]} / {length:g} m*'
+                if label.casefold() not in text.casefold():
+                    errors.append(f"Rota assumida não rastreável em {filename}: {label}.")
 
     result = {
         "checks": checks,
@@ -398,9 +485,12 @@ def validate(root: Path) -> dict:
             "modules": len(modules),
             "protections": len(protections),
             "sheets": len(SHEETS),
+            "energy_sensitivity_rows": len(sensitivity),
+            "thermal_envelope_rows": len(thermal_envelope),
             "strings": int(nstrings),
             "voc_cold_v": f"{voc_cold:.6f}",
             "vmp_hot_v": f"{vmp_hot:.6f}",
+            "isc_corrected_hot_max_irradiance_a": f"{isc_corrected:.6f}",
         },
         "status": "PASS" if not errors else "FAIL",
     }

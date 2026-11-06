@@ -1,0 +1,10 @@
+﻿id,evento,deteccao,acao_conceitual,alarme_memoria,retorno
+E01,STOP / emergência,STOP ou emergência atuada,Retira comando de marcha,Alarme retido,Causa removida + ACK consciente
+E02,LSHH-101,Nível ≥ 95%,Bloqueia permissivo e solicita parada fora do PI,LA-HH-101 retido,Condição normal + ACK
+E03,LT-101 inválido,"Sinal < 3,6 mA ou > 21 mA",Desabilita PI e solicita parada,UA-101 retido,Sinal válido + ACK
+E04,Falha do VFD,VFD indica falha,Retira marcha e bloqueia partida,YA-101 retido,VFD pronto + ACK
+E05,Tempo excedido,Máx. 60 min (premissa),Retira marcha e bloqueia partida,TA-101 retido,Causa removida + ACK
+E06,Perda de energia,Alimentação ausente,Saídas desenergizadas,Retenção depende do PLC,Sem repartida automática
+E07,LT / chaves divergentes,Divergência persistente,Diagnóstico; bloqueia AUTO,Diagnóstico indicado,Causa removida + ACK
+E08,LA-L-101,LT-101 ≤ 15%,Alarme; ação de processo pendente,LA-L-101 retido,Causa removida + ACK
+E09,LA-H-101,LT-101 ≥ 85%,Alarme; ação de processo pendente,LA-H-101 retido,Causa removida + ACK

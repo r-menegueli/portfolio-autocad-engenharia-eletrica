@@ -65,47 +65,47 @@ lineweight = 18
 linetype = "CONTINUOUS"
 
 [layer_styles."03_COTAS"]
-color = 4
+color = 152
 lineweight = 18
 linetype = "CONTINUOUS"
 
 [layer_styles."04_EQUIPAMENTOS"]
-color = 2
+color = 32
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."05_POTENCIA"]
-color = 1
+color = 12
 lineweight = 50
 linetype = "CONTINUOUS"
 
 [layer_styles."06_COMANDO"]
-color = 3
+color = 94
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."07_INSTRUMENTACAO"]
-color = 6
+color = 202
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."08_CABOS"]
-color = 30
+color = 124
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."09_BORNES"]
-color = 5
+color = 145
 lineweight = 25
 linetype = "CONTINUOUS"
 
 [layer_styles."10_ELETROCALHAS"]
-color = 8
+color = 251
 lineweight = 35
 linetype = "CONTINUOUS"
 
 [layer_styles."11_ARQUITETURA"]
-color = 9
+color = 253
 lineweight = 18
 linetype = "CONTINUOUS"
 
@@ -124,16 +124,19 @@ id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
   "criterios-premissas.md",
   "sequencia-funcionamento.md",
+  "sequencia-estados.csv",
   "controle-vf-foc.md",
   "inspecao-visual.md",
   "lista-cabos.csv",
   "lista-materiais.csv",
+  "protecao-coordenacao.csv",
+  "plano-verificacao.csv",
   "fonte/gerar_projeto_01.py",
 ]
 
@@ -142,7 +145,7 @@ id = "02-projeto-eletrico-residencial"
 path = "02-projeto-eletrico-residencial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -151,6 +154,9 @@ required_files = [
   "referencias-normativas.md",
   "inspecao-visual.md",
   "quadro-cargas.csv",
+  "analise-corrente-por-fase.csv",
+  "rastreabilidade-ambientes.csv",
+  "esquadrias.csv",
   "lista-pontos.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_02.py",
@@ -164,7 +170,7 @@ id = "03-painel-automacao-clp"
 path = "03-painel-automacao-clp"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 11
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -176,6 +182,8 @@ required_files = [
   "lista-io.csv",
   "lista-bornes.csv",
   "lista-cabos.csv",
+  "matriz-causa-efeito.csv",
+  "plano-verificacao.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_03.py",
   "fonte/validar_projeto_03.py",
@@ -188,7 +196,7 @@ id = "04-controle-nivel-reservatorio"
 path = "04-controle-nivel-reservatorio"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -203,6 +211,8 @@ required_files = [
   "lista-bornes.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
+  "matriz-causa-efeito.csv",
+  "dados-fonte-succao.csv",
   "tabelas-projeto-04.xlsx",
   "fonte/gerar_projeto_04.py",
   "fonte/validar_projeto_04.py",
@@ -215,7 +225,7 @@ id = "05-instalacao-eletrica-industrial"
 path = "05-instalacao-eletrica-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -225,6 +235,8 @@ required_files = [
   "inspecao-visual.md",
   "quadro-cargas.csv",
   "alimentadores.csv",
+  "matriz-coordenacao-protecoes.csv",
+  "dados-estudo-coordenacao.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
   "tabelas-projeto-05.xlsx",
@@ -240,7 +252,7 @@ id = "06-centro-controle-motores"
 path = "06-centro-controle-motores"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -254,8 +266,10 @@ required_files = [
   "lista-cabos.csv",
   "lista-bornes.csv",
   "lista-materiais.csv",
+  "causa-efeito.csv",
   "fonte/gerar_projeto_06.py",
   "fonte/validar_projeto_06.py",
+  "fonte/10_interligacao_bornes_comando.dxf",
   "validacao-integracao.json",
   "validacao.json",
 ]
@@ -265,7 +279,7 @@ id = "07-arquitetura-veiculo-eletrico"
 path = "07-arquitetura-veiculo-eletrico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 11
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -278,6 +292,7 @@ required_files = [
   "parametros.csv",
   "lista-sinais.csv",
   "rede-can.csv",
+  "matriz-interfaces-falhas.csv",
   "lista-cabos.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_07.py",
@@ -291,7 +306,7 @@ id = "08-sistema-fotovoltaico"
 path = "08-sistema-fotovoltaico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -304,6 +319,8 @@ required_files = [
   "lista-protecoes.csv",
   "lista-cabos.csv",
   "resultados-calculo.csv",
+  "sensibilidade-energia.csv",
+  "envelope-termico.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_08.py",
   "fonte/validar_projeto_08.py",
@@ -316,7 +333,7 @@ id = "09-fonte-bancada"
 path = "09-fonte-bancada"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -330,6 +347,9 @@ required_files = [
   "lista-interligacoes.csv",
   "lista-recortes.csv",
   "resultados-calculo.csv",
+  "dimensionamento-regulador.csv",
+  "dimensionamento-descarga.csv",
+  "dimensionamento-termico-parametrico.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_09.py",
   "fonte/validar_projeto_09.py",
@@ -342,7 +362,7 @@ id = "10-rede-instrumentacao-industrial"
 path = "10-rede-instrumentacao-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -360,6 +380,7 @@ required_files = [
   "lista-alimentacao.csv",
   "lista-materiais.csv",
   "resultados-calculo.csv",
+  "causa-efeito.csv",
   "fonte/gerar_projeto_10.py",
   "fonte/renderizar_projeto_10.py",
   "fonte/validar_projeto_10.py",
@@ -372,7 +393,7 @@ id = "11-subestacao-media-tensao"
 path = "11-subestacao-media-tensao"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -382,6 +403,7 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "lista-cabos.csv",
+  "dados-estudo-aterramento.csv",
   "fonte/gerar_projeto_11.py",
   "fonte/renderizar_projeto_11.py",
   "fonte/validar_projeto_11.py",
@@ -393,7 +415,7 @@ id = "12-grupo-gerador-qta"
 path = "12-grupo-gerador-qta"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 6
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -403,6 +425,8 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "lista-cabos.csv",
+  "matriz-causa-efeito.csv",
+  "cadastro-cargas-qce.csv",
   "fonte/gerar_projeto_12.py",
   "fonte/renderizar_projeto_12.py",
   "fonte/validar_projeto_12.py",
@@ -490,6 +514,39 @@ source = "01-painel-motor-inversor/fonte/06_interligacoes_campo.dxf"
 svg = "01-painel-motor-inversor/exports/06_interligacoes_campo.svg"
 pdf = "01-painel-motor-inversor/exports/06_interligacoes_campo.pdf"
 png = "01-painel-motor-inversor/exports/06_interligacoes_campo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-07-protecao-coordenacao"
+kind = "sheet"
+title = "Projeto 01 - Proteção e dados para coordenação"
+source = "01-painel-motor-inversor/fonte/07_protecao_coordenacao.dxf"
+svg = "01-painel-motor-inversor/exports/07_protecao_coordenacao.svg"
+pdf = "01-painel-motor-inversor/exports/07_protecao_coordenacao.pdf"
+png = "01-painel-motor-inversor/exports/07_protecao_coordenacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-08-plano-verificacao-evidencias"
+kind = "sheet"
+title = "Projeto 01 - Plano de verificação e evidências"
+source = "01-painel-motor-inversor/fonte/08_plano_verificacao_evidencias.dxf"
+svg = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.svg"
+pdf = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.pdf"
+png = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-09-sequencia-operacional-estados"
+kind = "sheet"
+title = "Projeto 01 - Sequência operacional e estados"
+source = "01-painel-motor-inversor/fonte/09_sequencia_operacional_estados.dxf"
+svg = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.svg"
+pdf = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.pdf"
+png = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.png"
 require_a3 = true
 require_notice = true
 
@@ -582,6 +639,28 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p02-09-rastreabilidade-ambientes-cargas"
+kind = "sheet"
+title = "Projeto 02 - Rastreabilidade de cargas por ambiente"
+source = "02-projeto-eletrico-residencial/fonte/09_rastreabilidade_ambientes_cargas.dxf"
+svg = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.svg"
+pdf = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.pdf"
+png = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-10-corrente-por-fase"
+kind = "sheet"
+title = "Projeto 02 - Análise aritmética de corrente por fase"
+source = "02-projeto-eletrico-residencial/fonte/10_corrente_por_fase.dxf"
+svg = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.svg"
+pdf = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.pdf"
+png = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p03-01-arquitetura-automacao"
 kind = "sheet"
 title = "Projeto 03 - Arquitetura de automação"
@@ -670,6 +749,39 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p03-09-sequencia-operacao-intertravamentos"
+kind = "sheet"
+title = "Projeto 03 - Sequência de operação e intertravamentos"
+source = "03-painel-automacao-clp/fonte/09_sequencia_operacao_intertravamentos.dxf"
+svg = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.svg"
+pdf = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.pdf"
+png = "03-painel-automacao-clp/exports/09_sequencia_operacao_intertravamentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-10-plano-verificacao-evidencias"
+kind = "sheet"
+title = "Projeto 03 - Plano de verificação e evidências"
+source = "03-painel-automacao-clp/fonte/10_plano_verificacao_evidencias.dxf"
+svg = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.svg"
+pdf = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.pdf"
+png = "03-painel-automacao-clp/exports/10_plano_verificacao_evidencias.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p03-11-alternativas-filosofia-processo"
+kind = "sheet"
+title = "Projeto 03 - Alternativas da filosofia de processo"
+source = "03-painel-automacao-clp/fonte/11_alternativas_filosofia_processo.dxf"
+svg = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.svg"
+pdf = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.pdf"
+png = "03-painel-automacao-clp/exports/11_alternativas_filosofia_processo.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p04-01-fluxograma-processo"
 kind = "sheet"
 title = "Projeto 04 - Fluxograma do processo"
@@ -732,6 +844,39 @@ source = "04-controle-nivel-reservatorio/fonte/06_layout_sistema.dxf"
 svg = "04-controle-nivel-reservatorio/exports/06_layout_sistema.svg"
 pdf = "04-controle-nivel-reservatorio/exports/06_layout_sistema.pdf"
 png = "04-controle-nivel-reservatorio/exports/06_layout_sistema.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-07-sequencia-causa-efeito"
+kind = "sheet"
+title = "Projeto 04 - Sequência de operação e causa–efeito"
+source = "04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeito.dxf"
+svg = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg"
+pdf = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf"
+png = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-08-fronteira-succao-dados-fonte"
+kind = "sheet"
+title = "Projeto 04 - Fronteira de sucção e dados da fonte"
+source = "04-controle-nivel-reservatorio/fonte/08_fronteira_succao_dados_fonte.dxf"
+svg = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.svg"
+pdf = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.pdf"
+png = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-09-balanco-succao-criterio-npsh"
+kind = "sheet"
+title = "Projeto 04 - Balanço de sucção e critério de NPSH"
+source = "04-controle-nivel-reservatorio/fonte/09_balanco_succao_criterio_npsh.dxf"
+svg = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.svg"
+pdf = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.pdf"
+png = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.png"
 require_a3 = true
 require_notice = true
 
@@ -813,6 +958,28 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p05-08-coordenacao-protecoes"
+kind = "sheet"
+title = "Projeto 05 - Coordenacao das protecoes"
+source = "05-instalacao-eletrica-industrial/fonte/08_coordenacao_protecoes.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.pdf"
+png = "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p05-09-plano-dados-coordenacao"
+kind = "sheet"
+title = "Projeto 05 - Plano de dados para curto-circuito e coordenacao"
+source = "05-instalacao-eletrica-industrial/fonte/09_plano_dados_coordenacao.dxf"
+svg = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.svg"
+pdf = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.pdf"
+png = "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p06-01-diagrama-unifilar-ccm"
 kind = "sheet"
 title = "Projeto 06 - Diagrama unifilar do CCM"
@@ -886,6 +1053,39 @@ source = "06-centro-controle-motores/fonte/07_lista_cabos.dxf"
 svg = "06-centro-controle-motores/exports/07_lista_cabos.svg"
 pdf = "06-centro-controle-motores/exports/07_lista_cabos.pdf"
 png = "06-centro-controle-motores/exports/07_lista_cabos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-08-matriz-causa-efeito"
+kind = "sheet"
+title = "Projeto 06 - Matriz causa-efeito do CCM-06"
+source = "06-centro-controle-motores/fonte/08_matriz_causa_efeito_ccm.dxf"
+svg = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.svg"
+pdf = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.pdf"
+png = "06-centro-controle-motores/exports/08_matriz_causa_efeito_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-09-balanco-demanda"
+kind = "sheet"
+title = "Projeto 06 - Balanço de demanda do CCM-06"
+source = "06-centro-controle-motores/fonte/09_balanco_demanda_ccm.dxf"
+svg = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.svg"
+pdf = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.pdf"
+png = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-10-interligacao-bornes-comando"
+kind = "sheet"
+title = "Projeto 06 - Detalhamento de bornes de comando"
+source = "06-centro-controle-motores/fonte/10_interligacao_bornes_comando.dxf"
+svg = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.svg"
+pdf = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.pdf"
+png = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.png"
 require_a3 = true
 require_notice = true
 
@@ -978,6 +1178,39 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p07-09-interfaces-falhas"
+kind = "sheet"
+title = "Projeto 07 - Interfaces e resposta a falhas"
+source = "07-arquitetura-veiculo-eletrico/fonte/09_interfaces_resposta_falhas.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-10-pre-carga-parametrica"
+kind = "sheet"
+title = "Projeto 07 - Estudo paramétrico da pré-carga"
+source = "07-arquitetura-veiculo-eletrico/fonte/10_estudo_pre_carga_parametrico.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-11-sequencia-temporal-pre-carga"
+kind = "sheet"
+title = "Projeto 07 - Sequência temporal da pré-carga"
+source = "07-arquitetura-veiculo-eletrico/fonte/11_sequencia_temporal_pre_carga.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p08-01-disposicao-modulos"
 kind = "sheet"
 title = "Projeto 08 - Disposição dos módulos"
@@ -1040,6 +1273,28 @@ source = "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf"
 svg = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg"
 pdf = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf"
 png = "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-07-sensibilidade-energia"
+kind = "sheet"
+title = "Projeto 08 - Sensibilidade da energia anual"
+source = "08-sistema-fotovoltaico/fonte/07_sensibilidade_energia.dxf"
+svg = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.svg"
+pdf = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.pdf"
+png = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-08-envelope-termico-string"
+kind = "sheet"
+title = "Projeto 08 - Envelope térmico da string"
+source = "08-sistema-fotovoltaico/fonte/08_envelope_termico_string.dxf"
+svg = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.svg"
+pdf = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.pdf"
+png = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.png"
 require_a3 = true
 require_notice = true
 
@@ -1110,6 +1365,50 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p09-07-topologia-regulador-cc-cv"
+kind = "sheet"
+title = "Projeto 09 - Topologia do regulador CC/CV"
+source = "09-fonte-bancada/fonte/07_topologia_regulador_cc_cv.dxf"
+svg = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.svg"
+pdf = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.pdf"
+png = "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-08-predimensionamento-buck"
+kind = "sheet"
+title = "Projeto 09 - Pré-dimensionamento do buck"
+source = "09-fonte-bancada/fonte/08_predimensionamento_buck.dxf"
+svg = "09-fonte-bancada/exports/08_predimensionamento_buck.svg"
+pdf = "09-fonte-bancada/exports/08_predimensionamento_buck.pdf"
+png = "09-fonte-bancada/exports/08_predimensionamento_buck.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-09-descarga-parametrica"
+kind = "sheet"
+title = "Projeto 09 - Análise paramétrica da descarga da saída"
+source = "09-fonte-bancada/fonte/09_descarga_saida_parametrica.dxf"
+svg = "09-fonte-bancada/exports/09_descarga_saida_parametrica.svg"
+pdf = "09-fonte-bancada/exports/09_descarga_saida_parametrica.pdf"
+png = "09-fonte-bancada/exports/09_descarga_saida_parametrica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p09-10-matriz-perdas-termicas"
+kind = "sheet"
+title = "Projeto 09 - Matriz paramétrica de perdas e carga térmica"
+source = "09-fonte-bancada/fonte/10_matriz_perdas_termicas_parametrica.dxf"
+svg = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.svg"
+pdf = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.pdf"
+png = "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p10-01-arquitetura-rede"
 kind = "sheet"
 title = "Projeto 10 - Arquitetura da rede"
@@ -1172,6 +1471,50 @@ source = "10-rede-instrumentacao-industrial/fonte/06_lista_instrumentos.dxf"
 svg = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.svg"
 pdf = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf"
 png = "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-07-matriz-causa-efeito-sinais"
+kind = "sheet"
+title = "Projeto 10 - Matriz causa-efeito de sinais"
+source = "10-rede-instrumentacao-industrial/fonte/07_matriz_causa_efeito_sinais.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.pdf"
+png = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-08-matriz-escala-analogica"
+kind = "sheet"
+title = "Projeto 10 - Matriz de escala analógica"
+source = "10-rede-instrumentacao-industrial/fonte/08_matriz_escala_analogica.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.pdf"
+png = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-09-balanco-carga-24vcc"
+kind = "sheet"
+title = "Projeto 10 - Balanço de carga 24 Vcc"
+source = "10-rede-instrumentacao-industrial/fonte/09_balanco_carga_24vcc.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.pdf"
+png = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-10-alimentacao-remotas"
+kind = "sheet"
+title = "Projeto 10 - Alimentação das remotas"
+source = "10-rede-instrumentacao-industrial/fonte/10_interligacao_alimentacoes_remotas.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.pdf"
+png = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.png"
 require_a3 = true
 require_notice = true
 
@@ -1242,6 +1585,28 @@ require_a3 = true
 require_notice = true
 
 [[artifacts]]
+id = "p11-07-plano-dados-aterramento"
+kind = "sheet"
+title = "Projeto 11 - Plano de dados para estudo de aterramento"
+source = "11-subestacao-media-tensao/fonte/07_plano_dados_estudo_aterramento.dxf"
+svg = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.svg"
+pdf = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.pdf"
+png = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-08-matriz-analise-aterramento"
+kind = "sheet"
+title = "Projeto 11 - Matriz de análise da malha de aterramento"
+source = "11-subestacao-media-tensao/fonte/08_matriz_analise_malha_aterramento.dxf"
+svg = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.svg"
+pdf = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.pdf"
+png = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
 id = "p12-01-diagrama-unifilar-qta"
 kind = "sheet"
 title = "Projeto 12 - Diagrama unifilar geral do QTA"
@@ -1304,6 +1669,39 @@ source = "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf"
 svg = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg"
 pdf = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf"
 png = "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-07-sequencia-transferencia-qta"
+kind = "sheet"
+title = "Projeto 12 - Sequência de operação e intertravamento do QTA"
+source = "12-grupo-gerador-qta/fonte/07_sequencia_transferencia_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.pdf"
+png = "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-08-matriz-causa-efeito-qta"
+kind = "sheet"
+title = "Projeto 12 - Matriz causa-efeito do GMG e QTA"
+source = "12-grupo-gerador-qta/fonte/08_matriz_causa_efeito_qta.dxf"
+svg = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.svg"
+pdf = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.pdf"
+png = "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p12-09-cadastro-cargas-qce"
+kind = "sheet"
+title = "Projeto 12 - Cadastro de cargas essenciais do QCE"
+source = "12-grupo-gerador-qta/fonte/09_cadastro_cargas_essenciais_qce.dxf"
+svg = "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.svg"
+pdf = "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.pdf"
+png = "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.png"
 require_a3 = true
 require_notice = true
 

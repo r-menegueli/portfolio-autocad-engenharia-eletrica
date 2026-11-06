@@ -3,8 +3,8 @@
 ## Identificação
 
 - Autor: Rogério Eduardo Moreira Menegueli
-- Data: 2026-09-09
-- Revisão: 00
+- Data: 2026-11-05
+- Revisão: 03
 - Unidades dos desenhos: milímetros
 - Natureza: acadêmica e conceitual
 
@@ -40,6 +40,22 @@ PE-06 recebe o condutor de proteção do alimentador e atende invólucro, portas
 componentes e motores. N-06 permanece isolada de PE-06. O cabo W603B é blindado, com
 terminação de 360 graus nas duas extremidades como premissa EMC. Potência, comando,
 STO e sinais analógicos ocupam rotas e canaletas segregadas.
+
+O balanço P06-09 relaciona, para cada carga, o fator de demanda declarado e as
+potências ativa e aparente instaladas e demandadas. A corrente de cada ramal é exibida
+com base na potência aparente instalada; para W600, a corrente equivalente usa a
+potência aparente demandada total. Os fatores e os dados de proteção do alimentador
+continuam premissas acadêmicas, sem verificação de simultaneidade ou dimensionamento
+executivo.
+
+## Interligações de campo
+
+A revisão 04 detalha os 51 pontos de X1 a X4. X3 recebe W605 (bomba), W606 (esteira),
+W604 (dois pares de emergência) e W608 (sinalizadores da porta). X4 recebe W607 para
+START, STOP, local/remoto, referência AI1, comum, blindagem e reserva. A seleção
+local/remoto ocupa DI3, antes mostrada sem condutor na tabela. X4:1/2 mantêm STO A/B
+como ligação interna entre KSR-601 e VFD-603. A numeração é conceitual; conferir
+terminais, tensões e tipos de contato nos dispositivos selecionados.
 
 ## Limitações e responsabilidade
 

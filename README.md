@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-doze projetos completos de documentação elétrica. O repositório reúne diagramas,
+doze estudos conceituais de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -28,20 +28,20 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
-| P01 | Painel de motor com inversor | potência, comando, STO, bornes e campo | 6 | [abrir](01-painel-motor-inversor/README.md) |
-| P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas e aterramento | 8 | [abrir](02-projeto-eletrico-residencial/README.md) |
-| P03 | Painel de automação com CLP | I/O, duas bombas, alternância e segurança | 8 | [abrir](03-painel-automacao-clp/README.md) |
-| P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD e intertravamentos | 6 | [abrir](04-controle-nivel-reservatorio/README.md) |
-| P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação e eletrocalhas | 7 | [abrir](05-instalacao-eletrica-industrial/README.md) |
-| P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO e cabos | 7 | [abrir](06-centro-controle-motores/README.md) |
-| P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f e FOC | 8 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
-| P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA e aterramento | 6 | [abrir](08-sistema-fotovoltaico/README.md) |
-| P09 | Fonte de bancada ajustável | conversão, regulação, medição e integração mecânica | 6 | [abrir](09-fonte-bancada/README.md) |
-| P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos e bornes | 6 | [abrir](10-rede-instrumentacao-industrial/README.md) |
-| P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
-| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, barramento 500 A e acústica | 6 | [abrir](12-grupo-gerador-qta/README.md) |
+| P01 | Painel de motor com inversor | potência, comando, STO, bornes, campo, coordenação, verificação e sequência | 9 | [abrir](01-painel-motor-inversor/README.md) |
+| P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas, aterramento e corrente por fase | 10 | [abrir](02-projeto-eletrico-residencial/README.md) |
+| P03 | Painel de automação com CLP | I/O, duas bombas, alternativas enchimento/esgotamento, intertravamentos e verificação | 11 | [abrir](03-painel-automacao-clp/README.md) |
+| P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD, sequência, causa–efeito, levantamento de sucção e método NPSH | 9 | [abrir](04-controle-nivel-reservatorio/README.md) |
+| P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação, eletrocalhas, curto-circuito e coordenação das proteções | 9 | [abrir](05-instalacao-eletrica-industrial/README.md) |
+| P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO, bornes de comando, causa–efeito e balanço de demanda | 10 | [abrir](06-centro-controle-motores/README.md) |
+| P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f, FOC, matriz de falhas e sequência temporal de pré-carga | 11 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
+| P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA, aterramento, sensibilidade de energia e envelope térmico de strings | 8 | [abrir](08-sistema-fotovoltaico/README.md) |
+| P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição, integração mecânica, descarga e perdas térmicas paramétricas | 10 | [abrir](09-fonte-bancada/README.md) |
+| P10 | Rede de instrumentação industrial | 4–20 mA, escalas lineares, I/O, Ethernet, qualidade de sinais e alimentação das remotas | 10 | [abrir](10-rede-instrumentacao-industrial/README.md) |
+| P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e estudo documental da malha de aterramento/SPDA | 8 | [abrir](11-subestacao-media-tensao/README.md) |
+| P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **80 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **114 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -120,36 +120,67 @@ Auditorias complementares da revisão consolidada:
 .\.venv\Scripts\python.exe .\scripts\revisar_workbooks.py --root .
 ```
 
+Para atualizar apenas uma folha, use o ID correspondente em `portfolio.toml`. As
+entradas não selecionadas só são mantidas no manifesto quando suas fontes e saídas
+continuam com os hashes registrados:
+
+```powershell
+.\.venv\Scripts\python.exe .\scripts\renderizar.py --root . --artifact p12-07-sequencia-transferencia-qta
+```
+
 Todas as dependências usadas pelos comandos públicos estão fixadas em
 `requirements.txt`. O gerador de cada projeto e seus comandos específicos constam no
 README individual.
 
 ## Validação e relatórios
 
-A revisão consolidada aprovou a estrutura, os dados e os formatos do portfólio. Foram
-reconstruídas as 68 pranchas, auditados 70 DXFs no AutoCAD, reabertos os PDFs,
-renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
+A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
+revisão cobre 114 pranchas A3 de P01–P12. A revisão 05 do P05 acrescenta a P05-01 uma
+tabela rastreável de circuito, potência instalada e coordenadas do croqui, sem afirmar
+implantação real. As revisões 04 do P11 e P12 identificam P11-02 e P12-06 como arranjos
+sem escala gráfica válida e deixam explícitos os dados de levantamento e fabricante
+pendentes. A revisão 04 do P01 acrescenta uma folha de sequência operacional
+conceitual; o P02 acrescenta uma folha de
+cotas superiores aritméticas por condutor e retira a seleção não demonstrada de QG1
+63 A; os valores permanecem sem diversidade, não são demanda nem corrente fasorial. A
+revisão 03 do P11 acrescenta uma matriz que relaciona entradas de aterramento a
+verificações, resultados requeridos e evidências, sem produzir cálculo ou aprovação.
+A revisão 04 do P08 separa e rastreia no layout as rotas CC, CA e PE, identificando os
+comprimentos assumidos e o trajeto de comunicação ainda indefinido. A revisão 05 do
+P09 desenha os 16 recortes diretamente de `lista-recortes.csv`, incluindo LEDs e os
+quatro furos do ventilador; os dados seguem como proposta, sem liberação de fabricação.
+A revisão 03 do P10 apresenta cinco pontos
+calculados em cada uma das quatro escalas analógicas; a revisão 04 acrescentou um
+balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alimentadores
+remotos. Esses valores são
+premissas de estudo, não resultados de calibração, ensaio ou dimensionamento final. Consulte a
+[auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md) para as
+contagens atuais e os limites das verificações. A auditoria integrada mais recente
+confirmou 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; a validação estrita
+passou em 674.521 verificações, sem erros ou avisos.
 
-- [Relatório de validação](relatorio-validacao.md)
-- [Revisão técnica](relatorio-revisao-tecnica.md)
-- [Revisão visual](relatorio-revisao-visual.md)
+- [Relatório histórico de validação](relatorio-validacao.md)
+- [Revisão técnica histórica (P01–P10, 2026-09-10)](relatorio-revisao-tecnica.md)
+- [Revisão visual histórica](relatorio-revisao-visual.md)
+- [Auditoria de projetos, maturidade e correções](docs/auditoria-portfolio-2026-11.md)
 - [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
 - [Inventário de arquivos](inventario-arquivos.md)
 - [Critérios técnicos](docs/criterios-tecnicos.md)
 - [Padrão gráfico](docs/padrao-grafico.md)
-- [Plano dos dez projetos](docs/plano-projetos.md)
+- [Plano dos projetos](docs/plano-projetos.md)
 
 O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
 layers, dimensões, moldura, elementos fora da folha, textos potencialmente
 sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P10 acrescentam invariantes técnicos próprios; P01 é coberto
-pelo validador comum e pela auditoria consolidada.
+DWG. Os validadores P02–P12 acrescentam invariantes técnicos próprios; P01 é coberto
+pelo validador comum. Aprovação estrutural e gráfica não representa validação técnica
+profissional.
 
 ## Estrutura resumida
 
 ```text
 portfolio-autocad-engenharia-eletrica/
-├── 01-painel-motor-inversor/ ... 10-rede-instrumentacao-industrial/
+├── 01-painel-motor-inversor/ ... 12-grupo-gerador-qta/
 │   ├── fonte/                  # DXFs e scripts-fonte
 │   ├── exports/                # PDF, SVG e PNG
 │   ├── README.md, memorial, critérios e memórias

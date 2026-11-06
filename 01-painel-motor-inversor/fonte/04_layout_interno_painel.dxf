@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -9541,7 +9541,7 @@ AcDbText
  40
 1.7
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9577,7 +9577,7 @@ AcDbText
  40
 1.7
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9613,7 +9613,7 @@ AcDbText
  40
 1.7
   1
-EMISSÃO INICIAL DO PROJETO 01
+REVISAO VISUAL 04
   7
 PORTFOLIO_TEXTO
  72
@@ -9783,7 +9783,7 @@ AcDbText
  40
 2.25
   1
-2026-09-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9821,7 +9821,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9859,7 +9859,7 @@ AcDbText
  40
 2.25
   1
-04/06
+04/09
   7
 PORTFOLIO_TEXTO
  11
@@ -19729,7 +19729,7 @@ DictionaryVariables
 280
 0
   1
-04/06
+04/09
   0
 DICTIONARYVAR
   5

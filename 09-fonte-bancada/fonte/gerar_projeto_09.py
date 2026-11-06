@@ -1,4 +1,4 @@
-"""Gera as seis pranchas DXF do Projeto 09 de forma determinística."""
+"""Gera as dez pranchas DXF do Projeto 09 de forma determinística."""
 
 from __future__ import annotations
 
@@ -35,8 +35,9 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "09-fonte-bancada"
-PROJECT_DATE = "2026-09-09"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "05"
+SHEET_COUNT = 10
 
 
 @dataclass(frozen=True)
@@ -54,7 +55,7 @@ SHEETS = (
         1,
         "01_diagrama_blocos.dxf",
         "DIAGRAMA DE BLOCOS",
-        "Fonte acadêmica 0-30 Vcc / 0-5 A / 150 W com saída isolada e flutuante",
+        "Fonte acadêmica: 0,8-30 Vcc regulados / 0-5 A / 150 W",
         "Blocos PS1, REG1, PS2 e M1 são especificações funcionais fictícias.\\P"
         "A arquitetura não comprova isolação, segurança, EMC, precisão ou desempenho.",
         "Vermelho: potência | Verde: comando/PE | Magenta: medição | Azul: bornes",
@@ -65,7 +66,7 @@ SHEETS = (
         "DIAGRAMA ELÉTRICO",
         "Entrada, proteção, conversão, regulação, medição e comando térmico",
         "PE é permanente e não passa por chave ou fusível. Saída CC sem ligação interna ao PE.\\P"
-        "Valores de proteção são propostas; Icn, isolação, inrush e coordenação estão pendentes.",
+        "K1 isolado não prova tensão zero; o estudo paramétrico de descarga está na prancha 09.",
         "F: fusível | S: chave/comando | PS: fonte | REG: regulador | K: relé | X: borne",
     ),
     SheetSpec(
@@ -91,18 +92,57 @@ SHEETS = (
         "05_detalhes_mecanicos.dxf",
         "DETALHES MECÂNICOS",
         "Recortes frontal e traseiro, ventilação e envelope do gabinete",
-        "Dimensões nominais não incluem tolerâncias, raios, tratamento ou ferramental.\\P"
-        "Arquivos não devem ser enviados diretamente a corte ou fabricação.",
-        "D: diâmetro | X/Y: origem no canto inferior esquerdo | PNL: painel | FAN: ventilador",
+        "Recortes e coordenadas são propostas; confirmar desenho OEM antes de definir interfaces.\\P"
+        "Sem tolerâncias gerais, raios, acabamento ou processo de corte; não liberar para fabricação.",
+        "X/Y: centro em mm, origem no canto inferior esquerdo | D: diâmetro | FAN: ventilador",
     ),
     SheetSpec(
         6,
         "06_interligacoes.dxf",
         "INTERLIGAÇÕES",
         "Conectividade de rede, barramentos, saída, Kelvin, comandos e PE",
-        "A lista W01-W25 define intenção de ligação, não chicote liberado.\\P"
+        "A lista W01-W31 define intenção de ligação, não chicote liberado.\\P"
         "Confirmar terminais, crimpagem, torque, isolação, cores, proteção e alívio mecânico.",
         "Preto/azul: L/N | Verde-amarelo: PE | Vermelho/preto: CC | Branco: comando",
+    ),
+    SheetSpec(
+        7,
+        "07_topologia_regulador_cc_cv.dxf",
+        "TOPOLOGIA DO REGULADOR CC/CV",
+        "REG1 síncrono com U1 LM5190 como candidato de arquitetura",
+        "U1 regula de 0,8 a 30 V. K1 aberto desabilita a entrega de potência; sem descarga dedicada, a tensão residual nos bornes não é garantida.\\P"
+        "Prancha 09 estuda os nós de descarga, sem selecionar valores ou provar estado seguro.\\P"
+        "L1, RCS e redes passivas seguem pré-dimensionados; estabilidade, layout e térmica pendentes.",
+        "QH/QL: chaves externas | RCS: sensor Kelvin do regulador | SH1: medição externa | 0V36 não ligado ao PE",
+    ),
+    SheetSpec(
+        8,
+        "08_predimensionamento_buck.dxf",
+        "PRÉ-DIMENSIONAMENTO DO ESTÁGIO BUCK",
+        "Ondulação, indutância, corrente de pico e redes de ajuste do conversor",
+        "42 V é apenas um cenário paramétrico de sensibilidade, não a tolerância de PS1.\\P"
+        "O datasheet usa limiar típico; tolerâncias, resposta transitória, estabilidade e perdas reais pendem de validação.",
+        "DELTA IL: ondulação pico a pico | linha tracejada: alvo de 30% | valores acadêmicos, sem liberação para montagem",
+    ),
+    SheetSpec(
+        9,
+        "09_descarga_saida_parametrica.dxf",
+        "ANÁLISE PARAMÉTRICA DA DESCARGA DA SAÍDA",
+        "Nós internos e de borne, energia armazenada e critérios de dimensionamento",
+        "C_INT_MAX, C_EXT_MAX, V0_INT_MAX, V0_PORT_MAX, V_SAFE, T_REQ e ratings de pulso: A DEFINIR; RC ideal.\\P"
+        "KD2: impedir fechamento com fonte externa conectada; permissivo e intertravamento a validar.\\P"
+        "Verificar tolerância, derating, energia de pulso, repetição, temperatura e estados de falha. Não garante 0 V.",
+        "V_INT: saída interna do REG1 | V_PORT: bornes X2 | R: resistência | C: capacitância equivalente",
+    ),
+    SheetSpec(
+        10,
+        "10_matriz_perdas_termicas_parametrica.dxf",
+        "MATRIZ PARAMÉTRICA DE PERDAS E CARGA TÉRMICA",
+        "Sensibilidade em POUT = 150 W; eficiências são cenários, não dados de fabricante",
+        "A matriz não prevê eficiência real nem temperatura de junção.\\P"
+        "Ploss agregado não substitui perdas por componente, curva térmica ou ensaio.\\P"
+        "Rtheta admissível, fluxo de ar, derating e limites térmicos seguem sem definição; sem liberação para montagem.",
+        "ηPS1: eficiência da fonte isolada | ηREG1: eficiência do buck | PLOSS: potência dissipada",
     ),
 )
 
@@ -276,14 +316,15 @@ def define_project_symbols(doc: ezdxf.document.Drawing) -> None:
     terminal.add_circle((0.0, 0.0), 1.3, dxfattribs={"layer": "09_BORNES"})
 
 
-def add_revision_table(layout) -> None:
+def add_revision_table(layout, spec: SheetSpec) -> None:
     add_rect(layout, 230, 72, 410, 94, "01_CARIMBO")
     line(layout, (230, 86), (410, 86), "01_CARIMBO")
     for x in (248, 280, 352):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 09", 316), ("R.E.M.M.", 381)):
+    description = "DETALHAMENTO DE RECORTES"
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (description, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -305,7 +346,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{SHEET_COUNT:02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -321,7 +362,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{SHEET_COUNT:02d}"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION"
     define_title_block(doc)
     define_symbols(doc)
@@ -331,7 +372,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     centered(layout, spec.title, (210, 277), 3.85, "02_TEXTO")
     centered(layout, spec.subtitle, (210, 270.8), 1.8, "02_TEXTO")
     add_bottom_information(layout, spec, config["portfolio"]["warning"])
-    add_revision_table(layout)
+    add_revision_table(layout, spec)
     add_title_block(layout, spec, config)
     return doc, layout
 
@@ -343,9 +384,9 @@ def draw_block_diagram(layout, data: dict[str, list[dict[str, str]]]) -> None:
         (67, 210, 111, 240, "F1/S1/FL1", "PROTEÇÃO\nE FILTRO"),
         (121, 202, 171, 248, "PS1", "AC/DC ISOLADA\n36 V / 7 A"),
         (181, 210, 213, 240, "F2", "7,5 A CC"),
-        (223, 202, 277, 248, "REG1", "BUCK CC/CV\n0-30 V / 5 A"),
+        (223, 202, 277, 248, "REG1", "LM5190 CC/CV\n0.8-30 V regulado"),
         (287, 210, 325, 240, "K1/SH1", "HABILITAÇÃO\nE MEDIÇÃO"),
-        (343, 202, 400, 248, "X2", "0-30 Vcc\n0-5 A / 150 W"),
+        (343, 202, 400, 248, "X2", "0.8-30 Vcc regulados\n0-5 A / 150 W"),
     )
     for x0, y0, x1, y1, tag, detail in blocks:
         component(layout, x0, y0, x1, y1, tag, detail.replace("\n", " | "), "04_EQUIPAMENTOS")
@@ -354,7 +395,7 @@ def draw_block_diagram(layout, data: dict[str, list[dict[str, str]]]) -> None:
         ((111, 225), (121, 225), "L/N"),
         ((171, 225), (181, 225), "36 V"),
         ((213, 225), (223, 225), "36 V"),
-        ((277, 225), (287, 225), "0-30 V"),
+        ((277, 225), (287, 225), "0.8-30 V regulados"),
         ((325, 225), (343, 225), "SAÍDA"),
     ):
         arrow(layout, start, end, "05_POTENCIA", label, (0, 5))
@@ -422,13 +463,14 @@ def draw_electrical_diagram(layout, data: dict[str, list[dict[str, str]]]) -> No
     centered(layout, "0V36", (238, 208), 0.9, "08_CABOS")
     layout.add_blockref("P09_FUSIVEL", (258, 232), dxfattribs={"layer": "05_POTENCIA"})
     centered(layout, "F2 7,5 A", (258, 240), 0.9, "05_POTENCIA")
-    component(layout, 282, 198, 330, 246, "REG1", "BUCK CC/CV 150 W", "04_EQUIPAMENTOS")
+    component(layout, 282, 198, 330, 246, "REG1", "U1 LM5190 + QH/QL", "04_EQUIPAMENTOS")
     layout.add_blockref("P09_CHAVE", (348, 232), dxfattribs={"layer": "05_POTENCIA"})
     centered(layout, "K1 NO", (348, 240), 0.9, "05_POTENCIA")
     component(layout, 362, 204, 380, 220, "SH1", "10 A / 75 mV", "07_INSTRUMENTACAO")
     centered(layout, "X2 +", (394, 232), 1.0, "09_BORNES")
     centered(layout, "X2 -", (394, 212), 1.0, "09_BORNES")
-    centered(layout, "0-30 Vcc / 0-5 A", (335, 190), 1.15, "05_POTENCIA")
+    centered(layout, "0,8-30 V REGULADOS / 0-5 A / 150 W", (335, 190), 1.0, "05_POTENCIA")
+    centered(layout, "K1 ABERTO DESABILITA; TENSÃO RESIDUAL NÃO GARANTIDA", (335, 183), 0.95, "02_TEXTO")
 
     component(layout, 190, 132, 232, 166, "PS2", "36 -> 12 Vcc", "04_EQUIPAMENTOS")
     orthogonal(layout, ((242, 212), (242, 160), (232, 160)), "08_CABOS")
@@ -456,10 +498,294 @@ def draw_electrical_diagram(layout, data: dict[str, list[dict[str, str]]]) -> No
     layout.add_blockref("SIM_TERRA", (80, 118), dxfattribs={"layer": "06_COMANDO"})
 
 
+def draw_regulator_topology(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "REG1 | ESTÁGIO DE POTÊNCIA SÍNCRONO", (210, 258), 1.7, "02_TEXTO")
+    add_rect(layout, 24, 153, 308, 244, "11_ARQUITETURA")
+    centered(layout, "CAMINHO DE ENERGIA — BARRAMENTO SECUNDÁRIO FLUTUANTE", (166, 237), 1.25, "05_POTENCIA")
+
+    # Power stage: F2 -> half bridge -> L1 -> current-sense resistor -> output.
+    centered(layout, "+36 Vcc pós-F2", (48, 230), 1.05, "08_CABOS")
+    line(layout, (30, 219), (132, 219), "05_POTENCIA")
+    add_rect(layout, 48, 213, 70, 225, "05_POTENCIA")
+    centered(layout, "F2", (59, 219), 1.15, "05_POTENCIA")
+    centered(layout, "CIN", (91, 197), 1.05, "04_EQUIPAMENTOS")
+    line(layout, (91, 219), (91, 190), "05_POTENCIA")
+    line(layout, (85, 190), (97, 190), "05_POTENCIA")
+    line(layout, (85, 186), (97, 186), "05_POTENCIA")
+    line(layout, (91, 186), (91, 161), "05_POTENCIA")
+
+    line(layout, (132, 219), (147, 219), "05_POTENCIA")
+    add_rect(layout, 137, 198, 157, 216, "05_POTENCIA")
+    centered(layout, "QH", (147, 210), 1.1, "05_POTENCIA")
+    centered(layout, "N-MOS", (147, 202), 0.8, "02_TEXTO")
+    line(layout, (147, 219), (147, 216), "05_POTENCIA")
+    line(layout, (147, 198), (147, 188), "05_POTENCIA")
+    add_rect(layout, 137, 164, 157, 182, "05_POTENCIA")
+    centered(layout, "QL", (147, 176), 1.1, "05_POTENCIA")
+    centered(layout, "N-MOS", (147, 168), 0.8, "02_TEXTO")
+    line(layout, (147, 188), (147, 182), "05_POTENCIA")
+    line(layout, (147, 164), (147, 161), "05_POTENCIA")
+    line(layout, (147, 188), (190, 188), "05_POTENCIA")
+    centered(layout, "SW", (173, 192), 0.9, "05_POTENCIA")
+
+    add_rect(layout, 190, 181, 221, 195, "04_EQUIPAMENTOS")
+    centered(layout, "L1", (205.5, 191), 1.15, "04_EQUIPAMENTOS")
+    centered(layout, "75 uH*", (205.5, 176), 0.9, "02_TEXTO")
+    line(layout, (221, 188), (230, 188), "05_POTENCIA")
+    add_rect(layout, 230, 181, 256, 195, "07_INSTRUMENTACAO")
+    centered(layout, "RCS", (243, 191), 1.0, "07_INSTRUMENTACAO")
+    centered(layout, "9.1 mOhm*", (243, 176), 0.85, "02_TEXTO")
+    line(layout, (256, 188), (293, 188), "05_POTENCIA")
+    centered(layout, "VOUT 0.8-30 V REGULADO", (278, 198), 0.95, "05_POTENCIA")
+    centered(layout, "COUT", (296, 178), 0.9, "04_EQUIPAMENTOS")
+    line(layout, (274, 188), (274, 170), "05_POTENCIA")
+    line(layout, (268, 170), (280, 170), "05_POTENCIA")
+    line(layout, (268, 166), (280, 166), "05_POTENCIA")
+    line(layout, (274, 166), (274, 161), "05_POTENCIA")
+    line(layout, (27, 161), (300, 161), "08_CABOS")
+    centered(layout, "0V36 = RETORNO DO BUCK / VOUT-", (75, 156), 0.92, "08_CABOS")
+    centered(layout, "K1 aberto desabilita a saída; tensão residual não garantida sem descarga dedicada.", (166, 137), 0.88, "02_TEXTO")
+    centered(layout, "Retorno 0V36 flutuante; não se liga ao PE.", (166, 130), 0.88, "02_TEXTO")
+
+    # Controller block and explicit pin-to-function cross-reference.
+    add_rect(layout, 314, 205, 410, 242, "04_EQUIPAMENTOS")
+    centered(layout, "U1 | LM5190 (CANDIDATO)", (362, 234), 1.25, "04_EQUIPAMENTOS")
+    centered(layout, "Buck síncrono | malhas CC e CV", (362, 225), 0.95, "02_TEXTO")
+    centered(layout, "QH/QL externos | fSW programável", (362, 217), 0.9, "02_TEXTO")
+    centered(layout, "VIN 5-80 V | VOUT 0.8-79 V (datasheet)", (362, 210), 0.78, "02_TEXTO")
+    rows = [
+        ("HO / LO", "Acionamento dos gates QH / QL", "Pendente"),
+        ("ISNS+ / VOUT", "Kelvin nos dois lados de RCS", "Fonte TI"),
+        ("FB", "Divisor / ajuste de RV1", "Pendente"),
+        ("ISET / IMON", "Ajuste RV2 / leitura de corrente", "Pendente"),
+        ("COMP / RT", "Compensação / frequência", "Pendente"),
+        ("EN / PGOOD", "Habilitação / estado regulado", "Pendente"),
+    ]
+    table(layout, 314, 196, (26, 51, 19), ("PINO(S)", "INTERFACE", "ESTADO"), rows, row_height=9, text_height=1.5)
+
+
+def draw_regulator_predesign(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "ONDULAÇÃO CALCULADA PARA fSW = 100 kHz E L1 = 75 uH", (210, 258), 1.6, "02_TEXTO")
+    x0, x1, y0, y1 = 43.0, 195.0, 143.0, 232.0
+    line(layout, (x0, y0), (x1, y0), "03_COTAS")
+    line(layout, (x0, y0), (x0, y1), "03_COTAS")
+    for current in (0.0, 0.4, 0.8, 1.2, 1.6):
+        y = y0 + (current / 1.6) * (y1 - y0)
+        line(layout, (x0, y), (x1, y), "11_ARQUITETURA")
+        centered(layout, f"{current:.1f}", (x0 - 8, y), 0.8, "03_COTAS")
+    for voltage in range(0, 31, 5):
+        x = x0 + (voltage / 30) * (x1 - x0)
+        line(layout, (x, y0 - 2), (x, y0 + 2), "03_COTAS")
+        centered(layout, str(voltage), (x, y0 - 7), 0.8, "03_COTAS")
+    centered(layout, "VOUT (V)", ((x0 + x1) / 2, y0 - 14), 1.0, "03_COTAS")
+    add_text(layout, "DELTA IL p-p (A)", (x0 - 14, (y0 + y1) / 2), 0.9, layer="03_COTAS", rotation=90.0, align=TextEntityAlignment.MIDDLE_CENTER)
+
+    target_y = y0 + (1.5 / 1.6) * (y1 - y0)
+    layout.add_lwpolyline([(x0, target_y), (x1, target_y)], dxfattribs={"layer": "03_COTAS", "linetype": "DASHED"})
+    centered(layout, "alvo 30% de 5 A = 1.5 A", (117, target_y + 3), 0.8, "03_COTAS")
+    for vin, layer in ((36.0, "05_POTENCIA"), (42.0, "08_CABOS")):
+        points = []
+        for tenth in range(8, 301, 2):
+            vout = tenth / 10
+            ripple = vout * (1.0 - vout / vin) / (75e-6 * 100_000.0)
+            x = x0 + (vout / 30.0) * (x1 - x0)
+            y = y0 + (ripple / 1.6) * (y1 - y0)
+            points.append((x, y))
+        layout.add_lwpolyline(points, dxfattribs={"layer": layer})
+    centered(layout, "VIN 36 V nominal", (83, 244), 0.9, "05_POTENCIA")
+    centered(layout, "VIN 42 V sensibilidade", (157, 244), 0.9, "08_CABOS")
+
+    rows = [
+        ("L requerida @36 V", "60 uH", "DERIVADO"),
+        ("L requerida @42 V", "70 uH", "DERIVADO"),
+        ("L1 proposta", "75 uH", "PROPOSTA"),
+        ("Delta IL max @36 V", "1.20 A / 24%", "DERIVADO"),
+        ("Delta IL max @42 V", "1.40 A / 28%", "DERIVADO"),
+        ("I pico em 5 A @42 V", "5.70 A", "DERIVADO"),
+        ("RCS proposta", "9.1 mOhm / 1%", "PROPOSTA"),
+        ("Limite cíclico ideal", "6.59 A pico", "60 mV typ."),
+        ("RIMON para 5 A", "8.62 kOhm", "DERIVADO"),
+    ]
+    table(layout, 218, 238, (58, 56, 55), ("CRITÉRIO", "VALOR", "CLASSE"), rows, row_height=9, text_height=0.78)
+    centered(layout, "36 V nominal: ondulação máxima em VOUT = 18 V; 42 V é apenas sensibilidade.", (147, 108), 0.9, "02_TEXTO")
+
+
+def draw_output_discharge(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "K1 ABRE O POSITIVO; ANALISAR A ENERGIA EM DOIS NÓS", (210, 251), 1.3, "05_POTENCIA")
+
+    # Internal regulator output and external terminals are distinct discharge domains.
+    component(layout, 20, 216, 72, 245, "REG1 / COUT", "NÓ INTERNO", "04_EQUIPAMENTOS")
+    line(layout, (72, 231), (160, 231), "05_POTENCIA")
+    layout.add_blockref("P09_CHAVE", (166, 231), dxfattribs={"layer": "05_POTENCIA"})
+    centered(layout, "K1", (166, 241), 1.0, "05_POTENCIA")
+    centered(layout, "K1 ABRE APENAS +", (166, 222), 0.8, "02_TEXTO")
+    line(layout, (172, 231), (350, 231), "05_POTENCIA")
+    component(layout, 350, 216, 400, 245, "X2", "PORTA + / -", "09_BORNES")
+    line(layout, (20, 205), (400, 205), "08_CABOS")
+    line(layout, (375, 216), (375, 205), "08_CABOS")
+    centered(layout, "0V36 / RETORNO X2-", (210, 199), 0.9, "08_CABOS")
+
+    centered(layout, "V_INT", (91, 237), 0.9, "05_POTENCIA")
+    line(layout, (91, 231), (91, 225), "05_POTENCIA")
+    line(layout, (85, 225), (97, 225), "05_POTENCIA")
+    line(layout, (85, 221), (97, 221), "05_POTENCIA")
+    line(layout, (91, 221), (91, 205), "05_POTENCIA")
+    centered(layout, "C_INT", (91, 213), 0.8, "04_EQUIPAMENTOS")
+
+    line(layout, (122, 231), (122, 227), "05_POTENCIA")
+    add_rect(layout, 111, 221, 133, 227, "06_COMANDO")
+    centered(layout, "KD1", (122, 224), 0.78, "06_COMANDO")
+    add_rect(layout, 111, 211, 133, 217, "04_EQUIPAMENTOS")
+    centered(layout, "RD1", (122, 214), 0.8, "04_EQUIPAMENTOS")
+    line(layout, (122, 221), (122, 217), "05_POTENCIA")
+    line(layout, (122, 211), (122, 205), "05_POTENCIA")
+    centered(layout, "RAMO INTERNO", (122, 201), 0.75, "02_TEXTO")
+
+    centered(layout, "V_PORT", (308, 237), 0.9, "05_POTENCIA")
+    line(layout, (308, 231), (308, 225), "05_POTENCIA")
+    line(layout, (302, 225), (314, 225), "05_POTENCIA")
+    line(layout, (302, 221), (314, 221), "05_POTENCIA")
+    line(layout, (308, 221), (308, 205), "05_POTENCIA")
+    centered(layout, "C_EXT", (308, 213), 0.8, "04_EQUIPAMENTOS")
+
+    line(layout, (277, 231), (277, 227), "05_POTENCIA")
+    add_rect(layout, 266, 221, 288, 227, "06_COMANDO")
+    centered(layout, "KD2", (277, 224), 0.78, "06_COMANDO")
+    add_rect(layout, 266, 211, 288, 217, "04_EQUIPAMENTOS")
+    centered(layout, "RD2", (277, 214), 0.8, "04_EQUIPAMENTOS")
+    line(layout, (277, 221), (277, 217), "05_POTENCIA")
+    line(layout, (277, 211), (277, 205), "05_POTENCIA")
+    centered(layout, "RAMO PORTA", (277, 201), 0.75, "02_TEXTO")
+
+    discharge = {row["calculo"]: row for row in data["discharge"]}
+    sizing_rows = [
+        (
+            "INTERNA",
+            "C_INT_MAX",
+            discharge["E_INT_MAX"]["formula"],
+            f"R_INT_MIN={discharge['R_INT_MIN']['formula']} <= R <= R_INT_MAX={discharge['R_INT_MAX']['formula']}",
+        ),
+        (
+            "PORTA X2",
+            "C_EXT_MAX",
+            discharge["E_EXT_MAX"]["formula"],
+            f"R_PORT_MIN={discharge['R_PORT_MIN']['formula']} <= R <= R_PORT_MAX={discharge['R_PORT_MAX']['formula']}",
+        ),
+    ]
+    table(
+        layout,
+        20,
+        184,
+        (36, 45, 100, 199),
+        ("RAMO", "C_EQ", "E = 0.5*C*V0*V0", "FAIXA IDEAL DE R: MÍN. PULSO <= R <= MÁX. TEMPO"),
+        sizing_rows,
+        row_height=9.0,
+        text_height=1.25,
+    )
+
+    state_rows = [
+        ("OPERAR", "K1 fechado", "KD1 aberto", "KD2 aberto; fonte REG1 habilitada"),
+        ("DESLIGAR", "REG1 inibido; abrir K1", "Confirmar abertura antes de fechar KD1", "Não descarregar com fonte externa conectada"),
+        ("DESCARGA", "K1 aberto", "KD1 fecha; medir V_INT", "KD2 só com porta isolada e permissivo definido"),
+        ("VERIFICAR", "K1 aberto", "Medir V_INT <= V_SAFE no tempo requerido", "Medir V_PORT <= V_SAFE no tempo requerido"),
+        ("RETORNAR", "Fechar só ao final", "Abrir e confirmar KD1", "Abrir e confirmar KD2 antes de fechar K1"),
+    ]
+    table(
+        layout,
+        20,
+        145,
+        (36, 56, 138, 150),
+        ("FASE", "K1", "NÓ INTERNO", "PORTA X2"),
+        state_rows,
+        row_height=8.0,
+        text_height=1.15,
+    )
+
+
+def draw_thermal_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "CENÁRIOS DIDÁTICOS DE EFICIÊNCIA — NÃO REPRESENTAM CURVAS DE COMPONENTES", (210, 251), 1.25, "05_POTENCIA")
+
+    # Cascaded power flow separates losses in the isolated source from losses in the buck.
+    component(layout, 28, 218, 124, 241, "PS1", "36 V / 7 A / 252 W nominal", "04_EQUIPAMENTOS")
+    component(layout, 162, 218, 258, 241, "REG1", "BUCK CC/CV / 150 W máx.", "04_EQUIPAMENTOS")
+    component(layout, 286, 218, 392, 241, "X2 + CARGA", "VOUT × IOUT ≤ 150 W", "09_BORNES")
+    arrow(layout, (124, 229), (162, 229), "05_POTENCIA", "PIN REG1")
+    arrow(layout, (258, 229), (286, 229), "05_POTENCIA", "POUT")
+    centered(layout, "PLOSS PS1 = PIN PS1 − PIN REG1", (88, 212), 0.95, "05_POTENCIA")
+    centered(layout, "PLOSS REG1 = PIN REG1 − POUT", (210, 212), 0.95, "05_POTENCIA")
+    centered(layout, "CALOR TOTAL = PLOSS PS1 + PLOSS REG1", (338, 212), 0.95, "05_POTENCIA")
+
+    thermal = data["thermal"]
+    loss_by_eta = {
+        (row["eta_ps1"], row["eta_reg"]): row["p_loss_total_w"]
+        for row in thermal
+    }
+    matrix_rows = []
+    for eta_ps1 in ("0.88", "0.92", "0.96"):
+        matrix_rows.append((
+            f"{float(eta_ps1) * 100:.0f}%",
+            *(f"{float(loss_by_eta[(eta_ps1, eta_reg)]):.1f} W" for eta_reg in ("0.85", "0.90", "0.95")),
+        ))
+    table(
+        layout,
+        20,
+        200,
+        (37, 42, 42, 42),
+        ("ηPS1 \\ ηREG1", "85%", "90%", "95%"),
+        matrix_rows,
+        row_height=8.5,
+        text_height=1.25,
+    )
+
+    case_rows = []
+    for label, eta_ps1, eta_reg in (
+        ("BAIXA", "0.88", "0.85"),
+        ("CENTRAL", "0.92", "0.90"),
+        ("ALTA", "0.96", "0.95"),
+    ):
+        row = next(item for item in thermal if item["eta_ps1"] == eta_ps1 and item["eta_reg"] == eta_reg)
+        case_rows.append((
+            label,
+            f"{float(row['p_reg_in_w']):.1f}",
+            f"{float(row['p_loss_reg_w']):.1f}",
+            f"{float(row['p_loss_ps1_w']):.1f}",
+            f"{float(row['p_loss_total_w']):.1f}",
+            f"{float(row['margin_ps1_w']):.1f}",
+        ))
+    table(
+        layout,
+        204,
+        200,
+        (28, 32, 32, 32, 36, 38),
+        ("CASO", "PIN REG", "PLOSS REG", "PLOSS PS1", "PLOSS TOTAL", "MARGEM"),
+        case_rows,
+        row_height=8.5,
+        text_height=1.1,
+    )
+    centered(layout, "P em W | margem = 252 W − potência requerida na saída de PS1", (304, 158), 0.9, "02_TEXTO")
+
+    add_rect(layout, 20, 99, 202, 152, "12_LEGENDA")
+    left(layout, "RELAÇÕES DE POTÊNCIA", (24, 146), 1.25, "12_LEGENDA")
+    left(layout, "PIN_REG1 = POUT / ηREG1", (25, 139), 1.1)
+    left(layout, "PLOSS_REG1 = PIN_REG1 − POUT", (25, 133), 1.1)
+    left(layout, "PIN_PS1 = PIN_REG1 / ηPS1", (25, 127), 1.1)
+    left(layout, "PLOSS_PS1 = PIN_PS1 − PIN_REG1", (25, 121), 1.1)
+    left(layout, "PLOSS_TOTAL = PIN_PS1 − POUT", (25, 115), 1.1)
+    left(layout, "RθJA,req ≤ (Tj,proj − Tamb,proj) / PLOSS,componente", (25, 107), 1.0)
+
+    add_rect(layout, 212, 99, 400, 152, "12_LEGENDA")
+    left(layout, "DADOS PARA FECHAR A ANÁLISE TÉRMICA", (216, 146), 1.25, "12_LEGENDA")
+    left(layout, "• Curvas de perdas de PS1 e REG1 em V/I e temperatura.", (217, 139), 1.0)
+    left(layout, "• Perdas individuais em QH/QL, L1, shunt e passivos.", (217, 133), 1.0)
+    left(layout, "• Tj de projeto com margem; Tc, Rθ, placa/interface e derating.", (217, 127), 1.0)
+    left(layout, "• Ar interno, ambiente, ventilação e posição dos componentes.", (217, 121), 1.0)
+    left(layout, "• Ensaios nos extremos de VOUT/IOUT, carga e falhas.", (217, 115), 1.0)
+    left(layout, "Perda total não informa a temperatura de cada componente.", (217, 107), 1.0, "13_NOTAS")
+
 def draw_front_panel(layout, data: dict[str, list[dict[str, str]]]) -> None:
     x0, y0, width, height = 45.0, 105.0, 320.0, 150.0
     add_rect(layout, x0, y0, x0 + width, y0 + height, "11_ARQUITETURA")
-    centered(layout, "FONTE DE BANCADA 0-30 V / 0-5 A", (x0 + width / 2, y0 + height - 12), 2.0, "02_TEXTO")
+    centered(layout, "FONTE DE BANCADA 0,8-30 V REGULADOS / 0-5 A", (x0 + width / 2, y0 + height - 12), 1.8, "02_TEXTO")
 
     # Recortes localizados pela origem inferior esquerda do painel.
     add_rect(layout, x0 + 20, y0 + 81, x0 + 50, y0 + 103, "06_COMANDO")
@@ -566,38 +892,50 @@ def draw_internal_layout(layout, data: dict[str, list[dict[str, str]]]) -> None:
 
 
 def draw_mechanical_details(layout, data: dict[str, list[dict[str, str]]]) -> None:
-    # Painel frontal em escala 1:2.
+    display_names = {"X2-PLUS": "X2+", "X2-MINUS": "X2-"}
+
+    def add_panel_cutouts(items: list[dict[str, str]], ox: float, oy: float, scale: float, *, label: bool) -> None:
+        for item in items:
+            cx = ox + float(item["centro_x_mm"]) * scale
+            cy = oy + float(item["centro_y_mm"]) * scale
+            dimension = item["dimensao_mm"].strip().upper()
+            if item["geometria"] == "retangulo":
+                width, height = (float(value) * scale for value in dimension.split("X", 1))
+                add_rect(
+                    layout,
+                    cx - width / 2,
+                    cy - height / 2,
+                    cx + width / 2,
+                    cy + height / 2,
+                    "03_COTAS",
+                )
+                label_offset = height / 2 + 2.0
+            else:
+                diameter = float(dimension.removeprefix("D")) * scale
+                layout.add_circle((cx, cy), diameter / 2, dxfattribs={"layer": "03_COTAS"})
+                label_offset = diameter / 2 + 2.0
+            if label:
+                tag = display_names.get(item["item"], item["item"])
+                centered(layout, tag, (cx, cy + label_offset), 1.2, "02_TEXTO")
+
+    # Painel frontal em escala 1:2. As geometrias vêm da lista rastreável de recortes.
     fx, fy, sc = 20.0, 174.0, 0.5
     add_rect(layout, fx, fy, fx + 320 * sc, fy + 150 * sc, "11_ARQUITETURA")
     centered(layout, "PAINEL FRONTAL - ESCALA GRÁFICA 1:2", (fx + 80, fy + 81), 1.2, "02_TEXTO")
-    for x, y, shape, size, tag in (
-        (35, 92, "R", (30, 22), "S1"),
-        (105, 100, "R", (72, 36), "M1"),
-        (175, 100, "C", (7, 0), "RV1"),
-        (220, 100, "C", (7, 0), "RV2"),
-        (270, 100, "C", (16, 0), "S2"),
-        (205, 38, "C", (8, 0), "X2+"),
-        (250, 38, "C", (8, 0), "X2-"),
-        (295, 38, "C", (8, 0), "X3"),
-    ):
-        px, py = fx + x * sc, fy + y * sc
-        if shape == "R":
-            w, h = size[0] * sc, size[1] * sc
-            add_rect(layout, px - w / 2, py - h / 2, px + w / 2, py + h / 2, "03_COTAS")
-        else:
-            layout.add_circle((px, py), size[0] * sc / 2, dxfattribs={"layer": "03_COTAS"})
-        centered(layout, tag, (px, py + 6), 0.8, "02_TEXTO")
+    front_items = [item for item in data["cutouts"] if item["painel"] == "frontal"]
+    rear_items = [item for item in data["cutouts"] if item["painel"] == "traseiro"]
+    add_panel_cutouts(front_items, fx, fy, sc, label=True)
+    centered(layout, "0,0", (fx + 5, fy + 8), 0.8, "03_COTAS")
     dimension_h(layout, fx, fx + 160, fy + 4, "320 mm")
+    dimension_v(layout, fx - 5, fy, fy + 75, "150 mm")
 
-    # Painel traseiro em escala 1:2.
+    # Painel traseiro usa a mesma transformação; FAN1 e os quatro furos são individuais.
     rx, ry = 20.0, 101.0
     add_rect(layout, rx, ry, rx + 160, ry + 75, "11_ARQUITETURA")
     centered(layout, "PAINEL TRASEIRO - ESCALA GRÁFICA 1:2", (rx + 80, ry + 68), 1.2, "02_TEXTO")
-    add_rect(layout, rx + 15.5, ry + 30, rx + 29.5, ry + 40, "03_COTAS")
+    add_panel_cutouts(rear_items, rx, ry, sc, label=False)
+    centered(layout, "0,0", (rx + 5, ry + 5), 0.8, "03_COTAS")
     centered(layout, "X1 28x20", (rx + 22.5, ry + 24), 0.9, "02_TEXTO")
-    layout.add_circle((rx + 122.5, ry + 37.5), 19, dxfattribs={"layer": "03_COTAS"})
-    for dx, dy in ((-17.5, -17.5), (17.5, -17.5), (-17.5, 17.5), (17.5, 17.5)):
-        layout.add_circle((rx + 122.5 + dx, ry + 37.5 + dy), 1, dxfattribs={"layer": "03_COTAS"})
     centered(layout, "FAN1 D76 / 4xD4", (rx + 122.5, ry + 12), 0.9, "02_TEXTO")
 
     # Vista lateral e envelope.
@@ -611,32 +949,46 @@ def draw_mechanical_details(layout, data: dict[str, list[dict[str, str]]]) -> No
     dimension_h(layout, 210, 310, 184, "260 mm REAL")
     dimension_v(layout, 204, 190, 235, "150 mm REAL")
 
+    def schedule_rows(items: list[dict[str, str]]) -> list[tuple[str, ...]]:
+        return [
+            (
+                display_names.get(item["item"], item["item"]),
+                f'{item["centro_x_mm"]} / {item["centro_y_mm"]}',
+                item["dimensao_mm"].upper(),
+                item["classificacao"],
+            )
+            for item in items
+        ]
+
+    centered(layout, "PAINEL FRONTAL", (245, 170), 1.45, "02_TEXTO")
     table(
         layout,
         195,
         166,
-        (35, 40, 45, 85),
-        ("ITEM", "X / Y", "RECORTE", "OBSERVAÇÃO"),
-        [
-            ("S1", "35 / 92", "30x22", "fabricante"),
-            ("M1", "105 / 100", "72x36", "moldura"),
-            ("RV1/RV2", "175/220 / 100", "D7", "antirotação"),
-            ("S2", "270 / 100", "D16", "comando"),
-            ("X2+/X2-/X3", "205/250/295 / 38", "D8", "bornes"),
-            ("X1", "45 / 70", "28x20", "traseiro"),
-            ("FAN1", "245 / 75", "D76 + 4xD4", "traseiro"),
-        ],
-        row_height=7.5,
-        text_height=0.75,
+        (22, 27, 25, 26),
+        ("ITEM", "CENTRO X/Y", "RECORTE", "STATUS"),
+        schedule_rows(front_items),
+        row_height=6.2,
+        text_height=1.5,
     )
-    centered(layout, "SEM TOLERÂNCIAS GERAIS, RAIOS, ACABAMENTO OU PROCESSO DE CORTE", (297, 100), 1.05, "13_NOTAS")
+    centered(layout, "PAINEL TRASEIRO", (349, 170), 1.45, "02_TEXTO")
+    table(
+        layout,
+        298,
+        166,
+        (22, 27, 25, 28),
+        ("ITEM", "CENTRO X/Y", "RECORTE", "STATUS"),
+        schedule_rows(rear_items),
+        row_height=6.2,
+        text_height=1.5,
+    )
 
 
 def draw_interconnections(layout, data: dict[str, list[dict[str, str]]]) -> None:
     component(layout, 20, 210, 64, 246, "X1", "L / N / PE", "09_BORNES")
     component(layout, 86, 210, 138, 246, "ENTRADA", "F1/S1/FL1", "04_EQUIPAMENTOS")
     component(layout, 160, 202, 212, 252, "PS1", "36 V / 7 A", "04_EQUIPAMENTOS")
-    component(layout, 236, 202, 288, 252, "REG1", "0-30 V / 5 A", "04_EQUIPAMENTOS")
+    component(layout, 236, 202, 288, 252, "REG1", "0,8-30 V regulados / 5 A", "04_EQUIPAMENTOS")
     component(layout, 312, 210, 352, 246, "K1/SH1", "SAÍDA", "04_EQUIPAMENTOS")
     component(layout, 370, 210, 400, 246, "X2", "+ / -", "09_BORNES")
     for start, end, label in (
@@ -672,16 +1024,18 @@ def draw_interconnections(layout, data: dict[str, list[dict[str, str]]]) -> None
             ("W06-W07", "X1/PE1", "chassi/PS1", "1,5", "verde-amarelo", "proteção"),
             ("W08-W09", "FL1", "PS1", "0,75", "preto/azul", "rede filtrada"),
             ("W10-W12", "PS1/F2", "REG1", "2,5", "vermelho/preto", "barramento 36 V"),
-            ("W13-W16", "REG1/K1/SH1", "X2", "2,5", "vermelho/preto", "saída 0-30 V"),
+            ("W13-W16", "REG1/K1/SH1", "X2", "2,5", "vermelho/preto", "0,8-30 V regulados; 5 A / 150 W máx."),
             ("W17-W18", "X2", "M1", "0,5", "par vermelho/preto", "sense Kelvin"),
             ("W19-W21", "PS2/TH1", "FAN1", "0,5", "vermelho/preto", "ventilação"),
             ("W22-W24", "PS2/TS1/S2", "K1", "0,5", "vermelho/branco", "habilitação"),
             ("W25", "X3", "PE1", "1,5", "verde-amarelo", "borne de chassi"),
+            ("W26-W28", "REG1 OUT+/RET", "KD1+RD1", "A DEFINIR", "vermelho/preto", "descarga interna parametrizada"),
+            ("W29-W31", "X2+/X2-", "KD2+RD2", "A DEFINIR", "vermelho/preto", "bloquear se fonte externa conectada"),
         ],
-        row_height=3.5,
-        text_height=0.68,
+        row_height=3.2,
+        text_height=1.25,
     )
-    centered(layout, "LISTA COMPLETA W01-W25 EM lista-interligacoes.csv | SEÇÕES EM mm²", (210, 99), 1.05, "13_NOTAS")
+    centered(layout, "LISTA COMPLETA W01-W31 EM lista-interligacoes.csv | SEÇÕES EM mm²", (210, 95), 1.0, "13_NOTAS")
 
 
 DRAWERS = {
@@ -691,6 +1045,10 @@ DRAWERS = {
     4: draw_internal_layout,
     5: draw_mechanical_details,
     6: draw_interconnections,
+    7: draw_regulator_topology,
+    8: draw_regulator_predesign,
+    9: draw_output_discharge,
+    10: draw_thermal_sensitivity,
 }
 
 
@@ -705,6 +1063,8 @@ def generate(root: Path) -> list[Path]:
         "cutouts": read_rows(project, "lista-recortes.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
+        "discharge": read_rows(project, "dimensionamento-descarga.csv"),
+        "thermal": read_rows(project, "dimensionamento-termico-parametrico.csv"),
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

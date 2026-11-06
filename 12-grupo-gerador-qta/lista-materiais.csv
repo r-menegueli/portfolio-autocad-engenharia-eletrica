@@ -2,8 +2,8 @@ item,quantidade,unidade,descricao,referencia,observacoes
 GMG-01,1,un,Grupo moto-gerador diesel 250 kVA Standby / 200 kW 380-220V 60Hz 1800 rpm com cabine 75 dB,GMG-01,Alternador brushless com AVR e PMG
 QTA-01,1,un,Painel autoportante em chapa de aco 14 MSG IP54 1800x800x400 mm pintura RAL 7032,QTA-01,Com placa de montagem laranja RAL 2004
 USCA-01,1,un,Controlador microprocessado para grupo gerador e transferencia automatica LCD,USCA-01,Monitoramento trifasico rede e gerador
-DJ-REDE,1,un,Disjuntor caixa moldada tripolar 400 A Icu 25 kA 380 V,DJ-REDE,Protecao da entrada da concessionaria
-DJ-GER,1,un,Disjuntor caixa moldada tripolar 400 A Icu 16 kA disparador eletronico LSI,DJ-GER,Protecao principal do alternador
+DJ-REDE,1,un,Disjuntor caixa moldada 4P 400 A Icu 25 kA 380 V,DJ-REDE,Proposta 3P+N para acompanhar o neutro comutado; coordenacao a definir
+DJ-GER,1,un,Disjuntor caixa moldada 4P 400 A Icu 16 kA disparador eletronico LSI,DJ-GER,Proposta 3P+N para acompanhar o neutro comutado; coordenacao a definir
 K1-REDE,1,un,Contator de potencia tetrapolar 400 A AC-3 bobina 220 Vca 60 Hz,K1,Chaveamento da fonte rede
 K2-GER,1,un,Contator de potencia tetrapolar 400 A AC-3 bobina 220 Vca 60 Hz,K2,Chaveamento da fonte gerador
 INTER-MEC,1,cj,Mecanismo de intertravamento mecanico rigido para contatores K1 e K2,INT-MEC,Impede fechamento simultaneo das fontes

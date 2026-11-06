@@ -7,5 +7,5 @@
 6,1,un,Estação de supervisão,SCADA-101,computador/software não selecionados
 7,4,un,Transmissor 2 fios 4-20 mA,TT/PT/FT/LT,faixas conforme lista
 8,2,un,Chave de processo 24 Vcc,LSH/PSL,contato/sensor final pendente
-9,1,conj,Bornes seccionáveis e de passagem,X1-X4,dimensionamento conceitual
+9,1,conj,Bornes seccionáveis e de passagem,X1-X4,X2:01–06; dimensionamento conceitual
 10,1,conj,Barras de blindagem e proteção,BE-101/PE-101,funções distintas

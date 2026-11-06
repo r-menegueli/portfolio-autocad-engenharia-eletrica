@@ -3,7 +3,7 @@ ENTRADA_V_MIN,90,Vca,PREMISSA,Tensao minima de entrada universal
 ENTRADA_V_MAX,264,Vca,PREMISSA,Tensao maxima de entrada universal
 ENTRADA_F_MIN,47,Hz,PREMISSA,Frequencia minima
 ENTRADA_F_MAX,63,Hz,PREMISSA,Frequencia maxima
-SAIDA_V_MIN,0,Vcc,PROPOSTA,Tensao minima nominal ajustavel
+SAIDA_V_MIN,0.8,Vcc,PROPOSTA,Tensao minima regulada pelo controlador candidato
 SAIDA_V_MAX,30,Vcc,PROPOSTA,Tensao maxima nominal ajustavel
 SAIDA_I_MAX,5,A,PROPOSTA,Corrente maxima com limite CC
 SAIDA_P_MAX,150,W,DERIVADO,Potencia maxima em 30 V e 5 A

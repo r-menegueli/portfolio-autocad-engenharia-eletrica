@@ -1,11 +1,28 @@
 {
-  "checks": 41,
+  "checks": 98,
   "errors": [],
   "results": {
-    "general_demand_va": "2592.11955",
-    "installed_va": "15548.913",
+    "declared_area_m2": "75.00",
+    "demand_and_main_breaker_status": "PENDING_METHOD_AND_REAL_DATA",
+    "installed_va": "15558.6955",
+    "phase_current_upper_bounds": {
+      "A": {
+        "arithmetic_upper_bound_a": "65.288194",
+        "phase_neutral_sum_a": "26.651831",
+        "phase_neutral_va": "3384.7825",
+        "phase_phase_sum_a": "38.636364",
+        "phase_phase_va": "8500.000"
+      },
+      "B": {
+        "arithmetic_upper_bound_a": "67.564812",
+        "phase_neutral_sum_a": "28.928449",
+        "phase_neutral_va": "3673.913",
+        "phase_phase_sum_a": "38.636364",
+        "phase_phase_va": "8500.000"
+      }
+    },
     "point_totals_va": {
-      "C1": "74.9999",
+      "C1": "84.7825",
       "C2": "73.9131",
       "C3": "1500.000",
       "C4": "2100.000",
@@ -14,8 +31,10 @@
       "C7": "5500.000",
       "C8": "1500.000"
     },
-    "service_current_a": "57.236907",
-    "total_demand_va": "12592.11955"
+    "room_count": 8,
+    "tracked_point_va": "15558.6956",
+    "tracked_points": 20,
+    "withdrawn_qg1_reference_a": "63"
   },
   "status": "PASS"
 }

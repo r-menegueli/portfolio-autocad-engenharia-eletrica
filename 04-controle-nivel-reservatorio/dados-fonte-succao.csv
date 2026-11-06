@@ -1,0 +1,8 @@
+﻿id,grupo,dado_requerido,fonte_evidencia,unidade_referencia,status,valor_registrado,observacoes
+D01,FONTE,"Tag, tipo, localização, limite de propriedade e responsável",Cadastro de processo e levantamento de campo,Identificação cadastral,PENDENTE,,Nenhuma fonte foi selecionada
+D02,REGIME,"Nível/pressão mínimo, nominal e máximo; registrar unidade e referência",Tendências e registros operacionais,Unidade da variável; datum se nível,PENDENTE,,Faixa e unidade operacional não recebidas
+D03,GEOMETRIA,"Área da fonte se v0 relevante; material/condição, diâmetro, comprimentos, cotas/datum e acessórios com unidades",Projeto hidráulico/as-built e levantamento da fonte,"mm, m, m² e datum definido",PENDENTE,,"Fonte, tubulação, acessórios, unidades e datum não levantados"
+D04,BOMBA,"Curvas Q-H/NPSHr versus vazão e frequência, em unidades OEM; ponto de operação, escorva e datum",Folha de dados e manual do fabricante,"Unidades OEM, vazão e frequência em Hz",PENDENTE,,P-101 genérica; curvas e unidades OEM não recebidas
+D05,PROTEÇÃO,"Necessidade, localização e ação para fonte baixa ou perda de sucção",Análise de processo e revisão de risco,Critério aprovado na análise de risco,PENDENTE,,Não há chave de sucção selecionada
+D06,FLUIDO,"Tipo/composição, faixa de temperatura, densidade e fonte da pressão de vapor",Dados do processo ou propriedades rastreáveis do fluido,"°C, kg/m³ e pressão absoluta",PENDENTE,,Fluido e temperatura de operação não informados
+D07,ATMOSFERA,Pressão absoluta sobre fonte fechada ou pressão barométrica local se aberta,Projeto do reservatório ou dados de pressão/altitude local,kPa abs; altitude em m se usada para estimar,PENDENTE,,Pressão da superfície e condição aberta/fechada não confirmadas

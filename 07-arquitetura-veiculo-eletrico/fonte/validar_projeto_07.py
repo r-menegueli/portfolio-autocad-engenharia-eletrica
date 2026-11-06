@@ -34,6 +34,9 @@ SHEETS = (
     "06_sensores_controle.dxf",
     "07_rede_comunicacao.dxf",
     "08_layout_componentes.dxf",
+    "09_interfaces_resposta_falhas.dxf",
+    "10_estudo_pre_carga_parametrico.dxf",
+    "11_sequencia_temporal_pre_carga.dxf",
 )
 REQUIRED_MATERIAL_TAGS = {
     "BAT-HV-701", "BMS-701", "MSD-701", "F701", "KMN-701", "KMP-701",
@@ -90,6 +93,22 @@ SHEET_TERMS = {
         "BAT-HV-701", "PDU-HV", "INV-701", "IM-701", "DCDC", "BAT-LV",
         "VCU-701", "BMS-701", "ROTA HV", "CAN-PT",
     ),
+    "09_interfaces_resposta_falhas.dxf": (
+        "MATRIZ DE FALHAS", "SDE / HVIL", "SEN-VDC-701", "APPS1-701",
+        "BMS_LIMITS", "RES-701", "NAO E HARA", "PENDENCIA REAL",
+    ),
+    "10_estudo_pre_carga_parametrico.dxf": (
+        "RESPOSTA RC NORMALIZADA", "VDC / VBAT [%]", "t90 = 0,507 s",
+        "VDC @90% [V]", "I0 [A]", "P0 [kW]", "EC FINAL [J]", "ER @90% [J]",
+        "0,993431 s", "RPR-701",
+    ),
+    "11_sequencia_temporal_pre_carga.dxf": (
+        "SEQUÊNCIA TEMPORAL DA PRÉ-CARGA", "VDC / VBAT [%]",
+        "VDC/VBAT - R=100 ohm / C=2,2 mF", "SEQ PRE-CARGA 04",
+        "t90 ideal = 0,506569 s", "Timeout proposto = 1,50 s",
+        "PRECHARGE | t = 0", "VDC/VBAT >= 90%", "KMP CONFIRMADO",
+        "FAULT", "0,993431 s", "TBD",
+    ),
 }
 WARNING = (
     "Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, "
@@ -125,6 +144,7 @@ def validate(root: Path) -> dict:
     parameters = read_rows(project / "parametros.csv")
     signals = read_rows(project / "lista-sinais.csv")
     messages = read_rows(project / "rede-can.csv")
+    faults = read_rows(project / "matriz-interfaces-falhas.csv")
     cables = read_rows(project / "lista-cabos.csv")
     materials = read_rows(project / "lista-materiais.csv")
     errors: list[str] = []
@@ -196,6 +216,39 @@ def validate(root: Path) -> dict:
         checks += 1
         if abs(actual - expected) > tolerance:
             errors.append(f"Cálculo de {label} incoerente: {actual}.")
+
+    precharge_voltage_cases = (
+        (vmin, Decimal("288"), Decimal("3.2"), Decimal("1.024"), Decimal("112.64"), Decimal("111.5136")),
+        (vnom, Decimal("360"), Decimal("4.0"), Decimal("1.600"), Decimal("176.00"), Decimal("174.2400")),
+        (vmax, Decimal("405"), Decimal("4.5"), Decimal("2.025"), Decimal("222.75"), Decimal("220.5225")),
+    )
+    calculated_cases: list[dict[str, str]] = []
+    for voltage, expected_vdc, expected_i0, expected_p0_kw, expected_ec, expected_er90 in precharge_voltage_cases:
+        vdc90 = target * voltage
+        current0 = voltage / resistance
+        power0_kw = voltage * voltage / resistance / Decimal("1000")
+        capacitor_energy = Decimal("0.5") * capacitance * voltage * voltage
+        resistor_energy90 = capacitor_energy * (Decimal("1") - (Decimal("1") - target) ** 2)
+        expected_row = (expected_vdc, expected_i0, expected_p0_kw, expected_ec, expected_er90)
+        actual_row = (vdc90, current0, power0_kw, capacitor_energy, resistor_energy90)
+        for label, actual, expected in zip(("VDC90", "I0", "P0", "Ec", "Er90"), actual_row, expected_row):
+            checks += 1
+            if abs(actual - expected) > Decimal("0.000001"):
+                errors.append(f"Caso de pré-carga {voltage} V: {label}={actual}, esperado {expected}.")
+        calculated_cases.append({
+            "vbat_v": f"{voltage:.0f}",
+            "vdc_90_v": f"{vdc90:.2f}",
+            "initial_current_a": f"{current0:.6f}",
+            "initial_power_kw": f"{power0_kw:.6f}",
+            "capacitor_energy_j": f"{capacitor_energy:.6f}",
+            "resistor_energy_at_90_j": f"{resistor_energy90:.6f}",
+        })
+    ideal_time_margin = expected_values["TIMEOUT_PRE_CARGA"] - t90
+    checks += 2
+    if abs(ideal_time_margin - Decimal("0.993431")) > Decimal("0.000001"):
+        errors.append(f"Margem de tempo ideal incoerente: {ideal_time_margin}.")
+    if ideal_time_margin <= 0:
+        errors.append("Timeout deve exceder o tempo RC ideal até o limiar.")
     checks += 3
     if bus_current >= expected_values["FUSIVEL_PRINCIPAL"]:
         errors.append("Corrente estimada deve ser inferior ao fusível conceitual.")
@@ -214,8 +267,22 @@ def validate(root: Path) -> dict:
         errors.append("Canais duplos de acelerador e freio estão incompletos.")
     if any(not row["reacao_falha"] or not row["prancha"] for row in signals):
         errors.append("Sinal sem reação de falha ou referência de prancha.")
-    if any(row["prancha"] not in {f"{index:02d}/08" for index in range(1, 9)} for row in signals):
+    valid_sheet_refs = {f"{index:02d}/{len(SHEETS):02d}" for index in range(1, len(SHEETS) + 1)}
+    if any(row["prancha"] not in valid_sheet_refs for row in signals):
         errors.append("Referência de prancha inválida na lista de sinais.")
+
+    expected_fault_fields = {
+        "evento", "entrada_deteccao", "reacao_proposta", "estado_resultante",
+        "lacuna_validacao", "rastreio",
+    }
+    valid_fault_schema = bool(faults) and set(faults[0]) == expected_fault_fields
+    checks += 4
+    if not valid_fault_schema:
+        errors.append("A matriz de interfaces e falhas deve conter os campos rastreáveis esperados.")
+    if valid_fault_schema and (len(faults) < 8 or len({row["evento"] for row in faults}) != len(faults)):
+        errors.append("A matriz deve ter ao menos oito eventos únicos.")
+    if valid_fault_schema and any(not all(row[field].strip() for field in expected_fault_fields) for row in faults):
+        errors.append("Evento da matriz sem detecção, resposta, estado, lacuna ou rastreio.")
 
     cable_ids = {row["cabo"] for row in cables}
     checks += 6
@@ -305,12 +372,12 @@ def validate(root: Path) -> dict:
             errors.append("Torque habilitado sem solicitação.")
 
     required_doc_terms = {
-        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", WARNING),
+        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", "matriz-interfaces-falhas.csv", "10_estudo_pre_carga_parametrico.dxf", "11_sequencia_temporal_pre_carga.dxf", WARNING),
         "criterios-premissas.md": ("Fatos técnicos", "Premissas acadêmicas", "Propostas conceituais", "Limitações"),
-        "memorial-descritivo.md": ("Fluxo de energia", "Pré-carga", "Não afirma", "TCC"),
+        "memorial-descritivo.md": ("Fluxo de energia", "Pré-carga", "Interfaces e falhas", "Não afirma", "TCC"),
         "estrategias-controle.md": ("controle escalar", "controle vetorial", "Clarke", "Park", "resultados experimentais"),
-        "sequencia-funcionamento.md": ("OFF", "PRECHARGE", "READY", "FAULT", "novo ciclo de chave"),
-        "memoria-calculo.md": ("206,743421", "0,506569", "176,000000", "222,750000", "não resultados experimentais"),
+        "sequencia-funcionamento.md": ("OFF", "PRECHARGE", "READY", "FAULT", "novo ciclo de chave", "prancha 11", "0,506569 s", "0,993431 s"),
+        "memoria-calculo.md": ("206,743421", "0,506569", "176,000000", "222,750000", "Faixa de tensão proposta", "111,51 J", "220,52 J", "0,993431 s", "não resultados experimentais"),
         "referencias-normativas.md": ("ISO 6469-3:2021", "ISO 26262:2018", "ISO 11898-2:2026", "Regulamento ONU nº 100"),
     }
     for filename, terms in required_doc_terms.items():
@@ -348,7 +415,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/08":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NO_EXPERIMENTAL_RESULTS":
             errors.append(f"{filename}: metadado epistemológico ausente.")
@@ -373,6 +440,7 @@ def validate(root: Path) -> dict:
             "can_messages": len(messages),
             "cables": len(cables),
             "materials": len(materials),
+            "fault_scenarios": len(faults),
             "estimated_hv_current_a": f"{bus_current:.6f}",
             "precharge_tau_s": f"{tau:.6f}",
             "precharge_t90_s": f"{t90:.6f}",
@@ -380,6 +448,8 @@ def validate(root: Path) -> dict:
             "precharge_initial_power_w": f"{initial_power:.6f}",
             "dc_link_energy_400v_j": f"{energy_nominal:.6f}",
             "dc_link_energy_450v_j": f"{energy_max:.6f}",
+            "precharge_voltage_cases": calculated_cases,
+            "precharge_ideal_time_margin_s": f"{ideal_time_margin:.6f}",
             "precharge_truth_rows": precharge_rows,
             "torque_truth_rows": torque_rows,
             "experimental_results_claimed": False,

@@ -2,7 +2,7 @@
 
 ## Finalidade
 
-O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em oito pranchas,
+O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em onze pranchas,
 o fluxo de energia, a alimentação de controle, os permissivos de alta tensão, a rede de
 comunicação e duas estratégias conceituais de acionamento de um motor de indução.
 
@@ -23,6 +23,13 @@ VDC/VBAT atinge o limiar proposto dentro do timeout, KMP-701 fecha e KPR-701 abr
 perda de HVIL, isolação, BMS, sinal de colisão ou emergência comanda a abertura dos
 contatores e bloqueia `READY`. Um circuito real requer detecção de contato soldado,
 drivers adequados, descarga do barramento e análise de falhas independentes.
+
+A prancha 11 representa a sequência temporal proposta: confirmar permissivos, iniciar
+KMN/KPR, aguardar a razão VDC/VBAT, solicitar KMP, confirmar seu retorno auxiliar e
+abrir KPR antes de `READY`. O cruzamento ideal de 90% ocorre em 0,506569 s para os
+valores acadêmicos R=100 ohm e C=2.200 uF, dentro do timeout proposto de 1,5 s.
+Tempos mecânicos, lógica de realimentação e resposta ao timeout permanecem dependentes
+de hardware e análise de segurança; o desenho não demonstra essa sequência em veículo.
 
 ## Proteções
 
@@ -46,6 +53,14 @@ APPS e BPS usam dois canais para plausibilidade. Correntes de fase, tensão do e
 corrente da bateria, posição/velocidade e temperaturas alimentam BMS, VCU e inversor.
 A CAN-PT troca estados e limites entre BMS, VCU, inversor e CC-CC; a CAN-DIAG conecta
 diagnóstico por gateway. IDs, taxas e tempos são premissas propostas.
+
+## Interfaces e falhas
+
+A prancha 09 e `matriz-interfaces-falhas.csv` relacionam sinais já listados, mensagens
+CAN, estados propostos e reações conceituais para dez eventos. A matriz destaca lacunas
+como detecção de contato soldado, temporização, dados obsoletos e rearme. Essas linhas
+organizam requisitos para estudo futuro; não definem função de segurança, falha segura,
+diagnóstico implementado ou desempenho de hardware.
 
 ## Relação com o TCC
 

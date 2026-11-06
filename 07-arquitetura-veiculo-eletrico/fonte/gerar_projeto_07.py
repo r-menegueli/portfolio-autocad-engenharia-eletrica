@@ -1,10 +1,11 @@
-"""Gera as oito pranchas DXF do Projeto 07 de forma determinística."""
+"""Gera as onze pranchas DXF do Projeto 07 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from dataclasses import dataclass
+import math
 from pathlib import Path
 import sys
 
@@ -35,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "07-arquitetura-veiculo-eletrico"
-PROJECT_DATE = "2026-09-09"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -121,6 +122,33 @@ SHEETS = (
         "Envelope, massas, fixações, proteção IP, crash e refrigeração não dimensionados.\\P"
         "Rotas devem ser revistas por isolamento, EMC, abrasão e acesso de serviço.",
         "Laranja/vermelho: HV | Azul: LV | Verde: CAN | Cinza: envelope | CH: chassi",
+    ),
+    SheetSpec(
+        9,
+        "09_interfaces_resposta_falhas.dxf",
+        "INTERFACES E RESPOSTA CONCEITUAL A FALHAS",
+        "Rastreabilidade entre sinais, estados e ações propostas do EV-07",
+        "Respostas são propostas didáticas; não definem função de segurança nem desligamento real.\\P"
+        "Detecção de contato soldado, diagnóstico, latência e rearme dependem de hardware e análise ainda não definidos.",
+        "DI: entrada digital | APPS: pedal do acelerador | BPS: pedal de freio | HV: alta tensão | PWM: modulação",
+    ),
+    SheetSpec(
+        10,
+        "10_estudo_pre_carga_parametrico.dxf",
+        "ESTUDO PARAMÉTRICO DA PRÉ-CARGA",
+        "Resposta RC ideal | R = 100 ohm | C = 2,2 mF | VBAT = 320–450 Vcc (premissas)",
+        "Modelo RC ideal; não inclui impedâncias, tolerâncias, chicote, filtros de medição ou tempo de contatores.\\P"
+        "Os valores calculados não selecionam RPR-701 nem demonstram capacidade de pulso, repetição ou segurança.",
+        "VBAT: tensão da bateria | VDC: tensão do elo | I0/P0: valores iniciais | Ec/Er: energia idealizada",
+    ),
+    SheetSpec(
+        11,
+        "11_sequencia_temporal_pre_carga.dxf",
+        "SEQUÊNCIA TEMPORAL DA PRÉ-CARGA",
+        "Supervisão VDC/VBAT, confirmação de contatores e timeout proposto de 1,5 s",
+        "Tempos mecânicos, realimentação auxiliar, incerteza de medição e limiares de diagnóstico dependem do hardware.\\P"
+        "A sequência e o timeout são propostas acadêmicas; não representam validação de segurança veicular.",
+        "KMN/KMP/KPR: contatores | t90: cruzamento ideal de 90% | TBD: dado a definir com o fabricante",
     ),
 )
 
@@ -298,7 +326,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 07", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("SEQ PRE-CARGA 04", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.5, "02_TEXTO")
 
 
@@ -320,7 +348,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -336,7 +364,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NO_EXPERIMENTAL_RESULTS"
     define_title_block(doc)
     define_symbols(doc)
@@ -521,6 +549,196 @@ def draw_precharge(layout, data: dict[str, list[dict[str, str]]]) -> None:
     centered(layout, "QUALQUER FALHA -> FAULT / CONTATORES ABERTOS / TORQUE ZERO", (303, 109.5), 1.05, "13_NOTAS")
 
 
+def draw_precharge_parametric(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    parameters = {
+        row["parametro"]: float(row["valor"].replace(",", "."))
+        for row in data["parameters"]
+    }
+    resistance = parameters["R_PRE_CARGA"]
+    capacitance = parameters["C_ELO_CC"]
+    target = parameters["LIMIAR_PRE_CARGA"]
+    timeout = parameters["TIMEOUT_PRE_CARGA"]
+    tau = resistance * capacitance
+    t90 = -tau * math.log(1.0 - target)
+
+    centered(layout, "RESPOSTA RC NORMALIZADA", (122, 257), 1.6, "07_INSTRUMENTACAO")
+    centered(layout, "VDC / VBAT [%]", (122, 243), 1.25, "02_TEXTO")
+
+    x0, y0, graph_width, graph_height = 39.0, 144.0, 166.0, 91.0
+    x_right = x0 + graph_width
+    y_top = y0 + graph_height
+    line(layout, (x0, y0), (x_right, y0), "02_TEXTO")
+    line(layout, (x0, y0), (x0, y_top), "02_TEXTO")
+
+    for percent in (0, 20, 40, 60, 80, 100):
+        y = y0 + graph_height * percent / 100.0
+        if percent:
+            line(layout, (x0, y), (x_right, y), "12_LEGENDA")
+        left(layout, str(percent), (x0 - 4.5, y), 1.2, "02_TEXTO")
+
+    for step in range(7):
+        time_value = timeout * step / 6.0
+        x = x0 + graph_width * time_value / timeout
+        if 0 < step < 6:
+            line(layout, (x, y0), (x, y_top), "12_LEGENDA")
+        centered(layout, f"{time_value:.2f}".replace(".", ","), (x, y0 - 5.0), 1.1, "02_TEXTO")
+
+    target_y = y0 + graph_height * target
+    x_t90 = x0 + graph_width * t90 / timeout
+    for x in [x0 + i * 7.0 for i in range(int(graph_width // 7.0))]:
+        line(layout, (x, target_y), (min(x + 3.5, x_right), target_y), "05_POTENCIA")
+    y = y0
+    while y < target_y:
+        line(layout, (x_t90, y), (x_t90, min(y + 4.0, target_y)), "05_POTENCIA")
+        y += 7.0
+
+    previous = (x0, y0)
+    for index in range(1, 61):
+        time_value = timeout * index / 60.0
+        fraction = 1.0 - math.exp(-time_value / tau)
+        point = (x0 + graph_width * time_value / timeout, y0 + graph_height * fraction)
+        line(layout, previous, point, "07_INSTRUMENTACAO")
+        previous = point
+
+    layout.add_circle((x_t90, target_y), radius=1.6, dxfattribs={"layer": "05_POTENCIA"})
+    centered(layout, "90%", (x0 + 8.0, target_y + 3.5), 1.3, "05_POTENCIA")
+    left(layout, f"t90 = {t90:.3f} s".replace(".", ","), (x_t90 + 3.5, y0 + 11.0), 1.2, "05_POTENCIA")
+    centered(layout, f"timeout = {timeout:.1f} s".replace(".", ","), (x_right - 22.0, y0 + 4.0), 1.1, "08_OBSERVACOES")
+    centered(layout, "tempo [s]", (x0 + graph_width / 2, y0 - 13.0), 1.25, "02_TEXTO")
+    add_mtext(
+        layout,
+        "A razão VDC/VBAT tem a mesma curva ideal na faixa de tensão; a tensão absoluta muda com VBAT.",
+        (29, 119),
+        190,
+        1.25,
+        "13_NOTAS",
+    )
+
+    centered(layout, "ENERGIA E ESFORÇO INICIAIS (PREMISSAS)", (311.5, 257), 1.5, "05_POTENCIA")
+    voltages = (
+        ("VBAT MIN", parameters["VBAT_MIN"]),
+        ("VBAT NOM", parameters["VBAT_NOMINAL"]),
+        ("VBAT MAX", parameters["VBAT_MAX"]),
+    )
+
+    def decimal_text(value: float, places: int = 2) -> str:
+        return f"{value:.{places}f}".replace(".", ",")
+
+    v_min, v_nom, v_max = (voltage for _, voltage in voltages)
+    rows = [
+        ("VDC @90% [V]", decimal_text(target * v_min, 0), decimal_text(target * v_nom, 0), decimal_text(target * v_max, 0)),
+        ("I0 [A]", decimal_text(v_min / resistance), decimal_text(v_nom / resistance), decimal_text(v_max / resistance)),
+        ("P0 [kW]", decimal_text(v_min**2 / resistance / 1000.0, 3), decimal_text(v_nom**2 / resistance / 1000.0, 3), decimal_text(v_max**2 / resistance / 1000.0, 3)),
+        ("EC FINAL [J]", decimal_text(0.5 * capacitance * v_min**2), decimal_text(0.5 * capacitance * v_nom**2), decimal_text(0.5 * capacitance * v_max**2)),
+        ("ER @90% [J]", decimal_text(0.5 * capacitance * v_min**2 * (1.0 - (1.0 - target) ** 2)), decimal_text(0.5 * capacitance * v_nom**2 * (1.0 - (1.0 - target) ** 2)), decimal_text(0.5 * capacitance * v_max**2 * (1.0 - (1.0 - target) ** 2))),
+    ]
+    table(
+        layout,
+        224,
+        247,
+        (43, 44, 44, 44),
+        ("GRANDEZA", "320 V", "400 V", "450 V"),
+        rows,
+        row_height=11.4,
+        text_height=1.35,
+        layer="12_LEGENDA",
+    )
+
+    add_rect(layout, 224, 108, 399, 159, "13_NOTAS")
+    centered(layout, "DERIVAÇÕES DO MODELO IDEAL", (311.5, 151.5), 1.2, "13_NOTAS")
+    left(layout, f"tau = R x C = {tau:.3f} s".replace(".", ","), (230, 141), 1.35, "02_TEXTO")
+    left(layout, f"t90 = -tau ln(0,10) = {t90:.6f} s".replace(".", ","), (230, 132), 1.35, "02_TEXTO")
+    left(layout, f"Margem ideal ate 1,5 s = {timeout - t90:.6f} s".replace(".", ","), (230, 123), 1.35, "02_TEXTO")
+    left(layout, "P0 e instantanea; nao representa potencia continua.", (230, 114), 1.3, "02_TEXTO")
+
+
+def draw_precharge_timing(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    parameters = {
+        row["parametro"]: float(row["valor"].replace(",", "."))
+        for row in data["parameters"]
+    }
+    resistance = parameters["R_PRE_CARGA"]
+    capacitance = parameters["C_ELO_CC"]
+    target = parameters["LIMIAR_PRE_CARGA"]
+    timeout = parameters["TIMEOUT_PRE_CARGA"]
+    tau = resistance * capacitance
+    t_target = -tau * math.log(1.0 - target)
+    margin = timeout - t_target
+
+    centered(layout, "VDC/VBAT - R=100 ohm / C=2,2 mF | MODELO RC IDEAL", (118, 256), 1.4, "07_INSTRUMENTACAO")
+    centered(layout, "VDC / VBAT [%]", (118, 243), 1.2, "02_TEXTO")
+    x0, y0, width, height = 34.0, 166.0, 168.0, 67.0
+    x1, y1 = x0 + width, y0 + height
+    line(layout, (x0, y0), (x1, y0), "02_TEXTO")
+    line(layout, (x0, y0), (x0, y1), "02_TEXTO")
+    for percent in (0, 50, 90, 100):
+        y = y0 + height * percent / 100.0
+        if percent:
+            line(layout, (x0, y), (x1, y), "12_LEGENDA" if percent != 90 else "05_POTENCIA")
+        left(layout, str(percent), (x0 - 4.0, y), 1.05, "02_TEXTO")
+    for index in range(4):
+        t = timeout * index / 3.0
+        x = x0 + width * t / timeout
+        if index:
+            line(layout, (x, y0), (x, y1), "12_LEGENDA")
+        centered(layout, f"{t:.1f}".replace(".", ","), (x, y0 - 5.0), 1.05, "02_TEXTO")
+
+    previous = (x0, y0)
+    for index in range(1, 81):
+        t = timeout * index / 80.0
+        ratio = 1.0 - math.exp(-t / tau)
+        current = (x0 + width * t / timeout, y0 + height * ratio)
+        line(layout, previous, current, "07_INSTRUMENTACAO")
+        previous = current
+
+    x_t = x0 + width * t_target / timeout
+    y_t = y0 + height * target
+    layout.add_circle((x_t, y_t), radius=1.7, dxfattribs={"layer": "05_POTENCIA"})
+    left(layout, f"t90 ideal = {t_target:.6f} s".replace(".", ","), (x_t + 3.0, y_t + 5.0), 1.05, "05_POTENCIA")
+    centered(layout, f"Timeout proposto = {timeout:.2f} s".replace(".", ","), (x1 - 25.0, y1 + 4.0), 1.05, "05_POTENCIA")
+    centered(layout, "tempo desde o comando PRECHARGE [s]", (x0 + width / 2, y0 - 13.0), 1.05, "02_TEXTO")
+
+    centered(layout, "SEQUÊNCIA PROPOSTA E DECISÕES DE TRANSIÇÃO", (307, 256), 1.35, "06_COMANDO")
+    steps = (
+        ("1  CHECK VÁLIDO", "Permissivos aceitos; torque permanece inibido."),
+        ("2  PRECHARGE | t = 0", "KMN=1; KPR=1; KMP=0; iniciar monitoramento."),
+        ("3  VDC/VBAT >= 90%", "Solicitar KMP; exigir confirmação auxiliar (tempo TBD)."),
+        ("4  KMP CONFIRMADO", "Solicitar KPR=0; confirmar abertura antes de READY."),
+        ("5  READY / FAULT", "READY exige estados coerentes; timeout => FAULT e torque zero."),
+    )
+    top = 243.0
+    box_left, box_right, box_height, gap = 218.0, 399.0, 14.0, 2.0
+    for index, (title, detail) in enumerate(steps):
+        y_top = top - index * (box_height + gap)
+        add_rect(layout, box_left, y_top - box_height, box_right, y_top, "13_NOTAS")
+        centered(layout, title, ((box_left + box_right) / 2, y_top - 4.0), 1.2, "06_COMANDO")
+        centered(layout, detail, ((box_left + box_right) / 2, y_top - 9.5), 1.1, "02_TEXTO")
+
+    add_rect(layout, 20, 112, 400, 151, "13_NOTAS")
+    centered(layout, "VALORES DERIVADOS E LIMITES", (210, 143), 1.2, "13_NOTAS")
+    centered(
+        layout,
+        f"tau = R x C = {tau:.6f} s  |  t90 ideal = {t_target:.6f} s  |  margem ideal ate o timeout = {margin:.6f} s".replace(".", ","),
+        (210, 132),
+        1.1,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "A curva nao inclui bateria, parasitas, tolerancias, filtros, erro do sensor ou movimento dos contatores.",
+        (210, 122),
+        1.0,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Confirmacao auxiliar, janela de falha e ordem fisica de abertura exigem selecao de hardware e analise de seguranca.",
+        (210, 116),
+        1.0,
+        "02_TEXTO",
+    )
+
+
 def draw_inverter_motor(layout, data: dict[str, list[dict[str, str]]]) -> None:
     centered(layout, "ESTÁGIO DE POTÊNCIA CONCEITUAL", (210, 258), 1.5, "05_POTENCIA")
     centered(layout, "DC+", (25, 235), 1.2, "05_POTENCIA")
@@ -680,6 +898,53 @@ def draw_layout(layout, data: dict[str, list[dict[str, str]]]) -> None:
         left(layout, f"{index + 1}. {value}", (325, 226 - index * 10.7), 1.0, "02_TEXTO")
 
 
+def draw_fault_interfaces(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    centered(layout, "MATRIZ DE FALHAS E INTERFACES PROPOSTAS", (210, 258), 1.45, "06_COMANDO")
+    centered(
+        layout,
+        "Rastreabilidade entre evento, detecção, reação, estado e dado ainda necessário",
+        (210, 252),
+        1.15,
+        "02_TEXTO",
+    )
+    rows = [
+        (
+            row["evento"],
+            row["entrada_deteccao"],
+            row["reacao_proposta"],
+            row["estado_resultante"],
+            row["lacuna_validacao"],
+        )
+        for row in data["faults"]
+    ]
+    table(
+        layout,
+        20,
+        246,
+        (66, 62, 92, 46, 112),
+        ("EVENTO", "DETECCAO", "REACAO CONCEITUAL", "ESTADO", "PENDENCIA REAL"),
+        rows,
+        row_height=10.0,
+        text_height=1.2,
+    )
+    add_rect(layout, 20, 102, 400, 128, "13_NOTAS")
+    centered(layout, "INTERPRETACAO E LIMITE", (210, 122), 1.2, "13_NOTAS")
+    centered(
+        layout,
+        "A matriz nao e HARA, FMEA, ASIL, validacao de software ou prova de desligamento seguro.",
+        (210, 115),
+        1.05,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Confirmar limiares, tempos, diagnosticos, independencia, resposta e rearme com hardware escolhido.",
+        (210, 108.5),
+        1.0,
+        "02_TEXTO",
+    )
+
+
 DRAWERS = {
     1: draw_architecture,
     2: draw_hv,
@@ -689,6 +954,9 @@ DRAWERS = {
     6: draw_sensors,
     7: draw_network,
     8: draw_layout,
+    9: draw_fault_interfaces,
+    10: draw_precharge_parametric,
+    11: draw_precharge_timing,
 }
 
 
@@ -699,6 +967,7 @@ def generate(root: Path) -> list[Path]:
         "parameters": read_rows(project, "parametros.csv"),
         "signals": read_rows(project, "lista-sinais.csv"),
         "can": read_rows(project, "rede-can.csv"),
+        "faults": read_rows(project, "matriz-interfaces-falhas.csv"),
         "cables": read_rows(project, "lista-cabos.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
     }

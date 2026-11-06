@@ -1,10 +1,11 @@
-"""Gera as sete pranchas DXF do Projeto 06 de forma deterministica."""
+"""Gera as dez pranchas DXF do Projeto 06 de forma deterministica."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -35,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "06-centro-controle-motores"
-PROJECT_DATE = "2026-09-09"
-REVISION = "00"
+PROJECT_DATE = "2026-11-05"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -98,11 +99,11 @@ SHEETS = (
     SheetSpec(
         6,
         "06_diagrama_bornes.dxf",
-        "DIAGRAMA DE BORNES",
-        "Réguas X1 a X4: entrada, motores, comando e sinais do VFD",
-        "Separar potência, comando e sinais analógicos; identificar ambas as extremidades.\\P"
-        "Blindagem de W603B termina em 360 graus no CCM e no motor, conforme estudo EMC.",
-        "X1: entrada | X2: motores | X3: comando | X4: VFD e segurança | SH: blindagem",
+        "INTERFACES DE POTÊNCIA E BORNEIRAS X1/X2",
+        "Entrada geral e saídas para M-601, M-602 e M-603",
+        "O detalhamento de X3/X4 e dos condutores de campo está na prancha P06-10.\\P"
+        "W603B é cabo de saída PWM blindado; terminar a blindagem em 360 graus conforme estudo EMC.",
+        "X1: entrada | X2: motores | PE: proteção | SH: blindagem terminada em prensa-cabo EMC",
     ),
     SheetSpec(
         7,
@@ -113,6 +114,54 @@ SHEETS = (
         "Seções não substituem dimensionamento por ampacidade, queda, curto-circuito e EMC.",
         "G: inclui PE | BL: blindado | POT: potência | CMD: comando | SIG: sinal",
     ),
+    SheetSpec(
+        8,
+        "08_matriz_causa_efeito_ccm.dxf",
+        "MATRIZ CAUSA-EFEITO DO CCM-06",
+        "Eventos de emergência, sobrecarga, reversão, VFD e retorno de energia",
+        "Ações repetem a sequência documentada; diagnósticos de fabricante permanecem pendentes.\\P"
+        "Não atribui categoria, PL ou SIL à função de segurança.",
+        "FR: relé de sobrecarga | FC: fim de curso | KSR: relé de segurança | STO: torque seguro desligado",
+    ),
+    SheetSpec(
+        9,
+        "09_balanco_demanda_ccm.dxf",
+        "BALANÇO DE DEMANDA DO CCM-06",
+        "Potências instaladas e demandadas por carga; corrente equivalente do W600",
+        "Fatores de demanda, disjuntor e Iz são premissas dos arquivos de entrada. Esta folha resume os dados; não valida Icc, seletividade, método de instalação, fatores de correção ou operação simultânea.",
+        "Barra superior: potência instalada | inferior: potência demandada | FD: fator de demanda | Ib dos ramais usa S instalada; não somar para obter a corrente do W600.",
+    ),
+    SheetSpec(
+        10,
+        "10_interligacao_bornes_comando.dxf",
+        "DETALHAMENTO DE BORNES DE COMANDO",
+        "Régua X3: botoeiras, fins de curso, emergência e porta | X4: VFD",
+        "Funções dos condutores sem cores atribuídas; confirmar pinagem nos dispositivos selecionados.\\P"
+        "X4:1/2 são ligações internas KSR-601–STO A/B; não pertencem ao cabo de campo W604.",
+        "W604: dois canais com pares separados | W607: quatro sinais DI/AI, comum, blindagem e reserva | SH: dreno conforme fabricante.",
+    ),
+)
+
+
+CAUSE_EFFECT_COLUMNS = (
+    "id",
+    "evento",
+    "deteccao_condicao",
+    "resposta_conceitual",
+    "alarme_indicacao",
+    "retorno_limite",
+)
+
+CAUSE_EFFECT_ROWS = (
+    ("E01", "Emergencia S0-601", "S0-601 acionado; dois canais interrompidos", "KSR remove permissao; KM-601/602F/602R caem e STO A/B abre", "Indicacao e retencao dependem do KSR escolhido", "Canais integros e reset manual KSR; novo comando para mover"),
+    ("E02", "Falha CH1/CH2", "Canal aberto ou discrepante; diagnostico temporal nao definido", "Diagnostico e bloqueio dependem do modelo KSR; nao presumir permissao", "Falha de canal; codigo/tag pendente", "Aplicar manual do KSR e validar o reset da funcao"),
+    ("E03", "Sobrecarga M-601", "FR-601 abre o permissivo do comando", "KM-601 desenergiza; M-601 perde comando de marcha", "Indicacao local/remota depende da selecao", "Causa removida; rearme conforme FR-601 e novo START"),
+    ("E04", "Sobrecarga M-602", "FR-602 abre o permissivo comum da reversao", "KM-602F/R desenergizam; esteira perde comando de marcha", "Indicacao local/remota depende da selecao", "Causa removida; rearme conforme FR-602 e novo comando"),
+    ("E05", "FC-602F acionado", "Fim de curso de frente abre o respectivo permissivo", "Bloqueia somente KM-602F; sentido reverso permanece permissivel", "Sinalizacao de posicao nao especificada", "Remover causa; novo comando deliberado para frente"),
+    ("E06", "FC-602R acionado", "Fim de curso de reverso abre o respectivo permissivo", "Bloqueia somente KM-602R; sentido frente permanece permissivel", "Sinalizacao de posicao nao especificada", "Remover causa; novo comando deliberado para reverso"),
+    ("E07", "Falha do VFD-603", "RO2 FAULT ativo; codigo nao especificado", "RO2 sinaliza falha; reacao de saida depende do VFD selecionado", "Codigo/tag e acao de processo pendentes", "Diagnosticar no VFD; reset e nova partida conforme fabricante"),
+    ("E08", "Pedidos F/R simultaneos", "Comandos de frente e reverso presentes juntos", "NF cruzados e IM-602 impedem KM-602F/R fechados simultaneamente", "Diagnostico de conflito nao especificado", "Liberar comandos; reverter apos abertura do contator ativo"),
+    ("E09", "Retorno da alimentacao", "Tensao retorna apos perda do comando ou do CCM", "Retorno nao produz partida automatica das cargas", "Evento e retencao de alarmes nao definidos", "Confirmar permissivos; cada motor exige novo comando"),
 )
 
 
@@ -192,7 +241,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 06", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("INTERLIGACAO X3/X4", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -214,7 +263,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/07",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -230,7 +279,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/07"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -430,27 +479,53 @@ def draw_vfd(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) 
         terminal(layout, (244, y), f"X4:{io}", label_offset=(0, 5))
         line(layout, (246, y), (270, y), "07_INSTRUMENTACAO" if io.startswith("AI") else "06_COMANDO")
         left(layout, description, (276, y), 1.1, "02_TEXTO")
-    left(layout, "Parada comum: KSR abre contatores e STO A/B", (228, 115), 1.05, "13_NOTAS")
+    left(layout, "W607 8x1,0: +24 / DI1-3 / AI1 / COM / SH / reserva", (228, 119), 0.92, "13_NOTAS")
+    left(layout, "KSR-601 desliga contatores e STO A/B", (228, 111), 0.92, "13_NOTAS")
 
 
 def draw_layout(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) -> None:
     add_rect(layout, 24, 106, 282, 260, "11_ARQUITETURA")
     centered(layout, "CCM-06 - VISTA INTERNA", (153, 253), 1.8, "11_ARQUITETURA")
     line(layout, (24, 241), (282, 241), "11_ARQUITETURA")
-    centered(layout, "BARRAMENTO 80 A / PE", (153, 247), 1.2, "05_POTENCIA")
+    centered(layout, "BARRAMENTO CCM-06 - 80 A", (153, 247), 1.2, "05_POTENCIA")
     for x in (82, 142, 202, 246):
         line(layout, (x, 106), (x, 241), "11_ARQUITETURA")
-    box(layout, 31, 202, 75, 234, "QG-06", "GERAL 50 A", "05_POTENCIA")
-    box(layout, 88, 187, 136, 234, "GAVETA 601", "DIRETA", "05_POTENCIA")
-    box(layout, 148, 173, 196, 234, "GAVETA 602", "REVERSAO", "05_POTENCIA")
-    box(layout, 208, 163, 240, 234, "VFD-603", "11 kW", "04_EQUIPAMENTOS")
-    box(layout, 250, 181, 275, 234, "KSR/PSU", "24 Vcc", "06_COMANDO")
+    box(layout, 31, 210, 75, 232, "QG-06", "GERAL 4P - 50 A", "05_POTENCIA")
+    box(layout, 34, 187, 72, 199, "BARRA N", "ISOLADA DO PE", "05_POTENCIA")
+    box(layout, 34, 169, 72, 181, "PE-06", "BARRA DE PROTEÇÃO", "05_POTENCIA")
+
+    box(layout, 88, 215, 136, 231, "QF-601", "PROTEÇÃO MOTOR", "05_POTENCIA")
+    box(layout, 88, 195, 136, 211, "KM-601", "CONTATOR DIRETO", "05_POTENCIA")
+    box(layout, 88, 175, 136, 191, "FR-601", "RELÉ SOBRECARGA", "05_POTENCIA")
+    centered(layout, "GAVETA 601 - M-601", (112, 164), 0.95, "04_EQUIPAMENTOS")
+
+    box(layout, 148, 215, 196, 231, "QF-602", "PROTEÇÃO MOTOR", "05_POTENCIA")
+    box(layout, 151, 192, 171, 208, "KM-602F", "F", "05_POTENCIA")
+    box(layout, 173, 192, 193, 208, "KM-602R", "R", "05_POTENCIA")
+    line(layout, (171, 200), (173, 200), "04_EQUIPAMENTOS")
+    centered(layout, "IM-602", (172, 211), 0.8, "04_EQUIPAMENTOS")
+    box(layout, 148, 173, 196, 187, "FR-602", "SOBRECARGA COMUM", "05_POTENCIA")
+    centered(layout, "GAVETA 602 - M-602", (172, 164), 0.95, "04_EQUIPAMENTOS")
+
+    box(layout, 208, 215, 240, 231, "QF-603", "ENTRADA VFD", "05_POTENCIA")
+    box(layout, 210, 177, 238, 210, "VFD-603", "11 kW - S/ ESCALA", "04_EQUIPAMENTOS")
+    add_rect(layout, 212, 164, 236, 174, "04_EQUIPAMENTOS")
+    centered(layout, "VENT-601 | FILTRO", (224, 169), 0.9, "04_EQUIPAMENTOS")
+
+    box(layout, 250, 213, 275, 231, "PSU-601", "24 Vcc / 5 A", "06_COMANDO")
+    box(layout, 250, 190, 275, 208, "KSR-601", "RELÉ SEGURANÇA", "06_COMANDO")
+    box(layout, 250, 167, 275, 185, "X4", "10 BORNES", "09_BORNES")
     for x in (77, 138, 198, 243):
         add_rect(layout, x, 111, x + 4, 239, "10_ELETROCALHAS")
     add_rect(layout, 31, 114, 75, 147, "09_BORNES")
     centered(layout, "X1 / X2", (53, 132), 1.4, "09_BORNES")
+    centered(layout, "17 BORNES DE POTÊNCIA", (53, 123), 0.9, "09_BORNES")
     add_rect(layout, 88, 114, 196, 147, "09_BORNES")
-    centered(layout, "X3 / X4 - COMANDO E SINAIS", (142, 132), 1.35, "09_BORNES")
+    centered(layout, "X3 - CAMPO / PORTA", (142, 134), 1.2, "09_BORNES")
+    centered(layout, "24 BORNES - VER P06-10", (142, 124), 1.0, "09_BORNES")
+    add_rect(layout, 208, 114, 275, 147, "09_BORNES")
+    centered(layout, "X4 - VFD", (241.5, 134), 1.2, "09_BORNES")
+    centered(layout, "2 STO INTERNOS + 8 CAMPO", (241.5, 124), 0.82, "09_BORNES")
     line(layout, (31, 108), (275, 108), "05_POTENCIA")
     centered(layout, "PE-06", (54, 112), 1.2, "05_POTENCIA")
     line(layout, (24, 101), (282, 101), "03_COTAS")
@@ -459,22 +534,25 @@ def draw_layout(layout, loads: list[dict[str, str]], cables: list[dict[str, str]
     centered(layout, "1800 mm", (296, 183), 1.25, "03_COTAS")
 
     add_rect(layout, 305, 106, 402, 260, "12_LEGENDA")
-    centered(layout, "CRITERIOS DE ARRANJO", (353.5, 251), 1.65, "12_LEGENDA")
+    centered(layout, "ARRANJO FUNCIONAL", (353.5, 251), 1.65, "12_LEGENDA")
     notes = (
         "Invólucro: 1800 x 1000 x 400 mm",
         "Acesso frontal: >= 1,20 m",
         "Entrada de cabos: inferior",
-        "Potência separada de comando",
-        "VFD com ventilação dedicada",
-        "Cabo VFD afastado de sinais",
-        "PE contínuo e equipotencial",
+        "QF, contator e relé por gaveta",
+        "Reversão: dois contatores + IM",
+        "VFD com ventilação indicada",
+        "PE contínuo; N isolado de PE",
+        "STO ligado ao KSR internamente",
+        "Comando separado da potência",
         "Canaletas com reserva >= 30%",
-        "Porta: botoeiras e sinalização",
+        "Botoeiras: lista de bornes P06-10",
         "Grau IP depende do ambiente",
+        "Dimensões de fabricante pendentes",
         "Dissipação requer cálculo térmico",
     )
     for index, note in enumerate(notes):
-        left(layout, note, (312, 237 - index * 11), 1.15, "02_TEXTO")
+        left(layout, note, (312, 237 - index * 9.2), 1.05, "02_TEXTO")
 
 
 def table(layout, x0: float, y_top: float, widths: tuple[float, ...], headers: tuple[str, ...], rows: list[tuple[str, ...]], *, row_height: float, text_height: float = 1.0) -> None:
@@ -501,24 +579,47 @@ def table(layout, x0: float, y_top: float, widths: tuple[float, ...], headers: t
 
 def draw_terminals(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) -> None:
     left_rows = [
-        ("X1:1", "L1 entrada", "W600-1", "QG-06"), ("X1:2", "L2 entrada", "W600-2", "QG-06"),
-        ("X1:3", "L3 entrada", "W600-3", "QG-06"), ("X1:4", "N entrada", "W600-4", "barra N"),
-        ("X1:5", "PE entrada", "W600-PE", "PE-06"), ("X2:1-4", "M-601 U/V/W/PE", "W601", "bomba"),
+        ("X1:1", "L1 entrada", "W600", "QG-06"), ("X1:2", "L2 entrada", "W600", "QG-06"),
+        ("X1:3", "L3 entrada", "W600", "QG-06"), ("X1:4", "N entrada", "W600", "barra N"),
+        ("X1:5", "PE entrada", "W600", "PE-06"), ("X2:1-4", "M-601 U/V/W/PE", "W601", "bomba"),
         ("X2:5-8", "M-602 U/V/W/PE", "W602", "esteira"), ("X2:9-12", "M-603 U/V/W/PE", "W603B", "ventilador"),
     ]
-    right_rows = [
-        ("X3:1-2", "S-601L/P", "W605", "bomba"), ("X3:3-6", "S-602F/R + FC", "W606", "esteira"),
-        ("X3:7-8", "S0-601 CH1/CH2", "W604", "emergência"), ("X3:9-10", "H-601/H-602", "W608", "estado"),
-        ("X4:1-2", "STO A/B", "W604", "VFD-603"), ("X4:3-4", "START/STOP", "W607", "VFD-603"),
-        ("X4:5-7", "AI1/COM/SH", "W607", "referência"), ("X4:8-10", "RO1 RUN/FAULT", "W608", "estado"),
-    ]
-    centered(layout, "POTENCIA - X1 / X2", (111, 260), 1.7, "09_BORNES")
-    centered(layout, "COMANDO E SINAIS - X3 / X4", (309, 260), 1.7, "09_BORNES")
+    centered(layout, "POTÊNCIA - X1 / X2", (111, 260), 1.7, "09_BORNES")
+    centered(layout, "INTERFACES DE CAMPO - RESUMO", (309, 260), 1.7, "09_BORNES")
     headers = ("BORNE", "FUNCAO", "CABO", "DESTINO")
     table(layout, 18, 253, (27, 70, 38, 58), headers, left_rows, row_height=13.8, text_height=1.05)
-    table(layout, 211, 253, (29, 77, 38, 47), headers, right_rows, row_height=13.8, text_height=1.05)
+    right_rows = [
+        ("X3:1-4", "Botoeiras liga/para bomba", "W605", "PB-601"),
+        ("X3:5-12", "Comando e FC da esteira", "W606", "PB-602 / FC"),
+        ("X3:13-18", "Emergência: CH1/CH2 + reservas", "W604", "S0-601 / KSR-601"),
+        ("X3:19-24", "Quatro sinalizadores + comum", "W608", "Porta do CCM"),
+        ("X4:1-2", "STO A/B - ligação interna", "INT.", "KSR-601 / VFD-603"),
+        ("X4:3-10", "DI, AI, comum, SH e reserva", "W607", "Estação PB-603 / VFD"),
+    ]
+    table(layout, 211, 253, (34, 75, 27, 55), headers, right_rows, row_height=17.8, text_height=1.0)
     add_rect(layout, 18, 110, 402, 125, "13_NOTAS")
-    centered(layout, "SEGREGACAO: X1/X2 POTENCIA | X3 COMANDO 24 Vcc | X4 STO/ANALOGICO | SH EM ABRACADEIRA EMC", (210, 117.5), 1.25, "13_NOTAS")
+    centered(layout, "X3 = 24 bornes de campo/porta | X4 = 10 bornes, incluindo dois pontos STO internos | detalhe individual na P06-10", (210, 117.5), 1.2, "13_NOTAS")
+
+
+def draw_control_terminals(layout, terminals: list[dict[str, str]]) -> None:
+    rows_by_strip = {
+        strip: [row for row in terminals if row["regua"] == strip]
+        for strip in ("X3", "X4")
+    }
+    headers = ("BORNE", "POT.", "CONDUTOR", "FUNÇÃO / SINAL", "CABO", "DESTINO")
+    for strip, x0, widths, title in (
+        ("X3", 18, (20, 20, 30, 56, 20, 39), "X3 - COMANDOS / SEGURANÇA / PORTA"),
+        ("X4", 213, (20, 20, 30, 56, 20, 39), "X4 - VFD / INTERLIGAÇÃO INTERNA"),
+    ):
+        centered(layout, title, (x0 + sum(widths) / 2, 260), 1.45, "09_BORNES")
+        rows = [
+            (f"{row['regua']}:{row['borne']}", row["potencial"], row["condutor"], row["funcao"], row["cabo"], row["destino"])
+            for row in rows_by_strip[strip]
+        ]
+        row_height = 140 / (len(rows) + 1)
+        table(layout, x0, 253, widths, headers, rows, row_height=row_height, text_height=1.0)
+    add_rect(layout, 18, 98, 402, 109, "13_NOTAS")
+    centered(layout, "Sem cores de fios atribuídas. Confirmar tipo de contato, tensão e pinagem no manual dos dispositivos definidos.", (210, 103.5), 1.08, "13_NOTAS")
 
 
 def draw_cable_list(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) -> None:
@@ -538,6 +639,79 @@ def draw_cable_list(layout, loads: list[dict[str, str]], cables: list[dict[str, 
     centered(layout, "COMPRIMENTO TOTAL ASSUMIDO: 196 m | CONFERIR LISTA-MATERIAIS.CSV PARA QUANTITATIVOS COMPLETOS", (210, 110.5), 1.15, "13_NOTAS")
 
 
+def draw_cause_effect(layout, loads: list[dict[str, str]], cables: list[dict[str, str]]) -> None:
+    headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
+    widths = (14, 43, 70, 80, 64, 82)
+    table(layout, 31, 261, widths, headers, list(CAUSE_EFFECT_ROWS), row_height=13.2, text_height=1.25)
+    add_rect(layout, 18, 105, 402, 126, "13_NOTAS")
+    centered(layout, "Rearme, diagnósticos, tempos e indicação dependem dos dispositivos selecionados e da validação da máquina.", (210, 115.5), 1.25, "13_NOTAS")
+
+
+def decimal_text(value: str | Decimal, places: int = 6) -> str:
+    quantizer = Decimal(1).scaleb(-places)
+    return f"{Decimal(value).quantize(quantizer):.{places}f}".replace(".", ",")
+
+
+def draw_demand_balance(layout, loads: list[dict[str, str]], feeder: dict[str, str]) -> None:
+    headers = ("CARGA", "ACIONAMENTO", "FD", "P INST. kW", "P DEM. kW", "S INST. kVA", "S DEM. kVA", "Ib RAMAL A")
+    rows: list[tuple[str, ...]] = []
+    for load in loads:
+        rows.append((
+            load["tag"],
+            load["metodo_acionamento"],
+            decimal_text(load["fator_demanda"], 2),
+            decimal_text(load["potencia_ativa_instalada_kw"]),
+            decimal_text(load["potencia_ativa_demandada_kw"]),
+            decimal_text(load["potencia_aparente_instalada_kva"]),
+            decimal_text(load["potencia_aparente_demandada_kva"]),
+            decimal_text(load["corrente_projeto_a"]),
+        ))
+    totals = {
+        key: sum((Decimal(load[key]) for load in loads), Decimal(0))
+        for key in (
+            "potencia_ativa_instalada_kw",
+            "potencia_ativa_demandada_kw",
+            "potencia_aparente_instalada_kva",
+            "potencia_aparente_demandada_kva",
+        )
+    }
+    rows.append((
+        "TOTAL",
+        "—",
+        "—",
+        decimal_text(totals["potencia_ativa_instalada_kw"]),
+        decimal_text(totals["potencia_ativa_demandada_kw"]),
+        decimal_text(totals["potencia_aparente_instalada_kva"]),
+        decimal_text(totals["potencia_aparente_demandada_kva"]),
+        "—",
+    ))
+    table(layout, 18, 253, (34, 80, 30, 48, 48, 48, 48, 48), headers, rows, row_height=13.3, text_height=1.03)
+
+    add_rect(layout, 18, 101, 224, 181, "12_LEGENDA")
+    centered(layout, "POTÊNCIA ATIVA POR CARGA (kW)", (121, 173), 1.55, "12_LEGENDA")
+    left(layout, "INSTALADA", (73, 164), 1.0, "05_POTENCIA")
+    left(layout, "DEMANDADA", (136, 164), 1.0, "08_CABOS")
+    for load, y in zip(loads, (151, 132, 113)):
+        left(layout, load["tag"], (23, y + 2), 1.05, "02_TEXTO")
+        installed = Decimal(load["potencia_ativa_instalada_kw"])
+        demanded = Decimal(load["potencia_ativa_demandada_kw"])
+        installed_length = float(installed) * 10.5
+        demanded_length = float(demanded) * 10.5
+        line(layout, (59, y + 2), (59 + installed_length, y + 2), "05_POTENCIA")
+        line(layout, (59, y - 2), (59 + demanded_length, y - 2), "08_CABOS")
+        left(layout, decimal_text(load["potencia_ativa_instalada_kw"], 3), (61 + installed_length, y + 1), 0.9, "05_POTENCIA")
+        left(layout, decimal_text(load["potencia_ativa_demandada_kw"], 3), (61 + demanded_length, y - 3), 0.9, "08_CABOS")
+
+    add_rect(layout, 230, 101, 402, 181, "12_LEGENDA")
+    centered(layout, "ALIMENTADOR W600 - DADOS DECLARADOS", (316, 172), 1.35, "12_LEGENDA")
+    left(layout, f"Ib calculada: {decimal_text(feeder['corrente_projeto_a'])} A", (239, 158), 1.3, "05_POTENCIA")
+    left(layout, f"In assumida: {decimal_text(feeder['disjuntor_a'], 0)} A", (239, 146), 1.3, "05_POTENCIA")
+    left(layout, f"Iz assumida: {decimal_text(feeder['iz_assumida_a'], 0)} A", (239, 134), 1.3, "05_POTENCIA")
+    line(layout, (239, 126), (393, 126), "12_LEGENDA")
+    centered(layout, "Ib <= In <= Iz: relação aritmética atendida nos dados", (316, 118), 1.1, "02_TEXTO")
+    centered(layout, "Isso não confirma o dimensionamento do alimentador.", (316, 109), 1.05, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_dol,
@@ -546,6 +720,9 @@ DRAWERS = {
     5: draw_layout,
     6: draw_terminals,
     7: draw_cable_list,
+    8: draw_cause_effect,
+    9: draw_demand_balance,
+    10: draw_control_terminals,
 }
 
 
@@ -554,18 +731,33 @@ def generate(root: Path) -> list[Path]:
     project = root / PROJECT_SLUG
     loads = read_rows(project, "lista-cargas.csv")
     cables = read_rows(project, "lista-cabos.csv")
+    terminals = read_rows(project, "lista-bornes.csv")
+    feeder_rows = read_rows(project, "alimentador.csv")
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout, loads, cables)
+        if spec.number == 9:
+            if len(feeder_rows) != 1:
+                raise ValueError("alimentador.csv deve conter uma única linha para W600.")
+            DRAWERS[spec.number](layout, loads, feeder_rows[0])
+        elif spec.number == 10:
+            DRAWERS[spec.number](layout, terminals)
+        else:
+            DRAWERS[spec.number](layout, loads, cables)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix_path = project / "causa-efeito.csv"
+    with matrix_path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(CAUSE_EFFECT_COLUMNS)
+        writer.writerows(CAUSE_EFFECT_ROWS)
+    print(f"Gerado: {matrix_path.relative_to(root)}")
     return outputs
 
 

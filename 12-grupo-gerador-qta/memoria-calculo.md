@@ -12,12 +12,13 @@ A potência aparente nominal em regime de emergência (*standby*) é $S = 250\te
 $$I_n = \frac{S}{\sqrt{3} \times V} = \frac{250 \times 10^3}{\sqrt{3} \times 380} = \frac{250.000}{658,18} = 379,83\text{ A}$$
 
 ### 1.2 Dispositivos de Manobra e Proteção no QTA
-* **Disjuntor de Entrada da Rede (DJ-REDE):** Caixa moldada $400\text{ A}$, tripolar, $I_{cu} = 25\text{ kA}$ em 380 V.
-* **Disjuntor de Entrada do Gerador (DJ-GER):** Caixa moldada $400\text{ A}$, tripolar, $I_{cu} = 16\text{ kA}$ em 380 V.
+* **Disjuntor de Entrada da Rede (DJ-REDE):** Caixa moldada $400\text{ A}$, proposta 3P+N para acompanhar o neutro comutado, $I_{cu} = 25\text{ kA}$ em 380 V.
+* **Disjuntor de Entrada do Gerador (DJ-GER):** Caixa moldada $400\text{ A}$, proposta 3P+N para acompanhar o neutro comutado, $I_{cu} = 16\text{ kA}$ em 380 V.
 * **Contatores de Comutação (K1 e K2):**
   - Categoria de emprego AC-1 (cargas resistivas/mistas): $I_e = 450\text{ A} > I_n$.
   - Categoria de emprego AC-3 (cargas de motores): $I_e = 400\text{ A} \ge I_n$.
   - Bobinas de comando: 220 Vca, 60 Hz.
+  - Neutro comutado por polo dedicado. Proteção do neutro, compatibilidade com o esquema de aterramento e coordenação devem ser definidos para os equipamentos e a instalação reais.
 
 ### 1.3 Dimensionamento do Barramento de Cobre do QTA
 * **Critério de Ampacidade:** Para corrente nominal de $380\text{ A}$ e considerando fator de sobrecarga de 25%:

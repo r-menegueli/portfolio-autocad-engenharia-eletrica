@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-167
+193
   9
 $SURFTAB1
  70
@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+152
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+32
   6
 CONTINUOUS
 370
@@ -2423,7 +2423,7 @@ AcDbLayerTableRecord
  70
 0
  62
-1
+12
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+124
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+145
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+253
   6
 CONTINUOUS
 370
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-164
+190
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-165
+191
 330
 3
 100
@@ -9239,7 +9239,7 @@ AcDbText
  40
 1.55
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9275,7 +9275,7 @@ AcDbText
  40
 1.55
   1
-2026-09-09
+2026-11-05
   7
 PORTFOLIO_TEXTO
  72
@@ -9311,7 +9311,7 @@ AcDbText
  40
 1.55
   1
-EMISSAO INICIAL DO PROJETO 06
+INTERLIGACAO X3/X4
   7
 PORTFOLIO_TEXTO
  72
@@ -9481,7 +9481,7 @@ AcDbText
  40
 2.25
   1
-2026-09-09
+2026-11-05
   7
 PORTFOLIO_TEXTO
  11
@@ -9519,7 +9519,7 @@ AcDbText
  40
 2.25
   1
-00
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9557,7 +9557,7 @@ AcDbText
  40
 2.25
   1
-05/07
+05/10
   7
 PORTFOLIO_TEXTO
  11
@@ -9887,7 +9887,7 @@ AcDbText
  40
 1.2
   1
-BARRAMENTO 80 A / PE
+BARRAMENTO CCM-06 - 80 A
   7
 PORTFOLIO_TEXTO
  72
@@ -10017,19 +10017,19 @@ AcDbPolyline
  10
 31.0
  20
-202.0
+210.0
  10
 75.0
  20
-202.0
+210.0
  10
 75.0
  20
-234.0
+232.0
  10
 31.0
  20
-234.0
+232.0
   0
 TEXT
   5
@@ -10045,7 +10045,7 @@ AcDbText
  10
 53.0
  20
-230.0
+228.0
  30
 0.0
  40
@@ -10059,7 +10059,7 @@ PORTFOLIO_TEXTO
  11
 53.0
  21
-230.0
+228.0
  31
 0.0
 100
@@ -10081,13 +10081,13 @@ AcDbText
  10
 53.0
  20
-206.0
+214.0
  30
 0.0
  40
 1.15
   1
-GERAL 50 A
+GERAL 4P - 50 A
   7
 PORTFOLIO_TEXTO
  72
@@ -10095,7 +10095,7 @@ PORTFOLIO_TEXTO
  11
 53.0
  21
-206.0
+214.0
  31
 0.0
 100
@@ -10119,21 +10119,21 @@ AcDbPolyline
  70
 1
  10
-88.0
+34.0
  20
 187.0
  10
-136.0
+72.0
  20
 187.0
  10
-136.0
+72.0
  20
-234.0
+199.0
  10
-88.0
+34.0
  20
-234.0
+199.0
   0
 TEXT
   5
@@ -10147,23 +10147,23 @@ AcDbEntity
 100
 AcDbText
  10
-112.0
+53.0
  20
-230.0
+195.0
  30
 0.0
  40
 1.7
   1
-GAVETA 601
+BARRA N
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-112.0
+53.0
  21
-230.0
+195.0
  31
 0.0
 100
@@ -10183,7 +10183,7 @@ AcDbEntity
 100
 AcDbText
  10
-112.0
+53.0
  20
 191.0
  30
@@ -10191,13 +10191,13 @@ AcDbText
  40
 1.15
   1
-DIRETA
+ISOLADA DO PE
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-112.0
+53.0
  21
 191.0
  31
@@ -10223,21 +10223,21 @@ AcDbPolyline
  70
 1
  10
-148.0
+34.0
  20
-173.0
+169.0
  10
-196.0
+72.0
  20
-173.0
+169.0
  10
-196.0
+72.0
  20
-234.0
+181.0
  10
-148.0
+34.0
  20
-234.0
+181.0
   0
 TEXT
   5
@@ -10251,23 +10251,23 @@ AcDbEntity
 100
 AcDbText
  10
-172.0
+53.0
  20
-230.0
+177.0
  30
 0.0
  40
 1.7
   1
-GAVETA 602
+PE-06
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-172.0
+53.0
  21
-230.0
+177.0
  31
 0.0
 100
@@ -10287,23 +10287,23 @@ AcDbEntity
 100
 AcDbText
  10
-172.0
+53.0
  20
-177.0
+173.0
  30
 0.0
  40
 1.15
   1
-REVERSAO
+BARRA DE PROTEÇÃO
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-172.0
+53.0
  21
-177.0
+173.0
  31
 0.0
 100
@@ -10319,7 +10319,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
 100
 AcDbPolyline
  90
@@ -10327,21 +10327,21 @@ AcDbPolyline
  70
 1
  10
-208.0
+88.0
  20
-163.0
+215.0
  10
-240.0
+136.0
  20
-163.0
+215.0
  10
-240.0
+136.0
  20
-234.0
+231.0
  10
-208.0
+88.0
  20
-234.0
+231.0
   0
 TEXT
   5
@@ -10351,27 +10351,27 @@ TEXT
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
 100
 AcDbText
  10
-224.0
+112.0
  20
-230.0
+227.0
  30
 0.0
  40
 1.7
   1
-VFD-603
+QF-601
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-224.0
+112.0
  21
-230.0
+227.0
  31
 0.0
 100
@@ -10391,23 +10391,23 @@ AcDbEntity
 100
 AcDbText
  10
-224.0
+112.0
  20
-167.0
+219.0
  30
 0.0
  40
 1.15
   1
-11 kW
+PROTEÇÃO MOTOR
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-224.0
+112.0
  21
-167.0
+219.0
  31
 0.0
 100
@@ -10423,7 +10423,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-06_COMANDO
+05_POTENCIA
 100
 AcDbPolyline
  90
@@ -10431,21 +10431,21 @@ AcDbPolyline
  70
 1
  10
-250.0
+88.0
  20
-181.0
+195.0
  10
-275.0
+136.0
  20
-181.0
+195.0
  10
-275.0
+136.0
  20
-234.0
+211.0
  10
-250.0
+88.0
  20
-234.0
+211.0
   0
 TEXT
   5
@@ -10455,27 +10455,27 @@ TEXT
 100
 AcDbEntity
   8
-06_COMANDO
+05_POTENCIA
 100
 AcDbText
  10
-262.5
+112.0
  20
-230.0
+207.0
  30
 0.0
  40
 1.7
   1
-KSR/PSU
+KM-601
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-262.5
+112.0
  21
-230.0
+207.0
  31
 0.0
 100
@@ -10495,23 +10495,23 @@ AcDbEntity
 100
 AcDbText
  10
-262.5
+112.0
  20
-185.0
+199.0
  30
 0.0
  40
 1.15
   1
-24 Vcc
+CONTATOR DIRETO
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-262.5
+112.0
  21
-185.0
+199.0
  31
 0.0
 100
@@ -10527,7 +10527,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-10_ELETROCALHAS
+05_POTENCIA
 100
 AcDbPolyline
  90
@@ -10535,23 +10535,23 @@ AcDbPolyline
  70
 1
  10
-77.0
+88.0
  20
-111.0
+175.0
  10
-81.0
+136.0
  20
-111.0
+175.0
  10
-81.0
+136.0
  20
-239.0
+191.0
  10
-77.0
+88.0
  20
-239.0
+191.0
   0
-LWPOLYLINE
+TEXT
   5
 14A
 330
@@ -10559,31 +10559,35 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-10_ELETROCALHAS
+05_POTENCIA
 100
-AcDbPolyline
- 90
-4
- 70
+AcDbText
+ 10
+112.0
+ 20
+187.0
+ 30
+0.0
+ 40
+1.7
+  1
+FR-601
+  7
+PORTFOLIO_TEXTO
+ 72
 1
- 10
-138.0
- 20
-111.0
- 10
-142.0
- 20
-111.0
- 10
-142.0
- 20
-239.0
- 10
-138.0
- 20
-239.0
+ 11
+112.0
+ 21
+187.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
   0
-LWPOLYLINE
+TEXT
   5
 14B
 330
@@ -10591,6 +10595,1242 @@ LWPOLYLINE
 100
 AcDbEntity
   8
+02_TEXTO
+100
+AcDbText
+ 10
+112.0
+ 20
+179.0
+ 30
+0.0
+ 40
+1.15
+  1
+RELÉ SOBRECARGA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+112.0
+ 21
+179.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+14C
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+112.0
+ 20
+164.0
+ 30
+0.0
+ 40
+0.95
+  1
+GAVETA 601 - M-601
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+112.0
+ 21
+164.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+14D
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+148.0
+ 20
+215.0
+ 10
+196.0
+ 20
+215.0
+ 10
+196.0
+ 20
+231.0
+ 10
+148.0
+ 20
+231.0
+  0
+TEXT
+  5
+14E
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+172.0
+ 20
+227.0
+ 30
+0.0
+ 40
+1.7
+  1
+QF-602
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+227.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+14F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+172.0
+ 20
+219.0
+ 30
+0.0
+ 40
+1.15
+  1
+PROTEÇÃO MOTOR
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+219.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+150
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+151.0
+ 20
+192.0
+ 10
+171.0
+ 20
+192.0
+ 10
+171.0
+ 20
+208.0
+ 10
+151.0
+ 20
+208.0
+  0
+TEXT
+  5
+151
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+161.0
+ 20
+204.0
+ 30
+0.0
+ 40
+1.7
+  1
+KM-602F
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+161.0
+ 21
+204.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+152
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+161.0
+ 20
+196.0
+ 30
+0.0
+ 40
+1.15
+  1
+F
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+161.0
+ 21
+196.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+153
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+173.0
+ 20
+192.0
+ 10
+193.0
+ 20
+192.0
+ 10
+193.0
+ 20
+208.0
+ 10
+173.0
+ 20
+208.0
+  0
+TEXT
+  5
+154
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+183.0
+ 20
+204.0
+ 30
+0.0
+ 40
+1.7
+  1
+KM-602R
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+183.0
+ 21
+204.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+155
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+183.0
+ 20
+196.0
+ 30
+0.0
+ 40
+1.15
+  1
+R
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+183.0
+ 21
+196.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+156
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbLine
+ 10
+171.0
+ 20
+200.0
+ 30
+0.0
+ 11
+173.0
+ 21
+200.0
+ 31
+0.0
+  0
+TEXT
+  5
+157
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+172.0
+ 20
+211.0
+ 30
+0.0
+ 40
+0.8
+  1
+IM-602
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+211.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+158
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+148.0
+ 20
+173.0
+ 10
+196.0
+ 20
+173.0
+ 10
+196.0
+ 20
+187.0
+ 10
+148.0
+ 20
+187.0
+  0
+TEXT
+  5
+159
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+172.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.7
+  1
+FR-602
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15A
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+172.0
+ 20
+177.0
+ 30
+0.0
+ 40
+1.15
+  1
+SOBRECARGA COMUM
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+177.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15B
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+172.0
+ 20
+164.0
+ 30
+0.0
+ 40
+0.95
+  1
+GAVETA 602 - M-602
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+172.0
+ 21
+164.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+15C
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+208.0
+ 20
+215.0
+ 10
+240.0
+ 20
+215.0
+ 10
+240.0
+ 20
+231.0
+ 10
+208.0
+ 20
+231.0
+  0
+TEXT
+  5
+15D
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+224.0
+ 20
+227.0
+ 30
+0.0
+ 40
+1.7
+  1
+QF-603
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+224.0
+ 21
+227.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15E
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+224.0
+ 20
+219.0
+ 30
+0.0
+ 40
+1.15
+  1
+ENTRADA VFD
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+224.0
+ 21
+219.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+15F
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+210.0
+ 20
+177.0
+ 10
+238.0
+ 20
+177.0
+ 10
+238.0
+ 20
+210.0
+ 10
+210.0
+ 20
+210.0
+  0
+TEXT
+  5
+160
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+224.0
+ 20
+206.0
+ 30
+0.0
+ 40
+1.7
+  1
+VFD-603
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+224.0
+ 21
+206.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+161
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+224.0
+ 20
+181.0
+ 30
+0.0
+ 40
+1.15
+  1
+11 kW - S/ ESCALA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+224.0
+ 21
+181.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+162
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+212.0
+ 20
+164.0
+ 10
+236.0
+ 20
+164.0
+ 10
+236.0
+ 20
+174.0
+ 10
+212.0
+ 20
+174.0
+  0
+TEXT
+  5
+163
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+224.0
+ 20
+169.0
+ 30
+0.0
+ 40
+0.9
+  1
+VENT-601 | FILTRO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+224.0
+ 21
+169.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+164
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+250.0
+ 20
+213.0
+ 10
+275.0
+ 20
+213.0
+ 10
+275.0
+ 20
+231.0
+ 10
+250.0
+ 20
+231.0
+  0
+TEXT
+  5
+165
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+262.5
+ 20
+227.0
+ 30
+0.0
+ 40
+1.7
+  1
+PSU-601
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+227.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+166
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+262.5
+ 20
+217.0
+ 30
+0.0
+ 40
+1.15
+  1
+24 Vcc / 5 A
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+217.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+167
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+250.0
+ 20
+190.0
+ 10
+275.0
+ 20
+190.0
+ 10
+275.0
+ 20
+208.0
+ 10
+250.0
+ 20
+208.0
+  0
+TEXT
+  5
+168
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+262.5
+ 20
+204.0
+ 30
+0.0
+ 40
+1.7
+  1
+KSR-601
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+204.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+169
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+262.5
+ 20
+194.0
+ 30
+0.0
+ 40
+1.15
+  1
+RELÉ SEGURANÇA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+194.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+16A
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+250.0
+ 20
+167.0
+ 10
+275.0
+ 20
+167.0
+ 10
+275.0
+ 20
+185.0
+ 10
+250.0
+ 20
+185.0
+  0
+TEXT
+  5
+16B
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+262.5
+ 20
+181.0
+ 30
+0.0
+ 40
+1.7
+  1
+X4
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+181.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16C
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+262.5
+ 20
+171.0
+ 30
+0.0
+ 40
+1.15
+  1
+10 BORNES
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+262.5
+ 21
+171.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+16D
+330
+17
+100
+AcDbEntity
+  8
+10_ELETROCALHAS
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+77.0
+ 20
+111.0
+ 10
+81.0
+ 20
+111.0
+ 10
+81.0
+ 20
+239.0
+ 10
+77.0
+ 20
+239.0
+  0
+LWPOLYLINE
+  5
+16E
+330
+17
+100
+AcDbEntity
+  8
+10_ELETROCALHAS
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+138.0
+ 20
+111.0
+ 10
+142.0
+ 20
+111.0
+ 10
+142.0
+ 20
+239.0
+ 10
+138.0
+ 20
+239.0
+  0
+LWPOLYLINE
+  5
+16F
+330
+17
+100
+AcDbEntity
+  8
 10_ELETROCALHAS
 100
 AcDbPolyline
@@ -10617,7 +11857,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-14C
+170
 330
 17
 100
@@ -10649,7 +11889,7 @@ AcDbPolyline
   0
 LWPOLYLINE
   5
-14D
+171
 330
 17
 100
@@ -10681,7 +11921,7 @@ AcDbPolyline
   0
 TEXT
   5
-14E
+172
 330
 17
 100
@@ -10715,9 +11955,45 @@ AcDbText
  73
 2
   0
+TEXT
+  5
+173
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+53.0
+ 20
+123.0
+ 30
+0.0
+ 40
+0.9
+  1
+17 BORNES DE POTÊNCIA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+53.0
+ 21
+123.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
 LWPOLYLINE
   5
-14F
+174
 330
 17
 100
@@ -10749,7 +12025,7 @@ AcDbPolyline
   0
 TEXT
   5
-150
+175
 330
 17
 100
@@ -10761,13 +12037,13 @@ AcDbText
  10
 142.0
  20
-132.0
+134.0
  30
 0.0
  40
-1.35
+1.2
   1
-X3 / X4 - COMANDO E SINAIS
+X3 - CAMPO / PORTA
   7
 PORTFOLIO_TEXTO
  72
@@ -10775,7 +12051,147 @@ PORTFOLIO_TEXTO
  11
 142.0
  21
-132.0
+134.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+176
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+142.0
+ 20
+124.0
+ 30
+0.0
+ 40
+1.0
+  1
+24 BORNES - VER P06-10
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+142.0
+ 21
+124.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+177
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+208.0
+ 20
+114.0
+ 10
+275.0
+ 20
+114.0
+ 10
+275.0
+ 20
+147.0
+ 10
+208.0
+ 20
+147.0
+  0
+TEXT
+  5
+178
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+241.5
+ 20
+134.0
+ 30
+0.0
+ 40
+1.2
+  1
+X4 - VFD
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+241.5
+ 21
+134.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+179
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+241.5
+ 20
+124.0
+ 30
+0.0
+ 40
+0.82
+  1
+2 STO INTERNOS + 8 CAMPO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+241.5
+ 21
+124.0
  31
 0.0
 100
@@ -10785,7 +12201,7 @@ AcDbText
   0
 LINE
   5
-151
+17A
 330
 17
 100
@@ -10809,7 +12225,7 @@ AcDbLine
   0
 TEXT
   5
-152
+17B
 330
 17
 100
@@ -10845,7 +12261,7 @@ AcDbText
   0
 LINE
   5
-153
+17C
 330
 17
 100
@@ -10869,7 +12285,7 @@ AcDbLine
   0
 TEXT
   5
-154
+17D
 330
 17
 100
@@ -10905,7 +12321,7 @@ AcDbText
   0
 LINE
   5
-155
+17E
 330
 17
 100
@@ -10929,7 +12345,7 @@ AcDbLine
   0
 TEXT
   5
-156
+17F
 330
 17
 100
@@ -10965,7 +12381,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-157
+180
 330
 17
 100
@@ -10997,7 +12413,7 @@ AcDbPolyline
   0
 TEXT
   5
-158
+181
 330
 17
 100
@@ -11015,7 +12431,7 @@ AcDbText
  40
 1.65
   1
-CRITERIOS DE ARRANJO
+ARRANJO FUNCIONAL
   7
 PORTFOLIO_TEXTO
  72
@@ -11033,7 +12449,7 @@ AcDbText
   0
 TEXT
   5
-159
+182
 330
 17
 100
@@ -11049,7 +12465,7 @@ AcDbText
  30
 0.0
  40
-1.15
+1.05
   1
 Invólucro: 1800 x 1000 x 400 mm
   7
@@ -11067,7 +12483,7 @@ AcDbText
   0
 TEXT
   5
-15A
+183
 330
 17
 100
@@ -11079,11 +12495,11 @@ AcDbText
  10
 312.0
  20
-226.0
+227.8
  30
 0.0
  40
-1.15
+1.05
   1
 Acesso frontal: >= 1,20 m
   7
@@ -11091,7 +12507,7 @@ PORTFOLIO_TEXTO
  11
 312.0
  21
-226.0
+227.8
  31
 0.0
 100
@@ -11101,7 +12517,7 @@ AcDbText
   0
 TEXT
   5
-15B
+184
 330
 17
 100
@@ -11113,11 +12529,11 @@ AcDbText
  10
 312.0
  20
-215.0
+218.6
  30
 0.0
  40
-1.15
+1.05
   1
 Entrada de cabos: inferior
   7
@@ -11125,7 +12541,7 @@ PORTFOLIO_TEXTO
  11
 312.0
  21
-215.0
+218.6
  31
 0.0
 100
@@ -11135,7 +12551,7 @@ AcDbText
   0
 TEXT
   5
-15C
+185
 330
 17
 100
@@ -11147,19 +12563,19 @@ AcDbText
  10
 312.0
  20
-204.0
+209.4
  30
 0.0
  40
-1.15
+1.05
   1
-Potência separada de comando
+QF, contator e relé por gaveta
   7
 PORTFOLIO_TEXTO
  11
 312.0
  21
-204.0
+209.4
  31
 0.0
 100
@@ -11169,7 +12585,7 @@ AcDbText
   0
 TEXT
   5
-15D
+186
 330
 17
 100
@@ -11181,19 +12597,19 @@ AcDbText
  10
 312.0
  20
-193.0
+200.2
  30
 0.0
  40
-1.15
+1.05
   1
-VFD com ventilação dedicada
+Reversão: dois contatores + IM
   7
 PORTFOLIO_TEXTO
  11
 312.0
  21
-193.0
+200.2
  31
 0.0
 100
@@ -11203,7 +12619,7 @@ AcDbText
   0
 TEXT
   5
-15E
+187
 330
 17
 100
@@ -11215,19 +12631,19 @@ AcDbText
  10
 312.0
  20
-182.0
+191.0
  30
 0.0
  40
-1.15
+1.05
   1
-Cabo VFD afastado de sinais
+VFD com ventilação indicada
   7
 PORTFOLIO_TEXTO
  11
 312.0
  21
-182.0
+191.0
  31
 0.0
 100
@@ -11237,7 +12653,7 @@ AcDbText
   0
 TEXT
   5
-15F
+188
 330
 17
 100
@@ -11249,19 +12665,19 @@ AcDbText
  10
 312.0
  20
-171.0
+181.8
  30
 0.0
  40
-1.15
+1.05
   1
-PE contínuo e equipotencial
+PE contínuo; N isolado de PE
   7
 PORTFOLIO_TEXTO
  11
 312.0
  21
-171.0
+181.8
  31
 0.0
 100
@@ -11271,7 +12687,7 @@ AcDbText
   0
 TEXT
   5
-160
+189
 330
 17
 100
@@ -11283,11 +12699,79 @@ AcDbText
  10
 312.0
  20
-160.0
+172.60000000000002
  30
 0.0
  40
-1.15
+1.05
+  1
+STO ligado ao KSR internamente
+  7
+PORTFOLIO_TEXTO
+ 11
+312.0
+ 21
+172.60000000000002
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+18A
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+312.0
+ 20
+163.4
+ 30
+0.0
+ 40
+1.05
+  1
+Comando separado da potência
+  7
+PORTFOLIO_TEXTO
+ 11
+312.0
+ 21
+163.4
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+18B
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+312.0
+ 20
+154.2
+ 30
+0.0
+ 40
+1.05
   1
 Canaletas com reserva >= 30%
   7
@@ -11295,7 +12779,7 @@ PORTFOLIO_TEXTO
  11
 312.0
  21
-160.0
+154.2
  31
 0.0
 100
@@ -11305,7 +12789,7 @@ AcDbText
   0
 TEXT
   5
-161
+18C
 330
 17
 100
@@ -11317,19 +12801,19 @@ AcDbText
  10
 312.0
  20
-149.0
+145.0
  30
 0.0
  40
-1.15
+1.05
   1
-Porta: botoeiras e sinalização
+Botoeiras: lista de bornes P06-10
   7
 PORTFOLIO_TEXTO
  11
 312.0
  21
-149.0
+145.0
  31
 0.0
 100
@@ -11339,7 +12823,7 @@ AcDbText
   0
 TEXT
   5
-162
+18D
 330
 17
 100
@@ -11351,11 +12835,11 @@ AcDbText
  10
 312.0
  20
-138.0
+135.8
  30
 0.0
  40
-1.15
+1.05
   1
 Grau IP depende do ambiente
   7
@@ -11363,7 +12847,7 @@ PORTFOLIO_TEXTO
  11
 312.0
  21
-138.0
+135.8
  31
 0.0
 100
@@ -11373,7 +12857,7 @@ AcDbText
   0
 TEXT
   5
-163
+18E
 330
 17
 100
@@ -11385,11 +12869,45 @@ AcDbText
  10
 312.0
  20
-127.0
+126.60000000000001
  30
 0.0
  40
-1.15
+1.05
+  1
+Dimensões de fabricante pendentes
+  7
+PORTFOLIO_TEXTO
+ 11
+312.0
+ 21
+126.60000000000001
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+18F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+312.0
+ 20
+117.4
+ 30
+0.0
+ 40
+1.05
   1
 Dissipação requer cálculo térmico
   7
@@ -11397,7 +12915,7 @@ PORTFOLIO_TEXTO
  11
 312.0
  21
-127.0
+117.4
  31
 0.0
 100
@@ -12515,7 +14033,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-166
+192
   0
 DICTIONARYVAR
   5
@@ -19137,11 +20655,11 @@ DictionaryVariables
 280
 0
   1
-05/07
+05/10
   0
 DICTIONARYVAR
   5
-166
+192
 330
 2D
 100

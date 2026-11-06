@@ -1,0 +1,14 @@
+hsp_h_dia,pr,energia_anual_kwh,classificacao,observacoes
+3,0.70,5058.900000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+3,0.78,5637.060000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+3,0.86,6215.220000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+4,0.70,6745.200000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+4,0.78,7516.080000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+4,0.86,8286.960000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+5,0.70,8431.500000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+5,0.78,9395.100000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+5,0.86,10358.700000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+6,0.70,10117.800000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+6,0.78,11274.120000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+6,0.86,12430.440000,PARAMETRICO_SEM_LOCAL,Faixa didatica escolhida sem dado meteorologico ou municipio
+5.2,0.78,9770.904000,BASE_ATUAL_DIDATICA,Premissas atuais de parametros.csv; estimativa didatica sem previsao local

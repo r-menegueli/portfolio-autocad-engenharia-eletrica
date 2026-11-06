@@ -1,32 +1,37 @@
-# Inspeção visual - Projeto 05
+# Inspeção visual — Projeto 05
 
-Estado: aprovada em 2026-09-09.
+Estado: revisão 05, inspeção em 2026-11-06.
 
-## Método
+## Escopo e método
 
-As sete pranchas foram examinadas nos PNGs de produção a 300 dpi, nos PDFs
-rasterizados pelo Poppler a 150 dpi e nos SVGs abertos pelo Google Chrome headless em
-janela de 1600 x 1131 px. Foram verificados conjunto da folha, moldura, carimbo, aviso
-obrigatório, legenda, notas, tabelas, regiões densas, alinhamentos e legibilidade.
+As nove pranchas foram regeneradas em DXF e em PDF, SVG e PNG. Conferi o contato
+atualizado das nove folhas para margens, carimbos, numeração, revisão e composição.
+A P05-01 foi ampliada no PNG de produção a 300 dpi e na rasterização independente do
+PDF via `pypdfium2` a 150 dpi. A leitura visual em navegador dos SVGs segue aguardando
+autorização do usuário.
 
-Os sete PDFs têm uma página e formato A3 paisagem de 1190,55 x 841,89 pt. As sete abas
-do workbook — Resumo, Quadro Cargas, Circuitos, Alimentadores, Cabos, Materiais e
-Auditoria — também foram renderizadas individualmente e inspecionadas. A aba Auditoria
-apresenta todos os critérios como `PASS`, sem fórmulas de erro.
+## Resultado da P05-01
 
-## Correções efetuadas
+A tabela relaciona M-501 a M-505 e TUE-501 aos circuitos C01–C06, potência aparente
+instalada e coordenadas X/Y do croqui. O marcador de origem e as notas informam que as
+coordenadas são derivadas da geometria em escala 1:125, não de levantamento topográfico.
+Tabela, planta, dimensões, legenda, notas, aviso e carimbo estão dentro da folha; não
+observei cortes ou colisões relevantes. A folha continua conceitual: pegadas, folgas,
+acessos, fluxo e rotas reais não estão representados.
 
-- reposicionamento de rótulos de ambientes que ficavam atrás dos quadros no layout;
-- deslocamento do alimentador e do quadro QADM-05 no unifilar para recuperar folgas;
-- reposicionamento do rótulo de alimentação no unifilar;
-- correção da apresentação da maior corrente de fase para 86,550 A;
-- redução do intervalo formatado do workbook para remover grandes áreas vazias nas
-  pré-visualizações.
+## Verificações
 
-## Resultado
+- O validador específico passou em 443 verificações, sem erros; confirmou os seis
+  registros da tabela e as respectivas tags, circuitos, cargas e coordenadas.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs; os logs registram zero
+  erros encontrados e zero corrigidos.
+- A similaridade PDF/PNG de P05-01 foi 0,992284. No conjunto P05, o revisor integrado
+  confirmou nove folhas e similaridade mínima de 0,984155.
+- A revisão integrada do portfólio confirmou 12 projetos, 114 folhas, 456 arquivos
+  gráficos e 77 CSVs, com similaridade mínima geral de 0,981493. A validação estrita
+  passou em 668.075 verificações, sem erros ou avisos.
 
-Após a regeneração, não foram observados cortes, colisões, desalinhamentos relevantes
-ou textos ilegíveis. A comparação entre PNG, PDF rasterizado e SVG foi consistente. O
-validador também não reportou entidades fora da moldura nem sobreposições potenciais.
-Os 28 artefatos CAD do projeto (sete DXFs e 21 derivados) conservaram hashes SHA-256
-idênticos em uma reconstrução completa.
+Essas verificações avaliam consistência, abertura e apresentação. Não confirmam
+dimensionamento, conformidade normativa, implantação real ou aptidão para execução.
+O workbook foi regenerado a partir da lista de materiais revisada; os cálculos elétricos
+não mudaram.

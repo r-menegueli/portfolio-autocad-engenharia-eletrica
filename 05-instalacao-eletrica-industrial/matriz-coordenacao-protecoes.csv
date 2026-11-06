@@ -1,0 +1,7 @@
+par,verificacoes,dados_necessarios,status
+DJ-G > QF-QDF,Ik max/min + TCC + Icu/Ics + retaguarda,Icc na origem + curvas do fabricante + cabos e comprimentos reais,PENDENTE
+DJ-G > QF-QDL,Ik max/min + TCC + Icu/Ics + retaguarda,Icc na origem + curvas do fabricante + cabos e comprimentos reais,PENDENTE
+DJ-G > QF-QADM,Ik max/min + TCC + Icu/Ics + retaguarda,Icc na origem + curvas do fabricante + cabos e comprimentos reais,PENDENTE
+QF-QDF > C01-C08,curvas + partida dos motores + energia I2t,placas dos motores + corrente de partida + ciclo da solda + condutores reais,PENDENTE
+QF-QDL > C09-C13,curvas + corrente de partida LED + DR + energia I2t,modelos dos drivers + dados do DR + condutores e instalacao reais,PENDENTE
+QF-QADM > C14-C16,curvas + DR + energia I2t,modelos das tomadas e protecoes + dados do DR + condutores e instalacao reais,PENDENTE

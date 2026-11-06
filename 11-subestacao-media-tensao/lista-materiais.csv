@@ -6,13 +6,13 @@ RELE-50/51,1,un,Rele digital microprocessado de sobrecorrente ANSI 50/51/50N/51N
 TC-MED,3,un,Transformador de corrente de medicao 15 kV 25-50/5 A classe 0.3C25,TC-MED,Padrao concessionaria
 TP-MED,3,un,Transformador de potencial de medicao 15 kV 13800/115 V classe 0.3P75,TP-MED,Padrao concessionaria
 TC-PROT,3,un,Transformador de corrente de protecao 15 kV 50-100/5 A classe 10B200,TC-PROT,Dedicado ao rele de sobrecorrente
-DPS-MT,3,un,Para-raios de media tensao polimero ZnO 12 kV / 10 kA,DPS-MT,Protecao contra surtos no ponto de entrega
+DPS-MT,TBD,un,Para-raios de media tensao a especificar,DPS-MT,Tensao nominal corrente e coordenacao de isolamento pendentes
 MUFLA-15,6,un,Terminacao mufla termocontratil unipolar interna 15 kV para cabo 50 mm2,MUFLA-01,Inclui kit de aterramento da blindagem
 ISOL-17,12,un,Isolador de pedestal em resina epoxi 17.5 kV NBI 95 kV,ISOL-MT,Suportacao de barramentos primarios
 BAR-MT,15,m,Barra chata de cobre eletrolitico 25 x 5 mm para media tensao,BAR-MT,Pintura nas cores normativas
 QGBT-01,1,un,Quadro Geral de Baixa Tensao 380/220 V barramento 1000 A IP54,QGBT-01,Compartimentado com barras N e PE
 DJ-GERAL,1,un,Disjuntor caixa aberta tripolar 800 A Icu 50 kA com disparador LSI,DJ-GERAL,Protecao geral de baixa tensao
-DPS-BT,4,un,Dispositivo de protecao contra surtos Classe I+II 275 V 12.5/40 kA,DPS-BT,Instalado na entrada do QGBT
+DPS-BT,TBD,un,Dispositivo de protecao contra surtos a especificar,DPS-BT,Quantidade topologia classe Uc Up correntes e coordenacao pendentes
 RET-125,1,cj,Fonte retificadora e banco de baterias seladas 125 Vcc 30 Ah,RET-AUX,Alimentacao auxiliar de comando e trip
 BEP-01,1,un,Barramento de Equipotencializacao Principal em cobre 50 x 6 mm,BEP,Fixado sobre isoladores na alvenaria
 HASTE-CW,8,un,Haste de aterramento aco cobreado 5/8 pol x 2.40 m camada 254 um,H-01/08,Malha de aterramento subterranea

@@ -2,7 +2,7 @@
 
 Data: 2026-09-06
 
-Status: **APROVADO**
+Status: **APROVADO PARA A REVISÃO 00 DE OITO FOLHAS (2026-09-06)**
 
 ## Método
 
@@ -27,3 +27,57 @@ corte, títulos, legendas e notas alinhados. As regiões densas das listas de I/
 bornes permanecem legíveis em A3, sem colisões visuais relevantes. PDF, SVG e PNG
 representam a mesma revisão 00. O detector automático não registrou sobreposições,
 entidades fora da moldura, clipping ou dimensões incompatíveis.
+
+## Complemento da revisão 02 — prancha 09
+
+- A nova folha de sequência foi inspecionada no PNG de produção a 300 dpi e em
+  rasterização independente do PDF a 150 dpi. O fluxo, a matriz causa-efeito, o aviso,
+  as notas e o carimbo permanecem dentro da moldura; os textos da matriz foram
+  ampliados para conferência e não apresentam cortes ou colisões visuais relevantes.
+- A sequência diferencia falhas tratadas de decisões ainda pendentes, em especial a
+  resposta para uma bomba em marcha diante de sensores incoerentes.
+- Esta revisão não foi aberta no AutoCAD/AcCoreConsole. A inspeção visual do SVG no
+  navegador segue pendente de autorização do usuário.
+
+## Complemento da revisão 03 — prancha 10
+
+- A prancha de verificação foi inspecionada no PNG de produção a 300 dpi e em raster
+  independente do PDF a 150 dpi. A tabela mantém os 12 itens e seus estados
+  `NÃO EXECUTADO`; cabeçalho, corpo, nota, aviso acadêmico e carimbo estão dentro da
+  moldura, sem cortes visíveis.
+- Os dois formatos conferidos mostram a mesma composição. O carimbo identifica a
+  revisão 03 como “PLANO DE VERIFICAÇÃO”; a resposta para sensor incoerente com bomba
+  em marcha continua explicitamente pendente.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou as dez fontes DXF do P03 (`PASS`, 10/10).
+  Isso confirma abertura e integridade CAD, não valida cálculos, lógica de processo,
+  instalação ou segurança funcional.
+- A inspeção visual do SVG no navegador continua aguardando autorização do usuário.
+
+## Complemento da revisão 04 — ponto de parada V01
+
+- A prancha 09 destaca a incompatibilidade encontrada entre a descrição anterior de
+  enchimento e a sequência LSH-inicia / LSL-encerra / LSHH-solicita reserva. O subtítulo
+  e as notas classificam a lógica como ilustrativa e dependente da aprovação do sentido
+  do processo, tanques e origem de LSL-LL. A resposta a sensor incoerente com bomba em
+  marcha permanece pendente.
+- P03-09 e P03-10 foram conferidas no PNG de produção a 300 dpi e em PDF rasterizado
+  independentemente a 150 dpi; texto, tabelas, nota de parada, aviso e carimbo estão
+  dentro da moldura, sem cortes ou colisões visíveis.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou 10/10 fontes DXF. O validador específico
+  passou em 235 verificações; o validador estrito do portfólio passou em 624.834,
+  ambos sem erros. Os 12 itens do plano continuam `NÃO EXECUTADO`.
+- A inspeção visual do SVG no navegador segue aguardando autorização do usuário.
+
+## Complemento da revisão 05 — prancha 11
+
+- A prancha 11 foi conferida na renderização PNG de produção a 300 dpi e em rasterização
+  independente do PDF pelo Poppler a 150 dpi. Os exemplos de enchimento/esgotamento,
+  a tabela de decisões pendentes, o aviso obrigatório e o carimbo permanecem dentro da
+  moldura, sem cortes ou colisões visíveis. Similaridade PDF/PNG: 0,987946.
+- O contato atualizado das onze folhas foi inspecionado. O AcCoreConsole 2027 abriu e
+  auditou 11/11 fontes DXF; o validador lógico passou em 246 verificações. A revisão
+  estrita global mais recente passou em 650.961 verificações, sem erros ou avisos; o revisor
+  confirmou 111 pranchas, 444 derivados gráficos e similaridade mínima de 0,981493.
+- Nenhum processo foi escolhido pela comparação: V01, posição/função dos sensores,
+  LSHH e a resposta a sensor incoerente continuam pendentes. A inspeção de SVGs no
+  navegador segue aguardando autorização do usuário.

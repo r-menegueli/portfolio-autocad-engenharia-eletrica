@@ -3,7 +3,7 @@ QD-GERAL,1,un,Quadro geral de baixa tensao 125 A,QGBT-05,Arranjo e verificacao c
 QD-FORCA,1,un,Quadro secundario de forca 80 A,QDF-05,Inclui barras N e PE separadas
 QD-LUZ,1,un,Quadro secundario de iluminacao 16 A,QDL-05,Quatro polos e reserva tecnica
 QD-ADM,1,un,Quadro secundario administrativo 16 A,QADM-05,Quatro polos e reserva tecnica
-DJ-G,1,un,Disjuntor geral 4P 100 A,DJ-G,Icu minimo 10 kA assumido; confirmar Icc
+DJ-G,1,un,Disjuntor geral 4P 100 A (premissa),DJ-G,Modelo e capacidade de interrupcao a definir apos estudo de Icc
 DPS-05,1,conjunto,DPS tipo 2 para 3F+N,DPS-05,Up e coordenacao a selecionar
 QF-QDF,1,un,Disjuntor alimentador 3P 80 A,QF-QDF,Curva e seletividade a confirmar
 QF-QDL,1,un,Disjuntor alimentador 4P 16 A,QF-QDL,Protecao do alimentador de iluminacao

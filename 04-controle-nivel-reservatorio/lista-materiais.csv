@@ -16,3 +16,4 @@ item,quantidade,unidade,descricao,referencia,especificacao_preliminar,observacoe
 15,1,lote,Cabos de campo,C-101-C-109,Conforme lista de cabos,Bitolas preliminares
 16,1,lote,Sinalizadores LED,HL-101-HL-106,24 Vcc,Cores conforme documentacao
 17,1,un,Sinalizador sonoro,HA-101,24 Vcc,Nivel sonoro a definir
+18,1,un,Valvula manual,HV-102,"Tipo, diametro e pressao pendentes",Selecionar apos dados hidraulicos

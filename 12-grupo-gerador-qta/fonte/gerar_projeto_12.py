@@ -1,8 +1,9 @@
-"""Gera as seis pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA) de forma deterministica."""
+"""Gera as nove pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA)."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -35,8 +36,22 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "12-grupo-gerador-qta"
-PROJECT_DATE = "2026-09-25"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
+LOAD_SCHEDULE_NAME = "cadastro-cargas-qce.csv"
+LOAD_SCHEDULE_FIELDS = (
+    "cabo_id",
+    "carga",
+    "destino",
+    "funcao",
+    "formacao",
+    "comprimento_assumido_m",
+    "potencia_instalada_kw",
+    "corrente_nominal_a",
+    "partida_regime",
+    "regime_simultaneidade",
+    "prioridade_sequenciamento",
+)
 
 
 @dataclass(frozen=True)
@@ -105,14 +120,63 @@ SHEETS = (
     SheetSpec(
         6,
         "06_planta_instalacao_gmg.dxf",
-        "PLANTA DE INSTALACAO E DETALHES DO GMG",
-        "Arranjo fisico da sala do gerador, atenuacao acustica, escape e contencao",
-        "Base de concreto isolada com 6 amortecedores elastomericos antivibratorios.\\P"
-        "Cabine silenciada 75 dB(A) com venezianas de admissao e descarga atenuadas.\\P"
-        "Tanque integrado de 250 L sobre bacia de contencao estanque para 297 L (110%).",
+        "ARRANJO CONCEITUAL E INTERFACES DO GMG",
+        "Sala, cabine e interfaces dependem de levantamento e dados do fabricante",
+        "Dimensoes internas de 6,50 x 4,00 m sao premissas do estudo.\\P"
+        "Cabine, ventilacao, escape e folgas dependem de selecao OEM.\\P"
+        "Rota fisica, acessos e manutencao devem ser confirmados em campo.",
         "GMG-01: 250 kVA | ESC-01: silencioso hospitalar | TQ-01: tanque 250L | VIB: amortecedores",
-        "1:50",
+        "S/ESC.",
     ),
+    SheetSpec(
+        7,
+        "07_sequencia_transferencia_qta.dxf",
+        "SEQUENCIA DE OPERACAO E INTERTRAVAMENTO DO QTA",
+        "Estados, temporizacoes de estudo e condicoes de transferencia aberta",
+        "Temporizacoes sao valores iniciais de estudo, nao garantias de partida ou transferencia.\\P"
+        "A manobra exige confirmacao de abertura da fonte anterior e intertravamento fisico independente.",
+        "52-R: contato rede | 52-G: contato GMG | FBK: retorno auxiliar | BBM: transicao aberta",
+    ),
+    SheetSpec(
+        8,
+        "08_matriz_causa_efeito_qta.dxf",
+        "MATRIZ CAUSA-EFEITO DO GMG E QTA",
+        "Falhas de partida, transferencia, protecoes e retorno a rede",
+        "Limiares repetem as premissas documentadas; respostas indefinidas estao marcadas como pendentes.\\P"
+        "Validar a logica final com a USCA/GMG selecionada; sem classificacao SIL/PL.",
+        "52-R: contator da rede | 52-G: contator do GMG | FBK: retorno auxiliar | OEM: fabricante",
+    ),
+    SheetSpec(
+        9,
+        "09_cadastro_cargas_essenciais_qce.dxf",
+        "CADASTRO DE CARGAS ESSENCIAIS DO QCE",
+        "Alimentadores da lista de cabos e dados de carga ainda necessarios",
+        "Os dados de potencia, corrente, partida, simultaneidade e prioridade nao constam no cadastro de cabos.\\P"
+        "Os comprimentos e formacoes reproduzem premissas existentes; nao sao dimensionamento final.",
+        "QCE: quadro de cargas essenciais | P carga: potencia instalada | I nominal: corrente nominal | L: comprimento assumido",
+    ),
+)
+
+
+CAUSE_EFFECT_COLUMNS = (
+    "id",
+    "evento",
+    "deteccao_condicao",
+    "resposta_conceitual",
+    "alarme_indicacao",
+    "retorno_limite",
+)
+
+CAUSE_EFFECT_ROWS = (
+    ("E01", "Falha de rede/fase", "Subtensao <85% ou sobretensao >110% por >3 s; falta de fase", "USCA inicia a sequencia; 52-G aguarda GMG estavel", "Falha de rede; tag USCA pendente", "Rede normal; retorno somente apos 120 s estavel"),
+    ("E02", "GMG nao parte", "Ate 3 pulsos de 5 s, com repouso de 5 s", "Encerra tentativas; nao transfere para o GMG", "Falha de partida; codigo/tag pendente", "Intervencao e rearme conforme OEM; procedimento pendente"),
+    ("E03", "GMG instavel", "380 V +/-2% e 60 Hz +/-1% estaveis por 5 s", "Nao autoriza o fechamento de 52-G; tratamento de falha pendente", "Condicao instavel na USCA; tag pendente", "Permissivo apos estabilidade; reset depende do OEM/USCA"),
+    ("E04", "52-R nao confirma abertura", "FBK nao confirma abertura antes da transferencia para GMG", "Bloqueia 52-G; nao comanda as fontes em paralelo", "Falha de abertura/feedback; tag pendente", "Inspecao e rearme apos confirmar abertura"),
+    ("E05", "52-G nao confirma abertura", "FBK nao confirma abertura antes do retorno a rede", "Bloqueia 52-R; nao comanda as fontes em paralelo", "Falha de abertura/feedback; tag pendente", "Inspecao e rearme apos confirmar abertura"),
+    ("E06", "Rede retorna estavel", "Rede saudavel por 120 s (premissa)", "Abre 52-G, confirma FBK, espera 1,5 s e fecha 52-R; cooldown 180 s", "Indicacao de retorno/cooldown; tags pendentes", "Setpoints e aceite final dependem do OEM/USCA"),
+    ("E07", "Emergencia S0", "Botao de emergencia acionado", "Para o GMG; resposta dos contatores sob carga requer definicao USCA/OEM", "Emergencia; retencao/tag pendentes", "Rearme manual e causa removida conforme fabricante"),
+    ("E08", "Protecao do motor", "Oleo <1,2 bar; arrefecimento >103 C; sobrevelocidade >115%", "Parada do GMG conforme protecoes declaradas; resposta do QTA sob carga pendente", "Trip do motor; entradas/tags dependem do equipamento", "Causa removida e rearme conforme fabricante"),
+    ("E09", "Nivel baixo de diesel", "Alarme de nivel baixo; limiar nao especificado", "Alarme apenas; acao operacional nao definida nesta revisao", "Alarme de combustivel; limiar/tag pendentes", "Reposicao e ACK; procedimento depende do OEM"),
 )
 
 
@@ -196,7 +260,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSAO INICIAL DO PROJETO 12", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO TECNICA E GRAFICA", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -218,7 +282,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": spec.scale,
@@ -234,7 +298,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -305,7 +369,7 @@ def draw_sheet_01(layout) -> None:
         "Icc Rede: 25,0 kA",
         "Icc Gerador: 1,14 kA",
         "Transicao: Aberta (BBM)",
-        "Tempo Partida: <= 12 s",
+        "Partida: ate 3 ciclos de 5 s",
         "Tanque Diesel: 250 L",
         "Autonomia 75%: 7,5 h",
         "Esquema Terra: TN-S",
@@ -572,7 +636,7 @@ def draw_sheet_05(layout) -> None:
 
 def draw_sheet_06(layout) -> None:
     # 1. Planta Baixa da Sala do GMG (Esquerda: X = 28 a 250)
-    panel_box(layout, 28, 102, 250, 256, "PLANTA BAIXA - SALA DO GERADOR", "Dimensoes Internas: 6,50 x 4,00 m (Escala 1:50)", "11_ARQUITETURA")
+    panel_box(layout, 28, 102, 250, 256, "LAYOUT CONCEITUAL - SALA GMG", "Dimensoes adotadas: 6,50 x 4,00 m; escala grafica nao valida", "11_ARQUITETURA")
 
     # Paredes da sala (alvenaria acústica)
     add_rect(layout, 42, 120, 236, 232, "11_ARQUITETURA")
@@ -606,7 +670,7 @@ def draw_sheet_06(layout) -> None:
     left_text(layout, "EXT. PQS/CO2", (65, 131), 0.9, "06_COMANDO")
 
     # 2. Detalhe do Escape e Requisitos Normativos (Direita: X = 258 a 402)
-    panel_box(layout, 258, 102, 402, 256, "ESCAPE HOSPITALAR E REQUISITOS", "Atenuacao Acustica e Gases", "04_EQUIPAMENTOS")
+    panel_box(layout, 258, 102, 402, 256, "INTERFACES DO ESCAPE E CRITERIOS", "Premissas; confirmar por fabricante", "04_EQUIPAMENTOS")
 
     # Fluxo de escape em blocos
     box(layout, 268, 214, 392, 232, "1. JUNTA EXPANSAO FLEXIVEL INOX", "Absorcao de vibracao na saida do turbo", "04_EQUIPAMENTOS")
@@ -616,13 +680,194 @@ def draw_sheet_06(layout) -> None:
     box(layout, 268, 154, 392, 174, "3. TUBULACAO ISOLADA LA DE ROCHA", "Espessura 50 mm + protecao aluminio", "04_EQUIPAMENTOS")
 
     reqs = [
-        "- Nivel sonoro externo <= 75 dB(A) a 1,5m (NBR 10151).",
-        "- Vazao de ar do radiador: 5,2 m3/s (18.720 m3/h).",
-        "- Autonomia do tanque 250 L: 5,7 h (100%) / 7,6 h (75%).",
-        "- Aterramento da carcaca e neutro em Cu 120 mm2 ao BEP.",
+        "- Nivel sonoro <= 75 dB(A) a 1,5 m: criterio premissa.",
+        "- Vazao do radiador 5,2 m3/s: confirmar no manual OEM.",
+        "- Autonomia do tanque: consumo e regime ainda nao validados.",
+        "- Escape, contrapressao e temperatura: confirmar com OEM.",
+        "- Envelopes, acessos e rotas de ar/escape: pendentes.",
     ]
     for idx, rq in enumerate(reqs):
         left_text(layout, rq, (264, 140 - idx * 8.5), 0.92, "02_TEXTO")
+
+
+# --- Prancha 07: Sequencia de operacao e intertravamento ---
+
+def draw_sheet_07(layout) -> None:
+    # Fluxo em duas linhas: partida e transferência para GMG, depois retorno à rede.
+    panel_box(layout, 28, 110, 402, 256, "SEQUENCIA AUTOMATICA DO QTA", "Estados de referencia para USCA-01; tempos configuraveis", "06_COMANDO")
+
+    cards = [
+        (35, 190, 145, 234, "0 / 1  REDE E FALHA", "52-R fecha com rede saudavel.\\PConfirma falha por 3 s antes da partida."),
+        (155, 190, 265, 234, "2 / 3  ARRANQUE", "Ate 3 tentativas: 5 s partida\\Pe 5 s de repouso entre tentativas."),
+        (275, 190, 395, 234, "4 / 5  ESTABILIZA E TRANSFERE", "GMG estavel por 5 s. Abre 52-R;\\Paguarda 1,5 s e fecha 52-G."),
+        (275, 130, 395, 174, "6 / 7  CARGA / RETORNO", "GMG atende a carga. Rede precisa\\permanecer saudavel por 120 s."),
+        (155, 130, 265, 174, "8  RETRANSFERENCIA", "Abre 52-G; confirma FBK aberto,\\Paguarda 1,5 s e fecha 52-R."),
+        (35, 130, 145, 174, "9  ARREFECIMENTO", "GMG opera sem carga por 180 s;\\Pdepois desenergiza o combustivel."),
+    ]
+    for x0, y0, x1, y1, heading, detail in cards:
+        add_rect(layout, x0, y0, x1, y1, "04_EQUIPAMENTOS")
+        left_text(layout, heading, (x0 + 3, y1 - 8), 1.25, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+        add_mtext(layout, detail, (x0 + 3, y1 - 14), x1 - x0 - 6, 1.15, "02_TEXTO")
+
+    # Setas da ordem de execução (ida pela linha superior e volta pela inferior).
+    arrow(layout, (145, 212), (155, 212), "06_COMANDO")
+    arrow(layout, (265, 212), (275, 212), "06_COMANDO")
+    arrow(layout, (335, 190), (335, 174), "06_COMANDO")
+    arrow(layout, (275, 152), (265, 152), "06_COMANDO")
+    arrow(layout, (155, 152), (145, 152), "06_COMANDO")
+
+    # Ramo de indisponibilidade e premissas de segurança.
+    add_rect(layout, 35, 113, 395, 124, "13_NOTAS")
+    centered(layout, "FALHA: 3 tentativas sem GMG estavel, emergencia, pressao de oleo ou temperatura anormal -> estado de alarme.", (215, 118.5), 1.12, "13_NOTAS")
+    add_rect(layout, 35, 178, 265, 185, "12_LEGENDA")
+    centered(layout, "Nunca comandar 52-R e 52-G juntos. Confirmar abertura por FBK e intertravamento mecanico.", (150, 181.5), 1.05, "12_LEGENDA")
+
+
+# --- Prancha 08: Matriz causa-efeito do GMG e QTA ---
+
+def draw_sheet_08(layout) -> None:
+    panel_box(layout, 20, 104, 400, 256, "MATRIZ CAUSA-EFEITO DO GMG E QTA", "USCA-01: eventos documentados, resposta conceitual e limites pendentes", "06_COMANDO")
+
+    x_edges = (28, 42, 96, 166, 252, 312, 392)
+    y_top = 234
+    header_height = 10
+    row_height = 12.8
+    y_bottom = y_top - header_height - row_height * len(CAUSE_EFFECT_ROWS)
+    add_rect(layout, x_edges[0], y_bottom, x_edges[-1], y_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x_edges[0], y_top - header_height), (x_edges[-1], y_top - header_height), "12_LEGENDA")
+    for idx in range(1, len(CAUSE_EFFECT_ROWS)):
+        y = y_top - header_height - row_height * idx
+        line(layout, (x_edges[0], y), (x_edges[-1], y), "12_LEGENDA")
+
+    headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
+    for idx, value in enumerate(headers):
+        centered(layout, value, ((x_edges[idx] + x_edges[idx + 1]) / 2, y_top - header_height / 2), 1.35, "12_LEGENDA", style=TITLE_STYLE)
+    for row_idx, row in enumerate(CAUSE_EFFECT_ROWS):
+        y = y_top - header_height - row_height * (row_idx + 0.5)
+        for col_idx, value in enumerate(row):
+            centered(layout, value, ((x_edges[col_idx] + x_edges[col_idx + 1]) / 2, y), 1.45, "02_TEXTO")
+
+
+def read_load_schedule(root: Path) -> list[dict[str, str]]:
+    path = root / PROJECT_SLUG / LOAD_SCHEDULE_NAME
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != LOAD_SCHEDULE_FIELDS:
+            raise ValueError(f"Cabecalho inesperado em {path.relative_to(root)}")
+        return list(reader)
+
+
+def draw_sheet_09(layout, root: Path) -> None:
+    rows = read_load_schedule(root)
+    panel_box(
+        layout,
+        20,
+        140,
+        402,
+        256,
+        "CADASTRO DE CARGAS ESSENCIAIS DO QCE",
+        "Quatro alimentadores identificados em lista-cabos.csv; valores ainda sem dados de placa/processo",
+        "04_EQUIPAMENTOS",
+    )
+
+    x_edges = (24, 56, 102, 170, 246, 286, 326, 364, 398)
+    y_top = 242
+    header_height = 12
+    row_height = 21.5
+    y_bottom = y_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], y_bottom, x_edges[-1], y_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x_edges[0], y_top - header_height), (x_edges[-1], y_top - header_height), "12_LEGENDA")
+    for index in range(1, len(rows)):
+        y = y_top - header_height - row_height * index
+        line(layout, (x_edges[0], y), (x_edges[-1], y), "12_LEGENDA")
+
+    headers = (
+        "CABO / TAG",
+        "DESTINO",
+        "CARGA / SERVICO",
+        "CABO CADASTRADO",
+        "P carga\\PkW",
+        "I nominal\\PA",
+        "PARTIDA /\\PREGIME",
+        "PRIORIDADE /\\PSEQUENCIA",
+    )
+    for index, value in enumerate(headers):
+        if "\\P" in value:
+            add_mtext(
+                layout,
+                value,
+                (x_edges[index] + 2, y_top - 2),
+                x_edges[index + 1] - x_edges[index] - 4,
+                1.22,
+                "12_LEGENDA",
+                style=TITLE_STYLE,
+            )
+        else:
+            centered(layout, value, ((x_edges[index] + x_edges[index + 1]) / 2, y_top - header_height / 2), 1.22, "12_LEGENDA", style=TITLE_STYLE)
+
+    destination_labels = {
+        "QDL_Emergencia": "QDL emergencia",
+        "Bomba_Incendio": "Bomba de incendio",
+        "UPS_Sala_Servidores": "UPS / sala servidores",
+        "Painel_Utilidades": "Painel utilidades",
+    }
+    service_labels = {
+        "Iluminacao e rotas de fuga": "Iluminacao / rotas de fuga",
+        "Combate a incendio": "Sistema de combate a incendio",
+        "UPS para TI": "UPS / cargas de TI",
+        "Compressores e automacao": "Compressores / automacao",
+    }
+    for row_index, row in enumerate(rows):
+        y_center = y_top - header_height - row_height * (row_index + 0.5)
+        formation = row["formacao"].replace("_mm2_", " mm2 ").replace("_", " ")
+        cable_text = f"{formation}\\PL={row['comprimento_assumido_m']} m assumidos"
+        values = (
+            row["cabo_id"],
+            destination_labels[row["destino"]],
+            service_labels[row["carga"]],
+            cable_text,
+            row["potencia_instalada_kw"],
+            row["corrente_nominal_a"],
+            "PENDENTE",
+            row["prioridade_sequenciamento"],
+        )
+        for column, value in enumerate(values):
+            x0, x1 = x_edges[column], x_edges[column + 1]
+            if column in (0, 4, 5, 6, 7):
+                centered(layout, value, ((x0 + x1) / 2, y_center), 1.35, "02_TEXTO")
+            else:
+                add_mtext(
+                    layout,
+                    value.replace("\\n", "\\P"),
+                    (x0 + 2, y_center + 6),
+                    x1 - x0 - 4,
+                    1.28,
+                    "02_TEXTO",
+                )
+
+    callouts = (
+        ("DADOS DE PLACA", "Quantidade, tensao, kW, A, FP e rendimento."),
+        ("PARTIDA / DEGRAU", "Metodo de partida, corrente e tempo de partida."),
+        ("REGIME / DEMANDA", "Ciclo, simultaneidade, autonomia e demanda."),
+        ("PRIORIDADE", "Ordem de entrada, cargas cortaveis e criterio operacional."),
+    )
+    callout_x = (20, 116, 212, 308)
+    for x0, (heading, detail) in zip(callout_x, callouts):
+        add_rect(layout, x0, 101, x0 + 90, 133, "13_NOTAS")
+        centered(layout, heading, (x0 + 45, 127), 1.32, "13_NOTAS", style=TITLE_STYLE)
+        add_mtext(layout, detail, (x0 + 3, 120), 84, 1.25, "13_NOTAS")
+    centered(
+        layout,
+        "PENDENTE: confirmar se estes quatro alimentadores representam todas as cargas do QCE.",
+        (211, 96.5),
+        1.35,
+        "13_NOTAS",
+        style=TITLE_STYLE,
+    )
 
 
 DRAW_MAP = {
@@ -632,22 +877,36 @@ DRAW_MAP = {
     4: draw_sheet_04,
     5: draw_sheet_05,
     6: draw_sheet_06,
+    7: draw_sheet_07,
+    8: draw_sheet_08,
+    9: draw_sheet_09,
 }
 
 
-def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
+def build_sheet(config: dict, spec: SheetSpec, output_path: Path, root: Path) -> None:
     doc, layout = create_sheet(config, spec)
-    DRAW_MAP[spec.number](layout)
+    if spec.number == 9:
+        DRAW_MAP[spec.number](layout, root)
+    else:
+        DRAW_MAP[spec.number](layout)
     prepare_deterministic_write(doc)
-    doc.saveas(output_path)
+    with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
+        doc.write(stream)
     print(f"Gerado: {output_path.relative_to(ROOT)}")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
-    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..6)")
+    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..9)")
     return parser.parse_args()
+
+
+def write_cause_effect_csv(output_path: Path) -> None:
+    with output_path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(CAUSE_EFFECT_COLUMNS)
+        writer.writerows(CAUSE_EFFECT_ROWS)
 
 
 def main() -> int:
@@ -661,7 +920,11 @@ def main() -> int:
         if args.sheet and spec.number != args.sheet:
             continue
         output_path = source_dir / spec.filename
-        build_sheet(config, spec, output_path)
+        build_sheet(config, spec, output_path, root)
+    matrix_path = root / PROJECT_SLUG / "matriz-causa-efeito.csv"
+    matrix_path.parent.mkdir(parents=True, exist_ok=True)
+    write_cause_effect_csv(matrix_path)
+    print(f"Gerado: {matrix_path.relative_to(root)}")
     return 0
 
 

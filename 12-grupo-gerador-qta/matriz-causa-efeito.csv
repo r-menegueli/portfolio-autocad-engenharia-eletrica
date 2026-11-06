@@ -1,0 +1,10 @@
+﻿id,evento,deteccao_condicao,resposta_conceitual,alarme_indicacao,retorno_limite
+E01,Falha de rede/fase,Subtensao <85% ou sobretensao >110% por >3 s; falta de fase,USCA inicia a sequencia; 52-G aguarda GMG estavel,Falha de rede; tag USCA pendente,Rede normal; retorno somente apos 120 s estavel
+E02,GMG nao parte,"Ate 3 pulsos de 5 s, com repouso de 5 s",Encerra tentativas; nao transfere para o GMG,Falha de partida; codigo/tag pendente,Intervencao e rearme conforme OEM; procedimento pendente
+E03,GMG instavel,380 V +/-2% e 60 Hz +/-1% estaveis por 5 s,Nao autoriza o fechamento de 52-G; tratamento de falha pendente,Condicao instavel na USCA; tag pendente,Permissivo apos estabilidade; reset depende do OEM/USCA
+E04,52-R nao confirma abertura,FBK nao confirma abertura antes da transferencia para GMG,Bloqueia 52-G; nao comanda as fontes em paralelo,Falha de abertura/feedback; tag pendente,Inspecao e rearme apos confirmar abertura
+E05,52-G nao confirma abertura,FBK nao confirma abertura antes do retorno a rede,Bloqueia 52-R; nao comanda as fontes em paralelo,Falha de abertura/feedback; tag pendente,Inspecao e rearme apos confirmar abertura
+E06,Rede retorna estavel,Rede saudavel por 120 s (premissa),"Abre 52-G, confirma FBK, espera 1,5 s e fecha 52-R; cooldown 180 s",Indicacao de retorno/cooldown; tags pendentes,Setpoints e aceite final dependem do OEM/USCA
+E07,Emergencia S0,Botao de emergencia acionado,Para o GMG; resposta dos contatores sob carga requer definicao USCA/OEM,Emergencia; retencao/tag pendentes,Rearme manual e causa removida conforme fabricante
+E08,Protecao do motor,"Oleo <1,2 bar; arrefecimento >103 C; sobrevelocidade >115%",Parada do GMG conforme protecoes declaradas; resposta do QTA sob carga pendente,Trip do motor; entradas/tags dependem do equipamento,Causa removida e rearme conforme fabricante
+E09,Nivel baixo de diesel,Alarme de nivel baixo; limiar nao especificado,Alarme apenas; acao operacional nao definida nesta revisao,Alarme de combustivel; limiar/tag pendentes,Reposicao e ACK; procedimento depende do OEM

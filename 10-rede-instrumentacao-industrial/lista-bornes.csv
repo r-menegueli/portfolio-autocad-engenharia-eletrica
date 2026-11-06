@@ -2,8 +2,12 @@
 X1:01,L,entrada 230 Vca,QF0:1
 X1:02,N,entrada 230 Vca,QF0:2
 X1:PE,PE,proteção,PE-101
-X2:01,+24V,distribuição,FU1
-X2:02,0V,retorno funcional,PS1:-
+X2:01,+24V,distribuição comum malhas/sensores,FU4
+X2:02,0V,retorno funcional malhas/sensores,PS1:-
+X2:03,+24V,alimentação protegida RIO-201,FU2 / P24-201
+X2:04,0V,retorno RIO-201,P24-201 / PS1:-
+X2:05,+24V,alimentação protegida RIO-202,FU3 / P24-202
+X2:06,0V,retorno RIO-202,P24-202 / PS1:-
 X3:01/02,TT-101 +/−,analógico,RIO-201/AI0
 X3:03/04,PT-102 +/−,analógico,RIO-201/AI1
 X3:05/06,FT-103 +/−,analógico,RIO-202/AI0

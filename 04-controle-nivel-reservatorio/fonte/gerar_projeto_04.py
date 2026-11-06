@@ -1,8 +1,9 @@
-"""Gera as seis pranchas DXF do Projeto 04 de forma determinística."""
+"""Gera as nove pranchas DXF do Projeto 04 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -34,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "04-controle-nivel-reservatorio"
-PROJECT_DATE = "2026-09-08"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "05"
 
 
 @dataclass(frozen=True)
@@ -53,10 +54,11 @@ SHEETS = (
         1,
         "01_fluxograma_processo.dxf",
         "FLUXOGRAMA DO PROCESSO",
-        "Enchimento de TK-101 por P-101 com demanda variável",
+        "Enchimento de TK-101 por P-101; origem a montante não especificada",
         "TK-101: 10 m³ (premissa). Operação normal: 30–80%; SP inicial: 60%.\\P"
+        "Origem e equipamento a montante não definidos.\\P"
         "A vazão de consumo é a perturbação principal da malha de nível.",
-        "Linha grossa: tubulação | Tracejado funcional: sinal | FCV: válvula manual | NRV: retenção",
+        "Tubulação: linha grossa | Sinal: linha fina | HV-102: válvula manual (premissa)",
     ),
     SheetSpec(
         2,
@@ -103,6 +105,57 @@ SHEETS = (
         "manutenção, NPSH, ventilação do painel, EMC, drenagem e segurança.",
         "P: potência | I: instrumentação | C: controle | E: eletrocalha | Área hachurada: acesso",
     ),
+    SheetSpec(
+        7,
+        "07_sequencia_operacao_causa_efeito.dxf",
+        "SEQUÊNCIA DE OPERAÇÃO E CAUSA–EFEITO",
+        "Partida, controle de nível, permissivos e resposta a falhas",
+        "Sequência conceitual; ação operacional de LA-L/LA-H permanece pendente.\\P"
+        "Sem classificação SIL/PL. Retenção após falta de energia depende do PLC selecionado.",
+        "PV/SP: nível/setpoint | LA-L/LA-H: alarmes em 15%/85% | ACK: reconhecimento/rearme | LSHH: alto-alto",
+    ),
+    SheetSpec(
+        8,
+        "08_fronteira_succao_dados_fonte.dxf",
+        "FRONTEIRA DE SUCÇÃO E DADOS DA FONTE",
+        "Origem a montante de P-101 pendente — levantamento para revisar a hidráulica",
+        "Nenhuma fonte, equipamento de sucção ou bomba comercial foi selecionado.\\P"
+        "Os sete grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.",
+        "V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | fluido, temperatura e pressão local pendentes",
+    ),
+    SheetSpec(
+        9,
+        "09_balanco_succao_criterio_npsh.dxf",
+        "BALANÇO DE SUCÇÃO E CRITÉRIO DE NPSH",
+        "Método paramétrico para avaliar NPSH disponível e requerido — sem resultado numérico",
+        "Folha didática: todas as entradas D01–D07 seguem pendentes.\\P"
+        "Não selecionar bomba nem liberar operação sem dados do sistema, curva OEM e margem aplicável.",
+        "NPSHa: sistema | NPSHr: fabricante | hL,suc: perdas na sucção | datum e unidades devem coincidir",
+    ),
+)
+
+
+SOURCE_DATA = (
+    ("D01", "FONTE", "Tag, tipo, localização, limite de propriedade e responsável", "Cadastro de processo e levantamento de campo", "Identificação cadastral", "PENDENTE", "Nenhuma fonte foi selecionada"),
+    ("D02", "REGIME", "Nível/pressão mínimo, nominal e máximo; registrar unidade e referência", "Tendências e registros operacionais", "Unidade da variável; datum se nível", "PENDENTE", "Faixa e unidade operacional não recebidas"),
+    ("D03", "GEOMETRIA", "Área da fonte se v0 relevante; material/condição, diâmetro, comprimentos, cotas/datum e acessórios com unidades", "Projeto hidráulico/as-built e levantamento da fonte", "mm, m, m² e datum definido", "PENDENTE", "Fonte, tubulação, acessórios, unidades e datum não levantados"),
+    ("D04", "BOMBA", "Curvas Q-H/NPSHr versus vazão e frequência, em unidades OEM; ponto de operação, escorva e datum", "Folha de dados e manual do fabricante", "Unidades OEM, vazão e frequência em Hz", "PENDENTE", "P-101 genérica; curvas e unidades OEM não recebidas"),
+    ("D05", "PROTEÇÃO", "Necessidade, localização e ação para fonte baixa ou perda de sucção", "Análise de processo e revisão de risco", "Critério aprovado na análise de risco", "PENDENTE", "Não há chave de sucção selecionada"),
+    ("D06", "FLUIDO", "Tipo/composição, faixa de temperatura, densidade e fonte da pressão de vapor", "Dados do processo ou propriedades rastreáveis do fluido", "°C, kg/m³ e pressão absoluta", "PENDENTE", "Fluido e temperatura de operação não informados"),
+    ("D07", "ATMOSFERA", "Pressão absoluta sobre fonte fechada ou pressão barométrica local se aberta", "Projeto do reservatório ou dados de pressão/altitude local", "kPa abs; altitude em m se usada para estimar", "PENDENTE", "Pressão da superfície e condição aberta/fechada não confirmadas"),
+)
+
+
+CAUSE_EFFECTS = (
+    ("E01", "STOP / emergência", "STOP ou emergência atuada", "Retira comando de marcha", "Alarme retido", "Causa removida + ACK consciente"),
+    ("E02", "LSHH-101", "Nível ≥ 95%", "Bloqueia permissivo e solicita parada fora do PI", "LA-HH-101 retido", "Condição normal + ACK"),
+    ("E03", "LT-101 inválido", "Sinal < 3,6 mA ou > 21 mA", "Desabilita PI e solicita parada", "UA-101 retido", "Sinal válido + ACK"),
+    ("E04", "Falha do VFD", "VFD indica falha", "Retira marcha e bloqueia partida", "YA-101 retido", "VFD pronto + ACK"),
+    ("E05", "Tempo excedido", "Máx. 60 min (premissa)", "Retira marcha e bloqueia partida", "TA-101 retido", "Causa removida + ACK"),
+    ("E06", "Perda de energia", "Alimentação ausente", "Saídas desenergizadas", "Retenção depende do PLC", "Sem repartida automática"),
+    ("E07", "LT / chaves divergentes", "Divergência persistente", "Diagnóstico; bloqueia AUTO", "Diagnóstico indicado", "Causa removida + ACK"),
+    ("E08", "LA-L-101", "LT-101 ≤ 15%", "Alarme; ação de processo pendente", "LA-L-101 retido", "Causa removida + ACK"),
+    ("E09", "LA-H-101", "LT-101 ≥ 85%", "Alarme; ação de processo pendente", "LA-H-101 retido", "Causa removida + ACK"),
 )
 
 
@@ -199,7 +252,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSÃO INICIAL DO PROJETO 04", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("LEVANTAMENTO DA FONTE", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.62, "02_TEXTO")
 
 
@@ -221,7 +274,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/06",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -237,7 +290,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/06"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -251,10 +304,9 @@ def create_sheet(config: dict, spec: SheetSpec):
 
 
 def draw_process(layout) -> None:
-    centered(layout, "FONTE DE ÁGUA", (55, 250), 2.0, "11_ARQUITETURA")
-    tank(layout, 25, 178, 83, 240, 0.70)
-    centered(layout, "TK-100", (54, 169), 1.8, "04_EQUIPAMENTOS")
-    line(layout, (83, 190), (111, 190), "05_POTENCIA")
+    centered(layout, "ORIGEM DE ÁGUA", (68, 203), 1.8, "02_TEXTO")
+    centered(layout, "EQUIPAMENTO A MONTANTE NÃO DEFINIDO", (68, 198), 1.15, "02_TEXTO")
+    arrow(layout, (24, 190), (118, 190), "05_POTENCIA")
     pump(layout, (128, 190), "P-101")
     motor(layout, (128, 224), "M-101 / 4 kW")
     line(layout, (128, 215), (128, 200), "04_EQUIPAMENTOS")
@@ -267,7 +319,7 @@ def draw_process(layout) -> None:
     line(layout, (284, 197), (284, 188), "07_INSTRUMENTACAO")
     centered(layout, "PV = NÍVEL", (284, 179), 1.55, "07_INSTRUMENTACAO")
     line(layout, (310, 150), (342, 150), "05_POTENCIA")
-    box(layout, 342, 138, 371, 162, "HV-102", "Válvula", "04_EQUIPAMENTOS", text_height=1.2)
+    box(layout, 342, 138, 371, 162, "HV-102", "Válvula manual", "04_EQUIPAMENTOS", text_height=1.2)
     arrow(layout, (371, 150), (402, 150), "05_POTENCIA")
     centered(layout, "CONSUMO", (386, 158), 1.55, "05_POTENCIA")
     centered(layout, "PERTURBAÇÃO d(t)", (386, 140), 1.4, "07_INSTRUMENTACAO")
@@ -471,6 +523,208 @@ def draw_layout(layout) -> None:
     centered(layout, "Confirmar drenagem, ventilação, NPSH e acesso", (107.5, 115), 1.25, "13_NOTAS")
 
 
+def draw_cause_effect_table(layout) -> None:
+    x0, x1, y_top = 18.0, 402.0, 178.0
+    columns = (x0, 43.0, 108.0, 177.0, 267.0, 328.0, x1)
+    headers = ("ID", "EVENTO", "DETECÇÃO", "AÇÃO CONCEITUAL", "ALARME / MEMÓRIA", "RETORNO")
+    header_h, row_h = 9.0, 7.5
+    bottom = y_top - header_h - len(CAUSE_EFFECTS) * row_h
+    add_rect(layout, x0, bottom, x1, y_top, "09_BORNES")
+    line(layout, (x0, y_top - header_h), (x1, y_top - header_h), "09_BORNES")
+    for x in columns[1:-1]:
+        line(layout, (x, bottom), (x, y_top), "09_BORNES")
+    for index, title in enumerate(headers):
+        centered(layout, title, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.4, "12_LEGENDA")
+    for row_index, row in enumerate(CAUSE_EFFECTS):
+        top = y_top - header_h - row_index * row_h
+        if row_index:
+            line(layout, (x0, top), (x1, top), "09_BORNES")
+        center_y = top - row_h / 2
+        for col_index, value in enumerate(row):
+            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), 1.35, "02_TEXTO")
+
+
+def draw_operating_sequence(layout) -> None:
+    steps = (
+        (22, 87, "01  VERIFICAR", "Emergência liberada\nKSR / VFD prontos\nLT válido; LSHH inativo"),
+        (99, 164, "02  HABILITAR", "Operador seleciona AUTO\ne confirma habilitação"),
+        (176, 241, "03  TRANSFERIR", "LIC assume saída rastreada\nLimites + anti-windup"),
+        (253, 318, "04  CONTROLAR", "PI: PV < SP → sobe Hz\nPV > SP → reduz Hz"),
+        (330, 397, "05  MONITORAR", "VFD / LT / LSHH\nFalhas → matriz abaixo"),
+    )
+    top, bottom = 250.0, 207.0
+    for x0, x1, title, detail in steps:
+        add_rect(layout, x0, bottom, x1, top, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, top - 8), 1.65, "04_EQUIPAMENTOS")
+        lines = detail.splitlines()
+        for line_index, value in enumerate(lines):
+            centered(layout, value, ((x0 + x1) / 2, top - 20 - line_index * 8), 1.35, "02_TEXTO")
+    for left, right in zip(steps, steps[1:]):
+        arrow(layout, (left[1], 228.5), (right[0], 228.5), "08_CABOS")
+    add_rect(layout, 22, 184, 397, 198, "13_NOTAS")
+    centered(layout, "OPERAÇÃO NORMAL: PI regula a frequência; STOP, LSHH, LT inválido, falha do VFD ou tempo excedido retiram a marcha.", (209.5, 194), 1.3, "13_NOTAS")
+    centered(layout, "LA-L/LA-H em 15%/85% são alarmes; a ação operacional permanece pendente nesta revisão.", (209.5, 190), 1.3, "13_NOTAS")
+    centered(layout, "Após falta de energia, não há repartida automática. Aplicar permissivos e rearme consciente antes de nova partida.", (209.5, 186), 1.3, "13_NOTAS")
+    draw_cause_effect_table(layout)
+
+
+def draw_source_boundary(layout) -> None:
+    centered(layout, "FRONTEIRA DO PROCESSO — FONTE NÃO SELECIONADA", (210, 258), 1.7, "13_NOTAS")
+
+    stages = (
+        (18.0, 132.0, "FONTE A MONTANTE", ("Tag / tipo / local: pendentes", "Nível ou pressão: faixa pendente", "Limite externo do estudo")),
+        (158.0, 260.0, "P-101 / M-101", ("4 kW (premissa)", "VFD: 20–60 Hz (premissa)", "Curva OEM / NPSHr: pendentes")),
+        (286.0, 402.0, "TK-101", ("10 m³ (premissa)", "15 / 85 / 95% (premissas)", "Saída para consumo variável")),
+    )
+    for x0, x1, title, details in stages:
+        add_rect(layout, x0, 216, x1, 250, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, 243), 1.65, "04_EQUIPAMENTOS")
+        for index, detail in enumerate(details):
+            centered(layout, detail, ((x0 + x1) / 2, 235 - index * 7), 1.3, "02_TEXTO")
+    arrow(layout, (132, 232), (158, 232), "05_POTENCIA")
+    arrow(layout, (260, 232), (286, 232), "05_POTENCIA")
+
+    centered(
+        layout,
+        "RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D07.",
+        (210, 203),
+        1.35,
+        "13_NOTAS",
+    )
+
+    x0, x1, top = 18.0, 402.0, 192.0
+    columns = (x0, 43.0, 174.0, 278.0, 354.0, x1)
+    header_h, row_h = 9.0, 10.4
+    bottom = top - header_h - len(SOURCE_DATA) * row_h
+    add_rect(layout, x0, bottom, x1, top, "09_BORNES")
+    line(layout, (x0, top - header_h), (x1, top - header_h), "09_BORNES")
+    for x in columns[1:-1]:
+        line(layout, (x, bottom), (x, top), "09_BORNES")
+    headers = ("ID", "GRUPO / DADO A CONFIRMAR", "FONTE DE EVIDÊNCIA", "UNIDADE / REFERÊNCIA", "STATUS")
+    for index, value in enumerate(headers):
+        centered(layout, value, ((columns[index] + columns[index + 1]) / 2, top - header_h / 2), 1.25, "12_LEGENDA")
+    for row_index, row in enumerate(SOURCE_DATA):
+        row_top = top - header_h - row_index * row_h
+        if row_index:
+            line(layout, (x0, row_top), (x1, row_top), "09_BORNES")
+        center_y = row_top - row_h / 2
+        values = (row[0], f"{row[1]} — {row[2]}", row[3], row[4], row[5])
+        for col_index, value in enumerate(values):
+            layer = "13_NOTAS" if col_index == 4 else "02_TEXTO"
+            height = 1.2 if col_index == 1 else 1.25
+            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), height, layer)
+
+    add_rect(layout, 18, 96, 402, 106, "13_NOTAS")
+    centered(
+        layout,
+        "V01: obter D01–D07, registrar unidades/datum e evidências; só então revisar a hidráulica e a proteção.",
+        (210, 101),
+        1.35,
+        "13_NOTAS",
+    )
+
+
+def draw_npsh_method(layout) -> None:
+    centered(
+        layout,
+        "ESQUEMA DE PRINCÍPIO — GEOMETRIA E POSIÇÕES NÃO REPRESENTAM LEVANTAMENTO",
+        (210, 258),
+        1.35,
+        "13_NOTAS",
+    )
+
+    # Fonte aberta ou fechada: pressão absoluta e elevação da superfície são entradas, não valores assumidos.
+    add_rect(layout, 34, 211, 96, 249, "04_EQUIPAMENTOS")
+    line(layout, (36, 231), (94, 231), "07_INSTRUMENTACAO")
+    centered(layout, "FONTE", (65, 243), 1.65, "04_EQUIPAMENTOS")
+    centered(layout, "superfície 0", (65, 234), 1.35, "07_INSTRUMENTACAO")
+    centered(layout, "p0,abs / z0", (65, 225), 1.45, "03_COTAS")
+    centered(layout, "ρ, T, pv(T)", (65, 216), 1.35, "07_INSTRUMENTACAO")
+
+    arrow(layout, (96, 220), (266, 220), "05_POTENCIA")
+    centered(layout, "Q; perdas hL,suc em tubulação e acessórios (se houver)", (181, 229), 1.35, "05_POTENCIA")
+    centered(layout, "z0 − zp: diferença medida; sinal depende do arranjo", (181, 211), 1.25, "03_COTAS")
+    pump(layout, (281, 220), "P-101 GENÉRICA")
+    centered(layout, "datum zp conforme curva / fabricante", (281, 201), 1.2, "03_COTAS")
+    arrow(layout, (292, 220), (367, 220), "05_POTENCIA")
+    centered(layout, "DESCARGA", (337, 228), 1.35, "05_POTENCIA")
+
+    add_rect(layout, 18, 178, 402, 197, "13_NOTAS")
+    centered(
+        layout,
+        "NPSHa = (p0,abs − pv(T))/(ρ g) + (z0 − zp) + v0²/(2g) − hL,suc",
+        (210, 191.5),
+        2.0,
+        "07_INSTRUMENTACAO",
+    )
+    centered(
+        layout,
+        "hL,suc = Σ fi(Li/Di)vi²/(2g) + Σ Kj vj²/(2g)   |   pressões absolutas; termos e resultado em m do fluido",
+        (210, 185),
+        1.45,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Em fonte aberta: p0,abs é a pressão barométrica local. v0²/(2g) só pode ser desprezado se isso for justificado.",
+        (210, 180.5),
+        1.2,
+        "13_NOTAS",
+    )
+
+    add_rect(layout, 18, 148, 402, 173, "12_LEGENDA")
+    centered(layout, "COMPARAÇÃO COM A BOMBA", (210, 168.5), 1.55, "12_LEGENDA")
+    centered(
+        layout,
+        "NPSHr vem da curva OEM no ponto de vazão, rotação/frequência, líquido e datum definidos.",
+        (210, 162),
+        1.4,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Margem = NPSHa − NPSHr; avaliar a margem recomendada para a aplicação (fabricante / ANSI/HI 9.6.1).",
+        (210, 156),
+        1.4,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Verificar combinações operacionais aprovadas; não combinar extremos independentes sem base de processo.",
+        (210, 151.5),
+        1.25,
+        "13_NOTAS",
+    )
+
+    add_rect(layout, 18, 107, 402, 143, "09_BORNES")
+    line(layout, (210, 107), (210, 143), "09_BORNES")
+    centered(layout, "ENTRADAS PENDENTES — detalhadas na prancha 08", (210, 138.5), 1.5, "12_LEGENDA")
+    left_inputs = (
+        "D01  Fonte, tipo e localização — PENDENTE",
+        "D02  Faixa mínima / nominal / máxima — PENDENTE",
+        "D03  Geometria fonte/tubulação e datum — PENDENTE",
+        "D04  Vazão, frequência e curva OEM — PENDENTE",
+    )
+    right_inputs = (
+        "D05  Necessidade / ação de proteção — PENDENTE",
+        "D06  Fluido, temperatura e densidade — PENDENTE",
+        "D07  Pressão absoluta / atmosfera local — PENDENTE",
+    )
+    for index, value in enumerate(left_inputs):
+        centered(layout, value, (112, 132 - index * 7), 1.2, "02_TEXTO")
+    for index, value in enumerate(right_inputs):
+        centered(layout, value, (306, 132 - index * 7), 1.2, "02_TEXTO")
+
+    add_rect(layout, 18, 97, 402, 104, "13_NOTAS")
+    centered(
+        layout,
+        "SEM CÁLCULO OU APROVAÇÃO: dados, NPSHa, NPSHr e margem permanecem pendentes.",
+        (210, 100.5),
+        1.35,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_process,
     2: draw_pid,
@@ -478,7 +732,28 @@ DRAWERS = {
     4: draw_electrical,
     5: draw_interconnections,
     6: draw_layout,
+    7: draw_operating_sequence,
+    8: draw_source_boundary,
+    9: draw_npsh_method,
 }
+
+
+def write_matrix_csv(project_dir: Path) -> Path:
+    path = project_dir / "matriz-causa-efeito.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("id", "evento", "deteccao", "acao_conceitual", "alarme_memoria", "retorno"))
+        writer.writerows(CAUSE_EFFECTS)
+    return path
+
+
+def write_source_data_csv(project_dir: Path) -> Path:
+    path = project_dir / "dados-fonte-succao.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("id", "grupo", "dado_requerido", "fonte_evidencia", "unidade_referencia", "status", "valor_registrado", "observacoes"))
+        writer.writerows((*row[:6], "", row[6]) for row in SOURCE_DATA)
+    return path
 
 
 def generate(root: Path) -> list[Path]:
@@ -495,6 +770,12 @@ def generate(root: Path) -> list[Path]:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix = write_matrix_csv(root / PROJECT_SLUG)
+    outputs.append(matrix)
+    print(f"Gerado: {matrix.relative_to(root)}")
+    source_data = write_source_data_csv(root / PROJECT_SLUG)
+    outputs.append(source_data)
+    print(f"Gerado: {source_data.relative_to(root)}")
     return outputs
 
 

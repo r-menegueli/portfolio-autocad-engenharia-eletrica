@@ -6,59 +6,61 @@
 
 ## 2. Potência instalada
 
-Iluminação usa fator de potência 0,92:
+Iluminação usa fator de potência 0,92. C1 passou a incluir a luminária L09 do closet:
 
-- C1: `69 W / 0,92 = 75,000 VA`;
+- C1: `78 W / 0,92 ≈ 84,783 VA`;
 - C2: `68 W / 0,92 = 73,913 VA`.
 
-A soma das oito potências aparentes é:
+A soma das oito potências aparentes, conforme os valores tabulados e arredondados em
+`quadro-cargas.csv`, é:
 
-`75,000 + 73,913 + 1 500 + 2 100 + 1 800 + 3 000 + 5 500 + 1 500 = 15 548,913 VA`.
+`84,7825 + 73,913 + 1 500 + 2 100 + 1 800 + 3 000 + 5 500 + 1 500 = 15 558,6955 VA`.
 
 Os dados calculáveis estão em [quadro-cargas.csv](quadro-cargas.csv).
 
-## 3. Demanda acadêmica
+## 3. Corrente superior por condutor e demanda pendente
 
-Grupo de iluminação e TUG, C1 a C5:
+A revisão 04 retira a conta anterior `12 595,543 VA / 220 V = 57,252 A`. Ela misturava
+cargas fase-neutro de 127 V e fase-fase de 220 V em um único denominador, portanto não
+representa corrente de um condutor de linha. Também não havia critério de simultaneidade
+validado para a hipótese de 35%.
 
-`S_geral = 75,000 + 73,913 + 1 500 + 2 100 + 1 800 = 5 548,913 VA`.
+P02-10 calcula uma cota aritmética sem diversidade somando a magnitude `S_i/V_i` de cada
+ramal em cada condutor. C6 e C7 são fase-fase, então a mesma magnitude de corrente é
+contada em A e B. Os circuitos de 127 V são agrupados pela fase registrada em
+`quadro-cargas.csv`:
 
-Hipótese didática: 100% dos primeiros 1 000 VA e 35% do excedente:
+| Condutor | Ramais fase-neutro | Soma `S/V` a 127 V | C6+C7 a 220 V | Cota superior aritmética |
+| --- | --- | ---: | ---: | ---: |
+| A | C1+C3+C5 | 26,651831 A | 38,636364 A | 65,288195 A |
+| B | C2+C4+C8 | 28,928449 A | 38,636364 A | 67,564812 A |
 
-`D_geral = 1 000 + 0,35 x (5 548,913 - 1 000) = 2 592,120 VA`.
-
-TUEs C6, C7 e C8 considerados a 100%:
-
-`D_TUE = 3 000 + 5 500 + 1 500 = 10 000 VA`.
-
-`D_total = 2 592,120 + 10 000 = 12 592,120 VA`.
-
-Corrente equivalente de demanda na tensão fase-fase:
-
-`I_dem = 12 592,120 / 220 = 57,237 A`.
-
-Adota-se QG1 bipolar de 63 A e alimentador de cobre de 16 mm² como seleção preliminar.
+`cota = soma das magnitudes dos ramais`; ela é um limite superior pela desigualdade
+triangular, não corrente fasorial real nem demanda. Não há simultaneidade, fatores de
+potência por aparelho, medição ou método de serviço aprovados. A antiga referência de
+QG1 63 A foi retirada: os valores calculados não selecionam nem reprovam um disjuntor.
+QG1, DR1, método de demanda e seção/comprimento do alimentador permanecem pendentes.
 
 ## 4. Distribuição entre fases
 
 Circuitos a 127 V foram alocados assim:
 
-- fase A: C1 + C3 + C5 = `3 375,000 VA`;
+- fase A: C1 + C3 + C5 = `3 384,7825 VA`;
 - fase B: C2 + C4 + C8 = `3 673,913 VA`.
 
-As cargas de 220 V usam ambas as fases. Comparando apenas as cargas fase-neutro, o
-desequilíbrio é:
+As cargas de 220 V usam ambos os condutores. Comparando somente as potências aparentes
+atribuídas aos ramais de 127 V, sem considerar fatores de potência, o indicador é:
 
-`(3 673,913 - 3 375,000) / ((3 673,913 + 3 375,000)/2) = 8,481%`.
+`(3 673,913 - 3 384,7825) / ((3 673,913 + 3 384,7825)/2) = 8,192%`.
 
-Essa métrica é indicativa; a composição vetorial exata depende do sistema real da rede e
-da simultaneidade. A alocação deverá ser revista com medições e critérios da concessionária.
+Esse percentual não é o desequilíbrio de corrente do alimentador. Correntes fasoriais,
+simultaneidade e alocação deverão ser revistas com cargas reais e critérios aplicáveis.
 
 ## 5. Corrente e proteção dos circuitos
 
 | Circ. | V | VA | I calculada | Condutor | Disjuntor |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| C1 | 127 | 75,000 | 0,591 A | 1,5 mm² | 10 A, 1P, curva B |
+| C1 | 127 | 84,783 | 0,668 A | 1,5 mm² | 10 A, 1P, curva B |
 | C2 | 127 | 73,913 | 0,582 A | 1,5 mm² | 10 A, 1P, curva B |
 | C3 | 127 | 1 500 | 11,811 A | 4 mm² | 16 A, 1P, curva C |
 | C4 | 127 | 2 100 | 16,535 A | 4 mm² | 20 A, 1P, curva C |
@@ -73,7 +75,7 @@ Com `rho = 0,0225 ohm.mm²/m`, as rotas máximas adotadas produzem:
 
 | Circ. | L | deltaV | Percentual do circuito | Percentual combinado conservador |
 | --- | ---: | ---: | ---: | ---: |
-| C1 | 28 m | 0,496 V | 0,391% | 1,405% |
+| C1 | 28 m | 0,561 V | 0,442% | 1,456% |
 | C2 | 24 m | 0,419 V | 0,330% | 1,344% |
 | C3 | 20 m | 2,657 V | 2,093% | 3,107% |
 | C4 | 18 m | 3,349 V | 2,637% | 3,651% |
@@ -82,12 +84,11 @@ Com `rho = 0,0225 ohm.mm²/m`, as rotas máximas adotadas produzem:
 | C7 | 20 m | 3,750 V | 1,705% | 2,291% |
 | C8 | 22 m | 2,923 V | 2,302% | 3,316% |
 
-O alimentador foi estimado por `2 x 0,0225 x 8 x 57,237 / 16 = 1,288 V`, equivalente
-a `0,586%` de 220 V e `1,014%` de 127 V. A soma conservadora usa o percentual
-correspondente à tensão do circuito. As seções de C3 e C8 foram elevadas de 2,5 para
-4 mm² durante a revisão matemática; as estimativas combinadas passaram a 3,107% e
-3,316%, abaixo do critério acadêmico de 4%. Rotas e fatores de correção ainda precisam
-ser confirmados em projeto executivo.
+O cálculo anterior de queda do alimentador usando 57,252 A e 16 mm² foi retirado junto
+com a corrente agregada inválida. A queda dos circuitos finais C3 e C8 permanece abaixo
+de 4% no cenário didático, mas o alimentador precisa de comprimento, demanda por
+condutor, seção, método de instalação e fatores de correção próprios. Rotas e quedas
+reais ainda não foram medidas.
 
 ## 7. Verificações pendentes
 

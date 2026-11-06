@@ -2,23 +2,24 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 06
+Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades em milímetros, revisão 00
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 04 (2026-11-06)
 
-Estado: concluído e validado em 2026-09-25
+Estado: revisão conceitual 04 em 2026-11-06; segurança e conformidade normativa não validadas
 
-Este projeto apresenta a infraestrutura elétrica conceitual de uma **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)**, projetada segundo as prescrições das normas ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419:2015. O projeto estabelece a interface primária entre a rede de distribuição da concessionária e a planta fabril, alimentando o Quadro Geral de Baixa Tensão (QGBT) que supre os alimentadores de força, iluminação e o Centro de Controle de Motores (CCM).
+Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)** e cita as ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419 como referências de estudo. Não declara conformidade normativa, segurança de aterramento, aprovação de concessionária ou aptidão executiva. A revisão 02 remove a estimativa aritmética anterior da prancha 05 e acrescenta a folha 07 para rastrear dados necessários. A revisão 03 acrescenta a folha 08 como matriz que liga entradas do solo, falta e geometria às verificações, resultados requeridos e evidências. A revisão 04 remove a escala gráfica incorreta da P11-02 e identifica dimensões e interfaces pendentes. A malha segue sem resistência calculada/medida nem análise de GPR, toque, passo ou potenciais transferidos.
 
 ## Entregáveis
 
-- `fonte/`: seis desenhos DXF R2013 e scripts reproduzíveis;
+- `fonte/`: oito desenhos DXF R2013 e scripts reproduzíveis;
 - `exports/`: versões PDF vetorial, SVG e PNG (300 dpi) derivadas dos DXFs;
-- `memorial-descritivo.md`: descrição detalhada do sistema primário, secundário e segurança;
+- `memorial-descritivo.md`: memorial conceitual; premissas e componentes não selecionados precisam de validação;
 - `criterios-premissas.md`: premissas técnicas, distâncias de segurança e limites normativos;
 - `memoria-calculo.md`: cálculos de correntes nominais, curto-circuito, ajustes de relé, malha de terra e SPDA;
 - `referencias-normativas.md`: normas técnicas e notas regulatórias;
-- `lista-cabos.csv` e `lista-materiais.csv`: relação completa de componentes, equipamentos e condutores;
+- `lista-cabos.csv` e `lista-materiais.csv`: listas preliminares, sem especificação executiva ou seleção de fornecedores;
+- `dados-estudo-aterramento.csv`: 22 entradas requeridas como `A DEFINIR/PENDENTE`, com as evidências a levantar;
 - `fonte/gerar_projeto_11.py`: gerador determinístico das pranchas em DXF;
 - `fonte/validar_projeto_11.py`: script de validação de consistência técnica;
 - `inspecao-visual.md`: relatório de conformidade visual das pranchas renderizadas.
@@ -26,11 +27,13 @@ Este projeto apresenta a infraestrutura elétrica conceitual de uma **Subestaç�
 ## Pranchas
 
 1. [Diagrama unifilar geral](fonte/01_diagrama_unifilar_geral.dxf): ramal 13,8 kV, muflas, cubículo de medição, cubículo de proteção primária com disjuntor a vácuo 17,5 kV e relé 50/51/50N/51N, transformador a óleo 500 kVA e QGBT 800 A.
-2. [Planta baixa da subestação](fonte/02_planta_baixa_subestacao.dxf): arranjo físico em alvenaria 6,00 x 4,00 m, portas corta-fogo P-90, canaletas de cabos, tapete isolante 20 kV, ventilação cruzada e bacia de contenção com brita nº 1 e dreno sifonado.
+2. [Arranjo conceitual da subestação](fonte/02_planta_baixa_subestacao.dxf): cotas externas adotadas de 6,00 x 4,00 m, portas, canaletas, tapete isolante e bacia. A folha indica `S/ESC.` porque a geometria interna não corresponde às cotas; equipamentos, portas, acessos e afastamentos precisam de levantamento e dados OEM.
 3. [Cortes e detalhes eletromecânicos](fonte/03_cortes_detalhes_eletromecanicos.dxf): elevações A-A e B-B, barramentos de MT em barra chata Cu 25x5 mm sobre isoladores epóxi 17,5 kV, bacia de contenção e barramento flexível BT.
 4. [Diagrama funcional de proteção e comando](fonte/04_diagrama_funcional_protecao.dxf): esquema de medição AC (TCs de proteção), circuito auxiliar 125 Vcc com retificador/banco de baterias, lógica de trip na bobina de abertura (BA) com contato auxiliar 52a e intertravamentos de segurança (Buchholz 63 e termômetro 49).
-5. [Malha de aterramento e equipotencialização](fonte/05_malha_aterramento.dxf): malha externa em anel e reticulado interno em cabo Cu nu 70 mm² a 0,60 m de profundidade, 8 hastes copperweld 5/8" x 2,40 m com solda exotérmica, Barramento de Equipotencialização Principal (BEP) e memória NBR 15751 ($R_{malha} \le 3,85\ \Omega$).
-6. [Sistema de Proteção contra Descargas Atmosféricas (SPDA)](fonte/06_spda_geral.dxf): método das malhas (Gaiola de Faraday 10x10 m - Nível II) com captores terminais aéreos 35 cm, 4 condutores de descida em cabo Cu 35 mm² com tubos de proteção mecânica na base, caixas de medição e DPS Classe I+II.
+5. [Malha de aterramento e equipotencialização](fonte/05_malha_aterramento.dxf): arranjo conceitual de condutores, hastes e BEP; nenhum valor de resistência ou segurança é apresentado como resultado.
+6. [Arranjo conceitual de SPDA](fonte/06_spda_geral.dxf): retícula, captores e descidas esquemáticos; classe de proteção, geometria final e coordenação de DPS não foram verificados.
+7. [Plano de dados para estudo de aterramento](fonte/07_plano_dados_estudo_aterramento.dxf): organiza evidências de solo, falta, proteção e geometria; os cinco entregáveis estão pendentes.
+8. [Matriz de análise da malha de aterramento](fonte/08_matriz_analise_malha_aterramento.dxf): relaciona entradas por cenário a verificações de condutor/conexões, resposta da malha, exposição e potenciais transferidos; resultados e evidências permanecem pendentes, sem limites numéricos ou aprovação.
 
 ## Resultados principais
 
@@ -46,8 +49,38 @@ Este projeto apresenta a infraestrutura elétrica conceitual de uma **Subestaç�
 | Disjuntor de média tensão | Disjuntor a vácuo 17,5 kV / 630 A / 16 kA |
 | Proteção secundária | Relé digital microprocessado ANSI 50/51/50N/51N |
 | Volume da bacia de contenção de óleo | 1,20 m³ (óleo total trafo = 850 L) |
-| Resistência calculada da malha de aterramento | $\le 3,85\ \Omega$ (critério $R \le 5,0\ \Omega$) |
-| Nível de proteção do SPDA | Nível II (ABNT NBR 5419-3:2015) |
+| Estudo da malha (resistência/GPR/toque/passo/transferência) | Não calculado; dados de campo e critérios pendentes |
+| Classe e dimensionamento do SPDA | Não verificados; valores do desenho são premissas conceituais |
+
+## Reprodução
+
+Na raiz do portfólio, os arquivos-fonte e as oito folhas podem ser reconstruídos com:
+
+```powershell
+.venv\Scripts\python.exe 11-subestacao-media-tensao\fonte\gerar_projeto_11.py --root .
+.venv\Scripts\python.exe 11-subestacao-media-tensao\fonte\renderizar_projeto_11.py --root . --dpi 300
+.venv\Scripts\python.exe 11-subestacao-media-tensao\fonte\validar_projeto_11.py --root .
+```
+
+## Verificação
+
+- Validador específico: `PASS`, oito folhas, 23 materiais, 17 cabos e 22 entradas de
+  aterramento mantidas `A DEFINIR/PENDENTE`.
+- AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 DXFs; os logs registram zero erros
+  encontrados e zero corrigidos.
+- O contato atualizado das oito folhas foi inspecionado. P11-02 foi conferida no PNG
+  de 300 dpi e na rasterização independente do PDF a 150 dpi. A geometria está marcada
+  sem escala válida (`S/ESC.`), as cotas externas são premissas, e as pendências de
+  levantamento/OEM estão dentro da folha, sem cortes relevantes.
+- Similaridade PDF/PNG da P11-02: 0,990676; menor similaridade entre as oito folhas
+  P11: 0,988037.
+- Validação estrita do portfólio: 668.075 verificações, zero erros e zero avisos.
+  Revisão integrada: 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; mínima
+  similaridade geral PDF/PNG: 0,981493.
+
+Essas verificações confirmam estrutura, abertura e apresentação dos arquivos; não
+confirmam cálculo de aterramento, segurança, conformidade ou aptidão executiva. A
+inspeção dos SVGs no navegador aguarda autorização do usuário.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

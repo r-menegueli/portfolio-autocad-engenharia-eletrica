@@ -1,16 +1,25 @@
 tag,quantidade,descricao,especificacao,classificacao,prancha,observacoes
-X1,1,Entrada de rede IEC,C14 10 A 250 Vca 2P+PE,PROPOSTA,02/06,Modelo e certificacao a selecionar
-PS1,1,Fonte AC DC isolada,90-264 Vca para 36 Vcc 7 A 252 W,PROPOSTA,01/06,Sem fabricante definido
-REG1,1,Regulador buck CC CV,36 Vcc para 0-30 Vcc 0-5 A 150 W,PROPOSTA,01/06,Projeto eletronico nao detalhado
-PS2,1,Conversor auxiliar,36 Vcc para 12 Vcc 1 A,PROPOSTA,01/06,Alimenta controle e ventilacao
-M1,1,Medidor digital,V e A por linhas Kelvin e shunt,PROPOSTA,03/06,Exatidao e calibracao pendentes
-SH1,1,Shunt de corrente,10 A 75 mV,PROPOSTA,02/06,Montagem e dissipacao a confirmar
-K1,1,Rele de habilitacao,Contato CC 10 A bobina 12 Vcc,PROPOSTA,02/06,Capacidade em CC a confirmar
-FAN1,1,Ventilador axial,80 mm 12 Vcc 20 CFM,PROPOSTA,04/06,Curva de pressao e ruido pendentes
-TH1,1,Termostato de ventilacao,Liga a 40 C,PROPOSTA,02/06,Histerese a definir
-TS1,1,Termostato de protecao,Abre habilitacao a 75 C,PROPOSTA,02/06,Contato e local a ensaiar
-RV1,1,Ajuste de tensao,Potenciometro 10 voltas,PROPOSTA,03/06,Valor eletrico definido pelo REG1
-RV2,1,Ajuste de corrente,Potenciometro 10 voltas,PROPOSTA,03/06,Valor eletrico definido pelo REG1
-S2,1,Comando de saida,Botao 16 mm,PROPOSTA,03/06,Logica de retenção a detalhar
-X2,2,Borne de saida,4 mm 30 Vcc 5 A,PROPOSTA,03/06,Vermelho e preto
-X3,1,Borne de chassi PE,4 mm verde,PROPOSTA,03/06,Nao ligado ao negativo internamente
+X1,1,Entrada de rede IEC,C14 10 A 250 Vca 2P+PE,PROPOSTA,02/09,Modelo e certificacao a selecionar
+PS1,1,Fonte AC DC isolada,90-264 Vca para 36 Vcc 7 A 252 W,PROPOSTA,01/09,Sem fabricante definido
+REG1,1,Regulador buck CC CV,36 Vcc para 0.8-30 Vcc regulados; ate 5 A e 150 W; K1 desabilita a entrega,PROPOSTA,07/09,Topologia conceitual detalhada; descarga da saida; valores e validacao pendentes
+U1,1,Controlador buck sincronico CC CV,Texas Instruments LM5190 VQFN 19,PROPOSTA,07/09,Candidato de arquitetura; componente e circuito completo nao aprovados
+QH,1,MOSFET externo de lado alto,N-canal; tensao corrente e perdas a selecionar,PROPOSTA,07/09,Gate drive termico SOA e transientes pendentes
+QL,1,MOSFET externo de lado baixo,N-canal; tensao corrente e perdas a selecionar,PROPOSTA,07/09,Gate drive termico SOA e transientes pendentes
+L1,1,Indutor do buck sincronico,75 uH; Isat proposto minimo 8 A,PROPOSTA,07/09,DCR perdas de nucleo e temperatura pendentes
+RCS,1,Shunt Kelvin do controlador,9.1 mOhm 1 por cento,PROPOSTA,07/09,Potencia e temperatura pendentes; distinto do shunt de leitura SH1
+PS2,1,Conversor auxiliar,36 Vcc para 12 Vcc 1 A,PROPOSTA,01/09,Alimenta controle e ventilacao
+M1,1,Medidor digital,V e A por linhas Kelvin e shunt,PROPOSTA,03/09,Exatidao e calibracao pendentes
+SH1,1,Shunt de corrente,10 A 75 mV,PROPOSTA,02/09,Montagem e dissipacao a confirmar
+K1,1,Rele de habilitacao,Contato CC 10 A bobina 12 Vcc,PROPOSTA,02/09,Capacidade em CC a confirmar
+FAN1,1,Ventilador axial,80 mm 12 Vcc 20 CFM,PROPOSTA,04/09,Curva de pressao e ruido pendentes
+TH1,1,Termostato de ventilacao,Liga a 40 C,PROPOSTA,02/09,Histerese a definir
+TS1,1,Termostato de protecao,Abre habilitacao a 75 C,PROPOSTA,02/09,Contato e local a ensaiar
+RV1,1,Ajuste de tensao,Potenciometro 10 voltas,PROPOSTA,03/09,Valor eletrico definido pelo REG1
+RV2,1,Ajuste de corrente,Potenciometro 10 voltas,PROPOSTA,03/09,Valor eletrico definido pelo REG1
+S2,1,Comando de saida,Botao 16 mm,PROPOSTA,03/09,Logica de retencao a detalhar
+X2,2,Borne de saida,4 mm 30 Vcc 5 A,PROPOSTA,03/09,Vermelho e preto
+X3,1,Borne de chassi PE,4 mm verde,PROPOSTA,03/09,Nao ligado ao negativo internamente
+KD1,1,Chave do ramo de descarga interna,Tipo tensao corrente isolacao e estado seguro a definir,PROPOSTA,09/09,Fechar somente apos REG1 inibido e K1 aberto confirmados
+RD1,1,Resistor de descarga interna,Valor potencia energia de pulso e derating a definir,PROPOSTA,09/09,COUT e tolerancias ainda desconhecidos
+KD2,1,Chave do ramo de descarga da porta,Tipo tensao corrente permissivo e estado seguro a definir,PROPOSTA,09/09,Inibir se existir fonte externa ou retorno de energia em X2
+RD2,1,Resistor de descarga da porta,Valor potencia energia de pulso e derating a definir,PROPOSTA,09/09,Nao selecionar sem limite para fonte externa e C_EXT

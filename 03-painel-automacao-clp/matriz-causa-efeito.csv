@@ -1,0 +1,9 @@
+﻿evento,deteccao,resposta_conceitual,retorno_ou_pendencia
+EMERGÊNCIA,S0 acionado / KSR1_OK = 0,KSR1 abre as cadeias de KM1 e KM2; falha memorizada,"Liberar S0, confirmar retornos e reconhecer em S6"
+NÍVEL CRÍTICO,LSL_LL / KDRY_OK = 0,KDRY bloqueia fisicamente as duas bobinas,Nível de captação recuperado e rearme permitido
+SOBRECARGA,RT1_OK ou RT2_OK = 0,Remove a bomba afetada; em AUTO solicita a reserva disponível,Rearmar RT e conferir o retorno do contator
+FALHA DE PARTIDA,Kx_CMD sem KMx_FB em até 2 s,Bloqueia a bomba e tenta a reserva se houver demanda,Remover causa e reconhecer; validar KMx_FB
+RETORNO INDEVIDO,KMx_FB ativo sem Kx_CMD,Memoriza falha e exige intervenção,Investigar circuito/retorno antes de S6
+SENSOR INCOERENTE,Combinação de nível impossível,Bloqueia nova partida AUTO; efeito sobre bomba em marcha não definido,Decisão de projeto pendente; validar plausibilidade antes do rearme
+TEMPO / SEM BOMBA,Demanda > 30 min ou nenhuma bomba disponível,Para as bombas e mantém H5/BZ1 como alarme retentivo,"Remover causa, alinhar retornos e reconhecer em S6"
+ACK / REARME,"S6 mantido por pelo menos 0,5 s",Silencia BZ1; só limpa falha após remoção da causa e coerência dos retornos,H5 permanece ativo enquanto houver falha ativa ou memorizada

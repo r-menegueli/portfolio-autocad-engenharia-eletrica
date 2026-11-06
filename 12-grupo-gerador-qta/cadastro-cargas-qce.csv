@@ -1,0 +1,5 @@
+cabo_id,carga,destino,funcao,formacao,comprimento_assumido_m,potencia_instalada_kw,corrente_nominal_a,partida_regime,regime_simultaneidade,prioridade_sequenciamento
+CAB-AL-ILUM,Iluminacao e rotas de fuga,QDL_Emergencia,alimentador_iluminacao_e_rotas_fuga,5G16_mm2_Cu_XLPE,35,PENDENTE,PENDENTE,PENDENTE,PENDENTE,PENDENTE
+CAB-AL-INC,Combate a incendio,Bomba_Incendio,alimentador_sistema_combate_incendio,4G50_mm2_Cu_XLPE,40,PENDENTE,PENDENTE,PENDENTE,PENDENTE,PENDENTE
+CAB-AL-CPD,UPS para TI,UPS_Sala_Servidores,alimentador_sistema_ininterrupto_TI,5G35_mm2_Cu_XLPE,30,PENDENTE,PENDENTE,PENDENTE,PENDENTE,PENDENTE
+CAB-AL-UTIL,Compressores e automacao,Painel_Utilidades,alimentador_compressores_e_automacao,5G25_mm2_Cu_XLPE,35,PENDENTE,PENDENTE,PENDENTE,PENDENTE,PENDENTE

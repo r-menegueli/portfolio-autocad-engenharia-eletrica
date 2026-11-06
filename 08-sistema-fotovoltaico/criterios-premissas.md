@@ -25,8 +25,16 @@
   irradiância máxima de cálculo de 1.100 W/m²;
 - 5,2 horas de sol pleno por dia e performance ratio de 0,78 exclusivamente para uma
   estimativa didática de energia;
-- cabos CC de cobre fotovoltaico com 6 mm² e percurso elétrico de ida de 20 m;
-- circuito CA de cobre com 10 mm² e percurso elétrico de ida de 15 m;
+- grade de sensibilidade com HSP entre 3 e 6 h/dia e PR entre 0,70 e 0,86, escolhidos
+  somente como intervalos paramétricos didáticos, sem representar local, clima ou
+  probabilidade;
+- cabos CC de cobre fotovoltaico com 6 mm² e comprimento assumido de 20 m para cada
+  percurso `FV-S1 / R-CC-801` e `FV-S2 / R-CC-802`;
+- circuito `CA-INV / R-CA-801` de cobre com 10 mm² e comprimento assumido de 15 m;
+- trecho adicional `CA-PCC / R-CA-802` de 5 m; cabos `PE-MOD / R-PE-801` de 25 m e
+  `PE-EQP / R-PE-802` de 8 m, todos como hipóteses não medidas;
+- cabo `COM-INV / R-COM-801` de 10 m como opção; seu percurso e ponto remoto não estão
+  definidos no layout;
 - instalação existente com 220 V entre fases e condutores PE e ativos separados no
   trecho representado;
 - condutor de equipotencialização de 6 mm² como premissa, sujeito à revisão normativa.
@@ -39,6 +47,8 @@
 - seccionador e disjuntor CA bipolares de 40 A, além de DPS tipo 2 com Uc 275 Vca;
 - quadro QD-FV-801 e barramento equipotencial BEP-801 identificados;
 - rotas CC e CA segregadas e cabos CC identificados nas duas extremidades.
+- o layout associa S1 a MPPT 1 e S2 a MPPT 2; os comprimentos e caminhos gráficos são
+  hipóteses e devem ser verificados em levantamento de campo.
 
 ## Critérios de verificação
 
@@ -54,6 +64,8 @@
 ## Limitações e dados a confirmar
 
 - endereço, coordenadas, distribuidora, padrão de entrada e tensão efetiva do imóvel;
+- fonte meteorológica e período representativo, orientação e inclinação medidas,
+  levantamento horário de sombras e perdas reais para qualquer estudo de produção local;
 - modelo comercial, registro no Inmetro, firmware e aprovação do inversor pela
   distribuidora;
 - levantamento de sombras, recurso solar local, sujidade e degradação;
@@ -61,6 +73,8 @@
 - esquema de aterramento real, SPDA existente, análise de risco e coordenação dos DPS;
 - ampacidade, método de instalação, agrupamento, temperatura, queda de tensão final,
   corrente de curto-circuito e capacidade de interrupção;
+- comprimentos, terminações e roteamento reais dos circuitos CC, CA e PE; ponto remoto,
+  necessidade e percurso do cabo de comunicação opcional;
 - requisitos de acesso, medição, anti-ilhamento, qualidade de energia, formulários e
   vistoria da distribuidora vigente na data da solicitação;
 - ensaios, inspeção inicial, comissionamento e plano de manutenção.

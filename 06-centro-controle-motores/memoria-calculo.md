@@ -11,14 +11,16 @@ A queda resistiva conceitual é
 
 ## Cargas
 
-| Tag | Método | Pin | S instalada | fd | S demandada | I |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| M-601 | direta | 6,321839 kW | 7,709560 kVA | 1,00 | 7,709560 kVA | 11,713464 A |
-| M-602 | reversora | 3,529412 kW | 4,411765 kVA | 0,80 | 3,529412 kVA | 6,702983 A |
-| M-603 | VFD | 8,333333 kW | 8,771930 kVA | 0,90 | 7,894737 kVA | 13,327569 A |
-| Total | - | 18,184584 kW | 20,893255 kVA | - | 19,133709 kVA | 29,070663 A demandados |
+| Tag | FD | P instalada | P demandada | S instalada | S demandada | Ib do ramal |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| M-601 | 1,00 | 6,321839 kW | 6,321839 kW | 7,709560 kVA | 7,709560 kVA | 11,713464 A |
+| M-602 | 0,80 | 3,529412 kW | 2,823529 kW | 4,411765 kVA | 3,529412 kVA | 6,702983 A |
+| M-603 | 0,90 | 8,333333 kW | 7,500000 kW | 8,771930 kVA | 7,894737 kVA | 13,327569 A |
+| Total | - | 18,184584 kW | 16,645368 kW | 20,893255 kVA | 19,133709 kVA | - |
 
-A potência ativa demandada é 16,645368 kW. A corrente equivalente do alimentador é
+A corrente dos ramais usa S instalada por carga e não deve ser somada para representar
+o W600. A potência ativa demandada é 16,645368 kW. A corrente equivalente do
+alimentador usa a soma de S demandada:
 `19,133709 x 1000 / (raiz(3) x 380) = 29,070663 A`.
 
 ## Alimentador e proteção

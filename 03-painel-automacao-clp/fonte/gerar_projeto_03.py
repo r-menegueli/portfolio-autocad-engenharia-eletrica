@@ -1,8 +1,9 @@
-"""Gera as oito pranchas DXF do Projeto 03 de forma determinística."""
+"""Gera as onze pranchas DXF do Projeto 03 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 import sys
@@ -34,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "03-painel-automacao-clp"
-PROJECT_DATE = "2026-09-06"
-REVISION = "00"
+PROJECT_DATE = "2026-11-06"
+REVISION = "05"
 
 
 @dataclass(frozen=True)
@@ -89,6 +90,33 @@ SHEETS = (
               "Comprimentos de W01-W12 são premissas. Confirmar rotas, segregação, EMC, queda\\P"
               "de tensão, tipo de sensor e equipotencialização após levantamento de campo.",
               "Linha cheia: potência | tracejado funcional: controle | LS: nível | PE: proteção"),
+    SheetSpec(9, "09_sequencia_operacao_intertravamentos.dxf", "SEQUÊNCIA DE OPERAÇÃO E INTERTRAVAMENTOS",
+              "Lógica ilustrativa; sentido do processo pendente de aprovação (V01)",
+              "PONTO DE PARADA V01 — A descrição anterior previa ENCHIMENTO; LSH inicia / LSL encerra / LSHH chama reserva é hipótese de esgotamento. Confirmar sentido, tanques e origem de LSL-LL antes de implementar.\\P"
+              " | SENSOR INCOERENTE com bomba em marcha: resposta pendente. Lógica conceitual; não é programa executável nem função de segurança validada.",
+              "LSL: encerra demanda | LSHH por 10 s: solicita reserva | Kx/KMx_FB: comando/retorno | S6: reconhecer e rearmar"),
+    SheetSpec(10, "10_plano_verificacao_evidencias.dxf", "PLANO DE VERIFICAÇÃO E EVIDÊNCIAS",
+              "Pontos de parada, dados necessários e registros para fechar o projeto",
+              "Plano acadêmico; itens permanecem NÃO EXECUTADOS. Critérios dependem dos dados reais,\\P"
+              "fabricantes e decisões aprovadas; esta folha não autoriza energização ou comissionamento.",
+              "Status: não executado | evidência: registro rastreável | decisão: responsável do projeto"),
+    SheetSpec(11, "11_alternativas_filosofia_processo.dxf", "ALTERNATIVAS DA FILOSOFIA DE PROCESSO",
+              "Enchimento versus esgotamento — decisão de processo V01 ainda pendente",
+              "Os dois fluxos são exemplos comparativos; nenhum foi selecionado para implementação.\\P"
+              "Confirmar tanques, sentido, posição/função de cada sensor e respostas antes de alterar a lógica.",
+              "V01: processo e sensores pendentes | LSL/LSH/LSHH: função depende da posição | LSL-LL: origem a confirmar"),
+)
+
+
+CAUSE_EFFECTS = (
+    ("EMERGÊNCIA", "S0 acionado / KSR1_OK = 0", "KSR1 abre as cadeias de KM1 e KM2; falha memorizada", "Liberar S0, confirmar retornos e reconhecer em S6"),
+    ("NÍVEL CRÍTICO", "LSL_LL / KDRY_OK = 0", "KDRY bloqueia fisicamente as duas bobinas", "Nível de captação recuperado e rearme permitido"),
+    ("SOBRECARGA", "RT1_OK ou RT2_OK = 0", "Remove a bomba afetada; em AUTO solicita a reserva disponível", "Rearmar RT e conferir o retorno do contator"),
+    ("FALHA DE PARTIDA", "Kx_CMD sem KMx_FB em até 2 s", "Bloqueia a bomba e tenta a reserva se houver demanda", "Remover causa e reconhecer; validar KMx_FB"),
+    ("RETORNO INDEVIDO", "KMx_FB ativo sem Kx_CMD", "Memoriza falha e exige intervenção", "Investigar circuito/retorno antes de S6"),
+    ("SENSOR INCOERENTE", "Combinação de nível impossível", "Bloqueia nova partida AUTO; efeito sobre bomba em marcha não definido", "Decisão de projeto pendente; validar plausibilidade antes do rearme"),
+    ("TEMPO / SEM BOMBA", "Demanda > 30 min ou nenhuma bomba disponível", "Para as bombas e mantém H5/BZ1 como alarme retentivo", "Remover causa, alinhar retornos e reconhecer em S6"),
+    ("ACK / REARME", "S6 mantido por pelo menos 0,5 s", "Silencia BZ1; só limpa falha após remoção da causa e coerência dos retornos", "H5 permanece ativo enquanto houver falha ativa ou memorizada"),
 )
 
 
@@ -194,7 +222,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("EMISSÃO INICIAL DO PROJETO 03", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ALTERNATIVAS DO PROCESSO", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.65, "02_TEXTO")
 
 
@@ -216,7 +244,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/08",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -232,7 +260,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/08"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     define_project_symbols(doc)
@@ -522,6 +550,231 @@ def draw_field(layout) -> None:
     centered(layout, "PE contínuo para painel, porta e carcaças M1/M2", (210, 106), 1.45, "05_POTENCIA")
 
 
+def draw_sequence_box(layout, x0: float, x1: float, tag: str, description: str) -> None:
+    add_rect(layout, x0, 232, x1, 260, "06_COMANDO")
+    centered(layout, tag, ((x0 + x1) / 2, 252.5), 1.55, "06_COMANDO")
+    centered(layout, description, ((x0 + x1) / 2, 239), 1.18, "02_TEXTO")
+
+
+def flow_arrow(layout, x0: float, x1: float, y: float) -> None:
+    line(layout, (x0, y), (x1 - 2.0, y), "06_COMANDO")
+    layout.add_lwpolyline(
+        [(x1, y), (x1 - 2.0, y + 1.4), (x1 - 2.0, y - 1.4)],
+        close=True,
+        dxfattribs={"layer": "06_COMANDO"},
+    )
+
+
+def down_arrow(layout, x: float, y_top: float, y_bottom: float) -> None:
+    line(layout, (x, y_top), (x, y_bottom + 2.0), "06_COMANDO")
+    layout.add_lwpolyline(
+        [(x, y_bottom), (x - 1.4, y_bottom + 2.0), (x + 1.4, y_bottom + 2.0)],
+        close=True,
+        dxfattribs={"layer": "06_COMANDO"},
+    )
+
+
+def draw_matrix(layout) -> None:
+    x0, x1, y_top = 18.0, 402.0, 188.0
+    header_h, row_h = 10.0, 10.0
+    widths = (48.0, 78.0, 156.0, 102.0)
+    y_bottom = y_top - header_h - row_h * len(CAUSE_EFFECTS)
+    add_rect(layout, x0, y_bottom, x1, y_top, "12_LEGENDA")
+    columns = [x0]
+    for width in widths:
+        columns.append(columns[-1] + width)
+    for x in columns[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x0, y_top - header_h), (x1, y_top - header_h), "12_LEGENDA")
+    headers = ("EVENTO", "DETECÇÃO", "RESPOSTA CONCEITUAL", "RETORNO / PENDÊNCIA")
+    for index, header in enumerate(headers):
+        centered(layout, header, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.35, "12_LEGENDA")
+    for row_index, row in enumerate(CAUSE_EFFECTS):
+        y1 = y_top - header_h - row_index * row_h
+        y0 = y1 - row_h
+        if row_index:
+            line(layout, (x0, y1), (x1, y1), "12_LEGENDA")
+        for col_index, value in enumerate(row):
+            centered(
+                layout,
+                value,
+                ((columns[col_index] + columns[col_index + 1]) / 2, (y0 + y1) / 2),
+                1.22,
+                "02_TEXTO",
+            )
+
+
+def draw_sequence(layout) -> None:
+    boxes = ((18, 74, "01 ENERGIZAR", "Q0 + PSU1 / 24 V"),
+             (80, 136, "02 DIAGNÓSTICO", "KSR1, KDRY, RTs, LS"),
+             (142, 194, "03 PRONTO", "H1; sem falha travada"),
+             (200, 264, "04 AUTO", "LSH memoriza demanda"),
+             (270, 330, "05 TITULAR", "Comanda K1 ou K2"),
+             (336, 402, "06 RETORNO?", "KMx_FB em até 2 s"))
+    for x0, x1, tag, description in boxes:
+        draw_sequence_box(layout, x0, x1, tag, description)
+    for left_box, right_box in zip(boxes, boxes[1:]):
+        flow_arrow(layout, left_box[1], right_box[0], 246)
+
+    add_rect(layout, 18, 198, 205, 222, "06_COMANDO")
+    centered(layout, "SEM RETORNO EM 2 s", (111.5, 216), 1.55, "06_COMANDO")
+    centered(layout, "Bloqueia bomba; tenta reserva sob demanda", (111.5, 204.5), 1.18, "02_TEXTO")
+    add_rect(layout, 212, 198, 402, 222, "07_INSTRUMENTACAO")
+    centered(layout, "CICLO AUTOMÁTICO", (307, 216), 1.55, "07_INSTRUMENTACAO")
+    centered(layout, "LSL encerra; sem falha, alterna. LSHH ≥ 10 s solicita reserva", (307, 204.5), 1.18, "02_TEXTO")
+    line(layout, (369, 232), (369, 227), "06_COMANDO")
+    line(layout, (111.5, 227), (369, 227), "06_COMANDO")
+    down_arrow(layout, 111.5, 227, 222)
+    down_arrow(layout, 307, 227, 222)
+    centered(layout, "NÃO", (103, 224.5), 1.0, "06_COMANDO")
+    centered(layout, "SIM", (316, 224.5), 1.0, "06_COMANDO")
+    draw_matrix(layout)
+
+
+def draw_process_options(layout) -> None:
+    """Compara duas leituras possíveis sem aprovar nem implementar uma filosofia."""
+    options = (
+        {
+            "x0": 18.0,
+            "x1": 207.0,
+            "title": "A | ENCHIMENTO",
+            "flow": ("NÍVEL <= LSL", "COMANDA P1", "PARA EM LSH"),
+            "high": "LSHH: bloquear + alarmar? validar processo",
+            "source": "LSL-LL: confirmar se mede a sucção",
+            "layer": "04_EQUIPAMENTOS",
+        },
+        {
+            "x0": 213.0,
+            "x1": 402.0,
+            "title": "B | ESGOTAMENTO",
+            "flow": ("NÍVEL >= LSH", "COMANDA P1", "PARA EM LSL"),
+            "high": "LSHH: reserva? manter pendente de aprovação",
+            "source": "LSL-LL: confirmar se mede a sucção",
+            "layer": "06_COMANDO",
+        },
+    )
+    centered(layout, "EXEMPLOS FUNCIONAIS — NÃO APROVADOS", (210, 260), 1.75, "13_NOTAS")
+    for option in options:
+        x0, x1 = option["x0"], option["x1"]
+        add_rect(layout, x0, 184, x1, 253, option["layer"])
+        centered(layout, option["title"], ((x0 + x1) / 2, 246), 1.7, option["layer"])
+        centered(layout, "sequência ilustrativa, sujeita a V01", ((x0 + x1) / 2, 239), 1.15, "02_TEXTO")
+        box_width = 48.0
+        box_y0, box_y1 = 218.0, 233.0
+        lefts = (x0 + 6.0, x0 + 70.0, x0 + 134.0)
+        for left_edge, label_text in zip(lefts, option["flow"]):
+            add_rect(layout, left_edge, box_y0, left_edge + box_width, box_y1, option["layer"])
+            centered(layout, label_text, (left_edge + box_width / 2, (box_y0 + box_y1) / 2), 1.4, "02_TEXTO")
+        flow_arrow(layout, lefts[0] + box_width, lefts[1], 225.5)
+        flow_arrow(layout, lefts[1] + box_width, lefts[2], 225.5)
+        centered(layout, option["high"], ((x0 + x1) / 2, 209.5), 1.4, "13_NOTAS")
+        centered(layout, option["source"], ((x0 + x1) / 2, 199.5), 1.4, "13_NOTAS")
+        centered(layout, "Falha de sensor com bomba em marcha: resposta não definida", ((x0 + x1) / 2, 189.5), 1.3, "13_NOTAS")
+
+    x_edges = (18.0, 94.0, 248.0, 402.0)
+    table_top, header_height, row_height = 177.0, 8.0, 8.0
+    rows = (
+        ("Gatilho da demanda", "LSL ativo", "LSH ativo"),
+        ("Parada normal", "LSH ativo", "LSL ativo"),
+        ("LSHH", "Bloquear + alarmar?", "Reserva? confirmar"),
+        ("LSL-LL", "Local/função pendentes", "Local/função pendentes"),
+        ("Sensor incoerente em marcha", "Resposta pendente", "Resposta pendente"),
+    )
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "12_LEGENDA")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "12_LEGENDA")
+    headers = ("DECISÃO", "EXEMPLO A | ENCHIMENTO", "EXEMPLO B | ESGOTAMENTO")
+    for index, value in enumerate(headers):
+        centered(layout, value, ((x_edges[index] + x_edges[index + 1]) / 2, table_top - header_height / 2), 1.35, "12_LEGENDA")
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        if row_index:
+            line(layout, (x_edges[0], row_top), (x_edges[-1], row_top), "12_LEGENDA")
+        for column, value in enumerate(row):
+            centered(layout, value, ((x_edges[column] + x_edges[column + 1]) / 2, (row_top + row_bottom) / 2), 1.35, "02_TEXTO")
+
+    add_rect(layout, 18, 111, 402, 123, "13_NOTAS")
+    add_mtext(
+        layout,
+        "V01 antes de programar: aprovar sentido do fluxo, tanques, localização/função de cada sensor, limite de demanda/parada, ação de LSHH e resposta a sensor incoerente. Depois revisar P03-01/08/09/11, I/O e causa-efeito. Todos seguem pendentes.",
+        (21, 120),
+        378,
+        1.5,
+        "13_NOTAS",
+    )
+
+
+def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
+    stages = (
+        ("1  PROCESSO", "dados e critérios"),
+        ("2  HARDWARE", "modelos e manuais"),
+        ("3  DOCUMENTOS", "cálculos e I/O"),
+        ("4  VERIFICAÇÃO", "ensaios registrados"),
+        ("5  ENTREGA", "as-built e pendências"),
+    )
+    stage_x = (18.0, 98.0, 178.0, 258.0, 338.0)
+    for index, ((title, subtitle), x0) in enumerate(zip(stages, stage_x)):
+        add_rect(layout, x0, 247.0, x0 + 70.0, 262.0, "04_EQUIPAMENTOS")
+        centered(layout, title, (x0 + 35.0, 257.7), 1.75, "04_EQUIPAMENTOS")
+        centered(layout, subtitle, (x0 + 35.0, 251.1), 1.35, "02_TEXTO")
+        if index < len(stages) - 1:
+            x1 = x0 + 70.0
+            x2 = stage_x[index + 1]
+            line(layout, (x1 + 1.0, 254.5), (x2 - 2.0, 254.5), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 256.3), "05_POTENCIA")
+            line(layout, (x2 - 2.0, 254.5), (x2 - 5.0, 252.7), "05_POTENCIA")
+
+    x_edges = (18.0, 37.0, 100.0, 235.0, 380.0, 410.0)
+    table_top = 236.0
+    header_height = 8.0
+    row_height = 9.3
+    table_bottom = table_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
+    for x in x_edges[1:-1]:
+        line(layout, (x, table_bottom), (x, table_top), "01_CARIMBO")
+    line(layout, (x_edges[0], table_top - header_height), (x_edges[-1], table_top - header_height), "01_CARIMBO")
+    headers = ("ID", "PONTO / ETAPA", "DADOS REQUERIDOS", "EVIDÊNCIA PARA ENCERRAR", "STATUS")
+    for index, header in enumerate(headers):
+        add_mtext(
+            layout,
+            header,
+            (x_edges[index] + 1.5, table_top - 1.8),
+            x_edges[index + 1] - x_edges[index] - 3.0,
+            1.45,
+            "01_CARIMBO",
+            style=TITLE_STYLE,
+        )
+
+    for row_index, row in enumerate(rows):
+        row_top = table_top - header_height - row_height * row_index
+        row_bottom = row_top - row_height
+        line(layout, (x_edges[0], row_bottom), (x_edges[-1], row_bottom), "01_CARIMBO")
+        centered(layout, row["codigo"], ((x_edges[0] + x_edges[1]) / 2.0, (row_top + row_bottom) / 2.0), 1.35, "04_EQUIPAMENTOS")
+        for index, key in ((1, "ponto"), (2, "dados_requeridos"), (3, "evidencia_para_encerrar")):
+            add_mtext(
+                layout,
+                row[key],
+                (x_edges[index] + 1.5, row_top - 1.2),
+                x_edges[index + 1] - x_edges[index] - 3.0,
+                1.4,
+                "13_NOTAS" if index == 3 else "02_TEXTO",
+            )
+        centered(layout, row["status"], ((x_edges[4] + x_edges[5]) / 2.0, (row_top + row_bottom) / 2.0), 1.25, "13_NOTAS")
+
+    add_rect(layout, 18.0, 102.0, 410.0, 111.0, "13_NOTAS")
+    add_mtext(
+        layout,
+        "NÃO EXECUTADO: nenhum ensaio de campo foi realizado. O caso de sensor incoerente com bomba em marcha exige decisão formal antes de definir critério ou ensaiar essa resposta.",
+        (21.0, 108.5),
+        386.0,
+        1.45,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_architecture,
     2: draw_24v,
@@ -531,7 +784,39 @@ DRAWERS = {
     6: draw_layout,
     7: draw_terminals,
     8: draw_field,
+    9: draw_sequence,
+    11: draw_process_options,
 }
+
+
+def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
+    source = project_dir / "plano-verificacao.csv"
+    expected_fields = ("codigo", "ponto", "dados_requeridos", "evidencia_para_encerrar", "status")
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabeçalho inesperado em {source}")
+        rows = list(reader)
+    codes = [row.get("codigo", "").strip() for row in rows]
+    if (
+        len(rows) != 12
+        or len(set(codes)) != len(rows)
+        or codes != [f"V{index:02d}" for index in range(1, 13)]
+        or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows)
+        or any(row["status"] != "NÃO EXECUTADO" for row in rows)
+        or "sensor incoerente" not in rows[9]["ponto"].casefold()
+    ):
+        raise ValueError(f"O plano deve conter V01-V12 completos, com sensor pendente e não executados: {source}")
+    return rows
+
+
+def write_matrix_csv(project_dir: Path) -> Path:
+    path = project_dir / "matriz-causa-efeito.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("evento", "deteccao", "resposta_conceitual", "retorno_ou_pendencia"))
+        writer.writerows(CAUSE_EFFECTS)
+    return path
 
 
 def generate(root: Path) -> list[Path]:
@@ -539,15 +824,22 @@ def generate(root: Path) -> list[Path]:
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     outputs: list[Path] = []
+    verification_rows = read_verification_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
-        DRAWERS[spec.number](layout)
+        if spec.number == 10:
+            draw_verification_plan(layout, verification_rows)
+        else:
+            DRAWERS[spec.number](layout)
         output = source_dir / spec.filename
         prepare_deterministic_write(doc)
         with output.open("wt", encoding="utf-8", newline="\n") as stream:
             doc.write(stream)
         outputs.append(output)
         print(f"Gerado: {output.relative_to(root)}")
+    matrix = write_matrix_csv(root / PROJECT_SLUG)
+    outputs.append(matrix)
+    print(f"Gerado: {matrix.relative_to(root)}")
     return outputs
 
 

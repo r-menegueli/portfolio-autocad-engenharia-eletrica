@@ -1,5 +1,14 @@
 # Sequência de funcionamento
 
+## Ponto de parada do processo — V01
+
+A filosofia do processo ainda não está aprovada. A documentação anterior dizia
+“enchimento”, enquanto a sequência abaixo inicia demanda em LSH, encerra em LSL e
+solicita a reserva em LSHH. Essa combinação pode corresponder a esgotamento; aplicada
+a enchimento, pode manter ou ampliar uma condição de nível alto. Confirmar sentido do
+fluxo, tanques de origem/destino e a qual tanque pertence cada sensor, sobretudo
+LSL-LL, antes de implementar ou ensaiar a sequência.
+
 ## Inicialização
 
 1. Q0 energiza o painel e PSU1 estabelece 24 Vcc.
@@ -7,7 +16,20 @@
 3. Não há partida automática após energização enquanto houver falha latente ou demanda
    não reconhecida; a condição pronta é indicada por H1.
 
-## Modo automático
+## Comparação de processos — prancha 11
+
+A prancha 11 registra duas leituras incompatíveis da mesma instalação. Se o processo
+for **enchimento**, o exemplo didático gera demanda em LSL e a encerra em LSH; LSHH
+aparece como bloqueio/alarme a confirmar. Se for **esgotamento**, o exemplo parte da
+lógica atual — demanda em LSH, encerramento em LSL e eventual chamada de reserva em
+LSHH, ainda pendente de aprovação. São alternativas para orientar a V01, não uma
+seleção automática de lógica.
+
+A origem/destino dos tanques, posição de cada sensor, função de LSL-LL e reação a
+sensor incoerente com bomba em marcha precisam ser aprovados. Não alterar programa,
+sequência, I/O nem resposta de falha até fechar essas decisões.
+
+## Modo automático atual — alternativa de esgotamento não aprovada
 
 1. Com S1 em AUTO e os permissivos válidos, a ativação de LSH memoriza demanda.
 2. A bomba indicada por `titular_proxima` recebe ordem de partida.
@@ -30,6 +52,8 @@ a ensaio e manutenção controlada, não a burlar proteções.
 - **Falha de partida:** ausência do retorno KM em 2 s bloqueia a bomba e tenta a reserva.
 - **Partida indevida:** retorno KM sem comando gera falha e exige intervenção.
 - **Sensor incoerente:** combinações impossíveis de nível impedem nova partida automática.
+- A ação para uma bomba que já esteja em marcha quando surgir incoerência de sensores
+  não está definida; resolver com dados do processo antes de implementar a lógica.
 - **Tempo excedido:** demanda acima de 30 min para as bombas e gera alarme retentivo.
 - **Falha total:** se nenhuma bomba estiver disponível durante demanda, H5 e BZ1 atuam.
 
@@ -39,3 +63,8 @@ S6 reconhece/silencia BZ1 quando mantido por pelo menos 0,5 s. O rearme só remo
 quando emergência foi liberada, nível de captação recuperou, RTs foram rearmados e os
 retornos dos contatores coincidem com os comandos. H5 permanece aceso enquanto existir
 falha ativa ou memorizada.
+
+A prancha 09 e `matriz-causa-efeito.csv` dão uma visão visual e tabular da sequência;
+os tempos e as respostas continuam conceituais. A direção do processo e a localização
+dos sensores permanecem pendentes em V01; esta sequência não autoriza implementação
+nem ensaio enquanto o responsável pelo processo não aprovar esses dados.

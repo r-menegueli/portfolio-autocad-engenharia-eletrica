@@ -23,6 +23,9 @@ SHEETS = (
     "05_layout_ccm.dxf",
     "06_diagrama_bornes.dxf",
     "07_lista_cabos.dxf",
+    "08_matriz_causa_efeito_ccm.dxf",
+    "09_balanco_demanda_ccm.dxf",
+    "10_interligacao_bornes_comando.dxf",
 )
 EXPECTED_LOADS = {"M-601", "M-602", "M-603"}
 EXPECTED_CABLES = {"W600", "W601", "W602", "W603A", "W603B", "W604", "W605", "W606", "W607", "W608"}
@@ -42,9 +45,22 @@ SHEET_TERMS = {
     "02_partida_direta.dxf": ("KM-601", "FR-601", "S-601L", "S-601P", "SELO"),
     "03_partida_reversora.dxf": ("KM-602F", "KM-602R", "IM-602", "FC-602F", "FC-602R"),
     "04_acionamento_inversor.dxf": ("VFD-603", "STO A", "STO B", "W603B", "SEM CONTATOR"),
-    "05_layout_ccm.dxf": ("GAVETA 601", "GAVETA 602", "VFD-603", "PE-06"),
-    "06_diagrama_bornes.dxf": ("X1", "X2", "X3", "X4", "STO A/B"),
+    "05_layout_ccm.dxf": ("GAVETA 601", "GAVETA 602", "QF-601", "KM-602F", "VFD-603", "PE-06"),
+    "06_diagrama_bornes.dxf": ("X1", "X2", "X3", "X4", "P06-10", "W603B"),
     "07_lista_cabos.dxf": ("W600", "W601", "W602", "W603A", "W603B", "W608"),
+    "08_matriz_causa_efeito_ccm.dxf": ("MATRIZ CAUSA-EFEITO DO CCM-06", "E01", "E09", "KSR", "STO A/B"),
+    "09_balanco_demanda_ccm.dxf": (
+        "BALANÇO DE DEMANDA DO CCM-06",
+        "18,184584",
+        "20,893255",
+        "16,645368",
+        "19,133709",
+        "29,070663",
+        "0,80",
+        "0,90",
+        "Ib <= In <= Iz",
+    ),
+    "10_interligacao_bornes_comando.dxf": ("X3", "X4", "CH1A", "DI3", "STO-A", "H-604", "W607"),
 }
 
 
@@ -77,7 +93,7 @@ def expected_terminals() -> set[str]:
     return (
         {f"X1:{index}" for index in range(1, 6)}
         | {f"X2:{index}" for index in range(1, 13)}
-        | {f"X3:{index}" for index in range(1, 11)}
+        | {f"X3:{index}" for index in range(1, 25)}
         | {f"X4:{index}" for index in range(1, 11)}
     )
 
@@ -89,6 +105,7 @@ def validate(root: Path) -> dict:
     cables = read_rows(project / "lista-cabos.csv")
     terminals = read_rows(project / "lista-bornes.csv")
     materials = read_rows(project / "lista-materiais.csv")
+    cause_effect = read_rows(project / "causa-efeito.csv")
     errors: list[str] = []
     checks = 0
 
@@ -209,20 +226,68 @@ def validate(root: Path) -> dict:
             errors.append(f"{tag}: comprimento diverge entre cargas e cabos.")
 
     terminal_ids = {f"{row['regua']}:{row['borne']}" for row in terminals}
-    checks += 3
+    checks += 5
     if terminal_ids != expected_terminals() or len(terminal_ids) != len(terminals):
-        errors.append("A lista de bornes deve cobrir exatamente X1:1-5, X2:1-12, X3:1-10 e X4:1-10.")
-    if len(terminals) != 37:
-        errors.append("A lista deve conter 37 bornes.")
+        errors.append("A lista de bornes deve cobrir exatamente X1:1-5, X2:1-12, X3:1-24 e X4:1-10.")
+    if len(terminals) != 51:
+        errors.append("A lista deve conter 51 bornes.")
     terminal_cables = {row["cabo"] for row in terminals}
     if not (EXPECTED_CABLES - {"W603A"}) <= terminal_cables:
         errors.append("Há cabos de campo sem correspondência na lista de bornes.")
+
+    expected_borne_ranges = {
+        "W600": "X1:1-5",
+        "W601": "X2:1-4",
+        "W602": "X2:5-8",
+        "W603A": "Direto QF-603/VFD",
+        "W603B": "X2:9-12",
+        "W604": "X3:13-18",
+        "W605": "X3:1-4",
+        "W606": "X3:5-12",
+        "W607": "X4:3-10",
+        "W608": "X3:19-24",
+    }
+    for cable in cables:
+        cable_id = cable["cabo"]
+        listed_conductors = cable["identificacao_condutores"].split("/")
+        actual_rows = [row for row in terminals if row["cabo"] == cable_id]
+        actual_conductors = [row["condutor"] for row in actual_rows]
+        checks += 3
+        if cable_id == "W603A":
+            if actual_rows:
+                errors.append("W603A: circuito direto QF-603/VFD não deve aparecer como borne de campo.")
+        elif len(actual_conductors) != len(listed_conductors) or set(actual_conductors) != set(listed_conductors):
+            errors.append(f"{cable_id}: condutores identificados não correspondem um a um aos bornes.")
+        expected_range = expected_borne_ranges[cable_id]
+        if cable["bornes"] != expected_range:
+            errors.append(f"{cable_id}: referência de bornes '{cable['bornes']}' diverge de '{expected_range}'.")
+        if len(actual_conductors) != len(set(actual_conductors)):
+            errors.append(f"{cable_id}: há condutor repetido na régua de bornes.")
+
+    material_by_tag = {row["item"]: row for row in materials}
+    checks += 2
+    if material_by_tag.get("X3", {}).get("quantidade") != "24":
+        errors.append("A lista de materiais deve declarar 24 bornes em X3.")
+    if material_by_tag.get("X4", {}).get("quantidade") != "10":
+        errors.append("A lista de materiais deve declarar 10 bornes em X4.")
 
     material_refs = " ".join(f"{row['item']} {row['referencia']}" for row in materials)
     for tag in sorted(REQUIRED_MATERIAL_TAGS):
         checks += 1
         if tag not in material_refs:
             errors.append(f"Material obrigatório ausente: {tag}.")
+
+    expected_events = [f"E{index:02d}" for index in range(1, 10)]
+    actual_events = [row.get("id", "") for row in cause_effect]
+    checks += 3
+    if actual_events != expected_events:
+        errors.append("A matriz causa-efeito deve conter E01-E09 em ordem.")
+    for index, row in enumerate(cause_effect, start=1):
+        checks += 1
+        if any(not row.get(column, "").strip() for column in ("evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")):
+            errors.append(f"Evento E{index:02d} possui campo vazio na matriz causa-efeito.")
+    if not any("pendente" in " ".join(row.values()).casefold() for row in cause_effect):
+        errors.append("Pendências de fabricante devem permanecer explícitas na matriz causa-efeito.")
 
     # Partida direta: todos os permissivos devem existir; sem novo START não há rearme.
     dol_rows = 0
@@ -285,7 +350,7 @@ def validate(root: Path) -> dict:
         "memorial-descritivo.md": ("partida direta", "IM-602", "STO A/B", "não causa partida automática"),
         "criterios-premissas.md": ("Ib <= In <= Iz", "4,0%", "intertravamentos elétrico e mecânico"),
         "sequencia-funcionamento.md": ("novo comando", "comandos simultâneos", "não existe contator de manobra"),
-        "memoria-calculo.md": ("19,133709", "29,070663", "2,037810%", "196 m"),
+        "memoria-calculo.md": ("19,133709", "29,070663", "2,037810%", "196 m", "P instalada", "P demandada"),
     }
     for filename, terms in required_doc_terms.items():
         content = (project / filename).read_text(encoding="utf-8").casefold()
@@ -312,7 +377,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         sheet_text = extract_text(doc)
         all_text.append(sheet_text)
@@ -328,6 +393,7 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "sheets": len(SHEETS),
+            "cause_effect_events": len(cause_effect),
             "loads": len(loads),
             "methods": len(methods),
             "cables": len(cables),

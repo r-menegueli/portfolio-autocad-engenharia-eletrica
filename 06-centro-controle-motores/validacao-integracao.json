@@ -1,9 +1,10 @@
 {
-  "checks": 828,
+  "checks": 912,
   "errors": [],
   "results": {
     "cable_total_m": "196",
     "cables": 10,
+    "cause_effect_events": 9,
     "demand_active_kw": "16.645368",
     "demand_apparent_kva": "19.133709",
     "dol_truth_rows": 32,
@@ -17,8 +18,8 @@
     "maximum_combined_drop_pct": "2.037810",
     "methods": 3,
     "reversal_truth_rows": 128,
-    "sheets": 7,
-    "terminals": 37,
+    "sheets": 10,
+    "terminals": 51,
     "vfd_truth_rows": 32
   },
   "status": "PASS"

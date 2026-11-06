@@ -31,22 +31,28 @@ SHEETS = (
     "04_layout_interno.dxf",
     "05_detalhes_mecanicos.dxf",
     "06_interligacoes.dxf",
+    "07_topologia_regulador_cc_cv.dxf",
+    "08_predimensionamento_buck.dxf",
+    "09_descarga_saida_parametrica.dxf",
+    "10_matriz_perdas_termicas_parametrica.dxf",
 )
 REQUIRED_EQUIPMENT = {
     "X1", "PS1", "REG1", "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1",
-    "RV1", "RV2", "S2", "X2", "X3",
+    "RV1", "RV2", "S2", "X2", "X3", "U1", "QH", "QL", "L1", "RCS",
+    "KD1", "RD1", "KD2", "RD2",
 }
 REQUIRED_PROTECTIONS = {"F1", "S1", "MOV1", "FL1", "F2", "ILIM", "TS1", "PE1"}
-REQUIRED_INTERCONNECTIONS = {f"W{index:02d}" for index in range(1, 26)}
+REQUIRED_INTERCONNECTIONS = {f"W{index:02d}" for index in range(1, 32)}
 REQUIRED_CUTOUTS = {
     "S1", "M1", "RV1", "RV2", "LED-CV", "LED-CC", "S2", "X2-PLUS", "X2-MINUS",
     "X3-PE", "X1", "FAN1", "FAN1-H1", "FAN1-H2", "FAN1-H3", "FAN1-H4",
 }
 REQUIRED_MATERIALS = {
-    "GAB-01", "PNL-01", "X1", "F1", "S1", "MOV1", "FL1", "PS1", "F2", "REG1",
+    "GAB-01", "PNL-01", "X1", "F1", "S1", "MOV1", "FL1", "PS1", "F2",
     "PS2", "M1", "SH1", "K1", "FAN1", "TH1", "TS1", "RV1", "RV2", "S2",
     "LED-01", "LED-02", "LED-03", "X2", "X3", "PE1", "CB-LN", "CB-PE", "CB-POT",
-    "CB-SIN", "ETQ-01", "GRD-01",
+    "CB-SIN", "ETQ-01", "GRD-01", "U1", "QH", "QL", "L1", "RCS", "RIMON", "REG-PASSIVOS",
+    "KD1", "RD1", "KD2", "RD2",
 }
 REQUIRED_REFERENCES = (
     "IEC 61010-1:2010+A1:2016",
@@ -60,15 +66,19 @@ REQUIRED_REFERENCES = (
     "2027-05-31",
     "2027-06-01",
     "Portaria MTE 737/2026",
+    "LM5190",
+    "SNVSCG7",
+    "5-80 V",
+    "0,8-79 V",
 )
 SHEET_TERMS = {
     "01_diagrama_blocos.dxf": (
-        "90-264 Vca", "0-30 Vcc", "0-5 A / 150 W", "PS1", "REG1", "PS2", "M1",
+        "90-264 Vca", "0.8-30 Vcc regulados", "PS1", "REG1", "PS2", "M1",
         "PE PERMANENTE NO CHASSI", "SAÍDA CC FLUTUANTE",
     ),
     "02_diagrama_eletrico.dxf": (
         "F1 T4 A", "S1 2P 10 A", "FL1", "MOV1", "PS1", "F2 7,5 A", "REG1",
-        "K1 NO", "SH1", "X2 +", "X2 -", "X3 PE", "PE NÃO SECCIONADO",
+        "K1 NO", "SH1", "X2 +", "X2 -", "X3 PE", "0,8-30 V REGULADOS", "PE NÃO SECCIONADO",
     ),
     "03_painel_frontal.dxf": (
         "320 mm", "150 mm", "S1", "M1", "RV1", "RV2", "S2", "X2+", "X2-", "X3",
@@ -80,11 +90,30 @@ SHEET_TERMS = {
     ),
     "05_detalhes_mecanicos.dxf": (
         "PAINEL FRONTAL", "PAINEL TRASEIRO", "X1 28x20", "FAN1 D76 / 4xD4", "260 mm REAL",
-        "150 mm REAL", "SEM TOLERÂNCIAS GERAIS",
+        "150 mm REAL", "SEM TOLERÂNCIAS GERAIS", "LED-CV", "LED-CC", "X3-PE", "CENTRO X/Y",
+        "X/Y: centro em mm", "recortes e coordenadas são propostas",
     ),
     "06_interligacoes.dxf": (
-        "W01-W06", "W08-W09", "W10-W12", "W13-W16", "W17/W18 SENSE KELVIN",
-        "W19-W21", "W22-W24", "W25", "SEÇÕES EM mm²",
+        "W01-W06", "W08-W09", "W10-W12", "W13-W16", "0,8-30 V regulados", "W17/W18 SENSE KELVIN",
+        "W19-W21", "W22-W24", "W25", "W26-W28", "W29-W31", "W01-W31", "SEÇÕES EM mm²",
+    ),
+    "07_topologia_regulador_cc_cv.dxf": (
+        "U1 | LM5190 (CANDIDATO)", "QH", "QL", "L1", "75 uH", "RCS", "9.1 mOhm",
+        "CC e CV", "ISNS+ / VOUT", "0V36", "K1 aberto",
+    ),
+    "08_predimensionamento_buck.dxf": (
+        "100 kHz", "75 uH", "1.20 A / 24%", "1.40 A / 28%", "5.70 A",
+        "9.1 mOhm", "6.59 A pico", "8.62 kOhm", "42 V é apenas um cenário",
+    ),
+    "09_descarga_saida_parametrica.dxf": (
+        "C_INT", "C_EXT", "V0_INT_MAX", "V0_PORT_MAX", "V_SAFE", "T_REQ",
+        "R_INT_MIN", "R_PORT_MIN", "KD1", "KD2", "A DEFINIR",
+        "FONTE EXTERNA CONECTADA", "NÃO GARANTE 0 V",
+    ),
+    "10_matriz_perdas_termicas_parametrica.dxf": (
+        "CENÁRIOS DIDÁTICOS DE EFICIÊNCIA", "PS1", "REG1", "X2 + CARGA",
+        "PLOSS PS1", "PLOSS REG1", "PLOSS TOTAL", "MARGEM",
+        "DADOS PARA FECHAR A ANÁLISE TÉRMICA", "NÃO REPRESENTAM CURVAS DE COMPONENTES",
     ),
 }
 WARNING = (
@@ -119,6 +148,56 @@ def extract_text(doc: ezdxf.document.Drawing) -> str:
     return " ".join(values)
 
 
+def validate_mechanical_cutouts(doc: ezdxf.document.Drawing, cutouts: list[dict[str, str]]) -> list[str]:
+    errors: list[str] = []
+    display_names = {"X2-PLUS": "X2+", "X2-MINUS": "X2-"}
+    modelspace = doc.modelspace()
+    circles = [entity for entity in modelspace if entity.dxftype() == "CIRCLE" and entity.dxf.layer == "03_COTAS"]
+    polylines = [
+        entity
+        for entity in modelspace
+        if entity.dxftype() == "LWPOLYLINE" and entity.dxf.layer == "03_COTAS" and entity.closed
+    ]
+    text = extract_text(doc).casefold()
+    scale = 0.5
+
+    for row in cutouts:
+        item = display_names.get(row["item"], row["item"])
+        x_text = f'{row["centro_x_mm"]} / {row["centro_y_mm"]}'
+        dimension = row["dimensao_mm"].casefold()
+        for label, value in (("item", item), ("centro", x_text), ("recorte", dimension), ("status", "proposta")):
+            if value.casefold() not in text:
+                errors.append(f"P09-05 não mostra {label} do recorte {row['item']}: {value}.")
+
+        ox = 20.0
+        oy = 174.0 if row["painel"] == "frontal" else 101.0
+        cx = ox + float(row["centro_x_mm"]) * scale
+        cy = oy + float(row["centro_y_mm"]) * scale
+        if row["geometria"] == "circulo":
+            diameter = float(row["dimensao_mm"].upper().removeprefix("D")) * scale
+            present = any(
+                abs(float(entity.dxf.center.x) - cx) <= 1e-6
+                and abs(float(entity.dxf.center.y) - cy) <= 1e-6
+                and abs(float(entity.dxf.radius) - diameter / 2) <= 1e-6
+                for entity in circles
+            )
+        else:
+            width, height = (float(value) * scale for value in row["dimensao_mm"].lower().split("x", 1))
+            expected = {
+                (round(cx - width / 2, 6), round(cy - height / 2, 6)),
+                (round(cx + width / 2, 6), round(cy - height / 2, 6)),
+                (round(cx + width / 2, 6), round(cy + height / 2, 6)),
+                (round(cx - width / 2, 6), round(cy + height / 2, 6)),
+            }
+            present = any(
+                {(round(point[0], 6), round(point[1], 6)) for point in entity.get_points("xy")} == expected
+                for entity in polylines
+            )
+        if not present:
+            errors.append(f"P09-05 não desenha a geometria prevista para {row['item']} no centro informado.")
+    return errors
+
+
 def validate(root: Path) -> dict:
     project = root / PROJECT_SLUG
     config = load_config(root)
@@ -129,12 +208,15 @@ def validate(root: Path) -> dict:
     cutouts = read_rows(project / "lista-recortes.csv")
     materials = read_rows(project / "lista-materiais.csv")
     calculations = read_rows(project / "resultados-calculo.csv")
+    regulator_calculations = read_rows(project / "dimensionamento-regulador.csv")
+    discharge_calculations = read_rows(project / "dimensionamento-descarga.csv")
+    thermal_calculations = read_rows(project / "dimensionamento-termico-parametrico.csv")
     errors: list[str] = []
     checks = 0
 
     expected_parameters = {
         "ENTRADA_V_MIN": "90", "ENTRADA_V_MAX": "264", "ENTRADA_F_MIN": "47",
-        "ENTRADA_F_MAX": "63", "SAIDA_V_MIN": "0", "SAIDA_V_MAX": "30",
+        "ENTRADA_F_MAX": "63", "SAIDA_V_MIN": "0.8", "SAIDA_V_MAX": "30",
         "SAIDA_I_MAX": "5", "SAIDA_P_MAX": "150", "PS1_V_OUT": "36",
         "PS1_I_OUT": "7", "PS1_P_OUT": "252", "PS1_EFICIENCIA": "0.90",
         "REG1_EFICIENCIA": "0.92", "FATOR_POTENCIA": "0.90", "POTENCIA_AUX": "8",
@@ -221,6 +303,127 @@ def validate(root: Path) -> dict:
         if key not in result_map or not close(decimal(result_map[key]["resultado"]), value):
             errors.append(f"Resultado {key} divergente: esperado {value}.")
 
+    design_map = {row["calculo"]: row for row in regulator_calculations}
+    fsw = Decimal(100000)
+    ripple_target = Decimal(5) * Decimal("0.30")
+    l1_h = Decimal(75) / Decimal(1_000_000)
+    vin36, vin42 = Decimal(36), Decimal(42)
+    vout36, vout42 = vin36 / 2, vin42 / 2
+    l_min36 = vout36 * (Decimal(1) - vout36 / vin36) / (ripple_target * fsw)
+    l_min42 = vout42 * (Decimal(1) - vout42 / vin42) / (ripple_target * fsw)
+    ripple36 = vout36 * (Decimal(1) - vout36 / vin36) / (l1_h * fsw)
+    ripple42 = vout42 * (Decimal(1) - vout42 / vin42) / (l1_h * fsw)
+    rcs = Decimal("0.0091")
+    peak_normal = Decimal(5) + ripple42 / 2
+    peak_cbc = Decimal("0.060") / rcs
+    average_cbc = peak_cbc - ripple42 / 2
+    rimon = Decimal(1) / (rcs * Decimal("0.002") * Decimal(5) + Decimal("0.000025"))
+    iset_5a = Decimal(8620) * (Decimal(5) * rcs * Decimal("0.002") + Decimal("0.000025"))
+    design_derived = {
+        "F_SW": fsw,
+        "RIPPLE_ALVO": ripple_target,
+        "L_MIN_36V": l_min36 * Decimal(1_000_000),
+        "L_MIN_42V": l_min42 * Decimal(1_000_000),
+        "L1_PROPOSTA": Decimal(75),
+        "DELTA_IL_36V": ripple36,
+        "DELTA_IL_42V": ripple42,
+        "RCS_PROPOSTA": rcs,
+        "I_PEAK_NORMAL": peak_normal,
+        "I_PEAK_CBC": peak_cbc,
+        "I_MEDIA_CBC": average_cbc,
+        "RIMON_CALC": rimon,
+        "RIMON_PROPOSTA": Decimal(8620),
+        "ISET_5A": iset_5a,
+        "P_RCS_5A": Decimal(5) ** 2 * rcs,
+        "P_RCS_CBC": average_cbc ** 2 * rcs,
+        "V_REG_MIN": Decimal("0.8"),
+    }
+    design_classes = {
+        "F_SW": "PREMISSA", "RIPPLE_ALVO": "DERIVADO", "L_MIN_36V": "DERIVADO",
+        "L_MIN_42V": "DERIVADO", "L1_PROPOSTA": "PROPOSTA", "DELTA_IL_36V": "DERIVADO",
+        "DELTA_IL_42V": "DERIVADO", "RCS_PROPOSTA": "PROPOSTA", "I_PEAK_NORMAL": "DERIVADO",
+        "I_PEAK_CBC": "DERIVADO", "I_MEDIA_CBC": "DERIVADO", "RIMON_CALC": "DERIVADO",
+        "RIMON_PROPOSTA": "PROPOSTA", "ISET_5A": "DERIVADO", "P_RCS_5A": "DERIVADO",
+        "P_RCS_CBC": "DERIVADO", "V_REG_MIN": "REFERENCIA",
+    }
+    checks += 4 + len(design_derived)
+    if set(design_map) != set(design_derived) or len(regulator_calculations) != len(design_map):
+        errors.append("dimensionamento-regulador.csv deve conter os 17 cálculos esperados sem duplicatas.")
+    for key, expected in design_derived.items():
+        if key not in design_map or not close(decimal(design_map[key]["resultado"]), expected, Decimal("0.00001")):
+            errors.append(f"Pré-dimensionamento {key} divergente: esperado {expected}.")
+        if key in design_map and design_map[key]["classificacao"] != design_classes[key]:
+            errors.append(f"Classificação de pré-dimensionamento incorreta em {key}.")
+    if any(not row["formula"] or not row["observacao"] for row in regulator_calculations):
+        errors.append("Pré-dimensionamento sem fórmula ou observação.")
+
+    discharge_map = {row["calculo"]: row for row in discharge_calculations}
+    expected_discharge = {
+        "C_INT_MAX", "C_EXT_MAX", "V_NOM_INT_MAX", "V0_INT_MAX", "V0_PORT_MAX",
+        "V_SAFE", "T_REQ", "PULSE_RD1_MAX", "PULSE_RD2_MAX", "E_INT_MAX",
+        "E_EXT_MAX", "R_INT_MAX", "R_PORT_MAX", "R_INT_MIN", "R_PORT_MIN",
+        "E_RD1_MIN", "E_RD2_MIN", "I_INT_0", "I_PORT_0", "P_INT_0", "P_PORT_0",
+        "FEASIBILITY",
+    }
+    checks += len(expected_discharge) + 4
+    if set(discharge_map) != expected_discharge or len(discharge_calculations) != len(discharge_map):
+        errors.append("dimensionamento-descarga.csv deve conter exatamente os 22 cálculos esperados sem duplicatas.")
+    if any(not row["formula"] or not row["observacao"] for row in discharge_calculations):
+        errors.append("Dimensionamento de descarga sem fórmula ou observação.")
+    for key, row in discharge_map.items():
+        checks += 1
+        if key == "V_NOM_INT_MAX":
+            if decimal(row["resultado"]) != Decimal(30) or row["classificacao"] != "PROPOSTA":
+                errors.append("V_NOM_INT_MAX deve registrar apenas o setpoint nominal proposto de 30 V.")
+        elif row["resultado"] != "A DEFINIR" or row["classificacao"] != "PENDENTE":
+            errors.append(f"{key} deve permanecer A DEFINIR/PENDENTE sem dados de projeto.")
+    expected_formulas = {
+        "E_INT_MAX": "0.5*C_INT_MAX*V0_INT_MAX*V0_INT_MAX",
+        "E_EXT_MAX": "0.5*C_EXT_MAX*V0_PORT_MAX*V0_PORT_MAX",
+        "R_INT_MAX": "T_REQ/[C_INT_MAX*ln(V0_INT_MAX/V_SAFE)]",
+        "R_PORT_MAX": "T_REQ/[C_EXT_MAX*ln(V0_PORT_MAX/V_SAFE)]",
+        "R_INT_MIN": "V0_INT_MAX*V0_INT_MAX/PULSE_RD1_MAX",
+        "R_PORT_MIN": "V0_PORT_MAX*V0_PORT_MAX/PULSE_RD2_MAX",
+    }
+    for key, formula in expected_formulas.items():
+        checks += 1
+        if key not in discharge_map or discharge_map[key]["formula"] != formula:
+            errors.append(f"Equação paramétrica incorreta ou ausente em {key}.")
+
+    expected_eta_ps1 = {Decimal("0.88"), Decimal("0.92"), Decimal("0.96")}
+    expected_eta_reg = {Decimal("0.85"), Decimal("0.90"), Decimal("0.95")}
+    thermal_pairs = set()
+    checks += 4 + len(thermal_calculations) * 8
+    if len(thermal_calculations) != 9:
+        errors.append("dimensionamento-termico-parametrico.csv deve conter os nove cenários da matriz 3x3.")
+    for row in thermal_calculations:
+        eta_ps1 = decimal(row["eta_ps1"])
+        eta_reg = decimal(row["eta_reg"])
+        thermal_pairs.add((eta_ps1, eta_reg))
+        p_out_case = decimal(row["p_out_w"])
+        p_reg_in = p_out_case / eta_reg
+        p_loss_reg = p_reg_in - p_out_case
+        p_ps1_in = p_reg_in / eta_ps1
+        p_loss_ps1 = p_ps1_in - p_reg_in
+        expected_values = {
+            "p_out_w": Decimal(150),
+            "p_reg_in_w": p_reg_in,
+            "p_loss_reg_w": p_loss_reg,
+            "p_loss_ps1_w": p_loss_ps1,
+            "p_loss_total_w": p_ps1_in - p_out_case,
+            "margin_ps1_w": Decimal(252) - p_reg_in,
+        }
+        for field, expected in expected_values.items():
+            checks += 1
+            if not close(decimal(row[field]), expected, Decimal("0.00001")):
+                errors.append(f"Cenário térmico {row['cenario']} tem {field} divergente; esperado {expected}.")
+        if eta_ps1 not in expected_eta_ps1 or eta_reg not in expected_eta_reg:
+            errors.append(f"Eficiência fora da faixa de varredura no cenário térmico {row['cenario']}.")
+        if row["classificacao"] != "CENARIO_PARAMETRICO" or not row["observacao"]:
+            errors.append(f"Cenário térmico {row['cenario']} deve permanecer explicitamente paramétrico.")
+    if thermal_pairs != {(p, r) for p in expected_eta_ps1 for r in expected_eta_reg}:
+        errors.append("A matriz térmica deve cobrir as três eficiências de cada estágio sem pares duplicados.")
+
     checks += 10
     if p_out != Decimal(150):
         errors.append("Potência máxima de saída deve ser 150 W.")
@@ -245,8 +448,8 @@ def validate(root: Path) -> dict:
 
     checks += 12
     equipment_tags = {row["tag"] for row in equipment}
-    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 15:
-        errors.append("lista-equipamentos.csv deve conter exatamente os 15 tags previstos.")
+    if equipment_tags != REQUIRED_EQUIPMENT or len(equipment) != 24:
+        errors.append("lista-equipamentos.csv deve conter exatamente os 24 tags previstos.")
     if any(row["classificacao"] != "PROPOSTA" for row in equipment):
         errors.append("Equipamentos devem ser classificados como PROPOSTA.")
     if any(not row["especificacao"] or not row["observacoes"] for row in equipment):
@@ -261,8 +464,8 @@ def validate(root: Path) -> dict:
         errors.append("Proteção sem função ou limitação.")
 
     wire_ids = {row["id"] for row in interconnections}
-    if wire_ids != REQUIRED_INTERCONNECTIONS or len(interconnections) != 25:
-        errors.append("lista-interligacoes.csv deve conter W01 a W25 sem duplicatas.")
+    if wire_ids != REQUIRED_INTERCONNECTIONS or len(interconnections) != 31:
+        errors.append("lista-interligacoes.csv deve conter W01 a W31 sem duplicatas.")
     if any(not row["cor_identificacao"] or not row["terminal"] for row in interconnections):
         errors.append("Interligação sem cor de identificação ou terminal.")
     if any(row["classificacao"] != "PROPOSTA" for row in interconnections):
@@ -275,8 +478,8 @@ def validate(root: Path) -> dict:
         errors.append("Recortes devem ser classificados como PROPOSTA.")
 
     material_ids = {row["item"] for row in materials}
-    if material_ids != REQUIRED_MATERIALS or len(materials) != 32:
-        errors.append("lista-materiais.csv deve conter exatamente os 32 itens esperados.")
+    if material_ids != REQUIRED_MATERIALS or len(materials) != 42:
+        errors.append("lista-materiais.csv deve conter exatamente os 42 itens esperados.")
     if any(decimal(row["quantidade"]) <= 0 or not row["referencia"] or not row["observacoes"] for row in materials):
         errors.append("Material sem quantidade positiva, referência ou observação.")
 
@@ -317,8 +520,8 @@ def validate(root: Path) -> dict:
         errors.append("Referências oficiais ou transição da NR-10 incompletas.")
     if "não um produto desenvolvido, certificado ou liberado para" not in docs["memorial-descritivo.md"]:
         errors.append("Memorial não limita explicitamente fabricação e certificação.")
-    if "Nenhum componente comercial foi selecionado ou declarado" not in docs["README.md"]:
-        errors.append("README não explicita ausência de seleção e certificação.")
+    if "LM5190 como candidato de referência" not in docs["README.md"] or "compensação" not in docs["README.md"]:
+        errors.append("README não explica o status preliminar do controlador e das redes de compensação.")
     if "saída CC é flutuante" not in docs["criterios-premissas.md"]:
         errors.append("Critérios não declaram a saída flutuante.")
     if "0-40 °C" not in docs["criterios-premissas.md"] or "2.000 m" not in docs["criterios-premissas.md"]:
@@ -355,18 +558,21 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"Metadado de projeto incorreto em {filename}.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/06":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"Metadado de prancha incorreto em {filename}.")
         if metadata.get("PORTFOLIO_EPISTEMIC_STATUS") != "ACADEMIC_CONCEPT_NOT_FOR_EXECUTION":
             errors.append(f"Status epistemológico incorreto em {filename}.")
         text = extract_text(doc)
         if WARNING not in text:
             errors.append(f"Aviso obrigatório ausente em {filename}.")
-        if f"{index:02d}/06" not in text:
+        if f"{index:02d}/{len(SHEETS):02d}" not in text:
             errors.append(f"Número de prancha ausente em {filename}.")
         for term in SHEET_TERMS[filename]:
             if term.casefold() not in text.casefold():
                 errors.append(f"Termo obrigatório ausente em {filename}: {term}.")
+        if filename == "05_detalhes_mecanicos.dxf":
+            checks += 4 * len(cutouts)
+            errors.extend(validate_mechanical_cutouts(doc, cutouts))
 
     result = {
         "checks": checks,
@@ -381,6 +587,7 @@ def validate(root: Path) -> dict:
             "operating_envelope_points": operating_points,
             "output_power_w": f"{p_out:.6f}",
             "sheets": len(SHEETS),
+            "thermal_scenarios": len(thermal_calculations),
             "wires": len(interconnections),
         },
         "status": "PASS" if not errors else "FAIL",

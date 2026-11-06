@@ -1,5 +1,9 @@
 # Pseudocódigo e diagrama de estados
 
+> EXEMPLO CONDICIONAL, NÃO APROVADO: a lógica LSH-inicia / LSL-encerra / LSHH-solicita
+> reserva só pode ser considerada após aprovação da filosofia de processo V01. Não
+> implementar para enchimento sem revisar as ações dos níveis e identificar cada tanque.
+
 ## Estados
 
 ```text
@@ -82,4 +86,7 @@ BZ1 := H5 AND NOT alarme_reconhecido
 - Memórias retentivas devem possuir valor inicial documentado e estratégia de corrupção.
 - Temporizadores e bordas precisam ser implementados com blocos equivalentes da
   plataforma escolhida, seguindo IEC 61131-3.
+- A detecção de sensores incoerentes bloqueia nova partida automática, mas a ação para
+  bombas já em marcha permanece sem decisão; definir o comportamento de falha antes da
+  implementação e do teste de causa e efeito.
 - A função de emergência não pode depender deste pseudocódigo.

@@ -1,6 +1,8 @@
 {
   "project": "12-grupo-gerador-qta",
-  "sheets_checked": 6,
+  "sheets_checked": 9,
+  "cause_effect_events": 9,
+  "qce_load_feeders": 4,
   "materials_count": 24,
   "cables_count": 15,
   "errors": [],
