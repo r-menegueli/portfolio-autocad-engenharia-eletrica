@@ -1,26 +1,13 @@
 # Galeria visual do portfólio
 
-Esta seleção apresenta quatro pranchas representativas da variedade do portfólio.
-Cada imagem é um PNG de inspeção gerado a partir do mesmo DXF que origina o PDF e o
-SVG. Clique na imagem para abrir o PDF A3.
+Quatro pranchas dos projetos P13, P17, P20 e P22. Cada imagem é uma prévia PNG; o clique abre o PDF correspondente.
 
-| P01 — Painel com inversor | P02 — Projeto residencial |
+| P13 — Estação de recarga | P17 — Automação IEC 61850 |
 | --- | --- |
-| [![Diagrama unifilar de painel com inversor](../01-painel-motor-inversor/exports/01_diagrama_unifilar.png)](../01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf) | [![Planta de iluminação residencial](../02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png)](../02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf) |
-| Potência, proteção, inversor, motor e aterramento. [Projeto](../01-painel-motor-inversor/README.md) · [DXF](../01-painel-motor-inversor/fonte/01_diagrama_unifilar.dxf) · [SVG](../01-painel-motor-inversor/exports/01_diagrama_unifilar.svg) | Planta, pontos de luz, comandos e resumo de iluminação. [Projeto](../02-projeto-eletrico-residencial/README.md) · [DXF](../02-projeto-eletrico-residencial/fonte/02_planta_iluminacao.dxf) · [SVG](../02-projeto-eletrico-residencial/exports/02_planta_iluminacao.svg) |
-| P03 — Automação com CLP | P07 — Veículo elétrico |
-| [![Arquitetura do painel de automação com CLP](../03-painel-automacao-clp/exports/01_arquitetura_automacao.png)](../03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf) | [![Arquitetura geral do veículo elétrico](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png)](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf) |
-| Potência, segurança, CLP, processo e sinalização. [Projeto](../03-painel-automacao-clp/README.md) · [DXF](../03-painel-automacao-clp/fonte/01_arquitetura_automacao.dxf) · [SVG](../03-painel-automacao-clp/exports/01_arquitetura_automacao.svg) | Domínios HV/LV, tração, controle, CAN e sensores. [Projeto](../07-arquitetura-veiculo-eletrico/README.md) · [DXF](../07-arquitetura-veiculo-eletrico/fonte/01_arquitetura_geral.dxf) · [SVG](../07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.svg) |
+| [![Implantação da estação de recarga](../13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.png)](../13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.pdf) | [![Rede de processo e estação](../17-automacao-subestacao-digital/exports/02_rede_iec61850.png)](../17-automacao-subestacao-digital/exports/02_rede_iec61850.pdf) |
+| Implantação esquemática com seis posições. [Projeto](../13-estacao-recarga-veiculos-eletricos/README.md) · [DXF](../13-estacao-recarga-veiculos-eletricos/fonte/01_layout_estacao_recarga.dxf) | Redes de processo e de estação em um exemplo conceitual. [Projeto](../17-automacao-subestacao-digital/README.md) · [DXF](../17-automacao-subestacao-digital/fonte/02_rede_iec61850.dxf) |
+| P20 — Tração ferroviária CC | P22 — Auxílios visuais de aeródromo |
+| [![Unifilar da subestação retificadora](../20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png)](../20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf) | [![Arranjo luminoso de pista e taxiway](../22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.png)](../22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.pdf) |
+| Unifilar conceitual de conversão CA/CC e retorno. [Projeto](../20-tracao-ferroviaria-cc-750v/README.md) · [DXF](../20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf) | Arranjo indicativo, sem escala ou classificação operacional. [Projeto](../22-auxilios-visuais-luminosos-aerodromo/README.md) · [DXF](../22-auxilios-visuais-luminosos-aerodromo/fonte/01_layout_luminoso_pista_taxi.dxf) |
 
-## Critério da seleção
-
-- P01 demonstra a base comum de potência, comando e documentação de painel;
-- P02 mostra a aplicação do padrão gráfico a uma planta arquitetônica;
-- P03 representa automação, segurança e interfaces de processo;
-- P07 amplia o escopo para energia, controle e comunicação veicular.
-
-As 68 pranchas foram revisadas; a seleção acima é apenas um índice visual. Consulte a
-[revisão visual consolidada](../relatorio-revisao-visual.md) e a
-[tabela completa de projetos](../README.md#projetos).
-
-> Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
+A seleção é um ponto de entrada para a coleção, não uma amostra de validação. O README e os registros de cada pasta descrevem premissas e limites.
