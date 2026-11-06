@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.62
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.62
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.62
   1
-PRANCHA 07 ADICIONADA
+ORIGEM A MONTANTE NÃO ESPECIFICADA
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  11
@@ -10187,7 +10187,7 @@ AcDbText
  30
 0.0
  40
-1.15
+1.3
   1
 OPERAÇÃO NORMAL: PI regula a frequência; STOP, LSHH, LT inválido, falha do VFD ou tempo excedido retiram a marcha.
   7
@@ -10223,7 +10223,7 @@ AcDbText
  30
 0.0
  40
-1.15
+1.3
   1
 LA-L/LA-H em 15%/85% são alarmes; a ação operacional permanece pendente nesta revisão.
   7
@@ -10259,7 +10259,7 @@ AcDbText
  30
 0.0
  40
-1.15
+1.3
   1
 Após falta de energia, não há repartida automática. Aplicar permissivos e rearme consciente antes de nova partida.
   7
@@ -10471,7 +10471,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 ID
   7
@@ -10507,7 +10507,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 EVENTO
   7
@@ -10543,7 +10543,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 DETECÇÃO
   7
@@ -10579,7 +10579,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 AÇÃO CONCEITUAL
   7
@@ -10615,7 +10615,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 ALARME / MEMÓRIA
   7
@@ -10651,7 +10651,7 @@ AcDbText
  30
 0.0
  40
-1.2
+1.4
   1
 RETORNO
   7
@@ -10687,7 +10687,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E01
   7
@@ -10723,7 +10723,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 STOP / emergência
   7
@@ -10759,7 +10759,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 STOP ou emergência atuada
   7
@@ -10795,7 +10795,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Retira comando de marcha
   7
@@ -10831,7 +10831,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Alarme retido
   7
@@ -10867,7 +10867,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Causa removida + ACK consciente
   7
@@ -10927,7 +10927,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E02
   7
@@ -10963,7 +10963,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LSHH-101
   7
@@ -10999,7 +10999,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Nível ≥ 95%
   7
@@ -11035,7 +11035,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Bloqueia permissivo e solicita parada fora do PI
   7
@@ -11071,7 +11071,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LA-HH-101 retido
   7
@@ -11107,7 +11107,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Condição normal + ACK
   7
@@ -11167,7 +11167,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E03
   7
@@ -11203,7 +11203,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LT-101 inválido
   7
@@ -11239,7 +11239,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Sinal < 3,6 mA ou > 21 mA
   7
@@ -11275,7 +11275,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Desabilita PI e solicita parada
   7
@@ -11311,7 +11311,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 UA-101 retido
   7
@@ -11347,7 +11347,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Sinal válido + ACK
   7
@@ -11407,7 +11407,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E04
   7
@@ -11443,7 +11443,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Falha do VFD
   7
@@ -11479,7 +11479,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 VFD indica falha
   7
@@ -11515,7 +11515,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Retira marcha e bloqueia partida
   7
@@ -11551,7 +11551,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 YA-101 retido
   7
@@ -11587,7 +11587,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 VFD pronto + ACK
   7
@@ -11647,7 +11647,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E05
   7
@@ -11683,7 +11683,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Tempo excedido
   7
@@ -11719,7 +11719,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Máx. 60 min (premissa)
   7
@@ -11755,7 +11755,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Retira marcha e bloqueia partida
   7
@@ -11791,7 +11791,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 TA-101 retido
   7
@@ -11827,7 +11827,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Causa removida + ACK
   7
@@ -11887,7 +11887,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E06
   7
@@ -11923,7 +11923,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Perda de energia
   7
@@ -11959,7 +11959,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Alimentação ausente
   7
@@ -11995,7 +11995,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Saídas desenergizadas
   7
@@ -12031,7 +12031,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Retenção depende do PLC
   7
@@ -12067,7 +12067,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Sem repartida automática
   7
@@ -12127,7 +12127,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E07
   7
@@ -12163,7 +12163,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LT / chaves divergentes
   7
@@ -12199,7 +12199,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Divergência persistente
   7
@@ -12235,7 +12235,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Diagnóstico; bloqueia AUTO
   7
@@ -12271,7 +12271,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Diagnóstico indicado
   7
@@ -12307,7 +12307,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Causa removida + ACK
   7
@@ -12367,7 +12367,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E08
   7
@@ -12403,7 +12403,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LA-L-101
   7
@@ -12439,7 +12439,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LT-101 ≤ 15%
   7
@@ -12475,7 +12475,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Alarme; ação de processo pendente
   7
@@ -12511,7 +12511,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LA-L-101 retido
   7
@@ -12547,7 +12547,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Causa removida + ACK
   7
@@ -12607,7 +12607,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 E09
   7
@@ -12643,7 +12643,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LA-H-101
   7
@@ -12679,7 +12679,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LT-101 ≥ 85%
   7
@@ -12715,7 +12715,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Alarme; ação de processo pendente
   7
@@ -12751,7 +12751,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 LA-H-101 retido
   7
@@ -12787,7 +12787,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.35
   1
 Causa removida + ACK
   7

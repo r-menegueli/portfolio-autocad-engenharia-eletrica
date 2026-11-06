@@ -1,5 +1,5 @@
 {
-  "checks": 225,
+  "checks": 228,
   "errors": [],
   "results": {
     "analog_inputs": 2,
@@ -10,7 +10,7 @@
     "digital_outputs": 10,
     "instruments_and_equipment": 10,
     "io_points": 23,
-    "materials": 17,
+    "materials": 18,
     "pid_initial": {
       "kc": 0.8,
       "td_s": 0,

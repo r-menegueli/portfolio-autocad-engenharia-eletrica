@@ -33,6 +33,7 @@ REQUIRED_CABLES = {f"C-{number}" for number in range(101, 110)}
 REQUIRED_MATERIAL_TAGS = {
     "PLC-101", "VFD-101", "M-101", "P-101", "TK-101", "LT-101", "LSL-101",
     "LSH-101", "LSHH-101", "KSR-101", "PS1", "QF1", "PAINEL-101",
+    "HV-102",
 }
 
 
@@ -120,7 +121,9 @@ def validate(root: Path) -> dict:
             errors.append(f"{row['canal']}: borne {row['terminal']} não documentado.")
 
     material_tags = {row["referencia"] for row in material_rows}
-    checks += len(REQUIRED_MATERIAL_TAGS)
+    checks += len(REQUIRED_MATERIAL_TAGS) + 1
+    if len(material_rows) != 18:
+        errors.append(f"A lista de materiais deve conter 18 itens, incluindo HV-102; encontrados {len(material_rows)}.")
     for tag in sorted(REQUIRED_MATERIAL_TAGS):
         if tag not in material_tags:
             errors.append(f"Material obrigatório ausente: {tag}.")
@@ -184,11 +187,20 @@ def validate(root: Path) -> dict:
         sheet_text = extract_text(doc)
         all_dxf_text.append(sheet_text)
         if index == 1:
-            checks += 2
+            checks += 3
             if "tk-101" not in sheet_text.casefold():
                 errors.append(f"{filename}: identificação do reservatório TK-101 ausente.")
             if "tk-100" in sheet_text.casefold():
                 errors.append(f"{filename}: identificação inconsistente TK-100 encontrada.")
+            normalized_sheet = sheet_text.casefold()
+            if "origem de água" not in normalized_sheet or "equipamento a montante não definido" not in normalized_sheet:
+                errors.append(f"{filename}: origem de água e limite de bateria não estão identificados.")
+            for entity in doc.modelspace():
+                if entity.dxftype() != "TEXT" or entity.dxf.text.strip().casefold() != "tk-101":
+                    continue
+                x, y = entity.dxf.insert.x, entity.dxf.insert.y
+                if x < 100 and 150 <= y <= 180:
+                    errors.append(f"{filename}: TK-101 duplicado na posição da origem a montante.")
         if index == 7:
             required_sequence_terms = (
                 "emergência liberada", "kSR / vfd prontos", "lt válido; lshh inativo",

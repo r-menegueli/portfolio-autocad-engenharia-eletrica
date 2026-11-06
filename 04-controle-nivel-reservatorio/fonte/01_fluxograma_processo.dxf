@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-150
+14D
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-14D
+14A
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-14E
+14B
 330
 3
 100
@@ -7987,7 +7987,7 @@ AcDbText
  40
 2.1
   1
-Enchimento de TK-101 por P-101 com demanda variável
+Enchimento de TK-101 por P-101; origem a montante não especificada
   7
 PORTFOLIO_TEXTO
  72
@@ -8185,7 +8185,7 @@ AcDbMText
  71
 1
   1
-TK-101: 10 m³ (premissa). Operação normal: 30–80%; SP inicial: 60%.\PA vazão de consumo é a perturbação principal da malha de nível.
+TK-101: 10 m³ (premissa). Operação normal: 30–80%; SP inicial: 60%.\POrigem e equipamento a montante não definidos.\PA vazão de consumo é a perturbação principal da malha de nível.
   7
 PORTFOLIO_TEXTO
  44
@@ -8279,7 +8279,7 @@ AcDbMText
  71
 1
   1
-Linha grossa: tubulação | Tracejado funcional: sinal | FCV: válvula manual | NRV: retenção
+Tubulação: linha grossa | Sinal: linha fina | HV-102: válvula manual (premissa)
   7
 PORTFOLIO_TEXTO
  44
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.62
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.62
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.62
   1
-PRANCHA 07 ADICIONADA
+ORIGEM A MONTANTE NÃO ESPECIFICADA
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  11
@@ -9121,27 +9121,63 @@ TEXT
 100
 AcDbEntity
   8
-11_ARQUITETURA
+02_TEXTO
 100
 AcDbText
  10
-55.0
+68.0
  20
-250.0
+203.0
  30
 0.0
  40
-2.0
+1.8
   1
-FONTE DE ÁGUA
+ORIGEM DE ÁGUA
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-55.0
+68.0
  21
-250.0
+203.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+117
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+68.0
+ 20
+198.0
+ 30
+0.0
+ 40
+1.15
+  1
+EQUIPAMENTO A MONTANTE NÃO DEFINIDO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+68.0
+ 21
+198.0
  31
 0.0
 100
@@ -9151,49 +9187,25 @@ AcDbText
   0
 LINE
   5
-117
-330
-17
-100
-AcDbEntity
-  8
-04_EQUIPAMENTOS
-100
-AcDbLine
- 10
-25.0
- 20
-240.0
- 30
-0.0
- 11
-25.0
- 21
-178.0
- 31
-0.0
-  0
-LINE
-  5
 118
 330
 17
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
 100
 AcDbLine
  10
-25.0
+24.0
  20
-178.0
+190.0
  30
 0.0
  11
-83.0
+118.0
  21
-178.0
+190.0
  31
 0.0
   0
@@ -9205,19 +9217,19 @@ LINE
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
 100
 AcDbLine
  10
-83.0
+115.0
  20
-178.0
+191.65
  30
 0.0
  11
-83.0
+118.0
  21
-240.0
+190.0
  31
 0.0
   0
@@ -9229,113 +9241,17 @@ LINE
 100
 AcDbEntity
   8
-07_INSTRUMENTACAO
-100
-AcDbLine
- 10
-27.0
- 20
-221.4
- 30
-0.0
- 11
-81.0
- 21
-221.4
- 31
-0.0
-  0
-TEXT
-  5
-11B
-330
-17
-100
-AcDbEntity
-  8
-07_INSTRUMENTACAO
-100
-AcDbText
- 10
-54.0
- 20
-216.4
- 30
-0.0
- 40
-1.45
-  1
-NÍVEL 70%
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-54.0
- 21
-216.4
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-11C
-330
-17
-100
-AcDbEntity
-  8
-04_EQUIPAMENTOS
-100
-AcDbText
- 10
-54.0
- 20
-169.0
- 30
-0.0
- 40
-1.8
-  1
-TK-101
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-54.0
- 21
-169.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-LINE
-  5
-11D
-330
-17
-100
-AcDbEntity
-  8
 05_POTENCIA
 100
 AcDbLine
  10
-83.0
+115.0
  20
-190.0
+188.35
  30
 0.0
  11
-111.0
+118.0
  21
 190.0
  31
@@ -9343,7 +9259,7 @@ AcDbLine
   0
 CIRCLE
   5
-11E
+11B
 330
 17
 100
@@ -9363,7 +9279,7 @@ AcDbCircle
   0
 LWPOLYLINE
   5
-11F
+11C
 330
 17
 100
@@ -9391,7 +9307,7 @@ AcDbPolyline
   0
 TEXT
   5
-120
+11D
 330
 17
 100
@@ -9427,7 +9343,7 @@ AcDbText
   0
 CIRCLE
   5
-121
+11E
 330
 17
 100
@@ -9447,7 +9363,7 @@ AcDbCircle
   0
 TEXT
   5
-122
+11F
 330
 17
 100
@@ -9483,7 +9399,7 @@ AcDbText
   0
 TEXT
   5
-123
+120
 330
 17
 100
@@ -9519,7 +9435,7 @@ AcDbText
   0
 TEXT
   5
-124
+121
 330
 17
 100
@@ -9555,7 +9471,7 @@ AcDbText
   0
 LINE
   5
-125
+122
 330
 17
 100
@@ -9579,7 +9495,7 @@ AcDbLine
   0
 LINE
   5
-126
+123
 330
 17
 100
@@ -9603,7 +9519,7 @@ AcDbLine
   0
 LINE
   5
-127
+124
 330
 17
 100
@@ -9627,7 +9543,7 @@ AcDbLine
   0
 LINE
   5
-128
+125
 330
 17
 100
@@ -9651,7 +9567,7 @@ AcDbLine
   0
 TEXT
   5
-129
+126
 330
 17
 100
@@ -9687,7 +9603,7 @@ AcDbText
   0
 TEXT
   5
-12A
+127
 330
 17
 100
@@ -9723,79 +9639,79 @@ AcDbText
   0
 LINE
   5
+128
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbLine
+ 10
+208.0
+ 20
+245.0
+ 30
+0.0
+ 11
+208.0
+ 21
+135.0
+ 31
+0.0
+  0
+LINE
+  5
+129
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbLine
+ 10
+208.0
+ 20
+135.0
+ 30
+0.0
+ 11
+310.0
+ 21
+135.0
+ 31
+0.0
+  0
+LINE
+  5
+12A
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbLine
+ 10
+310.0
+ 20
+135.0
+ 30
+0.0
+ 11
+310.0
+ 21
+245.0
+ 31
+0.0
+  0
+LINE
+  5
 12B
-330
-17
-100
-AcDbEntity
-  8
-04_EQUIPAMENTOS
-100
-AcDbLine
- 10
-208.0
- 20
-245.0
- 30
-0.0
- 11
-208.0
- 21
-135.0
- 31
-0.0
-  0
-LINE
-  5
-12C
-330
-17
-100
-AcDbEntity
-  8
-04_EQUIPAMENTOS
-100
-AcDbLine
- 10
-208.0
- 20
-135.0
- 30
-0.0
- 11
-310.0
- 21
-135.0
- 31
-0.0
-  0
-LINE
-  5
-12D
-330
-17
-100
-AcDbEntity
-  8
-04_EQUIPAMENTOS
-100
-AcDbLine
- 10
-310.0
- 20
-135.0
- 30
-0.0
- 11
-310.0
- 21
-245.0
- 31
-0.0
-  0
-LINE
-  5
-12E
 330
 17
 100
@@ -9819,7 +9735,7 @@ AcDbLine
   0
 TEXT
   5
-12F
+12C
 330
 17
 100
@@ -9855,7 +9771,7 @@ AcDbText
   0
 TEXT
   5
-130
+12D
 330
 17
 100
@@ -9891,7 +9807,7 @@ AcDbText
   0
 CIRCLE
   5
-131
+12E
 330
 17
 100
@@ -9911,7 +9827,7 @@ AcDbCircle
   0
 LINE
   5
-132
+12F
 330
 17
 100
@@ -9935,7 +9851,7 @@ AcDbLine
   0
 TEXT
   5
-133
+130
 330
 17
 100
@@ -9971,7 +9887,7 @@ AcDbText
   0
 LINE
   5
-134
+131
 330
 17
 100
@@ -9995,7 +9911,7 @@ AcDbLine
   0
 TEXT
   5
-135
+132
 330
 17
 100
@@ -10031,7 +9947,7 @@ AcDbText
   0
 LINE
   5
-136
+133
 330
 17
 100
@@ -10055,7 +9971,7 @@ AcDbLine
   0
 LWPOLYLINE
   5
-137
+134
 330
 17
 100
@@ -10087,7 +10003,7 @@ AcDbPolyline
   0
 TEXT
   5
-138
+135
 330
 17
 100
@@ -10123,7 +10039,7 @@ AcDbText
   0
 TEXT
   5
-139
+136
 330
 17
 100
@@ -10141,7 +10057,7 @@ AcDbText
  40
 1.2
   1
-Válvula
+Válvula manual
   7
 PORTFOLIO_TEXTO
  72
@@ -10159,7 +10075,7 @@ AcDbText
   0
 LINE
   5
-13A
+137
 330
 17
 100
@@ -10183,7 +10099,7 @@ AcDbLine
   0
 LINE
   5
-13B
+138
 330
 17
 100
@@ -10207,7 +10123,7 @@ AcDbLine
   0
 LINE
   5
-13C
+139
 330
 17
 100
@@ -10231,7 +10147,7 @@ AcDbLine
   0
 TEXT
   5
-13D
+13A
 330
 17
 100
@@ -10267,7 +10183,7 @@ AcDbText
   0
 TEXT
   5
-13E
+13B
 330
 17
 100
@@ -10303,7 +10219,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-13F
+13C
 330
 17
 100
@@ -10335,7 +10251,7 @@ AcDbPolyline
   0
 TEXT
   5
-140
+13D
 330
 17
 100
@@ -10371,7 +10287,7 @@ AcDbText
   0
 TEXT
   5
-141
+13E
 330
 17
 100
@@ -10407,7 +10323,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-142
+13F
 330
 17
 100
@@ -10439,7 +10355,7 @@ AcDbPolyline
   0
 TEXT
   5
-143
+140
 330
 17
 100
@@ -10475,7 +10391,7 @@ AcDbText
   0
 TEXT
   5
-144
+141
 330
 17
 100
@@ -10511,7 +10427,7 @@ AcDbText
   0
 LINE
   5
-145
+142
 330
 17
 100
@@ -10535,7 +10451,7 @@ AcDbLine
   0
 LINE
   5
-146
+143
 330
 17
 100
@@ -10559,7 +10475,7 @@ AcDbLine
   0
 LINE
   5
-147
+144
 330
 17
 100
@@ -10583,7 +10499,7 @@ AcDbLine
   0
 LINE
   5
-148
+145
 330
 17
 100
@@ -10607,7 +10523,7 @@ AcDbLine
   0
 LINE
   5
-149
+146
 330
 17
 100
@@ -10631,7 +10547,7 @@ AcDbLine
   0
 LINE
   5
-14A
+147
 330
 17
 100
@@ -10655,7 +10571,7 @@ AcDbLine
   0
 LINE
   5
-14B
+148
 330
 17
 100
@@ -10679,7 +10595,7 @@ AcDbLine
   0
 TEXT
   5
-14C
+149
 330
 17
 100
@@ -11823,7 +11739,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-14F
+14C
   0
 DICTIONARYVAR
   5
@@ -18449,7 +18365,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-14F
+14C
 330
 2D
 100

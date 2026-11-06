@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "04-controle-nivel-reservatorio"
-PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+PROJECT_DATE = "2026-11-06"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -54,10 +54,11 @@ SHEETS = (
         1,
         "01_fluxograma_processo.dxf",
         "FLUXOGRAMA DO PROCESSO",
-        "Enchimento de TK-101 por P-101 com demanda variável",
+        "Enchimento de TK-101 por P-101; origem a montante não especificada",
         "TK-101: 10 m³ (premissa). Operação normal: 30–80%; SP inicial: 60%.\\P"
+        "Origem e equipamento a montante não definidos.\\P"
         "A vazão de consumo é a perturbação principal da malha de nível.",
-        "Linha grossa: tubulação | Tracejado funcional: sinal | FCV: válvula manual | NRV: retenção",
+        "Tubulação: linha grossa | Sinal: linha fina | HV-102: válvula manual (premissa)",
     ),
     SheetSpec(
         2,
@@ -222,7 +223,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("PRANCHA 07 ADICIONADA", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ORIGEM A MONTANTE NÃO ESPECIFICADA", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.62, "02_TEXTO")
 
 
@@ -274,10 +275,9 @@ def create_sheet(config: dict, spec: SheetSpec):
 
 
 def draw_process(layout) -> None:
-    centered(layout, "FONTE DE ÁGUA", (55, 250), 2.0, "11_ARQUITETURA")
-    tank(layout, 25, 178, 83, 240, 0.70)
-    centered(layout, "TK-101", (54, 169), 1.8, "04_EQUIPAMENTOS")
-    line(layout, (83, 190), (111, 190), "05_POTENCIA")
+    centered(layout, "ORIGEM DE ÁGUA", (68, 203), 1.8, "02_TEXTO")
+    centered(layout, "EQUIPAMENTO A MONTANTE NÃO DEFINIDO", (68, 198), 1.15, "02_TEXTO")
+    arrow(layout, (24, 190), (118, 190), "05_POTENCIA")
     pump(layout, (128, 190), "P-101")
     motor(layout, (128, 224), "M-101 / 4 kW")
     line(layout, (128, 215), (128, 200), "04_EQUIPAMENTOS")
@@ -290,7 +290,7 @@ def draw_process(layout) -> None:
     line(layout, (284, 197), (284, 188), "07_INSTRUMENTACAO")
     centered(layout, "PV = NÍVEL", (284, 179), 1.55, "07_INSTRUMENTACAO")
     line(layout, (310, 150), (342, 150), "05_POTENCIA")
-    box(layout, 342, 138, 371, 162, "HV-102", "Válvula", "04_EQUIPAMENTOS", text_height=1.2)
+    box(layout, 342, 138, 371, 162, "HV-102", "Válvula manual", "04_EQUIPAMENTOS", text_height=1.2)
     arrow(layout, (371, 150), (402, 150), "05_POTENCIA")
     centered(layout, "CONSUMO", (386, 158), 1.55, "05_POTENCIA")
     centered(layout, "PERTURBAÇÃO d(t)", (386, 140), 1.4, "07_INSTRUMENTACAO")
@@ -505,14 +505,14 @@ def draw_cause_effect_table(layout) -> None:
     for x in columns[1:-1]:
         line(layout, (x, bottom), (x, y_top), "09_BORNES")
     for index, title in enumerate(headers):
-        centered(layout, title, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.2, "12_LEGENDA")
+        centered(layout, title, ((columns[index] + columns[index + 1]) / 2, y_top - header_h / 2), 1.4, "12_LEGENDA")
     for row_index, row in enumerate(CAUSE_EFFECTS):
         top = y_top - header_h - row_index * row_h
         if row_index:
             line(layout, (x0, top), (x1, top), "09_BORNES")
         center_y = top - row_h / 2
         for col_index, value in enumerate(row):
-            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), 1.1, "02_TEXTO")
+            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), 1.35, "02_TEXTO")
 
 
 def draw_operating_sequence(layout) -> None:
@@ -533,9 +533,9 @@ def draw_operating_sequence(layout) -> None:
     for left, right in zip(steps, steps[1:]):
         arrow(layout, (left[1], 228.5), (right[0], 228.5), "08_CABOS")
     add_rect(layout, 22, 184, 397, 198, "13_NOTAS")
-    centered(layout, "OPERAÇÃO NORMAL: PI regula a frequência; STOP, LSHH, LT inválido, falha do VFD ou tempo excedido retiram a marcha.", (209.5, 194), 1.15, "13_NOTAS")
-    centered(layout, "LA-L/LA-H em 15%/85% são alarmes; a ação operacional permanece pendente nesta revisão.", (209.5, 190), 1.15, "13_NOTAS")
-    centered(layout, "Após falta de energia, não há repartida automática. Aplicar permissivos e rearme consciente antes de nova partida.", (209.5, 186), 1.15, "13_NOTAS")
+    centered(layout, "OPERAÇÃO NORMAL: PI regula a frequência; STOP, LSHH, LT inválido, falha do VFD ou tempo excedido retiram a marcha.", (209.5, 194), 1.3, "13_NOTAS")
+    centered(layout, "LA-L/LA-H em 15%/85% são alarmes; a ação operacional permanece pendente nesta revisão.", (209.5, 190), 1.3, "13_NOTAS")
+    centered(layout, "Após falta de energia, não há repartida automática. Aplicar permissivos e rearme consciente antes de nova partida.", (209.5, 186), 1.3, "13_NOTAS")
     draw_cause_effect_table(layout)
 
 

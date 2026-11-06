@@ -4,12 +4,12 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 07
 
-Formato: A3 paisagem, unidades em milímetros, revisão gráfica 02 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 03 (2026-11-06)
 
-Estado: ampliação da documentação conceitual; validação funcional local aprovada.
-Inspeção dos SVGs atuais no navegador e reabertura no AutoCAD ainda pendentes.
+Estado: documentação conceitual; sete fontes DXF reabertas e auditadas no AutoCAD
+AcCoreConsole 2027. A inspeção dos SVGs atuais no navegador aguarda autorização.
 
-O projeto documenta uma malha conceitual de nível para o reservatório TK-101. A variável controlada é o nível medido por LT-101; a variável manipulada é a frequência de VFD-101, que altera a vazão da bomba P-101/M-101. A vazão de saída para consumo é a principal perturbação assumida.
+O projeto documenta uma malha conceitual de nível para o reservatório TK-101. A variável controlada é o nível medido por LT-101; a variável manipulada é a frequência de VFD-101, que altera a vazão da bomba P-101/M-101. A vazão de saída para consumo é a principal perturbação assumida. A origem e o equipamento de sucção a montante não foram definidos e aparecem como limite externo. HV-102 é uma válvula manual conceitual na saída; os dados para sua seleção continuam pendentes.
 
 ## Entregáveis
 
@@ -54,10 +54,10 @@ Cada prancha possui a fonte DXF correspondente em `fonte/` e derivados com o mes
 
 ## Validação e limites
 
-- Validador funcional específico: `PASS`, 225 verificações e zero erros.
-- Validador estrito do portfólio: `PASS`, 467.885 verificações, zero erros e zero avisos.
-- Revisor consolidado: `PASS`, 12 projetos, 88 pranchas, 352 arquivos gráficos e 60 CSVs; similaridade mínima PDF/PNG de 0,9842.
-- A revisão 02 foi renderizada em PNG e PDF para inspeção local. A abertura dos SVGs atuais em navegador e dos DXFs atuais no AutoCAD ainda não foi repetida.
+- Validador funcional específico: `PASS`, 228 verificações e zero erros; a lista de materiais contém 18 itens e inclui HV-102.
+- Revisor de planilhas do portfólio: `PASS`, dois workbooks, 13 abas e 214 fórmulas no conjunto, zero erros.
+- Validador estrito do portfólio: `PASS`, 624.766 verificações, zero erros e zero avisos. Os indicadores do revisor integrado estão registrados em `docs/auditoria-portfolio-2026-11.md`.
+- As sete folhas da revisão 03 foram reemitidas em DXF, PDF, SVG e PNG. P04-01 foi conferida em PNG integral e PDF rasterizado a 150 dpi; P04-02 no PNG integral; P04-07 em PNG integral e PDF rasterizado a 150 dpi. A inspeção dos SVGs no navegador aguarda autorização.
 - Os parâmetros PI são iniciais e não representam sintonia definitiva. Divergências persistentes entre LT-101 e chaves bloqueiam o automático; a resposta pós-falta de energia exige confirmação de retenção do alarme no PLC selecionado.
 - Nenhuma função recebe classificação SIL, PL ou categoria de segurança. Consulte [estrategia-pid.md](estrategia-pid.md) e [criterios-premissas.md](criterios-premissas.md).
 

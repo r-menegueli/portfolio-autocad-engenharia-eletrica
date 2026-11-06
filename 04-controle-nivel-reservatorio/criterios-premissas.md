@@ -10,6 +10,7 @@ Revisão: 00
 - Faixa normal de operação entre 30% e 80%; setpoint inicial em 60%.
 - LSL-101 em 15%, LSH-101 em 85% e LSHH-101 em 95%.
 - Uma bomba P-101 com motor M-101 de 4 kW, 220 V trifásico.
+- A origem de água e o equipamento a montante de P-101 não estão definidos; o fluxograma os representa apenas como limite externo. Tipo, diâmetro e pressão de HV-102 também dependem do projeto hidráulico.
 - VFD-101 com faixa comandada de 20 a 60 Hz e rampa máxima proposta de 1 Hz/s.
 - Vazão de consumo variável como perturbação dominante.
 

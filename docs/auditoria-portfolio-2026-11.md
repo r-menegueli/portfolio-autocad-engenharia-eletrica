@@ -9,7 +9,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 Na revisão corrente, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos
 gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 624.834 verificações, sem erros ou avisos.
+passou em 624.766 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -29,7 +29,7 @@ passou em 624.834 verificações, sem erros ou avisos.
 | P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. A revisão 04 evidencia na prancha a divergência entre a descrição de enchimento e a sequência LSH-inicia/LSL-encerra/LSHH-reserva. | O sentido do processo, tanques e função de LSL-LL permanecem pendentes; a sequência pode corresponder a esgotamento e não deve ser aplicada a enchimento sem revisão. Nenhum teste de CLP ou segurança funcional foi executado; também falta decidir a resposta a sensor incoerente com bomba em marcha. | Aprovar o processo, identificar os tanques e sensores em V01, corrigir sequência e proteções conforme os dados; escolher hardware e registrar critérios e evidências antes de ensaiar. |
-| P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
+| P04 — Nível | Sete folhas cobrem processo, malha, elétrica, interligações, layout e nove eventos causa–efeito; a revisão 03 deixa a origem a montante explicitamente indefinida e alinha HV-102 ao cadastro de materiais. | Sistema de uma bomba e um tanque com valores assumidos; fonte, sucção, vazão/carga, tubulação, curva/NPSH e dados da válvula não estão selecionados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir valores didáticos por levantamento hidráulico e equipamentos selecionados; definir fonte, sucção/descarga e válvulas; completar dados e respostas operacionais antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
@@ -54,6 +54,12 @@ passou em 624.834 verificações, sem erros ou avisos.
   corresponder a esgotamento. A prancha 09 destaca o ponto, e V01 agora exige direção,
   tanques e função dos sensores, inclusive LSL-LL. A incerteza de sensor incoerente com
   bomba em marcha continua separada e pendente.
+- Na revisão 03 do P04, removi do fluxograma a representação de um segundo TK-101
+  e explicitei a origem a montante como limite não especificado. Corrigi a legenda
+  para descrever o sinal e a HV-102 desenhada; incluí essa válvula na lista de
+  materiais e no workbook, com tipo, diâmetro e pressão pendentes. As sete fontes
+  passaram no AcCoreConsole 2027; a planilha conta agora 18 materiais. LA-L/LA-H,
+  dimensionamento hidráulico e retenção de alarmes continuam sem decisão ou ensaio.
 - Acrescentei P04-07 com a sequência de partida e matriz de nove eventos e respostas,
   conforme a filosofia existente. A retenção de alarmes após perda de energia
   permanece dependente do PLC a selecionar; as respostas a LA-L/LA-H seguem pendentes.
@@ -143,8 +149,9 @@ AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs P02 e o validador específico passou
 verificações, sem erros. A inspeção de SVGs P02-09 no navegador aguarda autorização.
 A prancha P03-09 foi inspecionada no PNG integral de produção e em PDF
 rasterizado a 150 dpi; tabela, fluxo, aviso e carimbo não apresentam cortes nem
-colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado; também encontrei
-e corrigi a tag TK-100 incoerente no fluxograma P04-01. As folhas
+colisões relevantes. P04-07 foi conferida em PNG e PDF rasterizado. Na revisão 03,
+removi a duplicação anterior de TK-101 em P04-01; a nova folha foi conferida em PNG
+integral e PDF rasterizado, e P04-02 em PNG integral. As folhas
 novas P09-07 e P09-08 foram inspecionadas em PNG integral e em PDF rasterizado a 150
 dpi; na revisão 03, P09-06 e P09-09 foram inspecionadas no PNG integral e no PDF
 rasterizado, e o contato atualizado das nove folhas P09 foi conferido. P07-09 foi

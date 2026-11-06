@@ -151,3 +151,20 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
 
 > Para integrar as mudanças, revise os cinco PRs e faça o merge no GitHub depois da
 > revisão técnica desejada.
+
+## Atualização da revisão técnica P03/P04 — 2026-11-06
+
+- P03 revisão 04 registra um ponto de parada antes da implementação: confirmar se o
+  processo é enchimento ou esgotamento e identificar tanques e função dos sensores.
+- P04 revisão 03 removeu o TK-101 duplicado do fluxograma e declara indefinida a origem
+  de água a montante. HV-102 agora aparece coerentemente na legenda, no CSV de materiais
+  e no workbook; tipo, diâmetro e pressão seguem pendentes de seleção hidráulica.
+- As sete fontes DXF do P04 passaram pela auditoria do AutoCAD AcCoreConsole 2027; o
+  validador específico passou em 228 verificações. O workbook passou na revisão conjunta
+  de planilhas: dois arquivos, 13 abas, 214 fórmulas e nenhum erro.
+- O revisor integrado passou em 12 projetos, 105 pranchas, 420 arquivos gráficos e 73
+  CSVs; similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em 624.766
+  verificações, sem erros ou avisos.
+- Os desenhos permanecem acadêmicos e conceituais. A origem hidráulica, a seleção de
+  equipamentos e as respostas operacionais ainda precisam de dados e decisões do processo.
+  A inspeção visual dos SVGs no navegador segue aguardando autorização do usuário.
