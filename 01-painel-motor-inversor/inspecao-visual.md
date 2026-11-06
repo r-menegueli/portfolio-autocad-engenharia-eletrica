@@ -76,3 +76,30 @@ e 67 CSVs. A inspeção visual dos SVGs em navegador continua pendente de autori
 
 Essa revisão confirma apresentação, integridade CAD e consistência documental. Não
 confirma dimensionamento, coordenação elétrica, seletividade ou conformidade normativa.
+
+## Revisão funcional/documental 03 — 2026-11-06
+
+A prancha 03 foi redesenhada para separar os comandos RUN, STOP e reset de falha do VFD
+em LOCAL e REMOTO. S3 passou a ser descrito como seletor de três posições
+LOCAL-0-REMOTO. S5 agora é o botão dedicado de rearme manual monitorado de KSR1; S4 e
+X3:9 permanecem destinados ao reset de falha do inversor. O desenho não fixa bornes nem
+arquitetura interna: o mapeamento de DI/STO e a quantidade de blocos de contato continuam
+dependentes dos equipamentos selecionados e de suas instruções.
+
+A prancha 08 e o CSV relacionado agora contêm treze verificações. V13 verifica a
+independência entre rearme de segurança e reset do VFD, a ausência de RUN no rearme e a
+exigência de novo comando deliberado. Todos os itens continuam `NÃO EXECUTADO`.
+
+Inspecionei em tamanho integral os PNGs das pranchas 03 e 08 e rasterizações independentes
+dos PDFs a 150 dpi. Não encontrei cortes ou colisões; a tabela V13 cabe na folha. A
+similaridade PDF/PNG foi 0,991639 em P01-03 e 0,983640 em P01-08. O AutoCAD AcCoreConsole
+2027 abriu e auditou as oito fontes DXF: `AUTOCAD_AUDIT=PASS` em 8/8.
+
+Após regenerar o manifesto e os derivados, o validador estrito aprovou 624.834
+verificações, com zero erros e avisos. A revisão consolidada aprovou 12 projetos, 105
+pranchas, 420 arquivos gráficos e 73 CSVs; a similaridade PDF/PNG mínima foi 0,981493,
+sem erros. O registro global está em `work/revisao-p01rev03/resultado.json`.
+
+A inspeção dos SVGs em navegador continua aguardando autorização. Esta revisão verifica
+apresentação, abertura CAD e consistência documental; não valida dimensionamento,
+coordenação, categoria de segurança, PL/SIL ou funcionamento de uma instalação real.

@@ -4,7 +4,7 @@ Autor: **Rogério Eduardo Moreira Menegueli**
 
 Data-base: **2026-09-05**
 
-Revisão: **02 (gráfica; 2026-11-05)**
+Revisão: **03 (funcional/documental; 2026-11-06)**
 
 Unidades dos desenhos: **milímetros (mm)**
 
@@ -21,7 +21,7 @@ oito pranchas A3 independentes.
 - seccionamento Q0, disjuntor Q1, DPS1 e proteção eletrônica do motor no VFD1;
 - inversor de frequência VFD1 e motor de indução M1;
 - emergência S0 em dois canais, relé KSR1 e entradas STO-A/STO-B;
-- partida, parada, rearme e seleção local/remoto em 24 Vcc;
+- comandos RUN, STOP e reset de falha separados, seletor LOCAL-0-REMOTO e rearme S5 do KSR1;
 - referência local de 0-10 V e remota de 4-20 mA;
 - sinalização de painel energizado, pronto, marcha e falha;
 - bornes X1, X2 e X3, barra PE e cabos W01 a W06 identificados.
@@ -78,12 +78,15 @@ O comando integrado também regenera a infraestrutura compartilhada:
 
 As oito fontes são DXF R2013/AC1027 reais, em milímetros, com os layers obrigatórios.
 PDF, SVG e PNG são derivados do DXF. As oito fontes passaram pela auditoria do AutoCAD
-2027 na revisão 02. A folha 07 organiza os dados ainda necessários para selecionar e
-coordenar as proteções; a folha 08 organiza evidências e etapas de verificação ainda não
-executadas. Nenhuma das folhas substitui cálculos, documentação do fabricante ou ensaios.
-A validação estrita e a inspeção visual de PNG/PDF desta revisão estão aprovadas; a
-inspeção dos SVGs em navegador permanece pendente de autorização. Os resultados são
-registrados em `validacao.json` e em [inspecao-visual.md](inspecao-visual.md).
+2027 na revisão 03. A folha 03 separa RUN, STOP e reset do VFD, acrescenta S5 para o
+rearme manual monitorado de KSR1 e explicita a dependência da pinagem em relação aos
+manuais selecionados. A folha 08 tem 13 verificações; todas seguem `NÃO EXECUTADO`.
+Nenhuma das folhas substitui cálculos, documentação do fabricante ou ensaios. O validador
+estrito aprovou 624.834 verificações, sem erros nem avisos; a revisão consolidada aprovou
+12 projetos, 105 folhas e 73 CSVs, com similaridade PDF/PNG mínima de 0,9815. A inspeção
+visual de PNG/PDF desta revisão está aprovada; a inspeção dos SVGs em navegador permanece
+pendente de autorização. Os resultados estão em `validacao.json` e em
+[inspecao-visual.md](inspecao-visual.md).
 
 ## Aviso obrigatório
 

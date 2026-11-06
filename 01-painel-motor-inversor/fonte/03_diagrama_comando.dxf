@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-1A2
+1BC
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-19F
+1B9
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-1A0
+1BA
 330
 3
 100
@@ -8951,7 +8951,7 @@ AcDbText
  40
 2.1
   1
-Comandos em 24 Vcc, seleção local/remoto e STO
+Comandos funcionais separados, seleção local/remoto e STO
   7
 PORTFOLIO_TEXTO
  72
@@ -9149,7 +9149,7 @@ AcDbMText
  71
 1
   1
-Emergência em dois canais via KSR1 e STO de VFD1; categoria de segurança\Pnão declarada sem análise de risco. Rearme automático desabilitado.
+S5 rearma KSR1; S4/X3:9 reiniciam falha do VFD.\PPinagem e categoria de segurança dependem de seleção e análise.
   7
 PORTFOLIO_TEXTO
  44
@@ -9541,7 +9541,7 @@ AcDbText
  40
 1.7
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  72
@@ -9577,7 +9577,7 @@ AcDbText
  40
 1.7
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9613,7 +9613,7 @@ AcDbText
  40
 1.7
   1
-REVISAO VISUAL 02
+REVISAO VISUAL 03
   7
 PORTFOLIO_TEXTO
  72
@@ -9783,7 +9783,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9821,7 +9821,7 @@ AcDbText
  40
 2.25
   1
-02
+03
   7
 PORTFOLIO_TEXTO
  11
@@ -10091,7 +10091,7 @@ AcDbLine
  10
 25.0
  20
-107.0
+103.0
  30
 0.0
  11
@@ -10101,33 +10101,9 @@ AcDbLine
  31
 0.0
   0
-LINE
-  5
-142
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-270.0
- 20
-107.0
- 30
-0.0
- 11
-270.0
- 21
-257.0
- 31
-0.0
-  0
 TEXT
   5
-143
+142
 330
 17
 100
@@ -10161,45 +10137,9 @@ AcDbText
  73
 2
   0
-TEXT
-  5
-144
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbText
- 10
-270.0
- 20
-263.0
- 30
-0.0
- 40
-1.9
-  1
-0 V
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-270.0
- 21
-263.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
 LINE
   5
-145
+143
 330
 17
 100
@@ -10211,43 +10151,19 @@ AcDbLine
  10
 25.0
  20
-239.0
+246.0
  30
 0.0
  11
 51.0
  21
-239.0
- 31
-0.0
-  0
-LINE
-  5
-146
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-25.0
- 20
-219.0
- 30
-0.0
- 11
-51.0
- 21
-219.0
+246.0
  31
 0.0
   0
 INSERT
   5
-147
+144
 330
 17
 100
@@ -10261,13 +10177,13 @@ P01_CONTATO_NF
  10
 58.0
  20
-239.0
+246.0
  30
 0.0
   0
 TEXT
   5
-149
+146
 330
 17
 100
@@ -10279,7 +10195,7 @@ AcDbText
  10
 58.0
  20
-245.0
+252.0
  30
 0.0
  40
@@ -10293,7 +10209,7 @@ PORTFOLIO_TEXTO
  11
 58.0
  21
-245.0
+252.0
  31
 0.0
 100
@@ -10301,45 +10217,81 @@ AcDbText
  73
 2
   0
-TEXT
+LINE
   5
-14A
+147
 330
 17
 100
 AcDbEntity
   8
-02_TEXTO
+06_COMANDO
 100
-AcDbText
+AcDbLine
  10
-58.0
+65.0
+ 20
+246.0
+ 30
+0.0
+ 11
+135.0
+ 21
+246.0
+ 31
+0.0
+  0
+LINE
+  5
+148
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+202.0
+ 20
+246.0
+ 30
+0.0
+ 11
+270.0
+ 21
+246.0
+ 31
+0.0
+  0
+LINE
+  5
+149
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
  20
 234.0
  30
 0.0
- 40
-1.4
-  1
-EMERG. CH1
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-58.0
+51.0
  21
 234.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 INSERT
   5
-14B
+14A
 330
 17
 100
@@ -10353,13 +10305,13 @@ P01_CONTATO_NF
  10
 58.0
  20
-219.0
+234.0
  30
 0.0
   0
 TEXT
   5
-14D
+14C
 330
 17
 100
@@ -10371,7 +10323,7 @@ AcDbText
  10
 58.0
  20
-225.0
+240.0
  30
 0.0
  40
@@ -10385,7 +10337,7 @@ PORTFOLIO_TEXTO
  11
 58.0
  21
-225.0
+240.0
  31
 0.0
 100
@@ -10393,7 +10345,31 @@ AcDbText
  73
 2
   0
-TEXT
+LINE
+  5
+14D
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+65.0
+ 20
+234.0
+ 30
+0.0
+ 11
+135.0
+ 21
+234.0
+ 31
+0.0
+  0
+LINE
   5
 14E
 330
@@ -10401,85 +10377,25 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
-100
-AcDbText
- 10
-58.0
- 20
-214.0
- 30
-0.0
- 40
-1.4
-  1
-EMERG. CH2
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-58.0
- 21
-214.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-LINE
-  5
-14F
-330
-17
-100
-AcDbEntity
-  8
 06_COMANDO
 100
 AcDbLine
  10
-65.0
+202.0
  20
-239.0
+234.0
  30
 0.0
  11
-128.0
+270.0
  21
-239.0
- 31
-0.0
-  0
-LINE
-  5
-150
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-65.0
- 20
-219.0
- 30
-0.0
- 11
-128.0
- 21
-219.0
+234.0
  31
 0.0
   0
 LWPOLYLINE
   5
-151
+14F
 330
 17
 100
@@ -10493,25 +10409,25 @@ AcDbPolyline
  70
 1
  10
-128.0
+135.0
  20
-208.0
+225.0
  10
-201.0
+202.0
  20
-208.0
+225.0
  10
-201.0
+202.0
  20
-250.0
+257.0
  10
-128.0
+135.0
  20
-250.0
+257.0
   0
 TEXT
   5
-152
+150
 330
 17
 100
@@ -10521,13 +10437,13 @@ AcDbEntity
 100
 AcDbText
  10
-164.5
+168.5
  20
-245.0
+251.0
  30
 0.0
  40
-2.5
+2.3
   1
 KSR1
   7
@@ -10535,9 +10451,81 @@ PORTFOLIO_TEXTO
  72
 1
  11
-164.5
+168.5
  21
-245.0
+251.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+151
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+168.5
+ 20
+244.0
+ 30
+0.0
+ 40
+1.5
+  1
+2 CANAIS
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+168.5
+ 21
+244.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+152
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+168.5
+ 20
+237.0
+ 30
+0.0
+ 40
+1.4
+  1
+RESET MON.
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+168.5
+ 21
+237.0
  31
 0.0
 100
@@ -10553,35 +10541,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+07_INSTRUMENTACAO
 100
 AcDbText
  10
-164.5
+216.0
  20
-213.0
+249.0
  30
 0.0
  40
-1.6
+1.5
   1
-Relé segurança 24 Vcc
+STO-A
   7
 PORTFOLIO_TEXTO
- 72
-1
  11
-164.5
+216.0
  21
-213.0
+249.0
  31
 0.0
 100
 AcDbText
- 73
-2
   0
-LINE
+TEXT
   5
 154
 330
@@ -10589,21 +10573,29 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
-AcDbLine
+AcDbText
  10
-201.0
+216.0
  20
-239.0
+237.0
  30
 0.0
+ 40
+1.5
+  1
+STO-B
+  7
+PORTFOLIO_TEXTO
  11
-270.0
+216.0
  21
-239.0
+237.0
  31
 0.0
+100
+AcDbText
   0
 LINE
   5
@@ -10617,19 +10609,19 @@ AcDbEntity
 100
 AcDbLine
  10
-201.0
+25.0
  20
-219.0
+220.0
  30
 0.0
  11
-270.0
+53.0
  21
-219.0
+220.0
  31
 0.0
   0
-TEXT
+INSERT
   5
 156
 330
@@ -10637,63 +10629,19 @@ TEXT
 100
 AcDbEntity
   8
-07_INSTRUMENTACAO
+06_COMANDO
 100
-AcDbText
+AcDbBlockReference
+  2
+P01_CONTATO_NA
  10
-223.0
+60.0
  20
-242.0
+220.0
  30
 0.0
- 40
-1.7
-  1
-STO-A
-  7
-PORTFOLIO_TEXTO
- 11
-223.0
- 21
-242.0
- 31
-0.0
-100
-AcDbText
   0
 TEXT
-  5
-157
-330
-17
-100
-AcDbEntity
-  8
-07_INSTRUMENTACAO
-100
-AcDbText
- 10
-223.0
- 20
-222.0
- 30
-0.0
- 40
-1.7
-  1
-STO-B
-  7
-PORTFOLIO_TEXTO
- 11
-223.0
- 21
-222.0
- 31
-0.0
-100
-AcDbText
-  0
-LINE
   5
 158
 330
@@ -10703,21 +10651,33 @@ AcDbEntity
   8
 06_COMANDO
 100
-AcDbLine
+AcDbText
  10
-25.0
+60.0
  20
-190.0
+226.0
  30
 0.0
+ 40
+1.8
+  1
+S5
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-48.0
+60.0
  21
-190.0
+226.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 159
 330
@@ -10725,21 +10685,33 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-25.0
+60.0
  20
-168.0
+215.0
  30
 0.0
+ 40
+1.4
+  1
+REARME KSR1
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-48.0
+60.0
  21
-168.0
+215.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
 LINE
   5
@@ -10753,21 +10725,93 @@ AcDbEntity
 100
 AcDbLine
  10
-25.0
+67.0
  20
-146.0
+220.0
  30
 0.0
  11
-65.0
+125.0
  21
-146.0
+220.0
+ 31
+0.0
+  0
+LINE
+  5
+15B
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+125.0
+ 20
+220.0
+ 30
+0.0
+ 11
+125.0
+ 21
+229.0
+ 31
+0.0
+  0
+LINE
+  5
+15C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+125.0
+ 20
+229.0
+ 30
+0.0
+ 11
+135.0
+ 21
+229.0
+ 31
+0.0
+  0
+LINE
+  5
+15D
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
+ 20
+204.0
+ 30
+0.0
+ 11
+48.0
+ 21
+204.0
  31
 0.0
   0
 INSERT
   5
-15B
+15E
 330
 17
 100
@@ -10781,13 +10825,13 @@ P01_CONTATO_NA
  10
 55.0
  20
-190.0
+204.0
  30
 0.0
   0
 TEXT
   5
-15D
+160
 330
 17
 100
@@ -10799,7 +10843,7 @@ AcDbText
  10
 55.0
  20
-196.0
+210.0
  30
 0.0
  40
@@ -10813,7 +10857,7 @@ PORTFOLIO_TEXTO
  11
 55.0
  21
-196.0
+210.0
  31
 0.0
 100
@@ -10821,63 +10865,7 @@ AcDbText
  73
 2
   0
-TEXT
-  5
-15E
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-55.0
- 20
-185.0
- 30
-0.0
- 40
-1.4
-  1
-LOCAL
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-55.0
- 21
-185.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-INSERT
-  5
-15F
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbBlockReference
-  2
-P01_CONTATO_NF
- 10
-91.0
- 20
-190.0
- 30
-0.0
-  0
-TEXT
+LINE
   5
 161
 330
@@ -10887,71 +10875,23 @@ AcDbEntity
   8
 06_COMANDO
 100
-AcDbText
+AcDbLine
  10
-91.0
+62.0
  20
-196.0
+204.0
  30
 0.0
- 40
-1.8
-  1
-S2
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-91.0
+94.0
  21
-196.0
+204.0
  31
 0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-162
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-91.0
- 20
-185.0
- 30
-0.0
- 40
-1.4
-  1
-PARAR
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-91.0
- 21
-185.0
- 31
-0.0
-100
-AcDbText
- 73
-2
   0
 INSERT
   5
-163
+162
 330
 17
 100
@@ -10963,15 +10903,15 @@ AcDbBlockReference
   2
 P01_CONTATO_NA
  10
-127.0
+101.0
  20
-190.0
+204.0
  30
 0.0
   0
 TEXT
   5
-165
+164
 330
 17
 100
@@ -10981,9 +10921,9 @@ AcDbEntity
 100
 AcDbText
  10
-127.0
+101.0
  20
-196.0
+210.0
  30
 0.0
  40
@@ -10995,15 +10935,39 @@ PORTFOLIO_TEXTO
  72
 1
  11
-127.0
+101.0
  21
-196.0
+210.0
  31
 0.0
 100
 AcDbText
  73
 2
+  0
+LINE
+  5
+165
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+108.0
+ 20
+204.0
+ 30
+0.0
+ 11
+177.0
+ 21
+204.0
+ 31
+0.0
   0
 TEXT
   5
@@ -11013,33 +10977,29 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+07_INSTRUMENTACAO
 100
 AcDbText
  10
-127.0
+184.0
  20
-185.0
+206.0
  30
 0.0
  40
-1.4
+1.45
   1
-PARTIR
+VFD1-RUN
   7
 PORTFOLIO_TEXTO
- 72
-1
  11
-127.0
+184.0
  21
-185.0
+206.0
  31
 0.0
 100
 AcDbText
- 73
-2
   0
 LINE
   5
@@ -11053,19 +11013,19 @@ AcDbEntity
 100
 AcDbLine
  10
-62.0
+25.0
  20
-190.0
+192.0
  30
 0.0
  11
-84.0
+48.0
  21
-190.0
+192.0
  31
 0.0
   0
-LINE
+INSERT
   5
 168
 330
@@ -11075,42 +11035,14 @@ AcDbEntity
   8
 06_COMANDO
 100
-AcDbLine
+AcDbBlockReference
+  2
+P01_CONTATO_NA
  10
-98.0
+55.0
  20
-190.0
+192.0
  30
-0.0
- 11
-120.0
- 21
-190.0
- 31
-0.0
-  0
-LINE
-  5
-169
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-134.0
- 20
-190.0
- 30
-0.0
- 11
-270.0
- 21
-190.0
- 31
 0.0
   0
 TEXT
@@ -11121,23 +11053,163 @@ TEXT
 100
 AcDbEntity
   8
+06_COMANDO
+100
+AcDbText
+ 10
+55.0
+ 20
+198.0
+ 30
+0.0
+ 40
+1.8
+  1
+S3-L
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+55.0
+ 21
+198.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+16B
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+62.0
+ 20
+192.0
+ 30
+0.0
+ 11
+94.0
+ 21
+192.0
+ 31
+0.0
+  0
+INSERT
+  5
+16C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NF
+ 10
+101.0
+ 20
+192.0
+ 30
+0.0
+  0
+TEXT
+  5
+16E
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+101.0
+ 20
+198.0
+ 30
+0.0
+ 40
+1.8
+  1
+S2
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+101.0
+ 21
+198.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+16F
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+108.0
+ 20
+192.0
+ 30
+0.0
+ 11
+177.0
+ 21
+192.0
+ 31
+0.0
+  0
+TEXT
+  5
+170
+330
+17
+100
+AcDbEntity
+  8
 07_INSTRUMENTACAO
 100
 AcDbText
  10
-171.0
+184.0
  20
 194.0
  30
 0.0
  40
-1.7
+1.45
   1
-VFD1-DI1 RUN 3 FIOS
+VFD1-STOP
   7
 PORTFOLIO_TEXTO
  11
-171.0
+184.0
  21
 194.0
  31
@@ -11145,9 +11217,249 @@ PORTFOLIO_TEXTO
 100
 AcDbText
   0
+LINE
+  5
+171
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
+ 20
+180.0
+ 30
+0.0
+ 11
+48.0
+ 21
+180.0
+ 31
+0.0
+  0
 INSERT
   5
-16B
+172
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NA
+ 10
+55.0
+ 20
+180.0
+ 30
+0.0
+  0
+TEXT
+  5
+174
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+55.0
+ 20
+186.0
+ 30
+0.0
+ 40
+1.8
+  1
+S3-R
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+55.0
+ 21
+186.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+175
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+62.0
+ 20
+180.0
+ 30
+0.0
+ 11
+94.0
+ 21
+180.0
+ 31
+0.0
+  0
+INSERT
+  5
+176
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NA
+ 10
+101.0
+ 20
+180.0
+ 30
+0.0
+  0
+TEXT
+  5
+178
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+101.0
+ 20
+186.0
+ 30
+0.0
+ 40
+1.8
+  1
+X3:7
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+101.0
+ 21
+186.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+179
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+108.0
+ 20
+180.0
+ 30
+0.0
+ 11
+177.0
+ 21
+180.0
+ 31
+0.0
+  0
+TEXT
+  5
+17A
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+184.0
+ 20
+182.0
+ 30
+0.0
+ 40
+1.45
+  1
+VFD1-RUN
+  7
+PORTFOLIO_TEXTO
+ 11
+184.0
+ 21
+182.0
+ 31
+0.0
+100
+AcDbText
+  0
+LINE
+  5
+17B
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
+ 20
+168.0
+ 30
+0.0
+ 11
+48.0
+ 21
+168.0
+ 31
+0.0
+  0
+INSERT
+  5
+17C
 330
 17
 100
@@ -11167,7 +11479,7 @@ P01_CONTATO_NA
   0
 TEXT
   5
-16D
+17E
 330
 17
 100
@@ -11201,229 +11513,9 @@ AcDbText
  73
 2
   0
-TEXT
-  5
-16E
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-55.0
- 20
-163.0
- 30
-0.0
- 40
-1.4
-  1
-REMOTO
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-55.0
- 21
-163.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-INSERT
-  5
-16F
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbBlockReference
-  2
-P01_CONTATO_NA
- 10
-103.0
- 20
-168.0
- 30
-0.0
-  0
-TEXT
-  5
-171
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbText
- 10
-103.0
- 20
-174.0
- 30
-0.0
- 40
-1.8
-  1
-X3:7
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-103.0
- 21
-174.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-172
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-103.0
- 20
-163.0
- 30
-0.0
- 40
-1.4
-  1
-RUN REMOTO
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-103.0
- 21
-163.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-INSERT
-  5
-173
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbBlockReference
-  2
-P01_CONTATO_NF
- 10
-151.0
- 20
-168.0
- 30
-0.0
-  0
-TEXT
-  5
-175
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbText
- 10
-151.0
- 20
-174.0
- 30
-0.0
- 40
-1.8
-  1
-X3:8
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-151.0
- 21
-174.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-176
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-151.0
- 20
-163.0
- 30
-0.0
- 40
-1.4
-  1
-STOP REMOTO
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-151.0
- 21
-163.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
 LINE
   5
-177
+17F
 330
 17
 100
@@ -11439,55 +11531,7 @@ AcDbLine
  30
 0.0
  11
-96.0
- 21
-168.0
- 31
-0.0
-  0
-LINE
-  5
-178
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-110.0
- 20
-168.0
- 30
-0.0
- 11
-144.0
- 21
-168.0
- 31
-0.0
-  0
-LINE
-  5
-179
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-158.0
- 20
-168.0
- 30
-0.0
- 11
-270.0
+94.0
  21
 168.0
  31
@@ -11495,7 +11539,143 @@ AcDbLine
   0
 INSERT
   5
-17A
+180
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NF
+ 10
+101.0
+ 20
+168.0
+ 30
+0.0
+  0
+TEXT
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+101.0
+ 20
+174.0
+ 30
+0.0
+ 40
+1.8
+  1
+X3:8
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+101.0
+ 21
+174.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+183
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+108.0
+ 20
+168.0
+ 30
+0.0
+ 11
+177.0
+ 21
+168.0
+ 31
+0.0
+  0
+TEXT
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+184.0
+ 20
+170.0
+ 30
+0.0
+ 40
+1.45
+  1
+VFD1-STOP
+  7
+PORTFOLIO_TEXTO
+ 11
+184.0
+ 21
+170.0
+ 31
+0.0
+100
+AcDbText
+  0
+LINE
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
+ 20
+156.0
+ 30
+0.0
+ 11
+48.0
+ 21
+156.0
+ 31
+0.0
+  0
+INSERT
+  5
+186
 330
 17
 100
@@ -11507,15 +11687,15 @@ AcDbBlockReference
   2
 P01_CONTATO_NA
  10
-72.0
+55.0
  20
-146.0
+156.0
  30
 0.0
   0
 TEXT
   5
-17C
+188
 330
 17
 100
@@ -11525,9 +11705,89 @@ AcDbEntity
 100
 AcDbText
  10
-72.0
+55.0
  20
-152.0
+162.0
+ 30
+0.0
+ 40
+1.8
+  1
+S3-L
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+55.0
+ 21
+162.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+189
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+62.0
+ 20
+156.0
+ 30
+0.0
+ 11
+94.0
+ 21
+156.0
+ 31
+0.0
+  0
+INSERT
+  5
+18A
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NA
+ 10
+101.0
+ 20
+156.0
+ 30
+0.0
+  0
+TEXT
+  5
+18C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+101.0
+ 20
+162.0
  30
 0.0
  40
@@ -11539,45 +11799,9 @@ PORTFOLIO_TEXTO
  72
 1
  11
-72.0
+101.0
  21
-152.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-17D
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-72.0
- 20
-141.0
- 30
-0.0
- 40
-1.4
-  1
-RESET
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-72.0
- 21
-141.0
+162.0
  31
 0.0
 100
@@ -11587,7 +11811,7 @@ AcDbText
   0
 LINE
   5
-17E
+18D
 330
 17
 100
@@ -11597,21 +11821,21 @@ AcDbEntity
 100
 AcDbLine
  10
-79.0
+108.0
  20
-146.0
+156.0
  30
 0.0
  11
-270.0
+177.0
  21
-146.0
+156.0
  31
 0.0
   0
 TEXT
   5
-17F
+18E
 330
 17
 100
@@ -11621,21 +11845,21 @@ AcDbEntity
 100
 AcDbText
  10
-157.0
+184.0
  20
-150.0
+158.0
  30
 0.0
  40
-1.7
+1.45
   1
-VFD1-DI2 RESET
+VFD1-RESET
   7
 PORTFOLIO_TEXTO
  11
-157.0
+184.0
  21
-150.0
+158.0
  31
 0.0
 100
@@ -11643,7 +11867,223 @@ AcDbText
   0
 LINE
   5
-180
+18F
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+25.0
+ 20
+144.0
+ 30
+0.0
+ 11
+48.0
+ 21
+144.0
+ 31
+0.0
+  0
+INSERT
+  5
+190
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NA
+ 10
+55.0
+ 20
+144.0
+ 30
+0.0
+  0
+TEXT
+  5
+192
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+55.0
+ 20
+150.0
+ 30
+0.0
+ 40
+1.8
+  1
+S3-R
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+55.0
+ 21
+150.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+193
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+62.0
+ 20
+144.0
+ 30
+0.0
+ 11
+94.0
+ 21
+144.0
+ 31
+0.0
+  0
+INSERT
+  5
+194
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbBlockReference
+  2
+P01_CONTATO_NA
+ 10
+101.0
+ 20
+144.0
+ 30
+0.0
+  0
+TEXT
+  5
+196
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+101.0
+ 20
+150.0
+ 30
+0.0
+ 40
+1.8
+  1
+X3:9
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+101.0
+ 21
+150.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+197
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+108.0
+ 20
+144.0
+ 30
+0.0
+ 11
+177.0
+ 21
+144.0
+ 31
+0.0
+  0
+TEXT
+  5
+198
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+184.0
+ 20
+146.0
+ 30
+0.0
+ 40
+1.45
+  1
+VFD1-RESET
+  7
+PORTFOLIO_TEXTO
+ 11
+184.0
+ 21
+146.0
+ 31
+0.0
+100
+AcDbText
+  0
+LINE
+  5
+199
 330
 17
 100
@@ -11667,7 +12107,7 @@ AcDbLine
   0
 INSERT
   5
-181
+19A
 330
 17
 100
@@ -11687,7 +12127,7 @@ P01_POT
   0
 LINE
   5
-183
+19C
 330
 17
 100
@@ -11711,7 +12151,7 @@ AcDbLine
   0
 TEXT
   5
-184
+19D
 330
 17
 100
@@ -11723,11 +12163,11 @@ AcDbText
  10
 105.0
  20
-134.0
+130.0
  30
 0.0
  40
-1.5
+1.45
   1
 P1 / 0-10 V LOCAL
   7
@@ -11737,7 +12177,7 @@ PORTFOLIO_TEXTO
  11
 105.0
  21
-134.0
+130.0
  31
 0.0
 100
@@ -11747,7 +12187,7 @@ AcDbText
   0
 LINE
   5
-185
+19E
 330
 17
 100
@@ -11759,19 +12199,19 @@ AcDbLine
  10
 25.0
  20
-110.0
+109.0
  30
 0.0
  11
 145.0
  21
-110.0
+109.0
  31
 0.0
   0
 TEXT
   5
-186
+19F
 330
 17
 100
@@ -11783,11 +12223,11 @@ AcDbText
  10
 85.0
  20
-116.0
+115.0
  30
 0.0
  40
-1.5
+1.4
   1
 X3:10-11 / 4-20 mA REMOTO
   7
@@ -11797,7 +12237,7 @@ PORTFOLIO_TEXTO
  11
 85.0
  21
-116.0
+115.0
  31
 0.0
 100
@@ -11807,7 +12247,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-187
+1A0
 330
 17
 100
@@ -11839,7 +12279,7 @@ AcDbPolyline
   0
 TEXT
   5
-188
+1A1
 330
 17
 100
@@ -11851,11 +12291,11 @@ AcDbText
  10
 176.0
  20
-129.0
+128.0
  30
 0.0
  40
-1.7
+1.55
   1
 S3 - FONTE DE REFERÊNCIA
   7
@@ -11865,7 +12305,7 @@ PORTFOLIO_TEXTO
  11
 176.0
  21
-129.0
+128.0
  31
 0.0
 100
@@ -11875,7 +12315,7 @@ AcDbText
   0
 TEXT
   5
-189
+1A2
 330
 17
 100
@@ -11887,11 +12327,11 @@ AcDbText
  10
 176.0
  20
-118.5
+118.0
  30
 0.0
  40
-1.6
+1.5
   1
 LOCAL / REMOTO
   7
@@ -11901,7 +12341,7 @@ PORTFOLIO_TEXTO
  11
 176.0
  21
-118.5
+118.0
  31
 0.0
 100
@@ -11911,7 +12351,7 @@ AcDbText
   0
 LINE
   5
-18A
+1A3
 330
 17
 100
@@ -11923,19 +12363,19 @@ AcDbLine
  10
 207.0
  20
-118.5
+118.0
  30
 0.0
  11
 270.0
  21
-118.5
+118.0
  31
 0.0
   0
 TEXT
   5
-18B
+1A4
 330
 17
 100
@@ -11947,13 +12387,13 @@ AcDbText
  10
 238.5
  20
-125.0
+124.0
  30
 0.0
  40
-1.6
+1.4
   1
-VFD1-AI1
+VFD1-AI1 (OEM)
   7
 PORTFOLIO_TEXTO
  72
@@ -11961,7 +12401,43 @@ PORTFOLIO_TEXTO
  11
 238.5
  21
-125.0
+124.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1A5
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+210.0
+ 20
+99.0
+ 30
+0.0
+ 40
+1.35
+  1
+DI/STO E PINAGEM: DEFINIR CONFORME MANUAIS DO VFD1 E KSR1
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+210.0
+ 21
+99.0
  31
 0.0
 100
@@ -11971,7 +12447,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-18C
+1A6
 330
 17
 100
@@ -12003,7 +12479,7 @@ AcDbPolyline
   0
 TEXT
   5
-18D
+1A7
 330
 17
 100
@@ -12039,7 +12515,7 @@ AcDbText
   0
 INSERT
   5
-18E
+1A8
 330
 17
 100
@@ -12059,7 +12535,7 @@ P01_LAMPADA
   0
 TEXT
   5
-190
+1AA
 330
 17
 100
@@ -12091,7 +12567,7 @@ AcDbText
   0
 TEXT
   5
-191
+1AB
 330
 17
 100
@@ -12123,7 +12599,7 @@ AcDbText
   0
 INSERT
   5
-192
+1AC
 330
 17
 100
@@ -12143,7 +12619,7 @@ P01_LAMPADA
   0
 TEXT
   5
-194
+1AE
 330
 17
 100
@@ -12175,7 +12651,7 @@ AcDbText
   0
 TEXT
   5
-195
+1AF
 330
 17
 100
@@ -12207,7 +12683,7 @@ AcDbText
   0
 INSERT
   5
-196
+1B0
 330
 17
 100
@@ -12227,7 +12703,7 @@ P01_LAMPADA
   0
 TEXT
   5
-198
+1B2
 330
 17
 100
@@ -12259,7 +12735,7 @@ AcDbText
   0
 TEXT
   5
-199
+1B3
 330
 17
 100
@@ -12291,7 +12767,7 @@ AcDbText
   0
 INSERT
   5
-19A
+1B4
 330
 17
 100
@@ -12311,7 +12787,7 @@ P01_LAMPADA
   0
 TEXT
   5
-19C
+1B6
 330
 17
 100
@@ -12343,7 +12819,7 @@ AcDbText
   0
 TEXT
   5
-19D
+1B7
 330
 17
 100
@@ -12375,7 +12851,7 @@ AcDbText
   0
 TEXT
   5
-19E
+1B8
 330
 17
 100
@@ -13519,7 +13995,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-1A1
+1BB
   0
 DICTIONARYVAR
   5
@@ -20145,7 +20621,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-1A1
+1BB
 330
 2D
 100

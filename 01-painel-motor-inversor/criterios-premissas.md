@@ -41,8 +41,12 @@ diferença confirma a coerência da hipótese, mas o valor real deve vir da plac
   A margem não autoriza uso sem conferir regime, sobrecarga, temperatura e fabricante.
 - **Q2:** disjuntor bipolar de comando, 2 A, adequado à corrente de magnetização de PS1.
 - **PS1:** entrada compatível com 380-480 Vca e saída 24 Vcc/2,5 A.
-- **KSR1:** relé de segurança de dois canais, rearme manual monitorado e saídas adequadas
-  às entradas STO específicas de VFD1.
+- **KSR1:** relé de segurança de dois canais, rearme manual monitorado por botão S5
+  dedicado e saídas adequadas às entradas STO específicas de VFD1. S5 não é o reset de
+  falha do inversor; não se declara categoria, PL ou SIL.
+- **S3:** seletor conceitual de três posições LOCAL-0-REMOTO. Os blocos de contato e a
+  comutação entre comandos/referências ainda dependem da arquitetura e dos componentes
+  selecionados; posições LOCAL e REMOTO devem ser mutuamente exclusivas.
 - **Painel:** aço pintado, IP54, 800 x 600 x 300 mm, com placa, ventilação e barra PE.
 
 ## 5. Cabos e segregação
@@ -71,7 +75,7 @@ conceito de equipotencialização devem seguir a documentação dos equipamentos
 | Limite de corrente | 18 A | hipótese inferior à capacidade do VFD e superior a In |
 | Método de controle inicial | V/f quadrático | adequado à carga centrífuga assumida |
 | Rearme após falta de energia | desabilitado | evita partida não comandada |
-| Fonte de comando | local/remoto por S3 | sem transferência automática em marcha |
+| Fonte de comando | local/0/remoto por S3 | sem transferência automática em marcha; contatos e lógica pendentes |
 
 ## 7. Referências técnicas de orientação
 
@@ -112,7 +116,7 @@ e na prancha 07. Todos os itens dessa matriz permanecem pendentes.
 ### 8.2 Plano de verificação e evidências
 
 A prancha 08 e [plano-verificacao.csv](plano-verificacao.csv) são um plano de
-fechamento documental e funcional, não um registro de testes aprovados. Os doze itens
+fechamento documental e funcional, não um registro de testes aprovados. Os treze itens
 permanecem como `NÃO EXECUTADO`, pois não foram apresentados dados de campo nem
 resultados de ensaio. O status não deve ser convertido em aprovado por inferência.
 
@@ -120,5 +124,7 @@ Antes de encerrar qualquer linha, devem existir os dados e as evidências indica
 critérios e tolerâncias aplicáveis, identificação do modelo e revisão do fabricante,
 instrumentos adequados e responsável habilitado. Ensaios de STO e funções de segurança
 dependem de requisitos derivados da análise de risco e de validação documentada; esta
-matriz não prescreve como executá-los nem estabelece PL/SIL. O desenho também não
-autoriza energização ou comissionamento.
+matriz não prescreve como executá-los nem estabelece PL/SIL. A linha V13 exige verificar
+separadamente o rearme S5/KSR1, o reset S4/X3:9 do VFD e a ausência de partida após
+rearme, troca de modo ou retorno de energia. O desenho também não autoriza energização
+ou comissionamento.

@@ -37,8 +37,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "01-painel-motor-inversor"
-PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+PROJECT_DATE = "2026-11-06"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -74,9 +74,9 @@ SHEETS = (
         3,
         "03_diagrama_comando.dxf",
         "DIAGRAMA DE COMANDO",
-        "Comandos em 24 Vcc, seleção local/remoto e STO",
-        "Emergência em dois canais via KSR1 e STO de VFD1; categoria de segurança\\P"
-        "não declarada sem análise de risco. Rearme automático desabilitado.",
+        "Comandos funcionais separados, seleção local/remoto e STO",
+        "S5 rearma KSR1; S4/X3:9 reiniciam falha do VFD.\\P"
+        "Pinagem e categoria de segurança dependem de seleção e análise.",
         "S: botão/seletor | H: sinalizador | KSR: relé de segurança | DI/AI/RO: I/O",
     ),
     SheetSpec(
@@ -351,56 +351,64 @@ def add_contact(layout, x: float, y: float, tag: str, *, nc: bool = False, detai
 
 
 def draw_command(layout) -> None:
-    line(layout, (25.0, 107.0), (25.0, 257.0), "06_COMANDO")
-    line(layout, (270.0, 107.0), (270.0, 257.0), "06_COMANDO")
+    line(layout, (25.0, 103.0), (25.0, 257.0), "06_COMANDO")
     centered_text(layout, "+24 Vcc", (25.0, 263.0), 1.9, "06_COMANDO")
-    centered_text(layout, "0 V", (270.0, 263.0), 1.9, "06_COMANDO")
-
-    for y in (239.0, 219.0):
+    # S0/KSR1/STO: interface funcional; bornes concretos dependem dos OEMs selecionados.
+    for y, tag in ((246.0, "S0A"), (234.0, "S0B")):
         line(layout, (25.0, y), (51.0, y), "06_COMANDO")
-    add_contact(layout, 58.0, 239.0, "S0A", nc=True, detail="EMERG. CH1")
-    add_contact(layout, 58.0, 219.0, "S0B", nc=True, detail="EMERG. CH2")
-    line(layout, (65.0, 239.0), (128.0, 239.0), "06_COMANDO")
-    line(layout, (65.0, 219.0), (128.0, 219.0), "06_COMANDO")
-    equipment_box(layout, 128.0, 208.0, 201.0, 250.0, "KSR1", "Relé segurança 24 Vcc", layer="06_COMANDO")
-    line(layout, (201.0, 239.0), (270.0, 239.0), "06_COMANDO")
-    line(layout, (201.0, 219.0), (270.0, 219.0), "06_COMANDO")
-    add_text(layout, "STO-A", (223.0, 242.0), 1.7, layer="07_INSTRUMENTACAO")
-    add_text(layout, "STO-B", (223.0, 222.0), 1.7, layer="07_INSTRUMENTACAO")
+        add_contact(layout, 58.0, y, tag, nc=True)
+        line(layout, (65.0, y), (135.0, y), "06_COMANDO")
+        line(layout, (202.0, y), (270.0, y), "06_COMANDO")
+    add_rect(layout, 135.0, 225.0, 202.0, 257.0, "06_COMANDO")
+    centered_text(layout, "KSR1", (168.5, 251.0), 2.3, "06_COMANDO")
+    centered_text(layout, "2 CANAIS", (168.5, 244.0), 1.5, "02_TEXTO")
+    centered_text(layout, "RESET MON.", (168.5, 237.0), 1.4, "02_TEXTO")
+    add_text(layout, "STO-A", (216.0, 249.0), 1.5, layer="07_INSTRUMENTACAO")
+    add_text(layout, "STO-B", (216.0, 237.0), 1.5, layer="07_INSTRUMENTACAO")
 
-    for y in (190.0, 168.0):
+    # S5 is the dedicated manual reset for KSR1. It is separate from VFD fault reset.
+    line(layout, (25.0, 220.0), (53.0, 220.0), "06_COMANDO")
+    add_contact(layout, 60.0, 220.0, "S5", detail="REARME KSR1")
+    line(layout, (67.0, 220.0), (125.0, 220.0), "06_COMANDO")
+    line(layout, (125.0, 220.0), (125.0, 229.0), "06_COMANDO")
+    line(layout, (125.0, 229.0), (135.0, 229.0), "06_COMANDO")
+
+    # Separate RUN, STOP and VFD-reset functions. S3's mutually exclusive
+    # LOCAL/0/REMOTE contacts select the source; exact DI mapping is OEM-dependent.
+    command_rows = (
+        (204.0, "S3-L", "S1", False, "VFD1-RUN"),
+        (192.0, "S3-L", "S2", True, "VFD1-STOP"),
+        (180.0, "S3-R", "X3:7", False, "VFD1-RUN"),
+        (168.0, "S3-R", "X3:8", True, "VFD1-STOP"),
+        (156.0, "S3-L", "S4", False, "VFD1-RESET"),
+        (144.0, "S3-R", "X3:9", False, "VFD1-RESET"),
+    )
+    for y, mode_tag, command_tag, normally_closed, function in command_rows:
         line(layout, (25.0, y), (48.0, y), "06_COMANDO")
-    line(layout, (25.0, 146.0), (65.0, 146.0), "06_COMANDO")
-    add_contact(layout, 55.0, 190.0, "S3-L", detail="LOCAL")
-    add_contact(layout, 91.0, 190.0, "S2", nc=True, detail="PARAR")
-    add_contact(layout, 127.0, 190.0, "S1", detail="PARTIR")
-    line(layout, (62.0, 190.0), (84.0, 190.0), "06_COMANDO")
-    line(layout, (98.0, 190.0), (120.0, 190.0), "06_COMANDO")
-    line(layout, (134.0, 190.0), (270.0, 190.0), "06_COMANDO")
-    add_text(layout, "VFD1-DI1 RUN 3 FIOS", (171.0, 194.0), 1.7, layer="07_INSTRUMENTACAO")
-
-    add_contact(layout, 55.0, 168.0, "S3-R", detail="REMOTO")
-    add_contact(layout, 103.0, 168.0, "X3:7", detail="RUN REMOTO")
-    add_contact(layout, 151.0, 168.0, "X3:8", nc=True, detail="STOP REMOTO")
-    line(layout, (62.0, 168.0), (96.0, 168.0), "06_COMANDO")
-    line(layout, (110.0, 168.0), (144.0, 168.0), "06_COMANDO")
-    line(layout, (158.0, 168.0), (270.0, 168.0), "06_COMANDO")
-
-    add_contact(layout, 72.0, 146.0, "S4", detail="RESET")
-    line(layout, (79.0, 146.0), (270.0, 146.0), "06_COMANDO")
-    add_text(layout, "VFD1-DI2 RESET", (157.0, 150.0), 1.7, layer="07_INSTRUMENTACAO")
+        add_contact(layout, 55.0, y, mode_tag)
+        line(layout, (62.0, y), (94.0, y), "06_COMANDO")
+        add_contact(layout, 101.0, y, command_tag, nc=normally_closed)
+        line(layout, (108.0, y), (177.0, y), "06_COMANDO")
+        add_text(layout, function, (184.0, y + 2.0), 1.45, layer="07_INSTRUMENTACAO")
 
     line(layout, (25.0, 128.0), (64.0, 128.0), "07_INSTRUMENTACAO")
     layout.add_blockref("P01_POT", (72.0, 128.0), dxfattribs={"layer": "07_INSTRUMENTACAO"})
     line(layout, (80.0, 128.0), (145.0, 128.0), "07_INSTRUMENTACAO")
-    centered_text(layout, "P1 / 0-10 V LOCAL", (105.0, 134.0), 1.5, "07_INSTRUMENTACAO")
-    line(layout, (25.0, 110.0), (145.0, 110.0), "07_INSTRUMENTACAO")
-    centered_text(layout, "X3:10-11 / 4-20 mA REMOTO", (85.0, 116.0), 1.5, "07_INSTRUMENTACAO")
+    centered_text(layout, "P1 / 0-10 V LOCAL", (105.0, 130.0), 1.45, "07_INSTRUMENTACAO")
+    line(layout, (25.0, 109.0), (145.0, 109.0), "07_INSTRUMENTACAO")
+    centered_text(layout, "X3:10-11 / 4-20 mA REMOTO", (85.0, 115.0), 1.4, "07_INSTRUMENTACAO")
     add_rect(layout, 145.0, 104.0, 207.0, 134.0, "07_INSTRUMENTACAO")
-    centered_text(layout, "S3 - FONTE DE REFERÊNCIA", (176.0, 129.0), 1.7, "07_INSTRUMENTACAO")
-    centered_text(layout, "LOCAL / REMOTO", (176.0, 118.5), 1.6, "02_TEXTO")
-    line(layout, (207.0, 118.5), (270.0, 118.5), "07_INSTRUMENTACAO")
-    centered_text(layout, "VFD1-AI1", (238.5, 125.0), 1.6, "07_INSTRUMENTACAO")
+    centered_text(layout, "S3 - FONTE DE REFERÊNCIA", (176.0, 128.0), 1.55, "07_INSTRUMENTACAO")
+    centered_text(layout, "LOCAL / REMOTO", (176.0, 118.0), 1.5, "02_TEXTO")
+    line(layout, (207.0, 118.0), (270.0, 118.0), "07_INSTRUMENTACAO")
+    centered_text(layout, "VFD1-AI1 (OEM)", (238.5, 124.0), 1.4, "07_INSTRUMENTACAO")
+    centered_text(
+        layout,
+        "DI/STO E PINAGEM: DEFINIR CONFORME MANUAIS DO VFD1 E KSR1",
+        (210.0, 99.0),
+        1.35,
+        "13_NOTAS",
+    )
 
     add_rect(layout, 292.0, 112.0, 401.0, 254.0, "12_LEGENDA")
     centered_text(layout, "SINALIZAÇÃO", (346.5, 247.0), 2.3, "12_LEGENDA")
@@ -638,7 +646,7 @@ def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
     x_edges = (18.0, 37.0, 100.0, 235.0, 380.0, 410.0)
     table_top = 236.0
     header_height = 8.0
-    row_height = 9.3
+    row_height = 8.3
     table_bottom = table_top - header_height - row_height * len(rows)
     add_rect(layout, x_edges[0], table_bottom, x_edges[-1], table_top, "01_CARIMBO")
     for x in x_edges[1:-1]:
@@ -744,12 +752,12 @@ def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
         rows = list(reader)
     codes = [row.get("codigo", "").strip() for row in rows]
     if (
-        len(rows) != 12
+        len(rows) != 13
         or len(set(codes)) != len(rows)
         or any(not all(row.get(field, "").strip() for field in expected_fields) for row in rows)
         or any(row["status"] != "NÃO EXECUTADO" for row in rows)
     ):
-        raise ValueError(f"A matriz de verificacao deve conter doze linhas completas e nao executadas: {source}")
+        raise ValueError(f"A matriz de verificacao deve conter treze linhas completas e nao executadas: {source}")
     return rows
 
 
