@@ -245,3 +245,12 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
   integrado confirmou 12 projetos, 111 folhas, 444 arquivos gráficos e 75 CSVs; a
   similaridade mínima PDF/PNG foi 0,981493. PR #1 permanece aberto como rascunho e
   sem merge; SVGs continuam aguardando autorização para inspeção no navegador.
+
+## Publicação CAD — P01 revisão 04 — 2026-11-06
+
+- Commit `f4690bb` acrescenta P01-09 como DXF editável e seus derivados, atualiza os nove carimbos para revisão 04, os índices, o manifesto e a documentação.
+- AcCoreConsole 2027 auditou 9/9 DXFs; a repetição do gerador reproduziu os nove SHA-256.
+- PNG integral, PDF rasterizado pelo Poppler a 150 dpi e contato das nove folhas foram inspecionados. P01-09 teve similaridade PDF/PNG de 0,990330.
+- Validação estrita: 663.880 verificações, 0 erros, 0 avisos. Revisão integrada: 12 projetos, 114 folhas, 456 arquivos gráficos, 77 CSVs; similaridade mínima de 0,981493.
+- O commit foi enviado para `codex/professional-portfolio-2026-11`. O PR #1 foi atualizado e permanece aberto como rascunho, sem merge; a branch principal não foi alterada.
+- A inspeção dos SVGs no navegador continua aguardando autorização. A sequência é conceitual e não afirma ensaios, categoria/PL/SIL, tempo de parada ou comportamento final para perda de sinal.
