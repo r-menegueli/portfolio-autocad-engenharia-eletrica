@@ -17,6 +17,19 @@ TITLE_BLOCK_NAME = "CARIMBO_A3"
 TEXT_STYLE = "PORTFOLIO_TEXTO"
 TITLE_STYLE = "PORTFOLIO_TITULO"
 
+# Paleta com contraste adequado para as pranchas P13-P22 em papel branco.
+PROJECT_PRINT_LAYER_COLORS = {
+    "03_COTAS": 152,
+    "04_EQUIPAMENTOS": 32,
+    "05_POTENCIA": 12,
+    "06_COMANDO": 94,
+    "07_INSTRUMENTACAO": 202,
+    "08_CABOS": 124,
+    "09_BORNES": 145,
+    "10_ELETROCALHAS": 251,
+    "11_ARQUITETURA": 253,
+}
+
 # O ezdxf normalmente grava horario e GUIDs novos a cada save. A opcao oficial
 # abaixo fixa apenas esses metadados tecnicos; a data documental permanece no
 # carimbo e nos metadados PORTFOLIO_* definidos pelo gerador.
@@ -88,7 +101,12 @@ def add_mtext(
     entity.set_location(point)
 
 
-def configure_document(config: dict, *, limits: tuple[float, float]) -> ezdxf.document.Drawing:
+def configure_document(
+    config: dict,
+    *,
+    limits: tuple[float, float],
+    layer_color_overrides: dict[str, int] | None = None,
+) -> ezdxf.document.Drawing:
     doc = ezdxf.new("R2013", setup=True, units=units.MM)
     doc.units = units.MM
     doc.header["$INSUNITS"] = int(config["page"]["insunits"])
@@ -109,7 +127,7 @@ def configure_document(config: dict, *, limits: tuple[float, float]) -> ezdxf.do
             layer = doc.layers.get(layer_name)
         else:
             layer = doc.layers.add(layer_name)
-        layer.color = int(style["color"])
+        layer.color = int((layer_color_overrides or {}).get(layer_name, style["color"]))
         layer.dxf.lineweight = int(style["lineweight"])
         layer.dxf.linetype = style["linetype"]
 
