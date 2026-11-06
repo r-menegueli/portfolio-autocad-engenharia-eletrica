@@ -4,7 +4,7 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão 03 (2026-11-06)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão 04 (2026-11-06)
 
 Estado: ampliado e revisado em 2026-11-06
 
@@ -16,6 +16,12 @@ por MPPT.
 O estudo não seleciona fabricante, não substitui levantamento de campo, projeto
 estrutural, consulta à distribuidora, análise de sombreamento, coordenação de proteção,
 comissionamento ou responsabilidade técnica.
+
+Na revisão 04, a legenda da prancha 01 passa a corresponder à cor usada para CC, e a
+prancha 06 identifica individualmente os cabos CC, CA e PE conforme
+`lista-cabos.csv`, associa S1/MPPT 1 e S2/MPPT 2 e exibe os comprimentos assumidos.
+As rotas são esquemáticas e não foram medidas em um imóvel; o cabo de comunicação
+opcional está identificado, mas seu trajeto físico não foi definido.
 
 A estimativa anterior de 9.770,904 kWh/ano permanece como caso didático calculado com
 HSP 5,2 e PR 0,78. A nova análise mostra a sensibilidade a outros pares de parâmetros;
@@ -119,3 +125,24 @@ esta precisa ser confirmada com curvas/dados OEM do módulo e do inversor.
   dimensionamento, operação real, proteção ou conformidade do sistema.
 - Verificação CAD/visual: consulte [inspeção visual](inspecao-visual.md) e
   [validação específica](validacao-fotovoltaico.json).
+
+## Revisão 04
+
+A prancha 01 corrige a legenda para que a cor CC corresponda aos cabos turquesa
+renderizados. A prancha 06 substitui a rota agregada `R-CC-801/802` por dois percursos e referências
+de cabo distintos: `FV-S1 / R-CC-801` até SB-FV-801 e `FV-S2 / R-CC-802` até SB-FV-801;
+as saídas da caixa são indicadas separadamente para MPPT 1 e MPPT 2. Também são
+identificados `CA-INV / R-CA-801`, `CA-PCC / R-CA-802`, os dois condutores PE e o cabo
+`COM-INV` opcional. Os comprimentos vêm da lista de cabos e continuam como hipóteses,
+sem levantamento de campo. A comunicação opcional não tem trajeto físico definido.
+
+- O validador P08 passou em 8.131 verificações; o AcCoreConsole 2027 abriu e auditou
+  8/8 DXFs, todos com `PASS`.
+- Foram gerados os 24 derivados da revisão 04. P08-01 e P08-06 foram examinadas nas
+  PNGs a 300 dpi e nos PDFs A3 rasterizados independentemente pelo Poppler a 150 dpi;
+  o contato das oito folhas também foi conferido.
+- P08-06 obteve similaridade PDF/PNG de 0,989889. O revisor integrado passou em 12
+  projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs, com mínimo de 0,981493.
+- A validação estrita passou em 674.521 verificações, sem erros nem avisos.
+- Os SVGs foram gerados, mas sua inspeção em navegador aguarda autorização. Não foi
+  executada simulação elétrica; as rotas e extensões seguem como premissas conceituais.

@@ -90,7 +90,8 @@ SHEET_TERMS = {
     ),
     "05_detalhes_mecanicos.dxf": (
         "PAINEL FRONTAL", "PAINEL TRASEIRO", "X1 28x20", "FAN1 D76 / 4xD4", "260 mm REAL",
-        "150 mm REAL", "SEM TOLERÂNCIAS GERAIS",
+        "150 mm REAL", "SEM TOLERÂNCIAS GERAIS", "LED-CV", "LED-CC", "X3-PE", "CENTRO X/Y",
+        "X/Y: centro em mm", "recortes e coordenadas são propostas",
     ),
     "06_interligacoes.dxf": (
         "W01-W06", "W08-W09", "W10-W12", "W13-W16", "0,8-30 V regulados", "W17/W18 SENSE KELVIN",
@@ -145,6 +146,56 @@ def extract_text(doc: ezdxf.document.Drawing) -> str:
         elif entity.dxftype() == "INSERT":
             values.extend(attrib.dxf.text for attrib in entity.attribs)
     return " ".join(values)
+
+
+def validate_mechanical_cutouts(doc: ezdxf.document.Drawing, cutouts: list[dict[str, str]]) -> list[str]:
+    errors: list[str] = []
+    display_names = {"X2-PLUS": "X2+", "X2-MINUS": "X2-"}
+    modelspace = doc.modelspace()
+    circles = [entity for entity in modelspace if entity.dxftype() == "CIRCLE" and entity.dxf.layer == "03_COTAS"]
+    polylines = [
+        entity
+        for entity in modelspace
+        if entity.dxftype() == "LWPOLYLINE" and entity.dxf.layer == "03_COTAS" and entity.closed
+    ]
+    text = extract_text(doc).casefold()
+    scale = 0.5
+
+    for row in cutouts:
+        item = display_names.get(row["item"], row["item"])
+        x_text = f'{row["centro_x_mm"]} / {row["centro_y_mm"]}'
+        dimension = row["dimensao_mm"].casefold()
+        for label, value in (("item", item), ("centro", x_text), ("recorte", dimension), ("status", "proposta")):
+            if value.casefold() not in text:
+                errors.append(f"P09-05 não mostra {label} do recorte {row['item']}: {value}.")
+
+        ox = 20.0
+        oy = 174.0 if row["painel"] == "frontal" else 101.0
+        cx = ox + float(row["centro_x_mm"]) * scale
+        cy = oy + float(row["centro_y_mm"]) * scale
+        if row["geometria"] == "circulo":
+            diameter = float(row["dimensao_mm"].upper().removeprefix("D")) * scale
+            present = any(
+                abs(float(entity.dxf.center.x) - cx) <= 1e-6
+                and abs(float(entity.dxf.center.y) - cy) <= 1e-6
+                and abs(float(entity.dxf.radius) - diameter / 2) <= 1e-6
+                for entity in circles
+            )
+        else:
+            width, height = (float(value) * scale for value in row["dimensao_mm"].lower().split("x", 1))
+            expected = {
+                (round(cx - width / 2, 6), round(cy - height / 2, 6)),
+                (round(cx + width / 2, 6), round(cy - height / 2, 6)),
+                (round(cx + width / 2, 6), round(cy + height / 2, 6)),
+                (round(cx - width / 2, 6), round(cy + height / 2, 6)),
+            }
+            present = any(
+                {(round(point[0], 6), round(point[1], 6)) for point in entity.get_points("xy")} == expected
+                for entity in polylines
+            )
+        if not present:
+            errors.append(f"P09-05 não desenha a geometria prevista para {row['item']} no centro informado.")
+    return errors
 
 
 def validate(root: Path) -> dict:
@@ -519,6 +570,9 @@ def validate(root: Path) -> dict:
         for term in SHEET_TERMS[filename]:
             if term.casefold() not in text.casefold():
                 errors.append(f"Termo obrigatório ausente em {filename}: {term}.")
+        if filename == "05_detalhes_mecanicos.dxf":
+            checks += 4 * len(cutouts)
+            errors.extend(validate_mechanical_cutouts(doc, cutouts))
 
     result = {
         "checks": checks,

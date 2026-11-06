@@ -145,6 +145,10 @@ cotas superiores aritméticas por condutor e retira a seleção não demonstrada
 63 A; os valores permanecem sem diversidade, não são demanda nem corrente fasorial. A
 revisão 03 do P11 acrescenta uma matriz que relaciona entradas de aterramento a
 verificações, resultados requeridos e evidências, sem produzir cálculo ou aprovação.
+A revisão 04 do P08 separa e rastreia no layout as rotas CC, CA e PE, identificando os
+comprimentos assumidos e o trajeto de comunicação ainda indefinido. A revisão 05 do
+P09 desenha os 16 recortes diretamente de `lista-recortes.csv`, incluindo LEDs e os
+quatro furos do ventilador; os dados seguem como proposta, sem liberação de fabricação.
 A revisão 03 do P10 apresenta cinco pontos
 calculados em cada uma das quatro escalas analógicas; a revisão 04 acrescentou um
 balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alimentadores
@@ -153,7 +157,7 @@ premissas de estudo, não resultados de calibração, ensaio ou dimensionamento 
 [auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md) para as
 contagens atuais e os limites das verificações. A auditoria integrada mais recente
 confirmou 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; a validação estrita
-passou em 668.075 verificações, sem erros ou avisos.
+passou em 674.521 verificações, sem erros ou avisos.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
 - [Revisão técnica histórica (P01–P10, 2026-09-10)](relatorio-revisao-tecnica.md)

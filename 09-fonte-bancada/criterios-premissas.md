@@ -54,6 +54,9 @@
   de análise; nenhuma categoria de sobretensão ou grau IP foi certificado.
 - Gabinete de referência: 320 mm de largura, 150 mm de altura, 260 mm de profundidade,
   painel frontal metálico de 3 mm.
+- Na revisão 05, P09-05 representa individualmente os 16 recortes de `lista-recortes.csv`;
+  X/Y identifica o centro em milímetros, com origem no canto inferior esquerdo do painel.
+  Geometria e coordenadas seguem classificadas como propostas e exigem confirmação OEM.
 - Ventilador de 80 mm, 12 Vcc e 20 CFM em ar livre. Adota-se 50% de vazão efetiva e
   elevação de temperatura-alvo de 15 °C.
 - Fluxo de ar proposto da lateral frontal para exaustão traseira, sem recirculação

@@ -9369,7 +9369,7 @@ AcDbMText
  71
 1
   1
-Amarelo: módulos | Laranja: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento
+Laranja: módulos | Turquesa: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento
   7
 PORTFOLIO_TEXTO
  44
@@ -9667,7 +9667,7 @@ AcDbText
  40
 1.45
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9739,7 +9739,7 @@ AcDbText
  40
 1.45
   1
-ENVELOPE TERMICO 03
+ROTAS CC/CA RASTREÁVEIS
   7
 PORTFOLIO_TEXTO
  72
@@ -9947,7 +9947,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11

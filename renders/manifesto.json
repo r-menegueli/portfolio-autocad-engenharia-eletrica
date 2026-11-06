@@ -1350,342 +1350,342 @@
     {
       "id": "p08-01-disposicao-modulos",
       "source": "08-sistema-fotovoltaico/fonte/01_disposicao_modulos.dxf",
-      "source_sha256": "851cb25af2a11fd7914b3c5a03fd315f08bbaa0358de3c3549abb3fe7388c438",
+      "source_sha256": "45a249390542ec92c30d08a73cc7db6137497feb616f42750b60daf2ca10d94b",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.pdf",
-          "sha256": "31a77d180a7949b9b3333dd28afba76490c1767791095777dd21f2adcb64e914"
+          "sha256": "33baa24983c168f9159d65c502a3310ca7704644b3766b3e3cc6cb4127c3cacf"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.png",
-          "sha256": "6843acf859157f2d177f6479a471c7667c0062f1269740600c0a4fa6dc852823"
+          "sha256": "1b31c9b55b0b5b7c66641d5f6c6adb4a6d974747e28a0f294bd8c3d2907cf600"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/01_disposicao_modulos.svg",
-          "sha256": "0f4d7c84293996dffad0774435ff9e6918e5d9e5fb2b5b7abf540a1433a422b3"
+          "sha256": "c79324092bec03a09ac19936608805a9c19c7fb9bfd0691b761043de5d9cd49e"
         }
       }
     },
     {
       "id": "p08-02-diagrama-unifilar-cc",
       "source": "08-sistema-fotovoltaico/fonte/02_diagrama_unifilar_cc.dxf",
-      "source_sha256": "fa0c1e11bc734e39d910d10dafaddcd3d901720dff5c651afcfbb2f4eefef8a1",
+      "source_sha256": "b0979aea8865cc46320e44e5427ed0bca1df432792ec754abcb79487b74eda1a",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.pdf",
-          "sha256": "29ff4ac0886558d600871ddb61cbac5493d6ab42168c4c7f72ef00bd79e18ea1"
+          "sha256": "bfd9a806f00e81a8fd4fc42b71f8046ff78012e80cde1919e1e317842a0dca65"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.png",
-          "sha256": "7ef1e1144bdbbc2797ee9e584f39edc9f601c0572439ad83d8afb208812f6611"
+          "sha256": "65b3c1bed03c0bcd88d5b9c8f82f53d999c892f824758590868a5a73eed8e9eb"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/02_diagrama_unifilar_cc.svg",
-          "sha256": "83c5c0840a719323cc748b27e36ee0393607f14b6d04d4812825fc3f5664cd71"
+          "sha256": "57712ea3956048629db4143864183e45b30ce7b99e7fb7d01f19772095f4092f"
         }
       }
     },
     {
       "id": "p08-03-diagrama-unifilar-ca",
       "source": "08-sistema-fotovoltaico/fonte/03_diagrama_unifilar_ca.dxf",
-      "source_sha256": "2ae2123bcc45bfceec1ca7a1857e5099a1389a8ad7ab5b93805c6e8bde71eeba",
+      "source_sha256": "cbb975deb76a54e6e901c1e386ce741e52a6b3feb7b74e421d3077cbb10ca084",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.pdf",
-          "sha256": "13299f25b9cd01506def18193bee19f2a90fe7ce104afc3aa734188c3327fc89"
+          "sha256": "ca2f22b3ae483783da30039b850c3c89ce6e77b31b0da9fd6f7c3e6ddfde7405"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.png",
-          "sha256": "6f61fe866203ca9d3bb3c07c6f44f0f3175d8d2dc01e7f394331c7e611e75113"
+          "sha256": "5dec6d75c288587c52f473295a4bfa5f50a94793d87fb07c9772aac7eb3136c4"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/03_diagrama_unifilar_ca.svg",
-          "sha256": "e521cea89a189654ae1eba314d4a152b9e1e5999fbe90f94a5929213fa79d010"
+          "sha256": "0f9d198b5de7e585309b2af79097ae5e61cbae6e5f037a5cec1be2e5a9bab49e"
         }
       }
     },
     {
       "id": "p08-04-string-box",
       "source": "08-sistema-fotovoltaico/fonte/04_string_box.dxf",
-      "source_sha256": "13cda3b53a159bf81a846ff9978b3bf9ba3bfbac0d83878dcf89e9caf70958ef",
+      "source_sha256": "f112b1c83fd8fdfc74b5c2d2b42070f343c71408b43819559a2b542183f2321c",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/04_string_box.pdf",
-          "sha256": "32bd6cf5b76116283bc0aa8942e508ab619e17471abe588a0f4d5a2aa64b1827"
+          "sha256": "cd74c5c613a23f1115f8b4bfbf48cec1b0cc9e235b4ede6bb8ca0a6856ae30c2"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/04_string_box.png",
-          "sha256": "4fc154fa420478334d7c0b8feea3a5b7ac658fb4680766b186130d0ad01bd97b"
+          "sha256": "4ef839fc36379e243fb3a520e0d7549f8daf249a2b5503689fbc28bbcf1aa7ce"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/04_string_box.svg",
-          "sha256": "2531068109d235b3b1fb1ecda109a1c7ca42c3f0023e4a3ddfcfa8bfd0173347"
+          "sha256": "bbf6c72c43df3b1a22811ad14fa180f61b8682fdc496b5ba92f78f6c41971cc1"
         }
       }
     },
     {
       "id": "p08-05-aterramento",
       "source": "08-sistema-fotovoltaico/fonte/05_aterramento.dxf",
-      "source_sha256": "336b942d3b8bee69031a5afc28489742f76daccd6a8a7f7cd1f38eb129daf31a",
+      "source_sha256": "e5851d1e62cbf044cf4c8f601007f646acedd643696dadf9eaa9cc736a95e859",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/05_aterramento.pdf",
-          "sha256": "6dd785b45351058da9e885dc076be268473dc7fe9f8566410ff56e2f2a286030"
+          "sha256": "4e577edee0654abb4816da6970eec7a390a0a714b0284fc9bc195030a921e371"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/05_aterramento.png",
-          "sha256": "2fbdaf41a51f2b8f4749cb2ba03ed1ec01119a746957718c599e1d2d35a63836"
+          "sha256": "91352ef18b411e518d4d46988f7438613945dbcf1ae504fd958c068d731e0223"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/05_aterramento.svg",
-          "sha256": "7300d6457e14705b8ee41597c571456de8162a45f41b95aef0a8c3a5d9f8667c"
+          "sha256": "1f28da0b55f3c319fbec4a84984a90b524c3a0bc4580ec3717388c63e8b39709"
         }
       }
     },
     {
       "id": "p08-06-layout-equipamentos",
       "source": "08-sistema-fotovoltaico/fonte/06_layout_equipamentos.dxf",
-      "source_sha256": "c7e1122f849fdb0cf4b777048277dda42ba6ce2122f1f9de474d628a4ee79dbe",
+      "source_sha256": "73ec983170e58f6f7342856f5821903c955f826bd12ba8126db0ba6f3fa48779",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.pdf",
-          "sha256": "951817c77b30a5563f2a174ddcce76ec5b0639f3c69e0976c76962feaf8e478d"
+          "sha256": "97c1882f3d62321f072b6bfe06ffe6fdd33a55f1f79ff9012b399319d6dc2ef6"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.png",
-          "sha256": "220214feae0822854c82e87abf2e149ebf2734a76a6ffdb5d3aaaa9559357ed2"
+          "sha256": "aaf6a03aa30872c734b67ddd17ba55005d5ed3ca6738f16f27752b6cfe6ce8d7"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/06_layout_equipamentos.svg",
-          "sha256": "5ac46aab0a9ad9beb2b21cd6c68deb56bc8be251dda03e422eeeabf836744fa4"
+          "sha256": "319238ef002fc224a75ce694687fc94a1835f237a205fcfbb7b4cf6324df1722"
         }
       }
     },
     {
       "id": "p08-07-sensibilidade-energia",
       "source": "08-sistema-fotovoltaico/fonte/07_sensibilidade_energia.dxf",
-      "source_sha256": "b3d51fa433db3d7160526c44d0fe3b972ff30e68857bc07b757b2d4bef187bd0",
+      "source_sha256": "8e601cb7a5d2e6b507a97880f13ac70bf335e4eb6664f1b660fc2515c1ee7109",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.pdf",
-          "sha256": "336f9ebe5ef80f2cb0bf46dd4e369958eb34683249087f6f612be19a247bd8c1"
+          "sha256": "014cf53180b7e6602b7fd733e0ca32e3abc5669a597e8f9ee3eed568f84f371d"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.png",
-          "sha256": "e8d5771b4343b5413ce0675fea4260e845b5876d80ebc941500bb1bd826858d3"
+          "sha256": "770a5b155124072252d8188642dee5adf2dfd4697b6c9fa8fea123bb49e55361"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.svg",
-          "sha256": "2e783aa3c972429354dc8e30154f199e667198a1fc7f9de5548ac8dca4663d3e"
+          "sha256": "fe50d1494619e4f9fe1a5f76d376060e04cbb94fda4d9a933e24a60328ba9ef8"
         }
       }
     },
     {
       "id": "p08-08-envelope-termico-string",
       "source": "08-sistema-fotovoltaico/fonte/08_envelope_termico_string.dxf",
-      "source_sha256": "a630b97a2d1fbff2ddd6a543c7ce28ab85937007ef42bc60472f07bf8d5bd066",
+      "source_sha256": "5fddff9b2f527198a1b74c75b2772e9d76aea16ade3e1b1dd39ff5b599638a60",
       "outputs": {
         "pdf": {
           "path": "08-sistema-fotovoltaico/exports/08_envelope_termico_string.pdf",
-          "sha256": "5a299cf20d9688ae66bc638aeed289967c93696b8b52f4ec3a8550b0e5caa201"
+          "sha256": "1d4f20248a1fc915db66b40ba2cb4d38e9fcbc39c55da800ef74888cf1e55f37"
         },
         "png": {
           "path": "08-sistema-fotovoltaico/exports/08_envelope_termico_string.png",
-          "sha256": "ab4aeb98fe77b08cfcef13457ba25bda3b2d85202d51a4fd79f21950c4262012"
+          "sha256": "d39e73ca2440997e59921aaa4d35fc18446fa9a33a943d50a20f27e7be272afd"
         },
         "svg": {
           "path": "08-sistema-fotovoltaico/exports/08_envelope_termico_string.svg",
-          "sha256": "a965f620a36eaed93821bb7b0e2eb7711543111ce7fa3e66241cdc630546ca6b"
+          "sha256": "976629e0c689936b23edd085b8d23f8563101fc374ccb01563f8c5056b5512b2"
         }
       }
     },
     {
       "id": "p09-01-diagrama-blocos",
       "source": "09-fonte-bancada/fonte/01_diagrama_blocos.dxf",
-      "source_sha256": "bae806ffbd2f8f47b4aaed5978e018f132739ca2ecb8d8d995f630dba567fbb8",
+      "source_sha256": "397af64d4f364849e84108ff8a25bc3890221e4f155743a0c820050c0b0c8db4",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.pdf",
-          "sha256": "5e55a381e1a82fb0d7f3be10b41efecb4c72dbb3b827a1878abc9f22f6563754"
+          "sha256": "45ce3b83d62cbee490e50ddbc4d0a82dc6b6f43d32e95e030023d1575f17d51b"
         },
         "png": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.png",
-          "sha256": "e88713e60439484b08cc736af6f7d401cf69d822df5903735ea7b768d00766dc"
+          "sha256": "430142d0039616c3fceb5f12a30666ccdb1d6c97104e7863056595036f0f5f38"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/01_diagrama_blocos.svg",
-          "sha256": "c8978da6dedee45c5872c51037cf7da50687fbb8abf755f6ae393f12f4aeb7b0"
+          "sha256": "d24b600d9e84f6f268d5749c37c9c26f49f4e67c53ea175fc28f7e379ba9dad5"
         }
       }
     },
     {
       "id": "p09-02-diagrama-eletrico",
       "source": "09-fonte-bancada/fonte/02_diagrama_eletrico.dxf",
-      "source_sha256": "6db3ea2e03513c755bdc466b113758de8d04f6e9a6e5ee6b58fe4f90dff390e5",
+      "source_sha256": "8f5063fc2e03c34a343aa33e0faa5a0b1b148481040145339b2db7a00e3307f2",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.pdf",
-          "sha256": "4f78337040cd0593c2481b153db5ed0e5324956c3ac02065ba3fe826c5484906"
+          "sha256": "2bf2a42f75641102a290a5f253ac48f7b08bbd74893040c5bc9eea9605ac69ce"
         },
         "png": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.png",
-          "sha256": "341e5c39b4ff7063713eb4ef7a7783060e31e61b417ba80287ae9082d338f3d4"
+          "sha256": "b236b8ade9ba3f3f01c85350c811bfd6ef2cbc2f7afcfe2900bba27941396df5"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/02_diagrama_eletrico.svg",
-          "sha256": "55f6abd9244b759e87b417c12360d1a1c9912c3358f8336d3d1dcceff9013b1a"
+          "sha256": "95c285452a69a6dc11b8a88696f2d098943648e7027d7d72aaf5bfaa53a874da"
         }
       }
     },
     {
       "id": "p09-03-painel-frontal",
       "source": "09-fonte-bancada/fonte/03_painel_frontal.dxf",
-      "source_sha256": "7381956794ab2b723078cc282b0f9e76490e04592458fb29ded7b1f33929f6ba",
+      "source_sha256": "dfff5d5f146af79ead252754faaf98045c0ef8dc1bbd9258daa737a51c74ba35",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.pdf",
-          "sha256": "3a49b67a39e4022843706108b24939f13255b1e44f96549054f83bcf60fe00fa"
+          "sha256": "881246e3b7dbe130ffa6dce094914702437e81d5906dcdb60f6e35705255ef86"
         },
         "png": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.png",
-          "sha256": "2bba7871f30cf7672cfc22098c7fe483c445e834f587b865216a810fbcfa9732"
+          "sha256": "47e4e67e14595f55f67e1a868f5a072e32ccd12ea976beef4c44a3a78133a698"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/03_painel_frontal.svg",
-          "sha256": "c42f5622610c0601be665aacbb7f6e45a5948f73fcde5eb0178e962a3a440359"
+          "sha256": "5ccceac4baa80dc3172a751a0cfb32164bb9fa62984ced207cfb3dfdf024bdb3"
         }
       }
     },
     {
       "id": "p09-04-layout-interno",
       "source": "09-fonte-bancada/fonte/04_layout_interno.dxf",
-      "source_sha256": "c03ed6cad0dd707b28b10e0f8c163ed63fb634561e6f72e22ef904bf97953a44",
+      "source_sha256": "3b4794cb048225b4beae4199cd085dfe02460febfb71031ebdf2193e5b09fcf5",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/04_layout_interno.pdf",
-          "sha256": "83531a45781af55bec7c8f3cc866518b7d1e48b5ba1801ed4bab55dfc2c193a0"
+          "sha256": "a40b5b158d5c7ae0db20ccfc58038de17bc02578d5bfef77b1980b54cf94d45c"
         },
         "png": {
           "path": "09-fonte-bancada/exports/04_layout_interno.png",
-          "sha256": "c0661d0a2fbdb982cba18370702624104e79e0231ed23f75b79d99c1de1bfdc2"
+          "sha256": "93f5ed813602d2260e62a466c25d9bf116907d31e33acca1c7afde55fd869f39"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/04_layout_interno.svg",
-          "sha256": "b0e54344a29cbc7b040c0f6d28fd9d83fb41e200350eca805a15b562ef445d10"
+          "sha256": "021f5f4b5e1b62494be35cb6fc5a839bc6495752d77aba8323121d58f2e69710"
         }
       }
     },
     {
       "id": "p09-05-detalhes-mecanicos",
       "source": "09-fonte-bancada/fonte/05_detalhes_mecanicos.dxf",
-      "source_sha256": "eb5e53bf916bde14e33278541f67df8f74f921eb65746d34e27fc533930dbe7b",
+      "source_sha256": "0b60cda97581befc8777e06e980f038928eaf348490824fbfc14398eefcec6d4",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.pdf",
-          "sha256": "c46d61994a3310465aa0707c6933a9bde6eb1aa8963b0af63567ef6bfdd80591"
+          "sha256": "c2df327f405d6a0e90ff47da2f8a607c43222fcb4dc2decbd768e105ee252720"
         },
         "png": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.png",
-          "sha256": "0ebeb60d2ad9dff9b6e2b408777cce1de0aff26c0e6eaff8154dabff2745e97b"
+          "sha256": "08301e65243d6cf887fdd0276ee02bbdc38559395965f8a850ccdbab7ee1ad65"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/05_detalhes_mecanicos.svg",
-          "sha256": "394d773b09a930157ef769bbfa0a6216a65a20a7bcc5aaab1255f137724ad50d"
+          "sha256": "d38d93a4c91c7fca6ca364d38474d56f1ee4ad03eebc8d5e3dddb30c8993582e"
         }
       }
     },
     {
       "id": "p09-06-interligacoes",
       "source": "09-fonte-bancada/fonte/06_interligacoes.dxf",
-      "source_sha256": "5a7b1a719d6095a9ded54375f92e4449276c6c0a033b7297ce662adf2822bdca",
+      "source_sha256": "d5f5cb5ea9c60313caa66f5be8a36d748d78627a7a7f0793e7ae6fe9e6321a6e",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/06_interligacoes.pdf",
-          "sha256": "ec0106441902da89a7386fb993ff0ce87292b5c9136a916377c50a643cdaf44c"
+          "sha256": "ebbf593f9a97f8f429f1b4079a38fc3571d182d2aa7d64689f47338c56769fbc"
         },
         "png": {
           "path": "09-fonte-bancada/exports/06_interligacoes.png",
-          "sha256": "9310754acbc720e216862df1604c3ef6874f677505a4fae9a581b110eaf0723e"
+          "sha256": "65bbdaf8306a20586e830c742cdc93f82dcf46a18e794f88fcd7fcd9d90d43cb"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/06_interligacoes.svg",
-          "sha256": "6a8bc476f7fa319cb31c45d5aa340bd9398a627983891dca38232dc3c5c602ac"
+          "sha256": "fe2c5be4e9770b972b39ad8bdaddd8dd2455f323f01577c3c82c1ff4586a4665"
         }
       }
     },
     {
       "id": "p09-07-topologia-regulador-cc-cv",
       "source": "09-fonte-bancada/fonte/07_topologia_regulador_cc_cv.dxf",
-      "source_sha256": "86d335c9e0cf9cc0a7beafb55425ce22cea4e669280cab3b1d593a83a8cf27d8",
+      "source_sha256": "d573dc8f00a091e879156da2592b685d14a908d1a7e9654b691c74abb0fbdd78",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.pdf",
-          "sha256": "fc66565f736c05284f8d208bc90cefe440d6cef229209390e51adc1fdd1de85c"
+          "sha256": "8806c24633259673fd092698fc0df5e1a11b51eb8c4822c0713ab2e410d62919"
         },
         "png": {
           "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.png",
-          "sha256": "45ffd8da03abaa6f1fc86f567efb6e42aafce032bfb132e1bd39286cfb68531e"
+          "sha256": "52f2fe015e92a5c9a55ddab739c40201a0edef2909e878813d5b1b791d722329"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/07_topologia_regulador_cc_cv.svg",
-          "sha256": "6844a4b416aa48704d0f4ed6de4dfb92231c825e919c5c0ba91153c0b1bc622a"
+          "sha256": "b9ca56b290313ded1edc1cbf77b0a8307ece9e737d7ee2e2959bd05aa4add79a"
         }
       }
     },
     {
       "id": "p09-08-predimensionamento-buck",
       "source": "09-fonte-bancada/fonte/08_predimensionamento_buck.dxf",
-      "source_sha256": "c6a2d8932f830551ff7e70346969cf2234fd35de3dae518417783045ea6a75a0",
+      "source_sha256": "1582769dae137b14b1eff8326f8822017895147e67dcac7e4624517c081c1fc1",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/08_predimensionamento_buck.pdf",
-          "sha256": "65d8b44bd0b3f483e4a41891a7077603c55f5261b83efa08326bb875407d7bf1"
+          "sha256": "1eba7d602930870fb4f7e48122a50fa710daf9d4a7fb1ad246d7339ecf67891a"
         },
         "png": {
           "path": "09-fonte-bancada/exports/08_predimensionamento_buck.png",
-          "sha256": "3a507b95a3405df1ef01cdf518c2d1050fc712677816e6f041d5b4e58f128574"
+          "sha256": "15b37de591b75e3e4bb3afcd09f8c00cf15cc2faf950e080698d212dfaf039c2"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/08_predimensionamento_buck.svg",
-          "sha256": "d115cc3763cf7dff4fcf65f7855592de24b09bc35bf3ba8aa18e49e9ce4c3abb"
+          "sha256": "4005f76f511d8294d07f121c1dffd533bd20e5f084d5d5e0ddcc76478b5c0ab0"
         }
       }
     },
     {
       "id": "p09-09-descarga-parametrica",
       "source": "09-fonte-bancada/fonte/09_descarga_saida_parametrica.dxf",
-      "source_sha256": "12d82619711111ae59d3bf47c886b9e3bb69b9a9cc9020d753359bfd9464c876",
+      "source_sha256": "8713fa886c549d1fc467007e58706bd28cf5362effab5fb140b668e4ec35e7c8",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/09_descarga_saida_parametrica.pdf",
-          "sha256": "4de454f54c2f9a1fc31f040ba6adf7f7b2e527a55a5d2c2678ad21eea413f92c"
+          "sha256": "a56292e33cb2a9a55bfff4be7e87cae8452dff2a27814c4b31ca4cc928d7e039"
         },
         "png": {
           "path": "09-fonte-bancada/exports/09_descarga_saida_parametrica.png",
-          "sha256": "bfa3c23f5b96dae9d08817d2e9c1f3d3cab0e67d26eb22848b31df7f852b222d"
+          "sha256": "d7f58942ec33884e934e8f91c479427a169d50db529376a77b2abb4fe59b2d03"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/09_descarga_saida_parametrica.svg",
-          "sha256": "90f4324f60ff9190b377bfb2b7b29e0a0e280397269a01ab671e7fa8e28fa0e1"
+          "sha256": "323808cd494df478d56171da4f15d05712337ecaf0114172261b6b3e6a7fdde6"
         }
       }
     },
     {
       "id": "p09-10-matriz-perdas-termicas",
       "source": "09-fonte-bancada/fonte/10_matriz_perdas_termicas_parametrica.dxf",
-      "source_sha256": "8ee10afdc13cd74f14a2d3c2225535e9705a0125f2ce93d6d1097fb6a3290d06",
+      "source_sha256": "027055efbc6dd6e005b6ccccab44fa5dfdfe1cc9d36e1ecc7623f32b7532aab7",
       "outputs": {
         "pdf": {
           "path": "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.pdf",
-          "sha256": "c40ca3080587a784e5fed8011817984e5a08f8be6a86389818c55e6552f1a013"
+          "sha256": "175c8ac6af5bc77314a927e6acc3cf1f3dbb3534f36e166fcf14ca05c35b78bc"
         },
         "png": {
           "path": "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.png",
-          "sha256": "76cf3feabc0372ef0a8b57d89a3a6d50417694022d8fd46bab5ff688a8e99a94"
+          "sha256": "a825f43f570c7926368fec27fddf47cc3dea0de8fef2377d8ff88079bd8633c3"
         },
         "svg": {
           "path": "09-fonte-bancada/exports/10_matriz_perdas_termicas_parametrica.svg",
-          "sha256": "f35cf047935418757a1f62c2385b828553c4390fa49c24618242bc04964f1218"
+          "sha256": "ae42ed6637a527a811098727da87813ea76144a0ab8561df4cebbd8813e960a4"
         }
       }
     },

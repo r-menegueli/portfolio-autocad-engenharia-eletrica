@@ -1,6 +1,6 @@
 # Inspeção visual - Projeto 08
 
-Estado: revisão 02 em 2026-11-05.
+Estado atual: revisão gráfica 04 em 2026-11-06. As seções anteriores registram o histórico.
 
 As seis pranchas da revisão anterior foram examinadas nos PNGs de produção a 300 dpi, com 4960 × 3507
 pixels; nos PDFs A3 de uma página, rasterizados pelo Poppler a 150 dpi em 2481 × 1754
@@ -39,3 +39,23 @@ cortes ou colisões relevantes. A prancha representa os mesmos valores que
 `envelope-termico.csv`. O AcCoreConsole 2027 abriu e auditou 8/8 DXFs, e o validador
 específico passou em 8.119 verificações. A inspeção visual adicional dos SVGs no
 navegador aguarda autorização do usuário.
+
+## Revisão gráfica 04 - 2026-11-06
+
+P08-01 e P08-06 foram reemitidas com correção da legenda de cor CC e identificação
+individual dos cabos/rotas do layout. A separação S1/MPPT 1 e S2/MPPT 2, os IDs e os
+comprimentos assumidos foram conferidos contra `lista-cabos.csv`. Os comprimentos não
+são medições; a geometria das rotas não representa um imóvel levantado. O cabo
+COM-INV está marcado como opcional e sem trajeto físico definido.
+
+As PNGs integrais de P08-01 e P08-06 foram examinadas a 300 dpi. Os PDFs de ambas são
+de uma página A3 paisagem e foram rasterizados independentemente pelo Poppler a 150 dpi;
+carimbos, notas, legendas, trajetos e margens permaneceram visíveis sem cortes ou
+colisões gráficas relevantes. O contato das oito folhas confirma revisão 04 e
+numeração `01/08` a `08/08`.
+
+O validador específico passou em 8.131 verificações e o AcCoreConsole 2027 auditou
+8/8 DXFs com `PASS`. A revisão integrada confirmou 12 projetos, 114 folhas, 456 arquivos
+gráficos e 77 CSVs; P08-06 obteve similaridade PDF/PNG de 0,989889. A validação estrita
+passou em 674.521 verificações, sem erros ou avisos. Os SVGs foram gerados, mas a
+inspeção visual adicional no navegador aguarda autorização do usuário.

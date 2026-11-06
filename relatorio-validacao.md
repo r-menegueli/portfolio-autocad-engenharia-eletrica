@@ -107,3 +107,26 @@ AcCoreConsole, PDFium, Poppler e navegador Chromium. Nenhum DWG foi criado ou
 versionado.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
+
+## Atualização P09 — revisão 05 — 2026-11-06
+
+Após completar P09-05 com os 16 recortes da fonte CSV, o validador específico passou
+em 18.916 verificações. O AutoCAD AcCoreConsole 2027 abriu/auditou 10/10 DXFs P09 com
+resultado `PASS`. O revisor integrado aprovou 12 projetos, 114 pranchas, 456 arquivos
+gráficos e 77 CSVs, com similaridade mínima PDF/PNG de 0,9815. A validação estrita
+passou em 673.894 verificações, sem erros ou avisos. P09-05 também foi inspecionada
+no PNG de produção a 300 dpi e no PDF rasterizado pelo Poppler a 150 dpi. A inspeção
+de SVGs no navegador continua pendente de autorização; não foi executada simulação
+elétrica.
+
+## Atualização P08 — revisão 04 — 2026-11-06
+
+A legenda CC de P08-01 foi alinhada à cor da camada; P08-06 agora distingue as rotas
+FV-S1/R-CC-801 e FV-S2/R-CC-802, mapeia cada string ao seu MPPT e identifica os cabos
+CA, PE e a comunicação opcional com seus comprimentos assumidos. O validador específico
+passou em 8.131 verificações e o AcCoreConsole 2027 auditou 8/8 DXFs com `PASS`. O
+revisor integrado aprovou 12 projetos, 114 pranchas, 456 arquivos gráficos e 77 CSVs;
+a similaridade mínima foi 0,981493, e P08-06 obteve 0,989889. A validação estrita
+passou em 674.521 verificações, sem erros ou avisos. P08-01 e P08-06 foram inspecionadas
+em PNG e PDF rasterizado; a inspeção de SVGs em navegador permanece aguardando
+autorização.

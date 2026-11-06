@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "09-fonte-bancada"
-PROJECT_DATE = "2026-11-05"
-REVISION = "04"
+PROJECT_DATE = "2026-11-06"
+REVISION = "05"
 SHEET_COUNT = 10
 
 
@@ -92,9 +92,9 @@ SHEETS = (
         "05_detalhes_mecanicos.dxf",
         "DETALHES MECÂNICOS",
         "Recortes frontal e traseiro, ventilação e envelope do gabinete",
-        "Dimensões nominais não incluem tolerâncias, raios, tratamento ou ferramental.\\P"
-        "Arquivos não devem ser enviados diretamente a corte ou fabricação.",
-        "D: diâmetro | X/Y: origem no canto inferior esquerdo | PNL: painel | FAN: ventilador",
+        "Recortes e coordenadas são propostas; confirmar desenho OEM antes de definir interfaces.\\P"
+        "Sem tolerâncias gerais, raios, acabamento ou processo de corte; não liberar para fabricação.",
+        "X/Y: centro em mm, origem no canto inferior esquerdo | D: diâmetro | FAN: ventilador",
     ),
     SheetSpec(
         6,
@@ -323,7 +323,7 @@ def add_revision_table(layout, spec: SheetSpec) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    description = "DESCARGA PARAMÉTRICA" if spec.number == 9 else "TOPOLOGIA E PRE-DIMENSIONAMENTO"
+    description = "DETALHAMENTO DE RECORTES"
     for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (description, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
@@ -892,38 +892,50 @@ def draw_internal_layout(layout, data: dict[str, list[dict[str, str]]]) -> None:
 
 
 def draw_mechanical_details(layout, data: dict[str, list[dict[str, str]]]) -> None:
-    # Painel frontal em escala 1:2.
+    display_names = {"X2-PLUS": "X2+", "X2-MINUS": "X2-"}
+
+    def add_panel_cutouts(items: list[dict[str, str]], ox: float, oy: float, scale: float, *, label: bool) -> None:
+        for item in items:
+            cx = ox + float(item["centro_x_mm"]) * scale
+            cy = oy + float(item["centro_y_mm"]) * scale
+            dimension = item["dimensao_mm"].strip().upper()
+            if item["geometria"] == "retangulo":
+                width, height = (float(value) * scale for value in dimension.split("X", 1))
+                add_rect(
+                    layout,
+                    cx - width / 2,
+                    cy - height / 2,
+                    cx + width / 2,
+                    cy + height / 2,
+                    "03_COTAS",
+                )
+                label_offset = height / 2 + 2.0
+            else:
+                diameter = float(dimension.removeprefix("D")) * scale
+                layout.add_circle((cx, cy), diameter / 2, dxfattribs={"layer": "03_COTAS"})
+                label_offset = diameter / 2 + 2.0
+            if label:
+                tag = display_names.get(item["item"], item["item"])
+                centered(layout, tag, (cx, cy + label_offset), 1.2, "02_TEXTO")
+
+    # Painel frontal em escala 1:2. As geometrias vêm da lista rastreável de recortes.
     fx, fy, sc = 20.0, 174.0, 0.5
     add_rect(layout, fx, fy, fx + 320 * sc, fy + 150 * sc, "11_ARQUITETURA")
     centered(layout, "PAINEL FRONTAL - ESCALA GRÁFICA 1:2", (fx + 80, fy + 81), 1.2, "02_TEXTO")
-    for x, y, shape, size, tag in (
-        (35, 92, "R", (30, 22), "S1"),
-        (105, 100, "R", (72, 36), "M1"),
-        (175, 100, "C", (7, 0), "RV1"),
-        (220, 100, "C", (7, 0), "RV2"),
-        (270, 100, "C", (16, 0), "S2"),
-        (205, 38, "C", (8, 0), "X2+"),
-        (250, 38, "C", (8, 0), "X2-"),
-        (295, 38, "C", (8, 0), "X3"),
-    ):
-        px, py = fx + x * sc, fy + y * sc
-        if shape == "R":
-            w, h = size[0] * sc, size[1] * sc
-            add_rect(layout, px - w / 2, py - h / 2, px + w / 2, py + h / 2, "03_COTAS")
-        else:
-            layout.add_circle((px, py), size[0] * sc / 2, dxfattribs={"layer": "03_COTAS"})
-        centered(layout, tag, (px, py + 6), 0.8, "02_TEXTO")
+    front_items = [item for item in data["cutouts"] if item["painel"] == "frontal"]
+    rear_items = [item for item in data["cutouts"] if item["painel"] == "traseiro"]
+    add_panel_cutouts(front_items, fx, fy, sc, label=True)
+    centered(layout, "0,0", (fx + 5, fy + 8), 0.8, "03_COTAS")
     dimension_h(layout, fx, fx + 160, fy + 4, "320 mm")
+    dimension_v(layout, fx - 5, fy, fy + 75, "150 mm")
 
-    # Painel traseiro em escala 1:2.
+    # Painel traseiro usa a mesma transformação; FAN1 e os quatro furos são individuais.
     rx, ry = 20.0, 101.0
     add_rect(layout, rx, ry, rx + 160, ry + 75, "11_ARQUITETURA")
     centered(layout, "PAINEL TRASEIRO - ESCALA GRÁFICA 1:2", (rx + 80, ry + 68), 1.2, "02_TEXTO")
-    add_rect(layout, rx + 15.5, ry + 30, rx + 29.5, ry + 40, "03_COTAS")
+    add_panel_cutouts(rear_items, rx, ry, sc, label=False)
+    centered(layout, "0,0", (rx + 5, ry + 5), 0.8, "03_COTAS")
     centered(layout, "X1 28x20", (rx + 22.5, ry + 24), 0.9, "02_TEXTO")
-    layout.add_circle((rx + 122.5, ry + 37.5), 19, dxfattribs={"layer": "03_COTAS"})
-    for dx, dy in ((-17.5, -17.5), (17.5, -17.5), (-17.5, 17.5), (17.5, 17.5)):
-        layout.add_circle((rx + 122.5 + dx, ry + 37.5 + dy), 1, dxfattribs={"layer": "03_COTAS"})
     centered(layout, "FAN1 D76 / 4xD4", (rx + 122.5, ry + 12), 0.9, "02_TEXTO")
 
     # Vista lateral e envelope.
@@ -937,25 +949,39 @@ def draw_mechanical_details(layout, data: dict[str, list[dict[str, str]]]) -> No
     dimension_h(layout, 210, 310, 184, "260 mm REAL")
     dimension_v(layout, 204, 190, 235, "150 mm REAL")
 
+    def schedule_rows(items: list[dict[str, str]]) -> list[tuple[str, ...]]:
+        return [
+            (
+                display_names.get(item["item"], item["item"]),
+                f'{item["centro_x_mm"]} / {item["centro_y_mm"]}',
+                item["dimensao_mm"].upper(),
+                item["classificacao"],
+            )
+            for item in items
+        ]
+
+    centered(layout, "PAINEL FRONTAL", (245, 170), 1.45, "02_TEXTO")
     table(
         layout,
         195,
         166,
-        (35, 40, 45, 85),
-        ("ITEM", "X / Y", "RECORTE", "OBSERVAÇÃO"),
-        [
-            ("S1", "35 / 92", "30x22", "fabricante"),
-            ("M1", "105 / 100", "72x36", "moldura"),
-            ("RV1/RV2", "175/220 / 100", "D7", "antirotação"),
-            ("S2", "270 / 100", "D16", "comando"),
-            ("X2+/X2-/X3", "205/250/295 / 38", "D8", "bornes"),
-            ("X1", "45 / 70", "28x20", "traseiro"),
-            ("FAN1", "245 / 75", "D76 + 4xD4", "traseiro"),
-        ],
-        row_height=7.5,
-        text_height=0.75,
+        (22, 27, 25, 26),
+        ("ITEM", "CENTRO X/Y", "RECORTE", "STATUS"),
+        schedule_rows(front_items),
+        row_height=6.2,
+        text_height=1.5,
     )
-    centered(layout, "SEM TOLERÂNCIAS GERAIS, RAIOS, ACABAMENTO OU PROCESSO DE CORTE", (297, 100), 1.05, "13_NOTAS")
+    centered(layout, "PAINEL TRASEIRO", (349, 170), 1.45, "02_TEXTO")
+    table(
+        layout,
+        298,
+        166,
+        (22, 27, 25, 28),
+        ("ITEM", "CENTRO X/Y", "RECORTE", "STATUS"),
+        schedule_rows(rear_items),
+        row_height=6.2,
+        text_height=1.5,
+    )
 
 
 def draw_interconnections(layout, data: dict[str, list[dict[str, str]]]) -> None:

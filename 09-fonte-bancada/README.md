@@ -4,9 +4,9 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 10
 
-Formato: A3 paisagem, geometria em milímetros, revisão 04 (2026-11-05)
+Formato: A3 paisagem, geometria em milímetros, revisão 05 (2026-11-06)
 
-Estado: estudo acadêmico em revisão 04; matriz paramétrica de perdas adicionada, sem validação térmica de componentes
+Estado: estudo acadêmico em revisão 05; P09-05 agora representa os 16 recortes propostos com centros, dimensões e status rastreáveis. Sem liberação para fabricação.
 
 Este projeto apresenta a documentação eletromecânica acadêmica de uma fonte de
 bancada ajustável. A arquitetura proposta recebe 90 a 264 Vca, 47 a 63 Hz, e fornece
@@ -18,6 +18,10 @@ nenhum componente ou requisito de tensão/tempo foi definido. O ramo da porta n�
 fechar com fonte externa conectada. A revisão 04 mostra uma varredura das perdas
 agregadas de PS1 e REG1 em nove combinações de eficiência assumidas. Os cenários não
 são dados OEM, medições, curvas térmicas ou previsões de temperatura.
+A revisão 05 completa a representação mecânica dos 16 registros de `lista-recortes.csv`
+na prancha 05, incluindo os indicadores LED e os quatro furos do ventilador. Centros,
+dimensões e classificações aparecem individualmente; continuam como propostas sujeitas
+à confirmação dos fabricantes, sem tolerâncias ou detalhes de fabricação.
 O controlador não regula até zero. A conversão combina uma fonte AC/DC
 isolada de 36 Vcc e um buck síncrono CC/CV com LM5190 como candidato de referência.
 
@@ -103,14 +107,14 @@ A prancha não declara tensão segura, descarga garantida ou aptidão para monta
 
 ## Resultado de qualidade
 
-- o validador específico aprovou 18.846 verificações, sem erros;
+- o validador específico aprovou 18.916 verificações, sem erros;
 - as dez folhas DXF foram geradas pelo script, verificadas pelo validador do projeto e
-  abertas/auditadas 10/10 no AutoCAD AcCoreConsole 2027;
-- os 30 derivados da revisão 04 foram reconstruídos: dez PDFs, dez SVGs e dez PNGs;
-- o revisor conferiu 12 projetos, 99 folhas, 396 arquivos gráficos e 71 CSVs; a
-  similaridade mínima entre PDF e PNG foi 0,984061;
-- a validação estrita do portfólio aprovou 544.721 verificações, sem erros ou avisos;
-- o contato atualizado das dez folhas P09 foi conferido. P09-10 foi examinada no PNG
+  abertas/auditadas 10/10 no AutoCAD AcCoreConsole 2027, resultado `PASS`;
+- os 30 derivados da revisão 05 foram reconstruídos: dez PDFs, dez SVGs e dez PNGs;
+- o revisor conferiu 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; a
+  similaridade mínima entre PDF e PNG foi 0,9815;
+- a validação estrita do portfólio aprovou 673.894 verificações, sem erros ou avisos;
+- o contato atualizado das dez folhas P09 foi conferido. P09-05 foi examinada no PNG
   integral de 4.960 × 3.507 px e no PDF rasterizado pelo Poppler 26.07.0 a 150 dpi
   (2.481 × 1.754 px), sem cortes ou sobreposição relevante;
 - a inspeção visual dos SVGs no navegador e a simulação elétrica continuam pendentes.

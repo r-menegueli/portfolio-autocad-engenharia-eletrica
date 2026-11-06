@@ -57,8 +57,11 @@ controle seguem rotas segregadas. Conectores frontais possuem alívio mecânico 
 identificação persistente a especificar.
 
 O painel frontal contém chave geral, display, ajustes de tensão e corrente, comando
-de saída, indicação CV/CC e três bornes. A prancha mecânica fornece somente cotas de
-interface; tolerâncias, acabamento e processo de fabricação não estão definidos.
+de saída, indicação CV/CC e três bornes. Na revisão 05, a prancha mecânica representa
+os 16 recortes propostos da lista com suas posições de centro e dimensões nominais,
+incluindo os LEDs e os quatro furos de fixação do ventilador. As interfaces ainda
+precisam ser confirmadas nos desenhos dos fabricantes; tolerâncias, acabamento e
+processo de fabricação não estão definidos.
 
 ## Proteções e riscos remanescentes
 

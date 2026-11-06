@@ -62,7 +62,7 @@ REQUIRED_REFERENCES = (
 SHEET_TERMS = {
     "01_disposicao_modulos.dxf": (
         "6,60 kWp", "12 x 550 Wp", "S1: 6 MÓDULOS EM SÉRIE",
-        "S2: 6 MÓDULOS EM SÉRIE", "NORTE", "M01", "M12",
+        "S2: 6 MÓDULOS EM SÉRIE", "NORTE", "M01", "M12", "TURQUESA: CC",
     ),
     "02_diagrama_unifilar_cc.dxf": (
         "SEM PARALELISMO", "2 x gPV 20 A", "DPS T2 FV 600 V",
@@ -83,7 +83,9 @@ SHEET_TERMS = {
     ),
     "06_layout_equipamentos.dxf": (
         "12 MÓDULOS", "SB-FV-801", "INV-FV-801", "QD-FV-801", "MED-801",
-        "PCC-801", "R-CC-801/802", "R-CA-801", "ROTAS CC E CA SEGREGADAS",
+        "PCC-801", "S1 -> MPPT 1", "S2 -> MPPT 2",
+        "PE-MOD = MÓDULOS", "PE-EQP = EQUIPAMENTOS -> BEP-801",
+        "OPCIONAL; TRAJETO NÃO DETALHADO", "ROTAS CC E CA SEGREGADAS", "TURQUESA: CC",
     ),
     "07_sensibilidade_energia.dxf": (
         "SENSIBILIDADE DA ENERGIA ANUAL", "CENÁRIOS PARAMÉTRICOS",
@@ -432,6 +434,8 @@ def validate(root: Path) -> dict:
     for index, filename in enumerate(SHEETS, start=1):
         path = source_dir / filename
         checks += 9 + len(SHEET_TERMS[filename])
+        if filename == "06_layout_equipamentos.dxf":
+            checks += len(cables)
         try:
             doc = ezdxf.readfile(path)
         except Exception as exc:  # pragma: no cover - evidência de falha externa
@@ -461,6 +465,12 @@ def validate(root: Path) -> dict:
         for term in SHEET_TERMS[filename]:
             if term.casefold() not in text.casefold():
                 errors.append(f"Termo obrigatório ausente em {filename}: {term}.")
+        if filename == "06_layout_equipamentos.dxf":
+            for cable in cables:
+                length = float(cable["comprimento_assumido_m"])
+                label = f'{cable["cabo"]} | {cable["rota"]} / {length:g} m*'
+                if label.casefold() not in text.casefold():
+                    errors.append(f"Rota assumida não rastreável em {filename}: {label}.")
 
     result = {
         "checks": checks,

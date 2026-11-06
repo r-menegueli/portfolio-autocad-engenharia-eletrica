@@ -1,8 +1,9 @@
 # Inspeção visual - Projeto 09
 
-Estado histórico: aprovada em 2026-09-09 para a revisão 00. A revisão 02 recebeu
-inspeção visual parcial em 2026-11-05; o restante da conferência vetorial no navegador
-aguarda autorização do usuário.
+Estado histórico: aprovada em 2026-09-09 para a revisão 00. Revisões posteriores
+receberam inspeções parciais descritas abaixo. Na revisão 05 (2026-11-06), P09-05 foi
+inspecionada em PNG de produção e PDF rasterizado; a conferência dos SVGs no navegador
+continua aguardando autorização do usuário.
 
 ## Amostra e ferramentas
 
@@ -114,3 +115,22 @@ relevante. A tabela de cenários permanece legível em 150 dpi.
 - O validador específico do P09 passou em 18.846 verificações, sem erros. O restante
   da revisão do portfólio e a inspeção do contato atualizado estão registrados na
   auditoria consolidada. Os SVGs continuam aguardando inspeção visual no navegador.
+
+## Revisão 05 — 2026-11-06
+
+P09-05 foi revisada integralmente no PNG de produção de 4.960 × 3.507 px a 300 dpi e
+no PDF rasterizado pelo Poppler 26.07.0 a 150 dpi (2.481 × 1.754 px). A tabela agora
+separa os dez recortes frontais dos seis traseiros e informa, para cada item, centro
+X/Y, dimensão e classificação `PROPOSTA`. A geometria dos dois LEDs e dos quatro furos
+de fixação FAN1, ausente ou agrupada na versão anterior, aparece individualmente. A
+origem inferior esquerda e a unidade milímetro estão explicadas; as notas impedem uso
+para corte e fabricação sem confirmação OEM e definição das tolerâncias e processo.
+
+Moldura, carimbo, dimensões do envelope, tabelas, nota e aviso obrigatório cabem na
+folha. Não observei corte ou colisão relevante; a composição permanece legível no PDF
+rasterizado. O validador específico passou em 18.916 verificações, sem erros, e o
+AcCoreConsole 2027 abriu/auditou as dez fontes P09 com resultado `PASS`. A inspeção dos
+contato das dez pranchas confirma sequência `01/10` a `10/10` e carimbos atualizados.
+O revisor integrado aprovou 12 projetos, 114 pranchas, 456 arquivos gráficos e 77 CSVs;
+a validação estrita passou em 673.894 verificações, sem erros ou avisos. A inspeção dos
+SVGs no navegador ainda aguarda autorização; a simulação elétrica não foi executada.

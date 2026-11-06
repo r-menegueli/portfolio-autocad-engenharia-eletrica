@@ -1,4 +1,4 @@
-"""Gera as sete pranchas DXF do Projeto 08 de forma determinística."""
+"""Gera as oito pranchas DXF do Projeto 08 de forma determinística."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "08-sistema-fotovoltaico"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -58,7 +58,7 @@ SHEETS = (
         "Arranjo acadêmico de 6,60 kWp em duas strings independentes",
         "Implantação esquemática, sem levantamento de sombras ou validação estrutural.\\P"
         "Orientação, inclinação, afastamentos e acesso devem ser confirmados no local.",
-        "Amarelo: módulos | Laranja: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento",
+        "Laranja: módulos | Turquesa: CC | Verde: PE | S1/S2: strings | MPPT: rastreamento",
     ),
     SheetSpec(
         2,
@@ -102,8 +102,9 @@ SHEETS = (
         "LAYOUT DOS EQUIPAMENTOS",
         "Telhado, parede técnica, rotas segregadas e ponto de conexão",
         "Posições e folgas são propostas, não instruções de montagem.\\P"
+        "Comprimentos indicados são assumidos, não medidos; trajetos não representam imóvel levantado.\\P"
         "Validar acesso, ventilação, IP, raios de curvatura, estrutura e padrão da distribuidora.",
-        "Laranja: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | Tracejado: folga",
+    "Turquesa: CC | Vermelho: CA | Verde: PE | Cinza: arquitetura | * comprimento assumido",
     ),
     SheetSpec(
         7,
@@ -341,7 +342,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ENVELOPE TERMICO 03", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ROTAS CC/CA RASTREÁVEIS", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -645,22 +646,37 @@ def draw_equipment_layout(layout, data: dict[str, list[dict[str, str]]]) -> None
 
     add_rect(layout, 235, 112, 400, 252, "11_ARQUITETURA")
     centered(layout, "PAREDE TÉCNICA CONCEITUAL", (317.5, 246), 1.3, "11_ARQUITETURA")
-    component(layout, 252, 205, 302, 235, "SB-FV-801", "CC / DPS / QDC", "04_EQUIPAMENTOS")
+    component(layout, 252, 205, 302, 235, "SB-FV-801", "DPS CC / SECCIONAMENTO", "04_EQUIPAMENTOS")
     component(layout, 325, 185, 385, 235, "INV-FV-801", "6 kWca / 2 MPPT", "04_EQUIPAMENTOS")
     component(layout, 252, 142, 302, 174, "QD-FV-801", "CA / DPS / QF", "04_EQUIPAMENTOS")
     layout.add_blockref("P08_MEDIDOR", (355, 156), dxfattribs={"layer": "07_INSTRUMENTACAO"})
     centered(layout, "MED-801", (355, 143), 1.0, "07_INSTRUMENTACAO")
     component(layout, 325, 112, 385, 134, "PCC-801", "INSTALAÇÃO / REDE", "09_BORNES")
 
-    orthogonal(layout, ((202, 205), (230, 205), (230, 220), (252, 220)), "08_CABOS")
-    centered(layout, "R-CC-801/802", (225, 212), 0.9, "08_CABOS")
-    arrow(layout, (302, 220), (325, 220), "08_CABOS", "2 MPPT")
+    cables = {row["cabo"]: row for row in data["cables"]}
+
+    def route_label(cable_id: str) -> str:
+        cable = cables[cable_id]
+        length = float(cable["comprimento_assumido_m"])
+        return f'{cable_id} | {cable["rota"]} / {length:g} m*'
+
+    # Cada string mantém sua própria rota até a string box e seu MPPT.
+    orthogonal(layout, ((202, 218), (222, 218), (222, 226), (247, 226)), "08_CABOS")
+    arrow(layout, (247, 226), (252, 226), "08_CABOS")
+    centered(layout, route_label("FV-S1"), (226, 232), 0.9, "08_CABOS")
+    orthogonal(layout, ((202, 192), (232, 192), (232, 211), (247, 211)), "08_CABOS")
+    arrow(layout, (247, 211), (252, 211), "08_CABOS")
+    centered(layout, route_label("FV-S2"), (226, 204), 0.9, "08_CABOS")
+    arrow(layout, (302, 228), (325, 228), "08_CABOS", "S1 -> MPPT 1", (0.0, 3.0))
+    arrow(layout, (302, 213), (325, 213), "08_CABOS", "S2 -> MPPT 2", (0.0, -4.0))
     orthogonal(layout, ((355, 185), (355, 180), (312, 180), (312, 158), (302, 158)), "05_POTENCIA")
-    centered(layout, "R-CA-801", (333, 184), 0.9, "05_POTENCIA")
+    centered(layout, route_label("CA-INV"), (333, 184), 0.9, "05_POTENCIA")
     arrow(layout, (302, 158), (348, 158), "05_POTENCIA", "220 V")
+    centered(layout, route_label("CA-PCC"), (325, 150), 0.9, "05_POTENCIA")
     arrow(layout, (355, 149), (355, 134), "05_POTENCIA")
-    line(layout, (245, 138), (392, 138), "06_COMANDO")
-    centered(layout, "PE -> BEP-801", (276, 135), 0.9, "06_COMANDO")
+    line(layout, (245, 138), (340, 138), "06_COMANDO")
+    centered(layout, route_label("PE-MOD"), (271, 135), 0.9, "06_COMANDO")
+    centered(layout, route_label("PE-EQP"), (319, 135), 0.9, "06_COMANDO")
 
     table(
         layout,
@@ -678,7 +694,15 @@ def draw_equipment_layout(layout, data: dict[str, list[dict[str, str]]]) -> None
         row_height=9.0,
         text_height=0.82,
     )
-    centered(layout, "ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS", (317, 103), 1.1, "13_NOTAS")
+    centered(layout, "PE-MOD = MÓDULOS | PE-EQP = EQUIPAMENTOS -> BEP-801", (317, 106), 0.9, "06_COMANDO")
+    centered(
+        layout,
+        f'{route_label("COM-INV")} | OPCIONAL; TRAJETO NÃO DETALHADO',
+        (317, 100),
+        0.9,
+        "08_CABOS",
+    )
+    centered(layout, "ROTAS CC E CA SEGREGADAS | POSIÇÕES NÃO EXECUTIVAS", (317, 95.5), 0.9, "13_NOTAS")
 
 
 def draw_energy_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> None:

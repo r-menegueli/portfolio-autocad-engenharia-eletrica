@@ -562,3 +562,31 @@ alimentadores QCE, 24 materiais e 15 cabos). A revisão integrada confirmou 12 p
 114 folhas, 456 arquivos gráficos e 77 CSVs; validação estrita: 668.075 verificações,
 zero erros e zero avisos. Essas verificações não demonstram dimensionamento ou aptidão
 executiva. A inspeção de SVGs no navegador continua aguardando autorização.
+
+## P09 revisão 05 — detalhamento mecânico — 2026-11-06
+
+P09-05 passou a desenhar cada registro de `lista-recortes.csv`; a geometria é gerada
+diretamente dos centros, dimensões e classificações do CSV. A prancha separa dez itens
+frontais e seis traseiros, incluindo LED-CV, LED-CC e FAN1-H1 a FAN1-H4. A origem de
+coordenadas, a unidade e o caráter proposto aparecem na folha; materiais, tolerâncias,
+acabamento e processo continuam indefinidos.
+
+O validador específico passou em 18.916 verificações. O AcCoreConsole 2027 abriu/auditou
+10/10 DXFs P09 com resultado `PASS`. P09-05 foi conferida no PNG a 300 dpi, no PDF
+rasterizado independentemente pelo Poppler 26.07.0 a 150 dpi e no contato das dez folhas.
+Não observei cortes ou colisões relevantes. O revisor integrado aprovou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; validação estrita: 673.894 verificações,
+zero erros e zero avisos. O teste visual de SVGs no navegador ainda aguarda autorização;
+simulação elétrica não foi executada.
+
+## P08 revisão 04 — rotas do sistema fotovoltaico — 2026-11-06
+
+A legenda de P08-01 agora corresponde à camada CC turquesa. P08-06 separa os dois
+percursos de string, associa cada saída ao MPPT correto, identifica rotas CA/PE e
+registra a comunicação opcional sem inventar um trajeto físico. Os comprimentos são
+marcados como assumidos. O validador P08 passou em 8.131 verificações; o AcCoreConsole
+2027 auditou 8/8 DXFs. As folhas P08-01 e P08-06 foram conferidas em PNG a 300 dpi e
+PDF A3 rasterizado pelo Poppler a 150 dpi. A revisão integrada confirmou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; P08-06 teve similaridade de 0,989889. A
+validação estrita passou em 674.521 verificações, sem erros ou avisos. A inspeção SVG
+em navegador continua aguardando autorização do usuário.
