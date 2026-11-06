@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 100 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 101 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão atual, o revisor confirmou 12 projetos, 100 pranchas, 400 arquivos gráficos
+Na revisão atual, o revisor confirmou 12 projetos, 101 pranchas, 404 arquivos gráficos
 e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita passou em
-549.703 verificações, sem erros ou avisos.
+555.195 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -35,7 +35,7 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita p
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
-| P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos e conversão de cinco pontos em quatro malhas 4–20 mA. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
+| P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos, cinco pontos em quatro malhas 4–20 mA e balanço visual da fonte. | Tags, faixas e correntes de carga são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado; conferir o consumo de cada modelo e o derating da fonte. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
 | P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
 
@@ -74,6 +74,9 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita p
 - Acrescentei P10-08 com cinco pontos lineares em cada uma das quatro faixas 4–20 mA.
   Os valores são cálculos ideais derivados das faixas declaradas; não são calibração,
   ensaio de bancada ou critérios de aceitação.
+- Acrescentei P10-09 para visualizar os sete grupos de carga existentes, a fonte proposta,
+  a soma de 3,10 A e o saldo aritmético de 6,90 A. A reserva auxiliar de 1,05 A já está
+  incluída na carga prevista; o desenho não atribui ramais nem seleciona proteções.
 - Alinhei desenhos e simulação QTA nos tempos de referência e corrigi alegações de
   transferências impossíveis, polos e estados sem correspondência.
 - Removi da documentação P11 os resultados PASS e a aprovação implícita do
@@ -112,11 +115,11 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita p
 ## Limites e validação
 
 Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 544.721 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 99 pranchas, 396 arquivos gráficos e 71 CSVs, com similaridade mínima
+validação estrita aprovou 555.195 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 101 pranchas, 404 arquivos gráficos e 71 CSVs, com similaridade mínima
 PDF/PNG de 0,984061. As 12 folhas de contato foram regeneradas; revisei as composições
 P01 (oito folhas), P03 (dez), P04 (sete), P05 (nove), P06 (oito), P07 (nove), P08
-(sete), P09 (dez), P10 (sete), P11 (sete) e P12 (oito).
+(sete), P09 (dez), P10 (nove), P11 (sete) e P12 (oito).
 O contato P02 foi conferido após a expansão para nove folhas. P02-01 foi conferida no
 PNG integral; P02-09 foi inspecionada em PNG integral e PDF rasterizado a 150 dpi. O
 AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs P02 e o validador específico passou em 63
@@ -140,10 +143,13 @@ reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folh
 P12 também foi conferido. P06-08 foi inspecionada em PNG integral e PDF rasterizado a
 150 dpi; a folha de contato atual das oito pranchas também foi conferida. P10-07 foi
 inspecionada em PNG de produção e PDF rasterizado a 150 dpi; as oito linhas cabem sem
-cortes. As outras seis folhas P10 foram conferidas na composição geral, não em nova
-inspeção integral. O validador P10 passou com 64.261 verificações, 0 erros e 0 avisos.
-A matriz evita inventar estados de falha, timeouts ou respostas de processo sem
-hardware definido.
+cortes. Na revisão 04, P10-09 foi conferida no PNG de produção e em PDF rasterizado a
+150 dpi; tabela, barra de carga, textos, notas e carimbo não apresentam cortes nem
+colisões visíveis. O contato das nove folhas P10 foi conferido. O AcCoreConsole 2027
+abriu e auditou 9/9 DXFs P10; o validador específico passou com 64.344 verificações,
+sem erros ou avisos. A inspeção de SVGs no navegador permanece pendente da autorização
+do usuário. A matriz evita inventar estados de falha, timeouts ou respostas de processo
+sem hardware definido.
 
 O AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs do P07 e os sete do P08, `PASS`
 em 9/9 e 7/7. Essa auditoria confirma abertura e integridade CAD, sem validar projeto
@@ -212,3 +218,17 @@ O portfólio passou em 549.703 verificações estritas, sem erros ou avisos. A r
 integrada confirmou 12 projetos, 100 folhas, 400 arquivos gráficos, 71 CSVs e
 similaridade mínima PDF/PNG de 0,984061. A inspeção visual do SVG no navegador segue
 pendente da autorização do usuário.
+
+### Atualização P10-09 — revisão 04
+
+A prancha transforma o conteúdo de `lista-alimentacao.csv` em uma tabela e uma barra
+de capacidade: sete grupos totalizam 3,10 A / 74,40 W diante da fonte proposta de
+10 A / 240 W. O gráfico separa 31% de carga prevista de 69% de saldo aritmético. A
+reserva auxiliar prevista de 1,05 A já está incluída nos 3,10 A. Não foi criada
+distribuição por ramais nem seleção de fusíveis. Os resultados da inspeção visual e das
+validações são: 64.344 verificações do P10 e 555.195 no validador estrito, ambos sem
+erros ou avisos; 9/9 DXFs abertos e auditados no AcCoreConsole 2027. A prancha foi
+conferida no PNG a 300 dpi, em PDF rasterizado a 150 dpi e no contato das nove folhas,
+sem cortes ou colisões visíveis. A inspeção de SVGs no navegador segue aguardando
+autorização do usuário. O revisor integrado confirmou 12 projetos, 101 folhas, 404
+arquivos gráficos, 71 CSVs e similaridade mínima PDF/PNG de 0,984061.

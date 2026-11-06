@@ -1,5 +1,30 @@
 # Inspeção visual — P10
 
+## Revisão 04 — balanço de carga 24 Vcc
+
+- Data: 2026-11-05
+- Escopo: nove folhas em DXF AC1027 e derivados PDF, SVG e PNG de produção a 300 dpi.
+- Folha 09: conferida no PNG de produção a 300 dpi e em rasterização independente do
+  PDF a 150 dpi. Tabela, valores, barra preenchida, rótulos, reserva auxiliar,
+  moldura, notas e carimbo estão dentro da folha, sem cortes nem colisões visíveis.
+- Composição: conferida a folha de contato das nove folhas; paginação e carimbos
+  mostram 01/09 a 09/09.
+- AutoCAD: AcCoreConsole 2027 abriu e auditou 9/9 DXFs. Isso confirma abertura e
+  integridade dos arquivos, não substitui inspeção visual nativa nem valida
+  dimensionamento.
+- SVG: a validação automatizada segue separada da inspeção visual no navegador, que
+  permanece aguardando autorização do usuário.
+
+Resultado limitado à apresentação: composição legível e organizada; a barra mostra
+31% de carga prevista e 69% de saldo aritmético sem cruzamento ou preenchimento
+defeituoso. Os valores continuam premissas, e a capacidade remanescente não considera
+inrush, derating, proteção, curto-circuito ou condição térmica.
+
+- Validador específico P10: 64.344 verificações, sem erros ou avisos.
+- Validador estrito do portfólio: 555.195 verificações, sem erros ou avisos.
+- Revisor integrado: 12 projetos, 101 folhas, 404 arquivos gráficos, 71 CSVs e
+  similaridade mínima PDF/PNG de 0,984061.
+
 ## Revisão 03 — matriz de escala analógica
 
 - Data: 2026-11-05

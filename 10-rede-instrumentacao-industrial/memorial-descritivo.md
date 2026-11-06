@@ -5,8 +5,8 @@
 - Projeto: rede acadêmica de instrumentação industrial
 - Autor: Rogério Eduardo Moreira Menegueli
 - Data: 2026-11-05
-- Revisão: 03
-- Fonte gráfica: oito DXFs AC1027 em A3 paisagem e milímetros
+- Revisão: 04
+- Fonte gráfica: nove DXFs AC1027 em A3 paisagem e milímetros
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -25,6 +25,14 @@ switch SW-101 estão no painel. RIO-201 atende a área A e recebe TT-101, PT-102
 LSH-105; RIO-202 atende a área B e recebe FT-103, LT-104 e PSL-106. SW-101 interliga
 PLC-101, as duas remotas, SCADA-101 e uma estação temporária de engenharia em topologia
 estrela. O protocolo e os produtos não são selecionados.
+
+## Balanço de carga
+
+A prancha 09 reúne os sete grupos de corrente já registrados em `lista-alimentacao.csv`.
+O total previsto é 3,10 A / 74,40 W frente à capacidade proposta de 10 A / 240 W.
+O saldo de 6,90 A / 165,60 W é apenas subtração aritmética; não considera inrush,
+derating ou limites térmicos. A reserva auxiliar prevista de 1,05 A está incluída na
+carga total. A prancha não cria alocação por ramal nem seleção de proteção.
 
 ## Malhas e interligações
 

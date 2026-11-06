@@ -1,4 +1,4 @@
-"""Gera dados estruturados e oito pranchas DXF do Projeto 10."""
+"""Gera dados estruturados e nove pranchas DXF do Projeto 10."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "10-rede-instrumentacao-industrial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "03"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -58,6 +58,7 @@ SHEETS = (
     SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios, revisados graficamente em 01. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
     SheetSpec(7, "07_matriz_causa_efeito_sinais.dxf", "MATRIZ CAUSA-EFEITO DE SINAIS", "Falhas analógicas, I/O remota, rede, supervisão e 24 Vcc", "Resposta de processo e diagnósticos de fabricante não estão definidos.\\PNão converter canal inválido em variável válida nem presumir comportamento de retorno.", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | SCADA: supervisão"),
     SheetSpec(8, "08_matriz_escala_analogica.dxf", "MATRIZ DE ESCALA ANALÓGICA", "Quatro malhas 4–20 mA; cinco pontos calculados por faixa", "Valores calculados pela relação linear declarada; não são calibração nem teste de bancada.\\PTolerância, resolução, burden, limites de diagnóstico e critérios de aceitação dependem do hardware e do processo selecionados.", "LRV/URV: limites da faixa | EU: unidade de engenharia | pontos intermediários: 25 %, 50 % e 75 % da faixa"),
+    SheetSpec(9, "09_balanco_carga_24vcc.dxf", "BALANÇO DE CARGA 24 VCC", "Consumo previsto e saldo aritmético da fonte proposta PS1", "Correntes são premissas; o desenho não atribui cargas a ramais.\\PA reserva auxiliar de 1,05 A já está incluída no total de 3,10 A.\\PInrush, derating, proteção, curto-circuito e ensaio térmico não foram avaliados.", "I: corrente prevista | P = 24 V × I | saldo = capacidade nominal menos carga total | dados não selecionam fabricante"),
 )
 
 
@@ -420,6 +421,73 @@ def draw_analog_scale_matrix(layout):
         centered(layout, f"{percent} %", (x, 146), 1.4, "02_TEXTO")
 
 
+def draw_power_budget(layout):
+    capacity_a = 10.0
+    capacity_w = 24.0 * capacity_a
+    total_current = sum(float(row[2]) for row in POWER_ROWS)
+    total_power = sum(float(row[3]) for row in POWER_ROWS)
+    remaining_current = capacity_a - total_current
+    remaining_power = capacity_w - total_power
+
+    def fmt(value, digits=2):
+        return f"{value:.{digits}f}".replace(".", ",")
+
+    rows = []
+    for load, _, current_text, power_text in POWER_ROWS:
+        current = float(current_text)
+        share = current / total_current * 100.0
+        rows.append((load, fmt(current), fmt(float(power_text)), f"{fmt(share, 1)} %"))
+    rows.append(("TOTAL PREVISTO", fmt(total_current), fmt(total_power), "100,0 %"))
+    table(
+        layout,
+        20,
+        252,
+        (105, 38, 45, 42),
+        ("GRUPO DE CARGA", "I (A)", "P (W)", "% DA CARGA"),
+        rows,
+        11.8,
+        1.45,
+    )
+
+    add_rect(layout, 260, 220, 402, 253, "13_NOTAS")
+    centered(layout, "PS1 — FONTE PROPOSTA", (331, 245), 1.55, "13_NOTAS")
+    centered(layout, "24 Vcc", (331, 237), 1.5, "05_POTENCIA")
+    centered(layout, f"{fmt(capacity_a, 0)} A | {fmt(capacity_w)} W", (331, 228), 2.0, "05_POTENCIA")
+
+    add_rect(layout, 260, 181, 402, 215, "13_NOTAS")
+    centered(layout, "CARGA MODELADA", (331, 207), 1.45, "13_NOTAS")
+    centered(layout, f"{fmt(total_current)} A | {fmt(total_power)} W", (331, 198), 1.8, "05_POTENCIA")
+    centered(layout, "RESERVA AUXILIAR: 1,05 A", (331, 188), 1.35, "13_NOTAS")
+
+    centered(layout, "UTILIZAÇÃO DA CAPACIDADE NOMINAL", (331, 173), 1.35, "12_LEGENDA")
+    bar_x0, bar_x1 = 270.0, 392.0
+    bar_y0, bar_y1 = 159.0, 166.0
+    used_x = bar_x0 + (bar_x1 - bar_x0) * total_current / capacity_a
+    add_rect(layout, bar_x0, bar_y0, bar_x1, bar_y1, "12_LEGENDA")
+    for x0, x1, layer_name in (
+        (bar_x0 + 0.5, used_x, "05_POTENCIA"),
+        (used_x, bar_x1 - 0.5, "11_ARQUITETURA"),
+    ):
+        hatch = layout.add_hatch(dxfattribs={"layer": layer_name})
+        hatch.set_solid_fill(color=256)
+        hatch.paths.add_polyline_path(
+            ((x0, bar_y0 + 0.5), (x1, bar_y0 + 0.5), (x1, bar_y1 - 0.5), (x0, bar_y1 - 0.5)),
+            is_closed=True,
+        )
+    for x in (bar_x0, used_x, bar_x1):
+        line(layout, (x, bar_y0 - 2.0), (x, bar_y1 + 2.0), "03_COTAS")
+    centered(layout, "0 A", (bar_x0, 151.5), 1.2, "02_TEXTO")
+    centered(layout, f"{fmt(total_current)} A", (used_x, 151.5), 1.2, "02_TEXTO")
+    centered(layout, f"{fmt(capacity_a, 0)} A", (bar_x1, 151.5), 1.2, "02_TEXTO")
+    centered(layout, f"{fmt(total_current / capacity_a * 100, 0)} % carga", ((bar_x0 + used_x) / 2, 143), 1.25, "05_POTENCIA")
+    centered(layout, f"{fmt(remaining_current / capacity_a * 100, 0)} % saldo aritmético", ((used_x + bar_x1) / 2, 143), 1.25, "11_ARQUITETURA")
+
+    add_rect(layout, 20, 108, 402, 134, "13_NOTAS")
+    centered(layout, "INTERPRETAÇÃO DO SALDO", (210, 127), 1.55, "13_NOTAS")
+    centered(layout, f"Reserva auxiliar de 1,05 A já incluída em {fmt(total_current)} A; capacidade restante = {fmt(remaining_current)} A / {fmt(remaining_power)} W.", (210, 119), 1.35, "13_NOTAS")
+    centered(layout, "Saldo aritmético; não considera inrush, derating, proteção, curto-circuito ou condição térmica.", (210, 112), 1.25, "13_NOTAS")
+
+
 def draw_cause_effect(layout):
     headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
     widths = (14, 43, 70, 80, 64, 82)
@@ -428,7 +496,7 @@ def draw_cause_effect(layout):
     centered(layout, "Tempos, limites, alarmes, fail state e acoes de processo dependem dos dispositivos e da analise de risco.", (210,115.5), 1.2, "13_NOTAS")
 
 
-DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect, draw_analog_scale_matrix)
+DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect, draw_analog_scale_matrix, draw_power_budget)
 
 
 def write_csv(path, headers, rows):

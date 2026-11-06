@@ -1,9 +1,10 @@
-"""Renderiza apenas os oito artefatos do Projeto 10 para ciclos rápidos de revisão."""
+"""Renderiza apenas os nove artefatos do Projeto 10 para ciclos rápidos de revisão."""
 
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import subprocess
 import sys
 
 
@@ -13,7 +14,6 @@ if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
 
 from portfolio_config import load_config  # noqa: E402
-from renderizar import artifact_bounds, render_document  # noqa: E402
 
 
 def main() -> int:
@@ -24,14 +24,19 @@ def main() -> int:
     root = args.root.resolve()
     config = load_config(root)
     artifacts = [item for item in config["artifacts"] if item["id"].startswith("p10-")]
-    if len(artifacts) != 8:
-        raise RuntimeError(f"esperados 8 artefatos P10; encontrados {len(artifacts)}")
+    if len(artifacts) != 9:
+        raise RuntimeError(f"esperados 9 artefatos P10; encontrados {len(artifacts)}")
+    command = [
+        sys.executable,
+        str(root / "scripts" / "renderizar.py"),
+        "--root",
+        str(root),
+        "--dpi",
+        str(args.dpi),
+    ]
     for artifact in artifacts:
-        source = root / artifact["source"]
-        outputs = {kind: root / artifact[kind] for kind in ("svg", "pdf", "png")}
-        render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi, artifact)
-        print(f"renderizado: {artifact['id']}")
-    return 0
+        command.extend(("--artifact", artifact["id"]))
+    return subprocess.run(command, cwd=root, check=False).returncode
 
 
 if __name__ == "__main__":

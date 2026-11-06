@@ -58,3 +58,11 @@ Para as quatro faixas fictícias declaradas, a matriz apresenta os valores ideai
 faixa linear. Não há dados de exatidão, resolução ou tolerância dos instrumentos e
 cartões; portanto, os valores não são limites de aceitação, calibração ou evidência
 de comissionamento.
+
+## Revisão 04 — balanço da fonte 24 Vcc
+
+A prancha 09 representa os sete grupos da lista de alimentação. A soma declarada é
+3,10 A e 74,40 W; a capacidade proposta de PS1 é 10 A e 240 W. O saldo de 6,90 A e
+165,60 W é aritmético, e a reserva auxiliar de 1,05 A já pertence aos 3,10 A
+previstos. Não se deduzem ramais, fusíveis ou margem térmica. Seleção de fabricante,
+inrush, derating, curto-circuito, proteção, continuidade e ensaio continuam pendentes.

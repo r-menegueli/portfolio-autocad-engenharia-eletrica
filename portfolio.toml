@@ -356,7 +356,7 @@ id = "10-rede-instrumentacao-industrial"
 path = "10-rede-instrumentacao-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1376,6 +1376,17 @@ source = "10-rede-instrumentacao-industrial/fonte/08_matriz_escala_analogica.dxf
 svg = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.svg"
 pdf = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.pdf"
 png = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-09-balanco-carga-24vcc"
+kind = "sheet"
+title = "Projeto 10 - Balanço de carga 24 Vcc"
+source = "10-rede-instrumentacao-industrial/fonte/09_balanco_carga_24vcc.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.pdf"
+png = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.png"
 require_a3 = true
 require_notice = true
 

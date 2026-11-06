@@ -32,6 +32,7 @@ SHEETS = (
     "06_lista_instrumentos",
     "07_matriz_causa_efeito_sinais",
     "08_matriz_escala_analogica",
+    "09_balanco_carga_24vcc",
 )
 CAUSE_EFFECT_COLUMNS = ("id", "evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")
 REQUIRED_DOCS = (
@@ -145,6 +146,10 @@ def validate_tables(v: Validation, project: Path):
     total_power = sum(float(row["potencia_w"]) for row in power)
     v.require(abs(total_current - 3.10) < 1e-9, f"corrente total 24 Vcc divergente: {total_current}")
     v.require(abs(total_power - 74.40) < 1e-9, f"potência total 24 Vcc divergente: {total_power}")
+    v.require(len(power) == 7, "balanço 24 Vcc deve manter os sete grupos documentados")
+    v.require(all(abs(float(row["potencia_w"]) - 24.0 * float(row["corrente_a"])) < 1e-9 for row in power), "potências da lista 24 Vcc não reconciliam tensão e corrente")
+    v.require(abs(10.0 - total_current - 6.90) < 1e-9, "saldo aritmético da fonte PS1 deve ser 6,90 A")
+    v.require(abs(240.0 - total_power - 165.60) < 1e-9, "saldo aritmético de potência deve ser 165,60 W")
     v.require(total_current <= 10.0 * 0.8, "fonte PS1 ultrapassa 80 % da corrente nominal")
 
     cable_text = " ".join(" ".join(row.values()) for row in cables).lower()
@@ -190,6 +195,9 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         if stem == "08_matriz_escala_analogica":
             for required in ("MATRIZ DE ESCALA ANALÓGICA", "TT-101", "PT-102", "FT-103", "LT-104", "112,5 °C", "1,25 m", "100 %"):
                 v.require(required in text, f"conteúdo da matriz de escala ausente em {path.name}: {required}")
+        if stem == "09_balanco_carga_24vcc":
+            for required in ("BALANÇO DE CARGA 24 VCC", "TOTAL PREVISTO", "3,10", "74,40", "6,90", "165,60", "1,05", "69 %"):
+                v.require(required in text, f"conteúdo do balanço 24 Vcc ausente em {path.name}: {required}")
 
 
 def validate_exports(v: Validation, project: Path):
