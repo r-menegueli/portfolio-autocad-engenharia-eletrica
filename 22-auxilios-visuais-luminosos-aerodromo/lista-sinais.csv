@@ -1,0 +1,8 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+CCR01_FALHA,CCR-01,SCIL-01,Indicar falha de regulador,Codigo e severidade a definir,Interface do fabricante,A DEFINIR
+CCR02_FALHA,CCR-02,SCIL-01,Indicar falha de regulador,Codigo e severidade a definir,Interface do fabricante,A DEFINIR
+LOOP01_STATUS,CCR-01,SCIL-01,Monitorar circuito RWY,Valor limite a determinar,Monitor do CCR,A DEFINIR
+LOOP02_STATUS,CCR-02,SCIL-01,Monitorar circuito TWY,Valor limite a determinar,Monitor do CCR,A DEFINIR
+FONTE_NORMAL,PCC-ILS,SCIL-01,Indicar disponibilidade da fonte,Estado e transicao a definir,Interface eletrica a especificar,A DEFINIR
+SCIL_COMUNICACAO,SCIL-01,OPERADOR,Indicar disponibilidade do sistema,Modo local ou remoto,A definir com operador,PROPOSTA
+COMANDO_LOCAL,OPERADOR,SCIL-01,Selecionar circuito ou modo,Permissao e autoridade pendentes,Interface a especificar,A DEFINIR

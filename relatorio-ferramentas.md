@@ -692,3 +692,22 @@ zero erros e zero avisos. Nenhum local médico foi classificado; fontes, cargas 
 transferência permanecem premissas. Não foram feitos cálculos, aprovação sanitária,
 ensaios ou verificação de campo. O teste pelo navegador nativo continua aguardando
 autorização do usuário.
+
+## Projeto P22 — auxílios visuais luminosos de aeródromo — 2026-11-06
+
+Foram produzidas três pranchas A3 conceituais: arranjo indicativo de pista/taxiway,
+circuitos série com CCR e matriz de controle/ensaios. O validador específico passou em
+59 verificações. O AutoCAD AcCoreConsole 2027 (26.0.118.0.0) abriu/auditou os três DXFs
+com `PASS`; uma segunda geração reproduziu os mesmos SHA-256:
+
+- `01_layout_luminoso_pista_taxi.dxf` — `6666a6290f4de8be788f24cc1a25decf5102dc677c8361205a497f363c23920c`
+- `02_unifilar_circuitos_serie_ccr.dxf` — `65cdef786aaeb4a33228e63bef8abb47c4653cf1dce781eed03933ef28d57463`
+- `03_controle_monitoracao_e_ensaios.dxf` — `75b6119cca7fa9ac95bb51ea8ca4f0473fd0008f81de191b3f3abc1f9d90c85f`
+
+As três folhas foram inspecionadas nos PNGs de produção (4960 × 3507 px, 300 dpi) e
+comparadas com rasterizações independentes dos PDFs pelo PDFium; similaridades:
+0,993205, 0,992555 e 0,986812. A revisão integrada confirmou 22 projetos, 144
+pranchas, 576 arquivos gráficos e 111 CSVs, sem erros. A validação estrita passou em
+794.464 verificações, sem erros ou avisos. O estudo não define geometria operacional,
+fotometria, seleção, dimensionamento, aprovação aeroportuária ou liberação operacional.
+Inspeção no navegador nativo continua aguardando autorização.

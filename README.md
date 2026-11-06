@@ -28,6 +28,7 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
+| P22 | Auxílios visuais luminosos de aeródromo | implantação indicativa, circuitos série com CCR, monitoramento e evidências de aceitação | 3 | [abrir](22-auxilios-visuais-luminosos-aerodromo/README.md) |
 | P21 | Instalação elétrica de clínica ambulatorial | planta elétrica, rede normal, gerador, QTA, UPS e matriz de continuidade | 3 | [abrir](21-instalacao-clinica-ambulatorial/README.md) |
 | P20 | Subestação de tração ferroviária em corrente contínua | retificação, terceiro trilho, retorno de corrente, proteção e supervisão | 3 | [abrir](20-tracao-ferroviaria-cc-750v/README.md) |
 | P19 | Alimentação elétrica de navios no cais (HVSC) | interface porto/navio, transformação 13,8/6,6 kV, implantação e permissivos | 3 | [abrir](19-alimentacao-navios-cais-hvsc/README.md) |
@@ -50,7 +51,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e estudo documental da malha de aterramento/SPDA | 8 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **141 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **144 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -164,8 +165,8 @@ balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alime
 remotos. Esses valores são
 premissas de estudo, não resultados de calibração, ensaio ou dimensionamento final. Consulte a
 [auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md) para as
-contagens atuais e os limites das verificações. A configuração atual registra 21
-projetos e 141 pranchas; o validador estrito passou em 784.335 verificações, sem erros
+contagens atuais e os limites das verificações. A configuração atual registra 22
+projetos e 144 pranchas; o validador estrito passou em 794.464 verificações, sem erros
 ou avisos.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
@@ -181,7 +182,7 @@ ou avisos.
 O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
 layers, dimensões, moldura, elementos fora da folha, textos potencialmente
 sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P12 e P13–P21 acrescentam invariantes técnicos próprios; P01 é
+DWG. Os validadores P02–P12 e P13–P22 acrescentam invariantes técnicos próprios; P01 é
 coberto pelo validador comum. Aprovação estrutural e gráfica não representa validação
 técnica profissional.
 

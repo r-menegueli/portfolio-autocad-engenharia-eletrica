@@ -1,0 +1,11 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,A DEFINIR,un,Quadro de conexao de baixa tensao,PCC-ILS,Dados de concessionaria e esquema pendentes
+2,A DEFINIR,un,Quadro geral de distribuicao,QGBT-ILS,Demanda curto circuito e protecoes nao calculados
+3,A DEFINIR,un,Regulador de corrente constante,CCR-01; CCR-02,Corrente potencia e degraus nao selecionados
+4,A DEFINIR,un,Transformador de isolamento de circuito serie,TIS-01; TIS-02,Numero relacao e classe pendentes
+5,A DEFINIR,un,Luminaria de borda de pista,LBR-01,Simbolo generico sem cor ou modelo
+6,A DEFINIR,un,Luminaria de aproximacao,LAP-01,Arranjo ilustrativo sem requisito definido
+7,A DEFINIR,un,Luminaria de taxiway,LTW-01,Arranjo ilustrativo sem requisito definido
+8,A DEFINIR,m,Cabos de circuito serie,LOOP-01; LOOP-02,Comprimento secao isolacao e retorno a calcular
+9,A DEFINIR,un,Sistema de controle e indicacao,SCIL-01,Protocolo autoridade e estados pendentes
+10,A DEFINIR,un,Quadro de alimentacao de emergencia,QTA-ILS,Interface proposta mas nao desenhada como selecionada

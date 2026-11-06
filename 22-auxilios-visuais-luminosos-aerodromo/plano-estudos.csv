@@ -1,0 +1,10 @@
+estudo,entradas_necessarias,saida_esperada,responsavel_a_definir,status
+Classificacao e auxilios,RBAC vigente procedimento e cadastro,Lista de auxilios por area,Projetista aeroportuario e operador,PENDENTE
+Geometria e locacao,Planta aprovada e levantamentos,Coordenadas e detalhes de implantacao,Projetista aeroportuario,PENDENTE
+Fotometria e luminarias,Classe procedimento ambiente e equipamento,Memoria de selecao e desempenho,Projetista habilitado,PENDENTE
+Circuitos serie,CCR luminarias distancias cabos e TIS,Calculo de corrente tensao e perdas,Projetista eletrico,PENDENTE
+Protecao e aterramento,Esquema fonte percurso e condicoes locais,Protecao e verificacoes,Projetista eletrico,PENDENTE
+Fonte de emergencia,Classificacao de cargas e requisitos de comutacao,Arquitetura e contingencias,Operador e projetista,PENDENTE
+Controle e monitoramento,Autoridade interfaces protocolos e falhas,Logica e matriz de alarmes aprovadas,Operador e engenharia de controle,PENDENTE
+Ensaios e aceitacao,Equipamentos procedimentos e criterio vigente,Protocolos e registros de ensaio,Operador e responsaveis,PENDENTE
+Liberacao operacional,Aprovacoes cadastrais treinamento e manutencao,Autorizacao formal da autoridade competente,Operador e autoridade,PENDENTE

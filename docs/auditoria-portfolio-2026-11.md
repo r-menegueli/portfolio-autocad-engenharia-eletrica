@@ -570,3 +570,20 @@ independentemente pelo PDFium; similaridades: 0,992654, 0,992662 e 0,986103. O
 validador estrito passou em 784.335 verificações, zero erros e zero avisos. O
 portfólio registra agora 21 projetos e 141 pranchas. Inspeção no navegador nativo
 continua aguardando autorização.
+
+## Atualização P22 — auxílios visuais luminosos de aeródromo — 2026-11-06
+
+O P22 adiciona planta conceitual de pista/taxiway, unifilar de distribuição com dois
+CCR e loops série, e matriz de controle/ensaios. A inspeção visual da segunda folha
+identificou um cruzamento confuso; o ramal do CCR-02 foi deslocado para a lateral e a
+folha foi regenerada e reinspecionada. O validador P22 passou em 59 verificações. O
+AutoCAD AcCoreConsole 2027 abriu/auditou 3/3 DXFs sem erros, e a segunda geração
+reproduziu os hashes. A comparação de PNG a 300 dpi com PDFs rasterizados pelo PDFium
+resultou em 0,993205, 0,992555 e 0,986812. A revisão integrada passou com 22 projetos,
+144 folhas, 576 arquivos gráficos e 111 CSVs; a validação estrita passou em 794.464
+verificações, zero erros e zero avisos.
+
+Pista, taxiway, posições e cargas são cenários fictícios, sem escala nem classificação
+operacional. Fotometria, cores, afastamentos, dimensionamento, ensaios, aprovação e
+liberação aeronáutica não foram definidos. A inspeção no navegador nativo permanece
+aguardando autorização do usuário.

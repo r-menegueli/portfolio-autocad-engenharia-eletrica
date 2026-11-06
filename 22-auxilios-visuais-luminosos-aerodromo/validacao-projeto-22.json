@@ -1,0 +1,12 @@
+{
+  "project": "P22",
+  "date": "2026-11-06",
+  "checks": 59,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Arranjo de pista e taxiway ficticio, sem escala ou classificacao operacional.",
+    "CCR, circuitos, isolacao, controle, cargas e tempos de transferencia nao dimensionados.",
+    "Aprovacao aeroportuaria, verificacao de desempenho, ensaios e liberacao operacional nao realizados."
+  ]
+}

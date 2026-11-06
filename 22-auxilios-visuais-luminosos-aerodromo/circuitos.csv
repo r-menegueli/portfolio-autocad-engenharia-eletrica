@@ -1,0 +1,3 @@
+circuito,zona,regulador,interface_carga,topologia,status
+LOOP-01,Pista RWY-01,CCR-01,TIS-01 / LBR-01,Circuito serie conceitual,Sem dimensionamento
+LOOP-02,Taxiway TWY-A,CCR-02,TIS-02 / LTW-01,Circuito serie conceitual,Sem dimensionamento
