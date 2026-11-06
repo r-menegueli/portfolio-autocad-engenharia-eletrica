@@ -473,3 +473,5 @@ aviso de limites e o carimbo 04/10 estão dentro da moldura. A similaridade PDF/
 nova folha foi 0,989581. A revisão integrada confirmou 12 projetos, 112 folhas, 448
 arquivos gráficos e 76 CSVs; a validação estrita passou em 656.386 verificações, sem
 erros ou avisos. A inspeção de SVGs no navegador continua pendente de autorização.
+As alterações foram enviadas no commit `c79c7101cdc16853ceccb1820494b2bbe7bfe447`;
+o PR #1 foi atualizado e segue aberto como rascunho, sem merge.
