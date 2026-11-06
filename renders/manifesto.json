@@ -2258,6 +2258,63 @@
           "sha256": "28503ca13d842a1e17ac8dcf665e6f2d4bb3cc5b72b790914ed2734502e184a3"
         }
       }
+    },
+    {
+      "id": "p14-01-arquitetura-eletrica-ab",
+      "source": "14-infraestrutura-eletrica-data-center/fonte/01_arquitetura_eletrica_ab.dxf",
+      "source_sha256": "d4f0863496704eba12d46c67d07db59cb57b24efde3d9fb9f28d3573093aaca9",
+      "outputs": {
+        "pdf": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.pdf",
+          "sha256": "189127ac8acfdd436dda7279d520ade2e4cf0fc3ba88abb15a2d9cf13db39043"
+        },
+        "png": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.png",
+          "sha256": "848f7950c6bdeef369315f4d91d3f3862cac971e471f11d9a346528cedc18c57"
+        },
+        "svg": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.svg",
+          "sha256": "83385085a75e9b3822453ce722640948a077b5ecf8e2c345f351d18531516569"
+        }
+      }
+    },
+    {
+      "id": "p14-02-layout-salas-racks",
+      "source": "14-infraestrutura-eletrica-data-center/fonte/02_layout_salas_e_racks.dxf",
+      "source_sha256": "9f0316c16c9795f7105c3ba3a58dfd8411ba0532e320fb76c05b1ed459e35453",
+      "outputs": {
+        "pdf": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.pdf",
+          "sha256": "6c2fbdd4d5a87bd22081ffec4b347e02c5ffd57ce6501b39d4bc00e3464d5d18"
+        },
+        "png": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.png",
+          "sha256": "5e463bd1f6845e3e407d98ff44315fa82f3aa59fe2a4012c4b2540664cd53404"
+        },
+        "svg": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.svg",
+          "sha256": "62ad9186ec0a2cc8c73d61368152ff281e3d981372d3b3a5d1c334b134d953cc"
+        }
+      }
+    },
+    {
+      "id": "p14-03-balanco-contingencias",
+      "source": "14-infraestrutura-eletrica-data-center/fonte/03_balanco_potencia_contingencias.dxf",
+      "source_sha256": "c411fb9e93edb41e129df7b80a7799ffaf6c6ea61987a98136ada464b7d65bd7",
+      "outputs": {
+        "pdf": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.pdf",
+          "sha256": "1c419f81e3e19e03dc78e46492cdca742f02576d9b8ed39703201cf03dc92ef8"
+        },
+        "png": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.png",
+          "sha256": "157d035d91a07d288cbb8afb0a76f997a494ab7f2ed4523e2da83e8271639252"
+        },
+        "svg": {
+          "path": "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.svg",
+          "sha256": "c3199776aa49bd7a76c0932cd93a0b7051e0353e3e105571211b5d2096174187"
+        }
+      }
     }
   ]
 }

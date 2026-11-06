@@ -1,0 +1,11 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+MAT-01,2,un,Alimentacao e posicao de entrada em media tensao,QMT-A e QMT-B,Origem tensao protecao e independencia pendentes
+MAT-02,2,un,Transformador de potencia de 2000 kVA assumidos,TR-A e TR-B,Impedancia ligacao refrigeracao e taps pendentes
+MAT-03,2,un,Quadro geral de baixa tensao com posicao de transferencia,QGBT-A e QGBT-B,Correntes barramentos protecao e transferencias pendentes
+MAT-04,2,un,Grupo gerador de 2000 kVA assumidos,GE-A e GE-B,Combustivel partida transientes emissao e autonomia pendentes
+MAT-05,10,un,Modulo UPS de 250 kW assumido,UPS-A e UPS-B (5 modulos por caminho),Quatro modulos requeridos e um reserva em cada caminho
+MAT-06,2,un,Banco de baterias para UPS,UPS-A e UPS-B,Quimica autonomia ventilacao e protecao pendentes
+MAT-07,2,un,Distribuicao de potencia para cargas de TI,PDU-A e PDU-B,Capacidade alimentacao e protecao pendentes
+MAT-08,6,un,Rack de TI com duas entradas de alimentacao,R01 a R06,Carga e fontes dos servidores nao especificadas
+MAT-09,1,lote,Barramentos ou caminhos elevados de distribuicao A/B,Rotas A e B,Tipo trajeto capacidade e distancias dependem de levantamento
+MAT-10,1,lote,Medicao e monitoramento de energia,TR QGBT GE UPS e PDU,Arquitetura protocolo classe e pontos de medicao a definir
