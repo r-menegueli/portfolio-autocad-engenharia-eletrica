@@ -128,3 +128,13 @@ matriz não prescreve como executá-los nem estabelece PL/SIL. A linha V13 exige
 separadamente o rearme S5/KSR1, o reset S4/X3:9 do VFD e a ausência de partida após
 rearme, troca de modo ou retorno de energia. O desenho também não autoriza energização
 ou comissionamento.
+
+### 8.3 Sequência operacional
+
+A prancha 09 resume habilitação, comando local/remoto e respostas a emergência,
+falha do VFD, falta de energia e troca de modo. O arquivo
+[sequencia-estados.csv](sequencia-estados.csv) fornece os estados e textos mostrados.
+Essa representação acompanha a sequência descrita neste memorial, mas não prova que
+a lógica foi implementada ou ensaiada. Perda de 4–20 mA com parada controlada e alarme
+continua hipótese a confirmar no modelo selecionado; tempos de parada, categoria,
+PL/SIL e respostas reais dependem de requisitos, equipamentos e validação próprios.

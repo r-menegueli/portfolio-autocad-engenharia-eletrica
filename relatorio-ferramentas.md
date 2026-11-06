@@ -531,3 +531,16 @@ avisos. O revisor integrado confirmou 12 projetos, 105 pranchas, 420 arquivos
 gráficos e 72 CSVs, com similaridade mínima de 0,981493; P10-10 obteve 0,988205.
 Edge/Chrome não foram usados para inspeção visual dos SVGs; essa etapa segue
 aguardando autorização do usuário.
+
+## Atualização P01-09 — revisão 04 — 2026-11-06
+
+A nova sequência operacional foi gerada em `09_sequencia_operacional_estados.dxf`, com
+`sequencia-estados.csv` como fonte dos estados e eventos. A segunda geração do P01
+reproduziu os nove SHA-256. O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs.
+
+O PNG de produção, o contato das nove folhas e a rasterização independente do PDF pelo
+Poppler a 150 dpi foram inspecionados; não encontrei cortes ou colisões. A similaridade
+PDF/PNG de P01-09 foi 0,990330. A revisão integrada passou: 12 projetos, 114 folhas,
+456 arquivos gráficos, 77 CSVs e similaridade mínima de 0,981493. O validador estrito
+passou por 663.880 verificações, sem erros ou avisos. A inspeção de SVGs no navegador
+continua aguardando autorização.

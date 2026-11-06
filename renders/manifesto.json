@@ -39,152 +39,171 @@
     {
       "id": "p01-01-diagrama-unifilar",
       "source": "01-painel-motor-inversor/fonte/01_diagrama_unifilar.dxf",
-      "source_sha256": "13adae0b1dadb2d42c98504eaeed557dbdb91619fb17c86f4c3572d05b85dc6c",
+      "source_sha256": "d459ba6e882c002fa2169d26e4cb6d0602d08b5b70d8c915787d740f6d8c3682",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf",
-          "sha256": "309f7a03198f070e70c62d46fce62c5411c7c9c0b6255c399883c12153383a7a"
+          "sha256": "25215a00eba7c6cf1ae167a0001e4251a0795bef63eb47dcd36a4791bd2764d3"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/01_diagrama_unifilar.png",
-          "sha256": "d3c56c1f4a65437248b2eb8bbe3f86a14648c487150b65bbaa9d316e75a9e6af"
+          "sha256": "8bb842cce82f0cb356fe9a86327d618b730639efe2f323a0e4ef946beccdd1fc"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/01_diagrama_unifilar.svg",
-          "sha256": "ece50ddf78093b61b4bb6f53f3292c8db22f2360eacd67368942f330f9120882"
+          "sha256": "dfd231d989758058bc5bf5165ed0bc153d0a1996e61eb8106f25e16aa94b33f1"
         }
       }
     },
     {
       "id": "p01-02-diagrama-potencia",
       "source": "01-painel-motor-inversor/fonte/02_diagrama_potencia.dxf",
-      "source_sha256": "79d22a2293386fb0afe6b6050a323dc1b90ddf13704e41a18caf4fa1b68dbb92",
+      "source_sha256": "1a2f743843a120b81df2e7c3670ab32c3fa0f9d958d685d15fafc97bbd23efd3",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/02_diagrama_potencia.pdf",
-          "sha256": "afe8ffbe2f7932b717d9c0ff5baf6e034d486b70ce3c15262606cb2a1e10cd08"
+          "sha256": "a89a04ca88c6de32cd74fa26001485d81109a73ea2974452a9efc2241b38aa16"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/02_diagrama_potencia.png",
-          "sha256": "a03834b54595a1fdd947ed5761715771a3d6eb792183efbb1ae27072a15dc99d"
+          "sha256": "831cd1452c7e42a29a7d980959a3b9a16fd55179a41fd36c10d1464e7cc0215b"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/02_diagrama_potencia.svg",
-          "sha256": "5e48dd9021d9be3426da162c2dea9b457531e759d52126cd6a28adbedf2616dd"
+          "sha256": "93cda7c3be8273d054e0f9453ac510afd42350647252a1c7b3383aacd62d8f20"
         }
       }
     },
     {
       "id": "p01-03-diagrama-comando",
       "source": "01-painel-motor-inversor/fonte/03_diagrama_comando.dxf",
-      "source_sha256": "4651baf4e19bdea025f447850b62e13283dd4b5fbaa9602da1e3a77329914ec5",
+      "source_sha256": "e0447a9eaf5adfb8a581b60ae4e84374fac7a401d13fb7b373d74b13d1f8a555",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/03_diagrama_comando.pdf",
-          "sha256": "2f0bd11a914d0aedc5a4b6535ba0e902dae6827785784a2488535f4eec7c3d1b"
+          "sha256": "b4f54a4da378afed98b5475186cbebb55b3cbca068c04bc34d5731ae48c8d64f"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/03_diagrama_comando.png",
-          "sha256": "f2e754082f5e62675c2499a85e54411501efc1144aa4e7bc54d8d6c10d356862"
+          "sha256": "48b7598bdca3532e5ac78503385aafa051475f6c5f6d4330700f33999087ff7f"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/03_diagrama_comando.svg",
-          "sha256": "dbaaaff95b71d83ed7a34abad4458085a659888a9cb7a83a802d73e2360f680e"
+          "sha256": "7d4ec97767761fd597ffb0594034f00a3434d50f5b3b753ff54d03dddad99819"
         }
       }
     },
     {
       "id": "p01-04-layout-interno",
       "source": "01-painel-motor-inversor/fonte/04_layout_interno_painel.dxf",
-      "source_sha256": "b0e5725b83745cf21c2bf4d2a667a402582c6bc21b19b625f610aeb4f9a24d36",
+      "source_sha256": "1d6fbf606cd53e18f44c23523fc438e7ef0b76fc8005c97b1762f852c1f27633",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/04_layout_interno_painel.pdf",
-          "sha256": "8e10af91622cdb6ad9ff09c2cb4afcc6927e5f453dfa058125027890f3359cd8"
+          "sha256": "ea951bfefb9b133fd89fe065f0fbfd5649101e412429eeb5d2b777f6bf441a77"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/04_layout_interno_painel.png",
-          "sha256": "18791cf65f8dac4f97f11cf1e6182a0cf1550a23b626b59a407d935b80c79d41"
+          "sha256": "5d37091ae3508b894f27af02be999903ef63c36c8ba095ff8cbd7204cadc1106"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/04_layout_interno_painel.svg",
-          "sha256": "d486fd107403b5eb2770af52c439828f091a35c4f27b01a215334f822e3ae698"
+          "sha256": "8b266032e6860a52574c4a4523197953e62a4772be1397b6d7f176062ab8eb01"
         }
       }
     },
     {
       "id": "p01-05-diagrama-bornes",
       "source": "01-painel-motor-inversor/fonte/05_diagrama_bornes.dxf",
-      "source_sha256": "d647f8f986bce2b4f99f5598dd2bc8431acf9a5210b68772b2b556334281cfbe",
+      "source_sha256": "87c141a3bdcb3d8e9f87a6764ace0dd03eba57983f578cac31658466a6a13a3b",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/05_diagrama_bornes.pdf",
-          "sha256": "8394d344ea65da012a8494856af92e63be97f1711097fb6c410267f773e4ef28"
+          "sha256": "7e5a98b892cbadee674f802183ed3e9488f6d282e1855d03a17d94248399f512"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/05_diagrama_bornes.png",
-          "sha256": "3b76abebd7667ba6d44a14814e482b9ee77a9c052a28fae367ba0adca9998570"
+          "sha256": "13facb35caf1aede6710808fb0264a29085c8be7ed5f143960c0337c11a5281e"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/05_diagrama_bornes.svg",
-          "sha256": "2c475cc7323a668c3e992f0f27ac792c0107c4dd9b489bc1475bc9d1a09c99a3"
+          "sha256": "2a3719d294116781e3f11f795b84d6e0284a2d3316c754fbda477c43fe395a99"
         }
       }
     },
     {
       "id": "p01-06-interligacoes-campo",
       "source": "01-painel-motor-inversor/fonte/06_interligacoes_campo.dxf",
-      "source_sha256": "5c208b2b37373bfd5aae0367082e0c74ccf2650bab3e6108c067ea6b80c2231c",
+      "source_sha256": "2a473213baabc4d2a1efcc4ee69c52d99cdbfc91faef71a97ae5c2fc3d32afd3",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/06_interligacoes_campo.pdf",
-          "sha256": "3441cdb703ce2c1763ea0f6599b02dceaa02f830e89fed07a735a2ccf9c8e0b8"
+          "sha256": "ca4b8b6bf83801ae3338cd89126cfa420d6942df198fa00c312bd420d7758949"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/06_interligacoes_campo.png",
-          "sha256": "b012519b41bc51c36a4a2d9ee691fa667d4ebb45e5958f3dbd7e8c59028d69e2"
+          "sha256": "2554f37bc7fc00630c48cbcbd9846d84c7d0088cbd2ea3ce5c9541f7d6f07121"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/06_interligacoes_campo.svg",
-          "sha256": "1e9f2e7384488b77d8847823440dacd634d4286a0276758f5d5f8f07e9f6a456"
+          "sha256": "5e457103882ec3dda5d5a29c140b837b068f9c170f4e591dc5f1b8fde597737e"
         }
       }
     },
     {
       "id": "p01-07-protecao-coordenacao",
       "source": "01-painel-motor-inversor/fonte/07_protecao_coordenacao.dxf",
-      "source_sha256": "d8750e22cfcc116038004ba91adbf20deede8800b939d144ff46d35ddf1697b2",
+      "source_sha256": "3713d872c8fc489f9261e1b26b1c350c98fdbfccc4f8d84e85dc3c0013a47f97",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/07_protecao_coordenacao.pdf",
-          "sha256": "2c3daac27df5a5af82dbcdaeee0509df6d0ab73fbf55eec380546c3935af6776"
+          "sha256": "e9fb480c7a42c8a8380cfa68a48e47d5822528973e23a1cb5225001b065c05f0"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/07_protecao_coordenacao.png",
-          "sha256": "486de067b506a00859cbdb2d91402106dbb8e5446b48c01d27760ad6451ddf5e"
+          "sha256": "8fed0cf47ef0cfc75eeef09135ad8467f35e4f021cb8d3ddd49fcae0b8c9042d"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/07_protecao_coordenacao.svg",
-          "sha256": "b47006b3808925268ca1912499141fdf4efa06b22cd78d483f777af27529223f"
+          "sha256": "b1c4f9b809a53085cd8dfbc8b6150e52e02ded07ab31cb2dc96557bb5ae7e907"
         }
       }
     },
     {
       "id": "p01-08-plano-verificacao-evidencias",
       "source": "01-painel-motor-inversor/fonte/08_plano_verificacao_evidencias.dxf",
-      "source_sha256": "284e1e5a96ac11cb2216dd0bc6e82c540cdea61171ea74481a846f32118e74a1",
+      "source_sha256": "885e0826ed89edbb93ae0618e4139939fb827b70f996e49b727b5880e6026285",
       "outputs": {
         "pdf": {
           "path": "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.pdf",
-          "sha256": "90aabfd3367c31e53e7a96218c359264ab888d489c73715d92605a7fa5d0383a"
+          "sha256": "1951ef3be56f8fec156c8e95f61a26e8a7aade3c591d3746217d7f157043e6f6"
         },
         "png": {
           "path": "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.png",
-          "sha256": "641056c00358a23193717fed5fa580af35b3a951974aa825c6ec7829cdae1ab3"
+          "sha256": "aee49f4dab41bd06afe5c5bf87d4a4f026297bd41f205bdfc1dca2955045ea52"
         },
         "svg": {
           "path": "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.svg",
-          "sha256": "220ac139149d4699903a0d583bbd55aa66f829101d8ef00cc004524933fc25ad"
+          "sha256": "6b0f5d1eec83bac321810829ef118de1018c192c9a755e4be2629182cb983f18"
+        }
+      }
+    },
+    {
+      "id": "p01-09-sequencia-operacional-estados",
+      "source": "01-painel-motor-inversor/fonte/09_sequencia_operacional_estados.dxf",
+      "source_sha256": "4bd87b48159fbea5d96b923071690f527c47d1865448a8ccdb960e3f97539928",
+      "outputs": {
+        "pdf": {
+          "path": "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.pdf",
+          "sha256": "0db101e9e3f4f0b59189602185266e1d5a2cac9addfbe2334508c0d4f0908c80"
+        },
+        "png": {
+          "path": "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.png",
+          "sha256": "816d543ff9cce07b8c75ab4461dbba94e35fd5ee8b59e0f3833807fac83082e0"
+        },
+        "svg": {
+          "path": "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.svg",
+          "sha256": "2098d27ea5a89c3fe7f92eef887111125c5ba60579d7c44addcdf2f3eed10f6b"
         }
       }
     },

@@ -38,7 +38,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "01-painel-motor-inversor"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -123,6 +123,15 @@ SHEETS = (
         "Critérios e tolerâncias devem vir dos documentos e fabricantes selecionados.\\P"
         "A matriz não registra resultados de campo nem autoriza energização ou comissionamento.",
         "ID: ponto de verificação | evidência: registro necessário | status: não executado",
+    ),
+    SheetSpec(
+        9,
+        "09_sequencia_operacional_estados.dxf",
+        "SEQUÊNCIA OPERACIONAL E ESTADOS",
+        "Habilitação, operação normal, parada e respostas a eventos",
+        "Sequência conceitual; a implementação depende dos equipamentos, lógica e ensaios.\\P"
+        "Não define tempo de parada, categoria/PL/SIL nem validação em campo.",
+        "S5: rearme KSR1 | S4/X3:9: reset do VFD | H2: pronto | H3: marcha | H4: falha",
     ),
 )
 
@@ -708,6 +717,51 @@ def draw_verification_plan(layout, rows: list[dict[str, str]]) -> None:
     )
 
 
+def draw_operational_sequence(layout, rows: dict[str, list[dict[str, str]]]) -> None:
+    def arrow_right(x0: float, x1: float, y: float) -> None:
+        line(layout, (x0, y), (x1, y), "06_COMANDO")
+        line(layout, (x1, y), (x1 - 3.0, y + 1.8), "06_COMANDO")
+        line(layout, (x1, y), (x1 - 3.0, y - 1.8), "06_COMANDO")
+
+    setup_x = (18.0, 116.0, 214.0, 312.0)
+    for index, (row, x0) in enumerate(zip(rows["habilitacao"], setup_x)):
+        add_rect(layout, x0, 239.0, x0 + 88.0, 262.0, "04_EQUIPAMENTOS")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + 44.0, 256.5), 1.6, "04_EQUIPAMENTOS")
+        add_mtext(layout, row["descricao"], (x0 + 4.0, 251.0), 80.0, 1.3, "02_TEXTO")
+        if index < len(setup_x) - 1:
+            arrow_right(x0 + 89.0, setup_x[index + 1] - 2.0, 250.5)
+
+    operation_x = (18.0, 118.0, 218.0, 318.0)
+    for index, (row, x0) in enumerate(zip(rows["operacao"], operation_x)):
+        width = 90.0 if index < len(operation_x) - 1 else 92.0
+        add_rect(layout, x0, 190.0, x0 + width, 220.0, "04_EQUIPAMENTOS")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + width / 2.0, 213.5), 1.65, "04_EQUIPAMENTOS")
+        add_mtext(layout, row["descricao"], (x0 + 3.0, 208.5), width - 6.0, 1.35, "02_TEXTO")
+        if index < len(operation_x) - 1:
+            arrow_right(x0 + width + 1.0, operation_x[index + 1] - 2.0, 205.0)
+
+    stop_center = operation_x[-1] + 46.0
+    ready_center = operation_x[0] + 45.0
+    line(layout, (stop_center, 189.0), (stop_center, 178.0), "06_COMANDO")
+    line(layout, (stop_center, 178.0), (ready_center, 178.0), "06_COMANDO")
+    line(layout, (ready_center, 178.0), (ready_center, 187.0), "06_COMANDO")
+    line(layout, (ready_center, 187.0), (ready_center - 3.0, 184.0), "06_COMANDO")
+    line(layout, (ready_center, 187.0), (ready_center + 3.0, 184.0), "06_COMANDO")
+    centered_text(layout, "comando inativo: retorno ao estado PRONTO", (210.0, 181.5), 1.35, "02_TEXTO")
+
+    event_x = (18.0, 117.0, 216.0, 315.0)
+    event_width = 95.0
+    for row, x0 in zip(rows["evento"], event_x):
+        add_rect(layout, x0, 128.0, x0 + event_width, 168.0, "01_CARIMBO")
+        centered_text(layout, f"{row['codigo']}  {row['titulo']}", (x0 + event_width / 2.0, 163.0), 1.45, "13_NOTAS")
+        add_mtext(layout, row["descricao"], (x0 + 3.0, 157.5), event_width - 6.0, 1.35, "02_TEXTO")
+
+    add_rect(layout, 18.0, 104.0, 410.0, 120.0, "13_NOTAS")
+    note = rows["nota"][0]
+    centered_text(layout, f"{note['codigo']}  {note['titulo']}", (31.0, 113.0), 1.45, "13_NOTAS")
+    add_mtext(layout, note["descricao"], (48.0, 116.0), 358.0, 1.35, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_unifilar,
     2: draw_power,
@@ -761,6 +815,33 @@ def read_verification_rows(project_dir: Path) -> list[dict[str, str]]:
     return rows
 
 
+def read_operational_sequence_rows(project_dir: Path) -> dict[str, list[dict[str, str]]]:
+    source = project_dir / "sequencia-estados.csv"
+    expected_fields = ("grupo", "ordem", "codigo", "titulo", "descricao")
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != expected_fields:
+            raise ValueError(f"Cabecalho inesperado em {source}")
+        source_rows = list(reader)
+
+    grouped: dict[str, list[dict[str, str]]] = {"habilitacao": [], "operacao": [], "evento": [], "nota": []}
+    for row in source_rows:
+        if row.get("grupo") not in grouped:
+            raise ValueError(f"Grupo inesperado em {source}: {row.get('grupo')}")
+        if not all(row.get(field, "").strip() for field in expected_fields):
+            raise ValueError(f"Linha incompleta em {source}: {row}")
+        grouped[row["grupo"]].append(row)
+
+    expected_counts = {"habilitacao": 4, "operacao": 4, "evento": 4, "nota": 1}
+    for group, expected_count in expected_counts.items():
+        group_rows = grouped[group]
+        orders = [int(row["ordem"]) for row in group_rows]
+        codes = [row["codigo"] for row in group_rows]
+        if len(group_rows) != expected_count or orders != list(range(1, expected_count + 1)) or len(set(codes)) != len(codes):
+            raise ValueError(f"Grupo {group} deve ter {expected_count} linhas ordenadas e codigos unicos: {source}")
+    return grouped
+
+
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     source_dir = root / PROJECT_SLUG / "fonte"
@@ -768,12 +849,15 @@ def generate(root: Path) -> list[Path]:
     outputs: list[Path] = []
     coordination_rows = read_coordination_rows(root / PROJECT_SLUG)
     verification_rows = read_verification_rows(root / PROJECT_SLUG)
+    sequence_rows = read_operational_sequence_rows(root / PROJECT_SLUG)
     for spec in SHEETS:
         doc, layout = create_sheet(config, spec)
         if spec.number == 7:
             draw_protection_coordination(layout, coordination_rows)
         elif spec.number == 8:
             draw_verification_plan(layout, verification_rows)
+        elif spec.number == 9:
+            draw_operational_sequence(layout, sequence_rows)
         else:
             DRAWERS[spec.number](layout)
         output = source_dir / spec.filename

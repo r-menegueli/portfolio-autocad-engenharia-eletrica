@@ -103,3 +103,16 @@ sem erros. O registro global está em `work/revisao-p01rev03/resultado.json`.
 A inspeção dos SVGs em navegador continua aguardando autorização. Esta revisão verifica
 apresentação, abertura CAD e consistência documental; não valida dimensionamento,
 coordenação, categoria de segurança, PL/SIL ou funcionamento de uma instalação real.
+
+## Revisão funcional/documental 04 — 2026-11-06
+
+A prancha 09 resume estados de habilitação, operação normal e respostas a quatro eventos.
+O fluxo exige um novo comando após rearme, falha, retorno de energia ou troca de modo.
+O documento identifica explicitamente como hipótese a parada controlada e o alarme após
+perda de 4–20 mA. Não declara validação de campo, categoria/PL/SIL ou tempo de parada.
+
+Conferi a prancha integral no PNG de produção a 300 dpi, no PDF rasterizado
+independentemente pelo Poppler a 150 dpi e no contato das nove folhas. Não encontrei
+cortes ou colisões; a similaridade PDF/PNG de P01-09 foi 0,990330. O AcCoreConsole 2027
+abriu e auditou 9/9 DXFs; o validador estrito passou em 663.880 verificações, sem erros
+ou avisos. A inspeção dos SVGs em navegador aguarda autorização.

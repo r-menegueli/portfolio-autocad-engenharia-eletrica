@@ -124,12 +124,13 @@ id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
   "criterios-premissas.md",
   "sequencia-funcionamento.md",
+  "sequencia-estados.csv",
   "controle-vf-foc.md",
   "inspecao-visual.md",
   "lista-cabos.csv",
@@ -535,6 +536,17 @@ source = "01-painel-motor-inversor/fonte/08_plano_verificacao_evidencias.dxf"
 svg = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.svg"
 pdf = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.pdf"
 png = "01-painel-motor-inversor/exports/08_plano_verificacao_evidencias.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p01-09-sequencia-operacional-estados"
+kind = "sheet"
+title = "Projeto 01 - Sequência operacional e estados"
+source = "01-painel-motor-inversor/fonte/09_sequencia_operacional_estados.dxf"
+svg = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.svg"
+pdf = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.pdf"
+png = "01-painel-motor-inversor/exports/09_sequencia_operacional_estados.png"
 require_a3 = true
 require_notice = true
 

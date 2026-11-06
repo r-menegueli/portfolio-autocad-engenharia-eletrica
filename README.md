@@ -28,7 +28,7 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
-| P01 | Painel de motor com inversor | potência, comando, STO, bornes, campo, coordenação e verificação | 8 | [abrir](01-painel-motor-inversor/README.md) |
+| P01 | Painel de motor com inversor | potência, comando, STO, bornes, campo, coordenação, verificação e sequência | 9 | [abrir](01-painel-motor-inversor/README.md) |
 | P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas, aterramento e corrente por fase | 10 | [abrir](02-projeto-eletrico-residencial/README.md) |
 | P03 | Painel de automação com CLP | I/O, duas bombas, alternativas enchimento/esgotamento, intertravamentos e verificação | 11 | [abrir](03-painel-automacao-clp/README.md) |
 | P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD, sequência, causa–efeito, levantamento de sucção e método NPSH | 9 | [abrir](04-controle-nivel-reservatorio/README.md) |
@@ -41,7 +41,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e estudo documental da malha de aterramento/SPDA | 8 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **113 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **114 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,7 +135,8 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 113 pranchas A3 de P01–P12. A revisão 04 do P02 acrescenta uma folha de
+revisão cobre 114 pranchas A3 de P01–P12. A revisão 04 do P01 acrescenta uma folha de
+sequência operacional conceitual; o P02 acrescenta uma folha de
 cotas superiores aritméticas por condutor e retira a seleção não demonstrada de QG1
 63 A; os valores permanecem sem diversidade, não são demanda nem corrente fasorial. A
 revisão 03 do P11 acrescenta uma matriz que relaciona entradas de aterramento a

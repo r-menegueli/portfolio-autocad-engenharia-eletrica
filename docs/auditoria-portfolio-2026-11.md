@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 113 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 114 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 113 pranchas, 452 arquivos
-gráficos e 76 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 660.601 verificações, sem erros ou avisos.
+Na revisão corrente, o revisor confirmou 12 projetos, 114 pranchas, 456 arquivos
+gráficos e 77 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
+passou em 663.880 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -28,7 +28,7 @@ passou em 660.601 verificações, sem erros ou avisos.
 
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
-| P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
+| P01 — Painel com inversor | Separa RUN, STOP, reset do VFD e rearme KSR1; acrescenta sequência visual de habilitação, operação e eventos em P01-09; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO; a sequência P01-09 é conceitual. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 04 acrescenta P02-10, que separa cargas 127 V fase-neutro de C6/C7 a 220 V fase-fase e calcula cotas superiores aritméticas por condutor a partir do quadro CSV. Retira a divisão agregada de demanda por 220 V e a antiga indicação de QG1 63 A. | Planta e mobiliário ainda são fictícios; dimensões e posições dos vãos são premissas. As cotas de P02-10 não são demanda nem correntes fasoriais; o método de demanda, alimentador e QG1 continuam pendentes. Ergonomia, acessibilidade e iluminação/ventilação natural não foram verificadas. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso, cargas e simultaneidade; definir método por fase e dados de instalação antes de dimensionar alimentador, QG1, DR e proteção. |
 | P03 — Painel com CLP | Onze folhas cobrem alimentação, I/O, comando, bornes, interligações, sequência, plano de verificação e a comparação P03-11 entre enchimento e esgotamento. | O sentido real, tanques e função de LSL-LL continuam pendentes; LSHH e a resposta a sensor incoerente em marcha não foram decididos. Nenhum teste de CLP ou segurança funcional foi executado. | Aprovar V01 com dados do processo, localizar cada sensor, confirmar reservatório/captação e revisar demanda/parada, LSHH, falhas, I/O e matriz antes de implementar ou ensaiar. |
 | P04 — Nível | Nove folhas cobrem processo, malha, elétrica, interligações, layout, nove eventos causa–efeito, levantamento D01–D07 e o método de balanço NPSHa versus NPSHr. A revisão 05 deixa fonte, fluido, pressão, geometria e critérios sem valores inventados. | Sistema de uma bomba e um tanque com valores assumidos; fonte, vazão/carga, curva OEM, fluido e proteção não estão selecionados. P04-09 explica o método, mas não calcula NPSHa, NPSHr ou margem sem dados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir premissas por levantamento hidráulico e dados OEM; preencher D01–D07 com valores e evidências, verificar unidades e datum, avaliar combinações operacionais reais e aplicar a margem pertinente; completar respostas de processo antes da validação. |
@@ -494,3 +494,19 @@ também a mínima entre as oito folhas P11. A revisão integrada confirmou 12 pr
 113 pranchas, 452 arquivos gráficos e 76 CSVs. A validação estrita passou em 660.601
 verificações, sem erros ou avisos. A inspeção de SVGs no navegador continua aguardando
 autorização do usuário.
+
+### Atualização P01-09 — revisão 04
+
+A prancha 09 organiza quatro estados de habilitação, o ciclo PRONTO–PARTIDA–MARCHA–
+PARADA e quatro eventos: emergência, falha do VFD, falta de energia e troca de modo/
+perda de sinal. `sequencia-estados.csv` fornece os rótulos e descrições. A folha distingue
+S5/KSR1 do reset S4/X3:9 do VFD e declara que rearmar não inicia o motor. A ação para
+perda remota de 4–20 mA continua hipótese a confirmar no equipamento selecionado; não
+há categoria/PL/SIL, tempo de parada ou resultado de campo declarado.
+
+Inspecionei o PNG de produção a 300 dpi, a folha de contato do P01 e o PDF rasterizado
+independentemente pelo Poppler a 150 dpi. Não encontrei cortes ou colisões; a similaridade
+PDF/PNG de P01-09 foi 0,990330. O AcCoreConsole 2027 auditou 9/9 DXFs P01 e uma segunda
+geração reproduziu os nove SHA-256. A validação estrita passou em 663.880 verificações,
+sem erros ou avisos; a revisão integrada confirmou 12 projetos, 114 folhas, 456 arquivos
+gráficos e 77 CSVs. Os SVGs continuam aguardando autorização para inspeção no navegador.

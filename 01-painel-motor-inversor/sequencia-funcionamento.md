@@ -1,5 +1,9 @@
 # Sequência de funcionamento
 
+A representação resumida por estados está na [prancha 09](exports/09_sequencia_operacional_estados.pdf),
+cuja fonte de conteúdo é [sequencia-estados.csv](sequencia-estados.csv). Ela organiza a
+sequência descrita abaixo; não comprova implementação, ensaio ou resposta de segurança.
+
 ## 1. Estado seguro inicial
 
 Q0 aberto isola o circuito principal. O motor permanece sem torque. A posição de Q0
