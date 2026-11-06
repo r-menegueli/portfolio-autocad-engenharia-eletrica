@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-180
+181
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-17D
+17E
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-17E
+17F
 330
 3
 100
@@ -9239,7 +9239,7 @@ AcDbText
  40
 1.55
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9311,7 +9311,7 @@ AcDbText
  40
 1.55
   1
-BALANCO DE DEMANDA
+INTERLIGACAO X3/X4
   7
 PORTFOLIO_TEXTO
  72
@@ -9519,7 +9519,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9557,7 +9557,7 @@ AcDbText
  40
 2.25
   1
-04/09
+04/10
   7
 PORTFOLIO_TEXTO
  11
@@ -11629,19 +11629,53 @@ AcDbText
  10
 228.0
  20
-115.0
+119.0
  30
 0.0
  40
-1.05
+0.92
   1
-Parada comum: KSR abre contatores e STO A/B
+W607 8x1,0: +24 / DI1-3 / AI1 / COM / SH / reserva
   7
 PORTFOLIO_TEXTO
  11
 228.0
  21
-115.0
+119.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+17D
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+228.0
+ 20
+111.0
+ 30
+0.0
+ 40
+0.92
+  1
+KSR-601 desliga contatores e STO A/B
+  7
+PORTFOLIO_TEXTO
+ 11
+228.0
+ 21
+111.0
  31
 0.0
 100
@@ -12759,7 +12793,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-17F
+180
   0
 DICTIONARYVAR
   5
@@ -19381,11 +19415,11 @@ DictionaryVariables
 280
 0
   1
-04/09
+04/10
   0
 DICTIONARYVAR
   5
-17F
+180
 330
 2D
 100

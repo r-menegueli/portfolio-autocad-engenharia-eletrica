@@ -1,5 +1,5 @@
 {
-  "checks": 864,
+  "checks": 912,
   "errors": [],
   "results": {
     "cable_total_m": "196",
@@ -18,8 +18,8 @@
     "maximum_combined_drop_pct": "2.037810",
     "methods": 3,
     "reversal_truth_rows": 128,
-    "sheets": 9,
-    "terminals": 37,
+    "sheets": 10,
+    "terminals": 51,
     "vfd_truth_rows": 32
   },
   "status": "PASS"

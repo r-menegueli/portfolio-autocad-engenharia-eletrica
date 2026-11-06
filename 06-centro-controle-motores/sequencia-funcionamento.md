@@ -27,6 +27,8 @@ O retorno do permissivo não produz partida automática.
 
 1. QF-603 alimenta VFD-603; não existe contator de manobra na saída PWM.
 2. KSR-601 entrega os dois canais STO A/B.
-3. SA-603 seleciona local/remoto; DI1 e DI2 recebem partida/parada.
-4. P-603 fornece referência de velocidade 0-10 V em cabo blindado.
+3. SA-603 seleciona local/remoto em DI3; DI1 e DI2 recebem partida/parada pela
+   interface X4:3-10 / W607.
+4. P-603 fornece referência de velocidade 0-10 V por AI1/COM; SH é o dreno da
+   blindagem e a via RES permanece sem uso até seleção de hardware.
 5. RO1/RO2 sinalizam marcha e falha; uma falha exige diagnóstico e novo comando.

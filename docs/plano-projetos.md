@@ -187,19 +187,26 @@ mecanicamente intertravada e ventilador com inversor de frequência e STO. Inclu
 alimentador, proteções, aterramento, layout, bornes, cabos e sequência funcional.
 
 **Pranchas e dados específicos.** Unifilar do CCM; partida direta; partida reversora;
-acionamento por inversor; layout do CCM; diagrama de bornes; lista de cabos; matriz
-causa-efeito e balanço de demanda; listas estruturadas de cargas, alimentador, bornes,
-cabos e materiais.
+acionamento por inversor; layout funcional interno do CCM; interfaces de potência;
+detalhamento individual de 51 bornes de potência, campo e controle; lista de cabos;
+matriz causa-efeito e balanço de demanda; listas estruturadas de cargas, alimentador,
+bornes, cabos e materiais.
 
-**Marco de aceitação.** Nove DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
-listas estruturadas, mostrar os totais instalados e demandados sem somar correntes de
-ramais para representar W600, e documentar a exclusão mútua dos contatores reversores,
-a parada comum e a ausência de rearme automático.
+**Marco de aceitação.** Dez DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar as
+listas estruturadas e cada condutor de campo com um borne. Devem mostrar os totais
+instalados e demandados sem somar correntes de ramais para representar W600, e
+documentar a exclusão mútua dos contatores reversores, a parada comum e a ausência de
+rearme automático.
 
 **Revisão 03.** Acrescentada P06-09 com a comparação das três cargas, fatores de
 demanda, totais P/S instalados e demandados e corrente equivalente de W600. Os dados
 de proteção e fatores continuam premissas; a relação aritmética não valida o método
 de instalação, fatores de correção, capacidade térmica, Icc ou seletividade.
+
+**Revisão 04.** Corrigida a correspondência dos cabos W604-W608 com X3/X4, incluídos
+os oito condutores de W607 e o sinal local/remoto DI3, e separados os pares do botão
+de emergência dos fios internos STO A/B. A P06-10 registra os bornes individualmente;
+P06-05 identifica os componentes por função sem fingir dimensões de fabricante.
 
 ## P07 — Arquitetura elétrica acadêmica de veículo elétrico
 

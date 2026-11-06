@@ -48,6 +48,15 @@ potência aparente demandada total. Os fatores e os dados de proteção do alime
 continuam premissas acadêmicas, sem verificação de simultaneidade ou dimensionamento
 executivo.
 
+## Interligações de campo
+
+A revisão 04 detalha os 51 pontos de X1 a X4. X3 recebe W605 (bomba), W606 (esteira),
+W604 (dois pares de emergência) e W608 (sinalizadores da porta). X4 recebe W607 para
+START, STOP, local/remoto, referência AI1, comum, blindagem e reserva. A seleção
+local/remoto ocupa DI3, antes mostrada sem condutor na tabela. X4:1/2 mantêm STO A/B
+como ligação interna entre KSR-601 e VFD-603. A numeração é conceitual; conferir
+terminais, tensões e tipos de contato nos dispositivos selecionados.
+
 ## Limitações e responsabilidade
 
 Correntes, seções, proteções, comprimentos e dimensões são premissas coerentes para o

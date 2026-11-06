@@ -21,6 +21,12 @@
   VFD e motor;
 - contatores reversores têm intertravamentos elétrico e mecânico;
 - qualquer partida exige comando deliberado; retorno de energia não reinicia cargas.
+- X3:1-24 reúne W605, W606, W604 e W608; cada núcleo listado deve ter um borne
+  correspondente, inclusive reservas identificadas.
+- X4:1-2 são pontos internos KSR-601–STO A/B; X4:3-10 recebe os oito condutores de
+  W607, incluindo DI3 para seleção local/remoto.
+- A P06-05 é um arranjo funcional sem escala. Os blocos representam ocupação prevista;
+  dimensões de fabricante, folgas, segregação, IP e dissipação ainda não foram aprovados.
 
 ## Valores funcionais
 

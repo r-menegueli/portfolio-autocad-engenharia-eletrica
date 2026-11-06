@@ -248,7 +248,7 @@ id = "06-centro-controle-motores"
 path = "06-centro-controle-motores"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -265,6 +265,7 @@ required_files = [
   "causa-efeito.csv",
   "fonte/gerar_projeto_06.py",
   "fonte/validar_projeto_06.py",
+  "fonte/10_interligacao_bornes_comando.dxf",
   "validacao-integracao.json",
   "validacao.json",
 ]
@@ -1014,6 +1015,17 @@ source = "06-centro-controle-motores/fonte/09_balanco_demanda_ccm.dxf"
 svg = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.svg"
 pdf = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.pdf"
 png = "06-centro-controle-motores/exports/09_balanco_demanda_ccm.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p06-10-interligacao-bornes-comando"
+kind = "sheet"
+title = "Projeto 06 - Detalhamento de bornes de comando"
+source = "06-centro-controle-motores/fonte/10_interligacao_bornes_comando.dxf"
+svg = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.svg"
+pdf = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.pdf"
+png = "06-centro-controle-motores/exports/10_interligacao_bornes_comando.png"
 require_a3 = true
 require_notice = true
 

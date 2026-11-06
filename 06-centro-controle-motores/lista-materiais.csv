@@ -25,7 +25,7 @@ P-603,1,un,Potenciômetro 10 kohm,P-603,Referência 0-10 V
 H-601/H-604,4,un,Sinalizadores LED 24 Vcc,H-601/H-604,Marcha e falha
 X1,5,un,Bornes de entrada potência,X1:1-5,Incluir identificação
 X2,12,un,Bornes de saída para motores,X2:1-12,Incluir bornes PE
-X3,10,un,Bornes de comando,X3:1-10,24 Vcc
+X3,24,un,Bornes de comando e sinais de campo,X3:1-24,24 Vcc e contatos secos conforme interface
 X4,10,un,Bornes de VFD e segurança,X4:1-10,Segregar analógico e STO
 PE-06,1,un,Barra de proteção em cobre,PE-06,Equipotencialização
 N-06,1,un,Barra de neutro isolada,N-06,Separada do PE
