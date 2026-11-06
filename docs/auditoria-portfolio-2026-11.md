@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 111 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 112 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 111 pranchas, 444 arquivos
-gráficos e 75 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 652.258 verificações, sem erros ou avisos.
+Na revisão corrente, o revisor confirmou 12 projetos, 112 pranchas, 448 arquivos
+gráficos e 76 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
+passou em 656.386 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -29,7 +29,7 @@ passou em 652.258 verificações, sem erros ou avisos.
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
 | P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
-| P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
+| P02 — Residencial | A revisão 04 acrescenta P02-10, que separa cargas 127 V fase-neutro de C6/C7 a 220 V fase-fase e calcula cotas superiores aritméticas por condutor a partir do quadro CSV. Retira a divisão agregada de demanda por 220 V e a antiga indicação de QG1 63 A. | Planta e mobiliário ainda são fictícios; dimensões e posições dos vãos são premissas. As cotas de P02-10 não são demanda nem correntes fasoriais; o método de demanda, alimentador e QG1 continuam pendentes. Ergonomia, acessibilidade e iluminação/ventilação natural não foram verificadas. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso, cargas e simultaneidade; definir método por fase e dados de instalação antes de dimensionar alimentador, QG1, DR e proteção. |
 | P03 — Painel com CLP | Onze folhas cobrem alimentação, I/O, comando, bornes, interligações, sequência, plano de verificação e a comparação P03-11 entre enchimento e esgotamento. | O sentido real, tanques e função de LSL-LL continuam pendentes; LSHH e a resposta a sensor incoerente em marcha não foram decididos. Nenhum teste de CLP ou segurança funcional foi executado. | Aprovar V01 com dados do processo, localizar cada sensor, confirmar reservatório/captação e revisar demanda/parada, LSHH, falhas, I/O e matriz antes de implementar ou ensaiar. |
 | P04 — Nível | Nove folhas cobrem processo, malha, elétrica, interligações, layout, nove eventos causa–efeito, levantamento D01–D07 e o método de balanço NPSHa versus NPSHr. A revisão 05 deixa fonte, fluido, pressão, geometria e critérios sem valores inventados. | Sistema de uma bomba e um tanque com valores assumidos; fonte, vazão/carga, curva OEM, fluido e proteção não estão selecionados. P04-09 explica o método, mas não calcula NPSHa, NPSHr ou margem sem dados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir premissas por levantamento hidráulico e dados OEM; preencher D01–D07 com valores e evidências, verificar unidades e datum, avaliar combinações operacionais reais e aplicar a margem pertinente; completar respostas de processo antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e, em P05-09, dados mais um roteiro verificável para o futuro estudo. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
@@ -456,3 +456,20 @@ folhas; similaridades PDF/PNG: 0,989404 e 0,989947. A revisão estrita passou em
 verificações, sem erros ou avisos; o revisor confirmou 12 projetos, 111 pranchas, 444
 arquivos gráficos e 75 CSVs, com similaridade mínima de 0,981493. A inspeção de SVGs no
 navegador continua aguardando autorização.
+
+### Atualização P02-10 — revisão gráfica 04
+
+A revisão retirou a divisão agregada de 12.595,543 VA por 220 V e a indicação de QG1
+63 A: o cálculo misturava circuitos 127 V fase-neutro com cargas 220 V fase-fase e não
+comprovava a corrente de serviço. A nova P02-10 separa os circuitos por condutor e
+calcula apenas cotas superiores aritméticas sem diversidade: 65,29 A para A e 67,56 A
+para B. Elas não representam demanda nem correntes fasoriais. O dimensionamento de
+QG1, DR, alimentador e simultaneidade depende de método e dados reais.
+
+O validador matemático P02 passou em 98 verificações. O AutoCAD AcCoreConsole 2027
+abriu e auditou os 10/10 DXFs, com zero erros encontrados e zero corrigidos. Conferi
+o contato das dez folhas e a rasterização integral da P02-10; a tabela, o gráfico, o
+aviso de limites e o carimbo 04/10 estão dentro da moldura. A similaridade PDF/PNG da
+nova folha foi 0,989581. A revisão integrada confirmou 12 projetos, 112 folhas, 448
+arquivos gráficos e 76 CSVs; a validação estrita passou em 656.386 verificações, sem
+erros ou avisos. A inspeção de SVGs no navegador continua pendente de autorização.

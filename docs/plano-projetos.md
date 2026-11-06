@@ -104,11 +104,14 @@ barramentos N/PE e detalhes de equipotencialização e eletrodo.
 
 **Pranchas e dados específicos.** Planta arquitetônica mobiliada e esquadrias,
 iluminação, tomadas, eletrodutos, diagrama unifilar, quadro de distribuição, quadro de
-cargas e detalhes de aterramento; listas CSV de pontos, cargas, materiais e esquadrias.
+cargas, detalhes de aterramento, rastreabilidade de cargas por ambiente e análise
+aritmética por condutor; listas CSV de pontos, cargas, materiais, esquadrias e corrente
+por fase.
 
-**Marco de aceitação.** Nove folhas AC1027 com PDF/SVG/PNG, rastreabilidade por CSV e
-auditoria DXF no AutoCAD AcCoreConsole 2027 (9/9). Revisão estrita do portfólio e
-revisor integrado passaram sem erros; limites acadêmicos permanecem explícitos.
+**Marco de aceitação.** Dez folhas AC1027 com PDF/SVG/PNG, rastreabilidade por CSV e
+auditoria DXF no AutoCAD AcCoreConsole 2027 (10/10, zero erros). Revisão estrita do
+portfólio e revisor integrado passaram sem erros; limites acadêmicos permanecem
+explícitos.
 
 **Revisão gráfica 03 (2026-11-06).** A planta agora representa os vãos com interrupções
 nas paredes, mostra acesso ao Quarto 2 e ao banheiro pela circulação e acesso ao closet
@@ -117,6 +120,13 @@ portas e sete janelas. Oito ambientes somam 75 m², 20 pontos totalizam 15.558,6
 com dimensões, aberturas e cargas marcadas como premissas. As nove folhas integrais
 foram inspecionadas; os DXFs são reproduzíveis, auditados e validados. O SVG ainda
 aguarda inspeção no navegador mediante autorização.
+
+**Revisão 04 (2026-11-06).** Acrescentada P02-10 com cotas superiores aritméticas de
+corrente por condutor, separando os circuitos de 127 V fase-neutro dos ramais C6/C7 de
+220 V fase-fase. A corrente agregada anterior de 57,252 A e a indicação de QG1 63 A
+foram retiradas; a divisão por 220 V misturava tensões e não demonstrava corrente de
+serviço. P02-10 usa a soma de magnitudes S/V sem diversidade, não é demanda nem corrente
+fasorial exata. A seleção de QG1, alimentador, DR e simultaneidade permanece pendente.
 
 ## P03 — Painel de automação com CLP para duas bombas
 

@@ -85,3 +85,25 @@ futura por levantamento real, sem alegar medição ou teste de campo.
 O conjunto continua conceitual. A planta, as esquadrias, os equipamentos, as potências,
 as extensões e as proteções são premissas; abertura correta do DXF e consistência dos
 cálculos registrados não demonstram conformidade normativa nem dimensionamento executivo.
+
+## Revisão gráfica 04 — 2026-11-06
+
+- As dez folhas foram regeneradas em DXF, PDF, SVG e PNG. Conferi o contato atualizado
+  do conjunto para numeração, revisão 04, composição e ausência de cortes aparentes.
+- Inspecionei a rasterização integral do PDF de P02-10. Tabela, gráfico, valores de
+  65,29 A e 67,56 A, comparação tracejada com a antiga referência de 63 A e carimbo
+  `04 / 10/10` aparecem dentro da moldura. Os textos explicam que as cotas são somas
+  aritméticas sem diversidade, não correntes fasoriais nem demanda.
+- A similaridade independente PDF/PNG de P02-10 foi 0,989581; entre as dez folhas, a
+  menor foi 0,984878. O revisor integrado confirmou 12 projetos, 112 pranchas, 448
+  arquivos gráficos e 76 CSVs. O validador matemático P02 passou em 98 verificações;
+  o validador estrito do portfólio passou em 656.386 verificações.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou os 10/10 DXFs; os logs registram zero
+  erros encontrados e zero corrigidos. Essa auditoria CAD não valida dimensionamento
+  nem conformidade elétrica.
+- A inspeção de SVGs no navegador permanece pendente de autorização do usuário.
+
+Na revisão 04, a corrente agregada de 57,252 A e a indicação de QG1 63 A foram
+retiradas porque a divisão da soma de cargas por 220 V misturava circuitos de 127 V
+fase-neutro e 220 V fase-fase. QG1, alimentador, DR e demanda continuam pendentes de
+método e dados reais.

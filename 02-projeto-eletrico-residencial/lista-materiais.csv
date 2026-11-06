@@ -1,8 +1,8 @@
 item,quantidade,unidade,descricao,referencia,observacoes
 QD1,1,un,Quadro de distribuicao de embutir 24 modulos,Pranchas 05 e 06,Capacidade e grau IP a confirmar
-QG1,1,un,Disjuntor termomagnetico bipolar 63 A curva C,Pranchas 05 e 06,Capacidade de interrupcao a dimensionar
+QG1,1,un,Disjuntor geral bipolar a dimensionar,Pranchas 05 06 e 10,In curva Icu/Ics e coordenacao pendentes
 DPS1,2,un,DPS tipo 2 Uc 275 V Imax 20 kA,Pranchas 05 e 06,Coordenacao e arranjo final a verificar
-DR1,1,un,Interruptor diferencial residual 2P 63 A 30 mA tipo A,Pranchas 05 e 06,Protecao global adotada
+DR1,1,un,Interruptor diferencial residual bipolar IdeltaN 30 mA,Pranchas 05 e 06,In tipo e arranjo a confirmar
 DJ1,2,un,Disjuntor 1P 10 A curva B,C1 e C2,Iluminacao
 DJ2,3,un,Disjuntor 1P 16 A curva C,C3 C5 e C8,TUG e TUE
 DJ3,1,un,Disjuntor 1P 20 A curva C,C4,TUG cozinha
@@ -23,7 +23,7 @@ EL32,18,m,Eletroduto corrugado antichama DN 32 mm,Prancha 04,Alimentador
 CAB15,180,m,Condutor de cobre isolado 1.5 mm2,Quadro de cargas,Cores por funcao
 CAB40,420,m,Condutor de cobre isolado 4 mm2,Quadro de cargas,Cores por funcao
 CAB60,60,m,Condutor de cobre isolado 6 mm2,Quadro de cargas,Cores por funcao
-CAB16,50,m,Condutor de cobre isolado 16 mm2,Alimentador e aterramento,Classe e isolacao a selecionar
+CAB-ALIM-PE,1,conjunto,Condutores de fases neutro e PE para alimentador e aterramento,Pranchas 05 07 e 10,Secoes comprimentos e protecoes pendentes
 HST1,1,un,Haste cobreada 2.40 m com conector,Prancha 08,Quantidade depende de medicao
 BEP1,1,un,Barramento principal de equipotencializacao,Prancha 08,Instalacao acessivel e identificada
 CXI1,1,un,Caixa de inspecao de aterramento,Prancha 08,Material e dimensao a selecionar

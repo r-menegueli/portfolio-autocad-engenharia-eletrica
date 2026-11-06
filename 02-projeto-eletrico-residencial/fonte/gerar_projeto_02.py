@@ -1,4 +1,4 @@
-"""Gera as nove pranchas DXF do Projeto 02 de forma deterministica."""
+"""Gera as dez pranchas DXF do Projeto 02 de forma deterministica."""
 
 from __future__ import annotations
 
@@ -37,7 +37,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "02-projeto-eletrico-residencial"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
+PHASE_ANALYSIS_CSV = "analise-corrente-por-fase.csv"
 
 
 @dataclass(frozen=True)
@@ -76,6 +77,58 @@ CIRCUITS = (
     Circuit("C7", "TUE chuveiro", 220, "AB", 5500.000, 25.000, 6.0, 32, 2, "C", 1.705),
     Circuit("C8", "TUE lavadora", 127, "B", 1500.000, 11.811, 4.0, 16, 1, "C", 2.302),
 )
+
+
+def build_phase_current_analysis(root: Path) -> list[dict[str, str]]:
+    source = root / PROJECT_SLUG / "quadro-cargas.csv"
+    neutral_va = {"A": Decimal("0"), "B": Decimal("0")}
+    neutral_circuits = {"A": [], "B": []}
+    phase_phase_va = Decimal("0")
+    phase_phase_circuits: list[str] = []
+    with source.open("r", encoding="utf-8-sig", newline="") as stream:
+        for row in csv.DictReader(stream):
+            voltage = int(row["tensao_v"])
+            apparent = Decimal(row["potencia_aparente_va"])
+            phases = row["fases"].strip().upper()
+            tag = row["circuito"].strip().upper()
+            if voltage == 127 and phases in neutral_va:
+                neutral_va[phases] += apparent
+                neutral_circuits[phases].append(tag)
+            elif voltage == 220 and phases == "AB":
+                phase_phase_va += apparent
+                phase_phase_circuits.append(tag)
+            else:
+                raise ValueError(f"Topologia fora do escopo didatico: {tag} {voltage} V fase(s) {phases}.")
+
+    phase_phase_current = phase_phase_va / Decimal("220")
+    output: list[dict[str, str]] = []
+    for phase in ("A", "B"):
+        neutral_current = neutral_va[phase] / Decimal("127")
+        arithmetic_bound = neutral_current + phase_phase_current
+        output.append({
+            "fase": phase,
+            "ramais_fase_neutro": "+".join(neutral_circuits[phase]),
+            "va_fase_neutro": f"{neutral_va[phase]:.4f}",
+            "tensao_fase_neutro_v": "127",
+            "soma_magnitudes_fase_neutro_a": f"{neutral_current:.6f}",
+            "ramais_fase_fase": "+".join(phase_phase_circuits),
+            "va_fase_fase": f"{phase_phase_va:.4f}",
+            "tensao_fase_fase_v": "220",
+            "soma_magnitudes_fase_fase_a": f"{phase_phase_current:.6f}",
+            "cota_superior_aritmetica_a": f"{arithmetic_bound:.6f}",
+            "metodo": "Sem diversidade; soma de magnitudes S/V; nao e demanda nem corrente fasorial exata",
+        })
+    return output
+
+
+def write_phase_current_analysis(root: Path, rows: list[dict[str, str]]) -> Path:
+    path = root / PROJECT_SLUG / PHASE_ANALYSIS_CSV
+    fields = tuple(rows[0])
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    return path
 
 
 SHEETS = (
@@ -142,8 +195,8 @@ SHEETS = (
         "07_quadro_cargas.dxf",
         "QUADRO DE CARGAS",
         "Potências, correntes, condutores, proteção e queda de tensão",
-        "Demanda adotada é didática, não regra de concessionária. As seções de C3\\P"
-        "e C8 foram ajustadas para 4 mm²; quedas combinadas abaixo de 4%.",
+        "Demanda e corrente do alimentador não estão selecionadas.\\P"
+        "As seções e quedas dos circuitos ainda dependem de método e dados reais.",
         "VA: potência aparente | Ib: corrente | S: seção Cu | DJ: disjuntor",
     ),
     SheetSpec(
@@ -163,6 +216,15 @@ SHEETS = (
         "Áreas, potências e uso são premissas acadêmicas.\\P"
         "Substituir por planta levantada e cargas reais antes de redimensionar.",
         "IDs remetem a lista-pontos.csv | circuitos remetem a quadro-cargas.csv",
+    ),
+    SheetSpec(
+        10,
+        "10_corrente_por_fase.dxf",
+        "ANÁLISE ARITMÉTICA DE CORRENTE POR FASE",
+        "Cota superior sem diversidade a partir das cargas aparentes declaradas",
+        "Soma de magnitudes S/V não é demanda nem corrente fasorial exata.\\P"
+        "QG1, demanda, alimentador e método de simultaneidade permanecem pendentes.",
+        "A/B: condutores de fase | AB: ramal fase-fase contado em ambos | cota: soma de módulos",
     ),
 )
 
@@ -263,7 +325,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72.0), (x, 94.0), "01_CARIMBO")
     for value, x in (("REV.", 239.0), ("DATA", 264.0), ("DESCRIÇÃO", 316.0), ("RESP.", 381.0)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("PLANTA E ESQUADRIAS", 316.0), ("R.E.M.M.", 381.0)):
+    for value, x in ((REVISION, 239.0), (PROJECT_DATE, 264.0), ("CORRENTE POR FASE", 316.0), ("R.E.M.M.", 381.0)):
         centered(layout, value, (x, 78.5), 1.7, "02_TEXTO")
 
 
@@ -752,9 +814,9 @@ def draw_unifilar(layout) -> None:
     line(layout, (25.0, 235.0), (48.0, 235.0), "05_POTENCIA")
     boxed_label(layout, 48.0, 224.0, 83.0, 246.0, "MED1", "medição")
     line(layout, (83.0, 235.0), (94.0, 235.0), "05_POTENCIA")
-    boxed_label(layout, 94.0, 224.0, 125.0, 246.0, "QG1", "2P C63 A")
+    boxed_label(layout, 94.0, 224.0, 125.0, 246.0, "QG1", "2P | In PEND.")
     line(layout, (125.0, 235.0), (137.0, 235.0), "05_POTENCIA")
-    boxed_label(layout, 137.0, 224.0, 168.0, 246.0, "DR1", "2P 63 A / 30 mA")
+    boxed_label(layout, 137.0, 224.0, 168.0, 246.0, "DR1", "2P | In? / 30 mA")
     line(layout, (168.0, 235.0), (185.0, 235.0), "05_POTENCIA")
     line(layout, (185.0, 112.0), (185.0, 245.0), "05_POTENCIA")
     centered(layout, "BARRAMENTO QD1", (185.0, 252.0), 1.7, "05_POTENCIA")
@@ -779,8 +841,8 @@ def draw_unifilar(layout) -> None:
                  (262.0, y - 2.1), 1.35, layer="08_CABOS")
     add_rect(layout, 238.0, 105.0, 402.0, 252.0, "12_LEGENDA")
     add_text(layout, "PROTEÇÕES GERAIS", (25.0, 135.0), 2.0, layer="13_NOTAS", style=TITLE_STYLE)
-    add_mtext(layout, "QG1: 2P 63 A curva C.\\PDR1: 2P 63 A, 30 mA, tipo A.\\P"
-              "DPS1: tipo 2, Uc 275 V, Imax 20 kA.\\PCapacidade de interrupção: a calcular.",
+    add_mtext(layout, "QG1: polos, In e curva a dimensionar.\\PDR1: IΔn 30 mA como premissa; In e tipo a confirmar.\\P"
+              "DPS1: tipo 2, Uc 275 V, Imax 20 kA como premissas.\\PCapacidade de interrupção: a calcular.",
               (25.0, 130.0), 135.0, 1.55, "13_NOTAS")
 
 
@@ -801,9 +863,9 @@ def draw_distribution_board(layout) -> None:
         line(layout, (34.0, y), (266.0, y), "10_ELETROCALHAS")
         line(layout, (34.0, y + 32.0), (266.0, y + 32.0), "10_ELETROCALHAS")
     x = 38.0
-    x = module_box(layout, x, 218.0, 2, "QG1", "2P C63") + 4.0
+    x = module_box(layout, x, 218.0, 2, "QG1", "2P In PEND.") + 4.0
     x = module_box(layout, x, 218.0, 2, "DPS1", "2 x 275 V") + 4.0
-    x = module_box(layout, x, 218.0, 2, "DR1", "2P 63/0,03") + 4.0
+    x = module_box(layout, x, 218.0, 2, "DR1", "In? / 0,03") + 4.0
     module_box(layout, x, 218.0, 2, "RESERVA", "2 módulos")
     x = 38.0
     for circuit in CIRCUITS[:5]:
@@ -856,13 +918,79 @@ def draw_load_schedule(layout) -> None:
     add_rect(layout, 18.0, 105.0, 402.0, 125.0, "12_LEGENDA")
     circuit_va = [Decimal(str(circuit.va)) for circuit in CIRCUITS]
     installed_va = sum(circuit_va, Decimal("0"))
-    general_va = sum(circuit_va[:5], Decimal("0"))
-    tue_va = sum(circuit_va[5:], Decimal("0"))
-    demand_va = Decimal("1000") + Decimal("0.35") * (general_va - Decimal("1000")) + tue_va
     centered(layout, f"INSTALADA: {format_va(installed_va)} VA", (86.0, 115.0), 1.9, "12_LEGENDA")
-    centered(layout, f"DEMANDA ACADÊMICA: {format_va(demand_va)} VA", (226.0, 115.0), 1.9, "12_LEGENDA")
-    centered(layout, "QG1: 2P 63 A | ALIM.: 16 mm²", (349.0, 115.0), 1.9, "12_LEGENDA")
+    centered(layout, "DEMANDA / CORRENTE DO ALIMENTADOR: PENDENTES", (226.0, 115.0), 1.8, "12_LEGENDA")
+    centered(layout, "QG1 / ALIMENTADOR: DIMENSIONAR", (349.0, 115.0), 1.9, "12_LEGENDA")
     centered(layout, "QUEDA COMBINADA CONSERVADORA: C3 = 3,107% | C8 = 3,316%", (210.0, 100.0), 1.65, "13_NOTAS")
+
+
+def draw_phase_current_analysis(layout, rows: list[dict[str, str]]) -> None:
+    add_rect(layout, 18.0, 105.0, 244.0, 260.0, "12_LEGENDA")
+    centered(layout, "DECOMPOSIÇÃO DAS CARGAS POR CONDUTOR", (131.0, 251.0), 2.0, "12_LEGENDA")
+    table_rows = tuple(
+        (
+            row["fase"],
+            row["ramais_fase_neutro"],
+            f"{Decimal(row['va_fase_neutro']):.1f}".replace(".", ","),
+            f"{Decimal(row['soma_magnitudes_fase_neutro_a']):.2f}".replace(".", ","),
+            row["ramais_fase_fase"],
+            f"{Decimal(row['soma_magnitudes_fase_fase_a']):.2f}".replace(".", ","),
+            f"{Decimal(row['cota_superior_aritmetica_a']):.2f}".replace(".", ","),
+        )
+        for row in rows
+    )
+    draw_table(
+        layout,
+        20.0,
+        244.0,
+        (16.0, 34.0, 28.0, 25.0, 34.0, 28.0, 30.0),
+        ("FASE", "RAMOS 127 V", "VA", "SOMA |I|", "RAMOS 220 V", "SOMA |I|", "COTA |I|"),
+        table_rows,
+        row_h=24.0,
+        text_h=1.12,
+    )
+    centered(layout, "MÉTODO E LIMITES", (131.0, 160.0), 1.9, "12_LEGENDA")
+    add_mtext(
+        layout,
+        "127 V: C1/C3/C5 em A; C2/C4/C8 em B.\\P"
+        "220 V: C6/C7 contribuem em ambos os condutores.\\P"
+        "Cota = soma aritmética de S/V por ramal, sem diversidade.\\P"
+        "É um limite superior por soma de módulos, não demanda nem corrente fasorial exata.",
+        (23.0, 153.0), 212.0, 1.5, "13_NOTAS",
+    )
+
+    add_rect(layout, 250.0, 105.0, 402.0, 260.0, "12_LEGENDA")
+    centered(layout, "COMPARAÇÃO COM A PREMISSA RETIRADA", (326.0, 251.0), 1.7, "12_LEGENDA")
+    chart_x = 272.0
+    chart_scale = 1.16
+    chart_top = 226.0
+    chart_bottom = 169.0
+    for amperes in (0, 20, 40, 60, 80):
+        x = chart_x + amperes * chart_scale
+        line(layout, (x, chart_bottom), (x, chart_top), "12_LEGENDA")
+        centered(layout, str(amperes), (x, 163.0), 1.1, "02_TEXTO")
+    reference_x = chart_x + 63.0 * chart_scale
+    y = chart_bottom
+    while y < chart_top:
+        line(layout, (reference_x, y), (reference_x, min(y + 2.0, chart_top)), "03_COTAS")
+        y += 4.0
+    centered(layout, "63 A ANTIGA", (reference_x, 233.0), 1.15, "03_COTAS")
+    for phase, bar_y, layer in (("A", 207.0, "05_POTENCIA"), ("B", 181.0, "07_INSTRUMENTACAO")):
+        row = next(item for item in rows if item["fase"] == phase)
+        bound = Decimal(row["cota_superior_aritmetica_a"])
+        bar_end = chart_x + float(bound) * chart_scale
+        centered(layout, phase, (260.0, bar_y + 3.5), 1.7, layer)
+        add_rect(layout, chart_x, bar_y, bar_end, bar_y + 7.0, layer)
+        centered(layout, f"{bound:.2f} A".replace(".", ","), (384.0, bar_y + 3.5), 1.45, layer)
+    add_rect(layout, 258.0, 111.0, 394.0, 151.0, "13_NOTAS")
+    centered(layout, "QG1 E ALIMENTADOR", (326.0, 144.0), 1.7, "13_NOTAS")
+    add_mtext(
+        layout,
+        "A antiga indicação de QG1 63 A foi retirada.\\P"
+        "Os valores da barra são cotas aritméticas, não correntes de projeto.\\P"
+        "In, curva, seção e demanda ficam pendentes de método e dados reais.",
+        (262.0, 136.0), 128.0, 1.25, "13_NOTAS",
+    )
 
 
 def detail_title(layout, x0: float, x1: float, value: str) -> None:
@@ -1068,8 +1196,11 @@ def generate(root: Path) -> list[Path]:
     source_dir = root / PROJECT_SLUG / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)
     (root / PROJECT_SLUG / "exports").mkdir(parents=True, exist_ok=True)
+    phase_analysis = build_phase_current_analysis(root)
+    write_phase_current_analysis(root, phase_analysis)
+    drawers = (*DRAWERS, lambda layout: draw_phase_current_analysis(layout, phase_analysis))
     outputs: list[Path] = []
-    for spec, drawer in zip(SHEETS, DRAWERS):
+    for spec, drawer in zip(SHEETS, drawers):
         doc, layout = create_sheet(config, spec)
         drawer(layout)
         prepare_deterministic_write(doc)

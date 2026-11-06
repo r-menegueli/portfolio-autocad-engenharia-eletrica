@@ -8941,7 +8941,7 @@ AcDbMText
  71
 1
   1
-Demanda adotada é didática, não regra de concessionária. As seções de C3\Pe C8 foram ajustadas para 4 mm²; quedas combinadas abaixo de 4%.
+Demanda e corrente do alimentador não estão selecionadas.\PAs seções e quedas dos circuitos ainda dependem de método e dados reais.
   7
 PORTFOLIO_TEXTO
  44
@@ -9333,7 +9333,7 @@ AcDbText
  40
 1.7
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9405,7 +9405,7 @@ AcDbText
  40
 1.7
   1
-PLANTA E ESQUADRIAS
+CORRENTE POR FASE
   7
 PORTFOLIO_TEXTO
  72
@@ -9613,7 +9613,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9651,7 +9651,7 @@ AcDbText
  40
 2.25
   1
-07/09
+07/10
   7
 PORTFOLIO_TEXTO
  11
@@ -13287,9 +13287,9 @@ AcDbText
  30
 0.0
  40
-1.9
+1.8
   1
-DEMANDA ACADÊMICA: 12 595,543 VA
+DEMANDA / CORRENTE DO ALIMENTADOR: PENDENTES
   7
 PORTFOLIO_TEXTO
  72
@@ -13325,7 +13325,7 @@ AcDbText
  40
 1.9
   1
-QG1: 2P 63 A | ALIM.: 16 mm²
+QG1 / ALIMENTADOR: DIMENSIONAR
   7
 PORTFOLIO_TEXTO
  72
@@ -21109,7 +21109,7 @@ DictionaryVariables
 280
 0
   1
-07/09
+07/10
   0
 DICTIONARYVAR
   5

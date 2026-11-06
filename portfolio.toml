@@ -144,7 +144,7 @@ id = "02-projeto-eletrico-residencial"
 path = "02-projeto-eletrico-residencial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -153,6 +153,7 @@ required_files = [
   "referencias-normativas.md",
   "inspecao-visual.md",
   "quadro-cargas.csv",
+  "analise-corrente-por-fase.csv",
   "rastreabilidade-ambientes.csv",
   "esquadrias.csv",
   "lista-pontos.csv",
@@ -633,6 +634,17 @@ source = "02-projeto-eletrico-residencial/fonte/09_rastreabilidade_ambientes_car
 svg = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.svg"
 pdf = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.pdf"
 png = "02-projeto-eletrico-residencial/exports/09_rastreabilidade_ambientes_cargas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p02-10-corrente-por-fase"
+kind = "sheet"
+title = "Projeto 02 - Análise aritmética de corrente por fase"
+source = "02-projeto-eletrico-residencial/fonte/10_corrente_por_fase.dxf"
+svg = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.svg"
+pdf = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.pdf"
+png = "02-projeto-eletrico-residencial/exports/10_corrente_por_fase.png"
 require_a3 = true
 require_notice = true
 

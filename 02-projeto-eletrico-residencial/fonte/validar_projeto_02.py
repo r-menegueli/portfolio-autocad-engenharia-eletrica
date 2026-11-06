@@ -8,9 +8,11 @@ from decimal import Decimal
 import json
 from pathlib import Path
 
+import ezdxf
 
 PROJECT_SLUG = "02-projeto-eletrico-residencial"
 RHO_COPPER = Decimal("0.0225")
+PHASE_ANALYSIS_CSV = "analise-corrente-por-fase.csv"
 
 
 def rows_by(path: Path, key: str) -> dict[str, dict[str, str]]:
@@ -42,9 +44,17 @@ def validate(root: Path) -> dict:
     if set(circuits) != expected_circuits:
         errors.append("Circuitos esperados C1 a C8 não coincidem com o CSV.")
 
+    phase_neutral_va = {"A": Decimal("0"), "B": Decimal("0")}
+    phase_neutral_current = {"A": Decimal("0"), "B": Decimal("0")}
+    phase_neutral_tags = {"A": [], "B": []}
+    phase_phase_va = Decimal("0")
+    phase_phase_current = Decimal("0")
+    phase_phase_tags: list[str] = []
+
     for tag, row in circuits.items():
         voltage = number(row, "tensao_v")
         apparent = number(row, "potencia_aparente_va")
+        phases = row["fases"].strip().upper()
         current = number(row, "corrente_projeto_a")
         length = number(row, "comprimento_m")
         section = number(row, "condutor_mm2")
@@ -56,6 +66,81 @@ def validate(root: Path) -> dict:
             errors.append(f"{tag}: corrente {current} A difere de S/V = {expected_current:.6f} A.")
         if abs(drop_recorded - expected_drop) > Decimal("0.002"):
             errors.append(f"{tag}: queda {drop_recorded}% difere do cálculo = {expected_drop:.6f}%.")
+
+        checks += 1
+        if voltage == Decimal("127") and phases in phase_neutral_va:
+            phase_neutral_va[phases] += apparent
+            phase_neutral_current[phases] += apparent / voltage
+            phase_neutral_tags[phases].append(tag)
+        elif voltage == Decimal("220") and phases == "AB":
+            phase_phase_va += apparent
+            phase_phase_current += apparent / voltage
+            phase_phase_tags.append(tag)
+        else:
+            errors.append(f"{tag}: par tensão/fases fora do cenário 127 V A/B ou 220 V AB.")
+
+    phase_results: dict[str, dict[str, str]] = {}
+    analysis_rows = read_rows(project / PHASE_ANALYSIS_CSV)
+    checks += 1
+    if {row.get("fase") for row in analysis_rows} != {"A", "B"} or len(analysis_rows) != 2:
+        errors.append("Análise de corrente por fase: esperado um registro único para A e B.")
+    for row in analysis_rows:
+        phase = row.get("fase", "")
+        if phase not in phase_neutral_va:
+            continue
+        neutral_current = phase_neutral_current[phase]
+        upper_bound = neutral_current + phase_phase_current
+        expected_fields = {
+            "ramais_fase_neutro": "+".join(phase_neutral_tags[phase]),
+            "va_fase_neutro": phase_neutral_va[phase],
+            "tensao_fase_neutro_v": Decimal("127"),
+            "soma_magnitudes_fase_neutro_a": neutral_current,
+            "ramais_fase_fase": "+".join(phase_phase_tags),
+            "va_fase_fase": phase_phase_va,
+            "tensao_fase_fase_v": Decimal("220"),
+            "soma_magnitudes_fase_fase_a": phase_phase_current,
+            "cota_superior_aritmetica_a": upper_bound,
+        }
+        for field, expected in expected_fields.items():
+            checks += 1
+            actual_text = row.get(field, "")
+            try:
+                if isinstance(expected, Decimal):
+                    actual = Decimal(actual_text)
+                    if abs(actual - expected) > Decimal("0.000002"):
+                        errors.append(f"Análise fase {phase}: {field} {actual} difere de {expected}.")
+                elif actual_text != expected:
+                    errors.append(f"Análise fase {phase}: {field} {actual_text!r} difere de {expected!r}.")
+            except ArithmeticError:
+                errors.append(f"Análise fase {phase}: valor inválido em {field}.")
+        checks += 1
+        if "nao e demanda" not in row.get("metodo", "").casefold():
+            errors.append(f"Análise fase {phase}: método deve identificar o limite como não sendo demanda.")
+        phase_results[phase] = {
+            "phase_neutral_va": str(phase_neutral_va[phase]),
+            "phase_neutral_sum_a": f"{neutral_current:.6f}",
+            "phase_phase_va": str(phase_phase_va),
+            "phase_phase_sum_a": f"{phase_phase_current:.6f}",
+            "arithmetic_upper_bound_a": f"{upper_bound:.6f}",
+        }
+
+    dxf_path = project / "fonte" / "10_corrente_por_fase.dxf"
+    checks += 1
+    try:
+        doc = ezdxf.readfile(dxf_path)
+        metadata = doc.ezdxf_metadata()
+        if metadata.get("PORTFOLIO_SHEET") != "10/10":
+            errors.append("P02-10: metadado de prancha deve ser 10/10.")
+        drawing_text = " ".join(
+            entity.dxf.text if entity.dxftype() == "TEXT" else entity.text
+            for entity in doc.modelspace().query("TEXT MTEXT")
+        ).casefold()
+        checks += 3
+        for term in ("análise aritmética de corrente por fase", "63 a antiga", "não demanda"):
+            if term not in drawing_text:
+                errors.append(f"P02-10: termo obrigatório ausente: {term}.")
+    except (OSError, ezdxf.DXFError) as exc:
+        errors.append(f"P02-10: não foi possível ler o DXF: {exc}.")
 
     point_totals: dict[str, Decimal] = {tag: Decimal("0") for tag in expected_circuits}
     for row in points.values():
@@ -133,16 +218,8 @@ def validate(root: Path) -> dict:
         errors.append("A potência rastreada por ambiente difere da soma da lista de pontos.")
 
     installed = sum((number(row, "potencia_aparente_va") for row in circuits.values()), Decimal("0"))
-    general = sum((number(circuits[f"C{index}"], "potencia_aparente_va") for index in range(1, 6)), Decimal("0"))
-    demand_general = Decimal("1000") + Decimal("0.35") * (general - Decimal("1000"))
-    tue = sum((number(circuits[tag], "potencia_aparente_va") for tag in ("C6", "C7", "C8")), Decimal("0"))
-    demand = demand_general + tue
-    service_current = demand / Decimal("220")
     for label, actual, expected, tolerance in (
         ("potência instalada", installed, Decimal("15558.6955"), Decimal("0.001")),
-        ("demanda geral", demand_general, Decimal("2595.543425"), Decimal("0.00001")),
-        ("demanda total", demand, Decimal("12595.543425"), Decimal("0.00001")),
-        ("corrente de demanda", service_current, Decimal("57.252470"), Decimal("0.00001")),
     ):
         checks += 1
         if abs(actual - expected) > tolerance:
@@ -171,9 +248,9 @@ def validate(root: Path) -> dict:
         "errors": errors,
         "results": {
             "installed_va": str(installed),
-            "general_demand_va": f"{demand_general:.5f}",
-            "total_demand_va": f"{demand:.5f}",
-            "service_current_a": f"{service_current:.6f}",
+            "phase_current_upper_bounds": phase_results,
+            "demand_and_main_breaker_status": "PENDING_METHOD_AND_REAL_DATA",
+            "withdrawn_qg1_reference_a": "63",
             "point_totals_va": {tag: str(point_totals[tag]) for tag in sorted(point_totals)},
             "room_count": len(room_rows),
             "declared_area_m2": str(declared_area),
