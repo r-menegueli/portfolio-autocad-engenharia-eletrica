@@ -181,6 +181,7 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         text = " ".join(entity_text(entity) for entity in doc.modelspace())
         for token in (WARNING, "Rogério Eduardo Moreira Menegueli", "mm", "01", "CONCEIT."):
             v.require(token in text, f"texto obrigatório ausente em {path.name}: {token}")
+        v.require("BALANCO DE CARGA" in text, f"descrição da revisão incorreta em {path.name}")
         extents = bbox.extents(doc.modelspace(), fast=True)
         v.require(extents.has_data, f"DXF sem geometria: {path.name}")
         if extents.has_data:

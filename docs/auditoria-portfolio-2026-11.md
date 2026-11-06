@@ -145,8 +145,9 @@ P12 também foi conferido. P06-08 foi inspecionada em PNG integral e PDF rasteri
 inspecionada em PNG de produção e PDF rasterizado a 150 dpi; as oito linhas cabem sem
 cortes. Na revisão 04, P10-09 foi conferida no PNG de produção e em PDF rasterizado a
 150 dpi; tabela, barra de carga, textos, notas e carimbo não apresentam cortes nem
-colisões visíveis. O contato das nove folhas P10 foi conferido. O AcCoreConsole 2027
-abriu e auditou 9/9 DXFs P10; o validador específico passou com 64.344 verificações,
+colisões visíveis; o carimbo descreve corretamente o balanço da revisão. O contato das
+nove folhas P10 foi conferido. O AcCoreConsole 2027 abriu e auditou 9/9 DXFs P10; o
+validador específico passou com 64.353 verificações,
 sem erros ou avisos. A inspeção de SVGs no navegador permanece pendente da autorização
 do usuário. A matriz evita inventar estados de falha, timeouts ou respostas de processo
 sem hardware definido.
@@ -226,7 +227,7 @@ de capacidade: sete grupos totalizam 3,10 A / 74,40 W diante da fonte proposta d
 10 A / 240 W. O gráfico separa 31% de carga prevista de 69% de saldo aritmético. A
 reserva auxiliar prevista de 1,05 A já está incluída nos 3,10 A. Não foi criada
 distribuição por ramais nem seleção de fusíveis. Os resultados da inspeção visual e das
-validações são: 64.344 verificações do P10 e 555.195 no validador estrito, ambos sem
+validações são: 64.353 verificações do P10 e 555.195 no validador estrito, ambos sem
 erros ou avisos; 9/9 DXFs abertos e auditados no AcCoreConsole 2027. A prancha foi
 conferida no PNG a 300 dpi, em PDF rasterizado a 150 dpi e no contato das nove folhas,
 sem cortes ou colisões visíveis. A inspeção de SVGs no navegador segue aguardando

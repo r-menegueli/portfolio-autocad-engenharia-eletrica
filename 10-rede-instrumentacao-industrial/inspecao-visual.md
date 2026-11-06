@@ -17,10 +17,11 @@
 
 Resultado limitado à apresentação: composição legível e organizada; a barra mostra
 31% de carga prevista e 69% de saldo aritmético sem cruzamento ou preenchimento
-defeituoso. Os valores continuam premissas, e a capacidade remanescente não considera
+defeituoso. O carimbo identifica a revisão como balanço de carga. Os valores continuam
+premissas, e a capacidade remanescente não considera
 inrush, derating, proteção, curto-circuito ou condição térmica.
 
-- Validador específico P10: 64.344 verificações, sem erros ou avisos.
+- Validador específico P10: 64.353 verificações, sem erros ou avisos.
 - Validador estrito do portfólio: 555.195 verificações, sem erros ou avisos.
 - Revisor integrado: 12 projetos, 101 folhas, 404 arquivos gráficos, 71 CSVs e
   similaridade mínima PDF/PNG de 0,984061.

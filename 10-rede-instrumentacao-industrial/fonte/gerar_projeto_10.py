@@ -232,7 +232,12 @@ def add_revision_table(layout):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.6, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO DE SINAIS", 316), ("R.E.M.M.", 381)):
+    for value, x in (
+        (REVISION, 239),
+        (PROJECT_DATE, 264),
+        ("BALANCO DE CARGA", 316),
+        ("R.E.M.M.", 381),
+    ):
         centered(layout, value, (x, 78.5), 1.35, "02_TEXTO")
 
 

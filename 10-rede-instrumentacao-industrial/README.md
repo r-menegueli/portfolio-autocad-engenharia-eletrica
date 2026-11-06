@@ -115,7 +115,8 @@ A folha 09 apresenta os sete grupos de `lista-alimentacao.csv`, o total de 3,10 
 74,40 W, a fonte proposta de 10 A / 240 W e o saldo aritmético de 6,90 A / 165,60 W.
 A reserva auxiliar prevista de 1,05 A já está dentro dos 3,10 A. O gráfico não define
 ramais, fusíveis ou uma margem térmica; inrush, derating, curto-circuito e proteção
-continuam pendentes. O validador específico P10 passou em **64.344 verificações**;
+continuam pendentes. Os carimbos identificam a revisão 04 como balanço de carga.
+O validador específico P10 passou em **64.353 verificações**;
 o validador estrito do portfólio passou em **555.195**, ambos sem erros ou avisos. O
 revisor integrado confirmou 12 projetos, 101 pranchas, 404 arquivos gráficos, 71 CSVs
 e similaridade mínima PDF/PNG de **0,984061**. O AcCoreConsole 2027 abriu e auditou
