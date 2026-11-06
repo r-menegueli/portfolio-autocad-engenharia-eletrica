@@ -168,3 +168,20 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
 - Os desenhos permanecem acadêmicos e conceituais. A origem hidráulica, a seleção de
   equipamentos e as respostas operacionais ainda precisam de dados e decisões do processo.
   A inspeção visual dos SVGs no navegador segue aguardando autorização do usuário.
+
+## Atualização CAD — P07 revisão 03, 2026-11-06
+
+- P07 passou de nove para dez folhas. P07-10 mostra a resposta RC normalizada e calcula
+  corrente inicial, potência instantânea e energia dissipada até 90% para 320/400/450 V.
+  Com as premissas existentes de 100 Ω e 2,2 mF, `t90=0,506569 s`; no extremo de 450 V,
+  `I0=4,50 A`, `P0=2,025 kW` e `ER@90%=220,52 J`.
+- O validador específico passou em 4.288 verificações; o AcCoreConsole 2027 auditou
+  10/10 DXFs. P07-10 foi conferida no PNG de produção a 300 dpi e em raster independente
+  do PDF a 150 dpi.
+- O modelo é ideal e não comprova tolerâncias, potência/pulso repetitivo do resistor,
+  temporização do contator, desempenho térmico, segurança funcional ou adequação veicular.
+  O componente RPR-701 não foi selecionado nem validado por esta prancha.
+- O revisor integrado confirma 12 projetos, 106 folhas, 424 arquivos gráficos e 73 CSVs;
+  similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649. A validação estrita
+  passou em 630.151 verificações, sem erros ou avisos. A inspeção visual de SVGs no
+  navegador continua aguardando autorização do usuário.

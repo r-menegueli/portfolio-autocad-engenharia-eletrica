@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 09
+Pranchas: 01 a 10
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 02 (2026-11-05)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 03 (2026-11-06)
 
-Estado: ampliado e revisado em 2026-11-05
+Estado: ampliado e revisado em 2026-11-06
 
 Este projeto apresenta a arquitetura elétrica conceitual do EV-07, um veículo elétrico
 didático com bateria de tração, inversor e motor de indução. O escopo relaciona a
@@ -38,6 +38,7 @@ ASIL, HARA, FMEDA ou dimensionamento executivo.
 7. [Rede de comunicação](fonte/07_rede_comunicacao.dxf)
 8. [Layout dos componentes](fonte/08_layout_componentes.dxf)
 9. [Interfaces e resposta conceitual a falhas](fonte/09_interfaces_resposta_falhas.dxf)
+10. [Estudo paramétrico da pré-carga](fonte/10_estudo_pre_carga_parametrico.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -55,6 +56,7 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Memorial descritivo](memorial-descritivo.md)
 - [Critérios e premissas](criterios-premissas.md)
 - [Memória de cálculo](memoria-calculo.md)
+- A folha 10 visualiza corrente inicial, potência instantânea e energia do resistor na faixa assumida de 320–450 Vcc; nenhum componente é selecionado por esses cálculos.
 - [Estratégias V/f e FOC](estrategias-controle.md)
 - [Sequência de funcionamento](sequencia-funcionamento.md)
 - [Referências técnicas](referencias-normativas.md)
@@ -98,6 +100,26 @@ foram renumeradas para `NN/09` e reemitidas na revisão gráfica 02.
 - P07-09 foi inspecionada no PNG de produção e em raster do PDF; a folha de contato
   permitiu conferir numeração e composição das nove pranchas.
 - A inspeção visual do SVG P07-09 no navegador aguarda autorização do usuário.
+
+## Revisão 03
+
+A prancha 10 amplia a memória de pré-carga com a curva RC normalizada e os esforços
+calculados para 320, 400 e 450 Vcc. O conjunto nominal mantém `tau=0,22 s` e `t90` ideal
+de `0,506569 s`; a faixa inclui até `220,52 J` dissipados no resistor ideal até 90% e
+potência instantânea inicial de `2,025 kW` no caso de 450 V. Esses resultados expõem
+exigências de pulso e repetição, sem selecionar RPR-701 ou validar o circuito físico.
+As dez pranchas passam a usar numeração `NN/10` na revisão gráfica 03.
+
+- O validador específico e a auditoria AutoCAD AcCoreConsole 2027 passaram em 10/10 DXFs.
+- O validador P07 passou em 4.288 verificações; a validação estrita integrada passou
+  em 630.151, ambas sem erros ou avisos.
+- O revisor integrado confirmou 12 projetos, 106 folhas, 424 arquivos gráficos e
+  73 CSVs, com similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649.
+- P07-10 foi inspecionada no PNG de produção a 300 dpi e no PDF rasterizado pelo
+  Poppler a 150 dpi; não foram observados cortes ou sobreposição de conteúdo.
+- A inspeção visual do SVG no navegador segue aguardando autorização do usuário.
+- O modelo RC ideal não considera tolerâncias, impedâncias parasitas, filtros,
+  tempo mecânico do contator, repetição nem capacidade térmica do resistor.
 
 ## Reprodução
 

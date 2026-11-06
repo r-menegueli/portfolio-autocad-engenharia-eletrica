@@ -48,3 +48,12 @@ inspecionada no PNG integral de produção a 300 dpi e no PDF rasterizado pelo P
 notas, aviso obrigatório, legenda e carimbo estão dentro da moldura; não identifiquei
 cortes nem colisões relevantes. A inspeção visual do SVG no navegador continua pendente
 da autorização do usuário.
+
+## Revisão gráfica 03 - 2026-11-06
+
+As dez folhas foram reemitidas como `NN/10`, revisão 03. P07-10 foi conferida no PNG
+de produção a 300 dpi e no PDF rasterizado independentemente pelo Poppler a 150 dpi.
+Curva, limiar de 90%, tabela, derivação, ressalvas, legenda e carimbo permanecem dentro
+da moldura e legíveis; não identifiquei cortes ou colisões relevantes. Os valores da
+tabela são coerentes com as premissas declaradas e com o RC ideal. A inspeção do SVG no
+navegador segue pendente da autorização do usuário.

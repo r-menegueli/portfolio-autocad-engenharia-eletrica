@@ -2,7 +2,7 @@
 
 ## Finalidade
 
-O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em nove pranchas,
+O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em dez pranchas,
 o fluxo de energia, a alimentação de controle, os permissivos de alta tensão, a rede de
 comunicação e duas estratégias conceituais de acionamento de um motor de indução.
 

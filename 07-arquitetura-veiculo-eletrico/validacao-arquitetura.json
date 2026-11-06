@@ -1,5 +1,5 @@
 {
-  "checks": 4247,
+  "checks": 4288,
   "errors": [],
   "results": {
     "cables": 12,
@@ -11,12 +11,39 @@
     "fault_scenarios": 10,
     "materials": 35,
     "parameters": 15,
+    "precharge_ideal_time_margin_s": "0.993431",
     "precharge_initial_current_a": "4.000000",
     "precharge_initial_power_w": "1600.000000",
     "precharge_t90_s": "0.506569",
     "precharge_tau_s": "0.220000",
     "precharge_truth_rows": 512,
-    "sheets": 9,
+    "precharge_voltage_cases": [
+      {
+        "capacitor_energy_j": "112.640000",
+        "initial_current_a": "3.200000",
+        "initial_power_kw": "1.024000",
+        "resistor_energy_at_90_j": "111.513600",
+        "vbat_v": "320",
+        "vdc_90_v": "288.00"
+      },
+      {
+        "capacitor_energy_j": "176.000000",
+        "initial_current_a": "4.000000",
+        "initial_power_kw": "1.600000",
+        "resistor_energy_at_90_j": "174.240000",
+        "vbat_v": "400",
+        "vdc_90_v": "360.00"
+      },
+      {
+        "capacitor_energy_j": "222.750000",
+        "initial_current_a": "4.500000",
+        "initial_power_kw": "2.025000",
+        "resistor_energy_at_90_j": "220.522500",
+        "vbat_v": "450",
+        "vdc_90_v": "405.00"
+      }
+    ],
+    "sheets": 10,
     "signals": 18,
     "torque_truth_rows": 128
   },

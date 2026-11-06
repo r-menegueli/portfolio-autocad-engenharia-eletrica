@@ -1,10 +1,11 @@
-"""Gera as nove pranchas DXF do Projeto 07 de forma determinística."""
+"""Gera as dez pranchas DXF do Projeto 07 de forma determinística."""
 
 from __future__ import annotations
 
 import argparse
 import csv
 from dataclasses import dataclass
+import math
 from pathlib import Path
 import sys
 
@@ -35,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "07-arquitetura-veiculo-eletrico"
-PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+PROJECT_DATE = "2026-11-06"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -130,6 +131,15 @@ SHEETS = (
         "Respostas são propostas didáticas; não definem função de segurança nem desligamento real.\\P"
         "Detecção de contato soldado, diagnóstico, latência e rearme dependem de hardware e análise ainda não definidos.",
         "DI: entrada digital | APPS: pedal do acelerador | BPS: pedal de freio | HV: alta tensão | PWM: modulação",
+    ),
+    SheetSpec(
+        10,
+        "10_estudo_pre_carga_parametrico.dxf",
+        "ESTUDO PARAMÉTRICO DA PRÉ-CARGA",
+        "Resposta RC ideal | R = 100 ohm | C = 2,2 mF | VBAT = 320–450 Vcc (premissas)",
+        "Modelo RC ideal; não inclui impedâncias, tolerâncias, chicote, filtros de medição ou tempo de contatores.\\P"
+        "Os valores calculados não selecionam RPR-701 nem demonstram capacidade de pulso, repetição ou segurança.",
+        "VBAT: tensão da bateria | VDC: tensão do elo | I0/P0: valores iniciais | Ec/Er: energia idealizada",
     ),
 )
 
@@ -307,7 +317,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO VISUAL 02", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO RC 03", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.5, "02_TEXTO")
 
 
@@ -329,7 +339,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/09",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -345,7 +355,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/09"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     metadata["PORTFOLIO_EPISTEMIC_STATUS"] = "ACADEMIC_CONCEPT_NO_EXPERIMENTAL_RESULTS"
     define_title_block(doc)
     define_symbols(doc)
@@ -528,6 +538,109 @@ def draw_precharge(layout, data: dict[str, list[dict[str, str]]]) -> None:
         y = 142 - (index // 3) * 22
         small_component(layout, (x, y), 47, 13, value, "06_COMANDO")
     centered(layout, "QUALQUER FALHA -> FAULT / CONTATORES ABERTOS / TORQUE ZERO", (303, 109.5), 1.05, "13_NOTAS")
+
+
+def draw_precharge_parametric(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    parameters = {
+        row["parametro"]: float(row["valor"].replace(",", "."))
+        for row in data["parameters"]
+    }
+    resistance = parameters["R_PRE_CARGA"]
+    capacitance = parameters["C_ELO_CC"]
+    target = parameters["LIMIAR_PRE_CARGA"]
+    timeout = parameters["TIMEOUT_PRE_CARGA"]
+    tau = resistance * capacitance
+    t90 = -tau * math.log(1.0 - target)
+
+    centered(layout, "RESPOSTA RC NORMALIZADA", (122, 257), 1.6, "07_INSTRUMENTACAO")
+    centered(layout, "VDC / VBAT [%]", (122, 243), 1.25, "02_TEXTO")
+
+    x0, y0, graph_width, graph_height = 39.0, 144.0, 166.0, 91.0
+    x_right = x0 + graph_width
+    y_top = y0 + graph_height
+    line(layout, (x0, y0), (x_right, y0), "02_TEXTO")
+    line(layout, (x0, y0), (x0, y_top), "02_TEXTO")
+
+    for percent in (0, 20, 40, 60, 80, 100):
+        y = y0 + graph_height * percent / 100.0
+        if percent:
+            line(layout, (x0, y), (x_right, y), "12_LEGENDA")
+        left(layout, str(percent), (x0 - 4.5, y), 1.2, "02_TEXTO")
+
+    for step in range(7):
+        time_value = timeout * step / 6.0
+        x = x0 + graph_width * time_value / timeout
+        if 0 < step < 6:
+            line(layout, (x, y0), (x, y_top), "12_LEGENDA")
+        centered(layout, f"{time_value:.2f}".replace(".", ","), (x, y0 - 5.0), 1.1, "02_TEXTO")
+
+    target_y = y0 + graph_height * target
+    x_t90 = x0 + graph_width * t90 / timeout
+    for x in [x0 + i * 7.0 for i in range(int(graph_width // 7.0))]:
+        line(layout, (x, target_y), (min(x + 3.5, x_right), target_y), "05_POTENCIA")
+    y = y0
+    while y < target_y:
+        line(layout, (x_t90, y), (x_t90, min(y + 4.0, target_y)), "05_POTENCIA")
+        y += 7.0
+
+    previous = (x0, y0)
+    for index in range(1, 61):
+        time_value = timeout * index / 60.0
+        fraction = 1.0 - math.exp(-time_value / tau)
+        point = (x0 + graph_width * time_value / timeout, y0 + graph_height * fraction)
+        line(layout, previous, point, "07_INSTRUMENTACAO")
+        previous = point
+
+    layout.add_circle((x_t90, target_y), radius=1.6, dxfattribs={"layer": "05_POTENCIA"})
+    centered(layout, "90%", (x0 + 8.0, target_y + 3.5), 1.3, "05_POTENCIA")
+    left(layout, f"t90 = {t90:.3f} s".replace(".", ","), (x_t90 + 3.5, y0 + 11.0), 1.2, "05_POTENCIA")
+    centered(layout, f"timeout = {timeout:.1f} s".replace(".", ","), (x_right - 22.0, y0 + 4.0), 1.1, "08_OBSERVACOES")
+    centered(layout, "tempo [s]", (x0 + graph_width / 2, y0 - 13.0), 1.25, "02_TEXTO")
+    add_mtext(
+        layout,
+        "A razão VDC/VBAT tem a mesma curva ideal na faixa de tensão; a tensão absoluta muda com VBAT.",
+        (29, 119),
+        190,
+        1.25,
+        "13_NOTAS",
+    )
+
+    centered(layout, "ENERGIA E ESFORÇO INICIAIS (PREMISSAS)", (311.5, 257), 1.5, "05_POTENCIA")
+    voltages = (
+        ("VBAT MIN", parameters["VBAT_MIN"]),
+        ("VBAT NOM", parameters["VBAT_NOMINAL"]),
+        ("VBAT MAX", parameters["VBAT_MAX"]),
+    )
+
+    def decimal_text(value: float, places: int = 2) -> str:
+        return f"{value:.{places}f}".replace(".", ",")
+
+    v_min, v_nom, v_max = (voltage for _, voltage in voltages)
+    rows = [
+        ("VDC @90% [V]", decimal_text(target * v_min, 0), decimal_text(target * v_nom, 0), decimal_text(target * v_max, 0)),
+        ("I0 [A]", decimal_text(v_min / resistance), decimal_text(v_nom / resistance), decimal_text(v_max / resistance)),
+        ("P0 [kW]", decimal_text(v_min**2 / resistance / 1000.0, 3), decimal_text(v_nom**2 / resistance / 1000.0, 3), decimal_text(v_max**2 / resistance / 1000.0, 3)),
+        ("EC FINAL [J]", decimal_text(0.5 * capacitance * v_min**2), decimal_text(0.5 * capacitance * v_nom**2), decimal_text(0.5 * capacitance * v_max**2)),
+        ("ER @90% [J]", decimal_text(0.5 * capacitance * v_min**2 * (1.0 - (1.0 - target) ** 2)), decimal_text(0.5 * capacitance * v_nom**2 * (1.0 - (1.0 - target) ** 2)), decimal_text(0.5 * capacitance * v_max**2 * (1.0 - (1.0 - target) ** 2))),
+    ]
+    table(
+        layout,
+        224,
+        247,
+        (43, 44, 44, 44),
+        ("GRANDEZA", "320 V", "400 V", "450 V"),
+        rows,
+        row_height=11.4,
+        text_height=1.35,
+        layer="12_LEGENDA",
+    )
+
+    add_rect(layout, 224, 108, 399, 159, "13_NOTAS")
+    centered(layout, "DERIVAÇÕES DO MODELO IDEAL", (311.5, 151.5), 1.2, "13_NOTAS")
+    left(layout, f"tau = R x C = {tau:.3f} s".replace(".", ","), (230, 141), 1.35, "02_TEXTO")
+    left(layout, f"t90 = -tau ln(0,10) = {t90:.6f} s".replace(".", ","), (230, 132), 1.35, "02_TEXTO")
+    left(layout, f"Margem ideal ate 1,5 s = {timeout - t90:.6f} s".replace(".", ","), (230, 123), 1.35, "02_TEXTO")
+    left(layout, "P0 e instantanea; nao representa potencia continua.", (230, 114), 1.3, "02_TEXTO")
 
 
 def draw_inverter_motor(layout, data: dict[str, list[dict[str, str]]]) -> None:
@@ -746,6 +859,7 @@ DRAWERS = {
     7: draw_network,
     8: draw_layout,
     9: draw_fault_interfaces,
+    10: draw_precharge_parametric,
 }
 
 

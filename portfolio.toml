@@ -276,7 +276,7 @@ id = "07-arquitetura-veiculo-eletrico"
 path = "07-arquitetura-veiculo-eletrico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1126,6 +1126,17 @@ source = "07-arquitetura-veiculo-eletrico/fonte/09_interfaces_resposta_falhas.dx
 svg = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.svg"
 pdf = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.pdf"
 png = "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-10-pre-carga-parametrica"
+kind = "sheet"
+title = "Projeto 07 - Estudo paramétrico da pré-carga"
+source = "07-arquitetura-veiculo-eletrico/fonte/10_estudo_pre_carga_parametrico.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.png"
 require_a3 = true
 require_notice = true
 

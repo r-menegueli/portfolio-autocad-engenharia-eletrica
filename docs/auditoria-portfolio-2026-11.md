@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 105 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 106 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos
+Na revisão corrente, o revisor confirmou 12 projetos, 106 pranchas, 424 arquivos
 gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 624.766 verificações, sem erros ou avisos.
+passou em 630.151 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -32,7 +32,7 @@ passou em 624.766 verificações, sem erros ou avisos.
 | P04 — Nível | Sete folhas cobrem processo, malha, elétrica, interligações, layout e nove eventos causa–efeito; a revisão 03 deixa a origem a montante explicitamente indefinida e alinha HV-102 ao cadastro de materiais. | Sistema de uma bomba e um tanque com valores assumidos; fonte, sucção, vazão/carga, tubulação, curva/NPSH e dados da válvula não estão selecionados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir valores didáticos por levantamento hidráulico e equipamentos selecionados; definir fonte, sucção/descarga e válvulas; completar dados e respostas operacionais antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
-| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
+| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas; P07-10 torna explícitos tempo, corrente inicial e energia de pré-carga em três tensões assumidas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico/desligamento seguro e o RC ideal não valida resistor, contatores ou circuito real. | Substituir R/C e faixa de tensão por valores e tolerâncias de componentes escolhidos; verificar pulso, repetição, temperatura, falha de contator e critérios de isolamento com requisitos do sistema, simulação transitória e ensaios rastreáveis. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos, cinco pontos em quatro malhas 4–20 mA e balanço visual da fonte. | Tags, faixas e correntes de carga são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado; conferir o consumo de cada modelo e o derating da fonte. |
@@ -349,3 +349,18 @@ estrito em 624.834, ambos sem erros ou avisos. O revisor confirmou 12 projetos, 
 pranchas, 420 arquivos gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493.
 Os 12 itens de verificação seguem `NÃO EXECUTADO`; a inspeção do SVG no navegador
 continua aguardando autorização.
+
+### Atualização P07-10 — revisão gráfica 03
+
+A nova folha apresenta a resposta RC normalizada e cálculos a 320/400/450 V com as
+premissas já publicadas (100 Ω, 2,2 mF, limite de 90% e timeout de 1,5 s). O tempo ideal
+para 90% é 0,506569 s; em 450 V a corrente inicial é 4,50 A, a potência instantânea
+inicial 2,025 kW e a energia dissipada até 90% é 220,52 J. Esse resultado recomenda
+priorizar a seleção do resistor por energia de pulso, repetição e condições térmicas;
+não confirma qualquer modelo comercial nem a segurança do veículo. O validador
+específico passou em 4.288 verificações e o AcCoreConsole 2027 abriu/auditou 10/10 DXFs.
+P07-10 foi inspecionada no PNG de produção a 300 dpi e no PDF rasterizado a 150 dpi.
+O revisor integrado confirmou 12 projetos, 106 folhas, 424 arquivos gráficos e 73 CSVs,
+com similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649. A validação estrita
+passou em 630.151 verificações, sem erros ou avisos. A inspeção do SVG no navegador
+permanece pendente de autorização.
