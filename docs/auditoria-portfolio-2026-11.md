@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 112 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 113 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 112 pranchas, 448 arquivos
+Na revisão corrente, o revisor confirmou 12 projetos, 113 pranchas, 452 arquivos
 gráficos e 76 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 656.386 verificações, sem erros ou avisos.
+passou em 660.601 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -38,7 +38,7 @@ passou em 656.386 verificações, sem erros ou avisos.
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos, cinco pontos em quatro malhas 4–20 mA e balanço visual da fonte. | Tags, faixas e correntes de carga são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado; conferir o consumo de cada modelo e o derating da fonte. |
-| P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
+| P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 rastreia 22 entradas, e P11-08 cruza solo/falta/geometria com quatro verificações, resultados requeridos e evidências. | Não há dados para resistência, GPR/toque/passo ou transferência; SPDA e classificação também não foram verificados. P11-08 organiza o estudo, sem cálculo ou aprovação. | Obter dados de campo e falta, selecionar e documentar o método e critérios aplicáveis, executar e revisar a análise da malha antes de substituir o arranjo conceitual. |
 | P12 — GMG/QTA | Cobre potência, bornes, painel, implantação, sequência, nove eventos e um cadastro legível dos quatro alimentadores QCE com origem nos cabos. | Potências, correntes, partida, simultaneidade e prioridade não têm dados de processo/OEM; os quatro ramais ainda não foram confirmados como lista completa, e o balanço real do GMG não está fechado. | Substituir os campos pendentes e extensões assumidas por dados de placa e levantamento; confirmar a abrangência do QCE e calcular demanda, degraus de carga e cabos antes de validar o conjunto e a sequência. |
 
 ## Correções desta revisão
@@ -475,3 +475,22 @@ arquivos gráficos e 76 CSVs; a validação estrita passou em 656.386 verificaç
 erros ou avisos. A inspeção de SVGs no navegador continua pendente de autorização.
 As alterações foram enviadas no commit `c79c7101cdc16853ceccb1820494b2bbe7bfe447`;
 o PR #1 foi atualizado e segue aberto como rascunho, sem merge.
+
+### Atualização P11-08 — revisão gráfica 03
+
+A nova prancha transforma os dados pendentes do P11-07 em uma matriz de quatro
+verificações: condutor/conexões, resposta da malha por cenário, exposição a potenciais
+de toque/passo e transferência para interfaces remotas. Cada linha relaciona o
+resultado esperado às entradas e evidências necessárias; todas continuam pendentes.
+O desenho explica `I_f` e `S_g` e não define método, limites, resultados calculados ou
+aprovação. IEEE Std 80-2013 e IEEE Std 81-2025 aparecem como referências suplementares,
+com aviso para confirmar edições e critérios aplicáveis.
+
+O validador P11 passou com oito folhas, 23 materiais, 17 cabos e 22 entradas pendentes.
+O AutoCAD AcCoreConsole 2027 auditou 8/8 DXFs com zero erros encontrados e zero
+corrigidos. O contato das oito folhas e a rasterização independente do PDF da P11-08
+foram inspecionados, sem cortes aparentes; sua similaridade PDF/PNG foi 0,988037,
+também a mínima entre as oito folhas P11. A revisão integrada confirmou 12 projetos,
+113 pranchas, 452 arquivos gráficos e 76 CSVs. A validação estrita passou em 660.601
+verificações, sem erros ou avisos. A inspeção de SVGs no navegador continua aguardando
+autorização do usuário.

@@ -4,9 +4,9 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Revisão do conteúdo: conceitual; conferir todas as premissas antes de qualquer uso técnico.
+Revisão do conteúdo: conceitual 03 (2026-11-06); conferir todas as premissas antes de qualquer uso técnico.
 
-Este projeto documenta, para fins acadêmicos e de portfólio técnico, uma **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)**, contemplando o diagrama unifilar geral, arranjo físico em alvenaria, cortes eletromecânicos, diagrama funcional de proteção secundária (ANSI 50/51/50N/51N), malha de aterramento subterrânea e Sistema de Proteção contra Descargas Atmosféricas (SPDA).
+Este projeto documenta, para fins acadêmicos e de portfólio técnico, uma **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)**, contemplando o diagrama unifilar geral, arranjo físico em alvenaria, cortes eletromecânicos, diagrama funcional de proteção secundária (ANSI 50/51/50N/51N), malha de aterramento subterrânea, Sistema de Proteção contra Descargas Atmosféricas (SPDA) e uma matriz das verificações requeridas para a malha.
 
 ## 2. Entrada de energia e medição
 
@@ -29,6 +29,8 @@ A interligação entre os terminais secundários do transformador e o **QGBT** �
 A prancha 05 mostra um arranjo conceitual ainda não dimensionado, com cabo de cobre nu de `70 mm²` a `0,60 m` e `8 hastes` de `5/8" x 2,40 m`. A revisão 02 remove a estimativa aritmética sem dados medidos; não há valor de resistência da malha, cálculo de elevação de potencial nem verificação de tensões de toque e passo. A prancha 07 organiza os dados de solo, falta, geometria e interfaces que ainda devem ser levantados. A topologia mostra a intenção de interligar massas, blindagens e neutro ao **Barramento de Equipotencialização Principal (BEP)**, sem projeto de aterramento final.
 
 O **SPDA** ilustra uma disposição conceitual com anel de cobertura, captores terminais e quatro descidas. O nível de proteção, o método, as distâncias, a equipotencialização e a necessidade de proteção não foram determinados por análise de risco nem validados para uma edificação real.
+
+A prancha 08 conecta as classes de dados requeridas na prancha 07 aos resultados e evidências a registrar para condutor/conexões, resposta da malha por cenário, exposição a potenciais de toque/passo e transferência para interfaces remotas. Não apresenta equações, critérios numéricos, resultados de resistência/GPR/toque/passo, nem decisão automática de aprovação. Entradas, método, critérios e geometrias continuam pendentes de evidência e revisão.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

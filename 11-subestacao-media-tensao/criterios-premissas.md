@@ -39,6 +39,7 @@
    - A topologia conceitual prevê um Barramento de Equipotencialização Principal (BEP); conexões e coordenação com o SPDA precisam de projeto e verificação.
    - A revisão 02 remove da prancha 05 a estimativa aritmética sem dados medidos. Resistividade por profundidade, contribuição e tempo de falta, geometria real, GPR, tensões de toque/passo e potenciais transferidos continuam pendentes e foram rastreados em `dados-estudo-aterramento.csv`.
    - A prancha 07 organiza evidências de entrada e entregáveis; nenhum valor é presumido e nenhum status de segurança/aprovação é atribuído.
+   - A prancha 08 relaciona o modelo de solo, os cenários de falta e a geometria às verificações de condutor/conexões, resposta da malha, exposição e potenciais transferidos. Ela registra resultados requeridos e evidências, sem substituir método de cálculo, definir limites numéricos ou atribuir aprovação; os resultados permanecem pendentes.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

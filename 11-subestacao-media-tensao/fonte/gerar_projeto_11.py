@@ -1,4 +1,4 @@
-"""Gera as sete pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
+"""Gera as oito pranchas DXF do Projeto 11 (Subestacao de Media Tensao 13,8 kV / 380-220 V) de forma deterministica."""
 
 from __future__ import annotations
 
@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "11-subestacao-media-tensao"
-PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+PROJECT_DATE = "2026-11-06"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -123,6 +123,16 @@ SHEETS = (
         "Esta folha organiza evidencias necessarias; nao calcula nem aprova a malha.\\P"
         "O valor hipotetico de solo e a estimativa aritmetica anteriores foram retirados do desenho.",
         "ENTRADAS PENDENTES | EVIDENCIA DE CAMPO/FABRICANTE | NAO E CRITERIO DE APROVACAO",
+    ),
+    SheetSpec(
+        8,
+        "08_matriz_analise_malha_aterramento.dxf",
+        "MATRIZ DE ANALISE DA MALHA DE ATERRAMENTO",
+        "Entradas de solo, falta e geometria mapeadas as verificacoes requeridas",
+        "Esta folha relaciona entradas e resultados requeridos, mas nao calcula a malha.\\P"
+        "Metodo, criterios, dados e geometria permanecem pendentes de evidencia e revisao.\\P"
+        "Nao infere seguranca, atendimento a limites ou aprovacao.",
+        "I_f = corrente de falta | S_g = fracao da corrente para a malha.\\PIEEE Std 80-2013 / P80 em revisao; IEEE Std 81-2025: guia de medicao. Confirmar edicoes e criterios aplicaveis.",
     ),
 )
 
@@ -745,6 +755,61 @@ def draw_sheet_07(layout) -> None:
         centered(layout, "PENDENTE", (368, y), 1.3, "13_NOTAS", style=TITLE_STYLE)
 
 
+# --- Desenho da Prancha 8: Matriz de analise da malha ---
+def draw_sheet_08(layout) -> None:
+    inputs = [
+        (18, 140, "MODELO DE SOLO", "perfil medido e superficie", [
+            "rho(z), camadas e sazonalidade",
+            "rho_s e espessura superficial",
+            "metodo, pontos e profundidades",
+        ]),
+        (149, 271, "CENARIO DE FALTA", "rede, retorno e protecao", [
+            "I_f, S_g e tempo de eliminacao",
+            "contribuicoes remotas e neutro",
+            "caso, fonte, unidade e revisao",
+        ]),
+        (280, 402, "GEOMETRIA / EXPOSICAO", "levantamento real/as-built", [
+            "perimetro, profundidade e secoes",
+            "hastes, conexoes e limites acessiveis",
+            "BEP, cercas e metais remotos",
+        ]),
+    ]
+    for x0, x1, title, subtitle, items in inputs:
+        panel_box(layout, x0, 213, x1, 256, title, subtitle, "12_LEGENDA")
+        for index, item in enumerate(items):
+            left_text(layout, item, (x0 + 3, 230 - index * 7), 1.35, "02_TEXTO")
+
+    add_rect(layout, 18, 190, 402, 207, "04_EQUIPAMENTOS")
+    centered(layout, "MODELO RASTREAVEL POR CENARIO: SOLO + CORRENTE INJETADA/TEMPO + MALHA + ZONAS", (210, 198.5), 1.35, "04_EQUIPAMENTOS", style=TITLE_STYLE)
+    for x in (79, 210, 341):
+        arrow(layout, (x, 213), (x, 207), "08_CABOS")
+
+    add_rect(layout, 18, 112, 402, 188, "12_LEGENDA")
+    centered(layout, "VERIFICACOES, RESULTADOS REQUERIDOS E EVIDENCIAS", (210, 181.5), 1.6, "12_LEGENDA", style=TITLE_STYLE)
+    xs = (18, 104, 212, 337, 402)
+    for x in xs[1:-1]:
+        line(layout, (x, 112), (x, 176), "12_LEGENDA")
+    for y in (176, 160, 144, 128, 112):
+        line(layout, (18, y), (402, y), "12_LEGENDA")
+    headers = ((61, "VERIFICACAO"), (158, "RESULTADO REQUERIDO"), (274.5, "DADOS / EVIDENCIA"), (369.5, "ESTADO"))
+    for x, value in headers:
+        centered(layout, value, (x, 171.5), 1.35, "12_LEGENDA", style=TITLE_STYLE)
+    rows = [
+        ("Condutor / conexoes", "Integridade e solicitacao termica", "Material, secao, juntas, I_f, t_f"),
+        ("Resposta da malha", "Resistencia/impedancia e GPR por cenario", "rho(z), geometria, I_f, S_g"),
+        ("Exposicao", "Perfil de superficie, toque e passo", "rho_s/h_s, zonas, metodo/criterio"),
+        ("Transferencia", "Potencial em interfaces alem da malha", "Cercas, metais, cabos, retornos"),
+    ]
+    for index, (check, output, evidence) in enumerate(rows):
+        y = 168 - index * 16
+        left_text(layout, check, (21, y), 1.45, "02_TEXTO")
+        left_text(layout, output, (107, y), 1.4, "02_TEXTO")
+        left_text(layout, evidence, (215, y), 1.4, "02_TEXTO")
+        centered(layout, "PENDENTE", (369.5, y), 1.3, "13_NOTAS", style=TITLE_STYLE)
+
+    left_text(layout, "Antes de comparar: registrar metodo/edicao, limites, tempo e condicoes de exposicao.", (20, 98), 1.3, "13_NOTAS")
+
+
 # --- Desenho da Prancha 6: SPDA Geral (NBR 5419) ---
 def draw_sheet_06(layout) -> None:
     # 1. Planta de Cobertura com Malha de Faraday (Esquerda: X 30 a 250, Y 100 a 256)
@@ -818,6 +883,7 @@ DRAW_MAP = {
     5: draw_sheet_05,
     6: draw_sheet_06,
     7: draw_sheet_07,
+    8: draw_sheet_08,
 }
 
 

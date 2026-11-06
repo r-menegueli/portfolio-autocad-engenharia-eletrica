@@ -392,7 +392,7 @@ id = "11-subestacao-media-tensao"
 path = "11-subestacao-media-tensao"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1580,6 +1580,17 @@ source = "11-subestacao-media-tensao/fonte/07_plano_dados_estudo_aterramento.dxf
 svg = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.svg"
 pdf = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.pdf"
 png = "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p11-08-matriz-analise-aterramento"
+kind = "sheet"
+title = "Projeto 11 - Matriz de análise da malha de aterramento"
+source = "11-subestacao-media-tensao/fonte/08_matriz_analise_malha_aterramento.dxf"
+svg = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.svg"
+pdf = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.pdf"
+png = "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.png"
 require_a3 = true
 require_notice = true
 

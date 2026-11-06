@@ -19,6 +19,7 @@ SHEETS = (
     "05_malha_aterramento.dxf",
     "06_spda_geral.dxf",
     "07_plano_dados_estudo_aterramento.dxf",
+    "08_matriz_analise_malha_aterramento.dxf",
 )
 REQUIRED_TAGS = {
     "TR-01",
@@ -68,6 +69,24 @@ REQUIRED_SHEET_07_TERMS = (
     "VERIFICAR",
     "REVISAR",
     "GPR, toque, passo e transferencia",
+    "PENDENTE",
+)
+REQUIRED_SHEET_08_TERMS = (
+    "MATRIZ DE ANALISE DA MALHA DE ATERRAMENTO",
+    "MODELO DE SOLO",
+    "CENARIO DE FALTA",
+    "GEOMETRIA / EXPOSICAO",
+    "MODELO RASTREAVEL POR CENARIO",
+    "VERIFICACOES, RESULTADOS REQUERIDOS E EVIDENCIAS",
+    "Condutor / conexoes",
+    "Resposta da malha",
+    "Integridade e solicitacao termica",
+    "Resistencia/impedancia e GPR por cenario",
+    "Perfil de superficie, toque e passo",
+    "Potencial em interfaces alem da malha",
+    "Antes de comparar",
+    "I_f = corrente de falta",
+    "S_g = fracao da corrente para a malha",
     "PENDENTE",
 )
 
@@ -130,6 +149,10 @@ def main() -> int:
     for term in REQUIRED_SHEET_07_TERMS:
         if term not in sheet_07_text:
             errors.append(f"Termo obrigatorio ausente na prancha 07: {term}")
+    sheet_08_text = sheet_texts.get("08_matriz_analise_malha_aterramento.dxf", "")
+    for term in REQUIRED_SHEET_08_TERMS:
+        if term not in sheet_08_text:
+            errors.append(f"Termo obrigatorio ausente na prancha 08: {term}")
     sheet_05_text = sheet_texts.get("05_malha_aterramento.dxf", "")
     if "18,72" in sheet_05_text or "250 ohm.m" in sheet_05_text.lower():
         errors.append("A prancha 05 ainda apresenta valor aritmetico/solo hipotetico como entrada ativa.")

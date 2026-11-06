@@ -20,5 +20,23 @@ inspeção visual no navegador aguarda autorização explícita do usuário.
 O AutoCAD/AcCoreConsole não foi executado. Esta inspeção não concede aprovação de
 engenharia, segurança, conformidade ou liberação para execução.
 
+## Revisão 03 — 2026-11-06
+
+- As oito folhas foram regeneradas em DXF, PDF, SVG e PNG, com carimbos `03` e
+  numeração `/08`. O contato das oito folhas foi conferido para consistência visual,
+  composição e ausência de cortes aparentes.
+- A P11-08 foi inspecionada no PNG de 300 dpi e na rasterização independente do PDF.
+  Os três painéis de entradas, o modelo por cenário, as quatro linhas de verificação,
+  os estados pendentes, a legenda e o carimbo cabem na folha sem cortes aparentes.
+  `I_f` e `S_g` estão explicados; a prancha não apresenta resultados calculados.
+- Similaridade PDF/PNG da P11-08: 0,988037; menor similaridade entre as oito folhas
+  P11: 0,988037. O AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 DXFs, sem erros
+  encontrados ou corrigidos.
+- A P11-07 continua sendo o plano de levantamento; a P11-08 relaciona essas entradas
+  a verificações e resultados requeridos, sem substituir cálculo ou definir critérios
+  numéricos. A folha não apresenta resistência, GPR, tensões de toque/passo ou
+  potenciais transferidos como resultados.
+- A inspeção de SVGs no navegador continua pendente de autorização do usuário.
+
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

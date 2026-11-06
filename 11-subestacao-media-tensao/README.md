@@ -2,17 +2,17 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 07
+Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades em milímetros, revisão gráfica 02 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 03 (2026-11-06)
 
-Estado: revisão conceitual 02 em 2026-11-05; segurança e conformidade normativa não validadas
+Estado: revisão conceitual 03 em 2026-11-06; segurança e conformidade normativa não validadas
 
-Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)** e cita as ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419 como referências de estudo. Não declara conformidade normativa, segurança de aterramento, aprovação de concessionária ou aptidão executiva. A revisão 02 remove a estimativa aritmética anterior da prancha 05 e acrescenta a folha 07 para rastrear dados necessários. A malha segue sem resistência calculada/medida nem análise de GPR, toque, passo ou potenciais transferidos.
+Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)** e cita as ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419 como referências de estudo. Não declara conformidade normativa, segurança de aterramento, aprovação de concessionária ou aptidão executiva. A revisão 02 remove a estimativa aritmética anterior da prancha 05 e acrescenta a folha 07 para rastrear dados necessários. A revisão 03 acrescenta a folha 08 como matriz que liga entradas do solo, falta e geometria às verificações, resultados requeridos e evidências. A malha segue sem resistência calculada/medida nem análise de GPR, toque, passo ou potenciais transferidos.
 
 ## Entregáveis
 
-- `fonte/`: sete desenhos DXF R2013 e scripts reproduzíveis;
+- `fonte/`: oito desenhos DXF R2013 e scripts reproduzíveis;
 - `exports/`: versões PDF vetorial, SVG e PNG (300 dpi) derivadas dos DXFs;
 - `memorial-descritivo.md`: memorial conceitual; premissas e componentes não selecionados precisam de validação;
 - `criterios-premissas.md`: premissas técnicas, distâncias de segurança e limites normativos;
@@ -33,6 +33,7 @@ Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Trans
 5. [Malha de aterramento e equipotencialização](fonte/05_malha_aterramento.dxf): arranjo conceitual de condutores, hastes e BEP; nenhum valor de resistência ou segurança é apresentado como resultado.
 6. [Arranjo conceitual de SPDA](fonte/06_spda_geral.dxf): retícula, captores e descidas esquemáticos; classe de proteção, geometria final e coordenação de DPS não foram verificados.
 7. [Plano de dados para estudo de aterramento](fonte/07_plano_dados_estudo_aterramento.dxf): organiza evidências de solo, falta, proteção e geometria; os cinco entregáveis estão pendentes.
+8. [Matriz de análise da malha de aterramento](fonte/08_matriz_analise_malha_aterramento.dxf): relaciona entradas por cenário a verificações de condutor/conexões, resposta da malha, exposição e potenciais transferidos; resultados e evidências permanecem pendentes, sem limites numéricos ou aprovação.
 
 ## Resultados principais
 
@@ -53,7 +54,7 @@ Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Trans
 
 ## Reprodução
 
-Na raiz do portfólio, os arquivos-fonte e as sete folhas podem ser reconstruídos com:
+Na raiz do portfólio, os arquivos-fonte e as oito folhas podem ser reconstruídos com:
 
 ```powershell
 .venv\Scripts\python.exe 11-subestacao-media-tensao\fonte\gerar_projeto_11.py --root .
@@ -63,12 +64,22 @@ Na raiz do portfólio, os arquivos-fonte e as sete folhas podem ser reconstruíd
 
 ## Verificação
 
-A validação específica confirmou sete folhas, 23 itens de materiais, 17 cabos e 22
-entradas de aterramento ainda pendentes. O contato das sete folhas foi inspecionado;
-as folhas 05 e 07 também foram examinadas em PNG integral e em PDF rasterizado. Os
-resultados globais: validação estrita com 480.701 verificações, sem erros ou avisos;
-revisão visual de 12 projetos, 90 folhas, 360 arquivos gráficos e 62 CSVs, com
-similaridade mínima PDF/PNG de 0,9842.
+- Validador específico: `PASS`, oito folhas, 23 materiais, 17 cabos e 22 entradas de
+  aterramento mantidas `A DEFINIR/PENDENTE`.
+- AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 DXFs; os logs registram zero erros
+  encontrados e zero corrigidos.
+- O contato atualizado das oito folhas foi inspecionado. P11-08 foi conferida no PNG
+  de 300 dpi e na rasterização independente do PDF; entradas, quatro verificações,
+  estados pendentes, legenda e carimbo `03 / 08/08` estão dentro da moldura, sem cortes.
+- Similaridade PDF/PNG da P11-08: 0,988037; menor similaridade entre as oito folhas
+  P11: 0,988037.
+- Validação estrita do portfólio: 660.601 verificações, zero erros e zero avisos.
+  Revisão integrada: 12 projetos, 113 folhas, 452 arquivos gráficos e 76 CSVs; mínima
+  similaridade geral PDF/PNG: 0,981493.
+
+Essas verificações confirmam estrutura, abertura e apresentação dos arquivos; não
+confirmam cálculo de aterramento, segurança, conformidade ou aptidão executiva. A
+inspeção dos SVGs no navegador aguarda autorização do usuário.
 
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
