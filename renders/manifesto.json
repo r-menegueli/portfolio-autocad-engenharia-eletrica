@@ -2015,57 +2015,57 @@
     {
       "id": "p21-01-planta-clinica",
       "source": "21-instalacao-clinica-ambulatorial/fonte/01_planta_eletrica_clinica.dxf",
-      "source_sha256": "624b903506c7ff723c8eaac6e36d820e3d4cd10012bfc51fc0f6374dfabb7a31",
+      "source_sha256": "d5cadac23114a21d99bb5b122275c88e8703b3e83021e360dbb605683c998610",
       "outputs": {
         "pdf": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.pdf",
-          "sha256": "cad6edb8700ad11669834ee17d0c5f621787fd992950875381a2e820526a516c"
+          "sha256": "eceab5d1ccbc99c741be37905d567fae0f4860a813e2048827488d35a1b798f6"
         },
         "png": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.png",
-          "sha256": "9d6c3bbf254055160069f9fd744012261792b38507039c02637de7ee9b056d6f"
+          "sha256": "7a1bd6638da0297ae11f3fa503d6ec2e27b13e694b3cb72093ccc508e742dc8f"
         },
         "svg": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.svg",
-          "sha256": "715c669250b32c9e8d8dc2d54bfad8405c14be4fe9cc424040e744f6996401e1"
+          "sha256": "47b3699c9f8442f3bf0bc58b1fb7eb2983fea95d2327d9d23186abd0a0ac35b4"
         }
       }
     },
     {
       "id": "p21-02-unifilar-fontes-clinica",
       "source": "21-instalacao-clinica-ambulatorial/fonte/02_unifilar_fontes_quadro_clinica.dxf",
-      "source_sha256": "738973a8f185873f4531f125fa50ae08a679882e44345ca2942413bb2698b814",
+      "source_sha256": "86ee1e24981371e2aa4ac82f9676c79ab1f953f8b5a6bf8afe61a17faed80043",
       "outputs": {
         "pdf": {
           "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.pdf",
-          "sha256": "5de75e6305f8bff93da0048c3d0268a8c08b4f9e9c37fe8489021f4d39e89443"
+          "sha256": "b93d0f32814f9941cf7af03dc9edf4c3a8543c87c09c079153e66d685d24c605"
         },
         "png": {
           "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.png",
-          "sha256": "9d349f695ef98f58273f93a5126e006fc5564434dc2009ec7e6c9e12d4084917"
+          "sha256": "92786356ae665d112eac23d44e92318c83483a4775050a39c9438eb79430d6b9"
         },
         "svg": {
           "path": "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.svg",
-          "sha256": "3c53ba87f6329c85e805147470939ff36c0ea0840da32cac29b347dd89faa929"
+          "sha256": "26121f6157ad64e54b7472066c862d38d8cd854f26fda007ff30a2ec52b5b0d3"
         }
       }
     },
     {
       "id": "p21-03-matriz-continuidade-clinica",
       "source": "21-instalacao-clinica-ambulatorial/fonte/03_matriz_continuidade_e_transferencia.dxf",
-      "source_sha256": "6f7180c823b90d76e3e67e9b37faf0a294155106152640fd31dd4653f49d9bcf",
+      "source_sha256": "279641dd382d9cd9d84c8d3d7bb1f972ea14fc0b57e99629a09a96a025e0fd01",
       "outputs": {
         "pdf": {
           "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.pdf",
-          "sha256": "0ecdc9ef25294d8e7f641f1bd2bf9e6d5e75500a931eff1fe9fa12664d63ec57"
+          "sha256": "67101e39466a4a5a7a75ee657a126eaa102ef75ba10a1aac6150ca6bc8e8e0a9"
         },
         "png": {
           "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.png",
-          "sha256": "c30c44358fdb92df8526bc3f53fb0136251263003e739bbf879ebf3d046a6263"
+          "sha256": "cc2e4dba7a1e81d69315c251aacf2f0bb40501323d57b47eef324c1751a2f631"
         },
         "svg": {
           "path": "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.svg",
-          "sha256": "fda0db2ad098dcf06fe53037f7d219d195ea141f0dbff94ea173f104e7bd627e"
+          "sha256": "19f026b99554a0029ab78e5087df5be25aa502d8152f4e57503d74abf37746e3"
         }
       }
     },
