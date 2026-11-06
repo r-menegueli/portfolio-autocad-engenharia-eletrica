@@ -502,6 +502,25 @@ required_files = [
   "fonte/gerar_projeto_17.py",
   "fonte/validar_projeto_17.py",
 ]
+[[projects]]
+id = "18-compensacao-reativos-qualidade-energia"
+path = "18-compensacao-reativos-qualidade-energia"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "curva-compensacao.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-18.json",
+  "fonte/gerar_projeto_18.py",
+  "fonte/validar_projeto_18.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1549,5 +1568,35 @@ source = "17-automacao-subestacao-digital/fonte/03_matriz_goose_testes.dxf"
 svg = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.svg"
 pdf = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.pdf"
 png = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p18-01-unifilar-compensacao-reativos"
+kind = "sheet"
+title = "Projeto 18 - Unifilar conceitual da compensação de reativos"
+source = "18-compensacao-reativos-qualidade-energia/fonte/01_unifilar_compensacao_reativos.dxf"
+svg = "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.svg"
+pdf = "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.pdf"
+png = "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p18-02-memoria-correcao-fp"
+kind = "sheet"
+title = "Projeto 18 - Memória de correção do fator de potência"
+source = "18-compensacao-reativos-qualidade-energia/fonte/02_memoria_correcao_fator_potencia.dxf"
+svg = "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.svg"
+pdf = "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.pdf"
+png = "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p18-03-medicao-controle-harmonicos"
+kind = "sheet"
+title = "Projeto 18 - Medição, controle e estudo de harmônicos"
+source = "18-compensacao-reativos-qualidade-energia/fonte/03_medicao_controle_harmonicos.dxf"
+svg = "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.svg"
+pdf = "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.pdf"
+png = "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.png"
 require_a3 = true
 require_notice = true

@@ -1,0 +1,9 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,1,un,Transformador hipotetico 1.0 MVA 13.8/0.4 kV,TR-01,Sem dimensionamento ou especificacao real
+2,1,conjunto,Quadro geral de baixa tensao,QGBT-01,Arranjo de barramento e protecao pendentes
+3,1,conjunto,Banco automatico de capacitores ate 300 kvar,BC-01,12 x 25 kvar como hipotese; nao especificado
+4,1,un,Regulador de fator de potencia,RC-01,Modelo sensor e parametrizacao pendentes
+5,1,un,Analisador de qualidade de energia,PM-01,Classe e conformidade metrologica pendentes
+6,1,conjunto,Transformadores de corrente para medicao,CT-01 / CT-02,Razao classe burden e polaridade pendentes
+7,1,conjunto,Cargas lineares assumidas 400 kW,CARGA-LIN,Composicao de carga nao fornecida
+8,1,conjunto,Cargas com VFD assumidas 200 kW,CARGA-VFD,Espectro harmonico desconhecido

@@ -1,0 +1,12 @@
+{
+  "project": "P18",
+  "date": "2026-11-06",
+  "checks": 46,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Contas aritmeticas com premissas; nao dimensionam equipamento ou estudo de rede.",
+    "Nao incluem espectro harmonico, impedancia da fonte, ressonancia, perdas ou perfil horario medido.",
+    "Auditoria independente pelo AutoCAD deve ser registrada separadamente."
+  ]
+}
