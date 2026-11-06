@@ -1,0 +1,20 @@
+tag,funcao,interfaces,rede,observacoes
+IED-L01,Protecao e controle da linha 01,SV GOOSE MMS,Processo e estacao,Funcao e modelo ilustrativos
+IED-L02,Protecao e controle da linha 02,SV GOOSE MMS,Processo e estacao,Funcao e modelo ilustrativos
+IED-T01,Protecao do transformador TR-01,SV GOOSE MMS,Processo e estacao,87T e ajustes nao definidos
+IED-87B,Protecao de barras e apoio a falha de disjuntor,SV GOOSE MMS,Processo e estacao,Arranjo e zona de protecao pendentes
+IED-F01,Protecao e controle do alimentador 01,SV GOOSE MMS,Processo e estacao,Funcoes e coordenacao pendentes
+IED-F02,Protecao e controle do alimentador 02,SV GOOSE MMS,Processo e estacao,Funcoes e coordenacao pendentes
+IED-BAY-L01,Interface de controle e estado do disjuntor da linha 01,GOOSE MMS e I/O local,Processo e estacao,Saida de trip e permissivos dependem da filosofia aprovada
+IED-BAY-T01,Interface de controle e estado do disjuntor do transformador,GOOSE MMS e I/O local,Processo e estacao,Saida de trip e permissivos dependem da filosofia aprovada
+MU-L01,Interface de sinais analogicos da linha 01,SV,Processo,Canais e taxa de amostragem pendentes
+MU-T01,Interface de sinais analogicos do transformador,SV,Processo,Canais e taxa de amostragem pendentes
+MU-B01,Interface de sinais analogicos das barras,SV,Processo,Canais e taxa de amostragem pendentes
+MU-F01,Interface de sinais analogicos do alimentador 01,SV,Processo,Canais e taxa de amostragem pendentes
+MU-F02,Interface de sinais analogicos do alimentador 02,SV,Processo,Canais e taxa de amostragem pendentes
+SW-PROC-01,Switches da rede de processo,SV GOOSE,Processo,Topologia e desempenho pendentes
+SW-STA-01,Switches da rede de estacao,MMS GOOSE,Estacao,Topologia e redundancia pendentes
+GW-01,Gateway de telecontrole,MMS,Estacao,Protocolos e pontos dependentes do proprietario
+HMI-01,Interface de operacao local,MMS,Estacao,Requisitos de acesso e alarmes pendentes
+ENG-01,Estacao de engenharia,SCL MMS,Estacao,Hardening e permissao de acesso pendentes
+TS-01,Fonte de sincronismo de tempo,PTP ou outro a definir,Ambas,Precisao e tolerancia a falhas pendentes

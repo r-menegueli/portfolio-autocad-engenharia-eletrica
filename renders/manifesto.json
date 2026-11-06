@@ -1783,6 +1783,63 @@
           "sha256": "25f40de059d19e88951dfc4a1833349c98ce32994aa2d73d0a6178c8ef5cdac2"
         }
       }
+    },
+    {
+      "id": "p17-01-unifilar-sas-ied",
+      "source": "17-automacao-subestacao-digital/fonte/01_unifilar_sas_ied.dxf",
+      "source_sha256": "3186082234550d748f2ef51a765da093284ef5a6a56976227514ea0fd31d1d04",
+      "outputs": {
+        "pdf": {
+          "path": "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.pdf",
+          "sha256": "f282021c58166c2414134c3d858a631ed0f1d3ea8bcdb28d32ffadf85ba84809"
+        },
+        "png": {
+          "path": "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.png",
+          "sha256": "8e627554ac168feaf43b851d2458208d99b3b778c0f0f3dad46f7904b73d2f89"
+        },
+        "svg": {
+          "path": "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.svg",
+          "sha256": "acf34e364be295ec16d71780c9fbd5c27837ac133af3d09f8524cd39ca6b87de"
+        }
+      }
+    },
+    {
+      "id": "p17-02-rede-iec61850",
+      "source": "17-automacao-subestacao-digital/fonte/02_rede_iec61850.dxf",
+      "source_sha256": "fb8a8c5451d29ae456ed72cb0cec7ef9ef0df25e150d34ca89a35657c7c50c93",
+      "outputs": {
+        "pdf": {
+          "path": "17-automacao-subestacao-digital/exports/02_rede_iec61850.pdf",
+          "sha256": "bfe79434fb25c2d1e74db48c2bcba7475e0893792553205998ef8c291224e4b6"
+        },
+        "png": {
+          "path": "17-automacao-subestacao-digital/exports/02_rede_iec61850.png",
+          "sha256": "2eab2cc2b4aaeefb02da8f06b77cc6fb1e1aebf046228fe4983669dc9de17e25"
+        },
+        "svg": {
+          "path": "17-automacao-subestacao-digital/exports/02_rede_iec61850.svg",
+          "sha256": "dc1145bb9bbaef7b7e6a775ba73b2933e26b5f0d72eb1ae554d803be28fc50ff"
+        }
+      }
+    },
+    {
+      "id": "p17-03-matriz-goose-testes",
+      "source": "17-automacao-subestacao-digital/fonte/03_matriz_goose_testes.dxf",
+      "source_sha256": "08f95f64a89f0b7db526afb8ca758a78120e1796cacb7b660fdf9cef53bcfb29",
+      "outputs": {
+        "pdf": {
+          "path": "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.pdf",
+          "sha256": "02681fcc7328ef84721e8356936ff3926a22709cba856d483d3276634d455600"
+        },
+        "png": {
+          "path": "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.png",
+          "sha256": "29a1cf794aa411008258494eb108aa10d030783ea3b52b3457785d2208af8319"
+        },
+        "svg": {
+          "path": "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.svg",
+          "sha256": "eb6e4065ea7016bea53c738a0df6df3be39e54a41630e6e386b787d4f0a7eec2"
+        }
+      }
     }
   ]
 }

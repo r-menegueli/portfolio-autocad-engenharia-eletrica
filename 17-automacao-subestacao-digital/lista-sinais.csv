@@ -1,0 +1,10 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+52_L01_POS,IED-L01,GW-01,Estado do disjuntor,aberto fechado ou invalido,MMS,Tag conceitual; qualidade e timestamp a definir
+52_L02_POS,IED-L02,GW-01,Estado do disjuntor,aberto fechado ou invalido,MMS,Tag conceitual; qualidade e timestamp a definir
+52_T01_POS,IED-T01,GW-01,Estado do disjuntor do transformador,aberto fechado ou invalido,MMS,Tag conceitual; qualidade e timestamp a definir
+P_TR01,IED-T01,HMI-01,Medicao de potencia ativa,kW e qualidade,MMS,Escala e fonte de dados pendentes
+Q_TR01,IED-T01,HMI-01,Medicao de potencia reativa,kvar e qualidade,MMS,Escala e fonte de dados pendentes
+IED_ALARM,IED-L01 a IED-F02,GW-01,Alarmes agregados,codigo estado timestamp,MMS,Lista oficial e priorizacao pendentes
+GOOSE_HEALTH,IEDs de protecao,HMI-01,Estado de comunicacao GOOSE,normal degradado falha,MMS/diagnostico,Implementacao e monitoramento pendentes
+MU_SV_QUALITY,MU-L01 a MU-F01,IEDs de protecao,Qualidade de valores amostrados,good questionable invalid,SV,Comportamento por qualidade pendente
+MU_F02_SV_QUALITY,MU-F02,IED-F02,Qualidade de valores amostrados do alimentador 02,good questionable invalid,SV,Comportamento por qualidade pendente

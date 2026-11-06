@@ -1,0 +1,11 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,1,conjunto,IEDs de linha,IED-L01; IED-L02,Modelo fabricante e configuracao nao definidos
+2,1,conjunto,IEDs de transformador e barra,IED-T01; IED-87B,Funcoes e capacidade dependem de estudos
+3,1,conjunto,IEDs de alimentadores e controle de bay,IED-F01; IED-F02; IED-BAY-L01; IED-BAY-T01,Funcoes e coordenacao pendentes
+4,5,un,Unidade de interface de sinais analogicos tipo MU,MU-L01; MU-T01; MU-B01; MU-F01; MU-F02,Quantidade e canais ilustrativos
+5,1,conjunto,Switches de rede de processo,SW-PROC-01,Quantidade e arquitetura pendentes
+6,1,conjunto,Switches de rede de estacao,SW-STA-01,Quantidade e arquitetura pendentes
+7,1,un,Gateway de telecontrole, GW-01,Protocolos e capacidade pendentes
+8,1,un,Interface local de operacao,HMI-01,Produto e requisitos pendentes
+9,1,un,Estacao de engenharia,ENG-01,Produto e controles de acesso pendentes
+10,1,un,Referencia de sincronismo temporal,TS-01,Precisao e metodo pendentes

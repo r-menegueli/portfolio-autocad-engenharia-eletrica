@@ -1,0 +1,6 @@
+id,publisher,subscriber,dataset,funcao,acao_por_perda,estado
+G-TR-L01,IED-L01,IED-BAY-L01,TRIP_L01,Indicacao de trip para interface do bay,Definir no projeto aprovado,Exemplo; circuito final depende da filosofia aprovada
+G-BF-F01,IED-F01,IED-87B,BF_F01,Indicacao de falha de disjuntor,Definir seguranca e supervisao,Exemplo; tempos e zona pendentes
+G-ILK-L02,IED-87B,IED-L02,ILK_L02,Permissivo de intertravamento,Definir estado seguro e permissivos,Exemplo; logica pendente
+G-BF-F02,IED-F02,IED-87B,BF_F02,Indicacao de falha de disjuntor,Definir seguranca e supervisao,Exemplo; tempos e zona pendentes
+G-TR-T01,IED-T01,IED-BAY-T01,TRIP_T01,Indicacao de trip para interface do bay,Definir no projeto aprovado,Exemplo; circuito final depende da filosofia aprovada

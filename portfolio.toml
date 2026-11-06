@@ -481,6 +481,27 @@ required_files = [
   "fonte/gerar_projeto_16.py",
   "fonte/validar_projeto_16.py",
 ]
+[[projects]]
+id = "17-automacao-subestacao-digital"
+path = "17-automacao-subestacao-digital"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-ieds.csv",
+  "matriz-goose.csv",
+  "lista-sinais.csv",
+  "plano-verificacao.csv",
+  "lista-materiais.csv",
+  "validacao-projeto-17.json",
+  "fonte/gerar_projeto_17.py",
+  "fonte/validar_projeto_17.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1498,5 +1519,35 @@ source = "16-parque-eolico-coleta-conexao/fonte/03_base_calculo_interfaces.dxf"
 svg = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.svg"
 pdf = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.pdf"
 png = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p17-01-unifilar-sas-ied"
+kind = "sheet"
+title = "Projeto 17 - Diagrama funcional da automação da subestação"
+source = "17-automacao-subestacao-digital/fonte/01_unifilar_sas_ied.dxf"
+svg = "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.svg"
+pdf = "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.pdf"
+png = "17-automacao-subestacao-digital/exports/01_unifilar_sas_ied.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p17-02-rede-iec61850"
+kind = "sheet"
+title = "Projeto 17 - Arquitetura das redes IEC 61850"
+source = "17-automacao-subestacao-digital/fonte/02_rede_iec61850.dxf"
+svg = "17-automacao-subestacao-digital/exports/02_rede_iec61850.svg"
+pdf = "17-automacao-subestacao-digital/exports/02_rede_iec61850.pdf"
+png = "17-automacao-subestacao-digital/exports/02_rede_iec61850.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p17-03-matriz-goose-testes"
+kind = "sheet"
+title = "Projeto 17 - Matriz GOOSE e plano de verificação"
+source = "17-automacao-subestacao-digital/fonte/03_matriz_goose_testes.dxf"
+svg = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.svg"
+pdf = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.pdf"
+png = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.png"
 require_a3 = true
 require_notice = true
