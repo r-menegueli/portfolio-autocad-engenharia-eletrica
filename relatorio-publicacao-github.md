@@ -199,3 +199,19 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
   similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em 634.464
   verificações, sem erros ou avisos. Os limites do inversor seguem fictícios e Imp
   operacional não foi validada; inspeção de SVG no navegador aguarda autorização.
+
+## Atualização CAD — P07 revisão 04, 2026-11-06
+
+- P07 passou de dez para onze folhas. P07-11 apresenta a curva normalizada VDC/VBAT,
+  o t90 ideal de 0,506569 s, o timeout proposto de 1,5 s e a transição proposta por
+  confirmação auxiliar de KMP antes da abertura de KPR e da liberação de READY.
+- O retorno auxiliar, o tempo mecânico, a janela para detectar falhas e a ordem de
+  abertura real continuam pendentes de fabricante e análise de segurança; não foram
+  apresentados como hardware ou lógica validados.
+- O validador P07 passou em 4.313 verificações; o AcCoreConsole 2027 auditou 11/11
+  DXFs. P07-11 foi conferida no PNG a 300 dpi e no PDF rasterizado independentemente
+  pelo Poppler a 150 dpi; similaridade PDF/PNG: 0,989502. Também conferi o contato P07.
+- A validação estrita passou em 637.814 verificações, sem erros ou avisos. O revisor
+  integrou 12 projetos, 108 folhas, 432 arquivos gráficos e 74 CSVs; similaridade
+  mínima PDF/PNG: 0,981493. A inspeção de SVGs no navegador continua aguardando
+  autorização.

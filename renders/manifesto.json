@@ -1046,190 +1046,209 @@
     {
       "id": "p07-01-arquitetura-geral",
       "source": "07-arquitetura-veiculo-eletrico/fonte/01_arquitetura_geral.dxf",
-      "source_sha256": "a9f9881318bcbf033ad935d391a09fdfc01976f4a3bac384c096da91354be611",
+      "source_sha256": "24c251ed4421cc279481dc07110eb271be50b3a2f47097d9cb9872684732cdf1",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf",
-          "sha256": "866c09f8db647d40b5039619e3b230165d4fba61a54b0293215aa18622589df8"
+          "sha256": "bc5e9acb5f87c33f1641f9da8847fe7c77180b396b947c13c7611eaf8c26a450"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png",
-          "sha256": "6578f7d9af547e55fb29b33b763ec064592b40b33057e95402e8d23f90d62d3a"
+          "sha256": "0153f085bb4742f0c9c2bc284845949a31bdc83ee14ab5e408e6771bb2e02b10"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.svg",
-          "sha256": "05105e43ca24f3a68748b728520de219fbcd1b316998e5f3b132f475f958e9f1"
+          "sha256": "dddf3889d47723c56b2de522add5fc9b3aab4fe872bbef41a20402a012d8f303"
         }
       }
     },
     {
       "id": "p07-02-circuito-alta-tensao",
       "source": "07-arquitetura-veiculo-eletrico/fonte/02_circuito_alta_tensao.dxf",
-      "source_sha256": "15961924ddc034074cc9f18e9365bfd2344da3dde64778a98b6b603baf14462a",
+      "source_sha256": "d90cff70169b04a4bb246733006ef1c13d2c11ace1af7467420bbde1095e5916",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.pdf",
-          "sha256": "d1d10b604eeed6ad4967d25786f883fb922e515342ee5831712616a127aec9c8"
+          "sha256": "3dce0740852cdc499d1534d708fc12312b2b5b9832cedbc969917b392cd5729a"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.png",
-          "sha256": "51168e8d826bf1c93bb2af6d3b81d12a9a4d3f74a09ce8a00f3130fc865870d3"
+          "sha256": "feb8ffe1646e91e1a30460ee7357d734291cf15ac491c444425d7fe1293f1a79"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/02_circuito_alta_tensao.svg",
-          "sha256": "c7019be6cbf30e1ae4bc7b1effe9f6731bcee97284e3173990e36b7e39210c9f"
+          "sha256": "7569f31a0eddf8b298bfdebc376dfe9d8f79a987866d45ccdbaa4319ba7bb223"
         }
       }
     },
     {
       "id": "p07-03-circuito-baixa-tensao",
       "source": "07-arquitetura-veiculo-eletrico/fonte/03_circuito_baixa_tensao.dxf",
-      "source_sha256": "2a0f0c1aa6ce26a5c190ba569917f53b6b18c258905c26f9d6345f653384f434",
+      "source_sha256": "b2b3f352b7190f2e9180a5579b2d1a22e8090217e228f8ef219c2ada9ee4de5c",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.pdf",
-          "sha256": "e073122a97cd770a71919ff8daa747cf9ab25635967ab9c48472441f30c2be2a"
+          "sha256": "c9fc825a6910c4b46eec62df5c1ef51916b722f1cdd0e1e978a83030ece5b833"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.png",
-          "sha256": "d366f14e18019aae2188334b244c4e2a475c8e45514272220fad5503c094cdb7"
+          "sha256": "3c32bbe742edfdf55ab8013f2272327f88032fc87470d00ee14b48e32fff989d"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/03_circuito_baixa_tensao.svg",
-          "sha256": "5586accd33cc0883158ec272322edbea064248f396c952db686f4ca751bdca9c"
+          "sha256": "2cb9ad6b9650084b1cb6e3504990617488c7a7bc1b4fae67df2b91de900424c4"
         }
       }
     },
     {
       "id": "p07-04-pre-carga-contatores",
       "source": "07-arquitetura-veiculo-eletrico/fonte/04_pre_carga_contatores.dxf",
-      "source_sha256": "6563ba3b90e68e8c16eb1baffe407e50f73f35e07ab296fa54052f411c45fbca",
+      "source_sha256": "16ac6301dc749606a4bab3a8b91969bd3a6588a9b0482456166a2f7a5e2a5bdb",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.pdf",
-          "sha256": "166791a0b4b9facd7cb271aca28d698194c8b5d1d7d875db85dae6fb51d18f76"
+          "sha256": "9bcf4e48d609c3d2b31041c6eabd5688370492f10c2f8213233fdf466ac316f0"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.png",
-          "sha256": "dca98cc134b7a39111d19d163d0ee16b890ee07946818d1674c709c923fc3f54"
+          "sha256": "41c1299e1970e20ec42b97a52bf5a613520bc2ce7f4e644bcf1f000ca2c38c0c"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/04_pre_carga_contatores.svg",
-          "sha256": "a2735df1153e97e69ad0e6084eae22de271aeed07f6b34f62f4f3a7d39d1a96c"
+          "sha256": "6dce6ea702577ffb75981ef20ea225f901ef4115fb6b6ec542a07705a02f13f0"
         }
       }
     },
     {
       "id": "p07-05-inversor-motor",
       "source": "07-arquitetura-veiculo-eletrico/fonte/05_inversor_motor.dxf",
-      "source_sha256": "824a65bff95a0c0800fc56f2b609ccc7f9e6001456754b85a8bb9f844b471495",
+      "source_sha256": "7bb1396a5286a4b13c6727071e79ed8be06c057d91a7460af7678efc7943c059",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.pdf",
-          "sha256": "592ee97e809f2ad1791a5a091740ba9bb1b8e8178c88b2f21673dfb4fb242afd"
+          "sha256": "d49ef626458397262a4898d97da59b3e9fcc5c5fe7c791693bc0c7a0c27e60c7"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.png",
-          "sha256": "9859b1c90281618a416eee1b04aae7a201917ab222284b63a7a90e2fd7fd7de2"
+          "sha256": "b6793af9f777987d7d5a119dc5d12e1a929b07b5c2c210b2a6cf20fae0aed160"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/05_inversor_motor.svg",
-          "sha256": "ecc6401888bdcc199479add979d238705365f6b2e430d1a4b7f561b8ec1dd68a"
+          "sha256": "aa909341254eb318e6c540f5a1fd7b12aa8834d2ffb6baa35d20762f97d69ab8"
         }
       }
     },
     {
       "id": "p07-06-sensores-controle",
       "source": "07-arquitetura-veiculo-eletrico/fonte/06_sensores_controle.dxf",
-      "source_sha256": "5526b97cc414fc506f48809a718ccc0b4e49455863bc18cbe47a20519ccb3213",
+      "source_sha256": "58ebcc3f0e1442f84e1ae7e1e100483765400195e871ab45a4601dd021b6b6f8",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.pdf",
-          "sha256": "d5eef0686020cf10b39ae362b7c5a07961413d4d8518515f099aeddb054339dc"
+          "sha256": "ef799a9213463807019fb4454ea2ef10792597128b2b84093a762df7f54c4601"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.png",
-          "sha256": "27d4695479c74d7d5394d1c04baa68d833d882bf969a44a242f9cd9192b0ef10"
+          "sha256": "d900d95d9eb9d2bb20ce51a6bc468ecbbfb2246473920bca8f9631ce3a5f4133"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/06_sensores_controle.svg",
-          "sha256": "3c05d1fe5dbea93eb194d8ea0849f8fdc484227a76b8ee96a4d4d70a240991dd"
+          "sha256": "1b9fefee1248d53a486ce050eac44bd46a4878057fad28a8a4660dbc99c6c6e9"
         }
       }
     },
     {
       "id": "p07-07-rede-comunicacao",
       "source": "07-arquitetura-veiculo-eletrico/fonte/07_rede_comunicacao.dxf",
-      "source_sha256": "7afc2a993b8e28442d8a91be171ad7565aac3f8f6a6e82f5d8f8efdbcf1fec7b",
+      "source_sha256": "b9b24f49d7e29ffdee5d462e26a66141ef256bd2c70a660f3e3c70ca8a051d79",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.pdf",
-          "sha256": "bbacb2f93452c3600420f016ccf50ce1425f59bf8e1d9694569f0e789b355936"
+          "sha256": "dadbd535eb51996d23c0fb4c8c82aa8bb86963d0931ea3456c4574ac88566f50"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.png",
-          "sha256": "68f07666d9afae6cb2883c4ed0c67df4100442d410a5ed17c86655b71a7bf22a"
+          "sha256": "bd821f8e90d563991034349d44faabfc5fc5b0d2854aae1da896988755f2a817"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/07_rede_comunicacao.svg",
-          "sha256": "f0f74e4d21d5b18eeb9ce1a085e6b6f5af48e81307aa6bac9131ec6ac7408400"
+          "sha256": "c90bc56ffe3a375a81c35a4ca2111c3361f15740f5b1a4d38b71f9788142a558"
         }
       }
     },
     {
       "id": "p07-08-layout-componentes",
       "source": "07-arquitetura-veiculo-eletrico/fonte/08_layout_componentes.dxf",
-      "source_sha256": "35cb1dc9c8fb8c46dc27df59c4d2ba93c44cc0b785020875a399b59622f440ad",
+      "source_sha256": "525e1af8f7514af822fae832284c8d71c3f14a6e5e0b5a9f705021f5730d2162",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.pdf",
-          "sha256": "1fe4ebf1fde9c24f9710b7cf567bf406488ceaa72458bfbd0d6e4889c8e4091a"
+          "sha256": "a5b748af9c9ad4f739c34e6a5d8b08976f6e539849ad327ec984916cac907c98"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.png",
-          "sha256": "c002351a010b341caf5ed4a85eadfcde141ea35e78866ed525925f861a2683cc"
+          "sha256": "6cc9e8a45cf7b342b8dc920558f2f5a98957b187be3f4642bf7e12d68ea3e329"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/08_layout_componentes.svg",
-          "sha256": "378474eecc97552209b3fd46992bf798ee021af8de6468b198f1b948cc0e3198"
+          "sha256": "6a0a5cf5d6e34c86a926f8b33098ad29afa5eeb84e9888714466fd5d702bf911"
         }
       }
     },
     {
       "id": "p07-09-interfaces-falhas",
       "source": "07-arquitetura-veiculo-eletrico/fonte/09_interfaces_resposta_falhas.dxf",
-      "source_sha256": "ea035083b46f159bcf54acb60413aacfa44bbda91e1aed48fa379db3905f4e45",
+      "source_sha256": "a64566755dcc0bd448e5180f3731c6e59dec99f9d5d4f233b24861099b6dc148",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.pdf",
-          "sha256": "196ad4441eaf2194a3793ae35713a170512f295f8e47d597952adaf53d120de1"
+          "sha256": "39d09cf9b7123825ca63718120daca7c4fc49927a4312fb75c5020542fcf2ffe"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.png",
-          "sha256": "a02e296decca70c910737b2541376b93bd9abfc106ff20a9c97bce0edd173452"
+          "sha256": "2548a1804a5d1c33bd9ac2aab0e8210236375a31ab525460dabb4e9f8bd317b8"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/09_interfaces_resposta_falhas.svg",
-          "sha256": "c78414d14411e1d77ef98b0b792e5e5b3ae662486bec2e59216b08b1dd505b76"
+          "sha256": "55ca3be10af057e5a99b6d5e6ed34c6ced29993ffad76e919b4544927c2fdd9a"
         }
       }
     },
     {
       "id": "p07-10-pre-carga-parametrica",
       "source": "07-arquitetura-veiculo-eletrico/fonte/10_estudo_pre_carga_parametrico.dxf",
-      "source_sha256": "eef474d6e2a12f94bc3603ee3c2406d09288126338df820c00dc58021124f31d",
+      "source_sha256": "5119c1d69f9c55263050e1fe048ef3570fd3a37f475de0fc4499f2c1a12a809b",
       "outputs": {
         "pdf": {
           "path": "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.pdf",
-          "sha256": "bf4e9b43b78dc0ab5deaf04d185a8ed633dafef14a47bcfae7c13c7e76a6dd6f"
+          "sha256": "840b4a973dffd0400e70e1e610813d17a7c062e4e6f53b1918ee67dfafc917cc"
         },
         "png": {
           "path": "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.png",
-          "sha256": "27e416f542698fd76776fbb3329c0036c20b41c124e8909d1eae46b05fe55e74"
+          "sha256": "4e5315211be67b1486bbb85de09518ff91f981ff104c2813d83689e07fc8063d"
         },
         "svg": {
           "path": "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.svg",
-          "sha256": "968ddb3204487fbf721253f2bb95140ce207c0c3520017f2e034d31f73f7ee8c"
+          "sha256": "4a3933916bb495a99950d0c7a4e4a9d782087c2b1e4c494ad0ff58aecdbfc17c"
+        }
+      }
+    },
+    {
+      "id": "p07-11-sequencia-temporal-pre-carga",
+      "source": "07-arquitetura-veiculo-eletrico/fonte/11_sequencia_temporal_pre_carga.dxf",
+      "source_sha256": "a4155cdc3cbf458b5bd7451408c72124bd431d918dea9c1a1c1a221d79324eca",
+      "outputs": {
+        "pdf": {
+          "path": "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.pdf",
+          "sha256": "17b59c5e3ea6ededa296e9ebd4ef932843d3e5742c7fdd169b5f7cec25ddabc7"
+        },
+        "png": {
+          "path": "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.png",
+          "sha256": "ce344d5b41dd3635fb227cd29ed89fa3e28a0f38c09026244796ee91e76bad71"
+        },
+        "svg": {
+          "path": "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.svg",
+          "sha256": "9fcd2216caf185e239bd67eb8ec99b9dcf8318e84d3aa05bdf9bbcd28e2a8b3c"
         }
       }
     },

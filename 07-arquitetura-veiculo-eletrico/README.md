@@ -2,9 +2,9 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 10
+Pranchas: 01 a 11
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 03 (2026-11-06)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão gráfica 04 (2026-11-06)
 
 Estado: ampliado e revisado em 2026-11-06
 
@@ -21,6 +21,7 @@ declarar, reproduzir ou inventar qualquer resultado experimental do trabalho aca
 - VCU, sensores, comunicação CAN, HVIL e monitoramento de isolação;
 - permissivos, desligamento de emergência e estados seguros conceituais;
 - interfaces e uma matriz rastreável de dez falhas, reações propostas e pendências;
+- sequência temporal conceitual da pré-carga com limiar, timeout e confirmação pendente dos contatores;
 - diagramas comparativos das cadeias de controle V/f e FOC.
 
 Não estão incluídos carregador embarcado, conector de recarga, homologação veicular,
@@ -39,6 +40,7 @@ ASIL, HARA, FMEDA ou dimensionamento executivo.
 8. [Layout dos componentes](fonte/08_layout_componentes.dxf)
 9. [Interfaces e resposta conceitual a falhas](fonte/09_interfaces_resposta_falhas.dxf)
 10. [Estudo paramétrico da pré-carga](fonte/10_estudo_pre_carga_parametrico.dxf)
+11. [Sequência temporal da pré-carga](fonte/11_sequencia_temporal_pre_carga.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -57,6 +59,7 @@ Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 - [Critérios e premissas](criterios-premissas.md)
 - [Memória de cálculo](memoria-calculo.md)
 - A folha 10 visualiza corrente inicial, potência instantânea e energia do resistor na faixa assumida de 320–450 Vcc; nenhum componente é selecionado por esses cálculos.
+- A folha 11 aproxima a curva ideal do fluxo de estados; o tempo e a realimentação dos contatores permanecem pendentes do hardware.
 - [Estratégias V/f e FOC](estrategias-controle.md)
 - [Sequência de funcionamento](sequencia-funcionamento.md)
 - [Referências técnicas](referencias-normativas.md)
@@ -120,6 +123,23 @@ As dez pranchas passam a usar numeração `NN/10` na revisão gráfica 03.
 - A inspeção visual do SVG no navegador segue aguardando autorização do usuário.
 - O modelo RC ideal não considera tolerâncias, impedâncias parasitas, filtros,
   tempo mecânico do contator, repetição nem capacidade térmica do resistor.
+
+## Revisão 04
+
+A prancha 11 organiza a sequência temporal entre permissivos, início da pré-carga,
+cruzamento medido de 90%, confirmação auxiliar de KMP, abertura de KPR e liberação de
+`READY`. A curva RC indica `t90=0,506569 s` e margem ideal de `0,993431 s` até o
+timeout proposto de `1,5 s`. Se o limiar não for alcançado, o fluxo vai a `FAULT` com
+torque inibido. Os tempos de movimento, feedback, tolerância do sensor e ordem real de
+abertura ainda dependem do hardware e de análise de segurança.
+
+- O validador específico P07 passou em 4.313 verificações e o AcCoreConsole 2027 abriu
+  e auditou 11/11 DXFs. A validação estrita global passou em 637.814 verificações,
+  sem erros ou avisos; o revisor confirmou 12 projetos, 108 pranchas, 432 arquivos
+  gráficos e 74 CSVs, com similaridade mínima PDF/PNG de 0,981493.
+- P07-11 foi conferida no PNG de produção a 300 dpi e no PDF rasterizado pelo Poppler
+  a 150 dpi; similaridade PDF/PNG de 0,989502. Revisei a folha de contato das onze
+  pranchas. O SVG ainda aguarda autorização para inspeção no navegador.
 
 ## Reprodução
 

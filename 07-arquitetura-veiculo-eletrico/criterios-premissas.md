@@ -49,6 +49,9 @@ EV-07 nem resultados experimentais do TCC.
 - a perda de qualquer permissivo abre contatores e bloqueia novo torque;
 - o contator de pré-carga nunca permanece fechado no estado de tração;
 - a transição para `READY` exige confirmação de tensão, não apenas temporização;
+- a sequência temporal da prancha 11 representa a confirmação auxiliar de KMP antes
+  da abertura de KPR como requisito a definir; modelo de contator e tempo de retorno
+  não foram especificados;
 - falha ou timeout mantém os contatores principais abertos e exige novo ciclo de chave;
 - comandos CAN não substituem caminhos físicos de desligamento exigidos pela análise de
   segurança de um veículo real.

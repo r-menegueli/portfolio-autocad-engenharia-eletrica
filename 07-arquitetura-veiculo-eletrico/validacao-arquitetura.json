@@ -1,5 +1,5 @@
 {
-  "checks": 4288,
+  "checks": 4313,
   "errors": [],
   "results": {
     "cables": 12,
@@ -43,7 +43,7 @@
         "vdc_90_v": "405.00"
       }
     ],
-    "sheets": 10,
+    "sheets": 11,
     "signals": 18,
     "torque_truth_rows": 128
   },

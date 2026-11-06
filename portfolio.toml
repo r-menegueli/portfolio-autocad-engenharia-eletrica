@@ -276,7 +276,7 @@ id = "07-arquitetura-veiculo-eletrico"
 path = "07-arquitetura-veiculo-eletrico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 10
+sheet_count = 11
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1138,6 +1138,17 @@ source = "07-arquitetura-veiculo-eletrico/fonte/10_estudo_pre_carga_parametrico.
 svg = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.svg"
 pdf = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.pdf"
 png = "07-arquitetura-veiculo-eletrico/exports/10_estudo_pre_carga_parametrico.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p07-11-sequencia-temporal-pre-carga"
+kind = "sheet"
+title = "Projeto 07 - Sequência temporal da pré-carga"
+source = "07-arquitetura-veiculo-eletrico/fonte/11_sequencia_temporal_pre_carga.dxf"
+svg = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.svg"
+pdf = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.pdf"
+png = "07-arquitetura-veiculo-eletrico/exports/11_sequencia_temporal_pre_carga.png"
 require_a3 = true
 require_notice = true
 

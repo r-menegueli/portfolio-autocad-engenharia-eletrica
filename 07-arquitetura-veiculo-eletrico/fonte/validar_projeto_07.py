@@ -36,6 +36,7 @@ SHEETS = (
     "08_layout_componentes.dxf",
     "09_interfaces_resposta_falhas.dxf",
     "10_estudo_pre_carga_parametrico.dxf",
+    "11_sequencia_temporal_pre_carga.dxf",
 )
 REQUIRED_MATERIAL_TAGS = {
     "BAT-HV-701", "BMS-701", "MSD-701", "F701", "KMN-701", "KMP-701",
@@ -100,6 +101,13 @@ SHEET_TERMS = {
         "RESPOSTA RC NORMALIZADA", "VDC / VBAT [%]", "t90 = 0,507 s",
         "VDC @90% [V]", "I0 [A]", "P0 [kW]", "EC FINAL [J]", "ER @90% [J]",
         "0,993431 s", "RPR-701",
+    ),
+    "11_sequencia_temporal_pre_carga.dxf": (
+        "SEQUÊNCIA TEMPORAL DA PRÉ-CARGA", "VDC / VBAT [%]",
+        "VDC/VBAT - R=100 ohm / C=2,2 mF", "SEQ PRE-CARGA 04",
+        "t90 ideal = 0,506569 s", "Timeout proposto = 1,50 s",
+        "PRECHARGE | t = 0", "VDC/VBAT >= 90%", "KMP CONFIRMADO",
+        "FAULT", "0,993431 s", "TBD",
     ),
 }
 WARNING = (
@@ -259,7 +267,7 @@ def validate(root: Path) -> dict:
         errors.append("Canais duplos de acelerador e freio estão incompletos.")
     if any(not row["reacao_falha"] or not row["prancha"] for row in signals):
         errors.append("Sinal sem reação de falha ou referência de prancha.")
-    valid_sheet_refs = {f"{index:02d}/{len(SHEETS):02d}" for index in range(1, len(SHEETS))}
+    valid_sheet_refs = {f"{index:02d}/{len(SHEETS):02d}" for index in range(1, len(SHEETS) + 1)}
     if any(row["prancha"] not in valid_sheet_refs for row in signals):
         errors.append("Referência de prancha inválida na lista de sinais.")
 
@@ -364,11 +372,11 @@ def validate(root: Path) -> dict:
             errors.append("Torque habilitado sem solicitação.")
 
     required_doc_terms = {
-        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", "matriz-interfaces-falhas.csv", "10_estudo_pre_carga_parametrico.dxf", WARNING),
+        "README.md": ("Resultado experimental | nenhum", "V/f", "FOC", "matriz-interfaces-falhas.csv", "10_estudo_pre_carga_parametrico.dxf", "11_sequencia_temporal_pre_carga.dxf", WARNING),
         "criterios-premissas.md": ("Fatos técnicos", "Premissas acadêmicas", "Propostas conceituais", "Limitações"),
         "memorial-descritivo.md": ("Fluxo de energia", "Pré-carga", "Interfaces e falhas", "Não afirma", "TCC"),
         "estrategias-controle.md": ("controle escalar", "controle vetorial", "Clarke", "Park", "resultados experimentais"),
-        "sequencia-funcionamento.md": ("OFF", "PRECHARGE", "READY", "FAULT", "novo ciclo de chave"),
+        "sequencia-funcionamento.md": ("OFF", "PRECHARGE", "READY", "FAULT", "novo ciclo de chave", "prancha 11", "0,506569 s", "0,993431 s"),
         "memoria-calculo.md": ("206,743421", "0,506569", "176,000000", "222,750000", "Faixa de tensão proposta", "111,51 J", "220,52 J", "0,993431 s", "não resultados experimentais"),
         "referencias-normativas.md": ("ISO 6469-3:2021", "ISO 26262:2018", "ISO 11898-2:2026", "Regulamento ONU nº 100"),
     }

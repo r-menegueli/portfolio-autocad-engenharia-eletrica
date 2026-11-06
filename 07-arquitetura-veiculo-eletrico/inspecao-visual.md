@@ -1,6 +1,6 @@
 # Inspeção visual - Projeto 07
 
-Estado: revisão inicial aprovada em 2026-09-09; revisão gráfica 02 em 2026-11-05.
+Estado: revisão inicial aprovada em 2026-09-09; revisão gráfica 04 em 2026-11-06.
 
 ## Amostra examinada
 
@@ -57,3 +57,13 @@ Curva, limiar de 90%, tabela, derivação, ressalvas, legenda e carimbo permanec
 da moldura e legíveis; não identifiquei cortes ou colisões relevantes. Os valores da
 tabela são coerentes com as premissas declaradas e com o RC ideal. A inspeção do SVG no
 navegador segue pendente da autorização do usuário.
+
+## Revisão gráfica 04 - 2026-11-06
+
+As onze folhas foram reemitidas como `NN/11`, revisão 04. P07-11 foi conferida no PNG
+de produção a 300 dpi e no PDF rasterizado independentemente pelo Poppler a 150 dpi;
+curva, limiar, sequência, notas, aviso e carimbo ficaram dentro da moldura, sem cortes
+ou colisões visíveis. A similaridade PDF/PNG da nova folha foi 0,989502. Também revisei
+a folha de contato atual das onze pranchas. O AcCoreConsole 2027 abriu e auditou 11/11
+DXFs; o validador específico P07 passou em 4.313 verificações. A inspeção visual dos
+SVGs no navegador continua pendente da autorização do usuário.

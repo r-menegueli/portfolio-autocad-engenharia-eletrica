@@ -1,4 +1,4 @@
-"""Gera as dez pranchas DXF do Projeto 07 de forma determinística."""
+"""Gera as onze pranchas DXF do Projeto 07 de forma determinística."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "07-arquitetura-veiculo-eletrico"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -140,6 +140,15 @@ SHEETS = (
         "Modelo RC ideal; não inclui impedâncias, tolerâncias, chicote, filtros de medição ou tempo de contatores.\\P"
         "Os valores calculados não selecionam RPR-701 nem demonstram capacidade de pulso, repetição ou segurança.",
         "VBAT: tensão da bateria | VDC: tensão do elo | I0/P0: valores iniciais | Ec/Er: energia idealizada",
+    ),
+    SheetSpec(
+        11,
+        "11_sequencia_temporal_pre_carga.dxf",
+        "SEQUÊNCIA TEMPORAL DA PRÉ-CARGA",
+        "Supervisão VDC/VBAT, confirmação de contatores e timeout proposto de 1,5 s",
+        "Tempos mecânicos, realimentação auxiliar, incerteza de medição e limiares de diagnóstico dependem do hardware.\\P"
+        "A sequência e o timeout são propostas acadêmicas; não representam validação de segurança veicular.",
+        "KMN/KMP/KPR: contatores | t90: cruzamento ideal de 90% | TBD: dado a definir com o fabricante",
     ),
 )
 
@@ -317,7 +326,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO RC 03", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("SEQ PRE-CARGA 04", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.5, "02_TEXTO")
 
 
@@ -643,6 +652,93 @@ def draw_precharge_parametric(layout, data: dict[str, list[dict[str, str]]]) -> 
     left(layout, "P0 e instantanea; nao representa potencia continua.", (230, 114), 1.3, "02_TEXTO")
 
 
+def draw_precharge_timing(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    parameters = {
+        row["parametro"]: float(row["valor"].replace(",", "."))
+        for row in data["parameters"]
+    }
+    resistance = parameters["R_PRE_CARGA"]
+    capacitance = parameters["C_ELO_CC"]
+    target = parameters["LIMIAR_PRE_CARGA"]
+    timeout = parameters["TIMEOUT_PRE_CARGA"]
+    tau = resistance * capacitance
+    t_target = -tau * math.log(1.0 - target)
+    margin = timeout - t_target
+
+    centered(layout, "VDC/VBAT - R=100 ohm / C=2,2 mF | MODELO RC IDEAL", (118, 256), 1.4, "07_INSTRUMENTACAO")
+    centered(layout, "VDC / VBAT [%]", (118, 243), 1.2, "02_TEXTO")
+    x0, y0, width, height = 34.0, 166.0, 168.0, 67.0
+    x1, y1 = x0 + width, y0 + height
+    line(layout, (x0, y0), (x1, y0), "02_TEXTO")
+    line(layout, (x0, y0), (x0, y1), "02_TEXTO")
+    for percent in (0, 50, 90, 100):
+        y = y0 + height * percent / 100.0
+        if percent:
+            line(layout, (x0, y), (x1, y), "12_LEGENDA" if percent != 90 else "05_POTENCIA")
+        left(layout, str(percent), (x0 - 4.0, y), 1.05, "02_TEXTO")
+    for index in range(4):
+        t = timeout * index / 3.0
+        x = x0 + width * t / timeout
+        if index:
+            line(layout, (x, y0), (x, y1), "12_LEGENDA")
+        centered(layout, f"{t:.1f}".replace(".", ","), (x, y0 - 5.0), 1.05, "02_TEXTO")
+
+    previous = (x0, y0)
+    for index in range(1, 81):
+        t = timeout * index / 80.0
+        ratio = 1.0 - math.exp(-t / tau)
+        current = (x0 + width * t / timeout, y0 + height * ratio)
+        line(layout, previous, current, "07_INSTRUMENTACAO")
+        previous = current
+
+    x_t = x0 + width * t_target / timeout
+    y_t = y0 + height * target
+    layout.add_circle((x_t, y_t), radius=1.7, dxfattribs={"layer": "05_POTENCIA"})
+    left(layout, f"t90 ideal = {t_target:.6f} s".replace(".", ","), (x_t + 3.0, y_t + 5.0), 1.05, "05_POTENCIA")
+    centered(layout, f"Timeout proposto = {timeout:.2f} s".replace(".", ","), (x1 - 25.0, y1 + 4.0), 1.05, "05_POTENCIA")
+    centered(layout, "tempo desde o comando PRECHARGE [s]", (x0 + width / 2, y0 - 13.0), 1.05, "02_TEXTO")
+
+    centered(layout, "SEQUÊNCIA PROPOSTA E DECISÕES DE TRANSIÇÃO", (307, 256), 1.35, "06_COMANDO")
+    steps = (
+        ("1  CHECK VÁLIDO", "Permissivos aceitos; torque permanece inibido."),
+        ("2  PRECHARGE | t = 0", "KMN=1; KPR=1; KMP=0; iniciar monitoramento."),
+        ("3  VDC/VBAT >= 90%", "Solicitar KMP; exigir confirmação auxiliar (tempo TBD)."),
+        ("4  KMP CONFIRMADO", "Solicitar KPR=0; confirmar abertura antes de READY."),
+        ("5  READY / FAULT", "READY exige estados coerentes; timeout => FAULT e torque zero."),
+    )
+    top = 243.0
+    box_left, box_right, box_height, gap = 218.0, 399.0, 14.0, 2.0
+    for index, (title, detail) in enumerate(steps):
+        y_top = top - index * (box_height + gap)
+        add_rect(layout, box_left, y_top - box_height, box_right, y_top, "13_NOTAS")
+        centered(layout, title, ((box_left + box_right) / 2, y_top - 4.0), 1.2, "06_COMANDO")
+        centered(layout, detail, ((box_left + box_right) / 2, y_top - 9.5), 1.1, "02_TEXTO")
+
+    add_rect(layout, 20, 112, 400, 151, "13_NOTAS")
+    centered(layout, "VALORES DERIVADOS E LIMITES", (210, 143), 1.2, "13_NOTAS")
+    centered(
+        layout,
+        f"tau = R x C = {tau:.6f} s  |  t90 ideal = {t_target:.6f} s  |  margem ideal ate o timeout = {margin:.6f} s".replace(".", ","),
+        (210, 132),
+        1.1,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "A curva nao inclui bateria, parasitas, tolerancias, filtros, erro do sensor ou movimento dos contatores.",
+        (210, 122),
+        1.0,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Confirmacao auxiliar, janela de falha e ordem fisica de abertura exigem selecao de hardware e analise de seguranca.",
+        (210, 116),
+        1.0,
+        "02_TEXTO",
+    )
+
+
 def draw_inverter_motor(layout, data: dict[str, list[dict[str, str]]]) -> None:
     centered(layout, "ESTÁGIO DE POTÊNCIA CONCEITUAL", (210, 258), 1.5, "05_POTENCIA")
     centered(layout, "DC+", (25, 235), 1.2, "05_POTENCIA")
@@ -860,6 +956,7 @@ DRAWERS = {
     8: draw_layout,
     9: draw_fault_interfaces,
     10: draw_precharge_parametric,
+    11: draw_precharge_timing,
 }
 
 

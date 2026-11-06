@@ -9125,7 +9125,7 @@ AcDbText
  40
 1.5
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9197,7 +9197,7 @@ AcDbText
  40
 1.5
   1
-ESTUDO RC 03
+SEQ PRE-CARGA 04
   7
 PORTFOLIO_TEXTO
  72
@@ -9405,7 +9405,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9443,7 +9443,7 @@ AcDbText
  40
 2.25
   1
-06/10
+06/11
   7
 PORTFOLIO_TEXTO
  11
@@ -19313,7 +19313,7 @@ DictionaryVariables
 280
 0
   1
-06/10
+06/11
   0
 DICTIONARYVAR
   5

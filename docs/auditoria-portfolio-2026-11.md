@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 107 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 108 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 107 pranchas, 428 arquivos
+Na revisão corrente, o revisor confirmou 12 projetos, 108 pranchas, 432 arquivos
 gráficos e 74 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 634.464 verificações, sem erros ou avisos.
+passou em 637.814 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -18,7 +18,8 @@ passou em 634.464 verificações, sem erros ou avisos.
 - P02 (instalação residencial) e P03 (painel com CLP) são os melhores pontos de
   entrada: associam planta/arquitetura a diagramas e tabelas rastreáveis.
 - P04, P06 e P10 mostram variedade de instrumentação, acionamentos e interfaces;
-  P07 amplia o portfólio para sistemas veiculares sem se passar por produto validado.
+  P07 amplia o portfólio para sistemas veiculares; P07-11 separa o tempo RC ideal,
+  o retorno dos contatores e o timeout sem afirmar validação veicular.
 - O DXF como fonte e PDF/SVG/PNG reproduzidos a partir dele dão bons formatos de
   leitura, edição e conferência.
 
@@ -32,7 +33,7 @@ passou em 634.464 verificações, sem erros ou avisos.
 | P04 — Nível | Sete folhas cobrem processo, malha, elétrica, interligações, layout e nove eventos causa–efeito; a revisão 03 deixa a origem a montante explicitamente indefinida e alinha HV-102 ao cadastro de materiais. | Sistema de uma bomba e um tanque com valores assumidos; fonte, sucção, vazão/carga, tubulação, curva/NPSH e dados da válvula não estão selecionados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir valores didáticos por levantamento hidráulico e equipamentos selecionados; definir fonte, sucção/descarga e válvulas; completar dados e respostas operacionais antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
-| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas; P07-10 torna explícitos tempo, corrente inicial e energia de pré-carga em três tensões assumidas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico/desligamento seguro e o RC ideal não valida resistor, contatores ou circuito real. | Substituir R/C e faixa de tensão por valores e tolerâncias de componentes escolhidos; verificar pulso, repetição, temperatura, falha de contator e critérios de isolamento com requisitos do sistema, simulação transitória e ensaios rastreáveis. |
+| P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas; P07-10 calcula a pré-carga ideal; P07-11 relaciona o limiar medido, feedback de KMP/KPR, READY e timeout. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico/desligamento seguro e os desenhos não validam resistor, contatores ou circuito real. | Substituir R/C e faixa de tensão por valores e tolerâncias de componentes escolhidos; verificar pulso, repetição, temperatura, falha de contator e critérios de isolamento com requisitos do sistema, simulação transitória e ensaios rastreáveis. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos, cinco pontos em quatro malhas 4–20 mA e balanço visual da fonte. | Tags, faixas e correntes de carga são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado; conferir o consumo de cada modelo e o derating da fonte. |
@@ -379,3 +380,20 @@ a 150 dpi e contato das oito folhas; similaridade PDF/PNG da nova folha: 0,98972
 O revisor confirmou 12 projetos, 107 folhas, 428 arquivos gráficos e 74 CSVs; o mínimo
 global de similaridade permaneceu 0,981493. A validação estrita passou em 634.464
 verificações, sem erros ou avisos. A inspeção de SVGs no navegador aguarda autorização.
+
+### Atualização P07-11 — revisão gráfica 04
+
+A nova prancha separa a resposta RC ideal da sequência de confirmação dos contatores.
+Com R=100 ohm, C=2,2 mF e limiar proposto de 90%, `t90=0,506569 s` e a margem
+aritmética até o timeout de 1,5 s é `0,993431 s`. A sequência deixa explícitos o
+fechamento solicitado de KMP, o retorno auxiliar ainda sem tempo definido, a abertura
+de KPR antes de `READY` e o ramo `FAULT` por timeout, mantendo torque inibido.
+
+O validador específico P07 passou em 4.313 verificações e o AcCoreConsole 2027 abriu e
+auditou 11/11 DXFs. P07-11 foi conferida no PNG a 300 dpi, PDF rasterizado pelo Poppler
+a 150 dpi e contato das onze folhas; a similaridade PDF/PNG foi 0,989502. A revisão
+integrada confirmou 12 projetos, 108 folhas, 432 arquivos gráficos e 74 CSVs, com
+similaridade mínima de 0,981493. A validação estrita passou em 637.814 verificações,
+sem erros ou avisos. Tempos de contatores, retorno auxiliar e critérios de segurança
+seguem pendentes de hardware e validação veicular; SVGs aguardam autorização para
+inspeção no navegador.

@@ -34,14 +34,14 @@ em [portfolio.toml](portfolio.toml).
 | P04 | Controle de nível de reservatório | instrumentação, malha PI, VFD, sequência e causa–efeito | 7 | [abrir](04-controle-nivel-reservatorio/README.md) |
 | P05 | Instalação elétrica industrial | cargas, alimentadores, iluminação, eletrocalhas, curto-circuito e coordenação das proteções | 9 | [abrir](05-instalacao-eletrica-industrial/README.md) |
 | P06 | Centro de Controle de Motores | partida direta, reversão, VFD, STO, bornes de comando, causa–efeito e balanço de demanda | 10 | [abrir](06-centro-controle-motores/README.md) |
-| P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f, FOC, matriz de falhas e estudo de pré-carga | 10 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
+| P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f, FOC, matriz de falhas e sequência temporal de pré-carga | 11 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA, aterramento, sensibilidade de energia e envelope térmico de strings | 8 | [abrir](08-sistema-fotovoltaico/README.md) |
 | P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição, integração mecânica, descarga e perdas térmicas paramétricas | 10 | [abrir](09-fonte-bancada/README.md) |
 | P10 | Rede de instrumentação industrial | 4–20 mA, escalas lineares, I/O, Ethernet, qualidade de sinais e alimentação das remotas | 10 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e plano de dados para estudo de aterramento/SPDA | 7 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **107 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **108 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,7 +135,7 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 107 pranchas A3 de P01–P12. A revisão 03 do P10 apresenta cinco pontos
+revisão cobre 108 pranchas A3 de P01–P12. A revisão 03 do P10 apresenta cinco pontos
 calculados em cada uma das quatro escalas analógicas; a revisão 04 acrescentou um
 balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alimentadores
 remotos. Esses valores são

@@ -2,7 +2,7 @@
 
 ## Finalidade
 
-O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em dez pranchas,
+O EV-07 é uma arquitetura elétrica acadêmica criada para organizar, em onze pranchas,
 o fluxo de energia, a alimentação de controle, os permissivos de alta tensão, a rede de
 comunicação e duas estratégias conceituais de acionamento de um motor de indução.
 
@@ -23,6 +23,13 @@ VDC/VBAT atinge o limiar proposto dentro do timeout, KMP-701 fecha e KPR-701 abr
 perda de HVIL, isolação, BMS, sinal de colisão ou emergência comanda a abertura dos
 contatores e bloqueia `READY`. Um circuito real requer detecção de contato soldado,
 drivers adequados, descarga do barramento e análise de falhas independentes.
+
+A prancha 11 representa a sequência temporal proposta: confirmar permissivos, iniciar
+KMN/KPR, aguardar a razão VDC/VBAT, solicitar KMP, confirmar seu retorno auxiliar e
+abrir KPR antes de `READY`. O cruzamento ideal de 90% ocorre em 0,506569 s para os
+valores acadêmicos R=100 ohm e C=2.200 uF, dentro do timeout proposto de 1,5 s.
+Tempos mecânicos, lógica de realimentação e resposta ao timeout permanecem dependentes
+de hardware e análise de segurança; o desenho não demonstra essa sequência em veículo.
 
 ## Proteções
 

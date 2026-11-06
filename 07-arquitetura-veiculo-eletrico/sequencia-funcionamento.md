@@ -6,10 +6,22 @@
 2. `WAKE`: chave ligada; VCU e BMS inicializam e verificam comunicação.
 3. `CHECK`: BMS, HVIL, IMD, emergência e colisão precisam estar válidos.
 4. `PRECHARGE`: KMN-701 e KPR-701 fecham; KMP-701 permanece aberto.
-5. `READY`: após VDC/VBAT >= 90%, KMP-701 fecha e KPR-701 abre.
+5. `READY`: quando VDC/VBAT medido atinge 90% dentro do timeout proposto, solicita-se
+   o fechamento de KMP-701; retorno auxiliar, tempo máximo de atuação e critério para
+   abrir KPR-701 ainda dependem do hardware a selecionar.
 6. `DRIVE`: VCU libera torque se APPS/BPS forem plausíveis e o inversor estiver pronto.
 7. `FAULT`: torque é zerado; contatores abrem conforme sequência definida pela análise
    de segurança real; um novo ciclo de chave é exigido.
+
+## Temporização da pré-carga
+
+A prancha 11 compara a curva ideal com o timeout proposto. Com R=100 ohm, C=2.200 uF
+e limiar de 90%, `tau=0,22 s` e `t90=0,506569 s`, deixando `0,993431 s` de margem
+aritmética até 1,5 s. Esse tempo não inclui tolerâncias, bateria, sensor, filtro,
+chicote ou movimento dos contatores. O modelo não define o tempo de retorno auxiliar:
+confirmar o fechamento de KMP antes de abrir KPR é uma dependência a resolver com o
+fabricante. Se a razão medida não atingir o limiar antes do timeout, a proposta vai a
+`FAULT`, mantém torque inibido e requer novo ciclo de chave.
 
 ## Intertravamentos
 
