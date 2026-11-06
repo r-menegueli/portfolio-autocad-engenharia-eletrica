@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 106 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 107 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 106 pranchas, 424 arquivos
-gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 630.151 verificações, sem erros ou avisos.
+Na revisão corrente, o revisor confirmou 12 projetos, 107 pranchas, 428 arquivos
+gráficos e 74 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
+passou em 634.464 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -362,5 +362,20 @@ específico passou em 4.288 verificações e o AcCoreConsole 2027 abriu/auditou 
 P07-10 foi inspecionada no PNG de produção a 300 dpi e no PDF rasterizado a 150 dpi.
 O revisor integrado confirmou 12 projetos, 106 folhas, 424 arquivos gráficos e 73 CSVs,
 com similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649. A validação estrita
-passou em 630.151 verificações, sem erros ou avisos. A inspeção do SVG no navegador
-permanece pendente de autorização.
+passou em 630.151 verificações, sem erros ou avisos àquela revisão. A inspeção do SVG no
+navegador permanece pendente de autorização.
+
+### Atualização P08-08 — revisão gráfica 03
+
+A prancha nova transforma as premissas térmicas já existentes em curvas e tabela por
+string: Voc/Vmp a -5 °C, STC e 70 °C, mais Isc corrigida em 1.100 W/m². Para as seis
+unidades em série, Voc fria é 324,5496 V, Vmp quente 216,942 V e Isc no caso quente
+15,65652 A. A Isc não representa a Imp operacional; faltam módulos e inversor reais,
+curva I-V, dados OEM e validação da entrada de corrente do MPPT.
+
+O validador específico passou em 8.119 verificações; o AcCoreConsole 2027 abriu e
+auditou 8/8 DXFs. P08-08 foi inspecionada no PNG a 300 dpi, PDF rasterizado independente
+a 150 dpi e contato das oito folhas; similaridade PDF/PNG da nova folha: 0,989722.
+O revisor confirmou 12 projetos, 107 folhas, 428 arquivos gráficos e 74 CSVs; o mínimo
+global de similaridade permaneceu 0,981493. A validação estrita passou em 634.464
+verificações, sem erros ou avisos. A inspeção de SVGs no navegador aguarda autorização.

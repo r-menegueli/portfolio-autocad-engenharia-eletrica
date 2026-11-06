@@ -1,5 +1,5 @@
 {
-  "checks": 8073,
+  "checks": 8119,
   "errors": [],
   "results": {
     "ac_current_a": "27.272727",
@@ -10,11 +10,13 @@
     "materials": 21,
     "modules": 12,
     "protections": 11,
-    "sheets": 7,
+    "sheets": 8,
     "energy_sensitivity_rows": 13,
+    "thermal_envelope_rows": 3,
     "strings": 2,
     "voc_cold_v": "324.549600",
-    "vmp_hot_v": "216.942000"
+    "vmp_hot_v": "216.942000",
+    "isc_corrected_hot_max_irradiance_a": "15.656520"
   },
   "status": "PASS"
 }

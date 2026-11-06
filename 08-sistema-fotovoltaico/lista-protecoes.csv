@@ -1,12 +1,12 @@
 tag,lado,tipo,polos,corrente_nominal_a,tensao_nominal,funcao,classificacao,observacoes,prancha
-F-S1-P,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo positivo S1,PROPOSTA,Coordenar com modulo cabo e Icc,04/07
-F-S1-N,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo negativo S1,PROPOSTA,Coordenar com modulo cabo e Icc,04/07
-F-S2-P,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo positivo S2,PROPOSTA,Coordenar com modulo cabo e Icc,04/07
-F-S2-N,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo negativo S2,PROPOSTA,Coordenar com modulo cabo e Icc,04/07
-DPS-CC-1,CC,DPS FV tipo 2,3,0,600 Vcc,Limitar sobretensao no MPPT 1,PROPOSTA,Up e coordenacao a selecionar,04/07
-DPS-CC-2,CC,DPS FV tipo 2,3,0,600 Vcc,Limitar sobretensao no MPPT 2,PROPOSTA,Up e coordenacao a selecionar,04/07
-QDC-1,CC,Seccionador sob carga,2,32,600 Vcc,Isolar string S1 e MPPT 1,PROPOSTA,Capacidade CC e categoria a confirmar,04/07
-QDC-2,CC,Seccionador sob carga,2,32,600 Vcc,Isolar string S2 e MPPT 2,PROPOSTA,Capacidade CC e categoria a confirmar,04/07
-QSD-CA,CA,Seccionador,2,40,220 Vca,Seccionamento local do inversor,PROPOSTA,Categoria de utilizacao a confirmar,03/07
-DPS-CA,CA,DPS tipo 2,2,0,275 Vca,Limitar sobretensao no lado CA,PROPOSTA,Esquema de aterramento e Up a confirmar,03/07
-QF-CA,CA,Disjuntor curva C,2,40,220 Vca,Protecao do circuito CA,PROPOSTA,Icn e coordenacao a confirmar,03/07
+F-S1-P,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo positivo S1,PROPOSTA,Coordenar com modulo cabo e Icc,04/08
+F-S1-N,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo negativo S1,PROPOSTA,Coordenar com modulo cabo e Icc,04/08
+F-S2-P,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo positivo S2,PROPOSTA,Coordenar com modulo cabo e Icc,04/08
+F-S2-N,CC,Fusivel gPV,1,20,600 Vcc,Sobrecorrente polo negativo S2,PROPOSTA,Coordenar com modulo cabo e Icc,04/08
+DPS-CC-1,CC,DPS FV tipo 2,3,0,600 Vcc,Limitar sobretensao no MPPT 1,PROPOSTA,Up e coordenacao a selecionar,04/08
+DPS-CC-2,CC,DPS FV tipo 2,3,0,600 Vcc,Limitar sobretensao no MPPT 2,PROPOSTA,Up e coordenacao a selecionar,04/08
+QDC-1,CC,Seccionador sob carga,2,32,600 Vcc,Isolar string S1 e MPPT 1,PROPOSTA,Capacidade CC e categoria a confirmar,04/08
+QDC-2,CC,Seccionador sob carga,2,32,600 Vcc,Isolar string S2 e MPPT 2,PROPOSTA,Capacidade CC e categoria a confirmar,04/08
+QSD-CA,CA,Seccionador,2,40,220 Vca,Seccionamento local do inversor,PROPOSTA,Categoria de utilizacao a confirmar,03/08
+DPS-CA,CA,DPS tipo 2,2,0,275 Vca,Limitar sobretensao no lado CA,PROPOSTA,Esquema de aterramento e Up a confirmar,03/08
+QF-CA,CA,Disjuntor curva C,2,40,220 Vca,Protecao do circuito CA,PROPOSTA,Icn e coordenacao a confirmar,03/08

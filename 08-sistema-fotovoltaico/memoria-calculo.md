@@ -75,3 +75,22 @@ Para estimar produção de um imóvel, faltam coordenadas e período, fonte mete
 orientação e inclinação medidas, horizonte e sombras, modelos reais de módulos e
 inversor, perdas, disponibilidade e degradação. Sem esses dados, não se deve interpretar
 a grade como faixa provável ou previsão local.
+
+## Envelope térmico da string
+
+A prancha 08 usa as temperaturas acadêmicas `-5 °C`, `25 °C` e `70 °C`, coeficientes
+relativos de `Voc=-0,28 %/°C`, `Vmp=-0,30 %/°C` e `Isc=+0,05 %/°C`, e seis módulos em
+série. Para cada string:
+
+| Célula | Voc da string | Vmp da string | Isc em 1.100 W/m² |
+| --- | ---: | ---: | ---: |
+| -5 °C | 324,5496 V | 273,3720 V | 15,08232 A |
+| 25 °C (STC) | 299,4000 V | 250,8000 V | 15,31200 A |
+| 70 °C | 261,6756 V | 216,9420 V | 15,65652 A |
+
+As tensões foram calculadas pela correção linear declarada nas premissas. A Isc inclui
+irradiância de 1.100 W/m² e o coeficiente térmico; a corrente operacional Imp não foi
+corrigida por irradiância ou temperatura, pois não há curva I-V ou coeficiente Imp de
+módulo selecionado. Assim, não se pode concluir compatibilidade de corrente operacional
+com o MPPT usando a Isc. A faixa MPPT de 90–550 V, o VDC máximo de 600 V e o limite de
+Isc de 20 A pertencem ao inversor conceitual proposto, sem fabricante.

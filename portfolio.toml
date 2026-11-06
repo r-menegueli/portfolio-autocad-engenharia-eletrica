@@ -303,7 +303,7 @@ id = "08-sistema-fotovoltaico"
 path = "08-sistema-fotovoltaico"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -317,6 +317,7 @@ required_files = [
   "lista-cabos.csv",
   "resultados-calculo.csv",
   "sensibilidade-energia.csv",
+  "envelope-termico.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_08.py",
   "fonte/validar_projeto_08.py",
@@ -1214,6 +1215,17 @@ source = "08-sistema-fotovoltaico/fonte/07_sensibilidade_energia.dxf"
 svg = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.svg"
 pdf = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.pdf"
 png = "08-sistema-fotovoltaico/exports/07_sensibilidade_energia.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p08-08-envelope-termico-string"
+kind = "sheet"
+title = "Projeto 08 - Envelope térmico da string"
+source = "08-sistema-fotovoltaico/fonte/08_envelope_termico_string.dxf"
+svg = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.svg"
+pdf = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.pdf"
+png = "08-sistema-fotovoltaico/exports/08_envelope_termico_string.png"
 require_a3 = true
 require_notice = true
 

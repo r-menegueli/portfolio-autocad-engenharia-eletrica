@@ -2,11 +2,11 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Pranchas: 01 a 07
+Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades geométricas em milímetros, revisão 02 (2026-11-05)
+Formato: A3 paisagem, unidades geométricas em milímetros, revisão 03 (2026-11-06)
 
-Estado: revisado e validado em 2026-11-05
+Estado: ampliado e revisado em 2026-11-06
 
 Este projeto apresenta um sistema fotovoltaico residencial conceitual, conectado à
 rede, com 6,60 kWp no lado CC e inversor string acadêmico de 6 kWca em 220 V. O arranjo
@@ -31,6 +31,7 @@ faixa provável ou previsão de geração.
 5. [Aterramento e equipotencialização](fonte/05_aterramento.dxf)
 6. [Layout dos equipamentos](fonte/06_layout_equipamentos.dxf)
 7. [Sensibilidade da energia anual](fonte/07_sensibilidade_energia.dxf)
+8. [Envelope térmico da string](fonte/08_envelope_termico_string.dxf)
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -65,6 +66,7 @@ um modelo comercial homologado.
 - [Lista de equipamentos e materiais](lista-materiais.csv)
 - [Resultados dos cálculos](resultados-calculo.csv)
 - [Sensibilidade da energia](sensibilidade-energia.csv)
+- [Envelope térmico calculado por string](envelope-termico.csv)
 - [Inspeção visual](inspecao-visual.md)
 - [Validação específica](validacao-fotovoltaico.json)
 - [Validação estrita](validacao.json)
@@ -93,3 +95,26 @@ O DXF AC1027 é a fonte principal. Nenhum DWG é fornecido nesta revisão.
 - reprodutibilidade: consulte o registro de hashes atualizado no manifesto de renders.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
+
+## Revisão 03
+
+A prancha 08 torna visível a correção de Vmp e Voc em `-5 °C`, STC e `70 °C`, junto
+à faixa MPPT `90–550 V` e ao limite CC de `600 V` propostos para INV-FV-801. Para a
+string de seis módulos, `Voc fria=324,5496 V` e `Vmp quente=216,942 V`. A `Isc` corrigida
+em 1.100 W/m² varia de `15,08232 A` a `15,65652 A`; a comparação com o limite de curto
+do MPPT ainda usa valores fictícios. `Isc` não substitui a corrente operacional `Imp`:
+esta precisa ser confirmada com curvas/dados OEM do módulo e do inversor.
+
+- A tabela reproduzível está em `envelope-termico.csv` e é gerada a partir de
+  `parametros.csv`; todas as entradas continuam classificadas como premissas/propostas.
+- O validador P08 passou em 8.119 verificações, sem erros; o AutoCAD AcCoreConsole
+  2027 auditou 8/8 DXFs. A validação estrita integrada passou em 634.464 verificações.
+- O revisor confirmou 12 projetos, 107 folhas, 428 arquivos gráficos e 74 CSVs;
+  similaridade mínima PDF/PNG de 0,981493; P08-08 obteve 0,989722.
+- P08-08 e o contato das oito folhas foram examinados em PNG; a folha nova também foi
+  inspecionada em PDF rasterizado independentemente a 150 dpi, sem cortes ou colisões.
+- Os SVGs reemitidos ainda aguardam inspeção visual no navegador.
+- Os limites do inversor não são de fabricante e a folha não comprova compatibilidade,
+  dimensionamento, operação real, proteção ou conformidade do sistema.
+- Verificação CAD/visual: consulte [inspeção visual](inspecao-visual.md) e
+  [validação específica](validacao-fotovoltaico.json).

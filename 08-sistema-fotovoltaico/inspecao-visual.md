@@ -29,3 +29,13 @@ adicional dos SVGs da revisão 02 em navegador aguarda autorização do usuário
 
 O resultado visual não transforma o estudo acadêmico em documentação executiva e não
 substitui verificação de engenharia no local.
+
+## Revisão gráfica 03 - 2026-11-06
+
+As oito folhas foram reemitidas como `NN/08`, revisão 03. P08-08 foi examinada no PNG
+de produção a 300 dpi e em PDF rasterizado independentemente pelo Poppler a 150 dpi.
+Curvas, tabela, limites, notas, legenda e carimbo cabem na moldura; não identifiquei
+cortes ou colisões relevantes. A prancha representa os mesmos valores que
+`envelope-termico.csv`. O AcCoreConsole 2027 abriu e auditou 8/8 DXFs, e o validador
+específico passou em 8.119 verificações. A inspeção visual adicional dos SVGs no
+navegador aguarda autorização do usuário.

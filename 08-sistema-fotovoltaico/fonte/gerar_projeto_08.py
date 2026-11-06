@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 from dataclasses import dataclass
+from decimal import Decimal
 from pathlib import Path
 import sys
 
@@ -35,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "08-sistema-fotovoltaico"
-PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+PROJECT_DATE = "2026-11-06"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -113,6 +114,15 @@ SHEETS = (
         "Os intervalos escolhidos não representam clima, faixa de confiança ou produção de um imóvel.",
         "Vermelho: PR 0,70 | Verde: PR 0,78 | Magenta: PR 0,86 | marcador: premissa didática atual",
     ),
+    SheetSpec(
+        8,
+        "08_envelope_termico_string.dxf",
+        "ENVELOPE TÉRMICO DA STRING",
+        "Vmp/Voc corrigidas por temperatura | limites do inversor são propostas",
+        "Temperaturas, coeficientes e especificação do inversor são premissas acadêmicas.\\P"
+        "Isc corrigida não substitui Imp; validar tensão, corrente e operação com dados OEM.",
+        "Voc: circuito aberto | Vmp: máxima potência | MPPT/VDC: limites propostos | STC: referência",
+    ),
 )
 
 
@@ -133,6 +143,59 @@ def centered(
     layer: str = "02_TEXTO",
 ) -> None:
     add_text(layout, value, point, height, layer=layer, align=TextEntityAlignment.MIDDLE_CENTER)
+
+
+def pt(value: Decimal, places: int = 3) -> str:
+    return f"{value:.{places}f}".replace(".", ",")
+
+
+def make_thermal_envelope(parameter_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    values = {row["parametro"]: Decimal(row["valor"]) for row in parameter_rows}
+    nseries = values["MODULOS_POR_STRING"]
+    tref = values["TEMP_REF"]
+    irradiance = values["IRRAD_MAX"]
+    voc_stc = values["VOC_MODULO"] * nseries
+    vmp_stc = values["VMP_MODULO"] * nseries
+    conditions = (
+        ("FRIA", values["TEMP_MIN"]),
+        ("STC", tref),
+        ("QUENTE", values["TEMP_CEL_MAX"]),
+    )
+    rows: list[dict[str, str]] = []
+    for condition, temperature in conditions:
+        delta = temperature - tref
+        voc = voc_stc * (Decimal(1) + values["COEF_VOC"] * delta)
+        vmp = vmp_stc * (Decimal(1) + values["COEF_VMP"] * delta)
+        isc = (
+            values["ISC_MODULO"]
+            * (irradiance / Decimal(1000))
+            * (Decimal(1) + values["COEF_ISC"] * delta)
+        )
+        in_mppt_range = values["INV_MPPT_MIN"] <= vmp <= values["INV_MPPT_MAX"]
+        rows.append({
+            "condicao": condition,
+            "temperatura_c": f"{temperature:g}",
+            "irradiancia_w_m2": f"{irradiance:g}",
+            "voc_string_v": f"{voc:.6f}",
+            "vmp_string_v": f"{vmp:.6f}",
+            "isc_string_a": f"{isc:.6f}",
+            "faixa_mppt_proposta": "DENTRO" if in_mppt_range else "FORA",
+            "classificacao": "PREMISSA_ACADEMICA",
+        })
+    return rows
+
+
+def write_thermal_envelope(project: Path, rows: list[dict[str, str]]) -> Path:
+    output = project / "envelope-termico.csv"
+    fields = (
+        "condicao", "temperatura_c", "irradiancia_w_m2", "voc_string_v",
+        "vmp_string_v", "isc_string_a", "faixa_mppt_proposta", "classificacao",
+    )
+    with output.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    return output
 
 
 def left(
@@ -278,7 +341,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO DE SENSIBILIDADE 02", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ENVELOPE TERMICO 03", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.45, "02_TEXTO")
 
 
@@ -694,6 +757,87 @@ def draw_energy_sensitivity(layout, data: dict[str, list[dict[str, str]]]) -> No
     centered(layout, "OS CENÁRIOS NÃO SÃO CLIMATOLOGIA NEM FAIXA DE CONFIANÇA", (324, 119), 0.98, "13_NOTAS")
 
 
+def draw_thermal_envelope(layout, data: dict[str, list[dict[str, str]]]) -> None:
+    rows = data["thermal_envelope"]
+    params = {row["parametro"]: Decimal(row["valor"]) for row in data["parameters"]}
+    tref = params["TEMP_REF"]
+    tmin = params["TEMP_MIN"]
+    tmax = params["TEMP_CEL_MAX"]
+    voc_stc = params["VOC_MODULO"] * params["MODULOS_POR_STRING"]
+    vmp_stc = params["VMP_MODULO"] * params["MODULOS_POR_STRING"]
+    beta_voc = params["COEF_VOC"]
+    beta_vmp = params["COEF_VMP"]
+    voc_min = params["INV_VDC_MAX"]
+    mppt_min = params["INV_MPPT_MIN"]
+    mppt_max = params["INV_MPPT_MAX"]
+    isc_limit = params["INV_ISC_MPPT_MAX"]
+    max_row = next(row for row in rows if row["condicao"] == "QUENTE")
+
+    plot_left, plot_right = 48.0, 225.0
+    plot_bottom, plot_top = 118.0, 238.0
+    voltage_max = 620.0
+
+    def point(temp: Decimal, voltage: Decimal) -> tuple[float, float]:
+        x = plot_left + float((temp - tmin) / (tmax - tmin)) * (plot_right - plot_left)
+        y = plot_bottom + float(voltage / Decimal(str(voltage_max))) * (plot_top - plot_bottom)
+        return x, y
+
+    centered(layout, "TENSÃO DA STRING [Vcc] x TEMPERATURA DE CÉLULA", (137, 255), 1.15, "02_TEXTO")
+    for voltage in (0, 100, 200, 300, 400, 500, 600):
+        y = plot_bottom + voltage / voltage_max * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "12_LEGENDA")
+        centered(layout, str(voltage), (40, y), 0.9, "02_TEXTO")
+    for temperature in (tmin, tref, tmax):
+        x = plot_left + float((temperature - tmin) / (tmax - tmin)) * (plot_right - plot_left)
+        line(layout, (x, plot_bottom), (x, plot_top), "12_LEGENDA")
+        centered(layout, f"{temperature:g}", (x, 112), 0.95, "02_TEXTO")
+    line(layout, (plot_left, plot_bottom), (plot_right, plot_bottom), "03_COTAS")
+    line(layout, (plot_left, plot_bottom), (plot_left, plot_top), "03_COTAS")
+    centered(layout, "temperatura [°C]", (137, 103), 0.95, "02_TEXTO")
+
+    for limit, label in (
+        (mppt_min, "MPPT MIN 90 V"),
+        (mppt_max, "MPPT MAX 550 V"),
+        (voc_min, "VDC MAX 600 V"),
+    ):
+        y = plot_bottom + float(limit / Decimal(str(voltage_max))) * (plot_top - plot_bottom)
+        line(layout, (plot_left, y), (plot_right, y), "13_NOTAS")
+        centered(layout, label, (plot_right - 23, y + 2.0), 0.85, "13_NOTAS")
+
+    temperatures = (tmin, tref, tmax)
+    voc_points = [point(temp, voc_stc * (Decimal(1) + beta_voc * (temp - tref))) for temp in temperatures]
+    vmp_points = [point(temp, vmp_stc * (Decimal(1) + beta_vmp * (temp - tref))) for temp in temperatures]
+    layout.add_lwpolyline(voc_points, dxfattribs={"layer": "05_POTENCIA"})
+    layout.add_lwpolyline(vmp_points, dxfattribs={"layer": "07_INSTRUMENTACAO"})
+    for xy in voc_points:
+        layout.add_circle(xy, 1.15, dxfattribs={"layer": "05_POTENCIA"})
+    for xy in vmp_points:
+        layout.add_circle(xy, 1.15, dxfattribs={"layer": "07_INSTRUMENTACAO"})
+
+    table(
+        layout,
+        248,
+        246,
+        (34, 39, 40, 40),
+        ("CÉLULA", "T [°C]", "VOC [V]", "VMP [V]"),
+        [
+            (row["condicao"], row["temperatura_c"], pt(Decimal(row["voc_string_v"])), pt(Decimal(row["vmp_string_v"])))
+            for row in rows
+        ],
+        row_height=11.0,
+        text_height=1.0,
+    )
+    centered(layout, "ISC@1.100 W/m² E LIMITES PROPOSTOS", (326, 193), 1.0, "02_TEXTO")
+    add_rect(layout, 248, 116, 402, 187, "13_NOTAS")
+    left(layout, "INV-FV-801 PROPOSTA", (254, 177), 1.35, "13_NOTAS")
+    left(layout, f"Faixa MPPT: {mppt_min:g}-{mppt_max:g} V", (254, 167), 1.2, "13_NOTAS")
+    left(layout, f"VDC máximo: {voc_min:g} V", (254, 158), 1.2, "13_NOTAS")
+    left(layout, f"VOC fria: {pt(Decimal(rows[0]['voc_string_v']))} V", (254, 146), 1.2, "05_POTENCIA")
+    left(layout, f"VMP quente: {pt(Decimal(rows[-1]['vmp_string_v']))} V", (254, 137), 1.2, "07_INSTRUMENTACAO")
+    left(layout, f"ISC corrigida quente: {pt(Decimal(max_row['isc_string_a']))} A / limite Isc MPPT {isc_limit:g} A", (254, 127), 1.05, "13_NOTAS")
+    centered(layout, "IMP operacional precisa de dados OEM; não é inferida de ISC.", (325, 120), 0.85, "13_NOTAS")
+
+
 DRAWERS = {
     1: draw_module_arrangement,
     2: draw_dc_single_line,
@@ -702,20 +846,25 @@ DRAWERS = {
     5: draw_grounding,
     6: draw_equipment_layout,
     7: draw_energy_sensitivity,
+    8: draw_thermal_envelope,
 }
 
 
 def generate(root: Path) -> list[Path]:
     config = load_config(root)
     project = root / PROJECT_SLUG
+    parameters = read_rows(project, "parametros.csv")
+    thermal_rows = make_thermal_envelope(parameters)
+    write_thermal_envelope(project, thermal_rows)
     data = {
-        "parameters": read_rows(project, "parametros.csv"),
+        "parameters": parameters,
         "modules": read_rows(project, "lista-modulos.csv"),
         "protections": read_rows(project, "lista-protecoes.csv"),
         "cables": read_rows(project, "lista-cabos.csv"),
         "materials": read_rows(project, "lista-materiais.csv"),
         "calculations": read_rows(project, "resultados-calculo.csv"),
         "energy_sensitivity": read_rows(project, "sensibilidade-energia.csv"),
+        "thermal_envelope": thermal_rows,
     }
     source_dir = project / "fonte"
     source_dir.mkdir(parents=True, exist_ok=True)

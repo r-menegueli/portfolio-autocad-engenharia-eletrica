@@ -185,3 +185,17 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
   similaridade mínima PDF/PNG de 0,981493; P07-10 obteve 0,989649. A validação estrita
   passou em 630.151 verificações, sem erros ou avisos. A inspeção visual de SVGs no
   navegador continua aguardando autorização do usuário.
+
+## Atualização CAD — P08 revisão 03, 2026-11-06
+
+- P08 passou de sete para oito folhas. P08-08 plota e tabula Voc/Vmp corrigidas para
+  célula a -5 °C, STC e 70 °C; a tabela ainda registra Isc em 1.100 W/m². Para a string
+  de seis módulos: Voc fria 324,5496 V, Vmp quente 216,942 V e Isc quente 15,65652 A.
+- O validador específico passou em 8.119 verificações e o AcCoreConsole 2027 auditou
+  8/8 DXFs. P08-08 foi examinada no PNG de produção a 300 dpi e no PDF rasterizado
+  independentemente a 150 dpi; similaridade PDF/PNG de 0,989722. Também revisei o
+  contato das oito folhas.
+- O revisor integrado confirma 12 projetos, 107 folhas, 428 arquivos gráficos e 74 CSVs;
+  similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em 634.464
+  verificações, sem erros ou avisos. Os limites do inversor seguem fictícios e Imp
+  operacional não foi validada; inspeção de SVG no navegador aguarda autorização.
