@@ -1,0 +1,12 @@
+{
+  "project": "P20",
+  "date": "2026-11-06",
+  "checks": 57,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Corrente calculada idealmente como P/V; nao dimensiona a instalacao.",
+    "Protecao, material rodante, retorno, correntes vagantes e desempenho nao verificados.",
+    "Auditoria independente pelo AutoCAD e inspecao de derivados devem ser registradas separadamente."
+  ]
+}

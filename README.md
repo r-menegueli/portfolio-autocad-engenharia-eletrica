@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-19 projetos completos de documentação elétrica. O repositório reúne diagramas,
+20 projetos completos de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -28,6 +28,7 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
+| P20 | Subestação de tração ferroviária em corrente contínua | retificação, terceiro trilho, retorno de corrente, proteção e supervisão | 3 | [abrir](20-tracao-ferroviaria-cc-750v/README.md) |
 | P19 | Alimentação elétrica de navios no cais (HVSC) | interface porto/navio, transformação 13,8/6,6 kV, implantação e permissivos | 3 | [abrir](19-alimentacao-navios-cais-hvsc/README.md) |
 | P18 | Compensação de reativos e qualidade de energia | correção de FP, degraus automáticos, medição no PCC e avaliação de harmônicos | 3 | [abrir](18-compensacao-reativos-qualidade-energia/README.md) |
 | P17 | Automação digital de subestação com IEC 61850 | proteção e controle, redes de processo e estação, SV, GOOSE, MMS, SCL e plano de ensaio | 3 | [abrir](17-automacao-subestacao-digital/README.md) |
@@ -48,7 +49,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, barramento 500 A e acústica | 6 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **101 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **104 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -149,7 +150,7 @@ renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
 O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
 layers, dimensões, moldura, elementos fora da folha, textos potencialmente
 sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P10 e P13–P19 acrescentam invariantes técnicos próprios; P01 é coberto
+DWG. Os validadores P02–P10 e P13–P20 acrescentam invariantes técnicos próprios; P01 é coberto
 pelo validador comum e pela auditoria consolidada.
 
 ## Estrutura resumida

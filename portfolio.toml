@@ -542,6 +542,27 @@ required_files = [
   "fonte/gerar_projeto_19.py",
   "fonte/validar_projeto_19.py",
 ]
+[[projects]]
+id = "20-tracao-ferroviaria-cc-750v"
+path = "20-tracao-ferroviaria-cc-750v"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "sensibilidade-corrente.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-protecao.csv",
+  "plano-estudos.csv",
+  "validacao-projeto-20.json",
+  "fonte/gerar_projeto_20.py",
+  "fonte/validar_projeto_20.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1649,5 +1670,35 @@ source = "19-alimentacao-navios-cais-hvsc/fonte/03_sequencia_intertravamentos_hv
 svg = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.svg"
 pdf = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.pdf"
 png = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p20-01-unifilar-subestacao-tracao"
+kind = "sheet"
+title = "Projeto 20 - Subestação de tração ferroviária CC - unifilar"
+source = "20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf"
+svg = "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.svg"
+pdf = "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf"
+png = "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p20-02-zonas-alimentacao-retorno-tracao"
+kind = "sheet"
+title = "Projeto 20 - Zonas de alimentação e retorno de corrente"
+source = "20-tracao-ferroviaria-cc-750v/fonte/02_zonas_alimentacao_retorno_tracao.dxf"
+svg = "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.svg"
+pdf = "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.pdf"
+png = "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p20-03-matriz-protecao-supervisao-tracao-cc"
+kind = "sheet"
+title = "Projeto 20 - Matriz de proteção e supervisão da tração CC"
+source = "20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_tracao_cc.dxf"
+svg = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.svg"
+pdf = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.pdf"
+png = "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.png"
 require_a3 = true
 require_notice = true

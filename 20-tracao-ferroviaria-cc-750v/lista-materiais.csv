@@ -1,0 +1,15 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+01,1,ponto,Ponto de acoplamento da rede AC do operador,PCC-01,Tensao e nivel de curto assumidos/pendentes
+02,1,conjunto,Quadro de entrada em media tensao,QMT-01,Classe e protecoes a definir
+03,1,conjunto,Transformador de tracao,TR-TR-01,Dados de placa e coordenacao pendentes
+04,1,conjunto,Retificador nao controlado de tracao,R-01,Arranjo a diodos sem potencia selecionada
+05,1,conjunto,Quadro de corrente continua,QDC-01,Topologia e capacidade pendentes
+06,1,unidade,Disjuntor de alimentador em corrente continua,CB-DC-01,Capacidade de interrupcao e ajustes pendentes
+07,1,alimentador,Alimentador de saida positiva,FDR-01,Secao e percurso nao definidos
+08,1,trecho,Terceiro trilho de alimentacao,TRK-01,Geometria suporte isolamento e seccionamento pendentes
+09,1,trecho,Trilhos de rolamento como retorno,TRK-RET,Retorno e correntes vagantes nao estudados
+10,1,conjunto,Barra negativa da subestacao,NB-01,Conexao ao retificador pendente
+11,1,conjunto,Medicao isolada de corrente e tensao CC,TC-DC / TV-DC,Faixa e tecnologia a definir
+12,1,conjunto,Protecao e controle do alimentador CC,PR-DC-01,Funcoes conceituais sem ajustes
+13,1,sistema,Supervisao operacional da subestacao,SCADA-TR,Protocolo e ciberseguranca nao definidos
+14,1,veiculo,Veiculo ferroviario ilustrativo,VEH-01,Sem dados de tracao ou regeneracao

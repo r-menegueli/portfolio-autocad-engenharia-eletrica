@@ -1,0 +1,7 @@
+evento,grandeza_ou_entrada,funcao_a_estudar,acao_a_definir,referencia,estado
+Curto circuito no alimentador CC,IDC_FDR_01,Protecao de alimentador e disjuntor CC,Capacidade/ajuste/tempo nao selecionados,IEC 61992-2 e IEC 63438,NAO VERIFICADO
+Sobrecorrente sustentada,IDC_FDR_01,Protecao de sobrecarga e coordenacao,Curvas e seletividade pendentes,IEC 63438,NAO VERIFICADO
+Falha do retificador,RECTIFIER_OK / RECTIFIER_TEMP,Supervisao e bloqueio conforme equipamento,Criterios do fabricante pendentes,IEC 62590-1 e IEC 62590-2-1,NAO VERIFICADO
+Tensao excessiva no retorno,RETURN_STATUS,Estudo de seguranca e retorno,Medidas/limites/mitigacao pendentes,IEC 62128-1,NAO VERIFICADO
+Corrente vagante e corrosao,STRAY_CURRENT_STATUS,Plano de monitoramento e mitigacao,Levantamento e criterios pendentes,IEC 62128-2,NAO VERIFICADO
+Comunicacao SCADA indisponivel,SCADA_COMM_OK,Resposta operacional degradada,Politica e modo local pendentes,Requisitos da operadora,NAO VERIFICADO

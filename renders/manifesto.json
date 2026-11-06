@@ -1954,6 +1954,63 @@
           "sha256": "c2cd675c6280db1402c136c72203d37570043b3ed2323fbd12b1782b10bced2c"
         }
       }
+    },
+    {
+      "id": "p20-01-unifilar-subestacao-tracao",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf",
+      "source_sha256": "19c2c47b29b31ff94e4bbe3c24e8d9f6e8164c9615daf53eda26b8b9191fc93b",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf",
+          "sha256": "18b895a540ad05924148fe4d4ad825c8848ee5302e40ffcd415bc87b4d824956"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png",
+          "sha256": "d6b0133cabc6f78c1683db97c42f434408821f38b1b1bc8777db23c65ae07816"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.svg",
+          "sha256": "42a243c1429d3347feeef24fe8e97a4b3b8d508dbeb9eb2edc0ff0cd84a1be0b"
+        }
+      }
+    },
+    {
+      "id": "p20-02-zonas-alimentacao-retorno-tracao",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/02_zonas_alimentacao_retorno_tracao.dxf",
+      "source_sha256": "e61a3ab45001cbec8d6efcb3e8b0e22bc1e73dad3dc17d04eca3b14616e1dd8f",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.pdf",
+          "sha256": "789bf04e5d1e76599d73740e19f44247e618830fd36b9b9b37c70e284170ebe5"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.png",
+          "sha256": "b7fbdd6c32ea8893c3a82f6496c9b7f65e104420804c201ca09a2df6a12800b7"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.svg",
+          "sha256": "8635e70da1be9a433e9e92f1e80bb62305554ac70601bbac18dca95eba556c07"
+        }
+      }
+    },
+    {
+      "id": "p20-03-matriz-protecao-supervisao-tracao-cc",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_tracao_cc.dxf",
+      "source_sha256": "3bf49cc03e1efb6408e06070428309f35993a9aa46005128b3fcb6231111fd99",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.pdf",
+          "sha256": "ca42e6dbf863a61b61cee2b834ce7382cb2348ccc8d33b12f8acdd2b9797bbb6"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.png",
+          "sha256": "446045db23acc8859968ef6fa72f77bb3beb925e56eb1e0039d377f0d4013265"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.svg",
+          "sha256": "27ce2098d693d89ad0c9b7302a04b00bd5808e0422f3f8d9c2f4ee555ee50551"
+        }
+      }
     }
   ]
 }

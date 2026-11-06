@@ -1,0 +1,12 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+VDC_BUS,QDC-01,PR-DC-01,Medicao isolada da tensao do barramento CC,Valor e qualidade de medida,Faixa e conversor de medida a definir,A VALIDAR
+IDC_FDR_01,FDR-01,PR-DC-01,Medicao da corrente do alimentador,Valor e qualidade de medida,Sensor e faixa a definir,A VALIDAR
+CB_DC_CLOSED,CB-DC-01,PR-DC-01,Indicar estado do disjuntor CC,Aberto/fechado,Contato e supervisao a definir,A VALIDAR
+DC_TRIP_REQUEST,PR-DC-01,CB-DC-01,Requisicao funcional de abertura,Trip/bloqueio conforme projeto,Logica nao desenvolvida,A VALIDAR
+RECTIFIER_OK,R-01,PR-DC-01,Indicar disponibilidade do retificador,Ok/falha,Interfaces dependem do fabricante,A VALIDAR
+RECTIFIER_TEMP,R-01,PR-DC-01,Supervisionar temperatura,Valor/alarme conforme fabricante,Limites nao selecionados,A VALIDAR
+RETURN_STATUS,NB-01,SCADA-TR,Indicar estado monitorado do retorno,Estado e alarmes,Grandeza e limite pendentes,A VALIDAR
+STRAY_CURRENT_STATUS,TRK-RET,SCADA-TR,Registrar monitoramento de corrente vagante,Medida/alarme conforme estudo,Pontos de medicao nao definidos,A VALIDAR
+FEEDER_AVAILABLE,PR-DC-01,SCADA-TR,Indicar permissivo operacional,Disponivel/indisponivel,Criterios ainda nao definidos,A VALIDAR
+SCADA_COMM_OK,SCADA-TR,Operacao,Indicar disponibilidade de comunicacao,Ok/falha,Protocolo e resposta degradada pendentes,A VALIDAR
+DC_FAULT_ALARM,PR-DC-01,SCADA-TR,Registrar evento de protecao CC,Alarme com causa/status,Registro de eventos a especificar,A VALIDAR
