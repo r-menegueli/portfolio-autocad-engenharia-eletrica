@@ -583,6 +583,27 @@ required_files = [
   "fonte/gerar_projeto_21.py",
   "fonte/validar_projeto_21.py",
 ]
+[[projects]]
+id = "22-auxilios-visuais-luminosos-aerodromo"
+path = "22-auxilios-visuais-luminosos-aerodromo"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "circuitos.csv",
+  "plano-estudos.csv",
+  "validacao-projeto-22.json",
+  "fonte/gerar_projeto_22.py",
+  "fonte/validar_projeto_22.py",
+]
+
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1750,5 +1771,35 @@ source = "21-instalacao-clinica-ambulatorial/fonte/03_matriz_continuidade_e_tran
 svg = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.svg"
 pdf = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.pdf"
 png = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p22-01-layout-pista-taxi"
+kind = "sheet"
+title = "Projeto 22 - Arranjo de auxílios luminosos de pista e taxiway"
+source = "22-auxilios-visuais-luminosos-aerodromo/fonte/01_layout_luminoso_pista_taxi.dxf"
+svg = "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.svg"
+pdf = "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.pdf"
+png = "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p22-02-circuitos-serie-ccr"
+kind = "sheet"
+title = "Projeto 22 - Circuitos série de auxílios luminosos e CCR"
+source = "22-auxilios-visuais-luminosos-aerodromo/fonte/02_unifilar_circuitos_serie_ccr.dxf"
+svg = "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.svg"
+pdf = "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.pdf"
+png = "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p22-03-controle-ensaios-aerodromo"
+kind = "sheet"
+title = "Projeto 22 - Controle e ensaios de auxílios de aeródromo"
+source = "22-auxilios-visuais-luminosos-aerodromo/fonte/03_controle_monitoracao_e_ensaios.dxf"
+svg = "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.svg"
+pdf = "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.pdf"
+png = "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.png"
 require_a3 = true
 require_notice = true

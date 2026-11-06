@@ -2068,6 +2068,63 @@
           "sha256": "fda0db2ad098dcf06fe53037f7d219d195ea141f0dbff94ea173f104e7bd627e"
         }
       }
+    },
+    {
+      "id": "p22-01-layout-pista-taxi",
+      "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/01_layout_luminoso_pista_taxi.dxf",
+      "source_sha256": "2f24b129be0f8716350abaed48ea72e74a5b569357e3e7683b931edfd952c1e6",
+      "outputs": {
+        "pdf": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.pdf",
+          "sha256": "914e09a044bc1e79e4fc8281e5e07fec8f74cd6cf928a4c21b2b0db76653bda6"
+        },
+        "png": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.png",
+          "sha256": "7058fbbed27eda5c81686e3c18dc45eb93c972393cca5b2a686bbb35a5a068ed"
+        },
+        "svg": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.svg",
+          "sha256": "89b3c05702a20ae09ac379332a06959b347c42014ced30f65a8597858922039c"
+        }
+      }
+    },
+    {
+      "id": "p22-02-circuitos-serie-ccr",
+      "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/02_unifilar_circuitos_serie_ccr.dxf",
+      "source_sha256": "90695b0797cfbd496630732b59290a4a5ab2aec2e5fa18809acffc6d962d76c4",
+      "outputs": {
+        "pdf": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.pdf",
+          "sha256": "9ffd5bbe40f387b88ba0c1e251f2feec4b703e5fe752677383c8c25472595299"
+        },
+        "png": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.png",
+          "sha256": "313529f52c6546f4aee9f44ae13536d715b1fddf61741a887718b16fb13fceb6"
+        },
+        "svg": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.svg",
+          "sha256": "377a61be94a22e3cc298db0c98af5084a04433531cddd0c65fc5054dbd719995"
+        }
+      }
+    },
+    {
+      "id": "p22-03-controle-ensaios-aerodromo",
+      "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/03_controle_monitoracao_e_ensaios.dxf",
+      "source_sha256": "a32b5300a6451fd1de511bb553c98ebd46e727287130ea797aa64238553b60f0",
+      "outputs": {
+        "pdf": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.pdf",
+          "sha256": "75870cccdea9ebd910b4bbd5a7894f6be7098e9fcf46e24490b92f17ac50939e"
+        },
+        "png": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.png",
+          "sha256": "b5f768927758bb0baa55e9e84643849097ae23bdd62c3c371aa4e6181be5b7ae"
+        },
+        "svg": {
+          "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.svg",
+          "sha256": "29f52b3ad1ef786977a38d8f4730d747f1c52e74eb23636837ace5625f838593"
+        }
+      }
     }
   ]
 }
