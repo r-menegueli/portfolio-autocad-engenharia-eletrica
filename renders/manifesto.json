@@ -2072,57 +2072,57 @@
     {
       "id": "p22-01-layout-pista-taxi",
       "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/01_layout_luminoso_pista_taxi.dxf",
-      "source_sha256": "2f24b129be0f8716350abaed48ea72e74a5b569357e3e7683b931edfd952c1e6",
+      "source_sha256": "6666a6290f4de8be788f24cc1a25decf5102dc677c8361205a497f363c23920c",
       "outputs": {
         "pdf": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.pdf",
-          "sha256": "914e09a044bc1e79e4fc8281e5e07fec8f74cd6cf928a4c21b2b0db76653bda6"
+          "sha256": "f981b2e696ce92aa5400625f5f0e05d7db4d8f817f37c9bf71badbcdc3c4ffee"
         },
         "png": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.png",
-          "sha256": "7058fbbed27eda5c81686e3c18dc45eb93c972393cca5b2a686bbb35a5a068ed"
+          "sha256": "6eee5e880e780a67b701950539f7146a32f03448ddc0c2f8c64c3cf3599eb684"
         },
         "svg": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.svg",
-          "sha256": "89b3c05702a20ae09ac379332a06959b347c42014ced30f65a8597858922039c"
+          "sha256": "d4f768204629759fd849e5cf079fbcd7b19ace1efe52397c79b7c7fe565f87bb"
         }
       }
     },
     {
       "id": "p22-02-circuitos-serie-ccr",
       "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/02_unifilar_circuitos_serie_ccr.dxf",
-      "source_sha256": "90695b0797cfbd496630732b59290a4a5ab2aec2e5fa18809acffc6d962d76c4",
+      "source_sha256": "65cdef786aaeb4a33228e63bef8abb47c4653cf1dce781eed03933ef28d57463",
       "outputs": {
         "pdf": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.pdf",
-          "sha256": "9ffd5bbe40f387b88ba0c1e251f2feec4b703e5fe752677383c8c25472595299"
+          "sha256": "d0aa06da4cdca47ca0ed597696129bfa8567319ad1bb057c8fe87259c8826e84"
         },
         "png": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.png",
-          "sha256": "313529f52c6546f4aee9f44ae13536d715b1fddf61741a887718b16fb13fceb6"
+          "sha256": "94f2cb82657801c21ebb8e2e21f8e88d95e8d405754e04fdcd56fc0f5a2b0161"
         },
         "svg": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/02_unifilar_circuitos_serie_ccr.svg",
-          "sha256": "377a61be94a22e3cc298db0c98af5084a04433531cddd0c65fc5054dbd719995"
+          "sha256": "266640164c896c41e97815c64cf1f2f14f25d1ed2930934aa4a38ca3bfa2e279"
         }
       }
     },
     {
       "id": "p22-03-controle-ensaios-aerodromo",
       "source": "22-auxilios-visuais-luminosos-aerodromo/fonte/03_controle_monitoracao_e_ensaios.dxf",
-      "source_sha256": "a32b5300a6451fd1de511bb553c98ebd46e727287130ea797aa64238553b60f0",
+      "source_sha256": "75b6119cca7fa9ac95bb51ea8ca4f0473fd0008f81de191b3f3abc1f9d90c85f",
       "outputs": {
         "pdf": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.pdf",
-          "sha256": "75870cccdea9ebd910b4bbd5a7894f6be7098e9fcf46e24490b92f17ac50939e"
+          "sha256": "daed7abe30ec1a46ee981e31bff0f1143e78a3287569f65dad9814003fcf0332"
         },
         "png": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.png",
-          "sha256": "b5f768927758bb0baa55e9e84643849097ae23bdd62c3c371aa4e6181be5b7ae"
+          "sha256": "ce2ffb5e4833885c527dc642011362fc6bab5d84c957c80105616a83ddba0059"
         },
         "svg": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.svg",
-          "sha256": "29f52b3ad1ef786977a38d8f4730d747f1c52e74eb23636837ace5625f838593"
+          "sha256": "39b5f443d59cd2ab6d6524be534d11e64ef866dbcf73331eb632996a2fe4bb88"
         }
       }
     }
