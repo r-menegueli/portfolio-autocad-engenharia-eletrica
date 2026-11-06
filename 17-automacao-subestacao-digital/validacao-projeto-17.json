@@ -1,0 +1,12 @@
+{
+  "project": "P17",
+  "date": "2026-11-06",
+  "checks": 65,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Verificacoes estruturais e de rastreabilidade; nao simulam comunicacao IEC 61850 ou atuacao real.",
+    "Nao incluem ajustes de protecao, configuracoes SCL de fabricante, latencia ou ensaios FAT/SAT executados.",
+    "A auditoria independente pelo AutoCAD deve ser registrada separadamente."
+  ]
+}

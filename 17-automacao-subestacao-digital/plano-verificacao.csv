@@ -1,0 +1,8 @@
+id,etapa,verificacao,evidencia,precondicao,estado
+V01,Engenharia,Revisar modelo de dados e arquivos SCL validados,Relatorio de ferramenta e versoes,IEDs e SCL dos fabricantes disponiveis,Proposto; nao executado
+V02,Engenharia,Conferir publisher subscriber e datasets GOOSE,Lista de subscricoes e captura de rede,Matriz aprovada pelo responsavel,Proposto; nao executado
+V03,Engenharia,Validar SCL entre SSD SCD e CID,Relatorio de consistencia SCL,Ferramentas e arquivos do projeto,Proposto; nao executado
+V04,FAT,Verificar comandos estados qualidade e alarmes,Protocolo FAT assinado,Bancada e procedimento aprovado,Proposto; nao executado
+V05,FAT,Simular perda de SV GOOSE e sincronismo,Registros de eventos e estados seguros,IEDs MUs e rede reais em bancada,Proposto; nao executado
+V06,SAT,Validar intertravamentos e circuitos de trip,Registros SAT e aprovacao do proprietario,Subestacao liberada para ensaio,Proposto; nao executado
+V07,SAT,Inspecionar segmentacao acesso e recuperacao,Relatorio de configuracao e restauracao,Plano de ciberseguranca aprovado,Proposto; nao executado

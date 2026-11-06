@@ -115,6 +115,20 @@ retornaram `AUTOCAD_AUDIT=PASS`:
 O resultado comprova abertura e auditoria estrutural pelo AutoCAD. Não constitui
 validação de projeto executivo, estudos de conexão, desempenho ou conformidade.
 
+## Auditoria CAD do Projeto 17 — 2026-11-06
+
+As tres fontes DXF da automacao digital da subestacao foram abertas e auditadas pelo
+Autodesk AcCoreConsole 2027, versao de arquivo `26.0.118.0.0`, usando
+[`scripts/autocad_console.ps1`](scripts/autocad_console.ps1). As tres execucoes
+retornaram `AUTOCAD_AUDIT=PASS`:
+
+- `01_unifilar_sas_ied.dxf` — SHA-256 `2c2920b3388a2a36febcc4b471d9aac3a0b0cc123c8f50d654d67ca69d77757e`;
+- `02_rede_iec61850.dxf` — SHA-256 `7e20ca36454d3550bde900ee3576ee517e556224756987a8f4b396ccc84b0832`;
+- `03_matriz_goose_testes.dxf` — SHA-256 `26ac6f7b7480e3dda32909c11a947bedfc2c1129df17e7ad68e9495687ab8f7e`.
+
+A auditoria confirma abertura e estrutura CAD. Nenhum ensaio IEC 61850, FAT/SAT,
+interoperabilidade, latencia ou funcao de protecao foi executado.
+
 A cadeia completa foi executada duas vezes consecutivas. Os hashes de ambos os
 DXFs, ambos os SVGs, do PDF e do PNG permaneceram identicos, comprovando a
 reprodutibilidade dos artefatos com as versoes fixadas.

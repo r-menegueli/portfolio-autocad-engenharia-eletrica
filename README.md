@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-dezesseis estudos conceituais de documentação elétrica. O repositório reúne diagramas,
+dezessete estudos conceituais de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -28,6 +28,7 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
+| P17 | Automação digital de subestação com IEC 61850 | proteção e controle, redes de processo e estação, SV, GOOSE, MMS, SCL e plano de ensaio | 3 | [abrir](17-automacao-subestacao-digital/README.md) |
 | P16 | Parque eólico: coleta elétrica e conexão à rede | aerogeradores, coleta em 34,5 kV, subestação elevadora, POI, cálculos e interfaces | 3 | [abrir](16-parque-eolico-coleta-conexao/README.md) |
 | P13 | Estação de recarga de veículos elétricos | implantação, recarga AC/DC, unifilar, medição e gestão dinâmica de potência | 3 | [abrir](13-estacao-recarga-veiculos-eletricos/README.md) |
 | P14 | Infraestrutura elétrica de data center | caminhos A/B, UPS modular N+1, geração, racks dual-cord, balanço e contingências | 3 | [abrir](14-infraestrutura-eletrica-data-center/README.md) |
@@ -45,7 +46,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e estudo documental da malha de aterramento/SPDA | 8 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **126 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **129 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
