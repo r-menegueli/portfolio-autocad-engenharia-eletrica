@@ -101,6 +101,20 @@ O DWG de teste permanece apenas em `work/`, diretorio ignorado, pois DXF e a fon
 principal e esta etapa nao exige distribuir DWG. Uma futura saida DWG deve conservar
 o arquivo de evidencia `.dwg.validacao.json` produzido pelo script.
 
+## Auditoria CAD do Projeto 16 — 2026-11-06
+
+As tres fontes DXF de coleta e conexao do parque eolico foram abertas e auditadas pelo
+Autodesk AcCoreConsole 2027, versao de arquivo `26.0.118.0.0`, com o script
+[`scripts/autocad_console.ps1`](scripts/autocad_console.ps1). As tres execucoes
+retornaram `AUTOCAD_AUDIT=PASS`:
+
+- `01_unifilar_coleta_conexao.dxf` — SHA-256 `3f141ca73bd6578aff52edbd09c9a50fb910669b16bedd298da4b17df1278389`;
+- `02_layout_parque_eolico.dxf` — SHA-256 `e24440a794477ee22823f6cd80fbfc5787c8da54ec85ee5a524b58aa2a157717`;
+- `03_base_calculo_interfaces.dxf` — SHA-256 `3df5aa9a6ed7ac790fd9a0aceb58736cfb78c13858099795754d3cf1cecf8bf7`.
+
+O resultado comprova abertura e auditoria estrutural pelo AutoCAD. Não constitui
+validação de projeto executivo, estudos de conexão, desempenho ou conformidade.
+
 A cadeia completa foi executada duas vezes consecutivas. Os hashes de ambos os
 DXFs, ambos os SVGs, do PDF e do PNG permaneceram identicos, comprovando a
 reprodutibilidade dos artefatos com as versoes fixadas.

@@ -2372,6 +2372,63 @@
           "sha256": "0cef6fe97c893b0b25c801bc193b9e6268edb5e740ac679a386466e7df6ff47c"
         }
       }
+    },
+    {
+      "id": "p16-01-unifilar-coleta-conexao",
+      "source": "16-parque-eolico-coleta-conexao/fonte/01_unifilar_coleta_conexao.dxf",
+      "source_sha256": "3f141ca73bd6578aff52edbd09c9a50fb910669b16bedd298da4b17df1278389",
+      "outputs": {
+        "pdf": {
+          "path": "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.pdf",
+          "sha256": "58127518c551b57ab54162f7bc833ddca381e33e6b0cc53334f96da8e472e615"
+        },
+        "png": {
+          "path": "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.png",
+          "sha256": "3b8d691e3d7818aed497ff3fb9805f1f3863f0037a2813cc488669e5166dfd44"
+        },
+        "svg": {
+          "path": "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.svg",
+          "sha256": "4531c2b283433add9fa805cce0e310c4b7c045627fb13857e48a8a57fdf4d068"
+        }
+      }
+    },
+    {
+      "id": "p16-02-layout-parque-eolico",
+      "source": "16-parque-eolico-coleta-conexao/fonte/02_layout_parque_eolico.dxf",
+      "source_sha256": "e24440a794477ee22823f6cd80fbfc5787c8da54ec85ee5a524b58aa2a157717",
+      "outputs": {
+        "pdf": {
+          "path": "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.pdf",
+          "sha256": "e8b70e2eec253c52ac343a84364cde52aa5fde709c5f6d9cc23fde41637efc78"
+        },
+        "png": {
+          "path": "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.png",
+          "sha256": "4128da077c0bc4fbe75f2c1c6928c806f9932f2492d9ba3050546f317fb354dd"
+        },
+        "svg": {
+          "path": "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.svg",
+          "sha256": "3cb4632c3dd03d980b6d0ea4bce67c39fd7a0418820be26855de56155f551541"
+        }
+      }
+    },
+    {
+      "id": "p16-03-base-calculo-interfaces",
+      "source": "16-parque-eolico-coleta-conexao/fonte/03_base_calculo_interfaces.dxf",
+      "source_sha256": "3df5aa9a6ed7ac790fd9a0aceb58736cfb78c13858099795754d3cf1cecf8bf7",
+      "outputs": {
+        "pdf": {
+          "path": "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.pdf",
+          "sha256": "857b21949778e659f45e02feaa42fc84be78ddd841442f5ee136c3e483927b8b"
+        },
+        "png": {
+          "path": "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.png",
+          "sha256": "051a9136a184588932f1ba16914de3d37638b69d4695f754f6284527e237e2ed"
+        },
+        "svg": {
+          "path": "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.svg",
+          "sha256": "3f0620b844c1c1cb3b5f11d781b2c036c288dfe2fddc6b8f952982af343ce505"
+        }
+      }
     }
   ]
 }
