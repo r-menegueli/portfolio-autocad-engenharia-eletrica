@@ -129,6 +129,19 @@ retornaram `AUTOCAD_AUDIT=PASS`:
 A auditoria confirma abertura e estrutura CAD. Nenhum ensaio IEC 61850, FAT/SAT,
 interoperabilidade, latencia ou funcao de protecao foi executado.
 
+## Auditoria CAD do Projeto 18 — 2026-11-06
+
+As tres fontes DXF da compensacao de reativos e qualidade de energia foram abertas
+e auditadas pelo Autodesk AcCoreConsole 2027, versao `26.0.118.0.0`. As execucoes
+retornaram `AUTOCAD_AUDIT=PASS`:
+
+- `01_unifilar_compensacao_reativos.dxf` — SHA-256 `d3cfe9892307663e027ce4e10817107df7d87232cb69020d645ead6582e83605`;
+- `02_memoria_correcao_fator_potencia.dxf` — SHA-256 `d709d54a12d25d5b544cfe10ddb0b80314ed5b75e964eeb9b516d84879ec57c6`;
+- `03_medicao_controle_harmonicos.dxf` — SHA-256 `cbb78cb2452ab58a0217ab51c24c1fd56586acd3931b0d4806ae73080cedbc74`.
+
+A auditoria comprova abertura e estrutura CAD. Nenhuma medicao de campo, selecao de
+filtro, estudo de ressonancia ou verificacao de limites foi realizada.
+
 A cadeia completa foi executada duas vezes consecutivas. Os hashes de ambos os
 DXFs, ambos os SVGs, do PDF e do PNG permaneceram identicos, comprovando a
 reprodutibilidade dos artefatos com as versoes fixadas.

@@ -1,0 +1,9 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+P_PCC,PM-01,RC-01,Potencia ativa medida,kW e qualidade,Comunicacao ou analoga,Escala e protocolo pendentes
+Q_PCC,PM-01,RC-01,Potencia reativa medida,kvar indutivo/capacitivo,Comunicacao ou analoga,Sentido e escala pendentes
+FP_PCC,PM-01,RC-01,Fator de potencia e quadrante,valor e qualidade,Comunicacao ou analoga,Metodo de calculo pendente
+V_PCC,PM-01,RC-01,Tensao de barramento,V RMS,Medicao,Relacao e classe de TP pendentes
+I_PCC,CT-01,PM-01,Corrente total no PCC,A RMS e forma de onda,TC de medicao,Relacao classe e conexao pendentes
+STEP_STATUS,RC-01,PM-01,Estado dos degraus BC-01,estagio conectado e falha,IO/comunicacao,Alarme e realimentacao pendentes
+BC_ENABLE,RC-01,BC-01,Permissivo de banco,habilitado/inibido,Comando local,Logica e protecao pendentes
+PQ_ALARM,PM-01,HMI-01,Alarme de qualidade de energia,limite e timestamp,Comunicacao,Limites ainda nao definidos

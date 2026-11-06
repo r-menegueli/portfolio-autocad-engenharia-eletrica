@@ -2486,6 +2486,63 @@
           "sha256": "ca38e3b34ac3bf36136238f0abcf09cf1d554b94ba1c1b01f08043f502fb2683"
         }
       }
+    },
+    {
+      "id": "p18-01-unifilar-compensacao-reativos",
+      "source": "18-compensacao-reativos-qualidade-energia/fonte/01_unifilar_compensacao_reativos.dxf",
+      "source_sha256": "d3cfe9892307663e027ce4e10817107df7d87232cb69020d645ead6582e83605",
+      "outputs": {
+        "pdf": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.pdf",
+          "sha256": "3030ed2bd890314d440e1461c6b9c1bd62350e6a6e3e7eaedbfd601d524a62f8"
+        },
+        "png": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.png",
+          "sha256": "351244fc4899c3d3b21ae8611a9aff1315a129f2b7ccea49c307a14b9c44f2a7"
+        },
+        "svg": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/01_unifilar_compensacao_reativos.svg",
+          "sha256": "8dde62cd70b033c2f208b3b235b11ca4d03515a8012a0889a85beee28ff09c69"
+        }
+      }
+    },
+    {
+      "id": "p18-02-memoria-correcao-fp",
+      "source": "18-compensacao-reativos-qualidade-energia/fonte/02_memoria_correcao_fator_potencia.dxf",
+      "source_sha256": "d709d54a12d25d5b544cfe10ddb0b80314ed5b75e964eeb9b516d84879ec57c6",
+      "outputs": {
+        "pdf": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.pdf",
+          "sha256": "7ad48eafc22c68b93414ec851a383163cd3d63dcc483dee275e521b6191da1f4"
+        },
+        "png": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.png",
+          "sha256": "5c0934c722b8ed0a81f41904d4c91d2f523dc89b5f025c4de0693c82892136cb"
+        },
+        "svg": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/02_memoria_correcao_fator_potencia.svg",
+          "sha256": "92b6fb59c04fc905599bdef765101a1e89e3f7c470f65871ca139feec72b585a"
+        }
+      }
+    },
+    {
+      "id": "p18-03-medicao-controle-harmonicos",
+      "source": "18-compensacao-reativos-qualidade-energia/fonte/03_medicao_controle_harmonicos.dxf",
+      "source_sha256": "cbb78cb2452ab58a0217ab51c24c1fd56586acd3931b0d4806ae73080cedbc74",
+      "outputs": {
+        "pdf": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.pdf",
+          "sha256": "ae752544d8ef709a75d45858a8730b5b416ff9120728fa70030100a8b8bd42a6"
+        },
+        "png": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.png",
+          "sha256": "118fd450b1000042868bfbef5a6cedecaa404da1a9502792cf9016dd99fd0dd7"
+        },
+        "svg": {
+          "path": "18-compensacao-reativos-qualidade-energia/exports/03_medicao_controle_harmonicos.svg",
+          "sha256": "41c92e8547955fd871199b717fdbf8b924f08e600fc44ad0202c410115513380"
+        }
+      }
     }
   ]
 }

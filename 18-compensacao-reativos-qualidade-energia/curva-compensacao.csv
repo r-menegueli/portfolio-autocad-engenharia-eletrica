@@ -1,0 +1,4 @@
+caso,p_kw,fp_inicial,q_inicial_kvar,q_alvo_kvar,qc_kvar,degraus_25kvar,fp_com_degraus,observacoes
+Base cheia,600,0.80,450.0,197.2,252.8,10,0.949,250 kvar ativos; degrau discreto mais proximo sem assumir resultado medido
+Meia carga FP 0.80,300,0.80,225.0,98.6,126.4,5,0.949,125 kvar ativos; exemplo didatico
+Meia carga FP 0.90,300,0.90,145.3,98.6,46.7,2,0.953,50 kvar ativos; exemplo didatico
