@@ -200,6 +200,13 @@ Icc máximo/mínimo, verificação térmica, curvas, seletividade e revisão doc
 Não foram criados valores de curto-circuito, modelos de proteção ou resultados de
 coordenação; os doze grupos continuam `PENDENTE`.
 
+**Revisão 04 (2026-11-06).** O fluxo de P05-09 agora identifica as entradas D01-D06,
+o modelo D07, o cálculo de Icc máximo/mínimo por ponto D08, as verificações de
+capacidade/suportabilidade e curvas/pares D09-D11 e o fechamento documental D12. Foram
+removidas as referências didáticas de 6 kA e Icu de 10 kA, pois os dados da rede e os
+dispositivos não estão selecionados. Todos os dados continuam pendentes; nenhum
+resultado de curto-circuito, interrupção ou seletividade foi criado.
+
 ## P06 — Centro de Controle de Motores
 
 **Objetivo.** Integrar em um CCM acadêmico três cargas industriais com métodos de

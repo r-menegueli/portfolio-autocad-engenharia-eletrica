@@ -4,7 +4,7 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Revisão: 02, emitida em 2026-11-05
+Revisão: 04, emitida em 2026-11-06
 
 O conjunto documenta, para fins acadêmicos, uma instalação elétrica de baixa tensão de
 uma oficina metalmecânica fictícia. Ele demonstra a passagem do levantamento de
@@ -32,10 +32,9 @@ AL-QGBT chega ao QGBT-05. O quadro distribui energia para:
 - QADM-05: tomadas de escritório, manutenção e serviços, circuitos C14 a C16.
 
 O QGBT-05 inclui, de forma conceitual, proteção geral 4P de 100 A, DPS tipo 2 e barras
-separadas de N e PE. A corrente de curto-circuito foi presumida em 6 kA apenas para
-estabelecer a condição a verificar; o Icu mínimo de 10 kA atribuído ao DJ-G também é
-uma premissa, sem cálculo de curto-circuito ou confirmação da concessionária. A folha
-08 e a matriz de seis pares registram as comparações que continuam pendentes; não
+separadas de N e PE. Não há valor de curto-circuito nem capacidade de interrupção
+selecionados: faltam os dados da concessionária, o modelo de impedâncias e os dispositivos
+identificados. A folha 08 e a matriz de seis pares registram comparações pendentes; não
 demonstram capacidade de interrupção, retaguarda ou seletividade.
 
 ## 4. Cargas de força
@@ -91,9 +90,10 @@ As tags C01-C16, QGBT-05, QDF-05, QDL-05, QADM-05, M-501-M-505, TUE-501,
 TI-501-TI-506 e AL-QGBT/AL-QDF/AL-QDL/AL-QADM são comuns aos desenhos, CSVs,
 memória de cálculo e workbook. O validador específico recalcula as grandezas e rejeita
 divergências entre essas fontes. A matriz P05-08 rastreia os seis pares de proteção
-montante-jusante. A prancha P05-09 e `dados-estudo-coordenacao.csv` organizam os dados
-e evidências necessários ao futuro cálculo; nenhum dado de concessionária ou curva de
-dispositivo foi recebido e os doze grupos continuam `PENDENTE`.
+montante-jusante. A prancha P05-09 apresenta a sequência de entradas, modelo, cálculo
+por ponto, verificação de capacidade/suportabilidade, comparação de curvas e fechamento
+documental. Nenhum dado de concessionária ou curva de dispositivo foi recebido; os doze
+grupos continuam `PENDENTE`.
 
 ## 9. Limitação de responsabilidade
 

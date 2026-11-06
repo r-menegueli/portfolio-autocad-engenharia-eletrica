@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-182
+18C
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-17F
+189
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-180
+18A
 330
 3
 100
@@ -8185,7 +8185,7 @@ AcDbMText
  71
 1
   1
-O estudo ainda nao foi calculado. Os doze grupos de dados permanecem pendentes.\PNao declarar capacidade, seletividade ou coordenacao sem modelo, curvas e evidencias verificaveis.
+O estudo ainda nao foi calculado. Os doze grupos de dados permanecem pendentes.\PIcc e capacidade de interrupcao nao foram definidos; a folha orienta verificacoes e evidencias.
   7
 PORTFOLIO_TEXTO
  44
@@ -8279,7 +8279,7 @@ AcDbMText
  71
 1
   1
-D01-D06: entradas | D07-D11: calculos e comparacoes | D12: registro/revisao | PENDENTE: sem evidencia
+D01-D06: entradas | D07-D08: modelo e Icc | D09-D11: verificacoes | D12: revisao | PENDENTE: sem evidencia
   7
 PORTFOLIO_TEXTO
  44
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.55
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-PLANO DE DADOS PARA COORDENACAO
+METODO DE CURTO-CIRCUITO E COORDENACAO
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -9133,7 +9133,7 @@ AcDbText
  40
 1.65
   1
-FLUXO DO ESTUDO — ENTRADA, CALCULO, COMPARACAO E REVISAO
+ROTEIRO DE VERIFICACAO — SEM RESULTADOS CALCULADOS
   7
 PORTFOLIO_TEXTO
  72
@@ -9167,19 +9167,19 @@ AcDbPolyline
  10
 18.0
  20
-249.0
+232.0
  10
 88.0
  20
-249.0
+232.0
  10
 88.0
  20
-261.0
+260.0
  10
 18.0
  20
-261.0
+260.0
   0
 TEXT
   5
@@ -9189,19 +9189,19 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+06_COMANDO
 100
 AcDbText
  10
 53.0
  20
-255.0
+254.5
  30
 0.0
  40
-1.15
+1.02
   1
-01  DADOS DE REDE
+01 | D01-D06 | ENTRADAS
   7
 PORTFOLIO_TEXTO
  72
@@ -9209,7 +9209,7 @@ PORTFOLIO_TEXTO
  11
 53.0
  21
-255.0
+254.5
  31
 0.0
 100
@@ -9217,7 +9217,7 @@ AcDbText
  73
 2
   0
-LINE
+TEXT
   5
 119
 330
@@ -9225,23 +9225,35 @@ LINE
 100
 AcDbEntity
   8
-03_COTAS
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-88.0
+53.0
  20
-255.0
+246.5
  30
 0.0
+ 40
+0.94
+  1
+REDE, TRAFO, CABOS
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-96.5
+53.0
  21
-255.0
+246.5
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 11A
 330
@@ -9249,21 +9261,33 @@ LINE
 100
 AcDbEntity
   8
-03_COTAS
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-94.0
+53.0
  20
-256.375
+239.0
  30
 0.0
+ 40
+0.94
+  1
+FONTES E DISPOSITIVOS
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-96.5
+53.0
  21
-255.0
+239.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
 LINE
   5
@@ -9277,19 +9301,19 @@ AcDbEntity
 100
 AcDbLine
  10
-94.0
+88.0
  20
-253.625
+246.0
  30
 0.0
  11
 96.5
  21
-255.0
+246.0
  31
 0.0
   0
-LWPOLYLINE
+LINE
   5
 11C
 330
@@ -9297,31 +9321,23 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbLine
  10
+94.0
+ 20
+247.375
+ 30
+0.0
+ 11
 96.5
- 20
-249.0
- 10
-166.5
- 20
-249.0
- 10
-166.5
- 20
-261.0
- 10
-96.5
- 20
-261.0
+ 21
+246.0
+ 31
+0.0
   0
-TEXT
+LINE
   5
 11D
 330
@@ -9329,109 +9345,25 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
-100
-AcDbText
- 10
-131.5
- 20
-255.0
- 30
-0.0
- 40
-1.15
-  1
-02  Icc MAX / MIN
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-131.5
- 21
-255.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-LINE
-  5
-11E
-330
-17
-100
-AcDbEntity
-  8
 03_COTAS
 100
 AcDbLine
  10
-166.5
+94.0
  20
-255.0
+244.625
  30
 0.0
  11
-175.0
+96.5
  21
-255.0
- 31
-0.0
-  0
-LINE
-  5
-11F
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-172.5
- 20
-256.375
- 30
-0.0
- 11
-175.0
- 21
-255.0
- 31
-0.0
-  0
-LINE
-  5
-120
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-172.5
- 20
-253.625
- 30
-0.0
- 11
-175.0
- 21
-255.0
+246.0
  31
 0.0
   0
 LWPOLYLINE
   5
-121
+11E
 330
 17
 100
@@ -9445,23 +9377,131 @@ AcDbPolyline
  70
 1
  10
-175.0
+96.5
  20
-249.0
+232.0
  10
-245.0
+166.5
  20
-249.0
+232.0
  10
-245.0
+166.5
  20
-261.0
+260.0
  10
-175.0
+96.5
  20
-261.0
+260.0
   0
 TEXT
+  5
+11F
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+131.5
+ 20
+254.5
+ 30
+0.0
+ 40
+1.02
+  1
+02 | D07 | MODELO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+131.5
+ 21
+254.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+120
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+131.5
+ 20
+246.5
+ 30
+0.0
+ 40
+0.94
+  1
+CENARIOS E TIPOS DE FALTA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+131.5
+ 21
+246.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+121
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+131.5
+ 20
+239.0
+ 30
+0.0
+ 40
+0.94
+  1
+IMPEDANCIAS DOCUMENTADAS
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+131.5
+ 21
+239.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
   5
 122
 330
@@ -9469,33 +9509,21 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
-AcDbText
+AcDbLine
  10
-210.0
+166.5
  20
-255.0
+246.0
  30
 0.0
- 40
-1.15
-  1
-03  CABOS E PROTECAO
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-210.0
+175.0
  21
-255.0
+246.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 LINE
   5
@@ -9509,15 +9537,15 @@ AcDbEntity
 100
 AcDbLine
  10
-245.0
+172.5
  20
-255.0
+247.375
  30
 0.0
  11
-253.5
+175.0
  21
-255.0
+246.0
  31
 0.0
   0
@@ -9533,45 +9561,21 @@ AcDbEntity
 100
 AcDbLine
  10
-251.0
+172.5
  20
-256.375
+244.625
  30
 0.0
  11
-253.5
+175.0
  21
-255.0
- 31
-0.0
-  0
-LINE
-  5
-125
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-251.0
- 20
-253.625
- 30
-0.0
- 11
-253.5
- 21
-255.0
+246.0
  31
 0.0
   0
 LWPOLYLINE
   5
-126
+125
 330
 17
 100
@@ -9585,21 +9589,57 @@ AcDbPolyline
  70
 1
  10
-253.5
+175.0
  20
-249.0
+232.0
  10
-323.5
+245.0
  20
-249.0
+232.0
  10
-323.5
+245.0
  20
-261.0
+260.0
  10
-253.5
+175.0
  20
-261.0
+260.0
+  0
+TEXT
+  5
+126
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+210.0
+ 20
+254.5
+ 30
+0.0
+ 40
+1.02
+  1
+03 | D08 | CALCULO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+210.0
+ 21
+254.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
   0
 TEXT
   5
@@ -9609,27 +9649,27 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
 AcDbText
  10
-288.5
+210.0
  20
-255.0
+246.5
  30
 0.0
  40
-1.15
+0.94
   1
-04  CURVAS / PARES
+Icc MAX / MIN POR PONTO
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-288.5
+210.0
  21
-255.0
+246.5
  31
 0.0
 100
@@ -9637,7 +9677,7 @@ AcDbText
  73
 2
   0
-LINE
+TEXT
   5
 128
 330
@@ -9645,21 +9685,33 @@ LINE
 100
 AcDbEntity
   8
-03_COTAS
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-323.5
+210.0
  20
-255.0
+239.0
  30
 0.0
+ 40
+0.94
+  1
+BARRAS E EXTREMIDADES
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-332.0
+210.0
  21
-255.0
+239.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
 LINE
   5
@@ -9673,15 +9725,15 @@ AcDbEntity
 100
 AcDbLine
  10
-329.5
+245.0
  20
-256.375
+246.0
  30
 0.0
  11
-332.0
+253.5
  21
-255.0
+246.0
  31
 0.0
   0
@@ -9697,19 +9749,19 @@ AcDbEntity
 100
 AcDbLine
  10
-329.5
+251.0
  20
-253.625
+247.375
  30
 0.0
  11
-332.0
+253.5
  21
-255.0
+246.0
  31
 0.0
   0
-LWPOLYLINE
+LINE
   5
 12B
 330
@@ -9717,31 +9769,23 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbLine
  10
-332.0
+251.0
  20
-249.0
- 10
-402.0
- 20
-249.0
- 10
-402.0
- 20
-261.0
- 10
-332.0
- 20
-261.0
+244.625
+ 30
+0.0
+ 11
+253.5
+ 21
+246.0
+ 31
+0.0
   0
-TEXT
+LWPOLYLINE
   5
 12C
 330
@@ -9751,33 +9795,29 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
- 10
-367.0
- 20
-255.0
- 30
-0.0
- 40
-1.15
-  1
-05  RELATORIO / REVISAO
-  7
-PORTFOLIO_TEXTO
- 72
+AcDbPolyline
+ 90
+4
+ 70
 1
- 11
-367.0
- 21
-255.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+ 10
+253.5
+ 20
+232.0
+ 10
+323.5
+ 20
+232.0
+ 10
+323.5
+ 20
+260.0
+ 10
+253.5
+ 20
+260.0
   0
-LWPOLYLINE
+TEXT
   5
 12D
 330
@@ -9785,31 +9825,35 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-12_LEGENDA
+07_INSTRUMENTACAO
 100
-AcDbPolyline
- 90
-4
- 70
+AcDbText
+ 10
+288.5
+ 20
+254.5
+ 30
+0.0
+ 40
+1.02
+  1
+04 | D09-D11 | TESTES
+  7
+PORTFOLIO_TEXTO
+ 72
 1
- 10
-18.0
- 20
-103.6
- 10
-402.0
- 20
-103.6
- 10
-402.0
- 20
-244.0
- 10
-18.0
- 20
-244.0
+ 11
+288.5
+ 21
+254.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 12E
 330
@@ -9817,23 +9861,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-18.0
+288.5
  20
-233.2
+246.5
  30
 0.0
+ 40
+0.94
+  1
+CAPACIDADE / SUPORTABILIDADE
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-402.0
+288.5
  21
-233.2
+246.5
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 12F
 330
@@ -9841,21 +9897,33 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-18.0
+288.5
  20
-222.4
+239.0
  30
 0.0
+ 40
+0.94
+  1
+CURVAS, PARES E RETAGUARDA
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-402.0
+288.5
  21
-222.4
+239.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
 LINE
   5
@@ -9865,19 +9933,19 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
 AcDbLine
  10
-18.0
+323.5
  20
-211.6
+246.0
  30
 0.0
  11
-402.0
+332.0
  21
-211.6
+246.0
  31
 0.0
   0
@@ -9889,19 +9957,19 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
 AcDbLine
  10
-18.0
+329.5
  20
-200.8
+247.375
  30
 0.0
  11
-402.0
+332.0
  21
-200.8
+246.0
  31
 0.0
   0
@@ -9913,23 +9981,23 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+03_COTAS
 100
 AcDbLine
  10
-18.0
+329.5
  20
-190.0
+244.625
  30
 0.0
  11
-402.0
+332.0
  21
-190.0
+246.0
  31
 0.0
   0
-LINE
+LWPOLYLINE
   5
 133
 330
@@ -9939,21 +10007,29 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbLine
+AcDbPolyline
+ 90
+4
+ 70
+1
  10
-18.0
+332.0
  20
-179.2
- 30
-0.0
- 11
+232.0
+ 10
 402.0
- 21
-179.2
- 31
-0.0
+ 20
+232.0
+ 10
+402.0
+ 20
+260.0
+ 10
+332.0
+ 20
+260.0
   0
-LINE
+TEXT
   5
 134
 330
@@ -9963,21 +10039,33 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbLine
+AcDbText
  10
-18.0
+367.0
  20
-168.39999999999998
+254.5
  30
 0.0
+ 40
+1.02
+  1
+05 | D12 | FECHAMENTO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-402.0
+367.0
  21
-168.39999999999998
+254.5
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 135
 330
@@ -9985,23 +10073,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-18.0
+367.0
  20
-157.6
+246.5
  30
 0.0
+ 40
+0.94
+  1
+EVIDENCIAS E EXCECOES
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-402.0
+367.0
  21
-157.6
+246.5
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 136
 330
@@ -10009,23 +10109,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-18.0
+367.0
  20
-146.8
+239.0
  30
 0.0
+ 40
+0.94
+  1
+MODELO, AJUSTES, REVISAO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-402.0
+367.0
  21
-146.8
+239.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+LWPOLYLINE
   5
 137
 330
@@ -10035,19 +10147,27 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbLine
+AcDbPolyline
+ 90
+4
+ 70
+1
  10
 18.0
  20
-136.0
- 30
-0.0
- 11
+98.6
+ 10
 402.0
- 21
-136.0
- 31
-0.0
+ 20
+98.6
+ 10
+402.0
+ 20
+226.0
+ 10
+18.0
+ 20
+226.0
   0
 LINE
   5
@@ -10063,13 +10183,13 @@ AcDbLine
  10
 18.0
  20
-125.19999999999999
+216.2
  30
 0.0
  11
 402.0
  21
-125.19999999999999
+216.2
  31
 0.0
   0
@@ -10087,13 +10207,13 @@ AcDbLine
  10
 18.0
  20
-114.39999999999998
+206.4
  30
 0.0
  11
 402.0
  21
-114.39999999999998
+206.4
  31
 0.0
   0
@@ -10109,15 +10229,15 @@ AcDbEntity
 100
 AcDbLine
  10
-43.0
+18.0
  20
-103.6
+196.6
  30
 0.0
  11
-43.0
+402.0
  21
-244.0
+196.6
  31
 0.0
   0
@@ -10133,15 +10253,15 @@ AcDbEntity
 100
 AcDbLine
  10
-98.0
+18.0
  20
-103.6
+186.8
  30
 0.0
  11
-98.0
+402.0
  21
-244.0
+186.8
  31
 0.0
   0
@@ -10157,15 +10277,15 @@ AcDbEntity
 100
 AcDbLine
  10
-288.0
+18.0
  20
-103.6
+177.0
  30
 0.0
  11
-288.0
+402.0
  21
-244.0
+177.0
  31
 0.0
   0
@@ -10181,19 +10301,19 @@ AcDbEntity
 100
 AcDbLine
  10
-364.0
+18.0
  20
-103.6
+167.2
  30
 0.0
  11
-364.0
+402.0
  21
-244.0
+167.2
  31
 0.0
   0
-TEXT
+LINE
   5
 13E
 330
@@ -10203,33 +10323,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-30.5
+18.0
  20
-238.6
+157.39999999999998
  30
 0.0
- 40
-1.03
-  1
-ID
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-30.5
+402.0
  21
-238.6
+157.39999999999998
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 13F
 330
@@ -10239,33 +10347,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-70.5
+18.0
  20
-238.6
+147.6
  30
 0.0
- 40
-1.03
-  1
-GRUPO
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-70.5
+402.0
  21
-238.6
+147.6
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 140
 330
@@ -10275,33 +10371,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-193.0
+18.0
  20
-238.6
+137.8
  30
 0.0
- 40
-1.03
-  1
-DADO OU VERIFICACAO NECESSARIA
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-193.0
+402.0
  21
-238.6
+137.8
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 141
 330
@@ -10311,33 +10395,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-326.0
+18.0
  20
-238.6
+128.0
  30
 0.0
- 40
-1.03
-  1
-FONTE / REGISTRO
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-326.0
+402.0
  21
-238.6
+128.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 142
 330
@@ -10347,33 +10419,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-383.0
+18.0
  20
-238.6
+118.19999999999999
  30
 0.0
- 40
-1.03
-  1
-STATUS
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-383.0
+402.0
  21
-238.6
+118.19999999999999
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 143
 330
@@ -10381,35 +10441,23 @@ TEXT
 100
 AcDbEntity
   8
-06_COMANDO
+12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-30.5
+18.0
  20
-227.79999999999998
+108.39999999999999
  30
 0.0
- 40
-1.2
-  1
-D01
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-30.5
+402.0
  21
-227.79999999999998
+108.39999999999999
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 144
 330
@@ -10419,33 +10467,21 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-70.5
+43.0
  20
-227.79999999999998
+98.6
  30
 0.0
- 40
-1.05
-  1
-ENTRADA
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-70.5
+43.0
  21
-227.79999999999998
+226.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 145
 330
@@ -10453,33 +10489,23 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-99.6
+98.0
  20
-227.79999999999998
+98.6
  30
 0.0
- 40
-1.08
-  1
-Icc maximo e minimo, R/X e tensao no ponto de entrega
-  7
-PORTFOLIO_TEXTO
  11
-99.6
+98.0
  21
-227.79999999999998
+226.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 146
 330
@@ -10487,33 +10513,23 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-289.6
+288.0
  20
-227.79999999999998
+98.6
  30
 0.0
- 40
-1.08
-  1
-Concessionaria / protocolo vigente
-  7
-PORTFOLIO_TEXTO
  11
-289.6
+288.0
  21
-227.79999999999998
+226.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 147
 330
@@ -10523,31 +10539,19 @@ AcDbEntity
   8
 12_LEGENDA
 100
-AcDbText
+AcDbLine
  10
-383.0
+364.0
  20
-227.79999999999998
+98.6
  30
 0.0
- 40
-1.05
-  1
-PENDENTE
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-383.0
+364.0
  21
-227.79999999999998
+226.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 TEXT
   5
@@ -10557,19 +10561,19 @@ TEXT
 100
 AcDbEntity
   8
-06_COMANDO
+12_LEGENDA
 100
 AcDbText
  10
 30.5
  20
-217.0
+221.1
  30
 0.0
  40
-1.2
+0.98
   1
-D02
+ID
   7
 PORTFOLIO_TEXTO
  72
@@ -10577,7 +10581,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-217.0
+221.1
  31
 0.0
 100
@@ -10599,13 +10603,13 @@ AcDbText
  10
 70.5
  20
-217.0
+221.1
  30
 0.0
  40
-1.05
+0.98
   1
-ENTRADA
+GRUPO
   7
 PORTFOLIO_TEXTO
  72
@@ -10613,7 +10617,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-217.0
+221.1
  31
 0.0
 100
@@ -10629,25 +10633,27 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
-99.6
+193.0
  20
-217.0
+221.1
  30
 0.0
  40
-1.08
+0.98
   1
-Transformadores em servico, kVA, Uk, ligacao, tap e aterramento
+DADO OU VERIFICACAO NECESSARIA
   7
 PORTFOLIO_TEXTO
+ 72
+1
  11
-99.6
+193.0
  21
-217.0
+221.1
  31
 0.0
 100
@@ -10663,25 +10669,27 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
-289.6
+326.0
  20
-217.0
+221.1
  30
 0.0
  40
-1.08
+0.98
   1
-Placa, folha de dados e diagrama
+FONTE / REGISTRO
   7
 PORTFOLIO_TEXTO
+ 72
+1
  11
-289.6
+326.0
  21
-217.0
+221.1
  31
 0.0
 100
@@ -10703,13 +10711,13 @@ AcDbText
  10
 383.0
  20
-217.0
+221.1
  30
 0.0
  40
-1.05
+0.98
   1
-PENDENTE
+STATUS
   7
 PORTFOLIO_TEXTO
  72
@@ -10717,7 +10725,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-217.0
+221.1
  31
 0.0
 100
@@ -10739,13 +10747,13 @@ AcDbText
  10
 30.5
  20
-206.2
+211.29999999999998
  30
 0.0
  40
-1.2
+1.08
   1
-D03
+D01
   7
 PORTFOLIO_TEXTO
  72
@@ -10753,7 +10761,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-206.2
+211.29999999999998
  31
 0.0
 100
@@ -10775,11 +10783,11 @@ AcDbText
  10
 70.5
  20
-206.2
+211.29999999999998
  30
 0.0
  40
-1.05
+0.98
   1
 ENTRADA
   7
@@ -10789,7 +10797,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-206.2
+211.29999999999998
  31
 0.0
 100
@@ -10811,19 +10819,19 @@ AcDbText
  10
 99.6
  20
-206.2
+211.29999999999998
  30
 0.0
  40
-1.08
+0.98
   1
-Comprimento, secao, material, instalacao e temperatura dos cabos
+Icc maximo e minimo, R/X e tensao no ponto de entrega
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-206.2
+211.29999999999998
  31
 0.0
 100
@@ -10845,19 +10853,19 @@ AcDbText
  10
 289.6
  20
-206.2
+211.29999999999998
  30
 0.0
  40
-1.08
+0.98
   1
-Levantamento e cadastro as-built
+Concessionaria / protocolo vigente
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-206.2
+211.29999999999998
  31
 0.0
 100
@@ -10879,11 +10887,11 @@ AcDbText
  10
 383.0
  20
-206.2
+211.29999999999998
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -10893,7 +10901,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-206.2
+211.29999999999998
  31
 0.0
 100
@@ -10915,13 +10923,13 @@ AcDbText
  10
 30.5
  20
-195.4
+201.5
  30
 0.0
  40
-1.2
+1.08
   1
-D04
+D02
   7
 PORTFOLIO_TEXTO
  72
@@ -10929,7 +10937,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-195.4
+201.5
  31
 0.0
 100
@@ -10951,11 +10959,11 @@ AcDbText
  10
 70.5
  20
-195.4
+201.5
  30
 0.0
  40
-1.05
+0.98
   1
 ENTRADA
   7
@@ -10965,7 +10973,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-195.4
+201.5
  31
 0.0
 100
@@ -10987,19 +10995,19 @@ AcDbText
  10
 99.6
  20
-195.4
+201.5
  30
 0.0
  40
-1.08
+0.98
   1
-Dados de motores, corrente de partida, regime e contribuicao de curto
+Transformadores em servico, kVA, Uk, ligacao, tap e aterramento
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-195.4
+201.5
  31
 0.0
 100
@@ -11021,19 +11029,19 @@ AcDbText
  10
 289.6
  20
-195.4
+201.5
  30
 0.0
  40
-1.08
+0.98
   1
-Placas e manuais dos fabricantes
+Placa, folha de dados e diagrama
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-195.4
+201.5
  31
 0.0
 100
@@ -11055,11 +11063,11 @@ AcDbText
  10
 383.0
  20
-195.4
+201.5
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11069,7 +11077,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-195.4
+201.5
  31
 0.0
 100
@@ -11091,13 +11099,13 @@ AcDbText
  10
 30.5
  20
-184.6
+191.7
  30
 0.0
  40
-1.2
+1.08
   1
-D05
+D03
   7
 PORTFOLIO_TEXTO
  72
@@ -11105,7 +11113,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-184.6
+191.7
  31
 0.0
 100
@@ -11127,11 +11135,11 @@ AcDbText
  10
 70.5
  20
-184.6
+191.7
  30
 0.0
  40
-1.05
+0.98
   1
 ENTRADA
   7
@@ -11141,7 +11149,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-184.6
+191.7
  31
 0.0
 100
@@ -11163,19 +11171,19 @@ AcDbText
  10
 99.6
  20
-184.6
+191.7
  30
 0.0
  40
-1.08
+0.98
   1
-Marca, modelo, polos, unidade de disparo e ajustes dos seis pares
+Comprimento, secao, material, instalacao e temperatura dos cabos
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-184.6
+191.7
  31
 0.0
 100
@@ -11197,19 +11205,19 @@ AcDbText
  10
 289.6
  20
-184.6
+191.7
  30
 0.0
  40
-1.08
+0.98
   1
-Folhas de dados e ajustes selecionados
+Levantamento e cadastro as-built
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-184.6
+191.7
  31
 0.0
 100
@@ -11231,11 +11239,11 @@ AcDbText
  10
 383.0
  20
-184.6
+191.7
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11245,7 +11253,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-184.6
+191.7
  31
 0.0
 100
@@ -11267,13 +11275,13 @@ AcDbText
  10
 30.5
  20
-173.79999999999998
+181.9
  30
 0.0
  40
-1.2
+1.08
   1
-D06
+D04
   7
 PORTFOLIO_TEXTO
  72
@@ -11281,7 +11289,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-173.79999999999998
+181.9
  31
 0.0
 100
@@ -11303,11 +11311,11 @@ AcDbText
  10
 70.5
  20
-173.79999999999998
+181.9
  30
 0.0
  40
-1.05
+0.98
   1
 ENTRADA
   7
@@ -11317,7 +11325,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-173.79999999999998
+181.9
  31
 0.0
 100
@@ -11339,19 +11347,19 @@ AcDbText
  10
 99.6
  20
-173.79999999999998
+181.9
  30
 0.0
  40
-1.08
+0.98
   1
-Icu, Ics, Icw, Ipk e tabelas de retaguarda dos dispositivos
+Dados de motores, corrente de partida, regime e contribuicao de curto
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-173.79999999999998
+181.9
  31
 0.0
 100
@@ -11373,19 +11381,19 @@ AcDbText
  10
 289.6
  20
-173.79999999999998
+181.9
  30
 0.0
  40
-1.08
+0.98
   1
-Catalogo e tabela de coordenacao OEM
+Placas e manuais dos fabricantes
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-173.79999999999998
+181.9
  31
 0.0
 100
@@ -11407,11 +11415,11 @@ AcDbText
  10
 383.0
  20
-173.79999999999998
+181.9
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11421,7 +11429,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-173.79999999999998
+181.9
  31
 0.0
 100
@@ -11437,19 +11445,19 @@ TEXT
 100
 AcDbEntity
   8
-05_POTENCIA
+06_COMANDO
 100
 AcDbText
  10
 30.5
  20
-162.99999999999997
+172.1
  30
 0.0
  40
-1.2
+1.08
   1
-D07
+D05
   7
 PORTFOLIO_TEXTO
  72
@@ -11457,7 +11465,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-162.99999999999997
+172.1
  31
 0.0
 100
@@ -11479,13 +11487,13 @@ AcDbText
  10
 70.5
  20
-162.99999999999997
+172.1
  30
 0.0
  40
-1.05
+0.98
   1
-CALCULO
+ENTRADA
   7
 PORTFOLIO_TEXTO
  72
@@ -11493,7 +11501,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-162.99999999999997
+172.1
  31
 0.0
 100
@@ -11515,19 +11523,19 @@ AcDbText
  10
 99.6
  20
-162.99999999999997
+172.1
  30
 0.0
  40
-1.08
+0.98
   1
-Modelo da rede, criterio e classes de falta aplicaveis
+Marca, modelo, polos, unidade de disparo e ajustes dos seis pares
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-162.99999999999997
+172.1
  31
 0.0
 100
@@ -11549,19 +11557,19 @@ AcDbText
  10
 289.6
  20
-162.99999999999997
+172.1
  30
 0.0
  40
-1.08
+0.98
   1
-Metodo de calculo e hipoteses documentadas
+Folhas de dados e ajustes selecionados
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-162.99999999999997
+172.1
  31
 0.0
 100
@@ -11583,11 +11591,11 @@ AcDbText
  10
 383.0
  20
-162.99999999999997
+172.1
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11597,7 +11605,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-162.99999999999997
+172.1
  31
 0.0
 100
@@ -11613,19 +11621,19 @@ TEXT
 100
 AcDbEntity
   8
-05_POTENCIA
+06_COMANDO
 100
 AcDbText
  10
 30.5
  20
-152.2
+162.29999999999998
  30
 0.0
  40
-1.2
+1.08
   1
-D08
+D06
   7
 PORTFOLIO_TEXTO
  72
@@ -11633,7 +11641,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-152.2
+162.29999999999998
  31
 0.0
 100
@@ -11655,13 +11663,13 @@ AcDbText
  10
 70.5
  20
-152.2
+162.29999999999998
  30
 0.0
  40
-1.05
+0.98
   1
-CALCULO
+ENTRADA
   7
 PORTFOLIO_TEXTO
  72
@@ -11669,7 +11677,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-152.2
+162.29999999999998
  31
 0.0
 100
@@ -11691,19 +11699,19 @@ AcDbText
  10
 99.6
  20
-152.2
+162.29999999999998
  30
 0.0
  40
-1.08
+0.98
   1
-Icc maxima e minima em cada barra e extremidade de circuito
+Icu/Ics de disjuntores; Icw/Ipk de conjuntos, quando aplicaveis; tabela OEM de retaguarda
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-152.2
+162.29999999999998
  31
 0.0
 100
@@ -11725,19 +11733,19 @@ AcDbText
  10
 289.6
  20
-152.2
+162.29999999999998
  30
 0.0
  40
-1.08
+0.98
   1
-Memoria de calculo com pontos identificados
+Catalogo, folha de dados e tabela OEM
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-152.2
+162.29999999999998
  31
 0.0
 100
@@ -11759,11 +11767,11 @@ AcDbText
  10
 383.0
  20
-152.2
+162.29999999999998
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11773,7 +11781,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-152.2
+162.29999999999998
  31
 0.0
 100
@@ -11795,13 +11803,13 @@ AcDbText
  10
 30.5
  20
-141.4
+152.49999999999997
  30
 0.0
  40
-1.2
+1.08
   1
-D09
+D07
   7
 PORTFOLIO_TEXTO
  72
@@ -11809,7 +11817,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-141.4
+152.49999999999997
  31
 0.0
 100
@@ -11831,11 +11839,11 @@ AcDbText
  10
 70.5
  20
-141.4
+152.49999999999997
  30
 0.0
  40
-1.05
+0.98
   1
 CALCULO
   7
@@ -11845,7 +11853,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-141.4
+152.49999999999997
  31
 0.0
 100
@@ -11867,19 +11875,19 @@ AcDbText
  10
 99.6
  20
-141.4
+152.49999999999997
  30
 0.0
  40
-1.08
+0.98
   1
-Sobrecarga, curto, I2t, suportabilidade do condutor e PE
+Modelo da rede, criterio e classes de falta aplicaveis
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-141.4
+152.49999999999997
  31
 0.0
 100
@@ -11901,19 +11909,19 @@ AcDbText
  10
 289.6
  20
-141.4
+152.49999999999997
  30
 0.0
  40
-1.08
+0.98
   1
-Verificacao termica e de desligamento
+Metodo de calculo e hipoteses documentadas
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-141.4
+152.49999999999997
  31
 0.0
 100
@@ -11935,11 +11943,11 @@ AcDbText
  10
 383.0
  20
-141.4
+152.49999999999997
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -11949,7 +11957,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-141.4
+152.49999999999997
  31
 0.0
 100
@@ -11971,13 +11979,13 @@ AcDbText
  10
 30.5
  20
-130.6
+142.7
  30
 0.0
  40
-1.2
+1.08
   1
-D10
+D08
   7
 PORTFOLIO_TEXTO
  72
@@ -11985,7 +11993,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-130.6
+142.7
  31
 0.0
 100
@@ -12007,11 +12015,11 @@ AcDbText
  10
 70.5
  20
-130.6
+142.7
  30
 0.0
  40
-1.05
+0.98
   1
 CALCULO
   7
@@ -12021,7 +12029,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-130.6
+142.7
  31
 0.0
 100
@@ -12043,19 +12051,19 @@ AcDbText
  10
 99.6
  20
-130.6
+142.7
  30
 0.0
  40
-1.08
+0.98
   1
-Curvas TCC, tolerancias e limites de seletividade para cada par
+Icc maxima e minima em cada barra e extremidade de circuito
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-130.6
+142.7
  31
 0.0
 100
@@ -12077,19 +12085,19 @@ AcDbText
  10
 289.6
  20
-130.6
+142.7
  30
 0.0
  40
-1.08
+0.98
   1
-Graficos e curvas dos fabricantes
+Memoria de calculo com pontos identificados
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-130.6
+142.7
  31
 0.0
 100
@@ -12111,11 +12119,11 @@ AcDbText
  10
 383.0
  20
-130.6
+142.7
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -12125,7 +12133,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-130.6
+142.7
  31
 0.0
 100
@@ -12147,13 +12155,13 @@ AcDbText
  10
 30.5
  20
-119.79999999999998
+132.9
  30
 0.0
  40
-1.2
+1.08
   1
-D11
+D09
   7
 PORTFOLIO_TEXTO
  72
@@ -12161,7 +12169,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-119.79999999999998
+132.9
  31
 0.0
 100
@@ -12183,11 +12191,11 @@ AcDbText
  10
 70.5
  20
-119.79999999999998
+132.9
  30
 0.0
  40
-1.05
+0.98
   1
 CALCULO
   7
@@ -12197,7 +12205,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-119.79999999999998
+132.9
  31
 0.0
 100
@@ -12219,19 +12227,19 @@ AcDbText
  10
 99.6
  20
-119.79999999999998
+132.9
  30
 0.0
  40
-1.08
+0.98
   1
-Seletividade, retaguarda e limite de energia nos seis pares
+Sobrecarga, curto, I2t, suportabilidade do condutor e PE
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-119.79999999999998
+132.9
  31
 0.0
 100
@@ -12253,19 +12261,19 @@ AcDbText
  10
 289.6
  20
-119.79999999999998
+132.9
  30
 0.0
  40
-1.08
+0.98
   1
-Tabela comparativa pareada com criterio
+Verificacao termica e de desligamento
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-119.79999999999998
+132.9
  31
 0.0
 100
@@ -12287,11 +12295,11 @@ AcDbText
  10
 383.0
  20
-119.79999999999998
+132.9
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -12301,7 +12309,7 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-119.79999999999998
+132.9
  31
 0.0
 100
@@ -12317,19 +12325,19 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
 AcDbText
  10
 30.5
  20
-108.99999999999997
+123.1
  30
 0.0
  40
-1.2
+1.08
   1
-D12
+D10
   7
 PORTFOLIO_TEXTO
  72
@@ -12337,7 +12345,7 @@ PORTFOLIO_TEXTO
  11
 30.5
  21
-108.99999999999997
+123.1
  31
 0.0
 100
@@ -12359,13 +12367,13 @@ AcDbText
  10
 70.5
  20
-108.99999999999997
+123.1
  30
 0.0
  40
-1.05
+0.98
   1
-REVISAO
+CALCULO
   7
 PORTFOLIO_TEXTO
  72
@@ -12373,7 +12381,7 @@ PORTFOLIO_TEXTO
  11
 70.5
  21
-108.99999999999997
+123.1
  31
 0.0
 100
@@ -12395,19 +12403,19 @@ AcDbText
  10
 99.6
  20
-108.99999999999997
+123.1
  30
 0.0
  40
-1.08
+0.98
   1
-Unifilar, ajustes, desvios, versao do modelo e revisao tecnica
+Curvas TCC, tolerancias e limites de seletividade para cada par
   7
 PORTFOLIO_TEXTO
  11
 99.6
  21
-108.99999999999997
+123.1
  31
 0.0
 100
@@ -12429,19 +12437,19 @@ AcDbText
  10
 289.6
  20
-108.99999999999997
+123.1
  30
 0.0
  40
-1.08
+0.98
   1
-Relatorio controlado, revisor identificado e lista de pendencias
+Graficos e curvas dos fabricantes
   7
 PORTFOLIO_TEXTO
  11
 289.6
  21
-108.99999999999997
+123.1
  31
 0.0
 100
@@ -12463,11 +12471,11 @@ AcDbText
  10
 383.0
  20
-108.99999999999997
+123.1
  30
 0.0
  40
-1.05
+0.98
   1
 PENDENTE
   7
@@ -12477,7 +12485,359 @@ PORTFOLIO_TEXTO
  11
 383.0
  21
-108.99999999999997
+123.1
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+17F
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+30.5
+ 20
+113.29999999999998
+ 30
+0.0
+ 40
+1.08
+  1
+D11
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+30.5
+ 21
+113.29999999999998
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+180
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+70.5
+ 20
+113.29999999999998
+ 30
+0.0
+ 40
+0.98
+  1
+CALCULO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+70.5
+ 21
+113.29999999999998
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+181
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+99.6
+ 20
+113.29999999999998
+ 30
+0.0
+ 40
+0.98
+  1
+Seletividade, retaguarda e limite de energia nos seis pares
+  7
+PORTFOLIO_TEXTO
+ 11
+99.6
+ 21
+113.29999999999998
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+289.6
+ 20
+113.29999999999998
+ 30
+0.0
+ 40
+0.98
+  1
+Tabela comparativa pareada com criterio
+  7
+PORTFOLIO_TEXTO
+ 11
+289.6
+ 21
+113.29999999999998
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+183
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+383.0
+ 20
+113.29999999999998
+ 30
+0.0
+ 40
+0.98
+  1
+PENDENTE
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+383.0
+ 21
+113.29999999999998
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+30.5
+ 20
+103.49999999999999
+ 30
+0.0
+ 40
+1.08
+  1
+D12
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+30.5
+ 21
+103.49999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+70.5
+ 20
+103.49999999999999
+ 30
+0.0
+ 40
+0.98
+  1
+REVISAO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+70.5
+ 21
+103.49999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+186
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+99.6
+ 20
+103.49999999999999
+ 30
+0.0
+ 40
+0.98
+  1
+Unifilar, ajustes, desvios, versao do modelo e revisao tecnica
+  7
+PORTFOLIO_TEXTO
+ 11
+99.6
+ 21
+103.49999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+187
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+289.6
+ 20
+103.49999999999999
+ 30
+0.0
+ 40
+0.98
+  1
+Relatorio controlado, revisor identificado e lista de pendencias
+  7
+PORTFOLIO_TEXTO
+ 11
+289.6
+ 21
+103.49999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+188
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+383.0
+ 20
+103.49999999999999
+ 30
+0.0
+ 40
+0.98
+  1
+PENDENTE
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+383.0
+ 21
+103.49999999999999
  31
 0.0
 100
@@ -13595,7 +13955,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-181
+18B
   0
 DICTIONARYVAR
   5
@@ -20221,7 +20581,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-181
+18B
 330
 2D
 100

@@ -4,9 +4,9 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades em milímetros, revisão 03 (2026-11-05)
+Formato: A3 paisagem, unidades em milímetros, revisão 04 (2026-11-06)
 
-Estado: revisão conceitual 03, com dados do estudo de coordenação ainda pendentes
+Estado: revisão conceitual 04; curto-circuito, capacidade de interrupção e coordenação continuam pendentes
 
 Este projeto acadêmico apresenta a distribuição elétrica conceitual de uma oficina
 metalmecânica fictícia de `30,00 x 18,00 m`, com área de `540,00 m²`. A alimentação
@@ -15,7 +15,7 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 
 ## Entregáveis
 
-- `fonte/`: oito desenhos DXF R2013 e scripts reproduzíveis;
+- `fonte/`: nove desenhos DXF R2013 e scripts reproduzíveis;
 - `exports/`: versões PDF, SVG e PNG derivadas dos DXFs;
 - `memorial-descritivo.md`: descrição do sistema e de suas interfaces;
 - `criterios-premissas.md`: hipóteses, critérios de cálculo e limitações;
@@ -49,6 +49,7 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 8. [Coordenação das proteções](fonte/08_coordenacao_protecoes.dxf): topologia dos
    dispositivos, seis pares montante-jusante e evidências ainda pendentes.
 9. [Plano de dados para curto-circuito e coordenação](fonte/09_plano_dados_coordenacao.dxf): entradas de rede e equipamentos, verificações de Icc/cabos, comparação de curvas para os seis pares e registro da revisão. Não mostra resultados calculados.
+   O fluxo indica as evidências necessárias para modelar a rede, calcular Icc máximo/mínimo por ponto, verificar capacidade e suportabilidade, comparar pares e fechar a revisão.
 
 Cada DXF possui derivados homônimos em `exports/` nos formatos PDF, SVG e PNG.
 
@@ -98,9 +99,11 @@ e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps inte
 permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
 são as fontes principais.
 
-Resultado registrado na revisão 03: validador específico `PASS` com 378 verificações;
-AcCoreConsole 2027 abriu e auditou 9/9 DXFs; validação estrita do portfólio `PASS` com
-537.428 verificações, zero erros e zero avisos. O revisor confirmou 12 projetos, 98
-pranchas, 392 arquivos gráficos, 70 CSVs e similaridade mínima PDF/PNG de 0,984061.
+Na revisão 04, o validador específico passou em 406 verificações; o AutoCAD AcCoreConsole
+2027 abriu e auditou 9/9 DXFs, sem erros nem correções. A validação estrita do portfólio
+passou em 652.258 verificações, sem erros ou avisos. O revisor confirmou 12 projetos,
+111 pranchas, 444 arquivos gráficos, 75 CSVs e similaridade mínima PDF/PNG de 0,981493;
+P05-09 teve similaridade 0,984839. Nenhum valor presumido de Icc/Icu é tratado como
+seleção; os dados de rede e fabricante continuam pendentes.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

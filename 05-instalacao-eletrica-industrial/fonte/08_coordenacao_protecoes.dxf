@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.55
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-PLANO DE DADOS PARA COORDENACAO
+METODO DE CURTO-CIRCUITO E COORDENACAO
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -10761,7 +10761,7 @@ AcDbText
  40
 1.22
   1
-* Todos os valores nominais sao premissas; Icc 6 kA e Icu do DJ-G >= 10 kA sem calculo/confirmacao.
+* Icc e capacidade de interrupcao seguem PENDENTES; valores nominais dos dispositivos sao premissas.
   7
 PORTFOLIO_TEXTO
  72

@@ -49,7 +49,11 @@ EXPECTED_STUDY_STAGES = (
 REQUIRED_STUDY_TERMS = (
     "PLANO DE DADOS PARA CURTO-CIRCUITO E COORDENACAO",
     "D01", "D06", "D07", "D11", "D12", "Icc MAX",
-    "CURVAS / PARES", "I2t", "PENDENTE", "DADOS DE REDE",
+    "I2t", "PENDENTE", "REDE, TRAFO, CABOS",
+    "ROTEIRO DE VERIFICACAO", "D01-D06 | ENTRADAS", "D07 | MODELO",
+    "D08 | CALCULO", "D09-D11 | TESTES", "D12 | FECHAMENTO",
+    "CAPACIDADE / SUPORTABILIDADE", "CURVAS, PARES E RETAGUARDA",
+    "MODELO, AJUSTES, REVISAO", "Icu/Ics de disjuntores", "Icw/Ipk de conjuntos",
 )
 
 
@@ -297,9 +301,13 @@ def validate(root: Path) -> dict:
             errors.append(f"{filename}: metadado de projeto incorreto.")
         if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
-        dxf_texts.append(extract_text(doc))
+        sheet_text = extract_text(doc)
+        dxf_texts.append(sheet_text)
+        checks += 2
+        if "6 kA" in sheet_text or "10 kA" in sheet_text:
+            errors.append(f"{filename}: capacidade de curto/interrupcao nao pode permanecer como valor presumido.")
         if index == 9:
-            sheet_text = extract_text(doc).casefold()
+            sheet_text = sheet_text.casefold()
             checks += len(REQUIRED_STUDY_TERMS)
             for term in REQUIRED_STUDY_TERMS:
                 if term.casefold() not in sheet_text:

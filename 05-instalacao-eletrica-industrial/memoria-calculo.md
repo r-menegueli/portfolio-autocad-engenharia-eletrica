@@ -96,4 +96,6 @@ aterramento, fotometria e dimensionamento térmico dos quadros. Esses temas deve
 resolvidos antes de qualquer aplicação real. A prancha P05-08 e a matriz de seis pares
 de proteção apontam as verificações e evidências necessárias, mas não contêm curvas
 tempo-corrente nem resultados de curto-circuito. A prancha P05-09 organiza, em doze
-grupos, os dados de entrada, cálculos e documentos que faltam; todos seguem `PENDENTE`.
+grupos, os dados e evidências pendentes e indica a sequência entre modelo, cálculo por
+ponto, verificações de capacidade/suportabilidade, comparação dos pares e revisão.
+Todos os grupos seguem `PENDENTE`; nenhum valor presumido de Icc ou Icu foi mantido.

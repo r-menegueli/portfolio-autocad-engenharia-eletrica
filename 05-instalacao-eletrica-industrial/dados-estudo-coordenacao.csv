@@ -4,7 +4,7 @@ D02,ENTRADA,"Transformadores em servico, kVA, Uk, ligacao, tap e aterramento","P
 D03,ENTRADA,"Comprimento, secao, material, instalacao e temperatura dos cabos","Levantamento e cadastro as-built",PENDENTE
 D04,ENTRADA,"Dados de motores, corrente de partida, regime e contribuicao de curto","Placas e manuais dos fabricantes",PENDENTE
 D05,ENTRADA,"Marca, modelo, polos, unidade de disparo e ajustes dos seis pares","Folhas de dados e ajustes selecionados",PENDENTE
-D06,ENTRADA,"Icu, Ics, Icw, Ipk e tabelas de retaguarda dos dispositivos","Catalogo e tabela de coordenacao OEM",PENDENTE
+D06,ENTRADA,"Icu/Ics de disjuntores; Icw/Ipk de conjuntos, quando aplicaveis; tabela OEM de retaguarda","Catalogo, folha de dados e tabela OEM",PENDENTE
 D07,CALCULO,"Modelo da rede, criterio e classes de falta aplicaveis","Metodo de calculo e hipoteses documentadas",PENDENTE
 D08,CALCULO,"Icc maxima e minima em cada barra e extremidade de circuito","Memoria de calculo com pontos identificados",PENDENTE
 D09,CALCULO,"Sobrecarga, curto, I2t, suportabilidade do condutor e PE","Verificacao termica e de desligamento",PENDENTE

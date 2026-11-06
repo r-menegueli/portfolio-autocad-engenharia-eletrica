@@ -35,9 +35,9 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "05-instalacao-eletrica-industrial"
-PROJECT_DATE = "2026-11-05"
-REVISION = "03"
-REVISION_DESCRIPTION = "PLANO DE DADOS PARA COORDENACAO"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
+REVISION_DESCRIPTION = "METODO DE CURTO-CIRCUITO E COORDENACAO"
 
 
 @dataclass(frozen=True)
@@ -169,8 +169,8 @@ SHEETS = (
         "PLANO DE DADOS PARA CURTO-CIRCUITO E COORDENACAO",
         "Entradas e evidencias necessarias para revisar os seis pares da prancha 08",
         "O estudo ainda nao foi calculado. Os doze grupos de dados permanecem pendentes.\\P"
-        "Nao declarar capacidade, seletividade ou coordenacao sem modelo, curvas e evidencias verificaveis.",
-        "D01-D06: entradas | D07-D11: calculos e comparacoes | D12: registro/revisao | PENDENTE: sem evidencia",
+        "Icc e capacidade de interrupcao nao foram definidos; a folha orienta verificacoes e evidencias.",
+        "D01-D06: entradas | D07-D08: modelo e Icc | D09-D11: verificacoes | D12: revisao | PENDENTE: sem evidencia",
     ),
 )
 
@@ -462,7 +462,7 @@ def draw_unifilar(layout) -> None:
     centered(layout, "BARRAS E PROTECAO", (116.5, 147), 1.7, "09_BORNES")
     add_text(layout, "N: isolado do PE a jusante da origem", (31, 136), 1.25, layer="02_TEXTO")
     add_text(layout, "PE: continuo, equipotencial e identificado", (31, 127), 1.25, layer="02_TEXTO")
-    add_text(layout, "Icc presumida: 6 kA; confirmar por calculo", (31, 118), 1.25, layer="13_NOTAS")
+    add_text(layout, "Icc e capacidade de interrupcao: PENDENTES de dados e calculo", (31, 118), 1.25, layer="13_NOTAS")
 
 
 def draw_load_table(layout) -> None:
@@ -601,7 +601,7 @@ def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
     add_rect(layout, 18, 168, 402, 174, "13_NOTAS")
     centered(
         layout,
-        "* Todos os valores nominais sao premissas; Icc 6 kA e Icu do DJ-G >= 10 kA sem calculo/confirmacao.",
+        "* Icc e capacidade de interrupcao seguem PENDENTES; valores nominais dos dispositivos sao premissas.",
         (210, 171),
         1.22,
         "13_NOTAS",
@@ -635,21 +635,23 @@ def draw_protection_coordination(layout, rows: list[dict[str, str]]) -> None:
 
 
 def draw_coordination_data_plan(layout, rows: list[dict[str, str]]) -> None:
-    centered(layout, "FLUXO DO ESTUDO — ENTRADA, CALCULO, COMPARACAO E REVISAO", (210, 265), 1.65, "12_LEGENDA")
+    centered(layout, "ROTEIRO DE VERIFICACAO — SEM RESULTADOS CALCULADOS", (210, 265), 1.65, "12_LEGENDA")
     stages = (
-        "01  DADOS DE REDE",
-        "02  Icc MAX / MIN",
-        "03  CABOS E PROTECAO",
-        "04  CURVAS / PARES",
-        "05  RELATORIO / REVISAO",
+        ("01 | D01-D06 | ENTRADAS", "REDE, TRAFO, CABOS", "FONTES E DISPOSITIVOS", "06_COMANDO"),
+        ("02 | D07 | MODELO", "CENARIOS E TIPOS DE FALTA", "IMPEDANCIAS DOCUMENTADAS", "04_EQUIPAMENTOS"),
+        ("03 | D08 | CALCULO", "Icc MAX / MIN POR PONTO", "BARRAS E EXTREMIDADES", "05_POTENCIA"),
+        ("04 | D09-D11 | TESTES", "CAPACIDADE / SUPORTABILIDADE", "CURVAS, PARES E RETAGUARDA", "07_INSTRUMENTACAO"),
+        ("05 | D12 | FECHAMENTO", "EVIDENCIAS E EXCECOES", "MODELO, AJUSTES, REVISAO", "12_LEGENDA"),
     )
-    x0, stage_y0, stage_y1, stage_w, gap = 18.0, 249.0, 261.0, 70.0, 8.5
-    for index, label in enumerate(stages):
+    x0, stage_y0, stage_y1, stage_w, gap = 18.0, 232.0, 260.0, 70.0, 8.5
+    for index, (heading, detail_1, detail_2, heading_layer) in enumerate(stages):
         left = x0 + index * (stage_w + gap)
         add_rect(layout, left, stage_y0, left + stage_w, stage_y1, "12_LEGENDA")
-        centered(layout, label, (left + stage_w / 2, (stage_y0 + stage_y1) / 2), 1.15, "12_LEGENDA")
+        centered(layout, heading, (left + stage_w / 2, 254.5), 1.02, heading_layer)
+        centered(layout, detail_1, (left + stage_w / 2, 246.5), 0.94, "02_TEXTO")
+        centered(layout, detail_2, (left + stage_w / 2, 239.0), 0.94, "02_TEXTO")
         if index < len(stages) - 1:
-            arrow(layout, (left + stage_w, (stage_y0 + stage_y1) / 2), (left + stage_w + gap, (stage_y0 + stage_y1) / 2), "03_COTAS")
+            arrow(layout, (left + stage_w, 246.0), (left + stage_w + gap, 246.0), "03_COTAS")
 
     column_keys = ("id", "etapa", "entrada_ou_verificacao", "evidencia", "status")
     headers = {
@@ -661,7 +663,7 @@ def draw_coordination_data_plan(layout, rows: list[dict[str, str]]) -> None:
     }
     table_rows = [headers, *rows]
     widths = (25.0, 55.0, 190.0, 76.0, 38.0)
-    x_left, y_top, row_h = 18.0, 244.0, 10.8
+    x_left, y_top, row_h = 18.0, 226.0, 9.8
     y_bottom = y_top - len(table_rows) * row_h
     x_right = x_left + sum(widths)
     add_rect(layout, x_left, y_bottom, x_right, y_top, "12_LEGENDA")
@@ -680,20 +682,20 @@ def draw_coordination_data_plan(layout, rows: list[dict[str, str]]) -> None:
         for key, width in zip(column_keys, widths):
             value = row[key]
             if row_index == 0:
-                centered(layout, value, (cursor + width / 2, center_y), 1.03, "12_LEGENDA")
+                centered(layout, value, (cursor + width / 2, center_y), 0.98, "12_LEGENDA")
             elif key in {"entrada_ou_verificacao", "evidencia"}:
                 add_text(
                     layout,
                     value,
                     (cursor + 1.6, center_y),
-                    1.08,
+                    0.98,
                     layer="02_TEXTO",
                     align=TextEntityAlignment.MIDDLE_LEFT,
                 )
             elif key == "id":
-                centered(layout, value, (cursor + width / 2, center_y), 1.2, group_layers[row["etapa"]])
+                centered(layout, value, (cursor + width / 2, center_y), 1.08, group_layers[row["etapa"]])
             else:
-                centered(layout, value, (cursor + width / 2, center_y), 1.05, "12_LEGENDA")
+                centered(layout, value, (cursor + width / 2, center_y), 0.98, "12_LEGENDA")
             cursor += width
 
 

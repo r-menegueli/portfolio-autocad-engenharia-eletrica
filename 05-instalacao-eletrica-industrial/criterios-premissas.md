@@ -14,7 +14,7 @@
 | Condutores | cobre | hipótese |
 | Resistividade para queda | 0,0225 ohm.mm²/m | critério conservador |
 | Queda combinada máxima | 4,0% | critério acadêmico |
-| Corrente de curto-circuito | 6 kA presumidos | dado a confirmar |
+| Corrente de curto-circuito | PENDENTE | depende de dados de rede e cálculo rastreável |
 
 ## Critérios de cálculo
 
@@ -59,18 +59,20 @@ trabalho, requisitos da concessionária ou análise de expansão.
 
 ## Proteções e coordenação
 
-- DJ-G: 4P, 100 A, capacidade de interrupção mínima assumida de 10 kA;
+- DJ-G: 4P, 100 A como premissa didática; modelo, unidade de disparo e capacidade de interrupção PENDENTES;
 - QF-QDF: 3P, 80 A; QF-QDL e QF-QADM: 4P, 16 A;
 - circuitos de motores: proteção ajustável e método de partida a selecionar;
 - tomadas industriais e auxiliares: DR 30 mA como premissa;
 - DPS tipo 2: quantidade e configuração conceituais.
 
-O valor de 6 kA no ponto de entrega e o Icu mínimo de 10 kA assumido para DJ-G não
-vieram de curto-circuito informado pela concessionária nem de cálculo com impedâncias
-reais. A matriz [matriz-coordenacao-protecoes.csv](matriz-coordenacao-protecoes.csv)
-registra seis comparações montante-jusante; todas permanecem `PENDENTE` até receber
-curvas dos dispositivos e dados de origem, cabos, motores, drivers e DRs. Não se
-declara interrupção adequada, seletividade ou retaguarda.
+Não há valor presumido de Icc nem capacidade de interrupção atribuída a DJ-G. A matriz
+[matriz-coordenacao-protecoes.csv](matriz-coordenacao-protecoes.csv) registra seis
+comparações montante-jusante; todas permanecem `PENDENTE` até receber dados de origem,
+cálculo por ponto, curvas e identificações dos dispositivos, cabos, motores, drivers e
+DRs. A prancha P05-09 separa entradas, modelo, cálculo de Icc máximo/mínimo,
+verificações de suportabilidade, curvas dos pares e revisão documental. Retaguarda ou
+cascata só pode ser registrada com a combinação e as condições verificadas pelo
+fabricante. Não se declara interrupção adequada, seletividade ou retaguarda.
 
 Não foram calculados curto-circuito, energia incidente, seletividade, retaguarda,
 coordenação de DPS, partida de motores, harmônicas, correção de fator de potência,

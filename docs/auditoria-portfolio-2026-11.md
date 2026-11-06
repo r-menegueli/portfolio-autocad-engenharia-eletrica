@@ -9,7 +9,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 Na revisão corrente, o revisor confirmou 12 projetos, 111 pranchas, 444 arquivos
 gráficos e 75 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 650.961 verificações, sem erros ou avisos.
+passou em 652.258 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -32,7 +32,7 @@ passou em 650.961 verificações, sem erros ou avisos.
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
 | P03 — Painel com CLP | Onze folhas cobrem alimentação, I/O, comando, bornes, interligações, sequência, plano de verificação e a comparação P03-11 entre enchimento e esgotamento. | O sentido real, tanques e função de LSL-LL continuam pendentes; LSHH e a resposta a sensor incoerente em marcha não foram decididos. Nenhum teste de CLP ou segurança funcional foi executado. | Aprovar V01 com dados do processo, localizar cada sensor, confirmar reservatório/captação e revisar demanda/parada, LSHH, falhas, I/O e matriz antes de implementar ou ensaiar. |
 | P04 — Nível | Nove folhas cobrem processo, malha, elétrica, interligações, layout, nove eventos causa–efeito, levantamento D01–D07 e o método de balanço NPSHa versus NPSHr. A revisão 05 deixa fonte, fluido, pressão, geometria e critérios sem valores inventados. | Sistema de uma bomba e um tanque com valores assumidos; fonte, vazão/carga, curva OEM, fluido e proteção não estão selecionados. P04-09 explica o método, mas não calcula NPSHa, NPSHr ou margem sem dados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir premissas por levantamento hidráulico e dados OEM; preencher D01–D07 com valores e evidências, verificar unidades e datum, avaliar combinações operacionais reais e aplicar a margem pertinente; completar respostas de processo antes da validação. |
-| P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
+| P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e, em P05-09, dados mais um roteiro verificável para o futuro estudo. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas; P07-10 calcula a pré-carga ideal; P07-11 relaciona o limiar medido, feedback de KMP/KPR, READY e timeout. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico/desligamento seguro e os desenhos não validam resistor, contatores ou circuito real. | Substituir R/C e faixa de tensão por valores e tolerâncias de componentes escolhidos; verificar pulso, repetição, temperatura, falha de contator e critérios de isolamento com requisitos do sistema, simulação transitória e ensaios rastreáveis. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
@@ -224,6 +224,18 @@ de dados continuam `PENDENTE`. O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 
 P05; o validador específico passou em 378 verificações. A validação estrita atual passou
 em 544.721 verificações e o revisor confirmou 99 pranchas, 396 arquivos gráficos e 71
 CSVs. A inspeção visual dos SVGs no navegador continua aguardando autorização.
+
+### Atualização P05-09 — revisão 04
+
+Reformulei o fluxo de cinco etapas para apontar entradas D01-D06, modelo D07, cálculo de
+Icc máximo/mínimo por ponto D08, verificações D09-D11 e fechamento D12. A tabela mantém
+os doze grupos `PENDENTE`. Removi de critérios, memorial, lista de materiais, unifilar e
+coordenação os valores presumidos de 6 kA e Icu de 10 kA; não há fonte nem cálculo que
+os sustente. O AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs, todos com zero erros e zero
+correções; o validador específico passou em 406 verificações. A rasterização independente
+do PDF e o PNG de produção de P05-09 tiveram similaridade 0,984839; o contato das nove
+folhas foi conferido. A validação estrita passou em 652.258 verificações, sem erros ou
+avisos, e a inspeção visual dos SVGs pelo navegador continua aguardando autorização.
 
 ### Atualização P09-10 — revisão 04
 
