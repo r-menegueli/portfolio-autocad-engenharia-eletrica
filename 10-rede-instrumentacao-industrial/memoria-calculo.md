@@ -8,16 +8,20 @@ Para uma faixa linear entre LRV e URV, a conversão usada é:
 EU = LRV + ((I_mA - 4) / 16) × (URV - LRV)
 ```
 
-| Tag | Faixa | 4 mA | 12 mA | 20 mA |
-| --- | --- | ---: | ---: | ---: |
-| TT-101 | 0–150 °C | 0 °C | 75 °C | 150 °C |
-| PT-102 | 0–10 bar(g) | 0 bar(g) | 5 bar(g) | 10 bar(g) |
-| FT-103 | 0–60 m³/h | 0 m³/h | 30 m³/h | 60 m³/h |
-| LT-104 | 0–5 m | 0 m | 2,5 m | 5 m |
+| Tag | Faixa | 4 mA | 8 mA | 12 mA | 16 mA | 20 mA |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| TT-101 | 0–150 °C | 0 °C | 37,5 °C | 75 °C | 112,5 °C | 150 °C |
+| PT-102 | 0–10 bar(g) | 0 bar(g) | 2,5 bar(g) | 5 bar(g) | 7,5 bar(g) | 10 bar(g) |
+| FT-103 | 0–60 m³/h | 0 m³/h | 15 m³/h | 30 m³/h | 45 m³/h | 60 m³/h |
+| LT-104 | 0–5 m | 0 m | 1,25 m | 2,5 m | 3,75 m | 5 m |
 
 O validador verifica 16.001 pontos por instrumento, de 4,000 a 20,000 mA em passos
 de 0,001 mA. Diagnóstico de fio rompido e overrange não foi definido porque depende
 do hardware e da filosofia de alarmes selecionados.
+
+Os cinco pontos de referência estão em `resultados-calculo.csv` e na prancha 08.
+Eles demonstram somente a conversão ideal em 0 %, 25 %, 50 %, 75 % e 100 % da faixa;
+não estabelecem tolerância, resolução, alarmes nem critérios de aceitação do canal.
 
 ## Balanço preliminar de 24 Vcc
 

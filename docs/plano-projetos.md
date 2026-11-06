@@ -281,14 +281,18 @@ SCADA-101; fonte PS1; bornes, cabos, shield, PE e endereçamento documental.
 
 **Pranchas e dados específicos.** Arquitetura da rede; diagrama de instrumentação;
 diagrama de interligação; topologia de comunicação; painel de instrumentação; lista
-de instrumentos; tabelas de I/O, cabos, bornes, rede, alimentação e materiais.
+de instrumentos; matriz causa–efeito; matriz de cinco pontos de escala para cada uma
+das quatro malhas analógicas; tabelas de I/O, cabos, bornes, rede, alimentação e materiais.
 
-**Marco de aceitação.** Seis DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
-tags, canais, cabos, bornes, faixas e endereços; quatro escalas lineares devem ser
-verificadas; alimentação, analógico, digital e comunicação devem permanecer claros.
+**Verificação documental.** Oito DXFs AC1027 e derivados PDF/SVG/PNG devem reconciliar
+tags, canais, cabos, bornes, faixas e endereços; quatro escalas lineares são
+verificadas nos extremos e em três pontos intermediários; alimentação, analógico,
+digital e comunicação devem permanecer claros.
 
-**Situação.** Concluído na revisão 00 em 2026-09-10, com validação específica,
-auditoria dos seis DXFs no AutoCAD e inspeção visual dos 18 derivados aprovadas.
+**Situação.** Revisão 03 em 2026-11-05: oito folhas e vinte pontos de conversão
+analógica. Os pontos são resultados matemáticos das premissas, não calibração ou
+ensaio de bancada. Validação, auditoria CAD e inspeção visual desta revisão estão
+registradas no README e em `inspecao-visual.md` do projeto.
 
 ## Fases e portões de qualidade
 

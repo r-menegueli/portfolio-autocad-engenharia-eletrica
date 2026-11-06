@@ -4,9 +4,9 @@
 
 - Projeto: rede acadêmica de instrumentação industrial
 - Autor: Rogério Eduardo Moreira Menegueli
-- Data: 2026-09-10
-- Revisão: 00
-- Fonte gráfica: seis DXFs AC1027 em A3 paisagem e milímetros
+- Data: 2026-11-05
+- Revisão: 03
+- Fonte gráfica: oito DXFs AC1027 em A3 paisagem e milímetros
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
@@ -46,6 +46,11 @@ materiais. A relação de escala analógica é documentada na
 [memória de cálculo](memoria-calculo.md). A distinção entre energia e informação está
 detalhada na [filosofia de sinais](filosofia-sinais.md). Todas as pranchas apresentam
 autor, data, revisão, número, unidades, legenda, notas e aviso.
+
+A prancha 08 apresenta, para cada um dos quatro transmissores analógicos, os valores
+calculados em 4, 8, 12, 16 e 20 mA conforme a faixa declarada. É uma tabela de
+conversão linear ideal; não representa calibração, tolerância de instrumento nem
+ensaio de malha.
 
 ## Exclusões e segurança
 

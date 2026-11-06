@@ -31,6 +31,7 @@ SHEETS = (
     "05_painel_instrumentacao",
     "06_lista_instrumentos",
     "07_matriz_causa_efeito_sinais",
+    "08_matriz_escala_analogica",
 )
 CAUSE_EFFECT_COLUMNS = ("id", "evento", "deteccao_condicao", "resposta_conceitual", "alarme_indicacao", "retorno_limite")
 REQUIRED_DOCS = (
@@ -116,6 +117,9 @@ def validate_tables(v: Validation, project: Path):
         "cada evento deve manter explícitos os limites de hardware/projeto",
     )
 
+    analog_rows = [row for row in instruments if "4-20" in row["sinal"]]
+    current_points = (4.0, 8.0, 12.0, 16.0, 20.0)
+    v.require(len(results) == len(analog_rows) * len(current_points), "resultados de escala devem conter cinco pontos para cada malha analógica")
     for row in instruments:
         if "4-20" in row["sinal"]:
             lrv, urv = float(row["lrv"]), float(row["urv"])
@@ -124,8 +128,14 @@ def validate_tables(v: Validation, project: Path):
                 current = 4.0 + step / 1000.0
                 value = lrv + ((current - 4.0) / 16.0) * (urv - lrv)
                 v.require(lrv - 1e-9 <= value <= urv + 1e-9, f"escala fora da faixa em {row['tag']} a {current} mA")
-            expected = {4.0: lrv, 12.0: (lrv + urv) / 2.0, 20.0: urv}
-            actual = {float(r["corrente_ma"]): float(r["valor_engenharia"]) for r in results if r["tag"] == row["tag"]}
+            selected = [r for r in results if r["tag"] == row["tag"]]
+            actual = {float(r["corrente_ma"]): float(r["valor_engenharia"]) for r in selected}
+            expected = {
+                current: lrv + ((current - 4.0) / 16.0) * (urv - lrv)
+                for current in current_points
+            }
+            v.require(len(selected) == len(current_points), f"quantidade de pontos de escala divergente em {row['tag']}")
+            v.require(set(actual) == set(current_points), f"correntes de escala divergentes em {row['tag']}")
             for current, value in expected.items():
                 v.require(abs(actual.get(current, 1e99) - value) < 1e-6, f"resultado de escala divergente em {row['tag']} / {current} mA")
         else:
@@ -177,6 +187,9 @@ def validate_dxf(v: Validation, root: Path, project: Path):
         if stem == "07_matriz_causa_efeito_sinais":
             for required in ("MATRIZ CAUSA-EFEITO DE SINAIS", "E01", "E08", "AI-001", "RIO-201", "SCADA-101"):
                 v.require(required in text, f"conteúdo da matriz ausente em {path.name}: {required}")
+        if stem == "08_matriz_escala_analogica":
+            for required in ("MATRIZ DE ESCALA ANALÓGICA", "TT-101", "PT-102", "FT-103", "LT-104", "112,5 °C", "1,25 m", "100 %"):
+                v.require(required in text, f"conteúdo da matriz de escala ausente em {path.name}: {required}")
 
 
 def validate_exports(v: Validation, project: Path):

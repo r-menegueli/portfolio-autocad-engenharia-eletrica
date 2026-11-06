@@ -1,4 +1,4 @@
-"""Gera dados estruturados e sete pranchas DXF do Projeto 10."""
+"""Gera dados estruturados e oito pranchas DXF do Projeto 10."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "10-rede-instrumentacao-industrial"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+REVISION = "03"
 
 
 @dataclass(frozen=True)
@@ -57,6 +57,7 @@ SHEETS = (
     SheetSpec(5, "05_painel_instrumentacao.dxf", "PAINEL DE INSTRUMENTAÇÃO", "Arranjo conceitual 800 x 600 x 250 mm — PI-101", "Layout não define produto, dissipação, grau IP, folgas ou certificação.\\PConfirmar térmica, EMC, segregação, curvatura, torque e acesso antes de execução.", "PS: fonte | QF: proteção | PLC: controlador | SW: switch | X: bornes | BE/PE: barras"),
     SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios, revisados graficamente em 01. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
     SheetSpec(7, "07_matriz_causa_efeito_sinais.dxf", "MATRIZ CAUSA-EFEITO DE SINAIS", "Falhas analógicas, I/O remota, rede, supervisão e 24 Vcc", "Resposta de processo e diagnósticos de fabricante não estão definidos.\\PNão converter canal inválido em variável válida nem presumir comportamento de retorno.", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | SCADA: supervisão"),
+    SheetSpec(8, "08_matriz_escala_analogica.dxf", "MATRIZ DE ESCALA ANALÓGICA", "Quatro malhas 4–20 mA; cinco pontos calculados por faixa", "Valores calculados pela relação linear declarada; não são calibração nem teste de bancada.\\PTolerância, resolução, burden, limites de diagnóstico e critérios de aceitação dependem do hardware e do processo selecionados.", "LRV/URV: limites da faixa | EU: unidade de engenharia | pontos intermediários: 25 %, 50 % e 75 % da faixa"),
 )
 
 
@@ -230,7 +231,7 @@ def add_revision_table(layout):
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.6, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("MATRIZ CAUSA-EFEITO", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("REVISAO DE SINAIS", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.35, "02_TEXTO")
 
 
@@ -383,6 +384,42 @@ def draw_instrument_list(layout):
     centered(layout, "4 mA = LRV | 12 mA = 50 % da faixa | 20 mA = URV | DI = somente 0/1", (205,99), 1.0, "13_NOTAS")
 
 
+def draw_analog_scale_matrix(layout):
+    currents = (4.0, 8.0, 12.0, 16.0, 20.0)
+    rows = []
+
+    def fmt(value):
+        return f"{value:g}".replace(".", ",")
+
+    for tag, _, lrv_text, urv_text, unit, signal, _, _ in INSTRUMENTS:
+        if "4-20" not in signal:
+            continue
+        lrv, urv = float(lrv_text), float(urv_text)
+        values = [lrv + ((current - 4.0) / 16.0) * (urv - lrv) for current in currents]
+        rows.append((tag, f"{fmt(lrv)}–{fmt(urv)} {unit}", *(f"{fmt(value)} {unit}" for value in values)))
+
+    table(
+        layout,
+        27,
+        251,
+        (36, 56, 54, 54, 54, 54, 54),
+        ("TAG", "FAIXA EU", "4 mA", "8 mA", "12 mA", "16 mA", "20 mA"),
+        rows,
+        16.5,
+        1.8,
+    )
+
+    centered(layout, "CORRESPONDÊNCIA RELATIVA DA FAIXA", (210, 160), 1.15, "07_INSTRUMENTACAO")
+    x_positions = (55, 135, 215, 295, 375)
+    y = 137
+    line(layout, (x_positions[0], y), (x_positions[-1], y), "07_INSTRUMENTACAO")
+    for current, percent, x in zip(currents, (0, 25, 50, 75, 100), x_positions):
+        line(layout, (x, y - 4), (x, y + 4), "03_COTAS")
+        layout.add_circle((x, y), 1.6, dxfattribs={"layer": "07_INSTRUMENTACAO"})
+        centered(layout, f"{current:g} mA", (x, 128), 1.4, "02_TEXTO")
+        centered(layout, f"{percent} %", (x, 146), 1.4, "02_TEXTO")
+
+
 def draw_cause_effect(layout):
     headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
     widths = (14, 43, 70, 80, 64, 82)
@@ -391,7 +428,7 @@ def draw_cause_effect(layout):
     centered(layout, "Tempos, limites, alarmes, fail state e acoes de processo dependem dos dispositivos e da analise de risco.", (210,115.5), 1.2, "13_NOTAS")
 
 
-DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect)
+DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect, draw_analog_scale_matrix)
 
 
 def write_csv(path, headers, rows):
@@ -416,13 +453,11 @@ def write_data(project):
     for tag, _, lrv, urv, unit, signal, _, _ in INSTRUMENTS:
         if "4-20" not in signal:
             continue
-        flat.extend(
-            (
-                (tag, "4", f"{float(lrv):.3f}", unit),
-                (tag, "12", f"{(float(lrv) + float(urv)) / 2:.3f}", unit),
-                (tag, "20", f"{float(urv):.3f}", unit),
-            )
-        )
+        lower, upper = float(lrv), float(urv)
+        for current in (4.0, 8.0, 12.0, 16.0, 20.0):
+            fraction = (current - 4.0) / 16.0
+            value = lower + fraction * (upper - lower)
+            flat.append((tag, f"{current:g}", f"{value:.3f}", unit))
     write_csv(project / "resultados-calculo.csv", ("tag","corrente_ma","valor_engenharia","unidade"), flat)
 
 

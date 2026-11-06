@@ -2,10 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 98 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 100 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
+
+Na revisão atual, o revisor confirmou 12 projetos, 100 pranchas, 400 arquivos gráficos
+e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita passou em
+549.703 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -31,7 +35,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico ou desligamento seguro. | Substituir propostas por requisitos rastreados, hardware selecionado, análise de riscos e validação de software/ensaios conforme o escopo real. |
 | P08 — Fotovoltaico | Tem arranjo, circuitos CC/CA, string box e aterramento; P08-07 torna explícita a sensibilidade da energia às premissas HSP/PR e lista dados necessários para estudo local. | Não comprova produtividade, sombreamento, configuração final ou aprovação de conexão. Os extremos mostrados são parâmetros didáticos escolhidos, não climatologia nem faixa de confiança. | Substituir parâmetros genéricos por local e equipamentos selecionados; usar fonte meteorológica, levantamento de sombras e modelo de produção apropriado antes de estimar energia. |
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
-| P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede e matriz de oito eventos de qualidade/falha de sinal. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
+| P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos e conversão de cinco pontos em quatro malhas 4–20 mA. | Tags, faixas e endereços são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
 | P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
 
@@ -67,6 +71,9 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 - Acrescentei P10-07 com oito eventos de qualidade analógica, perda de loop/remotas,
   SCADA, dados obsoletos, falha de 24 Vcc e DI. A matriz registra limites pendentes;
   não atribui diagnóstico, fail state ou ação final ao hardware ainda não selecionado.
+- Acrescentei P10-08 com cinco pontos lineares em cada uma das quatro faixas 4–20 mA.
+  Os valores são cálculos ideais derivados das faixas declaradas; não são calibração,
+  ensaio de bancada ou critérios de aceitação.
 - Alinhei desenhos e simulação QTA nos tempos de referência e corrigi alegações de
   transferências impossíveis, polos e estados sem correspondência.
 - Removi da documentação P11 os resultados PASS e a aprovação implícita do
@@ -190,3 +197,18 @@ quadros inferiores para fora da área da legenda. O validador específico passou
 estrita passou em 544.721 verificações; o revisor confirmou 12 projetos, 99 folhas,
 396 arquivos gráficos, 71 CSVs e similaridade mínima PDF/PNG de 0,984061. A inspeção
 visual dos SVGs no navegador permanece aguardando autorização do usuário.
+
+### Atualização P10-08 — revisão 03
+
+A nova matriz mostra TT-101, PT-102, FT-103 e LT-104 em 4, 8, 12, 16 e 20 mA,
+com valores convertidos nas unidades de engenharia declaradas. A verificação de
+16.001 pontos por malha e a matriz de 20 linhas passaram; os cálculos são lineares e
+ideais, sem alegação de calibração ou ensaio. A fonte e os derivados foram regenerados;
+na inspeção do PNG a 300 dpi, do PDF rasterizado a 150 dpi e do contato das oito folhas,
+os dados, marcadores, notas e carimbo ficaram dentro da moldura sem colisões visíveis.
+O texto da tabela foi ampliado para 1,8 mm após a primeira inspeção. O AcCoreConsole
+2027 abriu e auditou 8/8 DXFs P10; o validador específico passou em 64.309 verificações.
+O portfólio passou em 549.703 verificações estritas, sem erros ou avisos. A revisão
+integrada confirmou 12 projetos, 100 folhas, 400 arquivos gráficos, 71 CSVs e
+similaridade mínima PDF/PNG de 0,984061. A inspeção visual do SVG no navegador segue
+pendente da autorização do usuário.

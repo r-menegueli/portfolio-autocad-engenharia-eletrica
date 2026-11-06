@@ -356,7 +356,7 @@ id = "10-rede-instrumentacao-industrial"
 path = "10-rede-instrumentacao-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1365,6 +1365,17 @@ source = "10-rede-instrumentacao-industrial/fonte/07_matriz_causa_efeito_sinais.
 svg = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.svg"
 pdf = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.pdf"
 png = "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-08-matriz-escala-analogica"
+kind = "sheet"
+title = "Projeto 10 - Matriz de escala analógica"
+source = "10-rede-instrumentacao-industrial/fonte/08_matriz_escala_analogica.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.pdf"
+png = "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.png"
 require_a3 = true
 require_notice = true
 

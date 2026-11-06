@@ -50,3 +50,11 @@ A matriz causa–efeito da revisão 02 é um registro conceitual desses eventos.
 define limites de diagnóstico, timeout, retenção de alarme, fail state ou resposta
 específica de processo sem os modelos selecionados, a estratégia do PLC e a análise
 de risco da aplicação.
+
+## Revisão 03 — pontos de escala analógica
+
+Para as quatro faixas fictícias declaradas, a matriz apresenta os valores ideais em
+4, 8, 12, 16 e 20 mA. Os pontos intermediários correspondem a 25 %, 50 % e 75 % da
+faixa linear. Não há dados de exatidão, resolução ou tolerância dos instrumentos e
+cartões; portanto, os valores não são limites de aceitação, calibração ou evidência
+de comissionamento.

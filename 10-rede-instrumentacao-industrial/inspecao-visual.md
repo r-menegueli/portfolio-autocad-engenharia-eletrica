@@ -1,5 +1,27 @@
 # Inspeção visual — P10
 
+## Revisão 03 — matriz de escala analógica
+
+- Data: 2026-11-05
+- Escopo: oito folhas em DXF AC1027 e derivados PDF, SVG e PNG de produção a 300 dpi.
+- Folhas 01–07: conferidas na composição atual; o histórico detalhado das seis
+  primeiras e da folha 07 está nos registros abaixo.
+- Folha 08: conferida no PNG de produção e em rasterização independente do PDF a
+  150 dpi. A matriz de 4 × 5 pontos, unidades, barra percentual, notas, aviso e
+  carimbo estão dentro da moldura, sem cortes ou colisões visíveis. O texto dos dados
+  foi ampliado para 1,8 mm e os rótulos da barra para 1,4 mm.
+- PDF e PNG: o revisor encontrou similaridade mínima global de 0,984061. O relatório
+  integrado verificou 100 folhas, 400 derivados gráficos e 71 CSVs.
+- AutoCAD: AcCoreConsole 2027 abriu e auditou 8/8 DXFs; isso confirma leitura e
+  integridade do arquivo, não revisão visual nativa nem adequação de engenharia.
+- SVG: estrutura e `viewBox` passaram pela validação automatizada; a abertura e
+  inspeção no navegador continuam aguardando autorização do usuário.
+
+Resultado limitado à apresentação da prancha 08: legível, sem clipping e com
+hierarquia suficiente para localizar cada corrente e valor de engenharia. Os dados
+continuam cálculos lineares ideais; a inspeção não estabelece tolerância, calibração,
+resolução de instrumento nem critério de aceitação.
+
 ## Revisão 02 — matriz de qualidade e falhas de sinal
 
 - Data: 2026-11-05

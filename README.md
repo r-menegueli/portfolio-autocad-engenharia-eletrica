@@ -37,11 +37,11 @@ em [portfolio.toml](portfolio.toml).
 | P07 | Arquitetura de veículo elétrico | tração HV, baixa tensão, CAN, V/f, FOC e matriz de falhas | 9 | [abrir](07-arquitetura-veiculo-eletrico/README.md) |
 | P08 | Sistema fotovoltaico residencial | arranjo FV, proteções CC/CA, aterramento e sensibilidade de energia | 7 | [abrir](08-sistema-fotovoltaico/README.md) |
 | P09 | Fonte de bancada ajustável | conversão, topologia CC/CV, medição, integração mecânica, descarga e perdas térmicas paramétricas | 10 | [abrir](09-fonte-bancada/README.md) |
-| P10 | Rede de instrumentação industrial | 4–20 mA, I/O, Ethernet, cabos, qualidade de sinais e causa–efeito | 7 | [abrir](10-rede-instrumentacao-industrial/README.md) |
+| P10 | Rede de instrumentação industrial | 4–20 mA, escalas lineares, I/O, Ethernet e qualidade de sinais | 8 | [abrir](10-rede-instrumentacao-industrial/README.md) |
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e plano de dados para estudo de aterramento/SPDA | 7 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência e matriz causa–efeito | 8 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **99 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **100 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -135,11 +135,11 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 99 pranchas A3 de P01–P12. A validação estrita passou por 544.721
-verificações, sem erros nem avisos; o revisor confirmou 12 projetos, 99 pranchas,
-396 arquivos gráficos e 71 CSVs, com similaridade mínima PDF/PNG de 0,984061.
-Consulte a [auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md)
-para os limites técnicos e o estado de cada verificação.
+revisão cobre 100 pranchas A3 de P01–P12. A revisão 03 do P10 apresenta cinco pontos
+calculados em cada uma das quatro escalas analógicas e sua representação gráfica; os
+valores não são resultados de calibração ou bancada. Consulte a
+[auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md) para as
+contagens atuais e os limites das verificações.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)

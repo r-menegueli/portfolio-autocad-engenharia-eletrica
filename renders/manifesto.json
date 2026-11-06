@@ -1502,133 +1502,152 @@
     {
       "id": "p10-01-arquitetura-rede",
       "source": "10-rede-instrumentacao-industrial/fonte/01_arquitetura_rede.dxf",
-      "source_sha256": "eba7af095f62480348d0e6a36f810d01c80de08d7aff7cf3ee9e850a96e5364c",
+      "source_sha256": "2aee6f6c56abc6d6f201605406604582df3cdba3868101f854cf7cf5c0cbed94",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.pdf",
-          "sha256": "4c49c14127ce3122a63093399c134691d826a0531977721779c6a75a0d7c00c3"
+          "sha256": "c62a0762ffd28489e418dee41adc26ae9783744cec882c5e4332fc7a2cbd8ccc"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.png",
-          "sha256": "293691219cabe5282bd5ff107620c4a02ab814885d9b8bccd5213ce70d70d673"
+          "sha256": "60268aaf25ee2aae4dc50ae7c2159b0792b469aa811899c49b61c2d1f6b486be"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.svg",
-          "sha256": "82df3ec1c141661cf668095c586177c83a6c4ade7eedc2eb9bab920072e1bc2b"
+          "sha256": "52099d91099058a8c28e85c91e1c26bf8675d408991ce6a7cc4e8c7c36faab60"
         }
       }
     },
     {
       "id": "p10-02-diagrama-instrumentacao",
       "source": "10-rede-instrumentacao-industrial/fonte/02_diagrama_instrumentacao.dxf",
-      "source_sha256": "c1faa4081290b2d9c08b7e2f678ab4660225969b66ef4cbecfb265aee539c219",
+      "source_sha256": "7be2bd110e1c4d97886d0079e8449a51d878ff677644d841b87f3c6c0dcf5d87",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.pdf",
-          "sha256": "3c9c3eb0fda31fdb5a6aec8acb86a0d9fad84c10e620510e30025190b7ab550a"
+          "sha256": "bce58c39262c5add903c631ab9ec7f7dc7b899aef945999808f8b54009297869"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.png",
-          "sha256": "39833bc933a71f7775c40f47fa82b16477fbb59d3efb6815b37fcd85c6ec2bd2"
+          "sha256": "abe5442718795f049a49d9958be336dab3ccd651656bc68683181c6ea19c8147"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.svg",
-          "sha256": "4cdc54bd2b09226b1f63ebd4007bd720cb6eec5565d8be177c5835602e709636"
+          "sha256": "830617be677f66ee3fd3d32ede44d60aa01b155d3a5ceefd97d484ca26058bd0"
         }
       }
     },
     {
       "id": "p10-03-diagrama-interligacao",
       "source": "10-rede-instrumentacao-industrial/fonte/03_diagrama_interligacao.dxf",
-      "source_sha256": "d47d8f68818c91e0633a36b31a235617edbe98904a404f369d5bc5c4fc3cb4cb",
+      "source_sha256": "d3afd92c6ee90335eb85a48db975024915887ab0c411423823f6e1ec5e5add14",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.pdf",
-          "sha256": "3209460d65122b6787711833f67c868c9fcf56d32e9ea946d581711ba0de208c"
+          "sha256": "2ee9023421686a4d579a05343bb29ca36fb7c304907ae34947ce36981bc2436d"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.png",
-          "sha256": "24a1113486ae9b39eca55239251c452c9b77b745f9987cb36b870e049689dd59"
+          "sha256": "f38c9128423a647f93535a1b2df7769da30e4eeef9f28bc16243ac41c0b42e2b"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.svg",
-          "sha256": "547d8dd6d17573c2f177fba14afb117c829e9df52fd2822bc6a3b85e98027ddc"
+          "sha256": "494d0e4088b2b02ff5ea5bc434aed9aa518c0706e8211677c03bca90fb2b3926"
         }
       }
     },
     {
       "id": "p10-04-topologia-comunicacao",
       "source": "10-rede-instrumentacao-industrial/fonte/04_topologia_comunicacao.dxf",
-      "source_sha256": "9d723f14c66c2d568f156cfe772576016f83de7d4b66c2a9ceebe10c604efb99",
+      "source_sha256": "9d1a62718c480d7daa6adcc4b8648a001d8efafbe55160cbe5ca94cb16f19084",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.pdf",
-          "sha256": "1da2972773eb05a1b32d2523187ae0c3cf9ab685be3af0f04c66b6f420240989"
+          "sha256": "ada553574b0cd3fb7a8c29f207c9e2cb0a56bbac342d15695f13405d5d7689c7"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.png",
-          "sha256": "95834b10f59e24d52123eb01e442d70aa37a1919368263bf7b8560145ee0f65e"
+          "sha256": "8f7ecd228f6f1d93be7c498710f4ecf3ef3c0043ddc922b3c5b11504e4ef1103"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.svg",
-          "sha256": "849e52f21adf7e5d53253d3073e516e0c14298829da0f305cc0fdfe8ac22117a"
+          "sha256": "9521f0715860905d5d734814a122ecace34bd4c7ffa4ae4e607df989eb94b29b"
         }
       }
     },
     {
       "id": "p10-05-painel-instrumentacao",
       "source": "10-rede-instrumentacao-industrial/fonte/05_painel_instrumentacao.dxf",
-      "source_sha256": "d18414b3a80dbaf02636813db5a500444712afc63d8168509ef4f594957463c9",
+      "source_sha256": "9a39d60d78baaf0059b95576729c0029e59f27bb5c754c455e219302d2996602",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.pdf",
-          "sha256": "c395064ed0bb198cac687147d602f16c6806567da96dfd597b353440d00e55b0"
+          "sha256": "ad7920da9dafecf9217aaeb99182335cef042e157b9e724eb03a1a59b7e6cffc"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.png",
-          "sha256": "dcea1108cb4d21e9c459f097b694811f13c207d353c916cf1016f0d3e52aa2b0"
+          "sha256": "671ef0d5f55d17f2413a00469bb8f65f39913c4a00389c0d7aebc87820983017"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.svg",
-          "sha256": "06459800d06d35698ad2a8ee3b1a4ea15acd34e427dd8fc98459f46000acd2fa"
+          "sha256": "b97380cc2fd39489e42b0bebb949c5a57c3df997ebf51c91f317175f6e35214f"
         }
       }
     },
     {
       "id": "p10-06-lista-instrumentos",
       "source": "10-rede-instrumentacao-industrial/fonte/06_lista_instrumentos.dxf",
-      "source_sha256": "c4ae8f1cfacbec9e2bc07cda608b5718280c6e498e747835be2d76bcc99dc950",
+      "source_sha256": "c12a94f8850882c3be9c1ad5a08516bec41eb90ae7343ea61f3d5bb0469cf507",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf",
-          "sha256": "d47bce93f5fe157e4425f0cd49eead7bdf412a9fc74bf9b5a332c242d07f5601"
+          "sha256": "55564a44d25b9558adcd3735ff4215cfe4cf3dc1c1d3361f2d3121e16af21b46"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.png",
-          "sha256": "da2bcaeac8eb09cf617e1bdd437d7d19143cd2b1a9761bbdf2110958f7fbdccc"
+          "sha256": "35b98cad40cb1cac7cb5caa2b1ebf3c0d638fb137eae0acdc665a67d1acb0ff5"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.svg",
-          "sha256": "2a379529ed917cc5b0f2b82ce1ddce4fb97658528cd87bd3bde1d10f6f935025"
+          "sha256": "855c8e34af5746838ef33000e5a65748f73a4619c2f83f5a5b920cad395dcff5"
         }
       }
     },
     {
       "id": "p10-07-matriz-causa-efeito-sinais",
       "source": "10-rede-instrumentacao-industrial/fonte/07_matriz_causa_efeito_sinais.dxf",
-      "source_sha256": "3dc43926abb0f0efa47a437e8e9eba1c7abe2087ab5b78809c0e08b668f54d1e",
+      "source_sha256": "547b7840aed17dd6af8128f37dde29e23e1b831b7dcaf4c0f045e12e3b319b5a",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.pdf",
-          "sha256": "ee42435f654395df8037f02e94eb9d49a2c93e7e8fa215a74b700b5b0ef69e34"
+          "sha256": "db89aa7ed30e0724507e724a8a65eb28a2eeae833d06d259babef671a626de8b"
         },
         "png": {
           "path": "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.png",
-          "sha256": "9c484c4d71670328dc79eb2fd1bea8197e2e76bff630ab0749dd53b538b7284a"
+          "sha256": "4b8013c4c9d0cf1a599b64ff28c220023da1eaaa1044bc161867c2409a3c93b0"
         },
         "svg": {
           "path": "10-rede-instrumentacao-industrial/exports/07_matriz_causa_efeito_sinais.svg",
-          "sha256": "5c9d8c40c3bf3cfc67fbddede48c08b36545b540e9838c4be658b589ecf641a2"
+          "sha256": "3a8425c6648a6f246d0f87b2f0f8feb0cade5fb70f9d13f2d66a70893954eea6"
+        }
+      }
+    },
+    {
+      "id": "p10-08-matriz-escala-analogica",
+      "source": "10-rede-instrumentacao-industrial/fonte/08_matriz_escala_analogica.dxf",
+      "source_sha256": "4412f91fcdaad20564b368193b81c3b45a14d91bde8328f74808204f00db442a",
+      "outputs": {
+        "pdf": {
+          "path": "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.pdf",
+          "sha256": "475c80faaf2707861c4f711be3195bfd6e321fcdf948b73bf1a923bba5d86976"
+        },
+        "png": {
+          "path": "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.png",
+          "sha256": "674a71549f40332640816f06f66c500ecb89e1a1ce7c5bc2724c89bbcc2e3291"
+        },
+        "svg": {
+          "path": "10-rede-instrumentacao-industrial/exports/08_matriz_escala_analogica.svg",
+          "sha256": "e961440fe4480473967eaf128ddf834f373083a42be8226b563f34f12c4971b8"
         }
       }
     },
