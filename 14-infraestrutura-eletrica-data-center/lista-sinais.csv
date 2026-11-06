@@ -1,0 +1,7 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+SIG-01,Medidor entrada,QGBT-A/B,Potencia ativa e qualidade de tensao,Valor fasorial energia qualidade e validade,Protocolo a definir,PENDENTE
+SIG-02,GE-A/GE-B,QGBT-A/B,Disponibilidade e alarmes do gerador,Pronto partida falha e carga,Interface OEM,PENDENTE
+SIG-03,UPS-A/UPS-B,supervisao,Estado de operacao e bateria,Modo carga alarme e autonomia calculada,Interface OEM,PENDENTE
+SIG-04,QGBT-A/QGBT-B,supervisao,Estado dos caminhos de alimentacao,Disjuntores transferencias e alarmes,Interface OEM,PENDENTE
+SIG-05,PDU-A/PDU-B,supervisao,Potencia entregue as cargas de TI,Potencia corrente tensao e alarmes,Interface OEM,PENDENTE
+SIG-06,Supervisao,Operacao do data center,Registro de evento e alarme prioritario,Estado e marca temporal,Arquitetura a definir,PENDENTE

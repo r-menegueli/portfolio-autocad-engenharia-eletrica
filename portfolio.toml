@@ -427,6 +427,24 @@ required_files = [
   "fonte/gerar_projeto_13.py",
   "fonte/validar_projeto_13.py",
 ]
+[[projects]]
+id = "14-infraestrutura-eletrica-data-center"
+path = "14-infraestrutura-eletrica-data-center"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-14.json",
+  "fonte/gerar_projeto_14.py",
+  "fonte/validar_projeto_14.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1354,5 +1372,35 @@ source = "13-estacao-recarga-veiculos-eletricos/fonte/03_gestao_dinamica_carga.d
 svg = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.svg"
 pdf = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.pdf"
 png = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p14-01-arquitetura-eletrica-ab"
+kind = "sheet"
+title = "Projeto 14 - Arquitetura eletrica do data center"
+source = "14-infraestrutura-eletrica-data-center/fonte/01_arquitetura_eletrica_ab.dxf"
+svg = "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.svg"
+pdf = "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.pdf"
+png = "14-infraestrutura-eletrica-data-center/exports/01_arquitetura_eletrica_ab.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p14-02-layout-salas-racks"
+kind = "sheet"
+title = "Projeto 14 - Layout conceitual das salas e racks"
+source = "14-infraestrutura-eletrica-data-center/fonte/02_layout_salas_e_racks.dxf"
+svg = "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.svg"
+pdf = "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.pdf"
+png = "14-infraestrutura-eletrica-data-center/exports/02_layout_salas_e_racks.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p14-03-balanco-contingencias"
+kind = "sheet"
+title = "Projeto 14 - Balanco de potencia e contingencias"
+source = "14-infraestrutura-eletrica-data-center/fonte/03_balanco_potencia_contingencias.dxf"
+svg = "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.svg"
+pdf = "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.pdf"
+png = "14-infraestrutura-eletrica-data-center/exports/03_balanco_potencia_contingencias.png"
 require_a3 = true
 require_notice = true

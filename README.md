@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-13 projetos completos de documentação elétrica. O repositório reúne diagramas,
+14 projetos completos de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -28,6 +28,7 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
+| P14 | Infraestrutura elétrica de data center | caminhos A/B, UPS modular N+1, geração, racks dual-cord, balanço e contingências | 3 | [abrir](14-infraestrutura-eletrica-data-center/README.md) |
 | P13 | Estação de recarga de veículos elétricos | implantação, recarga AC/DC, unifilar, medição e gestão dinâmica de potência | 3 | [abrir](13-estacao-recarga-veiculos-eletricos/README.md) |
 | P01 | Painel de motor com inversor | potência, comando, STO, bornes e campo | 6 | [abrir](01-painel-motor-inversor/README.md) |
 | P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas e aterramento | 8 | [abrir](02-projeto-eletrico-residencial/README.md) |
@@ -42,7 +43,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, barramento 500 A e acústica | 6 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **83 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **86 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
@@ -143,7 +144,7 @@ renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
 O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
 layers, dimensões, moldura, elementos fora da folha, textos potencialmente
 sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P10 e P13 acrescentam invariantes técnicos próprios; P01 é coberto
+DWG. Os validadores P02–P10 e P13–P14 acrescentam invariantes técnicos próprios; P01 é coberto
 pelo validador comum e pela auditoria consolidada.
 
 ## Estrutura resumida
