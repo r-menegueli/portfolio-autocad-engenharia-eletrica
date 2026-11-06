@@ -1,4 +1,4 @@
-"""Renderiza apenas os nove artefatos do Projeto 10 para ciclos rápidos de revisão."""
+"""Renderiza apenas os dez artefatos do Projeto 10 para ciclos rápidos de revisão."""
 
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ def main() -> int:
     root = args.root.resolve()
     config = load_config(root)
     artifacts = [item for item in config["artifacts"] if item["id"].startswith("p10-")]
-    if len(artifacts) != 9:
-        raise RuntimeError(f"esperados 9 artefatos P10; encontrados {len(artifacts)}")
+    if len(artifacts) != 10:
+        raise RuntimeError(f"esperados 10 artefatos P10; encontrados {len(artifacts)}")
     command = [
         sys.executable,
         str(root / "scripts" / "renderizar.py"),

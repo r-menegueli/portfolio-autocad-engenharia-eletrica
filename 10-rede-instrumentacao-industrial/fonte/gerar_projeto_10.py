@@ -1,4 +1,4 @@
-"""Gera dados estruturados e nove pranchas DXF do Projeto 10."""
+"""Gera dados estruturados e dez pranchas DXF do Projeto 10."""
 
 from __future__ import annotations
 
@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "10-rede-instrumentacao-industrial"
-PROJECT_DATE = "2026-11-05"
-REVISION = "04"
+PROJECT_DATE = "2026-11-06"
+REVISION = "05"
 
 
 @dataclass(frozen=True)
@@ -50,15 +50,16 @@ class SheetSpec:
 
 
 SHEETS = (
-    SheetSpec(1, "01_arquitetura_rede.dxf", "ARQUITETURA DA REDE", "Supervisão, controle, remotas, instrumentos e distribuição 24 Vcc", "Topologia acadêmica genérica; protocolo, fabricante e disponibilidade não foram selecionados.\\PSeparar alimentação, sinais de campo e comunicação em rotas compatíveis com o estudo de EMC.", "Vermelho: 24 Vcc | Magenta: 4-20 mA | Verde: digital | Laranja: comunicação"),
+    SheetSpec(1, "01_arquitetura_rede.dxf", "ARQUITETURA DA REDE", "Supervisão, controle, remotas, instrumentos e distribuição 24 Vcc", "Topologia acadêmica genérica; protocolo, fabricante e disponibilidade não foram selecionados.\\PSeparar alimentação, sinais de campo e comunicação em rotas compatíveis com o estudo de EMC.\\PFU4 representa a distribuição comum das malhas/sensores em X2:01/02; seleção e coordenação pendentes.", "Vermelho: 24 Vcc | Magenta: 4-20 mA | Verde: digital | Laranja: comunicação"),
     SheetSpec(2, "02_diagrama_instrumentacao.dxf", "DIAGRAMA DE INSTRUMENTAÇÃO", "Quatro malhas analógicas e duas entradas digitais de processo", "Transmissores de dois fios são alimentados pela malha 24 Vcc e entregam 4-20 mA.\\PChaves digitais representam somente estado; não transportam valor contínuo de engenharia.", "TT: temperatura | PT: pressão | FT: vazão | LT/LSH: nível | PSL: pressão"),
-    SheetSpec(3, "03_diagrama_interligacao.dxf", "DIAGRAMA DE INTERLIGAÇÃO", "Cabos, bornes, canais, blindagem e equipotencialização", "Blindagem analógica aterrada apenas em BE-101, no painel; extremidade de campo isolada.\\PPE, 0 V funcional e blindagem têm funções distintas e não devem ser confundidos.", "X2: 24 Vcc | X3: analógicos | X4: digitais | BE-101: barra de blindagem | PE-101: proteção"),
+    SheetSpec(3, "03_diagrama_interligacao.dxf", "DIAGRAMA DE INTERLIGAÇÃO", "Cabos, bornes, canais, blindagem e equipotencialização", "P24-201/202 usam bornes próprios X2:03–06; o detalhamento está em P10-10.\\PBlindagem analógica, 0 V funcional e PE mantêm funções distintas.", "X2:01/02: alimentação de campo | X2:03–06: alimentação das RIO | X3: analógicos | X4: digitais | BE/PE: barras"),
     SheetSpec(4, "04_topologia_comunicacao.dxf", "TOPOLOGIA DE COMUNICAÇÃO", "Ethernet industrial acadêmica em estrela com switch gerenciável", "A comunicação transporta quadros e diagnósticos, não a energia nem o valor 4-20 mA.\\PEndereços são premissas de documentação; VLAN, protocolo e redundância exigem projeto posterior.", "Linha laranja: Ethernet industrial | NET-xxx: identificação do enlace | /24: máscara 255.255.255.0"),
     SheetSpec(5, "05_painel_instrumentacao.dxf", "PAINEL DE INSTRUMENTAÇÃO", "Arranjo conceitual 800 x 600 x 250 mm — PI-101", "Layout não define produto, dissipação, grau IP, folgas ou certificação.\\PConfirmar térmica, EMC, segregação, curvatura, torque e acesso antes de execução.", "PS: fonte | QF: proteção | PLC: controlador | SW: switch | X: bornes | BE/PE: barras"),
     SheetSpec(6, "06_lista_instrumentos.dxf", "LISTA DE INSTRUMENTOS", "Tags, variáveis, faixas, sinais, canais e documentos associados", "Faixas e tags são dados fictícios, revisados graficamente em 01. Aplicar unidades exatamente como indicadas.\\PA relação matemática é EU = LRV + (I-4)/16 x (URV-LRV).", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | EU: unidade de engenharia"),
     SheetSpec(7, "07_matriz_causa_efeito_sinais.dxf", "MATRIZ CAUSA-EFEITO DE SINAIS", "Falhas analógicas, I/O remota, rede, supervisão e 24 Vcc", "Resposta de processo e diagnósticos de fabricante não estão definidos.\\PNão converter canal inválido em variável válida nem presumir comportamento de retorno.", "AI: entrada analógica | DI: entrada digital | RIO: I/O remota | SCADA: supervisão"),
     SheetSpec(8, "08_matriz_escala_analogica.dxf", "MATRIZ DE ESCALA ANALÓGICA", "Quatro malhas 4–20 mA; cinco pontos calculados por faixa", "Valores calculados pela relação linear declarada; não são calibração nem teste de bancada.\\PTolerância, resolução, burden, limites de diagnóstico e critérios de aceitação dependem do hardware e do processo selecionados.", "LRV/URV: limites da faixa | EU: unidade de engenharia | pontos intermediários: 25 %, 50 % e 75 % da faixa"),
     SheetSpec(9, "09_balanco_carga_24vcc.dxf", "BALANÇO DE CARGA 24 VCC", "Consumo previsto e saldo aritmético da fonte proposta PS1", "Correntes são premissas; o desenho não atribui cargas a ramais.\\PA reserva auxiliar de 1,05 A já está incluída no total de 3,10 A.\\PInrush, derating, proteção, curto-circuito e ensaio térmico não foram avaliados.", "I: corrente prevista | P = 24 V × I | saldo = capacidade nominal menos carga total | dados não selecionam fabricante"),
+    SheetSpec(10, "10_interligacao_alimentacoes_remotas.dxf", "ALIMENTAÇÃO DAS REMOTAS", "Interligação 24 Vcc de PS1, bornes X2 e cabos P24-201/202", "FU2/FU3/FU4 são identificadores do estudo; ratings, modelos, queda e proteção final permanecem pendentes.\\P0 V funcional e PE não são intercambiáveis; confirmar tensão e pinagem nos dados do fabricante.", "X2:03/04 → RIO-201 | X2:05/06 → RIO-202 | PE-101: condutor de proteção | seção e ajustes são premissas"),
 )
 
 
@@ -101,8 +102,8 @@ CABLE_ROWS = (
     ("C-104", "LT-104", "RIO-202/AI1", "Sinal analógico 4-20 mA e alimentação de malha", "1x2x0,75 mm² SH", "+/−/SH", "SIM", "48", "E-102", "X3:07/08", "Blindagem em BE-101 no painel"),
     ("C-105", "LSH-105", "RIO-201/DI0", "Entrada digital 24 Vcc", "1x2x0,75 mm²", "DI/0V", "NÃO", "42", "E-101", "X4:01/02", "Tipo elétrico final pendente"),
     ("C-106", "PSL-106", "RIO-202/DI0", "Entrada digital 24 Vcc", "1x2x0,75 mm²", "DI/0V", "NÃO", "35", "E-102", "X4:03/04", "Tipo elétrico final pendente"),
-    ("P24-201", "PI-101", "RIO-201", "Alimentação 24 Vcc", "2x1,5 mm² + PE", "+24V/0V/PE", "NÃO", "50", "E-201", "X2", "Proteção FU2 no painel"),
-    ("P24-202", "PI-101", "RIO-202", "Alimentação 24 Vcc", "2x1,5 mm² + PE", "+24V/0V/PE", "NÃO", "55", "E-202", "X2", "Proteção FU3 no painel"),
+    ("P24-201", "PI-101", "RIO-201", "Alimentação 24 Vcc", "2x1,5 mm² + PE", "+24V/0V/PE", "NÃO", "50", "E-201", "X2:03/04; PE-101", "X2:03/04; PE-101; proteção identificada FU2"),
+    ("P24-202", "PI-101", "RIO-202", "Alimentação 24 Vcc", "2x1,5 mm² + PE", "+24V/0V/PE", "NÃO", "55", "E-202", "X2:05/06; PE-101", "X2:05/06; PE-101; proteção identificada FU3"),
     ("NET-101", "SW-101/P1", "PLC-101", "Comunicação Ethernet industrial", "Ethernet industrial SH", "TX/RX/SH", "SIM", "3", "N-101", "P1", "Terminação conforme fabricante e EMC"),
     ("NET-102", "SW-101/P2", "RIO-201", "Comunicação Ethernet industrial", "Ethernet industrial SH", "TX/RX/SH", "SIM", "50", "N-102", "P2", "Terminação conforme fabricante e EMC"),
     ("NET-103", "SW-101/P3", "RIO-202", "Comunicação Ethernet industrial", "Ethernet industrial SH", "TX/RX/SH", "SIM", "55", "N-103", "P3", "Terminação conforme fabricante e EMC"),
@@ -111,7 +112,9 @@ CABLE_ROWS = (
 
 TERMINAL_ROWS = (
     ("X1:01", "L", "entrada 230 Vca", "QF0:1"), ("X1:02", "N", "entrada 230 Vca", "QF0:2"), ("X1:PE", "PE", "proteção", "PE-101"),
-    ("X2:01", "+24V", "distribuição", "FU1"), ("X2:02", "0V", "retorno funcional", "PS1:-"),
+    ("X2:01", "+24V", "distribuição comum malhas/sensores", "FU4"), ("X2:02", "0V", "retorno funcional malhas/sensores", "PS1:-"),
+    ("X2:03", "+24V", "alimentação protegida RIO-201", "FU2 / P24-201"), ("X2:04", "0V", "retorno RIO-201", "P24-201 / PS1:-"),
+    ("X2:05", "+24V", "alimentação protegida RIO-202", "FU3 / P24-202"), ("X2:06", "0V", "retorno RIO-202", "P24-202 / PS1:-"),
     ("X3:01/02", "TT-101 +/−", "analógico", "RIO-201/AI0"), ("X3:03/04", "PT-102 +/−", "analógico", "RIO-201/AI1"),
     ("X3:05/06", "FT-103 +/−", "analógico", "RIO-202/AI0"), ("X3:07/08", "LT-104 +/−", "analógico", "RIO-202/AI1"),
     ("X4:01/02", "LSH-105", "digital", "RIO-201/DI0"), ("X4:03/04", "PSL-106", "digital", "RIO-202/DI0"),
@@ -143,7 +146,7 @@ MATERIAL_ROWS = (
     ("6", "SCADA-101", "Estação de supervisão", "un", "1", "computador/software não selecionados"),
     ("7", "TT/PT/FT/LT", "Transmissor 2 fios 4-20 mA", "un", "4", "faixas conforme lista"),
     ("8", "LSH/PSL", "Chave de processo 24 Vcc", "un", "2", "contato/sensor final pendente"),
-    ("9", "X1-X4", "Bornes seccionáveis e de passagem", "conj", "1", "dimensionamento conceitual"),
+    ("9", "X1-X4", "Bornes seccionáveis e de passagem", "conj", "1", "X2:01–06; dimensionamento conceitual"),
     ("10", "BE-101/PE-101", "Barras de blindagem e proteção", "conj", "1", "funções distintas"),
 )
 
@@ -235,7 +238,7 @@ def add_revision_table(layout):
     for value, x in (
         (REVISION, 239),
         (PROJECT_DATE, 264),
-        ("BALANCO DE CARGA", 316),
+        ("INTERLIGACAO RIO", 316),
         ("R.E.M.M.", 381),
     ):
         centered(layout, value, (x, 78.5), 1.35, "02_TEXTO")
@@ -294,9 +297,9 @@ def draw_architecture(layout):
         arrow(layout, (x,116), (target,128), "07_INSTRUMENTACAO" if x != 145 else "06_COMANDO", cable, (0,2))
     for x, target, cable in ((335,318,"C-103"),(380,350,"C-104"),(265,305,"C-106")):
         arrow(layout, (x,116), (target,128), "07_INSTRUMENTACAO" if x != 265 else "06_COMANDO", cable, (0,2))
-    add_rect(layout, 270, 195, 397, 254, "05_POTENCIA")
+    add_rect(layout, 270, 190, 397, 254, "05_POTENCIA")
     centered(layout, "PS1 — 24 Vcc / 10 A", (333.5,245), 1.5, "05_POTENCIA")
-    for y, text_value in ((232,"FU1 PLC/SW"),(220,"FU2 RIO-201"),(208,"FU3 RIO-202")):
+    for y, text_value in ((232,"FU1 PLC/SW"),(220,"FU2 RIO-201"),(208,"FU3 RIO-202"),(196,"FU4 X2:01/02 campo")):
         left(layout, text_value, (280,y), 1.0, "05_POTENCIA")
         arrow(layout, (350,y), (385,y), "05_POTENCIA", "+24V/0V", (0,2))
     centered(layout, "ALIMENTAÇÃO ≠ SINAL ANALÓGICO ≠ SINAL DIGITAL ≠ COMUNICAÇÃO", (210,101), 1.25, "13_NOTAS")
@@ -332,7 +335,7 @@ def draw_interconnection(layout):
         ("C-106","PSL-106","1x2","X4:03/04","X2:01","DI0","X2:02","—","RIO-202","digital"),
     ], 11.5, 0.78)
     add_rect(layout, 25, 132, 395, 164, "09_BORNES")
-    for x, tag in ((55,"X2 +24V/0V"),(125,"X3 ANALÓGICOS"),(205,"X4 DIGITAIS"),(285,"BE-101 SHIELD"),(365,"PE-101")):
+    for x, tag in ((55,"X2:01/02 CAMPO"),(125,"X3 ANALÓGICOS"),(205,"X4 DIGITAIS"),(285,"BE-101 SHIELD"),(365,"PE-101")):
         centered(layout, tag, (x,153), 1.0, "09_BORNES")
         layout.add_circle((x,141), 4, dxfattribs={"layer":"09_BORNES"})
     arrow(layout, (285,137), (365,137), "06_COMANDO", "PONTO ÚNICO DEFINIDO", (0,-4))
@@ -493,6 +496,42 @@ def draw_power_budget(layout):
     centered(layout, "Saldo aritmético; não considera inrush, derating, proteção, curto-circuito ou condição térmica.", (210, 112), 1.25, "13_NOTAS")
 
 
+def draw_remote_power_terminals(layout):
+    centered(layout, "BORNEIRA X2 E ALIMENTADORES P24-201 / P24-202", (210, 257), 1.45, "05_POTENCIA")
+    terminal_rows = (
+        ("X2:01", "+24 Vcc", "FU4", "C-101 a C-106", "malhas e sensores", "rating FU4 pendente"),
+        ("X2:02", "0 V", "PS1:-", "C-101 a C-106", "malhas e sensores", "retorno funcional comum"),
+        ("X2:03", "+24 Vcc", "FU2", "P24-201", "RIO-201 +24 V", "rating FU2 pendente"),
+        ("X2:04", "0 V", "PS1:-", "P24-201", "RIO-201 0 V", "retorno dedicado"),
+        ("X2:05", "+24 Vcc", "FU3", "P24-202", "RIO-202 +24 V", "rating FU3 pendente"),
+        ("X2:06", "0 V", "PS1:-", "P24-202", "RIO-202 0 V", "retorno dedicado"),
+        ("PE-101", "PE", "barra PE", "P24-201/202", "carcaças RIO", "proteção; não é retorno"),
+    )
+    table(
+        layout,
+        20,
+        248,
+        (43, 43, 44, 58, 75, 117),
+        ("BORNE", "POTENCIAL", "ORIGEM", "CABO", "DESTINO", "ATRIBUIÇÃO / LIMITE"),
+        terminal_rows,
+        10.5,
+        1.45,
+    )
+
+    centered(layout, "CAMINHO DOS DOIS ALIMENTADORES", (210, 158), 1.35, "12_LEGENDA")
+    for y0, cable, fuse, terminals, remote in (
+        (132, "P24-201", "FU2", "X2:03/04", "RIO-201"),
+        (108, "P24-202", "FU3", "X2:05/06", "RIO-202"),
+    ):
+        component(layout, 26, y0, 98, y0 + 18, f"PS1 / {fuse}", "+24 Vcc e retorno", "05_POTENCIA")
+        component(layout, 123, y0, 205, y0 + 18, terminals, "bornes exclusivos", "09_BORNES")
+        component(layout, 230, y0, 311, y0 + 18, cable, "2x1,5 mm² + PE", "08_CABOS")
+        component(layout, 337, y0, 396, y0 + 18, remote, "alimentação 24 Vcc")
+        arrow(layout, (98, y0 + 9), (123, y0 + 9), "05_POTENCIA")
+        arrow(layout, (205, y0 + 9), (230, y0 + 9), "05_POTENCIA")
+        arrow(layout, (311, y0 + 9), (337, y0 + 9), "05_POTENCIA")
+
+
 def draw_cause_effect(layout):
     headers = ("ID", "EVENTO", "DETECCAO / CONDICAO", "RESPOSTA CONCEITUAL", "ALARME / INDICACAO", "RETORNO / LIMITE")
     widths = (14, 43, 70, 80, 64, 82)
@@ -501,7 +540,7 @@ def draw_cause_effect(layout):
     centered(layout, "Tempos, limites, alarmes, fail state e acoes de processo dependem dos dispositivos e da analise de risco.", (210,115.5), 1.2, "13_NOTAS")
 
 
-DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect, draw_analog_scale_matrix, draw_power_budget)
+DRAWERS = (draw_architecture, draw_instrumentation, draw_interconnection, draw_communication, draw_panel, draw_instrument_list, draw_cause_effect, draw_analog_scale_matrix, draw_power_budget, draw_remote_power_terminals)
 
 
 def write_csv(path, headers, rows):

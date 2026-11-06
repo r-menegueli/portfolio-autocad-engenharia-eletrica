@@ -519,3 +519,15 @@ tabela, carimbo ou aviso. Os SVGs não foram inspecionados em navegador nesta et
 A reconstrução completa do portfólio e a validação estrita passaram por 529.645
 verificações, sem erros nem avisos. O revisor confirmou 12 projetos, 97 pranchas, 388
 arquivos gráficos e 69 CSVs, com similaridade mínima PDF/PNG de 0,984061.
+
+## Revisão 05 do Projeto 10 — 2026-11-06
+
+O AcCoreConsole 2027 abriu e auditou 10/10 DXFs P10. A folha nova P10-10 foi
+renderizada em PDF/SVG/PNG; Poppler `pdftoppm` 26.07.0 rasterizou o PDF
+independentemente a 150 dpi e a inspeção não encontrou cortes ou colisões. O PNG de
+produção a 300 dpi e o contato das dez folhas também foram conferidos. O validador
+específico passou em 64.395 verificações; o estrito passou em 613.579 sem erros ou
+avisos. O revisor integrado confirmou 12 projetos, 105 pranchas, 420 arquivos
+gráficos e 72 CSVs, com similaridade mínima de 0,981493; P10-10 obteve 0,988205.
+Edge/Chrome não foram usados para inspeção visual dos SVGs; essa etapa segue
+aguardando autorização do usuário.

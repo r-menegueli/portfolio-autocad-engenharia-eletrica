@@ -8185,7 +8185,7 @@ AcDbMText
  71
 1
   1
-Blindagem analógica aterrada apenas em BE-101, no painel; extremidade de campo isolada.\PPE, 0 V funcional e blindagem têm funções distintas e não devem ser confundidos.
+P24-201/202 usam bornes próprios X2:03–06; o detalhamento está em P10-10.\PBlindagem analógica, 0 V funcional e PE mantêm funções distintas.
   7
 PORTFOLIO_TEXTO
  44
@@ -8279,7 +8279,7 @@ AcDbMText
  71
 1
   1
-X2: 24 Vcc | X3: analógicos | X4: digitais | BE-101: barra de blindagem | PE-101: proteção
+X2:01/02: alimentação de campo | X2:03–06: alimentação das RIO | X3: analógicos | X4: digitais | BE/PE: barras
   7
 PORTFOLIO_TEXTO
  44
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.35
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  72
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.35
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.35
   1
-BALANCO DE CARGA
+INTERLIGACAO RIO
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  11
@@ -8895,7 +8895,7 @@ AcDbText
  40
 2.25
   1
-03/09
+03/10
   7
 PORTFOLIO_TEXTO
  11
@@ -12113,7 +12113,7 @@ AcDbText
  40
 1.0
   1
-X2 +24V/0V
+X2:01/02 CAMPO
   7
 PORTFOLIO_TEXTO
  72
@@ -20341,7 +20341,7 @@ DictionaryVariables
 280
 0
   1
-03/09
+03/10
   0
 DICTIONARYVAR
   5

@@ -66,3 +66,14 @@ A prancha 09 representa os sete grupos da lista de alimentação. A soma declara
 165,60 W é aritmético, e a reserva auxiliar de 1,05 A já pertence aos 3,10 A
 previstos. Não se deduzem ramais, fusíveis ou margem térmica. Seleção de fabricante,
 inrush, derating, curto-circuito, proteção, continuidade e ensaio continuam pendentes.
+
+## Revisão 05 — interligações e proteção conceitual
+
+P24-201 usa os terminais X2:03/04, protegidos pelo identificador FU2; P24-202 usa
+X2:05/06, identificados por FU3. O condutor PE de ambos é levado a PE-101 e às
+carcaças das remotas. X2:01/02 fornece a distribuição comum de campo, associada ao
+identificador FU4; FU1 fica reservado a PLC/SW no esquema de arquitetura. Esses nomes
+organizam a documentação e não definem rating, curva, capacidade de interrupção,
+seletividade, seção validada ou proteção final. Corrente por ramal, queda de tensão,
+dados de curto-circuito, dados dos dispositivos e instruções do fabricante seguem
+pendentes.

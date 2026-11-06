@@ -1,5 +1,33 @@
 # Inspeção visual — P10
 
+## Revisão 05 — interligação das alimentações remotas
+
+- Data: 2026-11-06.
+- Escopo: dez DXFs AC1027 e derivados PDF, SVG e PNG de produção a 300 dpi.
+- Folha 10: conferida integralmente no PNG de produção a 300 dpi e em rasterização
+  independente do PDF a 150 dpi pelo Poppler 26.07.0. A tabela lista X2:01–06 e
+  PE-101; o fluxo identifica FU2/FU3, P24-201/202 e RIO-201/202. A fonte, os retornos,
+  o PE, as notas, o carimbo, o aviso e as margens estão completos, sem cortes ou
+  colisões visíveis. Ampliei o texto das células para 1,45 mm para melhorar a leitura
+  impressa em A3.
+- Folhas 01 e 03: arquitetura e diagrama de interligação conferidos após a revisão
+  dos circuitos de campo; FU1 permanece separado da distribuição X2:01/02 sob FU4,
+  e a legenda identifica corretamente alimentação de campo.
+- Composição: conferida a folha de contato atual das dez folhas; paginação e
+  carimbos mostram 01/10 a 10/10.
+- AutoCAD: AcCoreConsole 2027 abriu e auditou 10/10 DXFs. A auditoria confirma leitura
+  e integridade dos arquivos, mas não substitui revisão visual nativa nem valida
+  dimensionamento.
+- Validação: P10 passou em 64.395 verificações; o validador estrito do portfólio
+  passou em 613.579 sem erros ou avisos. O revisor confirmou 12 projetos, 105 folhas,
+  420 arquivos gráficos, 72 CSVs e similaridade mínima PDF/PNG de 0,981493.
+- SVG: estrutura e derivados passaram pela revisão automatizada; a abertura e
+  inspeção visual no navegador continuam aguardando autorização do usuário.
+
+Resultado limitado à apresentação e coerência documental. Corrente por ramal,
+ratings, coordenação, queda de tensão, capacidade de interrupção e seleção de
+componentes continuam pendentes; este conjunto segue conceitual.
+
 ## Revisão 04 — balanço de carga 24 Vcc
 
 - Data: 2026-11-05

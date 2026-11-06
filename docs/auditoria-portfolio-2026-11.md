@@ -1,15 +1,15 @@
-# Auditoria do portfólio CAD — 2026-11-05
+# Auditoria do portfólio CAD — 2026-11-06
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 104 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 105 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão atual, o revisor confirmou 12 projetos, 104 pranchas, 416 arquivos gráficos
+Na revisão atual, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos gráficos
 e 72 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em
-606.218 verificações, sem erros ou avisos.
+613.579 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -271,6 +271,21 @@ dez folhas foi inspecionado. O revisor integrado confirmou 12 projetos, 104 folh
 416 arquivos gráficos e 72 CSVs, com similaridade mínima PDF/PNG de 0,981493. Os modelos
 de fabricante, cores dos condutores, dimensionamento, ajustes e validação funcional
 continuam pendentes; a inspeção de SVGs no navegador aguarda autorização.
+
+### Atualização P10-10 — revisão 05
+
+Corrigi a identificação genérica `X2` dos alimentadores P24-201/202 para X2:03/04 e
+X2:05/06 e reconciliei cada cabo com PE-101, a lista de bornes e uma nova prancha de
+interligação. Também separei FU1 (PLC/SW) de FU4 (distribuição comum de campo em
+X2:01/02), removendo a ambiguidade anterior. O validador P10 passou em 64.395
+verificações; o portfólio passou em 613.579 verificações estritas, sem erros ou avisos.
+O revisor confirmou 12 projetos, 105 pranchas, 420 arquivos gráficos e 72 CSVs; a
+similaridade mínima PDF/PNG foi 0,981493 e P10-10 obteve 0,988205. O AcCoreConsole
+2027 auditou 10/10 DXFs P10. A nova folha e as folhas 01/03 foram conferidas na
+produção; P10-10 também foi conferida em rasterização independente do PDF a 150 dpi e
+no contato das dez folhas, sem cortes ou colisões relevantes. Ratings, coordenação,
+dimensionamento e seleção final de proteção seguem pendentes. A inspeção visual dos
+SVGs no navegador continua aguardando autorização.
 
 ### Atualização P12-09 — revisão 03
 

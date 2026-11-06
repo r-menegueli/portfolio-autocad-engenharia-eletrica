@@ -118,6 +118,23 @@ para acompanhamento. Os cinco estão abertos e marcados como draft.
   9/9 do P07 e 7/7 do P08. Simulação elétrica não foi executada. A inspeção visual dos
   SVGs no navegador continua aguardando autorização.
 
+## Atualização CAD — P10 revisão 05, 2026-11-06
+
+- P10 passou de nove para dez folhas. P10-10 registra bornes e rotas de alimentação
+  das remotas RIO-201/RIO-202. X2:01/02 alimenta o trilho comum de campo via FU4;
+  X2:03/04 e X2:05/06 seguem via FU2/FU3 para as remotas. FU1 fica dedicado a PLC/SW.
+- O validador P10 passou em 64.395 verificações; o validador estrito do portfólio
+  passou em 613.579 verificações, ambos sem erros nem avisos.
+- O revisor integrado aprovou 12 projetos, 105 folhas, 420 arquivos gráficos e 72 CSVs;
+  similaridade mínima PDF/PNG de 0,981493; P10-10 obteve 0,988205. O AutoCAD
+  AcCoreConsole 2027 auditou 10/10 DXFs P10.
+- Conferi P10-10 no PNG de produção e em PDF rasterizado independente; revisei também
+  o contato das dez folhas e as pranchas P10-01/P10-03. O teste visual de SVG no
+  navegador segue aguardando autorização.
+- A auditoria de publicação do workspace antes do commit encontrou 662 arquivos,
+  30 commits, 2.070 blobs e 439 links verificados: 0 erros e um aviso histórico de
+  e-mail mascarado no commit base `14c30d95098d`.
+
 ## Limites conhecidos
 
 P08 continua sem previsão local: a grade não deriva de clima nem de um levantamento de

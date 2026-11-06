@@ -357,7 +357,7 @@ id = "10-rede-instrumentacao-industrial"
 path = "10-rede-instrumentacao-industrial"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 9
+sheet_count = 10
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -1411,6 +1411,17 @@ source = "10-rede-instrumentacao-industrial/fonte/09_balanco_carga_24vcc.dxf"
 svg = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.svg"
 pdf = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.pdf"
 png = "10-rede-instrumentacao-industrial/exports/09_balanco_carga_24vcc.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p10-10-alimentacao-remotas"
+kind = "sheet"
+title = "Projeto 10 - Alimentação das remotas"
+source = "10-rede-instrumentacao-industrial/fonte/10_interligacao_alimentacoes_remotas.dxf"
+svg = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.svg"
+pdf = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.pdf"
+png = "10-rede-instrumentacao-industrial/exports/10_interligacao_alimentacoes_remotas.png"
 require_a3 = true
 require_notice = true
 
