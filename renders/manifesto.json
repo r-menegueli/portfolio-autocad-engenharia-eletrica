@@ -2315,6 +2315,63 @@
           "sha256": "c3199776aa49bd7a76c0932cd93a0b7051e0353e3e105571211b5d2096174187"
         }
       }
+    },
+    {
+      "id": "p15-01-unifilar-microrrede",
+      "source": "15-microrrede-industrial-fv-bess-gerador/fonte/01_unifilar_microrrede.dxf",
+      "source_sha256": "36790ba995957a4ef5c7dae54e4bf3574b45c580ba3be1e80c0e6cdbf403bd2e",
+      "outputs": {
+        "pdf": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/01_unifilar_microrrede.pdf",
+          "sha256": "2688f5082687674623c87183d962f9db3fd063690f63bb62cace5934ea1bb062"
+        },
+        "png": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/01_unifilar_microrrede.png",
+          "sha256": "be5c5e52cd27b3beccce88965727b7415ab87313b6f32c6d18282166f6fdcb98"
+        },
+        "svg": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/01_unifilar_microrrede.svg",
+          "sha256": "e2a1a524c3df1a8a7059ff1ecb26d455ccdfeafde9f2550893d269125ea9b1de"
+        }
+      }
+    },
+    {
+      "id": "p15-02-layout-fontes-cargas",
+      "source": "15-microrrede-industrial-fv-bess-gerador/fonte/02_layout_fontes_cargas.dxf",
+      "source_sha256": "ab5c6aeca248b498539aba8b76c1ed45697cbef349d3ee19cb8e78b2945de80b",
+      "outputs": {
+        "pdf": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/02_layout_fontes_cargas.pdf",
+          "sha256": "18559096410dd9436d3937eb89d732909f1e9e380d5c6ccd183be2b2a485768b"
+        },
+        "png": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/02_layout_fontes_cargas.png",
+          "sha256": "9d5c2d139aae578256a1060a71517db68f6a0e019afdd17ce08f0ef4908d0cb1"
+        },
+        "svg": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/02_layout_fontes_cargas.svg",
+          "sha256": "89b56852f2da14289b4fbae7a67243c4546b2f1b06ec62b95c292ab55e44f394"
+        }
+      }
+    },
+    {
+      "id": "p15-03-operacao-balanco",
+      "source": "15-microrrede-industrial-fv-bess-gerador/fonte/03_operacao_balanco_energia.dxf",
+      "source_sha256": "8c3f325efe618171edf3715bf27cae801de7d4225d6ac726fe07799da40175cc",
+      "outputs": {
+        "pdf": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.pdf",
+          "sha256": "d5b00c99b7a4d727ed26d7fb5ea13c5f05ab368212cd867beb2ee134bd4d5ca0"
+        },
+        "png": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.png",
+          "sha256": "9a7532868c87a0ee2e5ac33ff71998d23b59a74cbfc5deadcc8dda47f326b09c"
+        },
+        "svg": {
+          "path": "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.svg",
+          "sha256": "0cef6fe97c893b0b25c801bc193b9e6268edb5e740ac679a386466e7df6ff47c"
+        }
+      }
     }
   ]
 }

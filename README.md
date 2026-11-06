@@ -1,7 +1,7 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
 Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-quatorze estudos conceituais de documentação elétrica. O repositório reúne diagramas,
+quinze estudos conceituais de documentação elétrica. O repositório reúne diagramas,
 plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
 verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
 
@@ -30,6 +30,7 @@ em [portfolio.toml](portfolio.toml).
 | :---: | --- | --- | ---: | :---: |
 | P13 | Estação de recarga de veículos elétricos | implantação, recarga AC/DC, unifilar, medição e gestão dinâmica de potência | 3 | [abrir](13-estacao-recarga-veiculos-eletricos/README.md) |
 | P14 | Infraestrutura elétrica de data center | caminhos A/B, UPS modular N+1, geração, racks dual-cord, balanço e contingências | 3 | [abrir](14-infraestrutura-eletrica-data-center/README.md) |
+| P15 | Microrrede industrial com FV, BESS e gerador | interconexão, balanços em ilha, armazenamento e prioridades de carga | 3 | [abrir](15-microrrede-industrial-fv-bess-gerador/README.md) |
 | P01 | Painel de motor com inversor | potência, comando, STO, bornes, campo, coordenação, verificação e sequência | 9 | [abrir](01-painel-motor-inversor/README.md) |
 | P02 | Projeto elétrico residencial | iluminação, tomadas, proteção, cargas, aterramento e corrente por fase | 10 | [abrir](02-projeto-eletrico-residencial/README.md) |
 | P03 | Painel de automação com CLP | I/O, duas bombas, alternativas enchimento/esgotamento, intertravamentos e verificação | 11 | [abrir](03-painel-automacao-clp/README.md) |
@@ -43,7 +44,7 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT e estudo documental da malha de aterramento/SPDA | 8 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, sequência, matriz causa–efeito e cadastro de cargas essenciais | 9 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **120 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **123 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 

@@ -1,0 +1,11 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+MAT-01,1,un,Posicao de entrada e interconexao de media tensao,PCC-01,Origem tensao protecao e autorizacao pendentes
+MAT-02,1,un,Transformador de 1500 kVA assumido,TR-01,Impedancia ligacao taps resfriamento e protecao pendentes
+MAT-03,1,un,Quadro geral da microrrede em baixa tensao,QGBT-MG,Barramento correntes e dispositivos pendentes
+MAT-04,1,un,Campo e inversor fotovoltaico de 600 kW AC assumidos,FV-01,Arranjo modulos irradiancia e inversores nao selecionados
+MAT-05,1,un,Conversor de armazenamento de 500 kW assumido,BESS-01,Controle formador de rede e operacao pendentes
+MAT-06,1,un,Banco de baterias com 1 MWh nominal assumido,BAT-01,Energia util SOC quimica ventilacao e protecao pendentes
+MAT-07,1,un,Grupo gerador de 500 kW assumido,GE-01,Partida combustivel paralelismo e emissao pendentes
+MAT-08,1,un,Conjunto de cargas prioritarias,CARGA-CRIT,800 kW assumidos; cadastro e caracteristicas pendentes
+MAT-09,1,un,Conjunto de cargas nao prioritarias,CARGA-NCRIT,200 kW assumidos; estrategia de corte pendente
+MAT-10,1,lote,Medicao e controle de energia,MG-CTRL,Protocolos pontos de medicao e funcoes pendentes
