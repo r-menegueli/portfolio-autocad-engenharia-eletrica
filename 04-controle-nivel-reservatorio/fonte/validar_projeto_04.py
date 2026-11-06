@@ -19,6 +19,7 @@ SHEETS = (
     "05_interligacoes_instrumentos.dxf",
     "06_layout_sistema.dxf",
     "07_sequencia_operacao_causa_efeito.dxf",
+    "08_fronteira_succao_dados_fonte.dxf",
 )
 REQUIRED_INSTRUMENTS = {
     "LT-101", "LSL-101", "LSH-101", "LSHH-101", "LIC-101",
@@ -65,6 +66,29 @@ def validate(root: Path) -> dict:
     terminal_rows = read_rows(project / "lista-bornes.csv")
     material_rows = read_rows(project / "lista-materiais.csv")
     effect_rows = read_rows(project / "matriz-causa-efeito.csv")
+    source_rows = read_rows(project / "dados-fonte-succao.csv")
+
+    expected_source_ids = {f"D{index:02d}" for index in range(1, 6)}
+    source_ids = {row["id"] for row in source_rows}
+    checks += len(expected_source_ids) + 6
+    if source_ids != expected_source_ids or len(source_rows) != len(expected_source_ids):
+        errors.append("O levantamento de fonte deve conter exatamente D01 a D05.")
+    if any(row["status"] != "PENDENTE" for row in source_rows):
+        errors.append("Os cinco grupos de dados da fonte devem permanecer PENDENTE até levantamento.")
+    if any(not row["fonte_evidencia"] or not row["observacoes"] for row in source_rows):
+        errors.append("Cada dado de fonte deve indicar evidência e motivo da pendência.")
+    if any(not row["unidade_referencia"].strip() for row in source_rows):
+        errors.append("Cada dado de fonte deve indicar unidade ou referência aplicável.")
+    if any(row["valor_registrado"].strip() for row in source_rows):
+        errors.append("Não registrar valores da fonte antes do levantamento aprovado.")
+    source_by_id = {row["id"]: row for row in source_rows}
+    if any(
+        "unidade" not in source_by_id.get(identifier, {}).get("dado_requerido", "").casefold()
+        for identifier in ("D02", "D03", "D04")
+    ):
+        errors.append("D02–D04 devem solicitar o registro das unidades de engenharia.")
+    if "datum" not in source_by_id.get("D03", {}).get("unidade_referencia", "").casefold():
+        errors.append("D03 deve solicitar a referência vertical (datum) das cotas.")
 
     expected_events = {f"E{index:02d}" for index in range(1, 10)}
     effect_ids = {row["id"] for row in effect_rows}
@@ -182,7 +206,7 @@ def validate(root: Path) -> dict:
         metadata = doc.ezdxf_metadata()
         if metadata.get("PORTFOLIO_PROJECT") != PROJECT_SLUG:
             errors.append(f"{filename}: metadado de projeto incorreto.")
-        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/07":
+        if metadata.get("PORTFOLIO_SHEET") != f"{index:02d}/{len(SHEETS):02d}":
             errors.append(f"{filename}: metadado de prancha incorreto.")
         sheet_text = extract_text(doc)
         all_dxf_text.append(sheet_text)
@@ -214,6 +238,17 @@ def validate(root: Path) -> dict:
             for term in required_sequence_terms:
                 if term.casefold() not in normalized_sheet:
                     errors.append(f"{filename}: texto funcional ausente: {term}.")
+        if index == 8:
+            required_source_terms = (
+                "fronteira de sucção", "fonte a montante", "p-101", "tk-101",
+                "nível ou pressão", "npshr", "escorva", "proteção", "v01",
+                "d01", "d02", "d03", "d04", "d05", "pendente", "unidades", "datum",
+            )
+            normalized_sheet = sheet_text.casefold()
+            checks += len(required_source_terms)
+            for term in required_source_terms:
+                if term.casefold() not in normalized_sheet:
+                    errors.append(f"{filename}: levantamento da fonte não documenta: {term}.")
 
     merged = " ".join(all_dxf_text).casefold()
     for tag in ("tk-101", "p-101", "m-101", "lt-101", "lsl-101", "lsh-101", "lshh-101", "plc-101", "vfd-101", "lic-101"):
@@ -237,6 +272,7 @@ def validate(root: Path) -> dict:
             "terminals": len(terminal_rows),
             "cables": len(cable_rows),
             "materials": len(material_rows),
+            "source_data_items": len(source_rows),
             "safety_truth_table_rows": truth_rows,
             "setpoint_percent": 60,
             "pid_initial": {"kc": 0.8, "ti_s": 120, "td_s": 0},

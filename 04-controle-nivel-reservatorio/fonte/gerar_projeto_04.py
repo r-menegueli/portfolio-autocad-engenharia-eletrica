@@ -1,4 +1,4 @@
-"""Gera as sete pranchas DXF do Projeto 04 de forma determinística."""
+"""Gera as oito pranchas DXF do Projeto 04 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "04-controle-nivel-reservatorio"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -114,6 +114,24 @@ SHEETS = (
         "Sem classificação SIL/PL. Retenção após falta de energia depende do PLC selecionado.",
         "PV/SP: nível/setpoint | LA-L/LA-H: alarmes em 15%/85% | ACK: reconhecimento/rearme | LSHH: alto-alto",
     ),
+    SheetSpec(
+        8,
+        "08_fronteira_succao_dados_fonte.dxf",
+        "FRONTEIRA DE SUCÇÃO E DADOS DA FONTE",
+        "Origem a montante de P-101 pendente — levantamento para revisar a hidráulica",
+        "Nenhuma fonte, equipamento de sucção ou bomba comercial foi selecionado.\\P"
+        "Os cinco grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.",
+        "V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | proteção de sucção: posição e ação pendentes",
+    ),
+)
+
+
+SOURCE_DATA = (
+    ("D01", "FONTE", "Tag, tipo, localização, limite de propriedade e responsável", "Cadastro de processo e levantamento de campo", "Identificação cadastral", "PENDENTE", "Nenhuma fonte foi selecionada"),
+    ("D02", "REGIME", "Nível/pressão mínimo, nominal e máximo; registrar unidade e referência", "Tendências e registros operacionais", "Unidade da variável; datum se nível", "PENDENTE", "Faixa e unidade operacional não recebidas"),
+    ("D03", "SUCÇÃO", "Material, diâmetro interno, comprimentos e cotas com unidades/datum", "Projeto hidráulico e cadastro as-built", "mm, m e datum definido", "PENDENTE", "Geometria, unidades e datum não levantados"),
+    ("D04", "BOMBA", "Curvas Q-H/NPSHr por frequência, vazão mínima e escorva; unidades OEM", "Folha de dados e manual do fabricante", "Unidades OEM e frequência em Hz", "PENDENTE", "P-101 genérica; curvas e unidades OEM não recebidas"),
+    ("D05", "PROTEÇÃO", "Necessidade, localização e ação para fonte baixa ou perda de sucção", "Análise de processo e revisão de risco", "Critério aprovado na análise de risco", "PENDENTE", "Não há chave de sucção selecionada"),
 )
 
 
@@ -223,7 +241,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRIÇÃO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ORIGEM A MONTANTE NÃO ESPECIFICADA", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("LEVANTAMENTO DA FONTE", 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.62, "02_TEXTO")
 
 
@@ -245,7 +263,7 @@ def add_title_block(layout, spec: SheetSpec, config: dict) -> None:
         "AUTOR": config["portfolio"]["author"],
         "DATA": PROJECT_DATE,
         "REVISAO": REVISION,
-        "PRANCHA": f"{spec.number:02d}/07",
+        "PRANCHA": f"{spec.number:02d}/{len(SHEETS):02d}",
         "ARQUIVO": spec.filename,
         "UNIDADES": "mm",
         "ESCALA": "S/ESC.",
@@ -261,7 +279,7 @@ def create_sheet(config: dict, spec: SheetSpec):
     doc = configure_document(config, limits=(geometry.width, geometry.height))
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = PROJECT_SLUG
-    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/07"
+    metadata["PORTFOLIO_SHEET"] = f"{spec.number:02d}/{len(SHEETS):02d}"
     define_title_block(doc)
     define_symbols(doc)
     layout = doc.modelspace()
@@ -539,6 +557,62 @@ def draw_operating_sequence(layout) -> None:
     draw_cause_effect_table(layout)
 
 
+def draw_source_boundary(layout) -> None:
+    centered(layout, "FRONTEIRA DO PROCESSO — FONTE NÃO SELECIONADA", (210, 258), 1.7, "13_NOTAS")
+
+    stages = (
+        (18.0, 132.0, "FONTE A MONTANTE", ("Tag / tipo / local: pendentes", "Nível ou pressão: faixa pendente", "Limite externo do estudo")),
+        (158.0, 260.0, "P-101 / M-101", ("4 kW (premissa)", "VFD: 20–60 Hz (premissa)", "Curva OEM / NPSHr: pendentes")),
+        (286.0, 402.0, "TK-101", ("10 m³ (premissa)", "15 / 85 / 95% (premissas)", "Saída para consumo variável")),
+    )
+    for x0, x1, title, details in stages:
+        add_rect(layout, x0, 216, x1, 250, "04_EQUIPAMENTOS")
+        centered(layout, title, ((x0 + x1) / 2, 243), 1.65, "04_EQUIPAMENTOS")
+        for index, detail in enumerate(details):
+            centered(layout, detail, ((x0 + x1) / 2, 235 - index * 7), 1.3, "02_TEXTO")
+    arrow(layout, (132, 232), (158, 232), "05_POTENCIA")
+    arrow(layout, (260, 232), (286, 232), "05_POTENCIA")
+
+    centered(
+        layout,
+        "RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D05.",
+        (210, 203),
+        1.35,
+        "13_NOTAS",
+    )
+
+    x0, x1, top = 18.0, 402.0, 192.0
+    columns = (x0, 43.0, 174.0, 278.0, 354.0, x1)
+    header_h, row_h = 9.0, 10.4
+    bottom = top - header_h - len(SOURCE_DATA) * row_h
+    add_rect(layout, x0, bottom, x1, top, "09_BORNES")
+    line(layout, (x0, top - header_h), (x1, top - header_h), "09_BORNES")
+    for x in columns[1:-1]:
+        line(layout, (x, bottom), (x, top), "09_BORNES")
+    headers = ("ID", "GRUPO / DADO A CONFIRMAR", "FONTE DE EVIDÊNCIA", "UNIDADE / REFERÊNCIA", "STATUS")
+    for index, value in enumerate(headers):
+        centered(layout, value, ((columns[index] + columns[index + 1]) / 2, top - header_h / 2), 1.25, "12_LEGENDA")
+    for row_index, row in enumerate(SOURCE_DATA):
+        row_top = top - header_h - row_index * row_h
+        if row_index:
+            line(layout, (x0, row_top), (x1, row_top), "09_BORNES")
+        center_y = row_top - row_h / 2
+        values = (row[0], f"{row[1]} — {row[2]}", row[3], row[4], row[5])
+        for col_index, value in enumerate(values):
+            layer = "13_NOTAS" if col_index == 4 else "02_TEXTO"
+            height = 1.2 if col_index == 1 else 1.25
+            centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), height, layer)
+
+    add_rect(layout, 18, 101, 402, 116, "13_NOTAS")
+    centered(
+        layout,
+        "V01: obter D01–D05 e revisar a hidráulica; registrar unidades, datum e evidências antes de selecionar P-101 ou proteção.",
+        (210, 108.5),
+        1.45,
+        "13_NOTAS",
+    )
+
+
 DRAWERS = {
     1: draw_process,
     2: draw_pid,
@@ -547,6 +621,7 @@ DRAWERS = {
     5: draw_interconnections,
     6: draw_layout,
     7: draw_operating_sequence,
+    8: draw_source_boundary,
 }
 
 
@@ -556,6 +631,15 @@ def write_matrix_csv(project_dir: Path) -> Path:
         writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(("id", "evento", "deteccao", "acao_conceitual", "alarme_memoria", "retorno"))
         writer.writerows(CAUSE_EFFECTS)
+    return path
+
+
+def write_source_data_csv(project_dir: Path) -> Path:
+    path = project_dir / "dados-fonte-succao.csv"
+    with path.open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(("id", "grupo", "dado_requerido", "fonte_evidencia", "unidade_referencia", "status", "valor_registrado", "observacoes"))
+        writer.writerows((*row[:6], "", row[6]) for row in SOURCE_DATA)
     return path
 
 
@@ -576,6 +660,9 @@ def generate(root: Path) -> list[Path]:
     matrix = write_matrix_csv(root / PROJECT_SLUG)
     outputs.append(matrix)
     print(f"Gerado: {matrix.relative_to(root)}")
+    source_data = write_source_data_csv(root / PROJECT_SLUG)
+    outputs.append(source_data)
+    print(f"Gerado: {source_data.relative_to(root)}")
     return outputs
 
 

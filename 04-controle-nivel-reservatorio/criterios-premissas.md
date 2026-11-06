@@ -2,7 +2,7 @@
 
 Autor: Rogério Eduardo Moreira Menegueli
 
-Revisão: 00
+Revisão: 01
 
 ## Premissas de processo
 
@@ -11,6 +11,7 @@ Revisão: 00
 - LSL-101 em 15%, LSH-101 em 85% e LSHH-101 em 95%.
 - Uma bomba P-101 com motor M-101 de 4 kW, 220 V trifásico.
 - A origem de água e o equipamento a montante de P-101 não estão definidos; o fluxograma os representa apenas como limite externo. Tipo, diâmetro e pressão de HV-102 também dependem do projeto hidráulico.
+- A prancha P04-08 organiza D01–D05 para levantar fonte, regime, tubulação de sucção, curva da bomba e eventual proteção de sucção. Nenhum valor ou equipamento foi selecionado; todos os grupos permanecem PENDENTE.
 - VFD-101 com faixa comandada de 20 a 60 Hz e rampa máxima proposta de 1 Hz/s.
 - Vazão de consumo variável como perturbação dominante.
 

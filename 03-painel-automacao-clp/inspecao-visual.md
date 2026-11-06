@@ -76,8 +76,8 @@ entidades fora da moldura, clipping ou dimensões incompatíveis.
   moldura, sem cortes ou colisões visíveis. Similaridade PDF/PNG: 0,987946.
 - O contato atualizado das onze folhas foi inspecionado. O AcCoreConsole 2027 abriu e
   auditou 11/11 fontes DXF; o validador lógico passou em 246 verificações. A revisão
-  estrita integrada passou em 641.852 verificações, sem erros ou avisos; o revisor
-  confirmou 109 pranchas, 436 derivados gráficos e similaridade mínima de 0,981493.
+  estrita integrada passou em 646.736 verificações, sem erros ou avisos; o revisor
+  confirmou 110 pranchas, 440 derivados gráficos e similaridade mínima de 0,981493.
 - Nenhum processo foi escolhido pela comparação: V01, posição/função dos sensores,
   LSHH e a resposta a sensor incoerente continuam pendentes. A inspeção de SVGs no
   navegador segue aguardando autorização do usuário.

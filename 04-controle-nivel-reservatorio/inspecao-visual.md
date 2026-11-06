@@ -2,17 +2,25 @@
 
 Data: 2026-11-06
 
-Revisão gráfica: 03
+Revisão gráfica vigente: 04
 
-Escopo: sete pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
+Escopo vigente: oito pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
 
-## Métodos e resultado
+## Revisão gráfica 04
 
-- AcCoreConsole 2027 abriu e auditou as sete fontes DXF atuais. O validador funcional passou em 228 verificações, sem erros.
+- O AcCoreConsole 2027 abriu e auditou as oito fontes DXF. O validador funcional passou em 259 verificações, sem erros.
+- Conferi P04-08 no PNG de produção a 300 dpi, em PDF rasterizado independentemente pelo Poppler a 150 dpi e no contato das oito folhas. A fronteira fonte–bomba–TK-101, os cinco grupos D01–D05, os status PENDENTE, o aviso de risco, a V01 e o carimbo cabem sem cortes ou colisões visíveis.
+- O revisor integrado confirmou similaridade PDF/PNG de 0,99014 para P04-08 e 0,981493 como mínimo global. A revisão estrita passou em 646.736 verificações, sem erros ou avisos.
+- O CSV contém os mesmos cinco grupos, com coluna separada para unidade/referência, evidência solicitada e `valor_registrado` vazio. D02–D04 pedem unidades e D03 pede datum; ainda não há fonte, bomba ou proteção especificadas.
+- A inspeção visual dos SVGs no navegador aguarda autorização do usuário.
+
+## Revisão gráfica 03 — registro histórico
+
+- Na revisão 03, o AcCoreConsole 2027 abriu e auditou as sete fontes DXF então vigentes. O validador funcional passou em 228 verificações, sem erros.
 - Examinei P04-01 em PNG integral e PDF rasterizado pelo Poppler a 150 dpi. A linha entra de uma origem externa não especificada, há apenas um equipamento TK-101 e HV-102 está identificada como válvula manual. Legenda, notas e carimbo cabem na folha.
 - Examinei P04-02 no PNG integral. Instrumentos, tags, níveis e sinais estão identificados; a folha continua conceitual, sem fabricantes, conexão hidráulica definida nem dados executivos.
 - Examinei P04-07 em PDF rasterizado a 150 dpi e no contato atualizado das sete folhas. Aumentei o texto da matriz causa–efeito de 1,1 mm para 1,35 mm e os cabeçalhos de 1,2 mm para 1,4 mm. Os nove eventos e as cinco etapas seguem sem cortes ou sobreposição.
-- Revisei o contato das sete folhas atuais. P04-03 a P04-06 têm composição clara no conjunto; dimensões, relações de campo e conexões seguem como premissas.
+- Revisei o contato das sete folhas da revisão 03. P04-03 a P04-06 têm composição clara no conjunto; dimensões, relações de campo e conexões seguem como premissas.
 - O revisor integrado compara PDFs e PNGs e aceita os SVGs estruturalmente. A inspeção dos SVGs no navegador aguarda autorização do usuário.
 - A planilha técnica preservou suas seis abas; HV-102 aparece no cadastro de materiais e o resumo calcula 18 itens. O revisor de workbooks não encontrou erros de fórmula.
 
@@ -27,6 +35,7 @@ Escopo: sete pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
 | 05 — Interligações | Contato atualizado | Separa sinais analógicos e discretos. Bitolas, comprimentos, polaridade e terminação aguardam especificação dos componentes e levantamento. |
 | 06 — Layout | Contato atualizado | O espaço de 12 m × 7 m é indicativo. Não foi feito levantamento do local; acesso, NPSH, drenagem e rotas continuam a verificar. |
 | 07 — Sequência e causa–efeito | PDF a 150 dpi e contato | A tipografia da matriz foi aumentada e as nove linhas cabem. As ações para LA-L/LA-H e a retenção de alarmes após falta de energia continuam pendentes de definição. |
+| 08 — Fronteira de sucção | PNG integral, PDF a 150 dpi e contato da revisão 04 | Os cinco grupos D01–D05 estão legíveis e permanecem PENDENTE. A folha solicita unidades e datum, mas ainda não registra valores nem dimensiona a hidráulica. |
 
 ## Limites da revisão
 

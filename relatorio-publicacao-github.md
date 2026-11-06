@@ -215,3 +215,17 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
   integrou 12 projetos, 108 folhas, 432 arquivos gráficos e 74 CSVs; similaridade
   mínima PDF/PNG: 0,981493. A inspeção de SVGs no navegador continua aguardando
   autorização.
+
+## Atualização CAD — P04 revisão 04, 2026-11-06
+
+- P04 passou de sete para oito folhas. P04-08 lista cinco grupos D01–D05 para levantar
+  a fonte, a faixa de operação, a geometria da sucção, as curvas Q-H/NPSHr e a
+  necessidade de proteção. Os campos permanecem sem valor; nenhuma solução hidráulica
+  foi selecionada.
+- O validador P04 passou em 260 verificações; o AcCoreConsole 2027 auditou 8/8 DXFs.
+  P04-08 foi conferida no PNG de produção, em PDF rasterizado independentemente a
+  150 dpi e no contato das oito folhas; similaridade PDF/PNG: 0,99014.
+- A revisão estrita passou em 646.736 verificações, sem erros ou avisos. O revisor
+  integrado confirmou 12 projetos, 110 folhas, 440 arquivos gráficos e 75 CSVs; a
+  similaridade mínima PDF/PNG foi 0,981493. A inspeção de SVGs no navegador aguarda
+  autorização.

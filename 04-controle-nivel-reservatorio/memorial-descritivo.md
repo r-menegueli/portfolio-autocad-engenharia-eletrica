@@ -4,7 +4,7 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Projeto: 04 — Controle de nível de reservatório
 
-Revisão: 00
+Revisão: 01
 
 ## Objeto
 
@@ -13,6 +13,8 @@ O sistema conceitual mantém o nível de TK-101 em torno de 60% por meio da bomb
 ## Processo e controle
 
 A variável controlada é o nível de TK-101. A variável manipulada é a referência de frequência de VFD-101, enviada por saída analógica de 4–20 mA. A vazão de consumo na saída do reservatório é a perturbação principal; pressão da fonte e curva da bomba são perturbações secundárias. A origem e o equipamento de sucção a montante de P-101 não foram especificados e aparecem apenas como limite externo no fluxograma. HV-102 é uma válvula manual conceitual na saída; seleção, diâmetro e classe de pressão estão pendentes do projeto hidráulico.
+
+A prancha 08 e `dados-fonte-succao.csv` registram cinco grupos de dados D01–D05 necessários para fechar a fronteira de sucção. A fonte, seu regime mínimo/nominal/máximo, a tubulação, a curva OEM de P-101 e a ação de eventual proteção continuam pendentes. A folha é um instrumento de levantamento, não uma seleção de equipamentos nem um cálculo hidráulico.
 
 O controlador LIC-101 é implementado no PLC-101. Em automático, a ação aumenta a frequência quando o nível fica abaixo do setpoint e reduz a frequência quando o nível sobe. O algoritmo inicial é PI, com anti-windup, transferência manual/automático sem salto e limitação de 20 a 60 Hz enquanto a bomba estiver habilitada.
 

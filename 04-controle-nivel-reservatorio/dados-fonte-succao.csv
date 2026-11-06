@@ -1,0 +1,6 @@
+﻿id,grupo,dado_requerido,fonte_evidencia,unidade_referencia,status,valor_registrado,observacoes
+D01,FONTE,"Tag, tipo, localização, limite de propriedade e responsável",Cadastro de processo e levantamento de campo,Identificação cadastral,PENDENTE,,Nenhuma fonte foi selecionada
+D02,REGIME,"Nível/pressão mínimo, nominal e máximo; registrar unidade e referência",Tendências e registros operacionais,Unidade da variável; datum se nível,PENDENTE,,Faixa e unidade operacional não recebidas
+D03,SUCÇÃO,"Material, diâmetro interno, comprimentos e cotas com unidades/datum",Projeto hidráulico e cadastro as-built,"mm, m e datum definido",PENDENTE,,"Geometria, unidades e datum não levantados"
+D04,BOMBA,"Curvas Q-H/NPSHr por frequência, vazão mínima e escorva; unidades OEM",Folha de dados e manual do fabricante,Unidades OEM e frequência em Hz,PENDENTE,,P-101 genérica; curvas e unidades OEM não recebidas
+D05,PROTEÇÃO,"Necessidade, localização e ação para fonte baixa ou perda de sucção",Análise de processo e revisão de risco,Critério aprovado na análise de risco,PENDENTE,,Não há chave de sucção selecionada

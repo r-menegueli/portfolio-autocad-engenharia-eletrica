@@ -194,7 +194,7 @@ id = "04-controle-nivel-reservatorio"
 path = "04-controle-nivel-reservatorio"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 7
+sheet_count = 8
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -210,6 +210,7 @@ required_files = [
   "lista-cabos.csv",
   "lista-materiais.csv",
   "matriz-causa-efeito.csv",
+  "dados-fonte-succao.csv",
   "tabelas-projeto-04.xlsx",
   "fonte/gerar_projeto_04.py",
   "fonte/validar_projeto_04.py",
@@ -830,6 +831,17 @@ source = "04-controle-nivel-reservatorio/fonte/07_sequencia_operacao_causa_efeit
 svg = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.svg"
 pdf = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.pdf"
 png = "04-controle-nivel-reservatorio/exports/07_sequencia_operacao_causa_efeito.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-08-fronteira-succao-dados-fonte"
+kind = "sheet"
+title = "Projeto 04 - Fronteira de sucção e dados da fonte"
+source = "04-controle-nivel-reservatorio/fonte/08_fronteira_succao_dados_fonte.dxf"
+svg = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.svg"
+pdf = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.pdf"
+png = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.png"
 require_a3 = true
 require_notice = true
 
