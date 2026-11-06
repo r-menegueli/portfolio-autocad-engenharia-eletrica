@@ -1,0 +1,10 @@
+etapa,estado,precondicao_ou_evento,resposta_ou_evidencia,status
+00,ISOLADO,Sem conexao; CBs HVSC em estado seguro definido pelo procedimento,Confirmar fronteira de responsabilidade e estado eletrico,NAO EXECUTADO
+01,COMPATIBILIDADE,Perfil do navio e disponibilidade do terminal,Verificar tensao frequencia capacidade e requisitos da interface,A VALIDAR
+02,PREPARACAO,Autorizacao operacional e area controlada,Inspecionar ponto cabo e conector conforme procedimento aprovado,NAO EXECUTADO
+03,CONEXAO MECANICA,Posicao e compatibilidade verificadas,Executar acoplamento conforme sequencia do fabricante e do padrao,A VALIDAR
+04,PERMISSIVOS,Retornos de estado e interfaces disponiveis,Verificar aterramento circuito de seguranca e dados funcionais sem inferir conformidade,A VALIDAR
+05,VERIFICACAO ELETRICA,Grandezas e condicoes da embarcacao conhecidas,Confirmar parametros e intertravamentos no procedimento aprovado,A VALIDAR
+06,TRANSFERENCIA,Autorizacoes e permissivos requeridos confirmados,Executar manobra conforme procedimento coordenado navio/porto,NAO EXECUTADO
+TRIP,ABERTURA DE SEGURANCA,Abertura do circuito de seguranca,Comandar abertura coordenada dos CBs de terra e do navio; requisito temporal na IEC/IEEE 80005-1,A VALIDAR
+99,DESCONEXAO,Retorno a condicao autorizada para desconexao,Desenergizar e desconectar conforme procedimento e responsabilidades aprovados,NAO EXECUTADO

@@ -1,0 +1,5 @@
+caso,potencia_aparente_mva,tensao_linha_kv,corrente_calculada_a,base
+Demanda no PCC do porto,3.2,13.8,133.9,"I=S/(sqrt(3)*Vlinha); sistema trifasico equilibrado hipotetico"
+Demanda no ponto HVSC,3.2,6.6,279.9,"I=S/(sqrt(3)*Vlinha); sistema trifasico equilibrado hipotetico"
+Corrente nominal aritmetica de TR-01,4.0,13.8,167.3,"I=S/(sqrt(3)*Vlinha); nao seleciona protecao"
+Corrente nominal aritmetica de TR-01,4.0,6.6,349.9,"I=S/(sqrt(3)*Vlinha); nao seleciona cabo ou disjuntor"
