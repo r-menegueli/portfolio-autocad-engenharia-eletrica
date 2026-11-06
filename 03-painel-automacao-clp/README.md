@@ -4,7 +4,7 @@ Autor: **Rogério Eduardo Moreira Menegueli**
 
 Data-base: **2026-09-06**
 
-Revisão: **03 (plano de verificação; 2026-11-05)**
+Revisão: **04 (ponto de parada da filosofia de processo; 2026-11-06)**
 
 Unidades dos desenhos: **milímetros (mm)**
 
@@ -84,10 +84,13 @@ O fluxo integrado é `python scripts/construir.py --root . --strict`.
 As dez fontes são DXF R2013/AC1027 reais, em milímetros. PDF, SVG e PNG são
 derivados do DXF; nenhum DWG integra a entrega. A revisão 02 acrescentou a prancha 09
 com a sequência normal, a resposta a falhas e pendências rastreadas à matriz causa-efeito.
-A revisão 03 acrescenta a prancha 10 com dados e evidências necessários; os 12 itens
-seguem como `NÃO EXECUTADO`. A decisão sobre sensor incoerente com bomba em marcha
-continua pendente. Os validadores atuais e o estado da inspeção desta revisão estão
-registrados em [inspecao-visual.md](inspecao-visual.md) e nos arquivos JSON desta pasta.
+A revisão 03 acrescentou a prancha 10 com dados e evidências necessários; os 12 itens
+seguem como `NÃO EXECUTADO`. A revisão 04 destaca na prancha 09 a divergência entre a
+descrição anterior de enchimento e a sequência LSH-inicia/LSL-encerra/LSHH-reserva.
+Sentido do processo, tanques e origem de LSL-LL precisam ser confirmados em V01 antes
+de implementar a lógica. A decisão sobre sensor incoerente com bomba em marcha também
+continua pendente. Os validadores e a inspeção desta revisão estão registrados em
+[inspecao-visual.md](inspecao-visual.md) e nos arquivos JSON desta pasta.
 
 ## Aviso obrigatório
 

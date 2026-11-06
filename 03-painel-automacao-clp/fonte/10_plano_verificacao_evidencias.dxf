@@ -9373,7 +9373,7 @@ AcDbText
  40
 1.65
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  72
@@ -9409,7 +9409,7 @@ AcDbText
  40
 1.65
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  72
@@ -9615,7 +9615,7 @@ AcDbText
  40
 2.25
   1
-2026-11-05
+2026-11-06
   7
 PORTFOLIO_TEXTO
  11
@@ -9653,7 +9653,7 @@ AcDbText
  40
 2.25
   1
-03
+04
   7
 PORTFOLIO_TEXTO
  11
@@ -11133,7 +11133,7 @@ AcDbMText
  71
 1
   1
-Volume útil, pontos de nível, faixas, posições, curva de bombas e filosofia aprovada
+Volume útil; enchimento ou esgotamento; tanques de origem/destino; função, posição e faixas dos sensores; curva das bombas e filosofia aprovada
   7
 PORTFOLIO_TEXTO
  44
@@ -11163,7 +11163,7 @@ AcDbMText
  71
 1
   1
-Diagrama de processo aprovado com sensores, limites e comportamento normal identificados
+Diagrama de processo aprovado identifica sentido do fluxo, tanques, sensores e comportamento normal; sequência LSH/LSL/LSHH conferida contra o processo
   7
 PORTFOLIO_TEXTO
  44

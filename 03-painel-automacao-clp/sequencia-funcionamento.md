@@ -1,5 +1,14 @@
 # Sequência de funcionamento
 
+## Ponto de parada do processo — V01
+
+A filosofia do processo ainda não está aprovada. A documentação anterior dizia
+“enchimento”, enquanto a sequência abaixo inicia demanda em LSH, encerra em LSL e
+solicita a reserva em LSHH. Essa combinação pode corresponder a esgotamento; aplicada
+a enchimento, pode manter ou ampliar uma condição de nível alto. Confirmar sentido do
+fluxo, tanques de origem/destino e a qual tanque pertence cada sensor, sobretudo
+LSL-LL, antes de implementar ou ensaiar a sequência.
+
 ## Inicialização
 
 1. Q0 energiza o painel e PSU1 estabelece 24 Vcc.
@@ -7,7 +16,7 @@
 3. Não há partida automática após energização enquanto houver falha latente ou demanda
    não reconhecida; a condição pronta é indicada por H1.
 
-## Modo automático
+## Modo automático — hipótese conceitual não aprovada
 
 1. Com S1 em AUTO e os permissivos válidos, a ativação de LSH memoriza demanda.
 2. A bomba indicada por `titular_proxima` recebe ordem de partida.
@@ -43,5 +52,6 @@ retornos dos contatores coincidem com os comandos. H5 permanece aceso enquanto e
 falha ativa ou memorizada.
 
 A prancha 09 e `matriz-causa-efeito.csv` dão uma visão visual e tabular da sequência;
-os tempos e as respostas continuam conceituais e requerem validação pelo responsável
-pelo processo e pelo hardware selecionado.
+os tempos e as respostas continuam conceituais. A direção do processo e a localização
+dos sensores permanecem pendentes em V01; esta sequência não autoriza implementação
+nem ensaio enquanto o responsável pelo processo não aprovar esses dados.

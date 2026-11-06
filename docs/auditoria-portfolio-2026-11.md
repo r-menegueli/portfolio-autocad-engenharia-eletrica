@@ -28,7 +28,7 @@ passou em 624.834 verificações, sem erros ou avisos.
 | --- | --- | --- | --- |
 | P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
-| P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. | O plano registra evidências necessárias, não resultados: nenhum teste de CLP ou segurança funcional foi executado; a resposta a sensor incoerente com bomba em marcha segue sem decisão. | Escolher hardware, fechar a decisão de processo e preencher o plano com critérios e evidências reais; validar a sequência no software do fabricante. |
+| P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. A revisão 04 evidencia na prancha a divergência entre a descrição de enchimento e a sequência LSH-inicia/LSL-encerra/LSHH-reserva. | O sentido do processo, tanques e função de LSL-LL permanecem pendentes; a sequência pode corresponder a esgotamento e não deve ser aplicada a enchimento sem revisão. Nenhum teste de CLP ou segurança funcional foi executado; também falta decidir a resposta a sensor incoerente com bomba em marcha. | Aprovar o processo, identificar os tanques e sensores em V01, corrigir sequência e proteções conforme os dados; escolher hardware e registrar critérios e evidências antes de ensaiar. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
@@ -49,6 +49,11 @@ passou em 624.834 verificações, sem erros ou avisos.
 - Acrescentei P03-09 com sequência de operação e matriz causa-efeito. A prancha
   deixa explícito que a ação sobre bombas já em marcha diante de sensor incoerente
   segue como decisão pendente, sem completar essa lacuna por suposição.
+- Na revisão 04 do P03, corrigi a documentação para parar antes da implementação: o
+  memorial dizia “enchimento”, mas a sequência LSH-inicia/LSL-encerra/LSHH-reserva pode
+  corresponder a esgotamento. A prancha 09 destaca o ponto, e V01 agora exige direção,
+  tanques e função dos sensores, inclusive LSL-LL. A incerteza de sensor incoerente com
+  bomba em marcha continua separada e pendente.
 - Acrescentei P04-07 com a sequência de partida e matriz de nove eventos e respostas,
   conforme a filosofia existente. A retenção de alarmes após perda de energia
   permanece dependente do PLC a selecionar; as respostas a LA-L/LA-H seguem pendentes.
@@ -322,3 +327,18 @@ mínima PDF/PNG do P02 foi 0,984878. O validador estrito aprovou 623.879 verific
 sem erros ou avisos. Os dados arquitetônicos, cargas e proteções continuam premissas;
 curto-circuito, seletividade, projeto executivo e conformidade normativa não foram
 verificados. A inspeção dos SVGs no navegador aguarda autorização do usuário.
+
+### Atualização P03-09 — revisão 04
+
+A folha e os documentos agora apresentam um ponto de parada formal: a descrição anterior
+previa enchimento, mas a sequência LSH inicia / LSL encerra / LSHH chama a reserva pode
+corresponder a esgotamento. A V01 exige a direção real do processo, os tanques de
+origem/destino e a localização/função dos sensores, incluindo LSL-LL, antes da
+implementação. O comportamento diante de sensor incoerente com bomba em marcha continua
+pendente de decisão. P03-09 foi inspecionada no PNG de produção a 300 dpi e em PDF
+rasterizado a 150 dpi; o AutoCAD AcCoreConsole 2027 auditou 10/10 fontes DXF do projeto,
+incluindo a folha atualizada. O validador específico passou em 235 verificações e o
+estrito em 624.834, ambos sem erros ou avisos. O revisor confirmou 12 projetos, 105
+pranchas, 420 arquivos gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493.
+Os 12 itens de verificação seguem `NÃO EXECUTADO`; a inspeção do SVG no navegador
+continua aguardando autorização.

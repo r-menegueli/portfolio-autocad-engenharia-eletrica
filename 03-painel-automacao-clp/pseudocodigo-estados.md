@@ -1,5 +1,9 @@
 # Pseudocódigo e diagrama de estados
 
+> EXEMPLO CONDICIONAL, NÃO APROVADO: a lógica LSH-inicia / LSL-encerra / LSHH-solicita
+> reserva só pode ser considerada após aprovação da filosofia de processo V01. Não
+> implementar para enchimento sem revisar as ações dos níveis e identificar cada tanque.
+
 ## Estados
 
 ```text

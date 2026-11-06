@@ -1,5 +1,5 @@
 codigo,ponto,dados_requeridos,evidencia_para_encerrar,status
-V01,Processo e sensores,"Volume útil, pontos de nível, faixas, posições, curva de bombas e filosofia aprovada","Diagrama de processo aprovado com sensores, limites e comportamento normal identificados",NÃO EXECUTADO
+V01,Processo e sensores,"Volume útil; enchimento ou esgotamento; tanques de origem/destino; função, posição e faixas dos sensores; curva das bombas e filosofia aprovada","Diagrama de processo aprovado identifica sentido do fluxo, tanques, sensores e comportamento normal; sequência LSH/LSL/LSHH conferida contra o processo",NÃO EXECUTADO
 V02,Hardware e modelo do CLP,"Modelos exatos do CLP e módulos; tipos de entrada/saída; limites de corrente e tensão; manuais OEM","Lista de materiais e mapa de I/O conferidos contra manuais dos modelos selecionados",NÃO EXECUTADO
 V03,Balanço da fonte 24 Vcc,"Cargas reais, correntes de partida, limites da fonte, temperatura e proteção dos ramais","Memória de carga demonstra capacidade e margens conforme especificações OEM",NÃO EXECUTADO
 V04,I/O e bornes,"Revisões dos módulos, endereços, réguas, cabos e estados elétricos de cada sinal","Checklist ponto a ponto registra endereço, borne, identificação e estado esperado/medido",NÃO EXECUTADO

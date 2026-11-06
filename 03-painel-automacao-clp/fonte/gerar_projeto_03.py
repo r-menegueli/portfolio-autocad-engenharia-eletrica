@@ -35,8 +35,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "03-painel-automacao-clp"
-PROJECT_DATE = "2026-11-05"
-REVISION = "03"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
 
 
 @dataclass(frozen=True)
@@ -91,9 +91,9 @@ SHEETS = (
               "de tensão, tipo de sensor e equipotencialização após levantamento de campo.",
               "Linha cheia: potência | tracejado funcional: controle | LS: nível | PE: proteção"),
     SheetSpec(9, "09_sequencia_operacao_intertravamentos.dxf", "SEQUÊNCIA DE OPERAÇÃO E INTERTRAVAMENTOS",
-              "Estados do CLP, demanda, alternância, confirmação e resposta a falhas",
-              "Lógica funcional conceitual; não é programa executável nem função de segurança validada.\\P"
-              "S1 MAN usa S2/S3 e S4/S5 sob os mesmos permissivos; sensores incoerentes bloqueiam novas partidas AUTO, e a resposta para bomba em marcha segue pendente.",
+              "Lógica ilustrativa; sentido do processo pendente de aprovação (V01)",
+              "PONTO DE PARADA V01 — A descrição anterior previa ENCHIMENTO; LSH inicia / LSL encerra / LSHH chama reserva é hipótese de esgotamento. Confirmar sentido, tanques e origem de LSL-LL antes de implementar.\\P"
+              " | SENSOR INCOERENTE com bomba em marcha: resposta pendente. Lógica conceitual; não é programa executável nem função de segurança validada.",
               "LSL: encerra demanda | LSHH por 10 s: solicita reserva | Kx/KMx_FB: comando/retorno | S6: reconhecer e rearmar"),
     SheetSpec(10, "10_plano_verificacao_evidencias.dxf", "PLANO DE VERIFICAÇÃO E EVIDÊNCIAS",
               "Pontos de parada, dados necessários e registros para fechar o projeto",

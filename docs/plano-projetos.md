@@ -120,8 +120,9 @@ aguarda inspeção no navegador mediante autorização.
 
 ## P03 — Painel de automação com CLP para duas bombas
 
-**Objetivo.** Documentar um painel acadêmico para enchimento de reservatório com duas
-bombas, CLP genérico, alternância automática e operação manual protegida.
+**Objetivo.** Documentar um painel acadêmico de nível com duas bombas, CLP genérico,
+alternância automática e operação manual protegida. O sentido do processo (enchimento
+ou esgotamento) e os tanques de origem/destino estão pendentes em V01.
 
 **Escopo.** Alimentação 220 V trifásica, fonte 24 Vcc, 16 DI, 16 DO, contatores,
 sobrecargas, relés de interface, níveis baixo-baixo/baixo/alto/alto-alto, emergência em
@@ -146,6 +147,11 @@ foi reaberta no AutoCAD nesta rodada.
 evidências para processo, hardware, I/O, permissivos, falhas e entrega. Todos os 12
 itens permanecem `NÃO EXECUTADO`; a resposta à incoerência de sensores com bomba em
 marcha continua bloqueada por decisão formal do processo.
+
+**Revisão 04 (2026-11-06).** A prancha 09 e V01 destacam uma divergência: a descrição
+anterior dizia enchimento, enquanto a lógica LSH-inicia/LSL-encerra/LSHH-reserva pode
+corresponder a esgotamento. O sentido, tanques e origem de LSL-LL precisam ser aprovados
+antes de implementar. Os 12 itens seguem `NÃO EXECUTADO`.
 
 ## P04 — Controle de nível de reservatório
 

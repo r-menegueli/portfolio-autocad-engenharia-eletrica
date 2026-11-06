@@ -89,6 +89,11 @@ def validate(root: Path) -> dict:
             errors.append(f"V{index:02d}: há campo obrigatório vazio no plano de verificação.")
         if row.get("status", "").strip() != "NÃO EXECUTADO":
             errors.append(f"V{index:02d}: o status deve permanecer NÃO EXECUTADO.")
+    v01 = verification_rows[0] if verification_rows else {}
+    for term in ("enchimento", "esgotamento", "origem/destino"):
+        checks += 1
+        if term not in v01.get("dados_requeridos", "").casefold():
+            errors.append(f"V01 deve manter pendentes o sentido do processo e os tanques: termo ausente {term}.")
     if len(verification_rows) >= 10 and (
         "sensor incoerente" not in verification_rows[9].get("ponto", "").casefold()
         or "decisão formal" not in verification_rows[9].get("evidencia_para_encerrar", "").casefold()

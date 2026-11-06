@@ -52,3 +52,18 @@ entidades fora da moldura, clipping ou dimensões incompatíveis.
   Isso confirma abertura e integridade CAD, não valida cálculos, lógica de processo,
   instalação ou segurança funcional.
 - A inspeção visual do SVG no navegador continua aguardando autorização do usuário.
+
+## Complemento da revisão 04 — ponto de parada V01
+
+- A prancha 09 destaca a incompatibilidade encontrada entre a descrição anterior de
+  enchimento e a sequência LSH-inicia / LSL-encerra / LSHH-solicita reserva. O subtítulo
+  e as notas classificam a lógica como ilustrativa e dependente da aprovação do sentido
+  do processo, tanques e origem de LSL-LL. A resposta a sensor incoerente com bomba em
+  marcha permanece pendente.
+- P03-09 e P03-10 foram conferidas no PNG de produção a 300 dpi e em PDF rasterizado
+  independentemente a 150 dpi; texto, tabelas, nota de parada, aviso e carimbo estão
+  dentro da moldura, sem cortes ou colisões visíveis.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou 10/10 fontes DXF. O validador específico
+  passou em 235 verificações; o validador estrito do portfólio passou em 624.834,
+  ambos sem erros. Os 12 itens do plano continuam `NÃO EXECUTADO`.
+- A inspeção visual do SVG no navegador segue aguardando autorização do usuário.
