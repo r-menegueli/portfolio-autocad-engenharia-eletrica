@@ -537,3 +537,19 @@ gráficos e 77 CSVs. Os SVGs continuam aguardando autorização para inspeção 
 O P19 acrescenta três pranchas A3: unifilar da interface de 13,8/6,6 kV, implantação esquemática do cais e sequência conceitual de conexão. O caso didático usa 3,2 MVA; as contas resultam em 133,9 A a 13,8 kV e 279,9 A a 6,6 kV. Isso não seleciona equipamento nem confirma compatibilidade de navio.
 
 O validador específico passou em 62 verificações. O AcCoreConsole 2027 abriu/auditou os três DXFs; a repetição do gerador reproduziu os três hashes. As folhas foram conferidas em PNG a 300 dpi e comparadas com PDFs rasterizados independentemente pelo PDFium; similaridades: 0,992812, 0,993874 e 0,989953. Validação estrita do portfólio: 760.998 verificações, zero erros e zero avisos. O repositório registra agora 19 projetos e 135 pranchas A3. A inspeção no navegador nativo continua aguardando autorização.
+
+## Atualização P20 — tração ferroviária CC 750 V — 2026-11-06
+
+O P20 acrescenta três folhas A3: unifilar de subestação retificadora, zonas de
+alimentação e retorno pelo trilho, e matriz conceitual de proteção/supervisão. O
+cenário de 750 Vcc e 1 MW é premissa didática; 1.333,3 A é apenas a divisão ideal
+P/V e não seleciona equipamentos.
+
+O validador específico passou em 57 verificações. Os três DXFs foram regenerados com
+os mesmos SHA-256 e abertos/auditados pelo AutoCAD AcCoreConsole 2027 (26.0.118.0.0)
+com `PASS`. As folhas foram inspecionadas nos PNGs de produção a 300 dpi e comparadas
+com PDFs A3 rasterizados independentemente pelo PDFium; similaridades: 0,992628,
+0,993066 e 0,990771. A validação estrita do portfólio passou em 771.522 verificações,
+sem erros ou avisos. O total atualizado é 20 projetos e 138 pranchas. Não foram
+executados estudos de proteção, retorno, correntes vagantes ou desempenho. A inspeção
+no navegador nativo continua aguardando autorização do usuário.

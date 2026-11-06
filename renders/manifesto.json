@@ -2488,6 +2488,63 @@
       }
     },
     {
+      "id": "p20-01-unifilar-subestacao-tracao",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf",
+      "source_sha256": "158f9b2b240f0abf90a4d562625bd3c731e6bc1e741673ff401fd73b2643ec50",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf",
+          "sha256": "a158701a8e29c2712f7167b09fa239209d1266a872259c927d7c17d6bd3e1a82"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png",
+          "sha256": "94188464b98af8d9ed56c27ff7fba15da8d992571f3dde0e99e9af6ab02853ea"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.svg",
+          "sha256": "621c591fe132f030b028ff5ffb0690490aa458fba07d6fa1782e5eb97d24abc2"
+        }
+      }
+    },
+    {
+      "id": "p20-02-zonas-alimentacao-retorno-tracao",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/02_zonas_alimentacao_retorno_tracao.dxf",
+      "source_sha256": "aeef58ac53609f6326d77c8f3ddbb32b81db6b5d7f283c68357cc29d0d75e5ae",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.pdf",
+          "sha256": "b64facadec4ed0d86b7bdd18ce2bf3e3484839c8444def49e9210414a11fac27"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.png",
+          "sha256": "066c375a69049dbd75712cd4cfe76cc9e1244f2701a4ef00b6b12fb1849fff46"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.svg",
+          "sha256": "66b504450c5b835dc4680c2b0680d9542aa4304223c1fc8c54f848114a245990"
+        }
+      }
+    },
+    {
+      "id": "p20-03-matriz-protecao-supervisao-tracao-cc",
+      "source": "20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_tracao_cc.dxf",
+      "source_sha256": "ea1249c0fc5d1dc6399970a8218e7edadf3bb4d5baebe65aabb1f16ee0201b4a",
+      "outputs": {
+        "pdf": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.pdf",
+          "sha256": "472eafab54c7f983af5960d2e0dd3f7531ae1029080cc481506f5ea65b3a0819"
+        },
+        "png": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.png",
+          "sha256": "e2eff67b2d94c21f914378b1b19a4c3d39fe8481c93229fa19af89565444c23b"
+        },
+        "svg": {
+          "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.svg",
+          "sha256": "160d9c9b1bec988b9c5d4a49df0dd4feec498d3b079f5a77b3aebc898e57d7aa"
+        }
+      }
+    },
+    {
       "id": "p19-01-unifilar-hvsc-cais",
       "source": "19-alimentacao-navios-cais-hvsc/fonte/01_unifilar_hvsc_cais.dxf",
       "source_sha256": "25dbe1656124f89b350aebee39d81e07b868d0414e46dd2544fd93f5a65a5828",

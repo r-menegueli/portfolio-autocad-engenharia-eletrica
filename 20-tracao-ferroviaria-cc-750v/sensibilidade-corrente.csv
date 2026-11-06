@@ -1,0 +1,4 @@
+caso,potencia_cc_mw,tensao_cc_v,corrente_ideal_a,hipotese
+Carga baixa ilustrativa,0.75,750,1000.0,"I=P/V; sem perdas, ondulacao ou transitorios"
+Caso-base ilustrativo,1.0,750,1333.3,"I=P/V; sem perdas, ondulacao ou transitorios"
+Carga alta ilustrativa,1.25,750,1666.7,"I=P/V; nao e capacidade selecionada de equipamento"

@@ -1,0 +1,9 @@
+estudo,entradas_necessarias,saida_esperada,responsavel_a_definir,status
+Demanda de tracao,perfil de trens intervalos curvas de velocidade e horarios,demanda instantanea e simultaneidade,Operadora / projetista,NAO EXECUTADO
+Fluxo de potencia CC,comprimento de linha potencia dos trens e impedancias,queda de tensao e dimensionamento por zona,Projetista de tracao,NAO EXECUTADO
+Curto circuito CC,retificador impedancias distancias e contribuicao dos veiculos,capacidade de interrupcao e coordenacao,Projetista de protecao,NAO EXECUTADO
+Coordenacao de protecao,curvas dos disjuntores ajustes e dados de trens,seletividade e comportamento por contingencia,Projetista de protecao / operadora,NAO EXECUTADO
+Retorno de corrente,arranjo dos trilhos ligacoes drenagem e estruturas metalicas,retorno eletrico e interferencias,Projetista de aterramento,NAO EXECUTADO
+Correntes vagantes,geologia estruturas enterradas e linha CC,risco de corrosao e medidas de controle,Operadora / projetista,NAO EXECUTADO
+Seguranca eletrica,dados de toque contato tempos e acessibilidade,avaliacao de risco e medidas de protecao,Responsavel habilitado,NAO EXECUTADO
+Interface material rodante,tensao faixa operativa potencia frenagem e interfaces,compatibilidade entre rede e trens,Operadora / fabricante,NAO EXECUTADO

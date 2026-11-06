@@ -650,3 +650,25 @@ portfólio passou em 760.998 verificações, sem erros ou avisos. As premissas d
 kV e 3,2 MVA são didáticas; nenhum estudo de compatibilidade com navio, proteção,
 aterramento, cabo, intertravamento ou operação foi executado. A inspeção no navegador
 nativo permanece aguardando autorização do usuário.
+
+## Projeto P20 — tração ferroviária CC 750 V — 2026-11-06
+
+Foram produzidas três folhas A3 para uma subestação retificadora e alimentação por
+terceiro trilho: unifilar, zonas de alimentação/retorno e matriz conceitual de
+proteção/supervisão. A premissa de 750 Vcc e 1 MW resulta em 1.333,3 A pela conta
+ideal P/V; isso não dimensiona os equipamentos ou a instalação.
+
+O validador específico passou em 57 verificações. A repetição do gerador manteve os
+hashes dos três DXFs já auditados pelo AutoCAD AcCoreConsole 2027 (26.0.118.0.0),
+que os abriu e auditou com `PASS`:
+
+- `01_unifilar_subestacao_tracao.dxf` — `158f9b2b240f0abf90a4d562625bd3c731e6bc1e741673ff401fd73b2643ec50`
+- `02_zonas_alimentacao_retorno_tracao.dxf` — `aeef58ac53609f6326d77c8f3ddbb32b81db6b5d7f283c68357cc29d0d75e5ae`
+- `03_matriz_protecao_supervisao_tracao_cc.dxf` — `ea1249c0fc5d1dc6399970a8218e7edadf3bb4d5baebe65aabb1f16ee0201b4a`
+
+As três folhas foram inspecionadas nos PNGs de produção (4960 × 3507 px) e
+comparadas com PDFs rasterizados independentemente pelo PDFium (4961 × 3508 px);
+similaridades: 0,992628, 0,993066 e 0,990771. O validador estrito passou em 771.522
+verificações, zero erros e zero avisos. Permanecem pendentes estudos de proteção,
+retorno, correntes vagantes, desempenho e validação de campo. A inspeção no navegador
+nativo continua aguardando autorização do usuário.
