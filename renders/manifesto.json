@@ -153,7 +153,7 @@
     {
       "id": "p02-01-planta-arquitetonica",
       "source": "02-projeto-eletrico-residencial/fonte/01_planta_arquitetonica.dxf",
-      "source_sha256": "322f95ab15645a3b08a0b3e4bf5ac77275206eeb9c58208806229733a1e56f2a",
+      "source_sha256": "aab825f0a02b5bb743b1c385ef6ae36a60a05519a2d9123f9aa02e0adeb8a63c",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/01_planta_arquitetonica.pdf",
@@ -172,7 +172,7 @@
     {
       "id": "p02-02-planta-iluminacao",
       "source": "02-projeto-eletrico-residencial/fonte/02_planta_iluminacao.dxf",
-      "source_sha256": "46b77bed1059cf4a2dda475359660d31cdb5c7578e5e880caa1aaec316591f22",
+      "source_sha256": "0f2f48513f21808b43589c3df9020d403620b5ea1444e3902679454ad551e2dd",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf",
@@ -191,7 +191,7 @@
     {
       "id": "p02-03-planta-tomadas",
       "source": "02-projeto-eletrico-residencial/fonte/03_planta_tomadas.dxf",
-      "source_sha256": "25859e862391f4c38a7ecfdf3dc6908359a9e6af1fdcf678a3f97560aaad7eb7",
+      "source_sha256": "1ff6784ae57539fbb9883472053f99f3319b2edcf800f854964e8ebf707da9c3",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/03_planta_tomadas.pdf",
@@ -210,7 +210,7 @@
     {
       "id": "p02-04-planta-eletrodutos",
       "source": "02-projeto-eletrico-residencial/fonte/04_planta_eletrodutos.dxf",
-      "source_sha256": "aba1c9412ad3503b651e8ef1aaeb35b14677fac6a8d2179b20aa4e0a033ff9e1",
+      "source_sha256": "dbd1a9cc673db2fb21071cab35ca28ac96007cd20732765f4b108ae8bab04cb6",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/04_planta_eletrodutos.pdf",
@@ -229,7 +229,7 @@
     {
       "id": "p02-05-diagrama-unifilar",
       "source": "02-projeto-eletrico-residencial/fonte/05_diagrama_unifilar.dxf",
-      "source_sha256": "3f0ea5507ae9b5cc66d34668dad32986aa5d412f38bdfb88162d5d82e32167ff",
+      "source_sha256": "d3de5078c4026ac19e2ade7fa34baf3a848cc19a44b7351d2506f499b7b0a295",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/05_diagrama_unifilar.pdf",
@@ -248,7 +248,7 @@
     {
       "id": "p02-06-quadro-distribuicao",
       "source": "02-projeto-eletrico-residencial/fonte/06_quadro_distribuicao.dxf",
-      "source_sha256": "f8e832fa14f3aaa4bab0a81c2af95417764771b5ccd2453da98a2ef6453409fd",
+      "source_sha256": "7f82d318faaa24415ed70118ae1224d2d0580dd687a927d8cf354d36f48db1fe",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/06_quadro_distribuicao.pdf",
@@ -267,7 +267,7 @@
     {
       "id": "p02-07-quadro-cargas",
       "source": "02-projeto-eletrico-residencial/fonte/07_quadro_cargas.dxf",
-      "source_sha256": "80ffcfd4d1bf5d92a965201687ab6a700fd0f57b138d3a689e961a13b64bfb49",
+      "source_sha256": "f4b05b1116bdb9717805798a55a686f49bcbc5301df61f291ae083350616ef54",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/07_quadro_cargas.pdf",
@@ -286,7 +286,7 @@
     {
       "id": "p02-08-detalhes-aterramento",
       "source": "02-projeto-eletrico-residencial/fonte/08_detalhes_aterramento.dxf",
-      "source_sha256": "4ceb37086403e17b4763bc97a0e7ed7556d102a1edd262a58953bb231c1f3d3f",
+      "source_sha256": "3888dd35e0568243e3af627fdf90a4874f6e9b2bec361084c5dde8b48be220c2",
       "outputs": {
         "pdf": {
           "path": "02-projeto-eletrico-residencial/exports/08_detalhes_aterramento.pdf",
@@ -1217,7 +1217,7 @@
     {
       "id": "p10-01-arquitetura-rede",
       "source": "10-rede-instrumentacao-industrial/fonte/01_arquitetura_rede.dxf",
-      "source_sha256": "dbd4904b932bcdf3bd0d06934da32ce0b32bd96fcf3e86ea2eac9bae11d8cc3d",
+      "source_sha256": "73d00c5a31dbcf6d0eec8919ef589452724c2994017b8add289412f1c13fe48c",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/01_arquitetura_rede.pdf",
@@ -1236,7 +1236,7 @@
     {
       "id": "p10-02-diagrama-instrumentacao",
       "source": "10-rede-instrumentacao-industrial/fonte/02_diagrama_instrumentacao.dxf",
-      "source_sha256": "1a511dba1ff887fb749aeceb05307e644c3865d9da3c8990955c0af212d1cac0",
+      "source_sha256": "e02eb3e8c1f81e6800ad7ab1dadb3cb32ea589175f0fdbb415c8544e11e6f2d4",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/02_diagrama_instrumentacao.pdf",
@@ -1255,7 +1255,7 @@
     {
       "id": "p10-03-diagrama-interligacao",
       "source": "10-rede-instrumentacao-industrial/fonte/03_diagrama_interligacao.dxf",
-      "source_sha256": "10489447172a970cf69a357000f8fecef6ad13eb5e5eacf9356f8a6e6716b4c0",
+      "source_sha256": "6537ee716e843b2fe5f705077e91f196c6934c06b75135ecb6c846c2ab81d3db",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/03_diagrama_interligacao.pdf",
@@ -1274,7 +1274,7 @@
     {
       "id": "p10-04-topologia-comunicacao",
       "source": "10-rede-instrumentacao-industrial/fonte/04_topologia_comunicacao.dxf",
-      "source_sha256": "9fb3a03128ed88250dfba5ae279c9933c914cb17e1a3526650bcf68629144cb1",
+      "source_sha256": "8e7cffab2d0dbd94c1337d3ceb6f2aeda1e42f5f46271cf6b2f7e915b84c5719",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/04_topologia_comunicacao.pdf",
@@ -1293,7 +1293,7 @@
     {
       "id": "p10-05-painel-instrumentacao",
       "source": "10-rede-instrumentacao-industrial/fonte/05_painel_instrumentacao.dxf",
-      "source_sha256": "9845c0735b7d19cfc03657272e5457e2b9b188dd292c052b30e563de651427b9",
+      "source_sha256": "b5bd6b59f97a70a6fddb16be46417aa323d7cdd317574d66d4edc4c4b016b66b",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/05_painel_instrumentacao.pdf",
@@ -1312,7 +1312,7 @@
     {
       "id": "p10-06-lista-instrumentos",
       "source": "10-rede-instrumentacao-industrial/fonte/06_lista_instrumentos.dxf",
-      "source_sha256": "8b232672f0a1655bc638db21a4b3b21626a0c8fa8ce50e4f6dbe3a5c7aecb7ad",
+      "source_sha256": "bb504a5fb220793a1c39876404f6f99026b29a6a8d9c6c19d7661f9e3314cc9c",
       "outputs": {
         "pdf": {
           "path": "10-rede-instrumentacao-industrial/exports/06_lista_instrumentos.pdf",
@@ -1331,7 +1331,7 @@
     {
       "id": "p11-01-diagrama-unifilar-geral",
       "source": "11-subestacao-media-tensao/fonte/01_diagrama_unifilar_geral.dxf",
-      "source_sha256": "b4791c38c32df48c9091b9ec719368af19f8e698cc66a0ad7abd6beb0aec3e7e",
+      "source_sha256": "0ef4199777fcbea403fa58251814c4a32d7148058214556368d93058239605d3",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.pdf",
@@ -1350,7 +1350,7 @@
     {
       "id": "p11-02-planta-baixa-subestacao",
       "source": "11-subestacao-media-tensao/fonte/02_planta_baixa_subestacao.dxf",
-      "source_sha256": "359540a3c3cb95d47be4e5b4f7acb045fdf4c8a4cc71719d4a7ca01b6e6e1363",
+      "source_sha256": "aa3f0f26bf60c57d06f25308978603ff9980f7537b7edd08d92ac1db10830d90",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.pdf",
@@ -1369,7 +1369,7 @@
     {
       "id": "p11-03-cortes-detalhes-eletromecanicos",
       "source": "11-subestacao-media-tensao/fonte/03_cortes_detalhes_eletromecanicos.dxf",
-      "source_sha256": "c663c15bc3f3b5a48a61e5af53314bd57c1bc0ae73b45183d6122bce004a91c2",
+      "source_sha256": "58ae82f483635c2ec3273af825a42cd8f2d56a0d55fa143c657d9fb0f61db4a7",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.pdf",
@@ -1388,7 +1388,7 @@
     {
       "id": "p11-04-diagrama-funcional-protecao",
       "source": "11-subestacao-media-tensao/fonte/04_diagrama_funcional_protecao.dxf",
-      "source_sha256": "ffb6b4f0ee2c3e8ec42d86165f358e94e75aad3cc327f74d1301846a3302b5a8",
+      "source_sha256": "759f02d9fccd81781996ea4ce4aec4fe493b9a1f971196a4c83d0070c490797f",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.pdf",
@@ -1407,7 +1407,7 @@
     {
       "id": "p11-05-malha-aterramento",
       "source": "11-subestacao-media-tensao/fonte/05_malha_aterramento.dxf",
-      "source_sha256": "ab78f6df7dd912f4d9c871d378844376131c480aeb40630b2fd3989acbada37d",
+      "source_sha256": "2c8540969992a47a9d627d9ce05deb858e5c2543c7c288046f4e7b1e8cfeba7b",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.pdf",
@@ -1426,7 +1426,7 @@
     {
       "id": "p11-06-spda-geral",
       "source": "11-subestacao-media-tensao/fonte/06_spda_geral.dxf",
-      "source_sha256": "eba53cb2032f23c13492b00ad8ef56735ebb45c32c1a4aee7d4b36bfdee4c68b",
+      "source_sha256": "6f39b53d9c1ae387523032c277d81a85d3c18c766e13ce75c644ea16f16f6c65",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.pdf",
@@ -1445,7 +1445,7 @@
     {
       "id": "p12-01-diagrama-unifilar-qta",
       "source": "12-grupo-gerador-qta/fonte/01_diagrama_unifilar_qta.dxf",
-      "source_sha256": "3c027d7c5a7fad4037aafcfcd5c6b4515227ee1be81883f5ca249efb5cce3e47",
+      "source_sha256": "0292a5afb0a07820a83688f16e1ef271b5e70e0c34eaf456a91b851279b5c643",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.pdf",
@@ -1464,7 +1464,7 @@
     {
       "id": "p12-02-diagrama-trifilar-potencia",
       "source": "12-grupo-gerador-qta/fonte/02_diagrama_trifilar_potencia.dxf",
-      "source_sha256": "254f82449d51c23947e9032101536680e4f927c4889c6dff3dcd48625cb59447",
+      "source_sha256": "bf9384db37faaf0c25e9133e5a502f93f4e63c442ed9e6e885262277bc8fb228",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.pdf",
@@ -1483,7 +1483,7 @@
     {
       "id": "p12-03-diagrama-funcional-comando",
       "source": "12-grupo-gerador-qta/fonte/03_diagrama_funcional_comando.dxf",
-      "source_sha256": "40ac17bc56a1db46af9e6949808415c9815b4639bad9f871e0db5ac494256b8c",
+      "source_sha256": "cc50c2c248409aead0454f3bbc10c701679dea7f62ee00aa804353d93e6dd062",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.pdf",
@@ -1502,7 +1502,7 @@
     {
       "id": "p12-04-regua-bornes-interligacao",
       "source": "12-grupo-gerador-qta/fonte/04_regua_bornes_interligacao.dxf",
-      "source_sha256": "9c3fe4496a130590155454d2d0fba009efc2906f5a7b7bc42067a6ae050fa6d2",
+      "source_sha256": "b13557d91d71422ee27c02cda834fe1e9c235539d6543dd340de23fdffb317f2",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.pdf",
@@ -1521,7 +1521,7 @@
     {
       "id": "p12-05-layout-painel-qta",
       "source": "12-grupo-gerador-qta/fonte/05_layout_painel_qta.dxf",
-      "source_sha256": "e9665481fb8bd4b5d8c579400547256d4623adf1e8668c56a7c90a4ec21eef41",
+      "source_sha256": "63fd2eb1a2482d52634df718d860adde3c070a70eaecd693eb931d8736d964ee",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.pdf",
@@ -1540,7 +1540,7 @@
     {
       "id": "p12-06-planta-instalacao-gmg",
       "source": "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf",
-      "source_sha256": "39c9beb7c6c2f85da47553f9e78cbac4c6f7c0238d3426bb4515a194ad83a862",
+      "source_sha256": "8c104d9a11d0cead68adca1003a81e2ac632108ed6edac557acf2cb410fff536",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf",
@@ -1553,6 +1553,63 @@
         "svg": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg",
           "sha256": "56e6ef1fb725abd04a681b6fb3db4d695e9aff0c101cb09c45d3c602d41a6f53"
+        }
+      }
+    },
+    {
+      "id": "p13-01-layout-estacao-recarga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/01_layout_estacao_recarga.dxf",
+      "source_sha256": "4d35e313f492ef2b6bb9aced861c52db2e55e61e4382b75e9fdb7bb2752b2bb9",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.pdf",
+          "sha256": "c6113c7067520d6aeac4b2504506b8ef2fee928659c04c6d3e8489d56b8997e3"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.png",
+          "sha256": "ad783ada66decb0685afc2c17484799bc56e62a7af4d04743d0f9146fa40de36"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.svg",
+          "sha256": "8f20082ee74d882addf7483653fb9d1b6cf4f8d353869f15cfa249c819f23e84"
+        }
+      }
+    },
+    {
+      "id": "p13-02-unifilar-estacao-recarga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/02_diagrama_unifilar_estacao.dxf",
+      "source_sha256": "e3dab152ea1f91b5c8febae119970461283132e039f4a064c5c774780535f96f",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.pdf",
+          "sha256": "ffb25459b50e8894331463fff4cef4e756f1073387d5279dcd377a7e20af7627"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.png",
+          "sha256": "b590ba6275a86d5db0c2b9b67d019a12caa22f377dfdbafbcdd482daf0c5a2b6"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.svg",
+          "sha256": "c29e4a09bee8971550edaad986f29bcd06aa0b7e2804ac1168d57af7bca3b6e2"
+        }
+      }
+    },
+    {
+      "id": "p13-03-gestao-dinamica-carga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/03_gestao_dinamica_carga.dxf",
+      "source_sha256": "6f21dd697ffa13bcf8e9927667e5bd932d22340fc3d23644ccd752f02d1aa9b3",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.pdf",
+          "sha256": "9a5215cd7daff99e875c1f4ad307aa96ea5fa5498ab6e085f2e039110a087371"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.png",
+          "sha256": "ae5f7141c77ea2675891b668e1d86beb8adbdadd30ffedb175c556274b98b001"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.svg",
+          "sha256": "32f464504141b14defaca86843b7c00b59c4ecd30c787c5c1051ebf85a70ef27"
         }
       }
     }

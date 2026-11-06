@@ -1,0 +1,6 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+SIG-01,MED-01,EMS-01,Medicao de potencia ativa na entrada,Valor e qualidade da medicao,A definir com fabricante,PENDENTE
+SIG-02,QGBT existente,EMS-01,Estado/disponibilidade do ponto de alimentacao,Contato ou dado digital,A definir com fabricante,PENDENTE
+SIG-03,EMS-01,EVSE-01 a EVSE-06,Limite de potencia solicitado por ponto,Setpoint aceito e faixa dependem do OEM,A definir com fabricante,PENDENTE
+SIG-04,EVSE-01 a EVSE-06,EMS-01,Estado de disponibilidade e sessao,Estado/alarme e qualidade da comunicacao,A definir com fabricante,PENDENTE
+SIG-05,EMS-01,Operacao da estacao,Alarme de perda ou invalidacao de dados,Indicacao operacional,A definir,PENDENTE

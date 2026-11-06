@@ -1,0 +1,12 @@
+{
+  "project": "P13",
+  "date": "2026-11-06",
+  "checks": 29,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Validação aritmética e estrutural; não é verificação de conformidade normativa.",
+    "Não dimensiona a alimentação, a demanda, os cabos ou as proteções.",
+    "Auditoria independente do AutoCAD deve ser registrada separadamente."
+  ]
+}

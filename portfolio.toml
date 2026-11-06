@@ -409,6 +409,24 @@ required_files = [
   "validacao.json",
 ]
 
+[[projects]]
+id = "13-estacao-recarga-veiculos-eletricos"
+path = "13-estacao-recarga-veiculos-eletricos"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-13.json",
+  "fonte/gerar_projeto_13.py",
+  "fonte/validar_projeto_13.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1308,3 +1326,33 @@ require_a3 = true
 require_notice = true
 
 
+[[artifacts]]
+id = "p13-01-layout-estacao-recarga"
+kind = "sheet"
+title = "Projeto 13 - Arranjo conceitual da estacao de recarga"
+source = "13-estacao-recarga-veiculos-eletricos/fonte/01_layout_estacao_recarga.dxf"
+svg = "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.svg"
+pdf = "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.pdf"
+png = "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p13-02-unifilar-estacao-recarga"
+kind = "sheet"
+title = "Projeto 13 - Diagrama unifilar da alimentacao EV"
+source = "13-estacao-recarga-veiculos-eletricos/fonte/02_diagrama_unifilar_estacao.dxf"
+svg = "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.svg"
+pdf = "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.pdf"
+png = "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p13-03-gestao-dinamica-carga"
+kind = "sheet"
+title = "Projeto 13 - Gestao de potencia e sequencia operacional"
+source = "13-estacao-recarga-veiculos-eletricos/fonte/03_gestao_dinamica_carga.dxf"
+svg = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.svg"
+pdf = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.pdf"
+png = "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.png"
+require_a3 = true
+require_notice = true
