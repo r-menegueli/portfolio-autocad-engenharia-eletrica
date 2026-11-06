@@ -82,8 +82,16 @@ velocidade, sinalização, bornes, aterramento, cabos e layout interno.
 bornes; layout interno; interligações de campo; listas de cabos e materiais; sequência
 funcional e relação conceitual entre V/f e FOC.
 
-**Marco de aceitação.** Concluído na revisão 00. Seis DXFs AC1027 auditados no AutoCAD
+**Marco inicial.** Concluído na revisão 00 com seis DXFs AC1027 auditados no AutoCAD
 2027, derivados PDF/SVG/PNG inspecionados e validação estrita aprovada.
+
+**Situação atual — revisão funcional/documental 03 (2026-11-06).** Oito folhas AC1027;
+P01-03 agora separa RUN, STOP e reset de falha do VFD, e mostra S5 como rearme manual
+monitorado de KSR1, distinto de S4/X3:9. P01-08 e `plano-verificacao.csv` rastreiam
+treze verificações, todas `NÃO EXECUTADO`. O AutoCAD AcCoreConsole 2027 auditou as oito
+fontes, e a validação estrita e a inspeção visual de P01-03/P01-08 passaram. A pinagem
+DI/STO, os contatos de S3, a coordenação e os ensaios seguem pendentes de modelos,
+documentação OEM e dados reais.
 
 ## P02 — Projeto elétrico residencial
 

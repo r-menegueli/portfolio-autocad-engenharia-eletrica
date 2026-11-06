@@ -9,7 +9,7 @@ engenharia, conformidade normativa ou liberação para fabricação e obra.
 
 Na revisão corrente, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos
 gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 623.879 verificações, sem erros ou avisos.
+passou em 624.834 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -26,7 +26,7 @@ passou em 623.879 verificações, sem erros ou avisos.
 
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
-| P01 — Painel com inversor | Separa unifilar, potência, comando, layout e campo; P01-07 mapeia premissas de proteção e P01-08 organiza evidências para verificação. | Não há estudo de coordenação nem ensaio funcional: Icc, modelos, curvas, ratings, critérios e resultados de campo seguem ausentes. | Substituir premissas por dados do local e modelos escolhidos; calcular e comparar curvas, definir critérios e anexar registros antes de declarar seletividade, capacidade ou funcionamento. |
+| P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. | O plano registra evidências necessárias, não resultados: nenhum teste de CLP ou segurança funcional foi executado; a resposta a sensor incoerente com bomba em marcha segue sem decisão. | Escolher hardware, fechar a decisão de processo e preencher o plano com critérios e evidências reais; validar a sequência no software do fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
@@ -99,6 +99,12 @@ passou em 623.879 verificações, sem erros ou avisos.
 - Na revisão 02 do P01, acrescentei P01-07 e P01-08. As duas matrizes CSV rastreiam
   dados de proteção e evidências de verificação; nenhum item é declarado aprovado e
   nenhum ensaio de campo é apresentado como executado.
+- Na revisão funcional/documental 03 do P01, separei os comandos RUN, STOP e reset do
+  VFD, incluí S5 para rearme manual monitorado do KSR1 e acrescentei V13 para verificar
+  que os rearmes são independentes e não produzem partida. Os 13 itens seguem
+  `NÃO EXECUTADO`; o diagrama não fixa bornes sem seleção do fabricante. As oito fontes
+  passaram no AcCoreConsole 2027 e no validador estrito; P01-03 e P01-08 foram conferidas
+  em PNG integral e PDF rasterizado a 150 dpi.
 - Na revisão 02 do P02, acrescentei P02-09 e uma rastreabilidade por ambiente: oito
   áreas e 19 linhas de pontos totalizam as cargas atribuídas e remetem a lista de pontos
   e quadro de cargas. Os valores seguem como `PREMISSA`; a prancha não substitui a
