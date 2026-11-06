@@ -1,0 +1,10 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,5,un,Bloco aerogerador hipotetico de 2 MW,WTG-01; WTG-02; WTG-03; WTG-04; WTG-05,Modelo e fabricante nao definidos
+2,5,un,Transformador elevador unitario hipotetico de 2.5 MVA,TRG-01 a TRG-05,Relacao ilustrativa 0.69/34.5 kV
+3,1,circuito,Alimentador radial de coleta F01,CB-F01 / WTG-01 a WTG-03,Comprimento e cabos nao dimensionados
+4,1,circuito,Alimentador radial de coleta F02,CB-F02 / WTG-04 a WTG-05,Comprimento e cabos nao dimensionados
+5,1,conjunto,Subestacao coletora conceitual,CSE-01,Arranjo e equipamentos de manobra a definir
+6,1,un,Transformador elevador principal hipotetico de 12.5 MVA,TR-01,Relacao ilustrativa 34.5/69 kV
+7,1,bay,Bay de conexao em alta tensao,POI-01,Equipamentos e configuracao dependem do agente acessado
+8,1,sistema,Controle de usina e supervisao,PPC-01 / SCADA-01,Arquitetura e requisitos funcionais pendentes
+9,1,sistema,Medicao e protecao de interface,MED-01 / PROT-01,TC TP classes funcoes e ajustes pendentes

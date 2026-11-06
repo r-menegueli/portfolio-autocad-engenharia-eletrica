@@ -463,6 +463,24 @@ required_files = [
   "fonte/gerar_projeto_15.py",
   "fonte/validar_projeto_15.py",
 ]
+[[projects]]
+id = "16-parque-eolico-coleta-conexao"
+path = "16-parque-eolico-coleta-conexao"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-16.json",
+  "fonte/gerar_projeto_16.py",
+  "fonte/validar_projeto_16.py",
+]
 [[artifacts]]
 id = "template-a3"
 kind = "sheet"
@@ -1450,5 +1468,35 @@ source = "15-microrrede-industrial-fv-bess-gerador/fonte/03_operacao_balanco_ene
 svg = "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.svg"
 pdf = "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.pdf"
 png = "15-microrrede-industrial-fv-bess-gerador/exports/03_operacao_balanco_energia.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p16-01-unifilar-coleta-conexao"
+kind = "sheet"
+title = "Projeto 16 - Unifilar de coleta e conexão do parque eólico"
+source = "16-parque-eolico-coleta-conexao/fonte/01_unifilar_coleta_conexao.dxf"
+svg = "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.svg"
+pdf = "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.pdf"
+png = "16-parque-eolico-coleta-conexao/exports/01_unifilar_coleta_conexao.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p16-02-layout-parque-eolico"
+kind = "sheet"
+title = "Projeto 16 - Implantação conceitual do parque eólico"
+source = "16-parque-eolico-coleta-conexao/fonte/02_layout_parque_eolico.dxf"
+svg = "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.svg"
+pdf = "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.pdf"
+png = "16-parque-eolico-coleta-conexao/exports/02_layout_parque_eolico.png"
+require_a3 = true
+require_notice = true
+[[artifacts]]
+id = "p16-03-base-calculo-interfaces"
+kind = "sheet"
+title = "Projeto 16 - Base de cálculo e interfaces elétricas"
+source = "16-parque-eolico-coleta-conexao/fonte/03_base_calculo_interfaces.dxf"
+svg = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.svg"
+pdf = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.pdf"
+png = "16-parque-eolico-coleta-conexao/exports/03_base_calculo_interfaces.png"
 require_a3 = true
 require_notice = true

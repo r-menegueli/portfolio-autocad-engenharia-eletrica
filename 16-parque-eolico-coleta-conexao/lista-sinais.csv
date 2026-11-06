@@ -1,0 +1,10 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+P_REF,PPC-01,WTG-01 a WTG-05,Referencia de potencia ativa,MW e limites acordados,Controle de planta,Conceitual; escala e protocolo pendentes
+Q_REF,PPC-01,WTG-01 a WTG-05,Referencia de potencia reativa,kvar e limites acordados,Controle de planta,Conceitual; capacidade do conversor pendente
+V_POI,MED-01,PPC-01,Grandeza para controle de tensao,kV RMS,Medicao de tensao,Conceitual; TP e classe pendentes
+P_POI,MED-01,PPC-01,Potencia ativa no ponto de conexao,kW,Medicao de potencia,Conceitual; medidor e TC pendentes
+Q_POI,MED-01,PPC-01,Potencia reativa no ponto de conexao,kvar,Medicao de potencia,Conceitual; medidor e TC pendentes
+CB_F01_STATUS,CB-F01,SCADA-01,Estado do disjuntor do alimentador,aberto fechado ou indisponivel,Supervisao,Conceitual; contatos e estados pendentes
+CB_F02_STATUS,CB-F02,SCADA-01,Estado do disjuntor do alimentador,aberto fechado ou indisponivel,Supervisao,Conceitual; contatos e estados pendentes
+WTG_ALARM,WTG-01 a WTG-05,SCADA-01,Indicacao de alarme e disponibilidade,codigo e estado OEM,Telecomunicacao,Conceitual; protocolo pendente
+GRID_PERMISSIVE,PROT-01,PPC-01,Permissivo agregado de operacao,estado e causa,Interface de protecao,Conceitual; filosofia e logica pendentes

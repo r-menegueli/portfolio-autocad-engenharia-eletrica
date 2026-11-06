@@ -1,0 +1,12 @@
+{
+  "project": "P16",
+  "date": "2026-11-06",
+  "checks": 52,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "A validação calcula grandezas nominais com FP assumido e não verifica capacidade real de equipamentos.",
+    "Não avalia recurso eólico, produção anual, perdas, curto-circuito, estabilidade, harmônicos ou conexão à rede.",
+    "A auditoria independente do AutoCAD deve ser registrada separadamente."
+  ]
+}
