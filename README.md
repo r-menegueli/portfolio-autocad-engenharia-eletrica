@@ -1,22 +1,15 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
-Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-22 projetos completos de documentação elétrica. O repositório reúne diagramas,
-plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
-verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
+Este repositório reúne 22 estudos acadêmicos e conceituais de instalações, painéis, automação, energia e mobilidade elétrica. O conjunto tem 110 pranchas A3: DXF editável para consulta e edição, com versões em PDF, SVG e PNG para leitura.
 
-**Objetivo profissional:** apresentar competências em documentação de projetos
-elétricos, automação, instrumentação, acionamentos, instalações, sistemas de energia
-e integração eletromecânica, com rastreabilidade entre premissas, dados, desenhos e
-validações.
+Cada pasta descreve as premissas usadas, os arquivos incluídos e os limites do respectivo estudo. Os desenhos não são projetos liberados para construção ou instalação.
 
-> Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
 
 ## Navegação rápida
 
 - [Projetos](#projetos)
 - [Galeria de destaques](#galeria-de-destaques)
-- [Competências demonstradas](#competências-demonstradas)
+- [Conteúdo dos projetos](#conteúdo-dos-projetos)
 - [Tecnologias e formatos](#tecnologias-e-formatos)
 - [Como abrir e reproduzir](#como-abrir-e-reproduzir)
 - [Validação e relatórios](#validação-e-relatórios)
@@ -55,33 +48,28 @@ Total: **110 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
-| Painel com inversor — P01 | Projeto residencial — P02 |
+A seleção abaixo apresenta quatro projetos recentes, cada um com três pranchas. Clique em uma imagem para abrir o PDF A3.
+
+| P13 — Recarga de veículos elétricos | P17 — Automação de subestação |
 | --- | --- |
-| [![Diagrama unifilar do painel com inversor](01-painel-motor-inversor/exports/01_diagrama_unifilar.png)](01-painel-motor-inversor/exports/01_diagrama_unifilar.pdf) | [![Planta de iluminação residencial](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.png)](02-projeto-eletrico-residencial/exports/02_planta_iluminacao.pdf) |
-| Automação com CLP — P03 | Veículo elétrico — P07 |
-| [![Arquitetura do painel de automação com CLP](03-painel-automacao-clp/exports/01_arquitetura_automacao.png)](03-painel-automacao-clp/exports/01_arquitetura_automacao.pdf) | [![Arquitetura geral do veículo elétrico](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.png)](07-arquitetura-veiculo-eletrico/exports/01_arquitetura_geral.pdf) |
+| [![Implantação da estação de recarga](13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.png)](13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.pdf) | [![Rede IEC 61850](17-automacao-subestacao-digital/exports/02_rede_iec61850.png)](17-automacao-subestacao-digital/exports/02_rede_iec61850.pdf) |
+| [Projeto](13-estacao-recarga-veiculos-eletricos/README.md) · [DXF](13-estacao-recarga-veiculos-eletricos/fonte/01_layout_estacao_recarga.dxf) | [Projeto](17-automacao-subestacao-digital/README.md) · [DXF](17-automacao-subestacao-digital/fonte/02_rede_iec61850.dxf) |
+| P20 — Tração ferroviária CC | P22 — Auxílios visuais de aeródromo |
+| [![Unifilar da subestação de tração](20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png)](20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf) | [![Arranjo de auxílios visuais luminosos](22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.png)](22-auxilios-visuais-luminosos-aerodromo/exports/01_layout_luminoso_pista_taxi.pdf) |
+| [Projeto](20-tracao-ferroviaria-cc-750v/README.md) · [DXF](20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf) | [Projeto](22-auxilios-visuais-luminosos-aerodromo/README.md) · [DXF](22-auxilios-visuais-luminosos-aerodromo/fonte/01_layout_luminoso_pista_taxi.dxf) |
 
-Veja a [galeria visual comentada](docs/galeria-visual.md) para acessar também os
-DXFs, SVGs e READMEs desses quatro projetos.
+A [galeria comentada](docs/galeria-visual.md) reúne as mesmas prévias e links diretos para os arquivos.
 
-## Competências demonstradas
+## Conteúdo dos projetos
 
-- elaboração de diagramas unifilares, multifilares, de comando, instrumentação,
-  bornes e interligações;
-- documentação de instalações residenciais e industriais em baixa tensão;
-- painéis de acionamento, automação, CLP e Centro de Controle de Motores;
-- rastreabilidade de I/O, tags, cabos, bornes, cargas, materiais e revisões;
-- cálculos acadêmicos de corrente, demanda, queda de tensão, controle, pré-carga,
-  sistemas fotovoltaicos e balanço de alimentação;
-- organização em layers, símbolos reutilizáveis, moldura e carimbo A3;
-- automação da geração, renderização, auditoria CAD e validação de consistência;
-- comunicação clara de premissas, limites, riscos e dependências de engenharia.
+Os desenhos cobrem diagramas unifilares e funcionais, plantas, painéis, instrumentação, alimentação, proteção e controle. Os memoriais de cada pasta explicam quais valores são premissas e quais estudos ainda seriam necessários.
+
 
 ## Tecnologias e formatos
 
 | Tecnologia ou formato | Uso no portfólio |
 | --- | --- |
-| AutoCAD / AcCoreConsole 2027 | abertura e auditoria independente dos DXFs |
+| AutoCAD | abertura e edição dos DXFs |
 | DXF AC1027 / R2013 | fonte CAD principal, em milímetros |
 | Python, ezdxf e NumPy | geração e validação estrutural dos desenhos |
 | Matplotlib e Pillow | renderização vetorial e raster |
@@ -136,30 +124,23 @@ README individual.
 
 ## Validação e relatórios
 
-A revisão consolidada aprovou a estrutura, os dados e os formatos do portfólio. Foram
-reconstruídas as 68 pranchas, auditados 70 DXFs no AutoCAD, reabertos os PDFs,
-renderizados os SVGs em navegador e inspecionados os PNGs e workbooks.
+O [relatório consolidado de validação](relatorio-validacao.md) tem data de 10/09/2026 e escopo explícito nos projetos P01–P10. Ele não cobre a coleção atual completa de 22 projetos.
 
-- [Relatório de validação](relatorio-validacao.md)
+Os projetos P13–P22 incluem registros específicos de validação e inspeção nas respectivas pastas. Consulte o README e os arquivos de resultado de cada projeto; não há neste repositório um único relatório consolidado que substitua o escopo histórico acima.
+
+- [Relatório de validação P01–P10](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)
 - [Revisão visual](relatorio-revisao-visual.md)
-- [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
 - [Inventário de arquivos](inventario-arquivos.md)
 - [Critérios técnicos](docs/criterios-tecnicos.md)
 - [Padrão gráfico](docs/padrao-grafico.md)
-- [Plano dos dez projetos](docs/plano-projetos.md)
 
-O validador comum verifica integridade de DXF, arquivos vazios, contratos de projeto,
-layers, dimensões, moldura, elementos fora da folha, textos potencialmente
-sobrepostos, PDFs, SVGs, PNGs, links relativos, temporários, manifesto e política de
-DWG. Os validadores P02–P10 e P13–P22 acrescentam invariantes técnicos próprios; P01 é coberto
-pelo validador comum e pela auditoria consolidada.
 
 ## Estrutura resumida
 
 ```text
 portfolio-autocad-engenharia-eletrica/
-├── 01-painel-motor-inversor/ ... 10-rede-instrumentacao-industrial/
+├── 01-painel-motor-inversor/ ... 22-auxilios-visuais-luminosos-aerodromo/
 │   ├── fonte/                  # DXFs e scripts-fonte
 │   ├── exports/                # PDF, SVG e PNG
 │   ├── README.md, memorial, critérios e memórias
@@ -180,5 +161,4 @@ declaradas. A documentação não inclui levantamento de campo, seleção final 
 fabricantes, responsabilidade técnica, certificação, aprovação de concessionária,
 análise de risco completa, coordenação integral de proteção ou liberação executiva.
 
-Este repositório não contém CPF, RG, telefone ou endereço residencial do autor. As
-condições de reutilização estão em [LICENSE](LICENSE).
+As condições de reutilização estão em [LICENSE](LICENSE).
