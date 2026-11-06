@@ -1,0 +1,12 @@
+{
+  "project": "P15",
+  "date": "2026-11-06",
+  "checks": 49,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Validação aritmética e estrutural; não é verificação de conformidade normativa.",
+    "Não modela estabilidade, proteção, interconexão, autonomia ou degradação.",
+    "Auditoria independente do AutoCAD deve ser registrada separadamente."
+  ]
+}

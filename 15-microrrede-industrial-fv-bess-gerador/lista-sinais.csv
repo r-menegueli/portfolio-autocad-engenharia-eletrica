@@ -1,0 +1,7 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+SIG-01,Medidor PCC-01,MG-CTRL,Importacao exportacao e qualidade,Potencia tensao frequencia e qualidade,Protocolo a definir,PENDENTE
+SIG-02,FV-01,MG-CTRL,Disponibilidade e limite FV,Potencia ativa reativa estado e alarme,Interface OEM,PENDENTE
+SIG-03,BESS-01,MG-CTRL,Potencia limite e SOC,Potencia SOC modo e falha,Interface OEM,PENDENTE
+SIG-04,GE-01,MG-CTRL,Disponibilidade e estado,Pronto partida carga e alarme,Interface OEM,PENDENTE
+SIG-05,QGBT-MG,MG-CTRL,Estado do PCC e alimentadores,Posicao permissivos e disparos,Interface OEM,PENDENTE
+SIG-06,MG-CTRL,Operacao,Alarme de ilhamento e corte de carga,Estado causa e tempo,Arquitetura a definir,PENDENTE
