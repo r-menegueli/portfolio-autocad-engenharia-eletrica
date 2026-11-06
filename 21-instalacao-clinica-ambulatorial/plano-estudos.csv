@@ -1,0 +1,10 @@
+estudo,entradas_necessarias,saida_esperada,responsavel_a_definir,status
+Programa assistencial,Atividades clinicas ambientes e procedimentos,Planta funcional aprovada,Equipe clinica e arquitetura,PENDENTE
+Classificacao de locais medicos,Procedimentos equipamentos e avaliacao de risco,Classificacao por ambiente,Equipe clinica e projetista habilitado,PENDENTE
+Levantamento de cargas,Equipamentos iluminacao tomadas e climatizacao,Quadro de cargas e demanda,Projetista eletrico,PENDENTE
+Curto circuito e protecao,Dados da fonte condutores e impedancias,Capacidade interrupcao e coordenacao,Projetista eletrico,PENDENTE
+Sistema de emergencia,Cargas prioritarias partida autonomia e combustivel,Selecao de gerador QTA e fonte de segurança,Projetista e operacao,PENDENTE
+UPS,Cargas autonomia bypass ventilacao e fabricante,Selecao e arquitetura da UPS,Projetista e equipe clinica,PENDENTE
+Iluminacao normal e emergencia,Arquitetura tarefas rotas e regras de incendio,Memoria de calculo e verificacao,Projetista e responsavel de incendio,PENDENTE
+Aterramento e equipotencializacao,Esquema de aterramento local e locais medicos,Esquema e verificacoes aplicaveis,Projetista habilitado,PENDENTE
+Validacao e aprovacao,Normas aplicaveis autoridades e ensaios,Registros de revisao inspecao e aprovacao,Responsaveis tecnicos e autoridade local,PENDENTE

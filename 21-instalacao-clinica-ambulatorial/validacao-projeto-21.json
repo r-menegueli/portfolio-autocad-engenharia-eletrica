@@ -1,0 +1,12 @@
+{
+  "project": "P21",
+  "date": "2026-11-06",
+  "checks": 62,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Planta, cargas, fontes e distribuicao sao ilustrativas e nao estao dimensionadas.",
+    "Nenhum local medico foi classificado e nenhuma carga foi aprovada como essencial.",
+    "Aprovacoes sanitarias, estudos eletricos, ensaios e auditoria CAD independente nao sao substituidos por esta validacao."
+  ]
+}

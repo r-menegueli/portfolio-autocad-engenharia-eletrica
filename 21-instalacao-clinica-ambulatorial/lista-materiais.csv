@@ -1,0 +1,15 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+1,A DEFINIR,un,Entrada e medicao de baixa tensao,PCC-01; MED-01,Tensao e padrao dependem da concessionaria
+2,A DEFINIR,un,Quadro geral de baixa tensao,QGBT-CL,Dimensionar apos levantamento de cargas e curto-circuito
+3,A DEFINIR,un,Quadro de distribuicao normal,QD-N,Quantidade de circuitos nao calculada
+4,A DEFINIR,un,Chave de transferencia automatica,QTA-CL,Logica e capacidade pendentes
+5,A DEFINIR,un,Grupo gerador de emergencia,GE-CL,Potencia autonomia ventilacao combustivel e ruído pendentes
+6,A DEFINIR,un,Sistema de alimentacao ininterrupta,UPS-CL,Autonomia e cargas atendidas pendentes
+7,A DEFINIR,un,Quadro alimentado pela UPS,QD-U,Cargas a selecionar
+8,A DEFINIR,un,Quadro de cargas com transferencia,QD-E,Classificacao depende da atividade assistencial
+9,A DEFINIR,un,Luminaria normal,L1-L11,Distribuicao ilustrativa sem calculo luminotecnico
+10,A DEFINIR,un,Luminaria de emergencia,LE1-LE2,Posicao e autonomia a verificar pelo projeto de incendio
+11,A DEFINIR,un,Tomada de uso geral,T1-T10,Quantidade e circuito dependem do uso do ambiente
+12,A DEFINIR,un,Tomada ligada a UPS,U1-U2,Proposta; compatibilidade e cargas pendentes
+13,A DEFINIR,m,Eletrocalhas e condutores,ROTAS-CL,Seção taxa de ocupacao e suportacao nao dimensionadas
+14,A DEFINIR,un,Equipamentos eletromedicos,EEM-01..N,Selecionar com equipe clinica e fabricante

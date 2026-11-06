@@ -553,3 +553,20 @@ com PDFs A3 rasterizados independentemente pelo PDFium; similaridades: 0,992628,
 sem erros ou avisos. O total atualizado é 20 projetos e 138 pranchas. Não foram
 executados estudos de proteção, retorno, correntes vagantes ou desempenho. A inspeção
 no navegador nativo continua aguardando autorização do usuário.
+
+## Atualização P21 — instalação elétrica de clínica ambulatorial — 2026-11-06
+
+O P21 adiciona planta elétrica esquemática, unifilar de rede normal/gerador/UPS e
+matriz preliminar de continuidade. O caso usa 380/220 V e 60 Hz apenas como premissa
+gráfica. Nenhum local médico foi classificado e nenhuma carga foi aprovada como
+essencial; demanda, fontes, autonomia, proteção e aprovação sanitária continuam
+pendentes.
+
+O validador específico passou em 62 verificações. O AutoCAD AcCoreConsole 2027
+(26.0.118.0.0) abriu/auditou os três DXFs com zero erros encontrados e zero corrigidos.
+Uma nova geração reproduziu os mesmos hashes dos arquivos auditados: `01_planta_eletrica_clinica.dxf` — `d5cadac23114a21d99bb5b122275c88e8703b3e83021e360dbb605683c998610`; `02_unifilar_fontes_quadro_clinica.dxf` — `86ee1e24981371e2aa4ac82f9676c79ab1f953f8b5a6bf8afe61a17faed80043`; `03_matriz_continuidade_e_transferencia.dxf` — `279641dd382d9cd9d84c8d3d7bb1f972ea14fc0b57e99629a09a96a025e0fd01`.
+Inspecionei as três pranchas em PNG a 300 dpi e comparei com PDFs rasterizados
+independentemente pelo PDFium; similaridades: 0,992654, 0,992662 e 0,986103. O
+validador estrito passou em 784.335 verificações, zero erros e zero avisos. O
+portfólio registra agora 21 projetos e 141 pranchas. Inspeção no navegador nativo
+continua aguardando autorização.

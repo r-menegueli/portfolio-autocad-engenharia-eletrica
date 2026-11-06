@@ -120,168 +120,6 @@ lineweight = 18
 linetype = "CONTINUOUS"
 
 [[projects]]
-id = "20-tracao-ferroviaria-cc-750v"
-path = "20-tracao-ferroviaria-cc-750v"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "sensibilidade-corrente.csv",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "matriz-protecao.csv",
-  "plano-estudos.csv",
-  "validacao-projeto-20.json",
-  "fonte/gerar_projeto_20.py",
-  "fonte/validar_projeto_20.py",
-]
-
-[[projects]]
-id = "19-alimentacao-navios-cais-hvsc"
-path = "19-alimentacao-navios-cais-hvsc"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "calculo-correntes.csv",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "matriz-interfaces.csv",
-  "sequencia-conexao.csv",
-  "validacao-projeto-19.json",
-  "fonte/gerar_projeto_19.py",
-  "fonte/validar_projeto_19.py",
-]
-
-[[projects]]
-id = "18-compensacao-reativos-qualidade-energia"
-path = "18-compensacao-reativos-qualidade-energia"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "curva-compensacao.csv",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "validacao-projeto-18.json",
-  "fonte/gerar_projeto_18.py",
-  "fonte/validar_projeto_18.py",
-]
-
-[[projects]]
-id = "17-automacao-subestacao-digital"
-path = "17-automacao-subestacao-digital"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "lista-ieds.csv",
-  "matriz-goose.csv",
-  "lista-sinais.csv",
-  "plano-verificacao.csv",
-  "lista-materiais.csv",
-  "validacao-projeto-17.json",
-  "fonte/gerar_projeto_17.py",
-  "fonte/validar_projeto_17.py",
-]
-
-[[projects]]
-id = "16-parque-eolico-coleta-conexao"
-path = "16-parque-eolico-coleta-conexao"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "validacao-projeto-16.json",
-  "fonte/gerar_projeto_16.py",
-  "fonte/validar_projeto_16.py",
-]
-
-[[projects]]
-id = "13-estacao-recarga-veiculos-eletricos"
-path = "13-estacao-recarga-veiculos-eletricos"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "validacao-projeto-13.json",
-  "fonte/gerar_projeto_13.py",
-  "fonte/validar_projeto_13.py",
-]
-
-[[projects]]
-id = "14-infraestrutura-eletrica-data-center"
-path = "14-infraestrutura-eletrica-data-center"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "validacao-projeto-14.json",
-  "fonte/gerar_projeto_14.py",
-  "fonte/validar_projeto_14.py",
-]
-
-[[projects]]
-id = "15-microrrede-industrial-fv-bess-gerador"
-path = "15-microrrede-industrial-fv-bess-gerador"
-source_dir = "fonte"
-export_dir = "exports"
-sheet_count = 3
-required_files = [
-  "README.md",
-  "memorial-descritivo.md",
-  "criterios-premissas.md",
-  "referencias-normativas.md",
-  "inspecao-visual.md",
-  "lista-materiais.csv",
-  "lista-sinais.csv",
-  "validacao-projeto-15.json",
-  "fonte/gerar_projeto_15.py",
-  "fonte/validar_projeto_15.py",
-]
-
-[[projects]]
 id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
 source_dir = "fonte"
@@ -593,6 +431,189 @@ required_files = [
   "fonte/renderizar_projeto_12.py",
   "fonte/validar_projeto_12.py",
   "validacao.json",
+]
+
+[[projects]]
+id = "13-estacao-recarga-veiculos-eletricos"
+path = "13-estacao-recarga-veiculos-eletricos"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-13.json",
+  "fonte/gerar_projeto_13.py",
+  "fonte/validar_projeto_13.py",
+]
+
+[[projects]]
+id = "14-infraestrutura-eletrica-data-center"
+path = "14-infraestrutura-eletrica-data-center"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-14.json",
+  "fonte/gerar_projeto_14.py",
+  "fonte/validar_projeto_14.py",
+]
+
+[[projects]]
+id = "15-microrrede-industrial-fv-bess-gerador"
+path = "15-microrrede-industrial-fv-bess-gerador"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-15.json",
+  "fonte/gerar_projeto_15.py",
+  "fonte/validar_projeto_15.py",
+]
+
+[[projects]]
+id = "16-parque-eolico-coleta-conexao"
+path = "16-parque-eolico-coleta-conexao"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-16.json",
+  "fonte/gerar_projeto_16.py",
+  "fonte/validar_projeto_16.py",
+]
+
+[[projects]]
+id = "17-automacao-subestacao-digital"
+path = "17-automacao-subestacao-digital"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-ieds.csv",
+  "matriz-goose.csv",
+  "lista-sinais.csv",
+  "plano-verificacao.csv",
+  "lista-materiais.csv",
+  "validacao-projeto-17.json",
+  "fonte/gerar_projeto_17.py",
+  "fonte/validar_projeto_17.py",
+]
+
+[[projects]]
+id = "18-compensacao-reativos-qualidade-energia"
+path = "18-compensacao-reativos-qualidade-energia"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "curva-compensacao.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "validacao-projeto-18.json",
+  "fonte/gerar_projeto_18.py",
+  "fonte/validar_projeto_18.py",
+]
+
+[[projects]]
+id = "19-alimentacao-navios-cais-hvsc"
+path = "19-alimentacao-navios-cais-hvsc"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "calculo-correntes.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-interfaces.csv",
+  "sequencia-conexao.csv",
+  "validacao-projeto-19.json",
+  "fonte/gerar_projeto_19.py",
+  "fonte/validar_projeto_19.py",
+]
+
+[[projects]]
+id = "20-tracao-ferroviaria-cc-750v"
+path = "20-tracao-ferroviaria-cc-750v"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "sensibilidade-corrente.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-protecao.csv",
+  "plano-estudos.csv",
+  "validacao-projeto-20.json",
+  "fonte/gerar_projeto_20.py",
+  "fonte/validar_projeto_20.py",
+]
+
+[[projects]]
+id = "21-instalacao-clinica-ambulatorial"
+path = "21-instalacao-clinica-ambulatorial"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-cargas.csv",
+  "plano-estudos.csv",
+  "validacao-projeto-21.json",
+  "fonte/gerar_projeto_21.py",
+  "fonte/validar_projeto_21.py",
 ]
 
 [[artifacts]]
@@ -2029,6 +2050,39 @@ source = "17-automacao-subestacao-digital/fonte/03_matriz_goose_testes.dxf"
 svg = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.svg"
 pdf = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.pdf"
 png = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p21-01-planta-clinica"
+kind = "sheet"
+title = "Projeto 21 - Planta elétrica esquemática da clínica"
+source = "21-instalacao-clinica-ambulatorial/fonte/01_planta_eletrica_clinica.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p21-02-unifilar-fontes-clinica"
+kind = "sheet"
+title = "Projeto 21 - Unifilar de fontes e quadros da clínica"
+source = "21-instalacao-clinica-ambulatorial/fonte/02_unifilar_fontes_quadro_clinica.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/02_unifilar_fontes_quadro_clinica.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p21-03-matriz-continuidade-clinica"
+kind = "sheet"
+title = "Projeto 21 - Matriz de continuidade e transferência"
+source = "21-instalacao-clinica-ambulatorial/fonte/03_matriz_continuidade_e_transferencia.dxf"
+svg = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.svg"
+pdf = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.pdf"
+png = "21-instalacao-clinica-ambulatorial/exports/03_matriz_continuidade_e_transferencia.png"
 require_a3 = true
 require_notice = true
 

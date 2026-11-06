@@ -672,3 +672,23 @@ similaridades: 0,992628, 0,993066 e 0,990771. O validador estrito passou em 771.
 verificações, zero erros e zero avisos. Permanecem pendentes estudos de proteção,
 retorno, correntes vagantes, desempenho e validação de campo. A inspeção no navegador
 nativo continua aguardando autorização do usuário.
+
+## Projeto P21 — clínica ambulatorial — 2026-11-06
+
+Foram produzidas três pranchas A3 para uma clínica fictícia: planta elétrica
+esquemática, unifilar de rede normal/gerador/UPS e matriz preliminar de continuidade.
+O validador específico passou em 62 verificações. O AutoCAD AcCoreConsole 2027
+(26.0.118.0.0) abriu/auditou os três DXFs, sem erros encontrados ou corrigidos.
+Uma segunda execução do gerador reproduziu os mesmos hashes nos arquivos auditados:
+
+- `01_planta_eletrica_clinica.dxf` — `d5cadac23114a21d99bb5b122275c88e8703b3e83021e360dbb605683c998610`
+- `02_unifilar_fontes_quadro_clinica.dxf` — `86ee1e24981371e2aa4ac82f9676c79ab1f953f8b5a6bf8afe61a17faed80043`
+- `03_matriz_continuidade_e_transferencia.dxf` — `279641dd382d9cd9d84c8d3d7bb1f972ea14fc0b57e99629a09a96a025e0fd01`
+
+Inspecionei os três PNGs a 300 dpi e comparei-os com PDFs rasterizados independentemente
+pelo PDFium. Similaridades: 0,992654, 0,992662 e 0,986103. O revisor integrado confirmou
+os 21 projetos e 141 pranchas; a validação estrita passou em 784.335 verificações,
+zero erros e zero avisos. Nenhum local médico foi classificado; fontes, cargas e
+transferência permanecem premissas. Não foram feitos cálculos, aprovação sanitária,
+ensaios ou verificação de campo. O teste pelo navegador nativo continua aguardando
+autorização do usuário.

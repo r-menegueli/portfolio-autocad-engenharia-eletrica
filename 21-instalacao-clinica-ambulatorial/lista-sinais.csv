@@ -1,0 +1,9 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+REDE_DISPONIVEL,PCC-01,QTA-CL,Indicar presenca da fonte normal,Estado a definir,Contato ou protocolo do fabricante,A DEFINIR
+GE_PRONTO,GE-CL,QTA-CL,Indicar grupo gerador disponivel,Estado a definir,Interface do controlador do grupo,A DEFINIR
+GE_FALHA,GE-CL,QTA-CL,Indicar falha do grupo gerador,Estado a definir,Interface do controlador do grupo,A DEFINIR
+QTA_POSICAO_NORMAL,QTA-CL,SCADA-CL,Informar posicao da chave,Normal ou transicao,A definir com fabricante,PROPOSTA
+QTA_POSICAO_RESERVA,QTA-CL,SCADA-CL,Informar posicao da chave,Reserva ou transicao,A definir com fabricante,PROPOSTA
+UPS_BATERIA,UPS-CL,SCADA-CL,Indicar operacao por bateria,Estado e autonomia remanescente,A definir com fabricante,PROPOSTA
+UPS_FALHA,UPS-CL,SCADA-CL,Sinalizar alarme do sistema,Grupo de alarmes a definir,A definir com fabricante,PROPOSTA
+FONTE_QD_E,QD-E,SCADA-CL,Indicar fonte ativa do quadro,Normal ou gerador,Interface a especificar,A DEFINIR
