@@ -254,3 +254,25 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
 - Validação estrita: 663.880 verificações, 0 erros, 0 avisos. Revisão integrada: 12 projetos, 114 folhas, 456 arquivos gráficos, 77 CSVs; similaridade mínima de 0,981493.
 - O commit foi enviado para `codex/professional-portfolio-2026-11`. O PR #1 foi atualizado e permanece aberto como rascunho, sem merge; a branch principal não foi alterada.
 - A inspeção dos SVGs no navegador continua aguardando autorização. A sequência é conceitual e não afirma ensaios, categoria/PL/SIL, tempo de parada ou comportamento final para perda de sinal.
+
+## Publicação CAD — P05 revisão 05, P11/P12 revisão 04 — 2026-11-06
+
+- Commit `ff59ed07e47decd7270b01867e54c52781b55db5` atualiza os desenhos editáveis DXF,
+  derivados PDF/SVG/PNG, manifesto, validadores e documentação dos projetos P05, P11 e
+  P12 na branch `codex/professional-portfolio-2026-11`.
+- P05-01 agora relaciona C01–C06 às cargas e coordenadas X/Y derivadas do croqui, sem
+  apresentar esses dados como levantamento. P11-02 e P12-06 removem a escala gráfica
+  inválida e declaram premissas, limites e pendências de campo/OEM.
+- AcCoreConsole 2027 auditou 9/9 DXFs P05, 8/8 P11 e 9/9 P12: zero erros encontrados e
+  zero corrigidos. Os três renders principais foram conferidos no PNG de produção, PDF
+  rasterizado independentemente e contato do projeto; similaridades PDF/PNG: P05-01
+  0,992284; P11-02 0,990676; P12-06 0,991573.
+- Validadores específicos: P05, 443 verificações sem erros; P11, oito folhas, 23
+  materiais, 17 cabos e 22 dados pendentes; P12, nove folhas, nove eventos, quatro
+  alimentadores QCE, 24 materiais e 15 cabos. A revisão integrada confirmou 12 projetos,
+  114 folhas, 456 arquivos gráficos e 77 CSVs; a validação estrita passou em 668.075
+  verificações, sem erros ou avisos.
+- Os geradores P11/P12 gravam DXF em LF conforme `.gitattributes`; 26 fontes e 78 saídas
+  renderizadas conferem com os hashes do manifesto no conteúdo staged.
+- PR #1 foi verificada aberta, como rascunho, não mesclada e mergeable. A inspeção de SVGs
+  no navegador continua aguardando autorização do usuário.
