@@ -1958,57 +1958,57 @@
     {
       "id": "p20-01-unifilar-subestacao-tracao",
       "source": "20-tracao-ferroviaria-cc-750v/fonte/01_unifilar_subestacao_tracao.dxf",
-      "source_sha256": "19c2c47b29b31ff94e4bbe3c24e8d9f6e8164c9615daf53eda26b8b9191fc93b",
+      "source_sha256": "158f9b2b240f0abf90a4d562625bd3c731e6bc1e741673ff401fd73b2643ec50",
       "outputs": {
         "pdf": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.pdf",
-          "sha256": "18b895a540ad05924148fe4d4ad825c8848ee5302e40ffcd415bc87b4d824956"
+          "sha256": "a158701a8e29c2712f7167b09fa239209d1266a872259c927d7c17d6bd3e1a82"
         },
         "png": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.png",
-          "sha256": "d6b0133cabc6f78c1683db97c42f434408821f38b1b1bc8777db23c65ae07816"
+          "sha256": "94188464b98af8d9ed56c27ff7fba15da8d992571f3dde0e99e9af6ab02853ea"
         },
         "svg": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/01_unifilar_subestacao_tracao.svg",
-          "sha256": "42a243c1429d3347feeef24fe8e97a4b3b8d508dbeb9eb2edc0ff0cd84a1be0b"
+          "sha256": "621c591fe132f030b028ff5ffb0690490aa458fba07d6fa1782e5eb97d24abc2"
         }
       }
     },
     {
       "id": "p20-02-zonas-alimentacao-retorno-tracao",
       "source": "20-tracao-ferroviaria-cc-750v/fonte/02_zonas_alimentacao_retorno_tracao.dxf",
-      "source_sha256": "e61a3ab45001cbec8d6efcb3e8b0e22bc1e73dad3dc17d04eca3b14616e1dd8f",
+      "source_sha256": "aeef58ac53609f6326d77c8f3ddbb32b81db6b5d7f283c68357cc29d0d75e5ae",
       "outputs": {
         "pdf": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.pdf",
-          "sha256": "789bf04e5d1e76599d73740e19f44247e618830fd36b9b9b37c70e284170ebe5"
+          "sha256": "b64facadec4ed0d86b7bdd18ce2bf3e3484839c8444def49e9210414a11fac27"
         },
         "png": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.png",
-          "sha256": "b7fbdd6c32ea8893c3a82f6496c9b7f65e104420804c201ca09a2df6a12800b7"
+          "sha256": "066c375a69049dbd75712cd4cfe76cc9e1244f2701a4ef00b6b12fb1849fff46"
         },
         "svg": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/02_zonas_alimentacao_retorno_tracao.svg",
-          "sha256": "8635e70da1be9a433e9e92f1e80bb62305554ac70601bbac18dca95eba556c07"
+          "sha256": "66b504450c5b835dc4680c2b0680d9542aa4304223c1fc8c54f848114a245990"
         }
       }
     },
     {
       "id": "p20-03-matriz-protecao-supervisao-tracao-cc",
       "source": "20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_tracao_cc.dxf",
-      "source_sha256": "3bf49cc03e1efb6408e06070428309f35993a9aa46005128b3fcb6231111fd99",
+      "source_sha256": "ea1249c0fc5d1dc6399970a8218e7edadf3bb4d5baebe65aabb1f16ee0201b4a",
       "outputs": {
         "pdf": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.pdf",
-          "sha256": "ca42e6dbf863a61b61cee2b834ce7382cb2348ccc8d33b12f8acdd2b9797bbb6"
+          "sha256": "472eafab54c7f983af5960d2e0dd3f7531ae1029080cc481506f5ea65b3a0819"
         },
         "png": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.png",
-          "sha256": "446045db23acc8859968ef6fa72f77bb3beb925e56eb1e0039d377f0d4013265"
+          "sha256": "e2eff67b2d94c21f914378b1b19a4c3d39fe8481c93229fa19af89565444c23b"
         },
         "svg": {
           "path": "20-tracao-ferroviaria-cc-750v/exports/03_matriz_protecao_supervisao_tracao_cc.svg",
-          "sha256": "27ce2098d693d89ad0c9b7302a04b00bd5808e0422f3f8d9c2f4ee555ee50551"
+          "sha256": "160d9c9b1bec988b9c5d4a49df0dd4feec498d3b079f5a77b3aebc898e57d7aa"
         }
       }
     },
