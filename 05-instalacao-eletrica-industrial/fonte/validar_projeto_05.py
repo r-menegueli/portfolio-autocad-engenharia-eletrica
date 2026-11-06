@@ -306,6 +306,53 @@ def validate(root: Path) -> dict:
         checks += 2
         if "6 kA" in sheet_text or "10 kA" in sheet_text:
             errors.append(f"{filename}: capacidade de curto/interrupcao nao pode permanecer como valor presumido.")
+        if index == 1:
+            required_layout_terms = (
+                "REGISTRO DO LAYOUT",
+                "EQUIPAMENTOS, CIRCUITOS E POSICAO",
+                "S_inst",
+                "X (m)",
+                "Y (m)",
+                "Nao representam levantamento topografico.",
+            )
+            checks += len(required_layout_terms)
+            for term in required_layout_terms:
+                if term.casefold() not in sheet_text.casefold():
+                    errors.append(f"{filename}: registro do layout sem o campo/limite {term!r}.")
+
+            layout_records = {
+                "M-501": ("C01", Decimal("6.000"), Decimal("13.375")),
+                "M-502": ("C02", Decimal("12.750"), Decimal("13.375")),
+                "M-503": ("C03", Decimal("19.500"), Decimal("13.375")),
+                "M-504": ("C04", Decimal("6.000"), Decimal("6.250")),
+                "M-505": ("C05", Decimal("12.750"), Decimal("6.250")),
+                "TUE-501": ("C06", Decimal("21.000"), Decimal("6.125")),
+            }
+            loads_by_circuit = {row["circuito"]: row for row in loads}
+            checks += len(layout_records) * 5
+            for tag, (circuit, x_m, y_m) in layout_records.items():
+                load = loads_by_circuit[circuit]
+                fields = (
+                    tag,
+                    circuit,
+                    f"{number(load, 'potencia_aparente_instalada_kva'):.3f}".replace(".", ","),
+                    f"{x_m:.3f}".replace(".", ","),
+                    f"{y_m:.3f}".replace(".", ","),
+                )
+                for field in fields:
+                    if field not in sheet_text:
+                        errors.append(f"{filename}: registro {tag} nao corresponde ao dado {field}.")
+
+            origin_found = any(
+                entity.dxftype() == "CIRCLE"
+                and close(Decimal(str(entity.dxf.center.x)), Decimal("24"))
+                and close(Decimal(str(entity.dxf.center.y)), Decimal("108"))
+                and close(Decimal(str(entity.dxf.radius)), Decimal("1.4"))
+                for entity in doc.modelspace()
+            )
+            checks += 1
+            if not origin_found:
+                errors.append(f"{filename}: marcador da origem do croqui O=(0,0) ausente.")
         if index == 9:
             sheet_text = sheet_text.casefold()
             checks += len(REQUIRED_STUDY_TERMS)

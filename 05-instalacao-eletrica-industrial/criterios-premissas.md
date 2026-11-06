@@ -16,6 +16,15 @@
 | Queda combinada máxima | 4,0% | critério acadêmico |
 | Corrente de curto-circuito | PENDENTE | depende de dados de rede e cálculo rastreável |
 
+## Coordenadas do croqui P05-01
+
+- A origem `O=(0,0)` está no canto interno inferior esquerdo da planta, em `(24,108)` mm no DXF.
+- As posições da tabela usam o centro gráfico de cada símbolo; para o retângulo TUE-501, usa-se o centro da caixa.
+- A planta está desenhada em escala 1:125, então `X = (x_DXF - 24) x 0,125` e `Y = (y_DXF - 108) x 0,125`, em metros.
+- As coordenadas são derivadas do croqui fictício e servem para rastrear o desenho. Não são coordenadas topográficas nem confirmam a implantação de máquinas reais.
+- As cargas `S_inst` vêm dos circuitos C01-C06 do quadro de cargas. Os valores são preliminares e não comprovam seleção de equipamento.
+- Envelopes de fabricante, áreas de operação/manutenção, circulação, acessos, interferências, ventilação e rotas de processo dependem de dados reais e levantamento.
+
 ## Critérios de cálculo
 
 - Motor trifásico: `Pentrada = Psaída / rendimento`;

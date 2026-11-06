@@ -4,11 +4,11 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 08
 
-Formato: A3 paisagem, unidades em milímetros, revisão gráfica 03 (2026-11-06)
+Formato: A3 paisagem, unidades em milímetros, revisão gráfica 04 (2026-11-06)
 
-Estado: revisão conceitual 03 em 2026-11-06; segurança e conformidade normativa não validadas
+Estado: revisão conceitual 04 em 2026-11-06; segurança e conformidade normativa não validadas
 
-Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)** e cita as ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419 como referências de estudo. Não declara conformidade normativa, segurança de aterramento, aprovação de concessionária ou aptidão executiva. A revisão 02 remove a estimativa aritmética anterior da prancha 05 e acrescenta a folha 07 para rastrear dados necessários. A revisão 03 acrescenta a folha 08 como matriz que liga entradas do solo, falta e geometria às verificações, resultados requeridos e evidências. A malha segue sem resistência calculada/medida nem análise de GPR, toque, passo ou potenciais transferidos.
+Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Transformadora Abrigada de Média Tensão (13,8 kV / 380-220 V - 500 kVA)** e cita as ABNT NBR 14039, NBR 5410, NBR 15751 e NBR 5419 como referências de estudo. Não declara conformidade normativa, segurança de aterramento, aprovação de concessionária ou aptidão executiva. A revisão 02 remove a estimativa aritmética anterior da prancha 05 e acrescenta a folha 07 para rastrear dados necessários. A revisão 03 acrescenta a folha 08 como matriz que liga entradas do solo, falta e geometria às verificações, resultados requeridos e evidências. A revisão 04 remove a escala gráfica incorreta da P11-02 e identifica dimensões e interfaces pendentes. A malha segue sem resistência calculada/medida nem análise de GPR, toque, passo ou potenciais transferidos.
 
 ## Entregáveis
 
@@ -27,7 +27,7 @@ Este estudo acadêmico apresenta uma proposta conceitual de **Subestação Trans
 ## Pranchas
 
 1. [Diagrama unifilar geral](fonte/01_diagrama_unifilar_geral.dxf): ramal 13,8 kV, muflas, cubículo de medição, cubículo de proteção primária com disjuntor a vácuo 17,5 kV e relé 50/51/50N/51N, transformador a óleo 500 kVA e QGBT 800 A.
-2. [Planta baixa da subestação](fonte/02_planta_baixa_subestacao.dxf): arranjo físico em alvenaria 6,00 x 4,00 m, portas corta-fogo P-90, canaletas de cabos, tapete isolante 20 kV, ventilação cruzada e bacia de contenção com brita nº 1 e dreno sifonado.
+2. [Arranjo conceitual da subestação](fonte/02_planta_baixa_subestacao.dxf): cotas externas adotadas de 6,00 x 4,00 m, portas, canaletas, tapete isolante e bacia. A folha indica `S/ESC.` porque a geometria interna não corresponde às cotas; equipamentos, portas, acessos e afastamentos precisam de levantamento e dados OEM.
 3. [Cortes e detalhes eletromecânicos](fonte/03_cortes_detalhes_eletromecanicos.dxf): elevações A-A e B-B, barramentos de MT em barra chata Cu 25x5 mm sobre isoladores epóxi 17,5 kV, bacia de contenção e barramento flexível BT.
 4. [Diagrama funcional de proteção e comando](fonte/04_diagrama_funcional_protecao.dxf): esquema de medição AC (TCs de proteção), circuito auxiliar 125 Vcc com retificador/banco de baterias, lógica de trip na bobina de abertura (BA) com contato auxiliar 52a e intertravamentos de segurança (Buchholz 63 e termômetro 49).
 5. [Malha de aterramento e equipotencialização](fonte/05_malha_aterramento.dxf): arranjo conceitual de condutores, hastes e BEP; nenhum valor de resistência ou segurança é apresentado como resultado.
@@ -68,13 +68,14 @@ Na raiz do portfólio, os arquivos-fonte e as oito folhas podem ser reconstruíd
   aterramento mantidas `A DEFINIR/PENDENTE`.
 - AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 DXFs; os logs registram zero erros
   encontrados e zero corrigidos.
-- O contato atualizado das oito folhas foi inspecionado. P11-08 foi conferida no PNG
-  de 300 dpi e na rasterização independente do PDF; entradas, quatro verificações,
-  estados pendentes, legenda e carimbo `03 / 08/08` estão dentro da moldura, sem cortes.
-- Similaridade PDF/PNG da P11-08: 0,988037; menor similaridade entre as oito folhas
+- O contato atualizado das oito folhas foi inspecionado. P11-02 foi conferida no PNG
+  de 300 dpi e na rasterização independente do PDF a 150 dpi. A geometria está marcada
+  sem escala válida (`S/ESC.`), as cotas externas são premissas, e as pendências de
+  levantamento/OEM estão dentro da folha, sem cortes relevantes.
+- Similaridade PDF/PNG da P11-02: 0,990676; menor similaridade entre as oito folhas
   P11: 0,988037.
-- Validação estrita do portfólio: 660.601 verificações, zero erros e zero avisos.
-  Revisão integrada: 12 projetos, 113 folhas, 452 arquivos gráficos e 76 CSVs; mínima
+- Validação estrita do portfólio: 668.075 verificações, zero erros e zero avisos.
+  Revisão integrada: 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; mínima
   similaridade geral PDF/PNG: 0,981493.
 
 Essas verificações confirmam estrutura, abertura e apresentação dos arquivos; não

@@ -92,6 +92,16 @@ def main() -> int:
         expected_sheet = f"{index:02d}/{len(SHEETS):02d}"
         if expected_sheet not in text:
             errors.append(f"Numeracao de prancha {expected_sheet} nao encontrada em {filename}")
+        if index == 6:
+            for term in (
+                "ARRANJO CONCEITUAL E INTERFACES DO GMG",
+                "dependem de selecao OEM",
+                "escala grafica nao valida",
+                "INTERFACES DO ESCAPE E CRITERIOS",
+                "S/ESC.",
+            ):
+                if term.casefold() not in text.casefold():
+                    errors.append(f"Limite conceitual ausente na prancha 06: {term}")
 
     combined_text = " ".join(all_texts)
     for tag in sorted(REQUIRED_TAGS):

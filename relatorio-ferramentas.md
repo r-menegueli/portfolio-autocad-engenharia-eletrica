@@ -544,3 +544,21 @@ PDF/PNG de P01-09 foi 0,990330. A revisão integrada passou: 12 projetos, 114 fo
 456 arquivos gráficos, 77 CSVs e similaridade mínima de 0,981493. O validador estrito
 passou por 663.880 verificações, sem erros ou avisos. A inspeção de SVGs no navegador
 continua aguardando autorização.
+
+## Auditoria CAD — P05 revisão 05, P11/P12 revisão 04 — 2026-11-06
+
+O AutoCAD AcCoreConsole 2027 (26.0.118.0.0) abriu e auditou os 26 DXFs dos projetos
+P05, P11 e P12. A execução em lote registrou zero erros encontrados e zero corrigidos.
+Os geradores P11/P12 agora gravam DXF em LF, conforme `.gitattributes`; os 26 hashes de
+origem no manifesto conferem com os arquivos que serão versionados.
+Os três renders de produção P05-01, P11-02 e P12-06 foram comparados a PDFs rasterizados
+independentemente pelo `pypdfium2`; também conferi o PNG integral e o contato do
+respectivo conjunto. Não encontrei cortes ou colisões relevantes.
+
+P05-01 obteve similaridade PDF/PNG de 0,992284; P11-02, 0,990676; P12-06, 0,991573.
+Os validadores específicos passaram (P05: 443 verificações; P11: oito folhas, 23
+materiais, 17 cabos e 22 entradas pendentes; P12: nove folhas, nove eventos, quatro
+alimentadores QCE, 24 materiais e 15 cabos). A revisão integrada confirmou 12 projetos,
+114 folhas, 456 arquivos gráficos e 77 CSVs; validação estrita: 668.075 verificações,
+zero erros e zero avisos. Essas verificações não demonstram dimensionamento ou aptidão
+executiva. A inspeção de SVGs no navegador continua aguardando autorização.

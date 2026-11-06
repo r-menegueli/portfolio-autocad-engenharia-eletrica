@@ -36,8 +36,9 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "05-instalacao-eletrica-industrial"
 PROJECT_DATE = "2026-11-06"
-REVISION = "04"
-REVISION_DESCRIPTION = "METODO DE CURTO-CIRCUITO E COORDENACAO"
+REVISION = "05"
+REVISION_DESCRIPTION = "RASTREABILIDADE DO LAYOUT"
+LAYOUT_METERS_PER_MM = 0.125  # escala 1:125 em um croqui cotado em milimetros
 
 
 @dataclass(frozen=True)
@@ -83,6 +84,15 @@ LOADS = (
     Load("C14", "QADM-05", "TUG escritorio", "A", 1.500, 0.60, 0.900, 6.818, 2.5, 16, 1.395),
     Load("C15", "QADM-05", "TUG manutencao", "B", 1.500, 0.60, 0.900, 6.818, 2.5, 16, 1.506),
     Load("C16", "QADM-05", "TUG servicos", "C", 1.500, 0.60, 0.900, 6.818, 2.5, 16, 1.674),
+)
+
+LAYOUT_EQUIPMENT = (
+    (72, 215, "M-501", "COMPRESSOR", "C01"),
+    (126, 215, "M-502", "TORNO", "C02"),
+    (180, 215, "M-503", "FRESADORA", "C03"),
+    (72, 158, "M-504", "EXAUSTOR", "C04"),
+    (126, 158, "M-505", "ESMERIL", "C05"),
+    (192, 157, "TUE-501", "SOLDA", "C06"),
 )
 
 
@@ -299,15 +309,11 @@ def create_sheet(config: dict, spec: SheetSpec):
 
 def draw_layout_industrial(layout) -> None:
     building(layout)
-    for x, y, tag, detail in (
-        (72, 215, "M-501", "COMPRESSOR"),
-        (126, 215, "M-502", "TORNO"),
-        (180, 215, "M-503", "FRESADORA"),
-        (72, 158, "M-504", "EXAUSTOR"),
-        (126, 158, "M-505", "ESMERIL"),
-    ):
+    for x, y, tag, detail, _circuit in LAYOUT_EQUIPMENT[:5]:
         motor(layout, x, y, tag, detail)
     box(layout, 180, 143, 204, 171, "TUE-501", "SOLDA", "04_EQUIPAMENTOS")
+    layout.add_circle((24, 108), 1.4, dxfattribs={"layer": "03_COTAS"})
+    add_text(layout, "O=(0,0)", (29, 112), 1.0, layer="03_COTAS")
     box(layout, 222, 223, 258, 244, "QGBT-05", "GERAL", "05_POTENCIA")
     box(layout, 222, 187, 258, 208, "QDF-05", "FORCA", "05_POTENCIA")
     box(layout, 222, 151, 258, 172, "QDL-05", "LUZ", "05_POTENCIA")
@@ -319,20 +325,38 @@ def draw_layout_industrial(layout) -> None:
     line(layout, (270, 108), (270, 252), "03_COTAS")
     centered(layout, "18 000 mm", (279, 180), 1.3, "03_COTAS")
     add_rect(layout, 288, 111, 402, 252, "12_LEGENDA")
-    centered(layout, "DADOS DO GALPAO", (345, 245), 1.8, "12_LEGENDA")
+    centered(layout, "REGISTRO DO LAYOUT", (345, 245), 1.8, "12_LEGENDA")
+    centered(layout, "Oficina ficticia - dados de estudo", (345, 237), 1.15, "02_TEXTO")
+    centered(layout, "EQUIPAMENTOS, CIRCUITOS E POSICAO", (345, 227), 1.15, "12_LEGENDA")
+    for label, x in (("TAG", 294), ("CIRC.", 326), ("S_inst", 345), ("X (m)", 367), ("Y (m)", 387)):
+        add_text(layout, label, (x, 218), 1.05, layer="02_TEXTO")
+    line(layout, (294, 215), (396, 215), "12_LEGENDA")
+
+    loads_by_circuit = {load.circuit: load for load in LOADS}
+    for index, (x, y, tag, _detail, circuit) in enumerate(LAYOUT_EQUIPMENT):
+        load = loads_by_circuit[circuit]
+        x_m = (x - 24) * LAYOUT_METERS_PER_MM
+        y_m = (y - 108) * LAYOUT_METERS_PER_MM
+        values = (
+            (tag, 294),
+            (circuit, 326),
+            (f"{load.installed_kva:.3f}".replace(".", ","), 345),
+            (f"{x_m:.3f}".replace(".", ","), 367),
+            (f"{y_m:.3f}".replace(".", ","), 387),
+        )
+        row_y = 207 - index * 8
+        for value, column_x in values:
+            add_text(layout, value, (column_x, row_y), 1.0, layer="02_TEXTO")
+    line(layout, (294, 159), (396, 159), "12_LEGENDA")
+    centered(layout, "REFERENCIA DO CROQUI", (345, 151), 1.15, "12_LEGENDA")
     for i, text in enumerate((
-        "Comprimento: 30,00 m",
-        "Largura: 18,00 m",
-        "Area: 540,00 m2",
-        "Producao: 432,00 m2",
-        "Apoio: 108,00 m2",
-        "Pe-direito: 6,00 m (hip.)",
-        "Rede: 380/220 V - 3F+N+PE",
-        "Frequencia: 60 Hz",
-        "Esquema: TN-S conceitual",
-        "Acesso frontal quadros >= 1,20 m",
+        "Origem O: canto interno inferior esquerdo.",
+        "X/Y em metros, derivados da escala 1:125.",
+        "Nao representam levantamento topografico.",
+        "S_inst: potencia aparente instalada (kVA).",
+        "Pegadas, folgas e acessos reais: pendentes.",
     )):
-        add_text(layout, text, (294, 234 - i * 11.5), 1.4, layer="02_TEXTO")
+        add_text(layout, text, (294, 143 - i * 7), 1.0, layer="02_TEXTO")
 
 
 def draw_force(layout) -> None:

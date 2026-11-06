@@ -20,6 +20,14 @@
 | Resistividade da camada superficial ($\rho_s$) | não definida | depende de material, espessura e evidência de campo |
 | Geometria/classificação do SPDA | retícula e captores esquemáticos | sem análise de risco ou verificação normativa |
 
+## Escala e geometria da P11-02
+
+- As cotas externas de 6,00 x 4,00 m são premissas do estudo, sem levantamento arquitetônico ou civil.
+- A geometria interna representada não corresponde proporcionalmente às cotas; por isso a prancha declara `S/ESC.` e as cotas escritas prevalecem.
+- Localização de portas, cubículos, transformador, canaletas, tapete, ventilação e bacia permanece esquemática; dimensões dos equipamentos dependem dos desenhos do fabricante.
+- O corredor frontal de 1,20 m e os demais valores são critérios de estudo. A planta não demonstra que os afastamentos, a ventilação, a retirada dos equipamentos ou a NBR 14039 estejam atendidos.
+- Para substituir o esquema por implantação real são necessários levantamento, seleção OEM, rotas de entrada/retirada e revisão técnica do arranjo.
+
 ## Critérios eletromecânicos e de segurança
 
 1. **Compartimentação e Acesso:**

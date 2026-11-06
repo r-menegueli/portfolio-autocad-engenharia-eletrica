@@ -36,7 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "11-subestacao-media-tensao"
 PROJECT_DATE = "2026-11-06"
-REVISION = "03"
+REVISION = "04"
+REVISION_DESCRIPTION = "CLAREZA DE ESCALAS E LIMITES"
 
 
 @dataclass(frozen=True)
@@ -64,13 +65,13 @@ SHEETS = (
     SheetSpec(
         2,
         "02_planta_baixa_subestacao.dxf",
-        "PLANTA BAIXA DA SUBESTACAO ABRIGADA",
-        "Arranjo fisico, alvenaria, acessos e afastamentos normativos NBR 14039",
-        "Dimensoes civis: 6,00 x 4,00 m externo. Portas corta-fogo P-90 abrindo para fora.\\P"
-        "Piso com canaletas tecnicas para cabos de MT e BT. Ventilacao natural cruzada.\\P"
-        "Bacia de contencao de oleo sob o transformador com brita n. 1 e dreno sifonado.",
+        "ARRANJO CONCEITUAL DA SUBESTACAO ABRIGADA",
+        "Cotas externas adotadas no estudo; geometria da planta sem escala valida",
+        "Cotas externas 6,00 x 4,00 m sao premissas do estudo.\\P"
+        "A geometria interna e a escala grafica nao representam levantamento.\\P"
+        "Confirmar dimensoes, acessos e afastamentos com dados civis e OEM.",
         "Vermelho: equipamentos MT/BT | Cinza: alvenaria/portas | Azul: canaletas | Verde: seguranca",
-        "1:50",
+        "S/ESC.",
     ),
     SheetSpec(
         3,
@@ -242,7 +243,7 @@ def add_revision_table(layout) -> None:
         line(layout, (x, 72), (x, 94), "01_CARIMBO")
     for value, x in (("REV.", 239), ("DATA", 264), ("DESCRICAO", 316), ("RESP.", 381)):
         centered(layout, value, (x, 89.5), 1.7, "01_CARIMBO")
-    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), ("ESTUDO DE ATERRAMENTO", 316), ("R.E.M.M.", 381)):
+    for value, x in ((REVISION, 239), (PROJECT_DATE, 264), (REVISION_DESCRIPTION, 316), ("R.E.M.M.", 381)):
         centered(layout, value, (x, 78.5), 1.55, "02_TEXTO")
 
 
@@ -468,20 +469,19 @@ def draw_sheet_02(layout) -> None:
     centered(layout, "4 000 mm", (x0 - 18, y0 + h / 2), 1.3, "03_COTAS")
 
     # Painel de informacoes laterais
-    panel_box(layout, 302, 100, 402, 256, "PREMISSAS NBR 14039", "", "12_LEGENDA")
+    panel_box(layout, 302, 100, 402, 256, "PREMISSAS E PENDENCIAS DE ARRANJO", "", "12_LEGENDA")
     notes_p2 = [
-        "1. Pe-direito livre: 3,50 m.",
-        "2. Corredor de manobra >= 1,20 m.",
-        "3. Abertura das portas para fora.",
-        "4. Bacia com volume >= 1,2 m3",
-        "   (oleo total trafo = 850 L).",
-        "5. Brita n. 1 h=10 cm abafa-chama.",
-        "6. Ventilacao natural cruzada:",
-        "   - venezianas com tela 2 mm;",
-        "   - area util calculada: 1,8 m2.",
-        "7. Tapete de seguranca 20 kV.",
-        "8. Iluminacao normal e emergencia.",
-        "9. Placas 'ALTA TENSAO 13.800 V'.",
+        "Cotas externas 6,00 x 4,00 m: premissa do estudo.",
+        "Planta sem escala grafica valida; cotas prevalecem.",
+        "Geometria interna e portas: confirmar no levantamento.",
+        "Cubiculos e TR-01: envelopes e manutencao dependem do OEM.",
+        "Afastamentos e rotas: validar com NBR 14039 e fabricante.",
+        "Corredor frontal >= 1,20 m: criterio preliminar.",
+        "Bacia 1,20 m3; oleo 850 L: premissas a confirmar.",
+        "Ventilacao e area util 1,8 m2: estudo nao verificado.",
+        "Canaletas, cruzamentos e acesso de retirada: levantar.",
+        "Portas P-90 e equipamentos de seguranca: especificar.",
+        "A planta nao demonstra conformidade ou liberacao executiva.",
     ]
     for idx, nt in enumerate(notes_p2):
         left_text(layout, nt, (306, 241 - idx * 11.2), 1.12, "02_TEXTO")
@@ -891,7 +891,8 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
     doc, layout = create_sheet(config, spec)
     DRAW_MAP[spec.number](layout)
     prepare_deterministic_write(doc)
-    doc.saveas(output_path)
+    with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
+        doc.write(stream)
     print(f"Gerado: {output_path.relative_to(ROOT)}")
 
 

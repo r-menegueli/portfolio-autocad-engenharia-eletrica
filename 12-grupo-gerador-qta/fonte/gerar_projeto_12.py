@@ -36,8 +36,8 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 
 PROJECT_SLUG = "12-grupo-gerador-qta"
-PROJECT_DATE = "2026-11-05"
-REVISION = "03"
+PROJECT_DATE = "2026-11-06"
+REVISION = "04"
 LOAD_SCHEDULE_NAME = "cadastro-cargas-qce.csv"
 LOAD_SCHEDULE_FIELDS = (
     "cabo_id",
@@ -120,13 +120,13 @@ SHEETS = (
     SheetSpec(
         6,
         "06_planta_instalacao_gmg.dxf",
-        "PLANTA DE INSTALACAO E DETALHES DO GMG",
-        "Arranjo fisico da sala do gerador, atenuacao acustica, escape e contencao",
-        "Base de concreto isolada com 6 amortecedores elastomericos antivibratorios.\\P"
-        "Cabine silenciada 75 dB(A) com venezianas de admissao e descarga atenuadas.\\P"
-        "Tanque integrado de 250 L sobre bacia de contencao estanque para 297 L (110%).",
+        "ARRANJO CONCEITUAL E INTERFACES DO GMG",
+        "Sala, cabine e interfaces dependem de levantamento e dados do fabricante",
+        "Dimensoes internas de 6,50 x 4,00 m sao premissas do estudo.\\P"
+        "Cabine, ventilacao, escape e folgas dependem de selecao OEM.\\P"
+        "Rota fisica, acessos e manutencao devem ser confirmados em campo.",
         "GMG-01: 250 kVA | ESC-01: silencioso hospitalar | TQ-01: tanque 250L | VIB: amortecedores",
-        "1:50",
+        "S/ESC.",
     ),
     SheetSpec(
         7,
@@ -636,7 +636,7 @@ def draw_sheet_05(layout) -> None:
 
 def draw_sheet_06(layout) -> None:
     # 1. Planta Baixa da Sala do GMG (Esquerda: X = 28 a 250)
-    panel_box(layout, 28, 102, 250, 256, "PLANTA BAIXA - SALA DO GERADOR", "Dimensoes Internas: 6,50 x 4,00 m (Escala 1:50)", "11_ARQUITETURA")
+    panel_box(layout, 28, 102, 250, 256, "LAYOUT CONCEITUAL - SALA GMG", "Dimensoes adotadas: 6,50 x 4,00 m; escala grafica nao valida", "11_ARQUITETURA")
 
     # Paredes da sala (alvenaria acústica)
     add_rect(layout, 42, 120, 236, 232, "11_ARQUITETURA")
@@ -670,7 +670,7 @@ def draw_sheet_06(layout) -> None:
     left_text(layout, "EXT. PQS/CO2", (65, 131), 0.9, "06_COMANDO")
 
     # 2. Detalhe do Escape e Requisitos Normativos (Direita: X = 258 a 402)
-    panel_box(layout, 258, 102, 402, 256, "ESCAPE HOSPITALAR E REQUISITOS", "Atenuacao Acustica e Gases", "04_EQUIPAMENTOS")
+    panel_box(layout, 258, 102, 402, 256, "INTERFACES DO ESCAPE E CRITERIOS", "Premissas; confirmar por fabricante", "04_EQUIPAMENTOS")
 
     # Fluxo de escape em blocos
     box(layout, 268, 214, 392, 232, "1. JUNTA EXPANSAO FLEXIVEL INOX", "Absorcao de vibracao na saida do turbo", "04_EQUIPAMENTOS")
@@ -680,10 +680,11 @@ def draw_sheet_06(layout) -> None:
     box(layout, 268, 154, 392, 174, "3. TUBULACAO ISOLADA LA DE ROCHA", "Espessura 50 mm + protecao aluminio", "04_EQUIPAMENTOS")
 
     reqs = [
-        "- Nivel sonoro externo <= 75 dB(A) a 1,5m (NBR 10151).",
-        "- Vazao de ar do radiador: 5,2 m3/s (18.720 m3/h).",
-        "- Autonomia do tanque 250 L: 5,7 h (100%) / 7,6 h (75%).",
-        "- Aterramento da carcaca e neutro em Cu 120 mm2 ao BEP.",
+        "- Nivel sonoro <= 75 dB(A) a 1,5 m: criterio premissa.",
+        "- Vazao do radiador 5,2 m3/s: confirmar no manual OEM.",
+        "- Autonomia do tanque: consumo e regime ainda nao validados.",
+        "- Escape, contrapressao e temperatura: confirmar com OEM.",
+        "- Envelopes, acessos e rotas de ar/escape: pendentes.",
     ]
     for idx, rq in enumerate(reqs):
         left_text(layout, rq, (264, 140 - idx * 8.5), 0.92, "02_TEXTO")
@@ -889,7 +890,8 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path, root: Path) ->
     else:
         DRAW_MAP[spec.number](layout)
     prepare_deterministic_write(doc)
-    doc.saveas(output_path)
+    with output_path.open("wt", encoding="utf-8", newline="\n") as stream:
+        doc.write(stream)
     print(f"Gerado: {output_path.relative_to(ROOT)}")
 
 

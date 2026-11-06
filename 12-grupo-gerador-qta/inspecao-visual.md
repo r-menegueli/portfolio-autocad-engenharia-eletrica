@@ -2,6 +2,9 @@
 
 > Projeto acadêmico e conceitual. Esta inspeção não libera fabricação, instalação ou operação.
 
+Estado atual: revisão 04, inspeção em 2026-11-06. A seção de revisão 03 abaixo é
+histórica.
+
 ## Escopo da revisão 03
 
 O Projeto 12 contém nove pranchas A3 em DXF, PDF, SVG e PNG. A inspeção desta revisão cobre o contato atualizado das nove folhas e a leitura ampliada de P12-09 no PNG de produção e em PDF rasterizado independentemente a 150 dpi.
@@ -26,3 +29,20 @@ O contato completo está em `work/revisao-portfolio/contatos/12-grupo-gerador-qt
 ## Limites
 
 Não verifiquei comportamento em equipamento, lógica de segurança certificada, coordenação de proteção nem conformidade para execução. A inspeção visual cobre legibilidade e composição gráfica; não confirma dimensionamento ou funcionamento real.
+
+## Revisão 04 — 2026-11-06
+
+- As nove folhas foram regeneradas em DXF, PDF, SVG e PNG. Conferi o contato atualizado
+  das nove folhas para revisão, carimbos, margens e composição.
+- Inspecionei a P12-06 no PNG de produção a 300 dpi e na rasterização independente do
+  PDF via `pypdfium2` a 150 dpi. O título e a nota marcam o arranjo como conceitual e
+  declaram `S/ESC.`; as dimensões 6,50 x 4,00 m são premissas. A planta, o painel de
+  interfaces, as notas, o aviso e o carimbo estão dentro da folha; não observei cortes
+  ou colisões relevantes.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs, sem erros encontrados ou
+  corrigidos. A similaridade PDF/PNG de P12-06 foi 0,991573; a mínima do P12 foi
+  0,986323.
+- O desenho não mostra percurso físico completo de ar/escape nem posição executiva do
+  tanque, equipamento e acessos. Vazão, contrapressão, ruído, manutenção e afastamentos
+  dependem de dados OEM e levantamento local; nada disso foi validado nesta inspeção.
+- A inspeção de SVGs no navegador continua aguardando autorização do usuário.

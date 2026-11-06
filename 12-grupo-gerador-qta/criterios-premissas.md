@@ -21,6 +21,13 @@
 * **Sistema de Descarga de Gases:** Tubulação em aço carbono sem costura ASTM A53 Grau B, diâmetro nominal 4" (DN 100 mm), isolada termicamente com manta de lã de rocha (espessura 50 mm, densidade $64\text{ kg/m}^3$) revestida com chapa de alumínio corrugado 0,5 mm. Silencioso de absorção e reatividade com atenuação de 30 dB(A) e dreno de água condensada na base.
 * **Combustível e Segurança Ambiental:** Tanque diário de 250 litros integrado na base do grupo gerador, provido de bacia de contenção em chapa de aço estanque soldada com volume útil mínimo de 275 litros (110% da capacidade total do reservatório).
 
+### Limites geométricos da P12-06
+
+- As dimensões internas de 6,50 x 4,00 m são premissas; a geometria desenhada não representa escala gráfica válida, indicada como `S/ESC.`.
+- A cabine, venezianas, atenuadores, portas, base e bacia são representações esquemáticas, sem envelope de um modelo OEM selecionado.
+- Vazão de ventilação, sentido do ar, contrapressão e temperatura do escape, ruído, áreas de manutenção e rota física devem ser confirmados nos documentos do fabricante e no levantamento do local.
+- A P12-06 não comprova desempenho acústico, troca de calor, circulação, autonomia sob carga ou atendimento a requisitos de implantação.
+
 ---
 
 ## 3. Filosofia de Controle e Automação

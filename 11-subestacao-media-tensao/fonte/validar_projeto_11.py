@@ -153,6 +153,18 @@ def main() -> int:
     for term in REQUIRED_SHEET_08_TERMS:
         if term not in sheet_08_text:
             errors.append(f"Termo obrigatorio ausente na prancha 08: {term}")
+    sheet_02_text = sheet_texts.get("02_planta_baixa_subestacao.dxf", "")
+    for term in (
+        "ARRANJO CONCEITUAL DA SUBESTACAO ABRIGADA",
+        "sem escala valida",
+        "PREMISSAS E PENDENCIAS DE ARRANJO",
+        "A planta nao demonstra conformidade ou liberacao executiva.",
+        "S/ESC.",
+    ):
+        if term.casefold() not in sheet_02_text.casefold():
+            errors.append(f"Termo de escala/limite conceitual ausente na prancha 02: {term}")
+    if "afastamentos normativos NBR 14039" in sheet_02_text:
+        errors.append("A prancha 02 nao pode sugerir afastamentos normativos validados.")
     sheet_05_text = sheet_texts.get("05_malha_aterramento.dxf", "")
     if "18,72" in sheet_05_text or "250 ohm.m" in sheet_05_text.lower():
         errors.append("A prancha 05 ainda apresenta valor aritmetico/solo hipotetico como entrada ativa.")

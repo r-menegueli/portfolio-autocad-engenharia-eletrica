@@ -135,8 +135,12 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 114 pranchas A3 de P01–P12. A revisão 04 do P01 acrescenta uma folha de
-sequência operacional conceitual; o P02 acrescenta uma folha de
+revisão cobre 114 pranchas A3 de P01–P12. A revisão 05 do P05 acrescenta a P05-01 uma
+tabela rastreável de circuito, potência instalada e coordenadas do croqui, sem afirmar
+implantação real. As revisões 04 do P11 e P12 identificam P11-02 e P12-06 como arranjos
+sem escala gráfica válida e deixam explícitos os dados de levantamento e fabricante
+pendentes. A revisão 04 do P01 acrescenta uma folha de sequência operacional
+conceitual; o P02 acrescenta uma folha de
 cotas superiores aritméticas por condutor e retira a seleção não demonstrada de QG1
 63 A; os valores permanecem sem diversidade, não são demanda nem corrente fasorial. A
 revisão 03 do P11 acrescenta uma matriz que relaciona entradas de aterramento a
@@ -147,7 +151,9 @@ balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alime
 remotos. Esses valores são
 premissas de estudo, não resultados de calibração, ensaio ou dimensionamento final. Consulte a
 [auditoria de projetos e inspeções](docs/auditoria-portfolio-2026-11.md) para as
-contagens atuais e os limites das verificações.
+contagens atuais e os limites das verificações. A auditoria integrada mais recente
+confirmou 12 projetos, 114 folhas, 456 arquivos gráficos e 77 CSVs; a validação estrita
+passou em 668.075 verificações, sem erros ou avisos.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
 - [Revisão técnica histórica (P01–P10, 2026-09-10)](relatorio-revisao-tecnica.md)

@@ -780,171 +780,171 @@
     {
       "id": "p05-01-layout-industrial",
       "source": "05-instalacao-eletrica-industrial/fonte/01_layout_industrial.dxf",
-      "source_sha256": "457d650e16836f3d098b0764e9bfdff51599f440ae0362e85166d9b7d94e66cd",
+      "source_sha256": "3cdc2c9600e4b4c5abc37e2722510a38a72eea96114a2ebd221471c433062d73",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.pdf",
-          "sha256": "a02fb1dcfc28beaebaf570172295578afde7d33850c9c5c0458135b32a30faec"
+          "sha256": "1ee6d334f8d1341712dfc00a28c55c8bb65b91dfea7c5d4822b37b6492ea766c"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.png",
-          "sha256": "790e271ac85b85de48e43808f73b3947d98fbe3d9991d4afadcf5a452bfde2a8"
+          "sha256": "7f5567fdb07f7cf8cf8f519734629d95eba47ec8a06c01823f54e39d5a0a474a"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/01_layout_industrial.svg",
-          "sha256": "4d805c577219952551730a7bfad264b43d72c042a92aac78ccbb32f5976227f8"
+          "sha256": "c6de856f9959ee0f0f77a6d776ed3874cd0d4d8a6dd2d91dc151dc66684b73a5"
         }
       }
     },
     {
       "id": "p05-02-distribuicao-forca",
       "source": "05-instalacao-eletrica-industrial/fonte/02_distribuicao_forca.dxf",
-      "source_sha256": "e944ffea965d87fc092ec0ff6c742ad6edf4087b654c523389e7365abdff2799",
+      "source_sha256": "e3488f6204fa0d3772d3d226af40bce0dc900456e0301696601e7891e5d9cbdb",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.pdf",
-          "sha256": "e39d062d71cb9da2d27564d8b6db63e83633df9fa5b927af20111d795ad23841"
+          "sha256": "eed14be39eb86425506874c2cfcb33902407ddd9e114cdc60fd9a60b1f3a0735"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.png",
-          "sha256": "c446d7855b87e2cd7868adfcd41d08f495918829ce49d08c3fcd2ab7a65ff661"
+          "sha256": "b8f2fe36049bd9cee919481d1af5bc8091a29b9cd137f19688bf5e135dc6240a"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/02_distribuicao_forca.svg",
-          "sha256": "3bb49039cce3d4d803e48c76685bee877c92e8e7321494a395672a864ddf51b3"
+          "sha256": "b02dd47a39421a35ecf3f00a17fe84e70bcf31c0cb6aa2aac15005f220decdc0"
         }
       }
     },
     {
       "id": "p05-03-distribuicao-iluminacao",
       "source": "05-instalacao-eletrica-industrial/fonte/03_distribuicao_iluminacao.dxf",
-      "source_sha256": "daf1e3d11cd097052e2f56240f5533c7996aa03ec3f2638d69ee99d3696bc4f2",
+      "source_sha256": "7de7dc42119825f43e28b8a4143d9004748c18f6daa33865738b11d2c03ea62b",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.pdf",
-          "sha256": "be6c148d646763dfa9a8be88fa25c18c13785b686391a3ea5141420e17a29c20"
+          "sha256": "0f7cc61e2f75625acd624c0a26b675ccefc951218f1b99117beeb3a3d10c47a5"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.png",
-          "sha256": "31d65664ba2c1c704eb5cd89ef1ee721b2f91dde9bc930457edeca9525931e51"
+          "sha256": "527872192839fcb667218ecd72a6b18c589292f77753293427d425e2c01a2ffe"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/03_distribuicao_iluminacao.svg",
-          "sha256": "3024b5a8108bd9cea16bbdc68a79c29203b9ef0100639d66fe2b691e5abedf5d"
+          "sha256": "39aeb7eeafc3d863a4240ffdc87aea1ac1f691d9f7a00b302ff33fea6dcf756d"
         }
       }
     },
     {
       "id": "p05-04-eletrocalhas-rotas",
       "source": "05-instalacao-eletrica-industrial/fonte/04_eletrocalhas_rotas.dxf",
-      "source_sha256": "05692a85cac5879f849e73de843d270c3d53eea0e87a8d98e137daa40600c8e4",
+      "source_sha256": "c3d1a68f0fe918731b562fb506b70b0248a2430ec359356bb855ee8d5a0a5696",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.pdf",
-          "sha256": "94015375a7abf6a6e3fba2e73b25085a54edf5ab285817c37652f213e06ae43b"
+          "sha256": "28e9aa933ef2695c20ecda46282d5e5acd14e10401b2ef687c46fbf931ba4f1c"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.png",
-          "sha256": "ba6a0677c4c38c3bf96e7b7fa90e4bbfe11aa1cc9deba752ec733fbc2f6104bf"
+          "sha256": "862c0bfdb93be6a686a52a0b10425abfb14870d14de48b737530b77112026d73"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/04_eletrocalhas_rotas.svg",
-          "sha256": "f5f589682139697edfea57ae5f93067e7eff676b0ffd91d1821a0958c0b526b9"
+          "sha256": "d699cffaf8beccc7d8281ca4a42ed48d843aeda328d00c46ca67da334e436241"
         }
       }
     },
     {
       "id": "p05-05-diagrama-unifilar",
       "source": "05-instalacao-eletrica-industrial/fonte/05_diagrama_unifilar.dxf",
-      "source_sha256": "7f4569770ee77f46fcfd1e5d053ac4834914d213c2bed4113996fc586d9b6381",
+      "source_sha256": "7ef59ba1dd8c7848bd5c68cf293298efb27b61ee9af04102f609adf301b8b001",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.pdf",
-          "sha256": "3a8da752155b535d7647d9a8c8ea5a165a6c1a14680bf01df03eb53a501f3b50"
+          "sha256": "8ae340fefe9e61fc409a1a2fe406514cc6393f23fb4ead092ed2b928085ec256"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.png",
-          "sha256": "3ba5089811716f46497c1569ff6cf022a8660e29017bdf47c73557eae0822668"
+          "sha256": "d708aed1fea16ec1219362a1d77017c9decc9802ec404944fd18f1919c542a81"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/05_diagrama_unifilar.svg",
-          "sha256": "8fca0075c49c2811f639d804cd95c33e7ad8abeb3358117ef70bf092838656b8"
+          "sha256": "7a95daecab320045e8f4714d031c4e4988a69a9c11bb513b96d27e04009607d1"
         }
       }
     },
     {
       "id": "p05-06-quadro-cargas",
       "source": "05-instalacao-eletrica-industrial/fonte/06_quadro_cargas.dxf",
-      "source_sha256": "10a2c64d005f77d47260cb924a3a0c3331c75bf34060ff4a28b97809dc9c90ab",
+      "source_sha256": "6845611f9874777605411d37baf9f32360da3b8461c09a85cb4071e2db48d6fc",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.pdf",
-          "sha256": "a13b979dba2a463c3fa8abea82da1ec1d613d94dd41dfb14fed58f362e35ae29"
+          "sha256": "19168bfb07484975c2725bb58320a66bde5a281b433395d6a511c464cd5383c1"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.png",
-          "sha256": "d254f443b43fde4fc4bd38d65b1ddbbc4d6acf2687980b5dfd94e2ecda2bec59"
+          "sha256": "76485933a0c3a9ecf5dbc4c43e81a61b0f45abb747d7e45c23dd75238350875b"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/06_quadro_cargas.svg",
-          "sha256": "0403e4da91117296b5ee80415144b13009add0537f14f1fd589b2d34fca09de7"
+          "sha256": "719689086fef9f314ace4653e190733444ccddff6db75da9d1bba289aa0168e4"
         }
       }
     },
     {
       "id": "p05-07-detalhes-instalacao",
       "source": "05-instalacao-eletrica-industrial/fonte/07_detalhes_instalacao.dxf",
-      "source_sha256": "1fbdcd20ea25fe50865b7cb37820e748a0871e56a314dbe480cacbdda86e999e",
+      "source_sha256": "1d6368b89d1615d4ff8de4077795252f4a6ffaf2524286a2ab4d13b62a2cf0e8",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.pdf",
-          "sha256": "20405b77a4c9bb4c01ba393d5969059ca64c37b211d405e569e3a8486b160a5c"
+          "sha256": "852e01bb8e4e1f2b2ef7cb79da4eb9004ca374ce7b0f7700ac00ddd18e47447a"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.png",
-          "sha256": "dae45443b73ea9e4732eb8d27de01fc379dec8b452b56edd178f5656321f191c"
+          "sha256": "74a94e181cc005dcf7c07367f1e527ad92fcba03564bfa1ce99c80f43d1945dd"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/07_detalhes_instalacao.svg",
-          "sha256": "7342d977076c4ccef5c9069cb43c65668c8efe46bf1aa8f86a01447594f38932"
+          "sha256": "ae63cda93c442b36ac6aeada2702c2c5893abbc6de6ce04d9966eceeba301845"
         }
       }
     },
     {
       "id": "p05-08-coordenacao-protecoes",
       "source": "05-instalacao-eletrica-industrial/fonte/08_coordenacao_protecoes.dxf",
-      "source_sha256": "328fe2039a669d45dd4a5ab80492d79c1ce03ea455b3cd2047b690552c273f15",
+      "source_sha256": "9ddf16df8a6aba1787691756466b74524eab144a0d93d107f29bca43f493320b",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.pdf",
-          "sha256": "9df87755a0ef3f922382390b3e710324fae93ac990297dcefe7edff21d45b426"
+          "sha256": "da050cb365984776f545943951f96b9c967ec9eb11ee65d983367f8d28651397"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.png",
-          "sha256": "cc4d02a978b2b5c2386a0f6b609a05e1fad754c5fbfbde3ac6633dff17dba030"
+          "sha256": "57ad9fac72cb60b7e8efac13b15e19d3e078ddb26b1f11c6f61edf7ec3a4bcc0"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/08_coordenacao_protecoes.svg",
-          "sha256": "7a871e2237490421a125f9bbe737d642084322fe0ca1643edaea2f2c478caaa0"
+          "sha256": "d9d97cff7d4b2d87796f3d98a4a9ee49ba92c9195b4eb3a60c2e88396641d188"
         }
       }
     },
     {
       "id": "p05-09-plano-dados-coordenacao",
       "source": "05-instalacao-eletrica-industrial/fonte/09_plano_dados_coordenacao.dxf",
-      "source_sha256": "5a6f7c8a1005449c2021cb68cb6d812cf7f2cb84373bd920c1f7c32bf0e8db15",
+      "source_sha256": "85b1361af2851c054560368d739364d14a6c3d07ae8da69ac851e53446946779",
       "outputs": {
         "pdf": {
           "path": "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.pdf",
-          "sha256": "bea8c9ee934cb907b3e647c02d0047d16ca57c9ada9b6c5603d1bdb448907686"
+          "sha256": "a95dacb3162f720ff4294613de0c11a87f6f561422f0fc4938bc3399dc104803"
         },
         "png": {
           "path": "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.png",
-          "sha256": "b6095f599ac027729eeaf9fb064e9a8c9aa41892956a4d36a19da3a1872818c6"
+          "sha256": "f9956cbfe331ac762b3ef05e00d2ea21f40b9029cd25fc768e9102715a2bbf15"
         },
         "svg": {
           "path": "05-instalacao-eletrica-industrial/exports/09_plano_dados_coordenacao.svg",
-          "sha256": "09da0f373071c36e0b6b671e9f9a021d36287905a8ec9762def89ba2776c75d7"
+          "sha256": "1648d80d94fab302ef70f09eb507cc01fd24f60b04e63d34960f2b3b632bab7f"
         }
       }
     },
@@ -1882,323 +1882,323 @@
     {
       "id": "p11-01-diagrama-unifilar-geral",
       "source": "11-subestacao-media-tensao/fonte/01_diagrama_unifilar_geral.dxf",
-      "source_sha256": "41e5324eda1ded4f5b4848eba4e01c2f620c729b4b7ad07dbad4eeef2dbbf6e7",
+      "source_sha256": "09a7c911b536048535487b639c4c44841e5f340950bd00f4a67d36f8c7b4078e",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.pdf",
-          "sha256": "3e9fa397e6d4f932d1eec72f1d694188cfb580369e283d29bedb4e44f9fde27a"
+          "sha256": "4808d60555979453ebd6c2eb881ab603a3eb555d8f4ea848b3bea30702a4e905"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.png",
-          "sha256": "482dff349673ac4d55b5ac6763cca32e82564f3730dbeac2bfb4aedbe1cc9a90"
+          "sha256": "1e472709005354c64a7ffc568feeaa6c1df29957a0d2c2a2f60fd5595bc95c16"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/01_diagrama_unifilar_geral.svg",
-          "sha256": "e75c4aac5ddaaec6fefdd9f30131aa44a6f0bc09650b4689c272ce390d04e74b"
+          "sha256": "8ca8c357ca051bcf0074e5f26a074422e90153b0ef0d4e661b0b7a2f3b767ecb"
         }
       }
     },
     {
       "id": "p11-02-planta-baixa-subestacao",
       "source": "11-subestacao-media-tensao/fonte/02_planta_baixa_subestacao.dxf",
-      "source_sha256": "c141dbba804220973a2c8111e2ac93d089a89eb532c481e73705bcc96bb281b1",
+      "source_sha256": "0f6d731dbefa64cd7c4e450abcd82331102fe326ec548a03cdb25949fb2edcb8",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.pdf",
-          "sha256": "425328d23e7f9d77f4333d724e300df9dfd2594fd3b143144f733e24fe061c60"
+          "sha256": "8d17a0f14b86920169fb1144d6a33ac54b7068e96c95bb3c8192cf09f67f7f5e"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.png",
-          "sha256": "3ee7f4d5990be4a04beb0892604a22b2fe55e1378d58c6f4b036f69c67437d7d"
+          "sha256": "320bb2e936f6e7d737b100c810ed783891499d2fae985e424311c902c35068ea"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/02_planta_baixa_subestacao.svg",
-          "sha256": "3cb439eb8806af5e5ad0d35017a67652ebbf805fd50de30c2651b83b810baa63"
+          "sha256": "bc50a1653a281472a63a7ebb9a9ca1680a58344ce1e333548168ba2be0a35f18"
         }
       }
     },
     {
       "id": "p11-03-cortes-detalhes-eletromecanicos",
       "source": "11-subestacao-media-tensao/fonte/03_cortes_detalhes_eletromecanicos.dxf",
-      "source_sha256": "bc8fef200a51184a395ce6981108ff14556a28548a40157f04769b82afa911ac",
+      "source_sha256": "5be1bce5e386f760335985a7e083b87c2d370a7ad29798e75e51ddb46aee0841",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.pdf",
-          "sha256": "45f9cbd41342ddc433a09b111889eff2c493fb103f8ae4f4f9b9d7e7030363d5"
+          "sha256": "8c865dcc7a260324be84292e7e979d5c3da6cc4332ce61eccde7ea9297f90172"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.png",
-          "sha256": "d75be7f8c0162036b0e61a0045f0aab28375ee674039ecabf0bb5ebb9b376195"
+          "sha256": "ca696142b009c70c4ce870297d6a18bc5abe48dfc7c903c1b19dc09dd813d21f"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/03_cortes_detalhes_eletromecanicos.svg",
-          "sha256": "2f0b35ace74224efbce332a4bcb8d9fbbae03681b8990a61442e7c25729baea1"
+          "sha256": "b2ed887d91f77364392840786113f2385f5211e4951e2f864b0cd97c0089a424"
         }
       }
     },
     {
       "id": "p11-04-diagrama-funcional-protecao",
       "source": "11-subestacao-media-tensao/fonte/04_diagrama_funcional_protecao.dxf",
-      "source_sha256": "05627865281f8cf6349fc4c867627d67b3b1c3c00ab1c9fb6117c4aae71cefdc",
+      "source_sha256": "e7809af74641bb2bf0e47e7da845c58bbf57b87264cbeb8d68367a7d2b8df2d2",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.pdf",
-          "sha256": "7a3ef14701cbbebd385386adffe205a82d3692860d4d99b25498b5ed3ad7f542"
+          "sha256": "0c5486dde6f02871db18ec4dc2fe77a90344e7caae4091ba6a3bf8ba532ab85b"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.png",
-          "sha256": "d3ba43c96f577b33b044dfdb824926842b564da033eb1d6d6a2bf9f8cc5ca430"
+          "sha256": "156e8e12ba2d67999bea10eff96007d743e0518048a2b4f227927076e1de6f0c"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/04_diagrama_funcional_protecao.svg",
-          "sha256": "0681de385ff8c1b4d0fbf1ea229114ea27c36ddcacbf8d92d76fa2979b153489"
+          "sha256": "10e17cef87ac7ed49fb6e709a2f8d426313398c7e386e5541a418d26e333c423"
         }
       }
     },
     {
       "id": "p11-05-malha-aterramento",
       "source": "11-subestacao-media-tensao/fonte/05_malha_aterramento.dxf",
-      "source_sha256": "91f7ae328435ffd4aac80299256589df702ddc07df262486970a9eb8010150ba",
+      "source_sha256": "27946c4b31d68a122e784a356cb5a810fb155dbd42990d6e938b54d5617ee029",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.pdf",
-          "sha256": "0fbf38da66e9b7531dd579f769aa5a20576b2aca62561f9b6a571a99d8acaef2"
+          "sha256": "21526960940329f3ca10ed7bcb8e9638fa98b4ac042fd369f0de70ad6e41b122"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.png",
-          "sha256": "6e892cdb81f951ae10d9e1ae1061ba62bc3fb38236d55280d5e2de6a06e36117"
+          "sha256": "969a195e5c82196cdb33004d08df5f6c89dc6588c4a825857286add5ccceaf10"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/05_malha_aterramento.svg",
-          "sha256": "aa2b30730160764b4498ba53d32597fa8d95ad3e100b8c0b8c4907667f698f91"
+          "sha256": "1464ce7e4d7aa83178f2eb0bbac79631f181491e149cb52aab3cb8313e7d1b8c"
         }
       }
     },
     {
       "id": "p11-06-spda-geral",
       "source": "11-subestacao-media-tensao/fonte/06_spda_geral.dxf",
-      "source_sha256": "7f8882cffb655ac3245d4450f8700485d380324e146e30bc984409d5d46f8420",
+      "source_sha256": "bcf715f885b9d80e3db90474ad3abfafa95afe0d1357d09cac78bc8df7627316",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.pdf",
-          "sha256": "eef939c6c8f96af358a06461c1cd2b60783a0fff922a90eb4cc664732b993387"
+          "sha256": "5cad2fb404a02cd49313746be348b88cd11475856675ecd709ea23ed7557db84"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.png",
-          "sha256": "023d1fa337d569ce5f02f35ac68912b49bfc108ab7c34f03b08b8ee365fc66d9"
+          "sha256": "1bbde69d37a87d888f25e47f56a6c208a4a85f06f6ce74b301b9e4c6887b7217"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/06_spda_geral.svg",
-          "sha256": "ba818330fcc2db824c9ec172701e03c24f011248e650f6ea30fa8b89efa46991"
+          "sha256": "3038bd4b7e5b642e7be5745f1deb52b5f7b8afa074b478d51d06287320a0c66f"
         }
       }
     },
     {
       "id": "p11-07-plano-dados-aterramento",
       "source": "11-subestacao-media-tensao/fonte/07_plano_dados_estudo_aterramento.dxf",
-      "source_sha256": "41a05621e32a2f86588ac65f45d4a14c2856647294b548ab8fece1f9d8dd73c3",
+      "source_sha256": "0c4019582cc34ec94d8ecb1b7b2e4889d6d8d1cc69ca4d594c06882ba86c6c9c",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.pdf",
-          "sha256": "a4e9bff0c20788e7f72805dcf7284b0820e084fa15d73c6ee9e4195656e95b2b"
+          "sha256": "2d82e723eb328f3d963363091d96d8c2e619745d1e95cd04aef65244dd1f05ed"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.png",
-          "sha256": "0f5de27c8f9dc8a70d6dacc32e3ee9d623bee805aa968513ba34d8eec8860ac9"
+          "sha256": "621bf343bb1af0593c251c86f21138f63e50bfbb36ccf229df8b81571056d83f"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/07_plano_dados_estudo_aterramento.svg",
-          "sha256": "eb431c8450227b812112da1cc4726668c27aaa7af619fc3030f199fced8a9b37"
+          "sha256": "9aba3868be216e8115c3589f7c140cf2070c972632c120cefc0c1cc8116dce3c"
         }
       }
     },
     {
       "id": "p11-08-matriz-analise-aterramento",
       "source": "11-subestacao-media-tensao/fonte/08_matriz_analise_malha_aterramento.dxf",
-      "source_sha256": "bf24b56455ddb8cd82e19f5da6a817d3723307114976665b4cf876ca86eb44a6",
+      "source_sha256": "edb96c82e02e3d2b247485e3d1aa159055836df84d6cc41f93414982b1579864",
       "outputs": {
         "pdf": {
           "path": "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.pdf",
-          "sha256": "9f8c41408b84da4c67a34c571050be3cd432dbe462faf9ba71460ad5e1b3b0a3"
+          "sha256": "7d0f05c79d8d84e286680a188e4ef3679c873440456a15e51998be239a9d0876"
         },
         "png": {
           "path": "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.png",
-          "sha256": "632dfd977cb56f03ec8ce0e87397fb280b46c2eafd2d29a5c6ef7d860a4bcd63"
+          "sha256": "30681fff7cd2198ec50367c6c473c953c04088b8981bab17d849f25edb7d59ce"
         },
         "svg": {
           "path": "11-subestacao-media-tensao/exports/08_matriz_analise_malha_aterramento.svg",
-          "sha256": "7492e5db9858009b39d21529b04bbf6a619213aa4d96e3ffd798d5cc929bcc8f"
+          "sha256": "dd68e648d0f60b178c4fb3410093eb0e64abe2b906f9395849914cb5ab245b04"
         }
       }
     },
     {
       "id": "p12-01-diagrama-unifilar-qta",
       "source": "12-grupo-gerador-qta/fonte/01_diagrama_unifilar_qta.dxf",
-      "source_sha256": "c51e32b0fc270d91715ffcdf8d96032581d3b161b306c43d3de1798bb1f681ac",
+      "source_sha256": "dc3ccf4fe2a4f6ffdf36b4bc7ac47588ae87737f87cc43fe30c7284d0b1e1891",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.pdf",
-          "sha256": "7648cea30273029a03cffe8c8d9599029a6394307820483797495efc084ea359"
+          "sha256": "d75c0affe81beb7f0ceaf051c5377ce0c972c2ce56c480c9791b200b7405a403"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.png",
-          "sha256": "f20a025466e64b3ec488151e571a9d6cae1093ee3ae7cf7b042c992cdc5cb06c"
+          "sha256": "eaa2ce8c0e93862c28873a519fad02d7813ce5de0163074dcad4a2bbb3c8a843"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.svg",
-          "sha256": "dcad35f96ebf677cc34a3488f6fc2dcc1cb9f8ed18b0248af1b2fede8cf6079e"
+          "sha256": "a7b0838c8ddb1fe592863919b079adddb70eb693034b436a714413ce71d6ce97"
         }
       }
     },
     {
       "id": "p12-02-diagrama-trifilar-potencia",
       "source": "12-grupo-gerador-qta/fonte/02_diagrama_trifilar_potencia.dxf",
-      "source_sha256": "07bd063b714d27cb7e479363bc873300ff3636acdfc414013f38ccfaa019218f",
+      "source_sha256": "9afc3ed6def26d069ebce1e54c30f7ae3779e748e2533b3a8fca31dbe7c4e481",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.pdf",
-          "sha256": "a53d1690974132d9f91daff4e24186b39b5353988d28efc1fa2fb8f17f9bd252"
+          "sha256": "42fe01ed0e4a91f1ccdb0aa180786779ed9e1f5f5a1270cf011e677500994b0f"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.png",
-          "sha256": "4b0890ea5c9ab6227671344e6583edcdc35582338bba7f95fa0bfaa7d209a78d"
+          "sha256": "802b794d4952895a94187a7ec33737493cb7d453ae2bec1016f8f9a8419da0df"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.svg",
-          "sha256": "9868c59f8e56bd0ec652b2a925e67509ef968b8b0bb7a7ff7b10c433adb282ce"
+          "sha256": "73b96be2fcea39d543318186e3348f6f602a7b17f30953bd713cee5b8cab6122"
         }
       }
     },
     {
       "id": "p12-03-diagrama-funcional-comando",
       "source": "12-grupo-gerador-qta/fonte/03_diagrama_funcional_comando.dxf",
-      "source_sha256": "e46356df0a5e703d12d6859c88274fac1071931393f9e8177583cfddf617e763",
+      "source_sha256": "31138acd4409de71f3f52e75f847ba13c840abac1294b405103a8a10145965d8",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.pdf",
-          "sha256": "714a0de950825dec6d54f7cd8cd07c7c94992611202eb33b86cf285ac80bce08"
+          "sha256": "bab27785e0e21fc41d2cdc04cf83982d02ee9121edf6a3bbea749fe72b02381a"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.png",
-          "sha256": "cf833a3ed57f34a6865d461925add7805bc1ee4491be6fd92ea23c2792335a49"
+          "sha256": "5625d2ea4589fa135b09f6fa532535a236c04a07ced49a33829ae2b465f1cd37"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.svg",
-          "sha256": "bc427bff9d5d0337fd5f623d4e09ba61f4c85d72c4bd922d4ee4ba07e7e437e2"
+          "sha256": "d765bb38f354bc4bbb053c446a2fb6e897f214b73b29ef7ff8333cbf920d5450"
         }
       }
     },
     {
       "id": "p12-04-regua-bornes-interligacao",
       "source": "12-grupo-gerador-qta/fonte/04_regua_bornes_interligacao.dxf",
-      "source_sha256": "df1b372f6b345aedd0321ac80145e08ca9ce8470e2ae3bd37ca725a27bdadede",
+      "source_sha256": "7cffef235e6b8889b3bf8642a7ca740feb8e8ae423f468c3264fee8e3d6ad173",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.pdf",
-          "sha256": "54e8687c390c93e45849ad06a907f187aba804aa3b5d381351eb36d7ef967ddd"
+          "sha256": "7f7b97f3fcdcfe61b160f533fc261af298c242b3ef2c6eca03bce3fb23f34b77"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.png",
-          "sha256": "174ec64256d59d73172a13ac9aae1bf7eb408b010665b01410373ade860612c7"
+          "sha256": "2acac75d474982763719db5e92fbed1a63a1392aed2e3687dd46634ba681b72e"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.svg",
-          "sha256": "c6938475bafaea3d8efb25e1cb158424a04fbaf11300b25f870f0b1ecd7edc1d"
+          "sha256": "e9878507220dd953e7c08c1efc54656d7378e5c0b3c0455862de2476dbe30034"
         }
       }
     },
     {
       "id": "p12-05-layout-painel-qta",
       "source": "12-grupo-gerador-qta/fonte/05_layout_painel_qta.dxf",
-      "source_sha256": "b46411b42a952bc18300ca97095d0aedcb3dcddf1a9c5ab5e62937a7ced10c8b",
+      "source_sha256": "0f13522e77265f85e36d29a1bc91358beae5b13a33ee8c4042470e5df0cd3b9a",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.pdf",
-          "sha256": "363cbe66eddbca81567aaf44ab5e7c97b7797ffa1cf327c9fdb1359671762fce"
+          "sha256": "40403250e93464932ae381ddeecc05182e78ea96cc509f340c85400c5fb0517c"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.png",
-          "sha256": "c4cf42986e72a94504b9b2e25ca32680e379f050be73b3e3c297cfdd607ab0db"
+          "sha256": "1218a97d8502b054f7749d3799ccf8ecda072e72d09b1d8ea18bf91f8a198734"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.svg",
-          "sha256": "94118fba23b4755546c0f97d8bf65b17079cedb85eca1b1019998c1ed9ad0814"
+          "sha256": "89b7131f8ff8e85a93298db834cbfa8d95c77c753cd30900dcd8e23f3a74ef65"
         }
       }
     },
     {
       "id": "p12-06-planta-instalacao-gmg",
       "source": "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf",
-      "source_sha256": "639ec3338ae51c053189df7b5900bf5533e60d43f15ec9fb53ca31188eededbe",
+      "source_sha256": "4b562ee8a16f81835c284de4d7dce80260c8f879e1346cfe31132b0a4bbd192e",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf",
-          "sha256": "2878bea9199d04b09d847a3f4fde1a0d1840f4791920205f8f915a3e8908fe4d"
+          "sha256": "43832634463c6222fb3e8289003509bacaf7234573831335fd88786a0ffbfe76"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.png",
-          "sha256": "f3e6d074979d9f160a7be52441dcabe19056f224b277f06720da225cfa2100c2"
+          "sha256": "c92753a4528017915e174ccbe940c78e55f504a5b3f4a2ea1ed424e7c67760e7"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg",
-          "sha256": "37041bfbfb41a8e2218a5c94fa306c2ec4ac0af6c47aebadc99b06a931ca6a2d"
+          "sha256": "2b5f89b22dd46a95083faf91d20efe3872b34505fb53561376f79812201f14ac"
         }
       }
     },
     {
       "id": "p12-07-sequencia-transferencia-qta",
       "source": "12-grupo-gerador-qta/fonte/07_sequencia_transferencia_qta.dxf",
-      "source_sha256": "c085989f41e8d003136216a4ff990dffe7674d1d0832c3795977b583be837e57",
+      "source_sha256": "c38c605f72d840096b68d4f5645688c1c6ce1cb7f7183e28cf6d97119430b3df",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.pdf",
-          "sha256": "0718d2f8ac1e180def6e49c7c95a0c87291bd05dc6c120dab10548071173ffda"
+          "sha256": "085e066497777ca54c2fdd4ac123e818ed16b214288e949a2d47e9017a488d13"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.png",
-          "sha256": "20b1aa73282ec47e69e1f4bfcb870bd20edd95e2699ab613a4afe52e60153970"
+          "sha256": "9337240a90fdd911ec2179388ebd9578630c73521740c5398aa4f8239668a379"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.svg",
-          "sha256": "eb026461c8968bbc55f5f300eff59b16ac54cbc03ac496652e719bca60a86e01"
+          "sha256": "136d5bf993a9aecc1c3ed440186dcb2f1a9da98b60b0f52df1dbc2da0752380a"
         }
       }
     },
     {
       "id": "p12-08-matriz-causa-efeito-qta",
       "source": "12-grupo-gerador-qta/fonte/08_matriz_causa_efeito_qta.dxf",
-      "source_sha256": "38d8e890089858126388933f1804e6f4f5400e068259617eec259b0dd67b4cd5",
+      "source_sha256": "0b6822b23f2a233ab4b6b9991d8e8f2b27b6130c798d3ea8169ead549e49a0d7",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.pdf",
-          "sha256": "86da113824298e4bad77c6fdcfa74a1065d373d03f0aede0beeefaea9b29c85d"
+          "sha256": "da55316cbbe20f21f1d47c89ff58bb35896d2d45caf8106fd16530d26b187b42"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.png",
-          "sha256": "6cdaec58c75fb3e69bf779e7a096d96ae3188491659c0c27801bd8a9f84f89b5"
+          "sha256": "2c5511bcb392e4198c6d61b43132286c33bde84d800004933fe402c02ac7927f"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.svg",
-          "sha256": "2216b829642671b23e9aaa22e1b77f34687b233832583e1d7074158039be7712"
+          "sha256": "3225202028fb23a281df75367b4a73c3c2031cc566f18499e0fb2e863c7a945b"
         }
       }
     },
     {
       "id": "p12-09-cadastro-cargas-qce",
       "source": "12-grupo-gerador-qta/fonte/09_cadastro_cargas_essenciais_qce.dxf",
-      "source_sha256": "62ac32405899ec64350b30fb2134254144ca71ca8f799487194f2db1f6fde069",
+      "source_sha256": "8b9fdf33f24bcc223791718812348cc1426e4f6d33236ff55e19b512bfa0977c",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.pdf",
-          "sha256": "e5c9e92c28e4c971bb12845069bc522f98370afe2a7487fa867a94bea95671b8"
+          "sha256": "f1311dcb2a218494fdfa13e1b6e09f6e091500455616dc4a9b586b502ed84c73"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.png",
-          "sha256": "cefabdb2ed2147e9f8b3d57970e886c408cf1d067dd5065759f141a9fd8f957b"
+          "sha256": "ab056585900599a6fc87fdb0ce10e890e03329671f6952a39c3c41a25f36fce4"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.svg",
-          "sha256": "a0cf6cf77e7fc73a449cbe92ff25bc85b5464e2644885557168de2c0c5be5c40"
+          "sha256": "c8cdc4df8e5f9918257cee58f079baab0a2d338f6193ae6876b639ca9f498811"
         }
       }
     }

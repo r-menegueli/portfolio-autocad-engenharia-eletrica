@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-171
+196
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-16E
+193
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-16F
+194
 330
 3
 100
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.55
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  72
@@ -8649,7 +8649,7 @@ AcDbText
  40
 1.55
   1
-METODO DE CURTO-CIRCUITO E COORDENACAO
+RASTREABILIDADE DO LAYOUT
   7
 PORTFOLIO_TEXTO
  72
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  11
@@ -10285,9 +10285,61 @@ AcDbText
  73
 2
   0
-LWPOLYLINE
+CIRCLE
   5
 13A
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbCircle
+ 10
+24.0
+ 20
+108.0
+ 30
+0.0
+ 40
+1.4
+  0
+TEXT
+  5
+13B
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbText
+ 10
+29.0
+ 20
+112.0
+ 30
+0.0
+ 40
+1.0
+  1
+O=(0,0)
+  7
+PORTFOLIO_TEXTO
+ 11
+29.0
+ 21
+112.0
+ 31
+0.0
+100
+AcDbText
+  0
+LWPOLYLINE
+  5
+13C
 330
 17
 100
@@ -10319,7 +10371,7 @@ AcDbPolyline
   0
 TEXT
   5
-13B
+13D
 330
 17
 100
@@ -10355,7 +10407,7 @@ AcDbText
   0
 TEXT
   5
-13C
+13E
 330
 17
 100
@@ -10391,7 +10443,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-13D
+13F
 330
 17
 100
@@ -10423,7 +10475,7 @@ AcDbPolyline
   0
 TEXT
   5
-13E
+140
 330
 17
 100
@@ -10459,7 +10511,7 @@ AcDbText
   0
 TEXT
   5
-13F
+141
 330
 17
 100
@@ -10495,7 +10547,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-140
+142
 330
 17
 100
@@ -10527,7 +10579,7 @@ AcDbPolyline
   0
 TEXT
   5
-141
+143
 330
 17
 100
@@ -10563,7 +10615,7 @@ AcDbText
   0
 TEXT
   5
-142
+144
 330
 17
 100
@@ -10599,7 +10651,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-143
+145
 330
 17
 100
@@ -10631,7 +10683,7 @@ AcDbPolyline
   0
 TEXT
   5
-144
+146
 330
 17
 100
@@ -10667,7 +10719,7 @@ AcDbText
   0
 TEXT
   5
-145
+147
 330
 17
 100
@@ -10703,7 +10755,7 @@ AcDbText
   0
 CIRCLE
   5
-146
+148
 330
 17
 100
@@ -10723,7 +10775,7 @@ AcDbCircle
   0
 LINE
   5
-147
+149
 330
 17
 100
@@ -10747,7 +10799,7 @@ AcDbLine
   0
 LINE
   5
-148
+14A
 330
 17
 100
@@ -10771,7 +10823,7 @@ AcDbLine
   0
 TEXT
   5
-149
+14B
 330
 17
 100
@@ -10807,7 +10859,7 @@ AcDbText
   0
 CIRCLE
   5
-14A
+14C
 330
 17
 100
@@ -10827,7 +10879,7 @@ AcDbCircle
   0
 LINE
   5
-14B
+14D
 330
 17
 100
@@ -10851,7 +10903,7 @@ AcDbLine
   0
 LINE
   5
-14C
+14E
 330
 17
 100
@@ -10875,7 +10927,7 @@ AcDbLine
   0
 TEXT
   5
-14D
+14F
 330
 17
 100
@@ -10911,7 +10963,7 @@ AcDbText
   0
 CIRCLE
   5
-14E
+150
 330
 17
 100
@@ -10931,7 +10983,7 @@ AcDbCircle
   0
 LINE
   5
-14F
+151
 330
 17
 100
@@ -10955,7 +11007,7 @@ AcDbLine
   0
 LINE
   5
-150
+152
 330
 17
 100
@@ -10979,7 +11031,7 @@ AcDbLine
   0
 TEXT
   5
-151
+153
 330
 17
 100
@@ -11015,7 +11067,7 @@ AcDbText
   0
 CIRCLE
   5
-152
+154
 330
 17
 100
@@ -11035,7 +11087,7 @@ AcDbCircle
   0
 LINE
   5
-153
+155
 330
 17
 100
@@ -11059,7 +11111,7 @@ AcDbLine
   0
 LINE
   5
-154
+156
 330
 17
 100
@@ -11083,7 +11135,7 @@ AcDbLine
   0
 TEXT
   5
-155
+157
 330
 17
 100
@@ -11119,7 +11171,7 @@ AcDbText
   0
 CIRCLE
   5
-156
+158
 330
 17
 100
@@ -11139,7 +11191,7 @@ AcDbCircle
   0
 LINE
   5
-157
+159
 330
 17
 100
@@ -11163,7 +11215,7 @@ AcDbLine
   0
 LINE
   5
-158
+15A
 330
 17
 100
@@ -11187,7 +11239,7 @@ AcDbLine
   0
 TEXT
   5
-159
+15B
 330
 17
 100
@@ -11223,7 +11275,7 @@ AcDbText
   0
 CIRCLE
   5
-15A
+15C
 330
 17
 100
@@ -11243,7 +11295,7 @@ AcDbCircle
   0
 LINE
   5
-15B
+15D
 330
 17
 100
@@ -11267,7 +11319,7 @@ AcDbLine
   0
 LINE
   5
-15C
+15E
 330
 17
 100
@@ -11291,7 +11343,7 @@ AcDbLine
   0
 TEXT
   5
-15D
+15F
 330
 17
 100
@@ -11327,7 +11379,7 @@ AcDbText
   0
 LINE
   5
-15E
+160
 330
 17
 100
@@ -11351,7 +11403,7 @@ AcDbLine
   0
 TEXT
   5
-15F
+161
 330
 17
 100
@@ -11387,7 +11439,7 @@ AcDbText
   0
 LINE
   5
-160
+162
 330
 17
 100
@@ -11411,7 +11463,7 @@ AcDbLine
   0
 TEXT
   5
-161
+163
 330
 17
 100
@@ -11447,7 +11499,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-162
+164
 330
 17
 100
@@ -11479,7 +11531,7 @@ AcDbPolyline
   0
 TEXT
   5
-163
+165
 330
 17
 100
@@ -11497,7 +11549,7 @@ AcDbText
  40
 1.8
   1
-DADOS DO GALPAO
+REGISTRO DO LAYOUT
   7
 PORTFOLIO_TEXTO
  72
@@ -11515,70 +11567,6 @@ AcDbText
   0
 TEXT
   5
-164
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-294.0
- 20
-234.0
- 30
-0.0
- 40
-1.4
-  1
-Comprimento: 30,00 m
-  7
-PORTFOLIO_TEXTO
- 11
-294.0
- 21
-234.0
- 31
-0.0
-100
-AcDbText
-  0
-TEXT
-  5
-165
-330
-17
-100
-AcDbEntity
-  8
-02_TEXTO
-100
-AcDbText
- 10
-294.0
- 20
-222.5
- 30
-0.0
- 40
-1.4
-  1
-Largura: 18,00 m
-  7
-PORTFOLIO_TEXTO
- 11
-294.0
- 21
-222.5
- 31
-0.0
-100
-AcDbText
-  0
-TEXT
-  5
 166
 330
 17
@@ -11589,25 +11577,29 @@ AcDbEntity
 100
 AcDbText
  10
-294.0
+345.0
  20
-211.0
+237.0
  30
 0.0
  40
-1.4
+1.15
   1
-Area: 540,00 m2
+Oficina ficticia - dados de estudo
   7
 PORTFOLIO_TEXTO
+ 72
+1
  11
-294.0
+345.0
  21
-211.0
+237.0
  31
 0.0
 100
 AcDbText
+ 73
+2
   0
 TEXT
   5
@@ -11617,29 +11609,33 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+12_LEGENDA
 100
 AcDbText
  10
-294.0
+345.0
  20
-199.5
+227.0
  30
 0.0
  40
-1.4
+1.15
   1
-Producao: 432,00 m2
+EQUIPAMENTOS, CIRCUITOS E POSICAO
   7
 PORTFOLIO_TEXTO
+ 72
+1
  11
-294.0
+345.0
  21
-199.5
+227.0
  31
 0.0
 100
 AcDbText
+ 73
+2
   0
 TEXT
   5
@@ -11655,19 +11651,19 @@ AcDbText
  10
 294.0
  20
-188.0
+218.0
  30
 0.0
  40
-1.4
+1.05
   1
-Apoio: 108,00 m2
+TAG
   7
 PORTFOLIO_TEXTO
  11
 294.0
  21
-188.0
+218.0
  31
 0.0
 100
@@ -11685,21 +11681,21 @@ AcDbEntity
 100
 AcDbText
  10
-294.0
+326.0
  20
-176.5
+218.0
  30
 0.0
  40
-1.4
+1.05
   1
-Pe-direito: 6,00 m (hip.)
+CIRC.
   7
 PORTFOLIO_TEXTO
  11
-294.0
+326.0
  21
-176.5
+218.0
  31
 0.0
 100
@@ -11717,21 +11713,21 @@ AcDbEntity
 100
 AcDbText
  10
-294.0
+345.0
  20
-165.0
+218.0
  30
 0.0
  40
-1.4
+1.05
   1
-Rede: 380/220 V - 3F+N+PE
+S_inst
   7
 PORTFOLIO_TEXTO
  11
-294.0
+345.0
  21
-165.0
+218.0
  31
 0.0
 100
@@ -11749,21 +11745,21 @@ AcDbEntity
 100
 AcDbText
  10
-294.0
+367.0
  20
-153.5
+218.0
  30
 0.0
  40
-1.4
+1.05
   1
-Frequencia: 60 Hz
+X (m)
   7
 PORTFOLIO_TEXTO
  11
-294.0
+367.0
  21
-153.5
+218.0
  31
 0.0
 100
@@ -11781,29 +11777,53 @@ AcDbEntity
 100
 AcDbText
  10
-294.0
+387.0
  20
-142.0
+218.0
  30
 0.0
  40
-1.4
+1.05
   1
-Esquema: TN-S conceitual
+Y (m)
   7
 PORTFOLIO_TEXTO
  11
-294.0
+387.0
  21
-142.0
+218.0
  31
 0.0
 100
 AcDbText
   0
-TEXT
+LINE
   5
 16D
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbLine
+ 10
+294.0
+ 20
+215.0
+ 30
+0.0
+ 11
+396.0
+ 21
+215.0
+ 31
+0.0
+  0
+TEXT
+  5
+16E
 330
 17
 100
@@ -11815,19 +11835,1167 @@ AcDbText
  10
 294.0
  20
-130.5
+207.0
  30
 0.0
  40
-1.4
+1.0
   1
-Acesso frontal quadros >= 1,20 m
+M-501
   7
 PORTFOLIO_TEXTO
  11
 294.0
  21
-130.5
+207.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+16F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+207.0
+ 30
+0.0
+ 40
+1.0
+  1
+C01
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+207.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+170
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+207.0
+ 30
+0.0
+ 40
+1.0
+  1
+14,379
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+207.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+171
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+207.0
+ 30
+0.0
+ 40
+1.0
+  1
+6,000
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+207.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+172
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+207.0
+ 30
+0.0
+ 40
+1.0
+  1
+13,375
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+207.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+173
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+199.0
+ 30
+0.0
+ 40
+1.0
+  1
+M-502
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+199.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+174
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+199.0
+ 30
+0.0
+ 40
+1.0
+  1
+C02
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+199.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+175
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+199.0
+ 30
+0.0
+ 40
+1.0
+  1
+10,027
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+199.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+176
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+199.0
+ 30
+0.0
+ 40
+1.0
+  1
+12,750
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+199.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+177
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+199.0
+ 30
+0.0
+ 40
+1.0
+  1
+13,375
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+199.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+178
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+191.0
+ 30
+0.0
+ 40
+1.0
+  1
+M-503
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+191.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+179
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+191.0
+ 30
+0.0
+ 40
+1.0
+  1
+C03
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+191.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17A
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+191.0
+ 30
+0.0
+ 40
+1.0
+  1
+7,526
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+191.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17B
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+191.0
+ 30
+0.0
+ 40
+1.0
+  1
+19,500
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+191.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17C
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+191.0
+ 30
+0.0
+ 40
+1.0
+  1
+13,375
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+191.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17D
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.0
+  1
+M-504
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17E
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.0
+  1
+C04
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+17F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.0
+  1
+4,304
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+180
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.0
+  1
+6,000
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+181
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+183.0
+ 30
+0.0
+ 40
+1.0
+  1
+6,250
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+183.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+175.0
+ 30
+0.0
+ 40
+1.0
+  1
+M-505
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+175.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+183
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+175.0
+ 30
+0.0
+ 40
+1.0
+  1
+C05
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+175.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+175.0
+ 30
+0.0
+ 40
+1.0
+  1
+3,194
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+175.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+175.0
+ 30
+0.0
+ 40
+1.0
+  1
+12,750
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+175.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+186
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+175.0
+ 30
+0.0
+ 40
+1.0
+  1
+6,250
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+175.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+187
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+167.0
+ 30
+0.0
+ 40
+1.0
+  1
+TUE-501
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+188
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+326.0
+ 20
+167.0
+ 30
+0.0
+ 40
+1.0
+  1
+C06
+  7
+PORTFOLIO_TEXTO
+ 11
+326.0
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+189
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+345.0
+ 20
+167.0
+ 30
+0.0
+ 40
+1.0
+  1
+12,000
+  7
+PORTFOLIO_TEXTO
+ 11
+345.0
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+18A
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+367.0
+ 20
+167.0
+ 30
+0.0
+ 40
+1.0
+  1
+21,000
+  7
+PORTFOLIO_TEXTO
+ 11
+367.0
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+18B
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+387.0
+ 20
+167.0
+ 30
+0.0
+ 40
+1.0
+  1
+6,125
+  7
+PORTFOLIO_TEXTO
+ 11
+387.0
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+  0
+LINE
+  5
+18C
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbLine
+ 10
+294.0
+ 20
+159.0
+ 30
+0.0
+ 11
+396.0
+ 21
+159.0
+ 31
+0.0
+  0
+TEXT
+  5
+18D
+330
+17
+100
+AcDbEntity
+  8
+12_LEGENDA
+100
+AcDbText
+ 10
+345.0
+ 20
+151.0
+ 30
+0.0
+ 40
+1.15
+  1
+REFERENCIA DO CROQUI
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+345.0
+ 21
+151.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+18E
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+143.0
+ 30
+0.0
+ 40
+1.0
+  1
+Origem O: canto interno inferior esquerdo.
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+143.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+18F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+136.0
+ 30
+0.0
+ 40
+1.0
+  1
+X/Y em metros, derivados da escala 1:125.
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+136.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+190
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+129.0
+ 30
+0.0
+ 40
+1.0
+  1
+Nao representam levantamento topografico.
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+129.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+191
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+122.0
+ 30
+0.0
+ 40
+1.0
+  1
+S_inst: potencia aparente instalada (kVA).
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+122.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+192
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+294.0
+ 20
+115.0
+ 30
+0.0
+ 40
+1.0
+  1
+Pegadas, folgas e acessos reais: pendentes.
+  7
+PORTFOLIO_TEXTO
+ 11
+294.0
+ 21
+115.0
  31
 0.0
 100
@@ -12943,7 +14111,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-170
+195
   0
 DICTIONARYVAR
   5
@@ -19569,7 +20737,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-170
+195
 330
 2D
 100

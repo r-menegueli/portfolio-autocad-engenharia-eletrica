@@ -38,5 +38,23 @@ engenharia, segurança, conformidade ou liberação para execução.
   potenciais transferidos como resultados.
 - A inspeção de SVGs no navegador continua pendente de autorização do usuário.
 
+## Revisão 04 — 2026-11-06
+
+- As oito folhas foram regeneradas em DXF, PDF, SVG e PNG, com revisão 04 e data
+  atualizadas. O contato das oito folhas foi conferido para composição, margens,
+  cabeçalhos e carimbos.
+- A P11-02 foi examinada integralmente no PNG de produção a 300 dpi e na rasterização
+  independente do PDF via `pypdfium2` a 150 dpi. O título identifica o arranjo como
+  conceitual, a escala é `S/ESC.` e a nota explica que as cotas externas são premissas
+  enquanto a geometria interna não tem escala válida. O painel de pendências, as cotas,
+  a planta e o carimbo estão dentro da folha; não observei cortes relevantes.
+- O AutoCAD AcCoreConsole 2027 abriu e auditou 8/8 DXFs, sem erros encontrados ou
+  corrigidos. A similaridade PDF/PNG de P11-02 foi 0,990676; a mínima do P11 foi
+  0,988037.
+- A planta continua esquemática. Levantamento, envelopes OEM, ventilação, acessos,
+  afastamentos e rotas precisam ser confirmados; a folha não demonstra conformidade
+  nem liberação executiva.
+- A inspeção de SVGs no navegador continua pendente de autorização do usuário.
+
 ---
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

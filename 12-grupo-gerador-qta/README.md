@@ -25,14 +25,14 @@ Documentação CAD acadêmica e conceitual de um **Sistema de Grupo Moto-Gerador
 
 ## 2. Índice de Pranchas (A3 Paisagem)
 
-O conjunto da revisão 03 é composto por 9 pranchas em DXF AC1027/R2013:
+O conjunto da revisão 04 é composto por 9 pranchas em DXF AC1027/R2013:
 
 1. **`01_diagrama_unifilar_qta.dxf`:** Diagrama unifilar de potência do QTA (Rede, GMG, contatores K1/K2 intertravados, DPS e barramento de cargas essenciais).
 2. **`02_diagrama_trifilar_potencia.dxf`:** Esquema trifilar detalhado de força (3F+N+PE), circuitos de alimentação auxiliar, carregador de baterias e resistor de bloco.
 3. **`03_diagrama_funcional_comando.dxf`:** Diagrama funcional da USCA microprocessada, sensoriamento AC de rede/gerador, saídas de partida/parada e intertravamento de transferência.
 4. **`04_regua_bornes_interligacao.dxf`:** Mapeamento de régua de bornes de potência (X1, X2, X3) e de controle/sensoriamento (XC1 e XC2) entre painel e cabine do GMG.
 5. **`05_layout_painel_qta.dxf`:** Layout frontal da porta com IHM, comutador e sinalizadores, e placa de montagem interna com barramentos e componentes.
-6. **`06_planta_instalacao_gmg.dxf`:** Planta de implantação da sala de geradores, atenuadores acústicos de admissão e descarga, escape de gases com silencioso hospitalar e bacia de contenção de diesel.
+6. **`06_planta_instalacao_gmg.dxf`:** Arranjo conceitual da sala, com atenuadores, escape e bacia. A folha declara `S/ESC.` porque a geometria não corresponde às dimensões adotadas; envelope, circulação, ventilação e rota do escape dependem de levantamento e seleção OEM.
 7. **`07_sequencia_transferencia_qta.dxf`:** Sequência por estados, pausas entre partidas, confirmação dos contatos auxiliares, transferência aberta, retorno à rede e arrefecimento.
 8. **`08_matriz_causa_efeito_qta.dxf`:** Matriz com nove eventos de rede, partida, estabilidade do GMG, feedbacks dos contatores, retorno, emergência e proteções do motor. A condição de falha de rede permanece por mais de 3 s, conforme as premissas. Respostas dependentes da USCA/OEM permanecem indicadas como pendentes.
 9. **`09_cadastro_cargas_essenciais_qce.dxf`:** Cadastro dos quatro alimentadores de cargas essenciais encontrados na lista de cabos, com destino, serviço, formação e comprimento assumido. Potência, corrente, partida, regime e prioridade permanecem pendentes até receber dados do processo e dos fabricantes.
@@ -80,6 +80,19 @@ O conjunto da revisão 03 é composto por 9 pranchas em DXF AC1027/R2013:
 1. Abra o arquivo desejado diretamente na pasta `fonte/` com o AutoCAD 2013 ou posterior (incluindo o AutoCAD 2027 instalado).
 2. Para salvar como `.dwg`, utilize o comando `SAVEAS` no AutoCAD e selecione o formato DWG padrão.
 
-## Validação da revisão 03
+## Validação da revisão 04
 
-O validador específico confirma nove pranchas, nove eventos causa–efeito, quatro alimentadores no cadastro QCE, 24 itens de materiais e 15 cabos. Os dados de carga ausentes permanecem marcados como pendentes; a prancha não fecha o balanço do GMG nem comprova que a lista dos quatro alimentadores seja completa.
+O validador específico passou: nove pranchas, nove eventos causa–efeito, quatro
+alimentadores no cadastro QCE, 24 itens de materiais e 15 cabos. Os dados de carga
+ausentes permanecem pendentes; a prancha não fecha o balanço do GMG nem comprova que a
+lista dos quatro alimentadores seja completa. A P12-06 está marcada `S/ESC.`; suas
+dimensões e interfaces continuam premissas até confirmação em campo e nos documentos do
+fabricante.
+
+O AutoCAD AcCoreConsole 2027 abriu e auditou 9/9 DXFs, sem erros encontrados ou
+corrigidos. P12-06 foi conferida no PNG de produção a 300 dpi e no PDF rasterizado
+independentemente a 150 dpi; sua similaridade PDF/PNG foi 0,991573. A similaridade
+mínima do P12 foi 0,986323. O contato das nove folhas também foi inspecionado. As
+verificações confirmam abertura e apresentação, não dimensionamento, conformidade ou
+aptidão para instalação. A inspeção dos SVGs no navegador aguarda autorização do
+usuário.

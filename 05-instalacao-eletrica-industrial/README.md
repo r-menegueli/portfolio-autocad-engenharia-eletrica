@@ -4,9 +4,9 @@ Autor: Rogério Eduardo Moreira Menegueli
 
 Pranchas: 01 a 09
 
-Formato: A3 paisagem, unidades em milímetros, revisão 04 (2026-11-06)
+Formato: A3 paisagem, unidades em milímetros, revisão 05 (2026-11-06)
 
-Estado: revisão conceitual 04; curto-circuito, capacidade de interrupção e coordenação continuam pendentes
+Estado: revisão conceitual 05; curto-circuito, capacidade de interrupção e coordenação continuam pendentes
 
 Este projeto acadêmico apresenta a distribuição elétrica conceitual de uma oficina
 metalmecânica fictícia de `30,00 x 18,00 m`, com área de `540,00 m²`. A alimentação
@@ -34,7 +34,9 @@ ponto de entrega. QGBT-05 alimenta QDF-05, QDL-05 e QADM-05.
 ## Pranchas
 
 1. [Layout industrial](fonte/01_layout_industrial.dxf): implantação, dimensões,
-   máquinas, tomadas e quadros.
+   máquinas, tomadas, quadros e tabela dos circuitos C01-C06 com cargas e coordenadas
+   derivadas da escala do croqui. As coordenadas não são levantamento topográfico;
+   pegadas, folgas e acessos reais continuam pendentes.
 2. [Distribuição de força](fonte/02_distribuicao_forca.dxf): circuitos C01 a C08,
    cargas trifásicas e tomadas industriais.
 3. [Distribuição de iluminação](fonte/03_distribuicao_iluminacao.dxf): luminárias,
@@ -99,11 +101,22 @@ e nas pranchas. A normalização do pacote XLSX fixa metadados e timestamps inte
 permitindo verificar a reprodução por hash. Nenhum DWG é fornecido; os DXFs AC1027
 são as fontes principais.
 
-Na revisão 04, o validador específico passou em 406 verificações; o AutoCAD AcCoreConsole
-2027 abriu e auditou 9/9 DXFs, sem erros nem correções. A validação estrita do portfólio
-passou em 652.258 verificações, sem erros ou avisos. O revisor confirmou 12 projetos,
-111 pranchas, 444 arquivos gráficos, 75 CSVs e similaridade mínima PDF/PNG de 0,981493;
-P05-09 teve similaridade 0,984839. Nenhum valor presumido de Icc/Icu é tratado como
-seleção; os dados de rede e fabricante continuam pendentes.
+Na revisão 05, o layout relaciona cada equipamento a circuito, potência aparente
+instalada e coordenadas do croqui, todas calculadas da geometria existente em escala
+1:125. A verificação de campo, os envelopes OEM, as folgas, o fluxo de processo e os
+acessos continuam pendentes; o desenho não representa implantação real. Nenhum valor
+presumido de Icc/Icu é tratado como seleção; os dados de rede e fabricante continuam
+pendentes. Os resultados atuais de validação e auditoria são registrados em
+`validacao-calculos.json`, `validacao.json` e `inspecao-visual.md`.
+
+## Verificação da revisão 05
+
+O validador específico passou em 443 verificações, sem erros. O AutoCAD AcCoreConsole
+2027 abriu e auditou 9/9 DXFs, sem erros encontrados ou corrigidos. A P05-01 foi
+inspecionada no PNG de produção a 300 dpi e no PDF rasterizado independentemente a
+150 dpi; sua similaridade PDF/PNG foi 0,992284. A tabela de circuitos, cargas e
+coordenadas está legível, mas coordenadas são do croqui e não substituem levantamento,
+envelopes de máquinas, folgas, áreas de operação ou fluxo real. O contato das nove
+folhas foi conferido; a inspeção dos SVGs no navegador aguarda autorização do usuário.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
