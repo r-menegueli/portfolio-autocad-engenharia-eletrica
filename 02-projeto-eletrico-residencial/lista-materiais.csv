@@ -9,14 +9,14 @@ DJ3,1,un,Disjuntor 1P 20 A curva C,C4,TUG cozinha
 DJ4,1,un,Disjuntor 2P 20 A curva C,C6,Forno eletrico
 DJ5,1,un,Disjuntor 2P 32 A curva C,C7,Chuveiro
 LUM1,6,un,Luminaria LED de teto 15 W ou 18 W,Prancha 02,Fluxo fotometrico a selecionar
-LUM2,3,un,Luminaria LED de teto 9 W ou 12 W,Prancha 02,Fluxo fotometrico a selecionar
+LUM2,4,un,Luminaria LED de teto 9 W ou 12 W,Prancha 02,Fluxo fotometrico a selecionar
 LUM3,1,un,Luminaria LED de espelho 8 W,Prancha 02,Modelo a selecionar
-INT1,6,un,Interruptor simples 10 A 250 V,Prancha 02,Altura indicativa
+INT1,7,un,Interruptor simples 10 A 250 V,Prancha 02,Altura indicativa
 INT2,2,un,Interruptor paralelo 10 A 250 V,Prancha 02,Circulacao
 TUG1,24,un,Tomada 2P+T 10 A 250 V,Prancha 03,Padrao brasileiro a confirmar na especificacao
 TUE1,2,un,Tomada 2P+T 20 A 250 V,Prancha 03,Forno e lavadora
-CX1,10,un,Caixa octogonal de teto,Pranchas 02 e 04,Dimensao a selecionar
-CX2,34,un,Caixa retangular 4 x 2 polegadas,Pranchas 02 e 03,Para tomadas e interruptores
+CX1,11,un,Caixa octogonal de teto,Pranchas 02 e 04,Dimensao a selecionar
+CX2,35,un,Caixa retangular 4 x 2 polegadas,Pranchas 02 e 03,Para tomadas e interruptores
 EL20,120,m,Eletroduto corrugado antichama DN 20 mm,Prancha 04,Ocupacao a verificar
 EL25,40,m,Eletroduto corrugado antichama DN 25 mm,Prancha 04,Ocupacao a verificar
 EL32,18,m,Eletroduto corrugado antichama DN 32 mm,Prancha 04,Alimentador

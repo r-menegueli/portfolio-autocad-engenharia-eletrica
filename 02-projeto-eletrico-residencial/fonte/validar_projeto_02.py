@@ -33,6 +33,7 @@ def validate(root: Path) -> dict:
     points = rows_by(project / "lista-pontos.csv", "id")
     materials = rows_by(project / "lista-materiais.csv", "item")
     room_rows = read_rows(project / "rastreabilidade-ambientes.csv")
+    openings = read_rows(project / "esquadrias.csv")
     errors: list[str] = []
     checks = 0
 
@@ -74,6 +75,16 @@ def validate(root: Path) -> dict:
     checks += 1
     if len(room_rows) != 8:
         errors.append(f"Rastreabilidade por ambiente: {len(room_rows)} linhas; esperadas 8.")
+    checks += 1
+    opening_ids = {row["id"] for row in openings}
+    if opening_ids != {*(f"D{index:02d}" for index in range(1, 9)), *(f"W{index:02d}" for index in range(1, 8))}:
+        errors.append("Esquadrias: IDs devem cobrir D01-D08 e W01-W07.")
+    checks += 1
+    if any(row["status"] != "PREMISSA" for row in openings):
+        errors.append("Esquadrias: dimensões devem permanecer PREMISSA até levantamento.")
+    checks += 1
+    if room_by_name.get("Closet Q1", {}).get("ambiente_lista_pontos") != "Closet Q1":
+        errors.append("Closet Q1 deve estar ligado à lista de pontos para rastrear L09.")
     checks += 1
     if len(room_by_name) != len(room_rows):
         errors.append("Há nomes de ambiente duplicados na rastreabilidade.")
@@ -128,10 +139,10 @@ def validate(root: Path) -> dict:
     demand = demand_general + tue
     service_current = demand / Decimal("220")
     for label, actual, expected, tolerance in (
-        ("potência instalada", installed, Decimal("15548.913"), Decimal("0.001")),
-        ("demanda geral", demand_general, Decimal("2592.11955"), Decimal("0.00001")),
-        ("demanda total", demand, Decimal("12592.11955"), Decimal("0.00001")),
-        ("corrente de demanda", service_current, Decimal("57.236907"), Decimal("0.00001")),
+        ("potência instalada", installed, Decimal("15558.6955"), Decimal("0.001")),
+        ("demanda geral", demand_general, Decimal("2595.543425"), Decimal("0.00001")),
+        ("demanda total", demand, Decimal("12595.543425"), Decimal("0.00001")),
+        ("corrente de demanda", service_current, Decimal("57.252470"), Decimal("0.00001")),
     ):
         checks += 1
         if abs(actual - expected) > tolerance:
@@ -139,8 +150,9 @@ def validate(root: Path) -> dict:
 
     material_expectations = {
         "QD1": Decimal("1"), "QG1": Decimal("1"), "DPS1": Decimal("2"), "DR1": Decimal("1"),
-        "LUM1": Decimal("6"), "LUM2": Decimal("3"), "LUM3": Decimal("1"),
-        "INT1": Decimal("6"), "INT2": Decimal("2"), "TUG1": Decimal("24"), "TUE1": Decimal("2"),
+        "LUM1": Decimal("6"), "LUM2": Decimal("4"), "LUM3": Decimal("1"),
+        "INT1": Decimal("7"), "INT2": Decimal("2"), "TUG1": Decimal("24"), "TUE1": Decimal("2"),
+        "CX1": Decimal("11"), "CX2": Decimal("35"),
     }
     for item, expected in material_expectations.items():
         checks += 1

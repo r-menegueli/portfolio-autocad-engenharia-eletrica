@@ -154,6 +154,7 @@ required_files = [
   "inspecao-visual.md",
   "quadro-cargas.csv",
   "rastreabilidade-ambientes.csv",
+  "esquadrias.csv",
   "lista-pontos.csv",
   "lista-materiais.csv",
   "fonte/gerar_projeto_02.py",

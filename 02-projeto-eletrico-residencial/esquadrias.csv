@@ -1,0 +1,16 @@
+id,tipo,ambiente,largura_m,altura_m,coordenadas_mm,status,observacoes
+D01,Porta de acesso,Sala / jantar,0.90,2.10,"x=82..100; y=105",PREMISSA,Abertura principal voltada para a sala
+D02,Porta interna,Quarto 1,0.80,2.10,"y=185; x=85..101",PREMISSA,Acesso pelo corredor
+D03,Porta interna,Cozinha,0.80,2.10,"x=115; y=135..151",PREMISSA,Conexão sala e cozinha
+D04,Porta interna,Cozinha / circulação,0.80,2.10,"y=165; x=127..143",PREMISSA,Acesso da circulação à cozinha
+D05,Porta interna,Lavanderia,0.80,2.10,"y=165; x=187..203",PREMISSA,Acesso pela circulação
+D06,Porta interna,Banheiro,0.70,2.10,"y=185; x=129..143",PREMISSA,Acesso pelo corredor
+D07,Porta interna,Quarto 2,0.80,2.10,"y=185; x=199..215",PREMISSA,Acesso pelo corredor; substitui a porta indevida pelo banheiro
+D08,Porta interna,Closet Q1,0.80,2.10,"x=115; y=237..253",PREMISSA,Acesso exclusivo a partir do quarto 1
+W01,Janela,Sala / jantar,1.20,1.00,"y=105; x=48..72",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W02,Janela,Quarto 1,1.20,1.00,"y=255; x=48..72",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W03,Janela,Quarto 2,1.40,1.00,"y=255; x=185..213",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W04,Janela,Lavanderia,1.20,1.00,"x=235; y=120..144",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W05,Janela,Quarto 2,1.20,1.00,"x=235; y=208..232",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W06,Janela,Closet Q1,1.00,0.60,"y=255; x=124..144",PREMISSA,Dimensões e peitoril sujeitos a levantamento
+W07,Janela,Cozinha,1.20,0.90,"y=105; x=126..150",PREMISSA,Abertura didática para iluminação e ventilação

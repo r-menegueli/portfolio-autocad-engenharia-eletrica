@@ -28,6 +28,21 @@
 - Todo ponto utiliza condutor PE; tomadas são representadas como 2P+T.
 - Pontos, potências e circuitos têm uma única fonte tabular em [lista-pontos.csv](lista-pontos.csv).
 
+## Premissas arquitetônicas da revisão 03
+
+- A planta representa oito ambientes e conserva 75,00 m². A inclusão do closet de
+  2,40 m² foi compensada pela revisão das áreas declaradas em
+  [rastreabilidade-ambientes.csv](rastreabilidade-ambientes.csv); todas continuam
+  `PREMISSA`.
+- [esquadrias.csv](esquadrias.csv) registra oito portas e sete janelas, com dimensões
+  e posições didáticas. Não há levantamento de fachada, orientação solar, peitoris,
+  ventilação calculada, acessibilidade ou compatibilização com estrutura.
+- A planta mobiliada é ilustrativa. Dimensões de mobiliário/aparelhos, áreas livres,
+  circulação, ergonomia, zonas molhadas e afastamentos não foram verificados em campo
+  ou contra código de obras.
+- O Quarto 2 e o banheiro têm acesso pela circulação; o closet está ligado ao Quarto 1.
+  A geometria e os sentidos de abertura servem apenas à representação acadêmica.
+
 ## Critérios de dimensionamento
 
 O cálculo de corrente usa `I = S/V`. A queda de tensão monofásica/bipolar simplificada

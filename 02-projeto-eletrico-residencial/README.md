@@ -1,9 +1,9 @@
 # Projeto 02 - Projeto elétrico residencial
 
 - **Autor:** Rogério Eduardo Moreira Menegueli
-- **Data:** 2026-09-05
-- **Revisão:** 02 (gráfica; 2026-11-05)
-- **Estado:** estudo conceitual; revisão gráfica 02 e validação matemática/documental
+- **Data de criação:** 2026-09-05
+- **Revisão:** 03 (arquitetura e esquadrias; 2026-11-06)
+- **Estado:** estudo conceitual; revisão gráfica 03 validada e reproduzida
 - **Unidades:** milímetros no DXF; metros, volts, ampères, watts e volt-ampères quando indicados
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
@@ -12,8 +12,9 @@
 
 Documentar uma residência térrea original e inteiramente fictícia, com 75 m², alimentação
 127/220 V, duas fases, neutro e condutor de proteção, quadro QD1 e oito circuitos finais.
-O conjunto demonstra planta arquitetônica, iluminação, tomadas, eletrodutos, diagrama
-unifilar, quadro de distribuição, quadro de cargas, detalhes de aterramento e rastreabilidade das cargas por ambiente.
+O conjunto demonstra planta arquitetônica mobiliada, vãos e acessos, iluminação, tomadas,
+eletrodutos, diagrama unifilar, quadro de distribuição, quadro de cargas, detalhes de
+aterramento e rastreabilidade das cargas por ambiente.
 
 O projeto inclui DR de 30 mA, DPS tipo 2, disjuntor geral, disjuntores de circuitos,
 barramentos N e PE separados, identificação de circuitos, potência atribuída, seções
@@ -25,7 +26,7 @@ coordenação de DPS nem autorização para execução.
 
 | Prancha | Fonte DXF | Tema |
 | ---: | --- | --- |
-| 01/09 | [01_planta_arquitetonica.dxf](fonte/01_planta_arquitetonica.dxf) | planta-base fictícia, ambientes, vãos e dimensões |
+| 01/09 | [01_planta_arquitetonica.dxf](fonte/01_planta_arquitetonica.dxf) | ambientes mobiliados, vãos identificados, dimensões e quadros de ambientes/esquadrias |
 | 02/09 | [02_planta_iluminacao.dxf](fonte/02_planta_iluminacao.dxf) | pontos de luz, interruptores, comandos e circuitos C1/C2 |
 | 03/09 | [03_planta_tomadas.dxf](fonte/03_planta_tomadas.dxf) | TUG, TUE e circuitos C3 a C8 |
 | 04/09 | [04_planta_eletrodutos.dxf](fonte/04_planta_eletrodutos.dxf) | rotas conceituais, caixas e diâmetros assumidos |
@@ -48,6 +49,7 @@ pranchas A3 paisagem de 420 x 297 mm e usam DXF R2013/AC1027 como fonte principa
 - [Rastreabilidade de ambientes e cargas em CSV](rastreabilidade-ambientes.csv)
 - [Lista de pontos em CSV](lista-pontos.csv)
 - [Lista de materiais em CSV](lista-materiais.csv)
+- [Quadro de esquadrias e dimensões adotadas em CSV](esquadrias.csv)
 - [Inspeção visual](inspecao-visual.md)
 
 ## Reprodução
@@ -75,22 +77,26 @@ explicitadas, não declaração de conformidade normativa.
 
 ## Validação
 
-Resultado da revisão em 2026-11-05:
+Revisão de projeto em 2026-11-06:
 
-- validador matemático do P02: `PASS`, 63 verificações e 0 erros; os oito
-  ambientes, 19 linhas de pontos e 15.548,913 VA estão rastreados, mas marcados
+- validador matemático do P02: `PASS`, 68 verificações e 0 erros; os oito
+  ambientes, 20 linhas de pontos e 15.558,696 VA estão rastreados, mas marcados
   como premissas;
-- validação estrita do portfólio: `PASS`, 521.224 verificações, 0 erros e 0 avisos;
-- nove DXFs abertos e auditados no Autodesk AcCoreConsole 2027: `PASS`;
-- nove folhas renderizadas em PDF, SVG e PNG; o contato atualizado foi conferido;
-  P02-01 foi inspecionada integralmente no PNG de produção, e P02-09 no PNG de
-  produção e em PDF rasterizado independentemente a 150 dpi;
-- o revisor encontrou similaridade mínima PDF/PNG de 0,986556 no conjunto P02;
-- o gerador repetido produziu hashes idênticos nos nove DXFs.
+- P02 mantém nove folhas A3; os nove DXFs e derivados PDF/SVG/PNG foram regenerados;
+- AutoCAD AcCoreConsole 2027 abriu e auditou os nove DXFs: `PASS` em 9/9; o arquivo
+  P02-07 foi auditado novamente depois da última regeneração;
+- o gerador repetido preservou os nove hashes DXF; o validador estrito passou em
+  623.879 verificações, sem erros nem avisos;
+- as nove pranchas A3 foram inspecionadas nos PNGs integrais de produção e no contato
+  do conjunto; a comparação independente PDF/PNG passou, com similaridade mínima P02
+  de 0,984878;
+- o revisor integrado passou em 12 projetos, 105 pranchas, 420 arquivos gráficos e
+  73 CSVs, com similaridade mínima do portfólio de 0,981493.
 
 Os relatórios processáveis são [validacao-matematica.json](validacao-matematica.json) e
 [validacao.json](validacao.json). Nenhum DWG foi gerado ou incluído.
 
-Esta revisão não transforma a planta fictícia nem as potências assumidas em dados de
-campo. A inspeção visual dos SVGs da revisão 02 no navegador continua pendente de
-autorização; a inspeção anterior em Chromium é histórica e se refere à revisão 00.
+Esta revisão não transforma a planta fictícia, os vãos, mobiliário nem as potências
+assumidas em dados de campo. O CSV de esquadrias e as geometrias do gerador devem ser
+conferidos após mudanças coordenadas. A inspeção visual dos SVGs no navegador permanece
+pendente de autorização; os registros anteriores do Chromium cobrem revisões históricas.

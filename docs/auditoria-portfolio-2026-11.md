@@ -7,9 +7,9 @@ apresentação, clareza do conteúdo, consistência entre documentos e maturidad
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão atual, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos gráficos
-e 72 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita passou em
-613.579 verificações, sem erros ou avisos.
+Na revisão corrente, o revisor confirmou 12 projetos, 105 pranchas, 420 arquivos
+gráficos e 73 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
+passou em 623.879 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -27,7 +27,7 @@ e 72 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita p
 | Projeto | Bom | Simples ou fraco | Próxima substituição que mais agregaria |
 | --- | --- | --- | --- |
 | P01 — Painel com inversor | Separa unifilar, potência, comando, layout e campo; P01-07 mapeia premissas de proteção e P01-08 organiza evidências para verificação. | Não há estudo de coordenação nem ensaio funcional: Icc, modelos, curvas, ratings, critérios e resultados de campo seguem ausentes. | Substituir premissas por dados do local e modelos escolhidos; calcular e comparar curvas, definir critérios e anexar registros antes de declarar seletividade, capacidade ou funcionamento. |
-| P02 — Residencial | Conjunto claro para leitura rápida; P02-09 agora liga dimensões/áreas por ambiente aos pontos, potências e circuitos em CSV. | A arquitetura continua fictícia, dimensões e cargas são premissas, e ainda não há levantamento de vãos nem potência de equipamentos selecionados. | Substituir a planta por levantamento cotado com vãos e medidas internas; informar equipamentos e potências escolhidos, então recalcular as cargas e circuitos. |
+| P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
 | P03 — Painel com CLP | Boa cobertura de alimentação, I/O, comando, bornes, interligações, sequência causa-efeito e plano de verificação em dez folhas. | O plano registra evidências necessárias, não resultados: nenhum teste de CLP ou segurança funcional foi executado; a resposta a sensor incoerente com bomba em marcha segue sem decisão. | Escolher hardware, fechar a decisão de processo e preencher o plano com critérios e evidências reais; validar a sequência no software do fabricante. |
 | P04 — Nível | Agora mostra também sequência de operação e matriz causa–efeito para nove eventos, rastreada à filosofia existente. | A arquitetura ainda simplifica a instrumentação e as condições de processo; ação operacional para alarmes de nível 15%/85% e retenção na falta de energia dependem de decisão. | Evoluir o P&ID com dados de processo, válvulas/instrumentos selecionados e folhas de dados. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
@@ -116,9 +116,11 @@ e 72 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita p
 - Identifiquei relatórios de 2026-09-10 como históricos, pois cobrem P01–P10 e 68
   folhas. Os registros não validam a revisão atual nem P11/P12.
 
-## Limites e validação
+## Limites e validação — relatórios históricos
 
-Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
+Os números de validação neste bloco antecedem a revisão corrente registrada no início
+deste relatório; foram mantidos como histórico de revisões anteriores. Os DXFs e
+derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
 validação estrita aprovou 606.218 verificações, sem erros nem avisos. O revisor aprovou
 12 projetos, 104 pranchas, 416 arquivos gráficos e 72 CSVs, com similaridade mínima
 PDF/PNG de 0,981493. As 12 folhas de contato foram regeneradas; revisei as composições
@@ -299,3 +301,18 @@ validador específico passou com nove pranchas, quatro ramais QCE, nove eventos,
 materiais e 15 cabos. O validador estrito aprovou 566.931 verificações; o revisor
 confirmou 12 projetos, 103 folhas, 412 arquivos gráficos e 72 CSVs, similaridade
 mínima de 0,984061. A inspeção dos SVGs no navegador segue aguardando autorização.
+
+### Atualização P02-01 a P02-09 — revisão gráfica 03
+
+A planta residencial agora mostra as paredes interrompidas nos vãos, acesso ao Quarto 2
+e ao banheiro pela circulação, closet acessado pelo Quarto 1, mobiliário indicativo e
+agenda rastreável de oito portas e sete janelas. Corrigi os arcos das portas e acrescentei
+um ponto de luz e eletroduto para o closet. O quadro de cargas passou a calcular seus
+totais a partir dos circuitos; apresenta 15.558,696 VA instalados e 12.595,543 VA de
+demanda acadêmica. A matemática do P02 passou em 68 checagens, o AcCoreConsole 2027
+auditou 9/9 DXFs e os nove PNGs integrais foram inspecionados. O revisor passou em
+12 projetos, 105 folhas, 420 arquivos gráficos e 73 CSVs, sem erros, e a similaridade
+mínima PDF/PNG do P02 foi 0,984878. O validador estrito aprovou 623.879 verificações,
+sem erros ou avisos. Os dados arquitetônicos, cargas e proteções continuam premissas;
+curto-circuito, seletividade, projeto executivo e conformidade normativa não foram
+verificados. A inspeção dos SVGs no navegador aguarda autorização do usuário.

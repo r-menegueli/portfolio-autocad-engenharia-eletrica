@@ -1,5 +1,5 @@
 circuito,descricao,tensao_v,fases,potencia_ativa_w,potencia_aparente_va,corrente_projeto_a,comprimento_m,condutor_mm2,pe_mm2,disjuntor_a,polos,curva,dr_ma,queda_circuito_pct,observacoes
-C1,Iluminacao sala quartos e circulacao,127,A,69.000,75.000,0.591,28.0,1.5,1.5,10,1,B,30,0.391,LED fator de potencia 0.92
+C1,Iluminacao sala quartos circulacao e closet Q1,127,A,78.000,84.7825,0.668,28.0,1.5,1.5,10,1,B,30,0.442,LED fator de potencia 0.92; L09 no closet Q1
 C2,Iluminacao cozinha banheiro e lavanderia,127,B,68.000,73.913,0.582,24.0,1.5,1.5,10,1,B,30,0.330,LED fator de potencia 0.92
 C3,TUG sala quartos e circulacao,127,A,1200.000,1500.000,11.811,20.0,4.0,4.0,16,1,C,30,2.093,Secao elevada para limitar queda combinada
 C4,TUG cozinha,127,B,1680.000,2100.000,16.535,18.0,4.0,4.0,20,1,C,30,2.637,Tres primeiros pontos a 600 VA

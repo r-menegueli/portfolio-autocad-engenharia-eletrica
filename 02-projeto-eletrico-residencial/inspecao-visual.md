@@ -1,8 +1,8 @@
 # Inspeção visual - Projeto 02
 
-> O registro de 2026-09-05 abaixo é histórico e cobre a revisão 00. A revisão 02 foi
-> inspecionada em 2026-11-05 conforme o registro adicional ao final; os resultados
-> anteriores não substituem a conferência atual.
+> O registro de 2026-09-05 abaixo cobre a revisão 00 e a seção seguinte documenta a
+> revisão 02. A conferência atual da revisão 03 está no último registro; resultados
+> históricos não substituem a conferência corrente.
 
 - Data da inspeção: 2026-09-05
 - Revisão inspecionada: 00
@@ -64,3 +64,24 @@ ou elementos gráficos fora da moldura na conferência final.
 P02-09 rastreia 19 pontos e 15.548,913 VA em oito ambientes, totalizando 75 m². As
 dimensões, cargas e usos estão marcados `PREMISSA`; esta folha organiza a substituição
 futura por levantamento real, sem alegar medição ou teste de campo.
+
+## Revisão gráfica 03 — 2026-11-06
+
+- Inspecionei os nove PNGs integrais de produção a 300 dpi e o contato atualizado das
+  nove folhas. Molduras, carimbos, quadros e áreas densas cabem nas folhas A3; o quadro
+  de cargas foi conferido novamente depois da correção dos totais dinâmicos.
+- O revisor rasterizou os PDFs independentemente e comparou cada resultado com o PNG;
+  a menor similaridade entre as nove folhas foi 0,984878. O revisor integrado passou
+  sem erros para os 12 projetos, 105 folhas, 420 arquivos gráficos e 73 CSVs.
+- O AcCoreConsole 2027 abriu e auditou 9/9 DXFs; o P02-07 foi repetido depois da
+  última edição. O validador estrito passou em 623.879 verificações, sem erros ou
+  avisos, e a verificação matemática do P02 passou em 68 checagens.
+- P02-01 acrescenta mobiliário de referência e agenda de oito portas e sete janelas;
+  P02-02/04 incluem o ponto de luz do closet e seu eletroduto. As demais folhas mantêm
+  a mesma hierarquia visual e os totais atualizados.
+- O SVG desta revisão ainda não foi aberto no navegador. A inspeção visual em browser
+  segue pendente de autorização do usuário.
+
+O conjunto continua conceitual. A planta, as esquadrias, os equipamentos, as potências,
+as extensões e as proteções são premissas; abertura correta do DXF e consistência dos
+cálculos registrados não demonstram conformidade normativa nem dimensionamento executivo.

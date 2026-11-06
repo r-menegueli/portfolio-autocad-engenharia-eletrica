@@ -94,12 +94,21 @@ iluminação, tomadas, eletrodutos, proteção, distribuição e aterramento con
 disjuntores, condutores, queda de tensão simplificada, rotas de eletrodutos,
 barramentos N/PE e detalhes de equipotencialização e eletrodo.
 
-**Pranchas e dados específicos.** Planta arquitetônica, iluminação, tomadas,
-eletrodutos, diagrama unifilar, quadro de distribuição, quadro de cargas e detalhes
-de aterramento; listas CSV de pontos, cargas e materiais.
+**Pranchas e dados específicos.** Planta arquitetônica mobiliada e esquadrias,
+iluminação, tomadas, eletrodutos, diagrama unifilar, quadro de distribuição, quadro de
+cargas e detalhes de aterramento; listas CSV de pontos, cargas, materiais e esquadrias.
 
-**Marco de aceitação.** Concluído na revisão 00. Oito DXFs AC1027, derivados
-PDF/SVG/PNG, validação matemática e inspeção visual devem permanecer coerentes.
+**Marco de aceitação.** Nove folhas AC1027 com PDF/SVG/PNG, rastreabilidade por CSV e
+auditoria DXF no AutoCAD AcCoreConsole 2027 (9/9). Revisão estrita do portfólio e
+revisor integrado passaram sem erros; limites acadêmicos permanecem explícitos.
+
+**Revisão gráfica 03 (2026-11-06).** A planta agora representa os vãos com interrupções
+nas paredes, mostra acesso ao Quarto 2 e ao banheiro pela circulação e acesso ao closet
+pelo Quarto 1, além de mobiliário/aparelhos de referência. O CSV `esquadrias.csv` registra oito
+portas e sete janelas. Oito ambientes somam 75 m², 20 pontos totalizam 15.558,6955 VA,
+com dimensões, aberturas e cargas marcadas como premissas. As nove folhas integrais
+foram inspecionadas; os DXFs são reproduzíveis, auditados e validados. O SVG ainda
+aguarda inspeção no navegador mediante autorização.
 
 ## P03 — Painel de automação com CLP para duas bombas
 
