@@ -40,6 +40,15 @@ Este memorial descritivo estabelece as premissas funcionais, características el
 
 Os tempos são setpoints conceituais para demonstrar a sequência, sujeitos às recomendações do fabricante do motor e da USCA. Eles não estabelecem um tempo total garantido para assumir a carga.
 
+### 2.4 Cadastro de cargas essenciais
+
+A revisão 03 organiza em cadastro-cargas-qce.csv e na prancha 09 os quatro
+alimentadores de cargas essenciais identificados na lista de cabos: iluminação e
+rotas de fuga, bomba de incêndio, UPS da sala de servidores e utilidades. Potências,
+correntes, partidas, simultaneidade e prioridade de entrada ainda não foram
+informadas. A lista atual não comprova que todos os ramais do QCE foram identificados
+e não permite verificar a capacidade do GMG para a demanda real.
+
 ---
 
 ## 3. Dispositivos de Proteção

@@ -1825,152 +1825,171 @@
     {
       "id": "p12-01-diagrama-unifilar-qta",
       "source": "12-grupo-gerador-qta/fonte/01_diagrama_unifilar_qta.dxf",
-      "source_sha256": "17292beabeaee24a5f49c3fc71ec98110463973c50b1640f6b2035bad0e453fc",
+      "source_sha256": "c51e32b0fc270d91715ffcdf8d96032581d3b161b306c43d3de1798bb1f681ac",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.pdf",
-          "sha256": "25481f0169a6b78ebf79c3e243cc462a6fd4986a07f3cc8707d952bdfb0d088b"
+          "sha256": "7648cea30273029a03cffe8c8d9599029a6394307820483797495efc084ea359"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.png",
-          "sha256": "36c1b508a5044f814e7f07029f4c71b7e57de9e5ccd56d8ebab1e7f3af430887"
+          "sha256": "f20a025466e64b3ec488151e571a9d6cae1093ee3ae7cf7b042c992cdc5cb06c"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/01_diagrama_unifilar_qta.svg",
-          "sha256": "f5327846043380646dad30bc057fa15b881bd0ef27a4469df2535a516c486e50"
+          "sha256": "dcad35f96ebf677cc34a3488f6fc2dcc1cb9f8ed18b0248af1b2fede8cf6079e"
         }
       }
     },
     {
       "id": "p12-02-diagrama-trifilar-potencia",
       "source": "12-grupo-gerador-qta/fonte/02_diagrama_trifilar_potencia.dxf",
-      "source_sha256": "0c9c592e47ed41b5c2657b4bf625f0d63cef82c4dad5855de8c9468932c62bd0",
+      "source_sha256": "07bd063b714d27cb7e479363bc873300ff3636acdfc414013f38ccfaa019218f",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.pdf",
-          "sha256": "023e9e11448337475a933dc6a8358d7f8aa509a4619f0dd76d71bd94c5d71fdf"
+          "sha256": "a53d1690974132d9f91daff4e24186b39b5353988d28efc1fa2fb8f17f9bd252"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.png",
-          "sha256": "ed96fa41eca1f3062d8a76e0748ac0ca66e44b83d0e1beeeb1943d3b7844ce93"
+          "sha256": "4b0890ea5c9ab6227671344e6583edcdc35582338bba7f95fa0bfaa7d209a78d"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/02_diagrama_trifilar_potencia.svg",
-          "sha256": "79bbb0df1afe97f437b88844e179d491074bf78b571e43e82be56cbec764898d"
+          "sha256": "9868c59f8e56bd0ec652b2a925e67509ef968b8b0bb7a7ff7b10c433adb282ce"
         }
       }
     },
     {
       "id": "p12-03-diagrama-funcional-comando",
       "source": "12-grupo-gerador-qta/fonte/03_diagrama_funcional_comando.dxf",
-      "source_sha256": "b7a388feb807dbe8c317f68fa28a930c40cbc2d76ca9c5f64ffa1273bd6c3466",
+      "source_sha256": "e46356df0a5e703d12d6859c88274fac1071931393f9e8177583cfddf617e763",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.pdf",
-          "sha256": "c45b765ecbd6ed25e37eab355ce1072869b0f7302710e89036ef6cffac12df4b"
+          "sha256": "714a0de950825dec6d54f7cd8cd07c7c94992611202eb33b86cf285ac80bce08"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.png",
-          "sha256": "9fbb2593a96f73aee6158fad6efc82875c0aa4fb2552c9e2c19025cc2230f42e"
+          "sha256": "cf833a3ed57f34a6865d461925add7805bc1ee4491be6fd92ea23c2792335a49"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/03_diagrama_funcional_comando.svg",
-          "sha256": "3e2000f6b9f36a5abba1b194c6364e3fabac408976e525cff7127bb332eab27f"
+          "sha256": "bc427bff9d5d0337fd5f623d4e09ba61f4c85d72c4bd922d4ee4ba07e7e437e2"
         }
       }
     },
     {
       "id": "p12-04-regua-bornes-interligacao",
       "source": "12-grupo-gerador-qta/fonte/04_regua_bornes_interligacao.dxf",
-      "source_sha256": "7676519cdd56aeca0cbfb13163ff6e1172135d50ee80aa38233114f23de65b05",
+      "source_sha256": "df1b372f6b345aedd0321ac80145e08ca9ce8470e2ae3bd37ca725a27bdadede",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.pdf",
-          "sha256": "d461009d848b744848d9f538c4dbc8877150149f5e0d9bf67e53f28f95a46bc6"
+          "sha256": "54e8687c390c93e45849ad06a907f187aba804aa3b5d381351eb36d7ef967ddd"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.png",
-          "sha256": "dbb2be47a51103eed144d98271baf809f5cba74c7458123271da761f1e88f5c7"
+          "sha256": "174ec64256d59d73172a13ac9aae1bf7eb408b010665b01410373ade860612c7"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/04_regua_bornes_interligacao.svg",
-          "sha256": "eeab3fcf15ee31f8813856d713695be9c5c7710c38bb429db54db0408b4909ec"
+          "sha256": "c6938475bafaea3d8efb25e1cb158424a04fbaf11300b25f870f0b1ecd7edc1d"
         }
       }
     },
     {
       "id": "p12-05-layout-painel-qta",
       "source": "12-grupo-gerador-qta/fonte/05_layout_painel_qta.dxf",
-      "source_sha256": "1bdff1bff4d3e3b622ecb32f4270ef9823412a6460be10020ee429e54e158101",
+      "source_sha256": "b46411b42a952bc18300ca97095d0aedcb3dcddf1a9c5ab5e62937a7ced10c8b",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.pdf",
-          "sha256": "06b8a659add4d7913d5f7c530a14e0c8e795c6834fee506d567730d728a9e198"
+          "sha256": "363cbe66eddbca81567aaf44ab5e7c97b7797ffa1cf327c9fdb1359671762fce"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.png",
-          "sha256": "16fe573a472728c5fa7127eaf7540ea285f157afac2ddf3e00ed8f5643d8fa3d"
+          "sha256": "c4cf42986e72a94504b9b2e25ca32680e379f050be73b3e3c297cfdd607ab0db"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/05_layout_painel_qta.svg",
-          "sha256": "a4c5dc31809d48d62b5437b8f7738c45195648ad4d99c22dbed96620cbef9085"
+          "sha256": "94118fba23b4755546c0f97d8bf65b17079cedb85eca1b1019998c1ed9ad0814"
         }
       }
     },
     {
       "id": "p12-06-planta-instalacao-gmg",
       "source": "12-grupo-gerador-qta/fonte/06_planta_instalacao_gmg.dxf",
-      "source_sha256": "f8a2331829b34564b628feb8a9c43907bfb5979ad1a915ceeea9669526f915b7",
+      "source_sha256": "639ec3338ae51c053189df7b5900bf5533e60d43f15ec9fb53ca31188eededbe",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.pdf",
-          "sha256": "8c6d7386832ee930fc16493f0956b9a9e0da8f874787a6b9e837f92c498e973c"
+          "sha256": "2878bea9199d04b09d847a3f4fde1a0d1840f4791920205f8f915a3e8908fe4d"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.png",
-          "sha256": "4a3bbb06f9900840e10b266f94cf42ee7b65b32350713572ddb500774bca0367"
+          "sha256": "f3e6d074979d9f160a7be52441dcabe19056f224b277f06720da225cfa2100c2"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/06_planta_instalacao_gmg.svg",
-          "sha256": "1215bf04689bd557f1bb355257e808fe0b650be726a0407d9c387377da7a607d"
+          "sha256": "37041bfbfb41a8e2218a5c94fa306c2ec4ac0af6c47aebadc99b06a931ca6a2d"
         }
       }
     },
     {
       "id": "p12-07-sequencia-transferencia-qta",
       "source": "12-grupo-gerador-qta/fonte/07_sequencia_transferencia_qta.dxf",
-      "source_sha256": "028d747a55d73b1022c07688d839038c2ccb88ef6c9491fbb7700474376e37ec",
+      "source_sha256": "c085989f41e8d003136216a4ff990dffe7674d1d0832c3795977b583be837e57",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.pdf",
-          "sha256": "0ebb61eed926cbc9f487b8e77f2a8c330008177349960f43103c1e4bce86a42a"
+          "sha256": "0718d2f8ac1e180def6e49c7c95a0c87291bd05dc6c120dab10548071173ffda"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.png",
-          "sha256": "ab68045009cd64a7f5f25dd364eb18067566401e3c12b7f6f9f1567b38f63779"
+          "sha256": "20b1aa73282ec47e69e1f4bfcb870bd20edd95e2699ab613a4afe52e60153970"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/07_sequencia_transferencia_qta.svg",
-          "sha256": "5211677dbea8ad123acfa1399e51c2ce488635b1564d506f6736f45ed748ad2e"
+          "sha256": "eb026461c8968bbc55f5f300eff59b16ac54cbc03ac496652e719bca60a86e01"
         }
       }
     },
     {
       "id": "p12-08-matriz-causa-efeito-qta",
       "source": "12-grupo-gerador-qta/fonte/08_matriz_causa_efeito_qta.dxf",
-      "source_sha256": "c88edaead1de954c32a3212d294be942c4346b82921e2764fc047bcb1917ce84",
+      "source_sha256": "38d8e890089858126388933f1804e6f4f5400e068259617eec259b0dd67b4cd5",
       "outputs": {
         "pdf": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.pdf",
-          "sha256": "a18b0f71d555b69f85e74fbdb121fc7cee57a379779b1cf02fef76b2cd546c9d"
+          "sha256": "86da113824298e4bad77c6fdcfa74a1065d373d03f0aede0beeefaea9b29c85d"
         },
         "png": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.png",
-          "sha256": "8f90cf291fa748a582bcbb0841fcb2894d3bbee8c893011de128d83a93301f3e"
+          "sha256": "6cdaec58c75fb3e69bf779e7a096d96ae3188491659c0c27801bd8a9f84f89b5"
         },
         "svg": {
           "path": "12-grupo-gerador-qta/exports/08_matriz_causa_efeito_qta.svg",
-          "sha256": "94fa48743fd4835f01588d12719e57f2480e35dde4a9c178b70c2afb4a54ddc3"
+          "sha256": "2216b829642671b23e9aaa22e1b77f34687b233832583e1d7074158039be7712"
+        }
+      }
+    },
+    {
+      "id": "p12-09-cadastro-cargas-qce",
+      "source": "12-grupo-gerador-qta/fonte/09_cadastro_cargas_essenciais_qce.dxf",
+      "source_sha256": "62ac32405899ec64350b30fb2134254144ca71ca8f799487194f2db1f6fde069",
+      "outputs": {
+        "pdf": {
+          "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.pdf",
+          "sha256": "e5c9e92c28e4c971bb12845069bc522f98370afe2a7487fa867a94bea95671b8"
+        },
+        "png": {
+          "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.png",
+          "sha256": "cefabdb2ed2147e9f8b3d57970e886c408cf1d067dd5065759f141a9fd8f957b"
+        },
+        "svg": {
+          "path": "12-grupo-gerador-qta/exports/09_cadastro_cargas_essenciais_qce.svg",
+          "sha256": "a0cf6cf77e7fc73a449cbe92ff25bc85b5464e2644885557168de2c0c5be5c40"
         }
       }
     }

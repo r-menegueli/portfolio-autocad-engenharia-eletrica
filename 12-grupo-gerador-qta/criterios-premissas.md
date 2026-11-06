@@ -36,3 +36,13 @@
 - Estabilização do GMG: 5 s; tempo morto em cada transferência aberta: 1,5 s.
 - Estabilização da rede antes do retorno: 120 s; arrefecimento sem carga: 180 s.
 - Os setpoints são premissas de estudo, não garantias de desempenho. Seleção e validação devem considerar as instruções do fabricante do GMG/USCA e as condições da carga.
+
+## 5. Cadastro de cargas essenciais do QCE
+
+O cadastro da revisão 03 reproduz quatro ramais existentes em lista-cabos.csv.
+As formações e os comprimentos continuam como premissas registradas, não como
+dimensionamento validado. Potência instalada, corrente nominal, método de partida,
+regime/simultaneidade e prioridade de sequenciamento ficam marcados como pendentes.
+Também é necessário confirmar com o responsável do processo se o cadastro cobre
+todos os ramais do QCE. Sem essas entradas não se calcula demanda, degrau de carga
+nem autonomia associada à carga real do grupo gerador.

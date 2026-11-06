@@ -1,4 +1,4 @@
-"""Gera as oito pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA)."""
+"""Gera as nove pranchas DXF do Projeto 12 (Grupo Moto-Gerador 250 kVA com QTA e USCA)."""
 
 from __future__ import annotations
 
@@ -37,7 +37,21 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "12-grupo-gerador-qta"
 PROJECT_DATE = "2026-11-05"
-REVISION = "02"
+REVISION = "03"
+LOAD_SCHEDULE_NAME = "cadastro-cargas-qce.csv"
+LOAD_SCHEDULE_FIELDS = (
+    "cabo_id",
+    "carga",
+    "destino",
+    "funcao",
+    "formacao",
+    "comprimento_assumido_m",
+    "potencia_instalada_kw",
+    "corrente_nominal_a",
+    "partida_regime",
+    "regime_simultaneidade",
+    "prioridade_sequenciamento",
+)
 
 
 @dataclass(frozen=True)
@@ -131,6 +145,15 @@ SHEETS = (
         "Limiares repetem as premissas documentadas; respostas indefinidas estao marcadas como pendentes.\\P"
         "Validar a logica final com a USCA/GMG selecionada; sem classificacao SIL/PL.",
         "52-R: contator da rede | 52-G: contator do GMG | FBK: retorno auxiliar | OEM: fabricante",
+    ),
+    SheetSpec(
+        9,
+        "09_cadastro_cargas_essenciais_qce.dxf",
+        "CADASTRO DE CARGAS ESSENCIAIS DO QCE",
+        "Alimentadores da lista de cabos e dados de carga ainda necessarios",
+        "Os dados de potencia, corrente, partida, simultaneidade e prioridade nao constam no cadastro de cabos.\\P"
+        "Os comprimentos e formacoes reproduzem premissas existentes; nao sao dimensionamento final.",
+        "QCE: quadro de cargas essenciais | P carga: potencia instalada | I nominal: corrente nominal | L: comprimento assumido",
     ),
 )
 
@@ -726,6 +749,126 @@ def draw_sheet_08(layout) -> None:
             centered(layout, value, ((x_edges[col_idx] + x_edges[col_idx + 1]) / 2, y), 1.45, "02_TEXTO")
 
 
+def read_load_schedule(root: Path) -> list[dict[str, str]]:
+    path = root / PROJECT_SLUG / LOAD_SCHEDULE_NAME
+    with path.open("r", encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if tuple(reader.fieldnames or ()) != LOAD_SCHEDULE_FIELDS:
+            raise ValueError(f"Cabecalho inesperado em {path.relative_to(root)}")
+        return list(reader)
+
+
+def draw_sheet_09(layout, root: Path) -> None:
+    rows = read_load_schedule(root)
+    panel_box(
+        layout,
+        20,
+        140,
+        402,
+        256,
+        "CADASTRO DE CARGAS ESSENCIAIS DO QCE",
+        "Quatro alimentadores identificados em lista-cabos.csv; valores ainda sem dados de placa/processo",
+        "04_EQUIPAMENTOS",
+    )
+
+    x_edges = (24, 56, 102, 170, 246, 286, 326, 364, 398)
+    y_top = 242
+    header_height = 12
+    row_height = 21.5
+    y_bottom = y_top - header_height - row_height * len(rows)
+    add_rect(layout, x_edges[0], y_bottom, x_edges[-1], y_top, "12_LEGENDA")
+    for x in x_edges[1:-1]:
+        line(layout, (x, y_bottom), (x, y_top), "12_LEGENDA")
+    line(layout, (x_edges[0], y_top - header_height), (x_edges[-1], y_top - header_height), "12_LEGENDA")
+    for index in range(1, len(rows)):
+        y = y_top - header_height - row_height * index
+        line(layout, (x_edges[0], y), (x_edges[-1], y), "12_LEGENDA")
+
+    headers = (
+        "CABO / TAG",
+        "DESTINO",
+        "CARGA / SERVICO",
+        "CABO CADASTRADO",
+        "P carga\\PkW",
+        "I nominal\\PA",
+        "PARTIDA /\\PREGIME",
+        "PRIORIDADE /\\PSEQUENCIA",
+    )
+    for index, value in enumerate(headers):
+        if "\\P" in value:
+            add_mtext(
+                layout,
+                value,
+                (x_edges[index] + 2, y_top - 2),
+                x_edges[index + 1] - x_edges[index] - 4,
+                1.22,
+                "12_LEGENDA",
+                style=TITLE_STYLE,
+            )
+        else:
+            centered(layout, value, ((x_edges[index] + x_edges[index + 1]) / 2, y_top - header_height / 2), 1.22, "12_LEGENDA", style=TITLE_STYLE)
+
+    destination_labels = {
+        "QDL_Emergencia": "QDL emergencia",
+        "Bomba_Incendio": "Bomba de incendio",
+        "UPS_Sala_Servidores": "UPS / sala servidores",
+        "Painel_Utilidades": "Painel utilidades",
+    }
+    service_labels = {
+        "Iluminacao e rotas de fuga": "Iluminacao / rotas de fuga",
+        "Combate a incendio": "Sistema de combate a incendio",
+        "UPS para TI": "UPS / cargas de TI",
+        "Compressores e automacao": "Compressores / automacao",
+    }
+    for row_index, row in enumerate(rows):
+        y_center = y_top - header_height - row_height * (row_index + 0.5)
+        formation = row["formacao"].replace("_mm2_", " mm2 ").replace("_", " ")
+        cable_text = f"{formation}\\PL={row['comprimento_assumido_m']} m assumidos"
+        values = (
+            row["cabo_id"],
+            destination_labels[row["destino"]],
+            service_labels[row["carga"]],
+            cable_text,
+            row["potencia_instalada_kw"],
+            row["corrente_nominal_a"],
+            "PENDENTE",
+            row["prioridade_sequenciamento"],
+        )
+        for column, value in enumerate(values):
+            x0, x1 = x_edges[column], x_edges[column + 1]
+            if column in (0, 4, 5, 6, 7):
+                centered(layout, value, ((x0 + x1) / 2, y_center), 1.35, "02_TEXTO")
+            else:
+                add_mtext(
+                    layout,
+                    value.replace("\\n", "\\P"),
+                    (x0 + 2, y_center + 6),
+                    x1 - x0 - 4,
+                    1.28,
+                    "02_TEXTO",
+                )
+
+    callouts = (
+        ("DADOS DE PLACA", "Quantidade, tensao, kW, A, FP e rendimento."),
+        ("PARTIDA / DEGRAU", "Metodo de partida, corrente e tempo de partida."),
+        ("REGIME / DEMANDA", "Ciclo, simultaneidade, autonomia e demanda."),
+        ("PRIORIDADE", "Ordem de entrada, cargas cortaveis e criterio operacional."),
+    )
+    callout_x = (20, 116, 212, 308)
+    for x0, (heading, detail) in zip(callout_x, callouts):
+        add_rect(layout, x0, 101, x0 + 90, 133, "13_NOTAS")
+        centered(layout, heading, (x0 + 45, 127), 1.32, "13_NOTAS", style=TITLE_STYLE)
+        add_mtext(layout, detail, (x0 + 3, 120), 84, 1.25, "13_NOTAS")
+    centered(
+        layout,
+        "PENDENTE: confirmar se estes quatro alimentadores representam todas as cargas do QCE.",
+        (211, 96.5),
+        1.35,
+        "13_NOTAS",
+        style=TITLE_STYLE,
+    )
+
+
 DRAW_MAP = {
     1: draw_sheet_01,
     2: draw_sheet_02,
@@ -735,12 +878,16 @@ DRAW_MAP = {
     6: draw_sheet_06,
     7: draw_sheet_07,
     8: draw_sheet_08,
+    9: draw_sheet_09,
 }
 
 
-def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
+def build_sheet(config: dict, spec: SheetSpec, output_path: Path, root: Path) -> None:
     doc, layout = create_sheet(config, spec)
-    DRAW_MAP[spec.number](layout)
+    if spec.number == 9:
+        DRAW_MAP[spec.number](layout, root)
+    else:
+        DRAW_MAP[spec.number](layout)
     prepare_deterministic_write(doc)
     doc.saveas(output_path)
     print(f"Gerado: {output_path.relative_to(ROOT)}")
@@ -749,7 +896,7 @@ def build_sheet(config: dict, spec: SheetSpec, output_path: Path) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
-    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..8)")
+    parser.add_argument("--sheet", type=int, help="Gera apenas a prancha especificada (1..9)")
     return parser.parse_args()
 
 
@@ -771,7 +918,7 @@ def main() -> int:
         if args.sheet and spec.number != args.sheet:
             continue
         output_path = source_dir / spec.filename
-        build_sheet(config, spec, output_path)
+        build_sheet(config, spec, output_path, root)
     matrix_path = root / PROJECT_SLUG / "matriz-causa-efeito.csv"
     matrix_path.parent.mkdir(parents=True, exist_ok=True)
     write_cause_effect_csv(matrix_path)

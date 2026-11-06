@@ -1,4 +1,4 @@
-"""Renderiza os oito artefatos do Projeto 12 (Grupo Moto-Gerador com QTA) para SVG, PDF e PNG."""
+"""Renderiza os nove artefatos do Projeto 12 (Grupo Moto-Gerador com QTA) para SVG, PDF e PNG."""
 
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ def main() -> int:
     root = args.root.resolve()
     config = load_config(root)
     artifacts = [item for item in config["artifacts"] if item["id"].startswith("p12-")]
-    if len(artifacts) != 8:
-        raise RuntimeError(f"esperados 8 artefatos P12; encontrados {len(artifacts)}")
+    if len(artifacts) != 9:
+        raise RuntimeError(f"esperados 9 artefatos P12; encontrados {len(artifacts)}")
     for artifact in artifacts:
         source = root / artifact["source"]
         outputs = {kind: root / artifact[kind] for kind in ("svg", "pdf", "png")}

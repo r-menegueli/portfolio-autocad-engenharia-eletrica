@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 102 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 103 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão atual, o revisor confirmou 12 projetos, 102 pranchas, 408 arquivos gráficos
-e 71 CSVs, com similaridade mínima PDF/PNG de 0,9841. A validação estrita passou em
-561.440 verificações, sem erros ou avisos.
+Na revisão atual, o revisor confirmou 12 projetos, 103 pranchas, 412 arquivos gráficos
+e 72 CSVs, com similaridade mínima PDF/PNG de 0,984061. A validação estrita passou em
+566.931 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -37,7 +37,7 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,9841. A validação estrita pas
 | P09 — Fonte de bancada | Conecta diagrama funcional, frente, arranjo interno, mecânica e interligações; topologia buck, pré-dimensionamento, descarga e sensibilidade das perdas agregadas estão documentados. | Os nove pares de eficiência são didáticos e não validam perdas reais ou temperatura. KD1/RD1 e KD2/RD2 continuam sem valores, intertravamento, tolerâncias ou ratings; não há seletividade, compensação, ensaio térmico nem análise EMI. | Substituir os cenários por curvas de perdas e componentes escolhidos; separar perdas por componente, fechar limites térmicos e EMI e validar o circuito e a descarga com critérios e ensaios rastreáveis. |
 | P10 — Instrumentação | Boa listagem de instrumentos, arquitetura de rede, matriz de oito eventos, cinco pontos em quatro malhas 4–20 mA e balanço visual da fonte. | Tags, faixas e correntes de carga são premissas; limiares, fail state e respostas de processo não foram implementados em protocolo ou CLP. | Substituir premissas por instrumentos e hardware escolhidos, definir respostas por processo e testar timeouts/qualidade no protocolo implantado; conferir o consumo de cada modelo e o derating da fonte. |
 | P11 — Subestação | Escopo amplo: arranjo físico, proteção, aterramento e SPDA; P11-07 agora rastreia dados e entregáveis do estudo de aterramento. | A revisão removeu o resultado aritmético de resistência sem dados medidos. Resistividade, falta, GPR/toque/passo e transferência seguem sem resultados; SPDA e classificação também não foram verificados. | Obter dados de campo e falta, definir método e critérios, calcular a malha e revisar os resultados antes de substituir o arranjo conceitual. |
-| P12 — GMG/QTA | Potência, bornes, painel, implantação, sequência e matriz causa–efeito com nove eventos. | A matriz explicita limiares e tempos, mas tags, retenção, resposta da QTA sob carga e ações de rearme ainda dependem da USCA/OEM. | Substituir os tags e respostas pendentes pelos manuais do conjunto selecionado; validar intertravamento e lógica em bancada antes de declarar uma sequência final. |
+| P12 — GMG/QTA | Cobre potência, bornes, painel, implantação, sequência, nove eventos e um cadastro legível dos quatro alimentadores QCE com origem nos cabos. | Potências, correntes, partida, simultaneidade e prioridade não têm dados de processo/OEM; os quatro ramais ainda não foram confirmados como lista completa, e o balanço real do GMG não está fechado. | Substituir os campos pendentes e extensões assumidas por dados de placa e levantamento; confirmar a abrangência do QCE e calcular demanda, degraus de carga e cabos antes de validar o conjunto e a sequência. |
 
 ## Correções desta revisão
 
@@ -65,6 +65,10 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,9841. A validação estrita pas
   Corrigi a condição de rede para indicar duração superior a 3 s, conforme as
   premissas, e aumentei a tipografia da tabela para 1,45 mm. A causa de nível baixo
   de combustível e várias respostas da USCA/OEM continuam sem decisão documentada.
+- Acrescentei P12-09 e `cadastro-cargas-qce.csv`, rastreando os quatro ramais QCE
+  presentes em `lista-cabos.csv`. Potência, corrente, partida, regime e prioridade
+  ficam `PENDENTE`; a prancha não inventa demanda nem afirma que os ramais listados
+  sejam completos. A linha da moldura foi afastada da tabela após a inspeção de contato.
 - Acrescentei P06-08 com nove eventos para emergência, sobrecargas, fins de curso,
   VFD, conflito de sentido e retorno de energia. Diagnóstico de KSR/VFD, sinalização
   e rearme de campo continuam dependentes dos dispositivos selecionados.
@@ -115,11 +119,11 @@ e 71 CSVs, com similaridade mínima PDF/PNG de 0,9841. A validação estrita pas
 ## Limites e validação
 
 Os DXFs e derivados PDF/SVG/PNG de P01, P02, P05, P06, P07, P08, P09, P10, P11 e P12 foram regenerados. A
-validação estrita aprovou 561.440 verificações, sem erros nem avisos. O revisor aprovou
-12 projetos, 102 pranchas, 408 arquivos gráficos e 71 CSVs, com similaridade mínima
-PDF/PNG de 0,9841. As 12 folhas de contato foram regeneradas; revisei as composições
+validação estrita aprovou 566.931 verificações, sem erros nem avisos. O revisor aprovou
+12 projetos, 103 pranchas, 412 arquivos gráficos e 72 CSVs, com similaridade mínima
+PDF/PNG de 0,984061. As 12 folhas de contato foram regeneradas; revisei as composições
 P01 (oito folhas), P03 (dez), P04 (sete), P05 (nove), P06 (nove), P07 (nove), P08
-(sete), P09 (dez), P10 (nove), P11 (sete) e P12 (oito).
+(sete), P09 (dez), P10 (nove), P11 (sete) e P12 (nove).
 O contato P02 foi conferido após a expansão para nove folhas. P02-01 foi conferida no
 PNG integral; P02-09 foi inspecionada em PNG integral e PDF rasterizado a 150 dpi. O
 AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs P02 e o validador específico passou em 63
@@ -139,8 +143,12 @@ e PDF rasterizado a 150 dpi; o contato das sete folhas confirmou revisão, numer
 composição geral das demais. P08-07 foi inspecionada em PNG a 300 dpi e PDF rasterizado
 a 150 dpi; conferi também a composição e a numeração das sete folhas no contato atualizado.
 P12-07 e P12-08 foram
-reinspecionadas em PNG e PDF rasterizado a 150 dpi; o contato novo das oito folhas
-P12 também foi conferido. P06-08 havia sido inspecionada em PNG integral e PDF rasterizado a
+reinspecionadas em PNG e PDF rasterizado a 150 dpi; P12-09 foi inspecionada em PNG
+integral, PDF rasterizado a 150 dpi e no contato atualizado das nove folhas. A inspeção
+do contato revelou que a linha inferior do quadro tangenciava a última linha; ajustei a
+tabela e regenerei PNG, PDF e SVG antes de validar. O AcCoreConsole 2027 auditou 9/9
+DXFs P12, e o validador específico confirmou nove folhas, nove eventos, quatro ramais,
+24 materiais e 15 cabos. P06-08 havia sido inspecionada em PNG integral e PDF rasterizado a
 150 dpi; nesta revisão, P06-09 foi conferida em PNG integral e PDF rasterizado a 150 dpi,
 e o contato atualizado das nove pranchas foi conferido. O AcCoreConsole 2027 abriu e
 auditou 9/9 DXFs P06; o validador específico passou em 864 verificações, sem erros.
@@ -246,7 +254,20 @@ dados assumidos dos CSVs. A relação aritmética `Ib <= In <= Iz` não valida i
 capacidade térmica, correções, Icc ou seletividade. P06-09 foi inspecionada no PNG a
 300 dpi, no PDF rasterizado a 150 dpi e no contato das nove folhas, sem cortes ou
 colisões visíveis. O AcCoreConsole 2027 auditou 9/9 DXFs; o validador P06 passou em
-864 verificações e o estrito em 561.440, sem erros ou avisos. O revisor integrado
-confirmou 12 projetos, 102 folhas, 408 arquivos gráficos e 71 CSVs, com similaridade
-mínima PDF/PNG de 0,9841. A inspeção visual dos SVGs no navegador permanece pendente
+864 verificações e o estrito em 566.931, sem erros ou avisos. O revisor integrado
+confirmou 12 projetos, 103 folhas, 412 arquivos gráficos e 72 CSVs, com similaridade
+mínima PDF/PNG de 0,984061. A inspeção visual dos SVGs no navegador permanece pendente
 de autorização do usuário.
+
+### Atualização P12-09 — revisão 03
+
+A prancha e o CSV apresentam os quatro alimentadores de cargas essenciais encontrados
+na lista de cabos: iluminação/rotas, bomba de incêndio, UPS da sala de servidores e
+utilidades. As formações e extensões são transcritas como premissas existentes; os
+dados de potência, corrente, partida, simultaneidade e prioridade permanecem pendentes.
+P12-09 foi conferida no PNG de produção a 300 dpi, em PDF rasterizado independentemente
+a 150 dpi e no contato das nove folhas. O AcCoreConsole 2027 auditou 9/9 DXFs P12; o
+validador específico passou com nove pranchas, quatro ramais QCE, nove eventos, 24
+materiais e 15 cabos. O validador estrito aprovou 566.931 verificações; o revisor
+confirmou 12 projetos, 103 folhas, 412 arquivos gráficos e 72 CSVs, similaridade
+mínima de 0,984061. A inspeção dos SVGs no navegador segue aguardando autorização.

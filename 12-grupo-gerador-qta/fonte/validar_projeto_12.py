@@ -20,6 +20,7 @@ SHEETS = (
     "06_planta_instalacao_gmg.dxf",
     "07_sequencia_transferencia_qta.dxf",
     "08_matriz_causa_efeito_qta.dxf",
+    "09_cadastro_cargas_essenciais_qce.dxf",
 )
 REQUIRED_TAGS = {
     "GMG-01",
@@ -34,8 +35,14 @@ REQUIRED_TAGS = {
     "QCE",
     "INT-MEC",
     "MATRIZ CAUSA-EFEITO DO GMG E QTA",
+    "CADASTRO DE CARGAS ESSENCIAIS DO QCE",
     "E01",
     "E09",
+    "CAB-AL-ILUM",
+    "CAB-AL-INC",
+    "CAB-AL-CPD",
+    "CAB-AL-UTIL",
+    "PENDENTE",
 }
 
 
@@ -94,6 +101,7 @@ def main() -> int:
     materials = read_rows(project_dir / "lista-materiais.csv")
     cables = read_rows(project_dir / "lista-cabos.csv")
     cause_effect = read_rows(project_dir / "matriz-causa-efeito.csv")
+    load_schedule = read_rows(project_dir / "cadastro-cargas-qce.csv")
     if len(materials) < 15:
         errors.append("Lista de materiais possui menos de 15 itens.")
     if len(cables) < 10:
@@ -107,11 +115,40 @@ def main() -> int:
             errors.append(f"Evento E{index:02d} possui campo vazio na matriz causa-efeito.")
     if not any("pendente" in row.get("resposta_conceitual", "").lower() for row in cause_effect):
         errors.append("As respostas ainda indefinidas da matriz devem permanecer explicitamente pendentes.")
+    expected_load_ids = ["CAB-AL-ILUM", "CAB-AL-INC", "CAB-AL-CPD", "CAB-AL-UTIL"]
+    actual_load_ids = [row.get("cabo_id", "") for row in load_schedule]
+    if actual_load_ids != expected_load_ids:
+        errors.append("O cadastro QCE deve conter os quatro alimentadores documentados, na ordem definida.")
+    source_cables = {row.get("cabo", ""): row for row in cables}
+    unknown_load_fields = (
+        "potencia_instalada_kw",
+        "corrente_nominal_a",
+        "partida_regime",
+        "regime_simultaneidade",
+        "prioridade_sequenciamento",
+    )
+    for row in load_schedule:
+        source = source_cables.get(row.get("cabo_id", ""))
+        if source is None:
+            errors.append(f"Cabo de carga QCE ausente da lista de cabos: {row.get('cabo_id', '')}")
+            continue
+        for schedule_field, cable_field in (
+            ("destino", "para"),
+            ("funcao", "funcao"),
+            ("formacao", "formacao"),
+            ("comprimento_assumido_m", "comprimento_assumido_m"),
+        ):
+            if row.get(schedule_field, "") != source.get(cable_field, ""):
+                errors.append(f"Divergencia entre cadastro QCE e lista de cabos: {row.get('cabo_id', '')}/{schedule_field}")
+        for field in unknown_load_fields:
+            if row.get(field, "").strip().upper() != "PENDENTE":
+                errors.append(f"Campo sem fonte no cadastro QCE deve permanecer pendente: {row.get('cabo_id', '')}/{field}")
 
     report = {
         "project": PROJECT_SLUG,
         "sheets_checked": len(SHEETS),
         "cause_effect_events": len(cause_effect),
+        "qce_load_feeders": len(load_schedule),
         "materials_count": len(materials),
         "cables_count": len(cables),
         "errors": errors,
@@ -125,7 +162,7 @@ def main() -> int:
         for err in errors:
             print(f"[ERRO] {err}")
         return 1
-    print(f"Validacao Projeto 12: PASS ({len(SHEETS)} pranchas, {len(cause_effect)} eventos, {len(materials)} materiais, {len(cables)} cabos)")
+    print(f"Validacao Projeto 12: PASS ({len(SHEETS)} pranchas, {len(cause_effect)} eventos, {len(load_schedule)} alimentadores QCE, {len(materials)} materiais, {len(cables)} cabos)")
     return 0
 
 
