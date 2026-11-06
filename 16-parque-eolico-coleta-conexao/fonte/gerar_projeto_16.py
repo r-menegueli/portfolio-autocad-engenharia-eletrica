@@ -18,6 +18,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from gerar_template_a3 import (  # noqa: E402
     TITLE_BLOCK_NAME,
+    PROJECT_PRINT_LAYER_COLORS,
     TITLE_STYLE,
     TEXT_STYLE,
     add_frame,
@@ -114,7 +115,7 @@ def footer(layout, spec: dict, warning: str) -> None:
 
 def make_sheet(root: Path, config: dict, number: int, spec: dict) -> None:
     geometry = SheetGeometry.from_config(config)
-    doc = configure_document(config, limits=(geometry.width, geometry.height))
+    doc = configure_document(config, limits=(geometry.width, geometry.height), layer_color_overrides=PROJECT_PRINT_LAYER_COLORS)
     metadata = doc.ezdxf_metadata()
     metadata["PORTFOLIO_PROJECT"] = SLUG
     metadata["PORTFOLIO_REVISION"] = REVISION
