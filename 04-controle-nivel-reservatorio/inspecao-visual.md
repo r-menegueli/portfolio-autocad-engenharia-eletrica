@@ -2,11 +2,20 @@
 
 Data: 2026-11-06
 
-Revisão gráfica vigente: 04
+Revisão gráfica vigente: 05
 
-Escopo vigente: oito pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
+Escopo vigente: nove pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
 
-## Revisão gráfica 04
+## Revisão gráfica 05
+
+- O AutoCAD AcCoreConsole 2027 abriu e auditou as nove fontes DXF. O validador funcional passou em 279 verificações, sem erros.
+- Conferi P04-08 e P04-09 nos PNGs de produção a 300 dpi, em PDFs rasterizados independentemente pelo Poppler a 150 dpi e no contato atualizado das nove folhas. A tabela D01–D07 cabe; equação, notas, entradas, carimbo e aviso não apresentam cortes ou colisões visíveis.
+- O revisor integrado confirmou similaridade PDF/PNG de 0,989404 para P04-08 e 0,989947 para P04-09. No conjunto, confirmou 12 projetos, 111 pranchas, 444 arquivos gráficos e 75 CSVs; a similaridade mínima foi 0,981493.
+- O CSV registra D01–D07 como `PENDENTE`, com `valor_registrado` vazio. D03 pede geometria da fonte se a velocidade superficial for relevante, acessórios, unidades e datum; D06 e D07 registram propriedades do fluido e pressão absoluta/barométrica.
+- P04-09 documenta o método NPSHa/NPSHr e a necessidade de margem aplicável; não contém dados numéricos, seleção de bomba ou aprovação hidráulica.
+- A inspeção visual dos SVGs no navegador aguarda autorização do usuário.
+
+## Revisão gráfica 04 — histórico
 
 - O AcCoreConsole 2027 abriu e auditou as oito fontes DXF. O validador funcional passou em 259 verificações, sem erros.
 - Conferi P04-08 no PNG de produção a 300 dpi, em PDF rasterizado independentemente pelo Poppler a 150 dpi e no contato das oito folhas. A fronteira fonte–bomba–TK-101, os cinco grupos D01–D05, os status PENDENTE, o aviso de risco, a V01 e o carimbo cabem sem cortes ou colisões visíveis.
@@ -35,7 +44,8 @@ Escopo vigente: oito pranchas A3, fontes DXF AC1027 e derivados PDF, SVG e PNG.
 | 05 — Interligações | Contato atualizado | Separa sinais analógicos e discretos. Bitolas, comprimentos, polaridade e terminação aguardam especificação dos componentes e levantamento. |
 | 06 — Layout | Contato atualizado | O espaço de 12 m × 7 m é indicativo. Não foi feito levantamento do local; acesso, NPSH, drenagem e rotas continuam a verificar. |
 | 07 — Sequência e causa–efeito | PDF a 150 dpi e contato | A tipografia da matriz foi aumentada e as nove linhas cabem. As ações para LA-L/LA-H e a retenção de alarmes após falta de energia continuam pendentes de definição. |
-| 08 — Fronteira de sucção | PNG integral, PDF a 150 dpi e contato da revisão 04 | Os cinco grupos D01–D05 estão legíveis e permanecem PENDENTE. A folha solicita unidades e datum, mas ainda não registra valores nem dimensiona a hidráulica. |
+| 08 — Fronteira de sucção | PNG integral, PDF a 150 dpi e contato da revisão 05 | Os sete grupos D01–D07 estão legíveis e permanecem PENDENTE. A folha solicita unidade, referência e evidência, sem registrar valores nem dimensionar a hidráulica. |
+| 09 — Balanço de sucção e critério de NPSH | PNG integral, PDF a 150 dpi e contato da revisão 05 | O balanço distingue pressão absoluta, pressão de vapor, elevação, velocidade superficial e perdas; NPSHr vem da curva OEM e a margem depende da aplicação. Não há cálculo ou resultado aprovado. |
 
 ## Limites da revisão
 

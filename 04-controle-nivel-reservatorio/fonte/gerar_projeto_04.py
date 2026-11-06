@@ -1,4 +1,4 @@
-"""Gera as oito pranchas DXF do Projeto 04 de forma determinística."""
+"""Gera as nove pranchas DXF do Projeto 04 de forma determinística."""
 
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 
 PROJECT_SLUG = "04-controle-nivel-reservatorio"
 PROJECT_DATE = "2026-11-06"
-REVISION = "04"
+REVISION = "05"
 
 
 @dataclass(frozen=True)
@@ -120,8 +120,17 @@ SHEETS = (
         "FRONTEIRA DE SUCÇÃO E DADOS DA FONTE",
         "Origem a montante de P-101 pendente — levantamento para revisar a hidráulica",
         "Nenhuma fonte, equipamento de sucção ou bomba comercial foi selecionado.\\P"
-        "Os cinco grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.",
-        "V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | proteção de sucção: posição e ação pendentes",
+        "Os sete grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.",
+        "V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | fluido, temperatura e pressão local pendentes",
+    ),
+    SheetSpec(
+        9,
+        "09_balanco_succao_criterio_npsh.dxf",
+        "BALANÇO DE SUCÇÃO E CRITÉRIO DE NPSH",
+        "Método paramétrico para avaliar NPSH disponível e requerido — sem resultado numérico",
+        "Folha didática: todas as entradas D01–D07 seguem pendentes.\\P"
+        "Não selecionar bomba nem liberar operação sem dados do sistema, curva OEM e margem aplicável.",
+        "NPSHa: sistema | NPSHr: fabricante | hL,suc: perdas na sucção | datum e unidades devem coincidir",
     ),
 )
 
@@ -129,9 +138,11 @@ SHEETS = (
 SOURCE_DATA = (
     ("D01", "FONTE", "Tag, tipo, localização, limite de propriedade e responsável", "Cadastro de processo e levantamento de campo", "Identificação cadastral", "PENDENTE", "Nenhuma fonte foi selecionada"),
     ("D02", "REGIME", "Nível/pressão mínimo, nominal e máximo; registrar unidade e referência", "Tendências e registros operacionais", "Unidade da variável; datum se nível", "PENDENTE", "Faixa e unidade operacional não recebidas"),
-    ("D03", "SUCÇÃO", "Material, diâmetro interno, comprimentos e cotas com unidades/datum", "Projeto hidráulico e cadastro as-built", "mm, m e datum definido", "PENDENTE", "Geometria, unidades e datum não levantados"),
-    ("D04", "BOMBA", "Curvas Q-H/NPSHr por frequência, vazão mínima e escorva; unidades OEM", "Folha de dados e manual do fabricante", "Unidades OEM e frequência em Hz", "PENDENTE", "P-101 genérica; curvas e unidades OEM não recebidas"),
+    ("D03", "GEOMETRIA", "Área da fonte se v0 relevante; material/condição, diâmetro, comprimentos, cotas/datum e acessórios com unidades", "Projeto hidráulico/as-built e levantamento da fonte", "mm, m, m² e datum definido", "PENDENTE", "Fonte, tubulação, acessórios, unidades e datum não levantados"),
+    ("D04", "BOMBA", "Curvas Q-H/NPSHr versus vazão e frequência, em unidades OEM; ponto de operação, escorva e datum", "Folha de dados e manual do fabricante", "Unidades OEM, vazão e frequência em Hz", "PENDENTE", "P-101 genérica; curvas e unidades OEM não recebidas"),
     ("D05", "PROTEÇÃO", "Necessidade, localização e ação para fonte baixa ou perda de sucção", "Análise de processo e revisão de risco", "Critério aprovado na análise de risco", "PENDENTE", "Não há chave de sucção selecionada"),
+    ("D06", "FLUIDO", "Tipo/composição, faixa de temperatura, densidade e fonte da pressão de vapor", "Dados do processo ou propriedades rastreáveis do fluido", "°C, kg/m³ e pressão absoluta", "PENDENTE", "Fluido e temperatura de operação não informados"),
+    ("D07", "ATMOSFERA", "Pressão absoluta sobre fonte fechada ou pressão barométrica local se aberta", "Projeto do reservatório ou dados de pressão/altitude local", "kPa abs; altitude em m se usada para estimar", "PENDENTE", "Pressão da superfície e condição aberta/fechada não confirmadas"),
 )
 
 
@@ -575,7 +586,7 @@ def draw_source_boundary(layout) -> None:
 
     centered(
         layout,
-        "RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D05.",
+        "RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D07.",
         (210, 203),
         1.35,
         "13_NOTAS",
@@ -603,12 +614,113 @@ def draw_source_boundary(layout) -> None:
             height = 1.2 if col_index == 1 else 1.25
             centered(layout, value, ((columns[col_index] + columns[col_index + 1]) / 2, center_y), height, layer)
 
-    add_rect(layout, 18, 101, 402, 116, "13_NOTAS")
+    add_rect(layout, 18, 96, 402, 106, "13_NOTAS")
     centered(
         layout,
-        "V01: obter D01–D05 e revisar a hidráulica; registrar unidades, datum e evidências antes de selecionar P-101 ou proteção.",
-        (210, 108.5),
+        "V01: obter D01–D07, registrar unidades/datum e evidências; só então revisar a hidráulica e a proteção.",
+        (210, 101),
+        1.35,
+        "13_NOTAS",
+    )
+
+
+def draw_npsh_method(layout) -> None:
+    centered(
+        layout,
+        "ESQUEMA DE PRINCÍPIO — GEOMETRIA E POSIÇÕES NÃO REPRESENTAM LEVANTAMENTO",
+        (210, 258),
+        1.35,
+        "13_NOTAS",
+    )
+
+    # Fonte aberta ou fechada: pressão absoluta e elevação da superfície são entradas, não valores assumidos.
+    add_rect(layout, 34, 211, 96, 249, "04_EQUIPAMENTOS")
+    line(layout, (36, 231), (94, 231), "07_INSTRUMENTACAO")
+    centered(layout, "FONTE", (65, 243), 1.65, "04_EQUIPAMENTOS")
+    centered(layout, "superfície 0", (65, 234), 1.35, "07_INSTRUMENTACAO")
+    centered(layout, "p0,abs / z0", (65, 225), 1.45, "03_COTAS")
+    centered(layout, "ρ, T, pv(T)", (65, 216), 1.35, "07_INSTRUMENTACAO")
+
+    arrow(layout, (96, 220), (266, 220), "05_POTENCIA")
+    centered(layout, "Q; perdas hL,suc em tubulação e acessórios (se houver)", (181, 229), 1.35, "05_POTENCIA")
+    centered(layout, "z0 − zp: diferença medida; sinal depende do arranjo", (181, 211), 1.25, "03_COTAS")
+    pump(layout, (281, 220), "P-101 GENÉRICA")
+    centered(layout, "datum zp conforme curva / fabricante", (281, 201), 1.2, "03_COTAS")
+    arrow(layout, (292, 220), (367, 220), "05_POTENCIA")
+    centered(layout, "DESCARGA", (337, 228), 1.35, "05_POTENCIA")
+
+    add_rect(layout, 18, 178, 402, 197, "13_NOTAS")
+    centered(
+        layout,
+        "NPSHa = (p0,abs − pv(T))/(ρ g) + (z0 − zp) + v0²/(2g) − hL,suc",
+        (210, 191.5),
+        2.0,
+        "07_INSTRUMENTACAO",
+    )
+    centered(
+        layout,
+        "hL,suc = Σ fi(Li/Di)vi²/(2g) + Σ Kj vj²/(2g)   |   pressões absolutas; termos e resultado em m do fluido",
+        (210, 185),
         1.45,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Em fonte aberta: p0,abs é a pressão barométrica local. v0²/(2g) só pode ser desprezado se isso for justificado.",
+        (210, 180.5),
+        1.2,
+        "13_NOTAS",
+    )
+
+    add_rect(layout, 18, 148, 402, 173, "12_LEGENDA")
+    centered(layout, "COMPARAÇÃO COM A BOMBA", (210, 168.5), 1.55, "12_LEGENDA")
+    centered(
+        layout,
+        "NPSHr vem da curva OEM no ponto de vazão, rotação/frequência, líquido e datum definidos.",
+        (210, 162),
+        1.4,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Margem = NPSHa − NPSHr; avaliar a margem recomendada para a aplicação (fabricante / ANSI/HI 9.6.1).",
+        (210, 156),
+        1.4,
+        "02_TEXTO",
+    )
+    centered(
+        layout,
+        "Verificar combinações operacionais aprovadas; não combinar extremos independentes sem base de processo.",
+        (210, 151.5),
+        1.25,
+        "13_NOTAS",
+    )
+
+    add_rect(layout, 18, 107, 402, 143, "09_BORNES")
+    line(layout, (210, 107), (210, 143), "09_BORNES")
+    centered(layout, "ENTRADAS PENDENTES — detalhadas na prancha 08", (210, 138.5), 1.5, "12_LEGENDA")
+    left_inputs = (
+        "D01  Fonte, tipo e localização — PENDENTE",
+        "D02  Faixa mínima / nominal / máxima — PENDENTE",
+        "D03  Geometria fonte/tubulação e datum — PENDENTE",
+        "D04  Vazão, frequência e curva OEM — PENDENTE",
+    )
+    right_inputs = (
+        "D05  Necessidade / ação de proteção — PENDENTE",
+        "D06  Fluido, temperatura e densidade — PENDENTE",
+        "D07  Pressão absoluta / atmosfera local — PENDENTE",
+    )
+    for index, value in enumerate(left_inputs):
+        centered(layout, value, (112, 132 - index * 7), 1.2, "02_TEXTO")
+    for index, value in enumerate(right_inputs):
+        centered(layout, value, (306, 132 - index * 7), 1.2, "02_TEXTO")
+
+    add_rect(layout, 18, 97, 402, 104, "13_NOTAS")
+    centered(
+        layout,
+        "SEM CÁLCULO OU APROVAÇÃO: dados, NPSHa, NPSHr e margem permanecem pendentes.",
+        (210, 100.5),
+        1.35,
         "13_NOTAS",
     )
 
@@ -622,6 +734,7 @@ DRAWERS = {
     6: draw_layout,
     7: draw_operating_sequence,
     8: draw_source_boundary,
+    9: draw_npsh_method,
 }
 
 

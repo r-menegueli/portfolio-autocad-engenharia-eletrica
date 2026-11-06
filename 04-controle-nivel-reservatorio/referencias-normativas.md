@@ -9,6 +9,8 @@ Referências usadas como orientação conceitual, sem substituir a aquisição e
 - IEC 61800-5-1:2022 — requisitos de segurança elétrica, térmica e energética para acionamentos de velocidade variável.
 - IEC 60204-1 — equipamento elétrico de máquinas.
 - NR-10 — segurança em instalações e serviços em eletricidade.
+- Hydraulic Institute, *Pump FAQs* e *Pump Fundamentals — Net Positive Suction Head*: referência didática para NPSHa, dados de sucção e curva OEM.
+- ANSI/HI 9.6.1 — orientação de margem de NPSH para bombas rotodinâmicas; edição e aplicação devem ser confirmadas no estudo real.
 
 Versões, aplicabilidade legal e requisitos locais devem ser confirmados por profissional habilitado no projeto executivo.
 

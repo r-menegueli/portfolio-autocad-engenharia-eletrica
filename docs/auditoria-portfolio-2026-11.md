@@ -2,14 +2,14 @@
 
 ## Escopo e critério
 
-Revisei os 12 estudos, seus 110 DXFs e os derivados A3 para identificar qualidade de
+Revisei os 12 estudos, seus 111 DXFs e os derivados A3 para identificar qualidade de
 apresentação, clareza do conteúdo, consistência entre documentos e maturidade real.
 As folhas são material acadêmico/conceitual. A análise não concede aprovação de
 engenharia, conformidade normativa ou liberação para fabricação e obra.
 
-Na revisão corrente, o revisor confirmou 12 projetos, 110 pranchas, 440 arquivos
+Na revisão corrente, o revisor confirmou 12 projetos, 111 pranchas, 444 arquivos
 gráficos e 75 CSVs, com similaridade mínima PDF/PNG de 0,981493. A validação estrita
-passou em 646.736 verificações, sem erros ou avisos.
+passou em 650.961 verificações, sem erros ou avisos.
 
 ## O que funciona bem
 
@@ -31,7 +31,7 @@ passou em 646.736 verificações, sem erros ou avisos.
 | P01 — Painel com inversor | Separa RUN, STOP e reset do VFD; acrescenta S5 para rearme manual monitorado do KSR1; mantém proteção e verificação em matrizes rastreáveis. | Sem modelos/OEM, a pinagem DI/STO e os blocos de contato permanecem pendentes; Icc, curvas, coordenação e ensaios de campo não existem. P01-08 tem 13 itens, todos NÃO EXECUTADO. | Substituir premissas por dados do local e modelos escolhidos; fechar os mapeamentos com os manuais, calcular e comparar curvas e anexar critérios/evidências antes de declarar seletividade, capacidade ou funcionamento. |
 | P02 — Residencial | A revisão 03 fecha vãos nas paredes, dá acesso direto ao Quarto 2 e ao banheiro pela circulação, identifica oito portas/sete janelas, mobiliário indicativo e relaciona ambientes, pontos e cargas em CSV. | Continua simples como estudo de layout: planta e mobiliário são fictícios, posições e dimensões dos vãos são premissas, e ergonomia, acessibilidade, iluminação/ventilação natural e equipamentos reais não foram verificados. | Substituir arquitetura e esquadrias por levantamento cotado; confirmar uso/mobiliário e aparelhos com potências de placa; então revisar áreas, pontos e circuitos com os dados reais. |
 | P03 — Painel com CLP | Onze folhas cobrem alimentação, I/O, comando, bornes, interligações, sequência, plano de verificação e a comparação P03-11 entre enchimento e esgotamento. | O sentido real, tanques e função de LSL-LL continuam pendentes; LSHH e a resposta a sensor incoerente em marcha não foram decididos. Nenhum teste de CLP ou segurança funcional foi executado. | Aprovar V01 com dados do processo, localizar cada sensor, confirmar reservatório/captação e revisar demanda/parada, LSHH, falhas, I/O e matriz antes de implementar ou ensaiar. |
-| P04 — Nível | Oito folhas cobrem processo, malha, elétrica, interligações, layout, nove eventos causa–efeito e o levantamento D01–D05 da fronteira de sucção. A revisão 04 deixa a fonte a montante explicitamente indefinida e alinha HV-102 ao cadastro de materiais. | Sistema de uma bomba e um tanque com valores assumidos; fonte, sucção, vazão/carga, tubulação, curva/NPSH e dados da válvula não estão selecionados. A folha pede unidades e datum, mas ainda não registra valores de campo. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir premissas por levantamento hidráulico e equipamentos selecionados; preencher D01–D05 com valores e evidências, verificar unidades e datum; definir fonte, sucção/descarga e válvulas; completar respostas operacionais antes da validação. |
+| P04 — Nível | Nove folhas cobrem processo, malha, elétrica, interligações, layout, nove eventos causa–efeito, levantamento D01–D07 e o método de balanço NPSHa versus NPSHr. A revisão 05 deixa fonte, fluido, pressão, geometria e critérios sem valores inventados. | Sistema de uma bomba e um tanque com valores assumidos; fonte, vazão/carga, curva OEM, fluido e proteção não estão selecionados. P04-09 explica o método, mas não calcula NPSHa, NPSHr ou margem sem dados. Ação para LA-L/LA-H e retenção de alarmes após falta de energia dependem do processo e do PLC. | Substituir premissas por levantamento hidráulico e dados OEM; preencher D01–D07 com valores e evidências, verificar unidades e datum, avaliar combinações operacionais reais e aplicar a margem pertinente; completar respostas de processo antes da validação. |
 | P05 — Instalação industrial | Traz layout, rotas, cargas, detalhes, seis pares de proteção em P05-08 e o plano de dados/evidências em P05-09. | Oficina e rotas são fictícias; Icc, capacidade de interrupção, modelos, curvas e seletividade seguem sem resultado. | Substituir premissas por dados da concessionária, levantamento, cabos e dispositivos escolhidos; calcular e comparar curvas antes de validar os pares. |
 | P06 — CCM | Abrange partida direta, reversão, VFD, balanço de demanda e nove eventos; P06-10 lista individualmente os 24 bornes X3, os dez X4 e os condutores por cabo. | A demanda usa fatores assumidos e não prova simultaneidade. Proteções, capacidade de curto, método de instalação, diagnóstico KSR, falha VFD e rearme seguem sem validação executiva ou dados finais de fabricante. | Substituir fatores, Iz, disjuntor, seções e comprimentos por dados do processo, levantamento e método de instalação; escolher componentes e completar estudos de curto, coordenação e risco. |
 | P07 — Veículo elétrico | Boa separação conceitual entre alta/baixa tensão, controle e comunicação; P07-09 relaciona dez falhas a sinais, estados e respostas propostas; P07-10 calcula a pré-carga ideal; P07-11 relaciona o limiar medido, feedback de KMP/KPR, READY e timeout. | A arquitetura ainda não é esquema veicular homologável nem define segurança funcional; a matriz não prova diagnóstico/desligamento seguro e os desenhos não validam resistor, contatores ou circuito real. | Substituir R/C e faixa de tensão por valores e tolerâncias de componentes escolhidos; verificar pulso, repetição, temperatura, falha de contator e critérios de isolamento com requisitos do sistema, simulação transitória e ensaios rastreáveis. |
@@ -427,3 +427,20 @@ e a similaridade PDF/PNG foi 0,99014. A revisão estrita passou em 646.736 verif
 sem erros ou avisos; o revisor confirmou 12 projetos, 110 pranchas, 440 arquivos
 gráficos e 75 CSVs, com similaridade mínima de 0,981493. SVGs continuam aguardando
 autorização para inspeção no navegador.
+
+### Atualização P04-09 — revisão gráfica 05
+
+P04-08 foi expandida para D01–D07: além de fonte, regime, geometria, bomba e proteção,
+agora solicita propriedades do fluido/temperatura e pressão absoluta ou barométrica.
+D03 pede área da fonte quando necessária para velocidade superficial, acessórios,
+unidades e datum. Todos os sete grupos permanecem PENDENTE e `valor_registrado` vazio.
+
+P04-09 apresenta a equação paramétrica de NPSHa, o balanço das perdas na sucção e a
+comparação com NPSHr de curva OEM e margem aplicável. O desenho não contém cálculo
+numérico, seleção de bomba ou resultado de cavitação. O validador P04 passou em 279
+verificações; o AutoCAD AcCoreConsole 2027 auditou 9/9 DXFs. P04-08 e P04-09 foram
+conferidas no PNG de produção, PDF rasterizado pelo Poppler a 150 dpi e contato das nove
+folhas; similaridades PDF/PNG: 0,989404 e 0,989947. A revisão estrita passou em 650.961
+verificações, sem erros ou avisos; o revisor confirmou 12 projetos, 111 pranchas, 444
+arquivos gráficos e 75 CSVs, com similaridade mínima de 0,981493. A inspeção de SVGs no
+navegador continua aguardando autorização.

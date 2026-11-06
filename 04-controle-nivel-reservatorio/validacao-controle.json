@@ -1,5 +1,5 @@
 {
-  "checks": 260,
+  "checks": 279,
   "errors": [],
   "results": {
     "analog_inputs": 2,
@@ -18,8 +18,8 @@
     },
     "safety_truth_table_rows": 64,
     "setpoint_percent": 60,
-    "sheets": 8,
-    "source_data_items": 5,
+    "sheets": 9,
+    "source_data_items": 7,
     "terminals": 11
   },
   "status": "PASS"

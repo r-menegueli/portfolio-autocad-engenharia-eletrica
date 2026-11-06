@@ -194,7 +194,7 @@ id = "04-controle-nivel-reservatorio"
 path = "04-controle-nivel-reservatorio"
 source_dir = "fonte"
 export_dir = "exports"
-sheet_count = 8
+sheet_count = 9
 required_files = [
   "README.md",
   "memorial-descritivo.md",
@@ -842,6 +842,17 @@ source = "04-controle-nivel-reservatorio/fonte/08_fronteira_succao_dados_fonte.d
 svg = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.svg"
 pdf = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.pdf"
 png = "04-controle-nivel-reservatorio/exports/08_fronteira_succao_dados_fonte.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p04-09-balanco-succao-criterio-npsh"
+kind = "sheet"
+title = "Projeto 04 - Balanço de sucção e critério de NPSH"
+source = "04-controle-nivel-reservatorio/fonte/09_balanco_succao_criterio_npsh.dxf"
+svg = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.svg"
+pdf = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.pdf"
+png = "04-controle-nivel-reservatorio/exports/09_balanco_succao_criterio_npsh.png"
 require_a3 = true
 require_notice = true
 

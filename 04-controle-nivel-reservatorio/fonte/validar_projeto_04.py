@@ -20,6 +20,7 @@ SHEETS = (
     "06_layout_sistema.dxf",
     "07_sequencia_operacao_causa_efeito.dxf",
     "08_fronteira_succao_dados_fonte.dxf",
+    "09_balanco_succao_criterio_npsh.dxf",
 )
 REQUIRED_INSTRUMENTS = {
     "LT-101", "LSL-101", "LSH-101", "LSHH-101", "LIC-101",
@@ -68,11 +69,11 @@ def validate(root: Path) -> dict:
     effect_rows = read_rows(project / "matriz-causa-efeito.csv")
     source_rows = read_rows(project / "dados-fonte-succao.csv")
 
-    expected_source_ids = {f"D{index:02d}" for index in range(1, 6)}
+    expected_source_ids = {f"D{index:02d}" for index in range(1, 8)}
     source_ids = {row["id"] for row in source_rows}
     checks += len(expected_source_ids) + 6
     if source_ids != expected_source_ids or len(source_rows) != len(expected_source_ids):
-        errors.append("O levantamento de fonte deve conter exatamente D01 a D05.")
+        errors.append("O levantamento de fonte deve conter exatamente D01 a D07.")
     if any(row["status"] != "PENDENTE" for row in source_rows):
         errors.append("Os cinco grupos de dados da fonte devem permanecer PENDENTE até levantamento.")
     if any(not row["fonte_evidencia"] or not row["observacoes"] for row in source_rows):
@@ -89,6 +90,16 @@ def validate(root: Path) -> dict:
         errors.append("D02–D04 devem solicitar o registro das unidades de engenharia.")
     if "datum" not in source_by_id.get("D03", {}).get("unidade_referencia", "").casefold():
         errors.append("D03 deve solicitar a referência vertical (datum) das cotas.")
+    fluid_text = source_by_id.get("D06", {}).get("dado_requerido", "").casefold()
+    if not all(term in fluid_text for term in ("temperatura", "densidade", "pressão de vapor")):
+        errors.append("D06 deve registrar fluido, temperatura, densidade e base para pressão de vapor.")
+    if not all(term in source_by_id.get("D06", {}).get("unidade_referencia", "").casefold() for term in ("°c", "kg/m³", "absoluta")):
+        errors.append("D06 deve solicitar unidades de temperatura, densidade e pressão absoluta.")
+    atmosphere_text = source_by_id.get("D07", {}).get("dado_requerido", "").casefold()
+    if not all(term in atmosphere_text for term in ("pressão absoluta", "barométrica local")):
+        errors.append("D07 deve diferenciar pressão absoluta e pressão barométrica local.")
+    if not all(term in source_by_id.get("D07", {}).get("unidade_referencia", "").casefold() for term in ("kpa abs", "altitude", "m")):
+        errors.append("D07 deve indicar pressão absoluta e unidade de altitude quando usada.")
 
     expected_events = {f"E{index:02d}" for index in range(1, 10)}
     effect_ids = {row["id"] for row in effect_rows}
@@ -241,14 +252,24 @@ def validate(root: Path) -> dict:
         if index == 8:
             required_source_terms = (
                 "fronteira de sucção", "fonte a montante", "p-101", "tk-101",
-                "nível ou pressão", "npshr", "escorva", "proteção", "v01",
-                "d01", "d02", "d03", "d04", "d05", "pendente", "unidades", "datum",
+                "nível/pressão", "npshr", "escorva", "proteção", "v01",
+                "d01", "d02", "d03", "d04", "d05", "d06", "d07", "pendente", "unidades", "datum",
             )
             normalized_sheet = sheet_text.casefold()
             checks += len(required_source_terms)
             for term in required_source_terms:
                 if term.casefold() not in normalized_sheet:
                     errors.append(f"{filename}: levantamento da fonte não documenta: {term}.")
+        if index == 9:
+            required_npsh_terms = (
+                "npsha", "npshr", "p0,abs", "pv(t)", "ρ", "hL,suc",
+                "curva oem", "margem", "d01", "d07", "sem cálculo ou aprovação",
+            )
+            normalized_sheet = sheet_text.casefold()
+            checks += len(required_npsh_terms)
+            for term in required_npsh_terms:
+                if term.casefold() not in normalized_sheet:
+                    errors.append(f"{filename}: método NPSH não documenta: {term}.")
 
     merged = " ".join(all_dxf_text).casefold()
     for tag in ("tk-101", "p-101", "m-101", "lt-101", "lsl-101", "lsh-101", "lshh-101", "plc-101", "vfd-101", "lic-101"):

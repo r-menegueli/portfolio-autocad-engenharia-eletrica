@@ -11,7 +11,10 @@ Revisão: 01
 - LSL-101 em 15%, LSH-101 em 85% e LSHH-101 em 95%.
 - Uma bomba P-101 com motor M-101 de 4 kW, 220 V trifásico.
 - A origem de água e o equipamento a montante de P-101 não estão definidos; o fluxograma os representa apenas como limite externo. Tipo, diâmetro e pressão de HV-102 também dependem do projeto hidráulico.
-- A prancha P04-08 organiza D01–D05 para levantar fonte, regime, tubulação de sucção, curva da bomba e eventual proteção de sucção. Nenhum valor ou equipamento foi selecionado; todos os grupos permanecem PENDENTE.
+- A prancha P04-08 organiza D01–D07 para levantar fonte e regime, geometria da fonte se a velocidade superficial for relevante, linha/acessórios/datum, curva da bomba, eventual proteção, fluido/temperatura e pressão absoluta/barométrica. Nenhum valor ou equipamento foi selecionado; todos os grupos permanecem PENDENTE.
+- A prancha P04-09 apresenta um balanço paramétrico de NPSHa a partir da pressão absoluta na superfície, pressão de vapor à temperatura do fluido, diferença de elevação, carga cinética da superfície e perdas de sucção. A velocidade na superfície só pode ser desprezada se a hipótese for justificada.
+- NPSHr deve vir da curva do fabricante para vazão, rotação/frequência, líquido e datum correspondentes. A margem aceitável depende da aplicação e do critério aplicável do fabricante/ANSI/HI 9.6.1; não foi atribuído valor genérico.
+- Os limites mínimo/máximo de nível, pressão, temperatura, vazão e frequência devem ser combinados conforme regimes que realmente possam ocorrer juntos. Sem D01–D07 e curva OEM não se calcula NPSHa, NPSHr nem margem, e nenhuma condição de cavitação pode ser declarada aprovada.
 - VFD-101 com faixa comandada de 20 a 60 Hz e rampa máxima proposta de 1 Hz/s.
 - Vazão de consumo variável como perturbação dominante.
 

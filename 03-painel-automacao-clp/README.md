@@ -96,8 +96,8 @@ ser confirmados em V01. A resposta a sensor incoerente com bomba em marcha tamb�
 continua pendente. O validador P03 passou em 246 verificações e o AcCoreConsole 2027
 auditou 11/11 DXFs. P03-11 foi conferida no PNG de produção a 300 dpi, no PDF
 rasterizado pelo Poppler a 150 dpi e no contato das onze folhas; sua similaridade PDF/PNG
-foi 0,987946. A validação estrita passou em 646.736 verificações, sem erros ou avisos;
-o revisor integrado confirmou 12 projetos, 110 folhas, 440 arquivos gráficos e 75 CSVs,
+foi 0,987946. A validação estrita global mais recente passou em 650.961 verificações,
+sem erros ou avisos; o revisor integrado confirmou 12 projetos, 111 folhas, 444 arquivos gráficos e 75 CSVs,
 com similaridade mínima de 0,981493. A inspeção dos SVGs no navegador permanece pendente
 da autorização do usuário. Os validadores e a inspeção desta revisão estão registrados em
 [inspecao-visual.md](inspecao-visual.md) e nos arquivos JSON desta pasta.

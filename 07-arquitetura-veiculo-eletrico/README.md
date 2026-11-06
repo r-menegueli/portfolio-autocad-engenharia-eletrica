@@ -134,9 +134,9 @@ torque inibido. Os tempos de movimento, feedback, tolerância do sensor e ordem 
 abertura ainda dependem do hardware e de análise de segurança.
 
 - O validador específico P07 passou em 4.313 verificações e o AcCoreConsole 2027 abriu
-  e auditou 11/11 DXFs. A validação estrita global mais recente passou em 646.736
-  verificações, sem erros ou avisos; o revisor confirmou 12 projetos, 110 pranchas,
-  440 arquivos gráficos e 75 CSVs, com similaridade mínima PDF/PNG de 0,981493.
+  e auditou 11/11 DXFs. A validação estrita global mais recente passou em 650.961
+  verificações, sem erros ou avisos; o revisor confirmou 12 projetos, 111 pranchas,
+  444 arquivos gráficos e 75 CSVs, com similaridade mínima PDF/PNG de 0,981493.
 - P07-11 foi conferida no PNG de produção a 300 dpi e no PDF rasterizado pelo Poppler
   a 150 dpi; similaridade PDF/PNG de 0,989502. Revisei a folha de contato das onze
   pranchas. O SVG ainda aguarda autorização para inspeção no navegador.

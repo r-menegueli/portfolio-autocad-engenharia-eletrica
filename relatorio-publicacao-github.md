@@ -229,3 +229,19 @@ revisar os diffs sem publicar essas mudanças nos branches padrão.
   integrado confirmou 12 projetos, 110 folhas, 440 arquivos gráficos e 75 CSVs; a
   similaridade mínima PDF/PNG foi 0,981493. A inspeção de SVGs no navegador aguarda
   autorização.
+
+## Atualização CAD — P04 revisão 05, 2026-11-06
+
+- P04 passou de oito para nove folhas. P04-08 ampliou o registro para D01–D07,
+  incluindo geometria da fonte quando necessária, propriedades do fluido,
+  temperatura e pressão absoluta/barométrica; todos os grupos seguem PENDENTE.
+- P04-09 acrescenta o balanço paramétrico de sucção, cálculo conceitual de NPSHa,
+  perdas na linha, curva OEM de NPSHr e margem aplicável. Não há entrada numérica,
+  seleção de bomba nem resultado hidráulico.
+- O validador P04 passou em 279 verificações; o AcCoreConsole 2027 auditou 9/9 DXFs.
+  P04-08 e P04-09 foram conferidas no PNG de produção, em PDF rasterizado pelo Poppler
+  a 150 dpi e no contato das nove folhas; similaridades PDF/PNG: 0,989404 e 0,989947.
+- A validação estrita passou em 650.961 verificações, sem erros ou avisos. O revisor
+  integrado confirmou 12 projetos, 111 folhas, 444 arquivos gráficos e 75 CSVs; a
+  similaridade mínima PDF/PNG foi 0,981493. PR #1 permanece aberto como rascunho e
+  sem merge; SVGs continuam aguardando autorização para inspeção no navegador.

@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-15A
+166
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-157
+163
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-158
+164
 330
 3
 100
@@ -8185,7 +8185,7 @@ AcDbMText
  71
 1
   1
-Nenhuma fonte, equipamento de sucção ou bomba comercial foi selecionado.\POs cinco grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.
+Nenhuma fonte, equipamento de sucção ou bomba comercial foi selecionado.\POs sete grupos desta folha permanecem PENDENTES; não dimensionam NPSH, vazão ou proteção.
   7
 PORTFOLIO_TEXTO
  44
@@ -8279,7 +8279,7 @@ AcDbMText
  71
 1
   1
-V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | proteção de sucção: posição e ação pendentes
+V01: levantamento da fonte | Q-H/NPSHr: curvas OEM | fluido, temperatura e pressão local pendentes
   7
 PORTFOLIO_TEXTO
  44
@@ -8577,7 +8577,7 @@ AcDbText
  40
 1.62
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  72
@@ -8857,7 +8857,7 @@ AcDbText
  40
 2.25
   1
-04
+05
   7
 PORTFOLIO_TEXTO
  11
@@ -8895,7 +8895,7 @@ AcDbText
  40
 2.25
   1
-08/08
+08/09
   7
 PORTFOLIO_TEXTO
  11
@@ -9841,7 +9841,7 @@ AcDbText
  40
 1.35
   1
-RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D05.
+RISCO DE SUCÇÃO NÃO AVALIADO: fonte, NPSH disponível, escorva, cavitação e proteção contra operação a seco dependem dos dados D01–D07.
   7
 PORTFOLIO_TEXTO
  72
@@ -9875,11 +9875,11 @@ AcDbPolyline
  10
 18.0
  20
-131.0
+110.2
  10
 402.0
  20
-131.0
+110.2
  10
 402.0
  20
@@ -9927,7 +9927,7 @@ AcDbLine
  10
 43.0
  20
-131.0
+110.2
  30
 0.0
  11
@@ -9951,7 +9951,7 @@ AcDbLine
  10
 174.0
  20
-131.0
+110.2
  30
 0.0
  11
@@ -9975,7 +9975,7 @@ AcDbLine
  10
 278.0
  20
-131.0
+110.2
  30
 0.0
  11
@@ -9999,7 +9999,7 @@ AcDbLine
  10
 354.0
  20
-131.0
+110.2
  30
 0.0
  11
@@ -10653,7 +10653,7 @@ AcDbText
  40
 1.2
   1
-SUCÇÃO — Material, diâmetro interno, comprimentos e cotas com unidades/datum
+GEOMETRIA — Área da fonte se v0 relevante; material/condição, diâmetro, comprimentos, cotas/datum e acessórios com unidades
   7
 PORTFOLIO_TEXTO
  72
@@ -10689,7 +10689,7 @@ AcDbText
  40
 1.25
   1
-Projeto hidráulico e cadastro as-built
+Projeto hidráulico/as-built e levantamento da fonte
   7
 PORTFOLIO_TEXTO
  72
@@ -10725,7 +10725,7 @@ AcDbText
  40
 1.25
   1
-mm, m e datum definido
+mm, m, m² e datum definido
   7
 PORTFOLIO_TEXTO
  72
@@ -10857,7 +10857,7 @@ AcDbText
  40
 1.2
   1
-BOMBA — Curvas Q-H/NPSHr por frequência, vazão mínima e escorva; unidades OEM
+BOMBA — Curvas Q-H/NPSHr versus vazão e frequência, em unidades OEM; ponto de operação, escorva e datum
   7
 PORTFOLIO_TEXTO
  72
@@ -10929,7 +10929,7 @@ AcDbText
  40
 1.25
   1
-Unidades OEM e frequência em Hz
+Unidades OEM, vazão e frequência em Hz
   7
 PORTFOLIO_TEXTO
  72
@@ -11185,9 +11185,417 @@ AcDbText
  73
 2
   0
-LWPOLYLINE
+LINE
   5
 155
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+18.0
+ 20
+131.0
+ 30
+0.0
+ 11
+402.0
+ 21
+131.0
+ 31
+0.0
+  0
+TEXT
+  5
+156
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+30.5
+ 20
+125.8
+ 30
+0.0
+ 40
+1.25
+  1
+D06
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+30.5
+ 21
+125.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+157
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+108.5
+ 20
+125.8
+ 30
+0.0
+ 40
+1.2
+  1
+FLUIDO — Tipo/composição, faixa de temperatura, densidade e fonte da pressão de vapor
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+108.5
+ 21
+125.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+158
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+226.0
+ 20
+125.8
+ 30
+0.0
+ 40
+1.25
+  1
+Dados do processo ou propriedades rastreáveis do fluido
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+226.0
+ 21
+125.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+159
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+316.0
+ 20
+125.8
+ 30
+0.0
+ 40
+1.25
+  1
+°C, kg/m³ e pressão absoluta
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+316.0
+ 21
+125.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15A
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+378.0
+ 20
+125.8
+ 30
+0.0
+ 40
+1.25
+  1
+PENDENTE
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+378.0
+ 21
+125.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+15B
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+18.0
+ 20
+120.6
+ 30
+0.0
+ 11
+402.0
+ 21
+120.6
+ 31
+0.0
+  0
+TEXT
+  5
+15C
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+30.5
+ 20
+115.39999999999999
+ 30
+0.0
+ 40
+1.25
+  1
+D07
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+30.5
+ 21
+115.39999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15D
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+108.5
+ 20
+115.39999999999999
+ 30
+0.0
+ 40
+1.2
+  1
+ATMOSFERA — Pressão absoluta sobre fonte fechada ou pressão barométrica local se aberta
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+108.5
+ 21
+115.39999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15E
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+226.0
+ 20
+115.39999999999999
+ 30
+0.0
+ 40
+1.25
+  1
+Projeto do reservatório ou dados de pressão/altitude local
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+226.0
+ 21
+115.39999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15F
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+316.0
+ 20
+115.39999999999999
+ 30
+0.0
+ 40
+1.25
+  1
+kPa abs; altitude em m se usada para estimar
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+316.0
+ 21
+115.39999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+160
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+378.0
+ 20
+115.39999999999999
+ 30
+0.0
+ 40
+1.25
+  1
+PENDENTE
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+378.0
+ 21
+115.39999999999999
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+161
 330
 17
 100
@@ -11203,23 +11611,23 @@ AcDbPolyline
  10
 18.0
  20
-101.0
+96.0
  10
 402.0
  20
-101.0
+96.0
  10
 402.0
  20
-116.0
+106.0
  10
 18.0
  20
-116.0
+106.0
   0
 TEXT
   5
-156
+162
 330
 17
 100
@@ -11231,13 +11639,13 @@ AcDbText
  10
 210.0
  20
-108.5
+101.0
  30
 0.0
  40
-1.45
+1.35
   1
-V01: obter D01–D05 e revisar a hidráulica; registrar unidades, datum e evidências antes de selecionar P-101 ou proteção.
+V01: obter D01–D07, registrar unidades/datum e evidências; só então revisar a hidráulica e a proteção.
   7
 PORTFOLIO_TEXTO
  72
@@ -11245,7 +11653,7 @@ PORTFOLIO_TEXTO
  11
 210.0
  21
-108.5
+101.0
  31
 0.0
 100
@@ -12363,7 +12771,7 @@ PORTFOLIO_SHEET
   3
 WRITTEN_BY_EZDXF
 350
-159
+165
   0
 DICTIONARYVAR
   5
@@ -18985,11 +19393,11 @@ DictionaryVariables
 280
 0
   1
-08/08
+08/09
   0
 DICTIONARYVAR
   5
-159
+165
 330
 2D
 100
