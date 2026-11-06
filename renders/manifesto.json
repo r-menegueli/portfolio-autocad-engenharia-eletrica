@@ -2201,6 +2201,63 @@
           "sha256": "c8cdc4df8e5f9918257cee58f079baab0a2d338f6193ae6876b639ca9f498811"
         }
       }
+    },
+    {
+      "id": "p13-01-layout-estacao-recarga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/01_layout_estacao_recarga.dxf",
+      "source_sha256": "04d3f4c137de31c883df2cd1bb0ecb17677d41108f62ec3951dd4f3ccb7c7688",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.pdf",
+          "sha256": "19e00243c904c82aadbd9e374958888b7ac5722d814184f4a124c36f1fcf5e68"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.png",
+          "sha256": "edb95a1eb47a46dc962585d5f03762e154315d671ab98610b0c6aa5cb3ed079f"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/01_layout_estacao_recarga.svg",
+          "sha256": "1f232d9cf7fb03e3bfa0c2c6c6ef9f89445356176fe68b2ff0137202e3895e4f"
+        }
+      }
+    },
+    {
+      "id": "p13-02-unifilar-estacao-recarga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/02_diagrama_unifilar_estacao.dxf",
+      "source_sha256": "3a36db0edf2e7523aef18d3fa3469eb49ab58d71fb268435e50dd5b7ec4ee67d",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.pdf",
+          "sha256": "56a65b01c2228d843c30566b7c368ce757ecbd9536a59a20a7d7e1d2da43eff1"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.png",
+          "sha256": "6d97518663dcabea64d38a60df7b39a59919f6d712ce3ce890d7d781aa9ed29f"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/02_diagrama_unifilar_estacao.svg",
+          "sha256": "378b52eff70116044e4a5fb801fac36d499256c5f3f348be2b4df9e60b750094"
+        }
+      }
+    },
+    {
+      "id": "p13-03-gestao-dinamica-carga",
+      "source": "13-estacao-recarga-veiculos-eletricos/fonte/03_gestao_dinamica_carga.dxf",
+      "source_sha256": "0b62a24499f5a9ac4667d6c02385cc4b841978ad4b005fa6cb8a6587456940df",
+      "outputs": {
+        "pdf": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.pdf",
+          "sha256": "5eddf3d8bb8bdcd2f193ff6fc0abb6d98be8f82b6059bad5f0081f2b7620ce3e"
+        },
+        "png": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.png",
+          "sha256": "2169d05c516384d6fea7e44060ad244309608e3e5a230c5c051b23da1b978dcd"
+        },
+        "svg": {
+          "path": "13-estacao-recarga-veiculos-eletricos/exports/03_gestao_dinamica_carga.svg",
+          "sha256": "28503ca13d842a1e17ac8dcf665e6f2d4bb3cc5b72b790914ed2734502e184a3"
+        }
+      }
     }
   ]
 }

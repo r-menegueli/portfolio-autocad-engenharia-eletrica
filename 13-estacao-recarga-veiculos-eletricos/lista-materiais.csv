@@ -1,0 +1,9 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+MAT-01,4,un,Equipamento EVSE de recarga AC com potencia nominal de saida assumida de 11 kW,EVSE-01 a EVSE-04,Modelo e caracteristicas eletricas pendentes de selecao OEM
+MAT-02,2,un,Equipamento EVSE de recarga DC com potencia nominal de saida assumida de 60 kW,EVSE-05 e EVSE-06,Modelo e caracteristicas eletricas pendentes de selecao OEM
+MAT-03,1,un,Quadro dedicado de distribuicao para os circuitos da estacao,QEV-01,Capacidade dimensoes grau de protecao e componentes pendentes
+MAT-04,1,un,Sistema de medicao de potencia na fronteira de entrada,MED-01,Local classe precisao comunicacao e transformadores de medida pendentes
+MAT-05,1,un,Sistema de gestao dinamica de potencia,EMS-01,Equipamento software protocolo e compatibilidade pendentes
+MAT-06,6,un,Dispositivo de protecao dos circuitos de saida,QF-01 a QF-06,Tipo corrente polos capacidade de interrupcao e ajustes nao selecionados
+MAT-07,1,lote,Alimentadores e infraestrutura de encaminhamento de cabos,A definir apos levantamento,Quantidade rota e especificacoes pendentes de levantamento e calculo
+MAT-08,1,lote,Interfaces de comunicacao e rede de dados,MED-01 EMS-01 EVSE-01 a EVSE-06,Topologia e componentes dependem dos fabricantes
