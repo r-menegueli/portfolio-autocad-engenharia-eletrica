@@ -135,7 +135,7 @@ README individual.
 ## Validação e relatórios
 
 A revisão consolidada de 2026-09-10 cobre P01–P10 (68 pranchas) e é histórica. Esta
-revisão cobre 106 pranchas A3 de P01–P12. A revisão 03 do P10 apresenta cinco pontos
+revisão cobre 107 pranchas A3 de P01–P12. A revisão 03 do P10 apresenta cinco pontos
 calculados em cada uma das quatro escalas analógicas; a revisão 04 acrescentou um
 balanço visual da fonte 24 Vcc e a revisão 05 detalha os bornes dos dois alimentadores
 remotos. Esses valores são
@@ -144,7 +144,7 @@ premissas de estudo, não resultados de calibração, ensaio ou dimensionamento 
 contagens atuais e os limites das verificações.
 
 - [Relatório histórico de validação](relatorio-validacao.md)
-- [Revisão técnica](relatorio-revisao-tecnica.md)
+- [Revisão técnica histórica (P01–P10, 2026-09-10)](relatorio-revisao-tecnica.md)
 - [Revisão visual histórica](relatorio-revisao-visual.md)
 - [Auditoria de projetos, maturidade e correções](docs/auditoria-portfolio-2026-11.md)
 - [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
