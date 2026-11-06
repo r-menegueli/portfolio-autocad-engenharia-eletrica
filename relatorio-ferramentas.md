@@ -631,3 +631,22 @@ PDF A3 rasterizado pelo Poppler a 150 dpi. A revisão integrada confirmou 12 pro
 114 folhas, 456 arquivos gráficos e 77 CSVs; P08-06 teve similaridade de 0,989889. A
 validação estrita passou em 674.521 verificações, sem erros ou avisos. A inspeção SVG
 em navegador continua aguardando autorização do usuário.
+
+## Projeto P19 — alimentação HVSC no cais — 2026-11-06
+
+Foram geradas três pranchas A3 sobre o fornecimento de energia do terminal ao navio:
+unifilar, implantação esquemática e sequência/intertravamentos conceituais. O validador
+P19 passou em 62 verificações. A repetição do gerador reproduziu os três SHA-256 e o
+AutoCAD AcCoreConsole 2027 (26.0.118.0.0) abriu/auditou 3/3 DXFs com `PASS`:
+
+- `01_unifilar_hvsc_cais.dxf` — `25dbe1656124f89b350aebee39d81e07b868d0414e46dd2544fd93f5a65a5828`
+- `02_implantacao_eletrica_cais.dxf` — `97f9edb2b6c01043f6eacb9e79d20f569e022fc911d05cdbacf855e2b111fd7b`
+- `03_sequencia_intertravamentos_hvsc.dxf` — `d495500a1f4c73c0b8f82b5e33f2955bc9abf1fac89aa50e2b08ecbdf1018aeb`
+
+Os três PNGs de produção (4960 × 3507 px, 300 dpi) foram inspecionados. PDFium
+rasterizou os PDFs independentemente em 4961 × 3508 px; a comparação na área comum
+resultou em similaridades de 0,992812, 0,993874 e 0,989953. A validação estrita do
+portfólio passou em 760.998 verificações, sem erros ou avisos. As premissas de 13,8/6,6
+kV e 3,2 MVA são didáticas; nenhum estudo de compatibilidade com navio, proteção,
+aterramento, cabo, intertravamento ou operação foi executado. A inspeção no navegador
+nativo permanece aguardando autorização do usuário.

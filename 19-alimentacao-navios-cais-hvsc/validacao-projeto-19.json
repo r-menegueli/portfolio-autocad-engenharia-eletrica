@@ -1,0 +1,12 @@
+{
+  "project": "P19",
+  "date": "2026-11-06",
+  "checks": 62,
+  "errors": [],
+  "status": "PASS",
+  "limits": [
+    "Correntes calculadas com potencia aparente e tensoes assumidas; nao selecionam componentes.",
+    "Compatibilidade de navio, cabo, aterramento, protecao, intertravamentos e operacao nao verificados.",
+    "Auditoria independente pelo AutoCAD e renderizacao visual devem ser registradas separadamente."
+  ]
+}

@@ -1,0 +1,12 @@
+sinal,origem,destino,funcao,dado_esperado,interface,estado
+SHORE_AVAILABLE,Controle do terminal,Controle HVSC,Indicar disponibilidade operacional do terminal,Disponivel/indisponivel,Dados funcionais nao emergenciais,A VALIDAR
+VESSEL_PROFILE_OK,Interface do navio,Controle HVSC,Confirmar perfil da embarcacao selecionada,Valido/invalido,Dados funcionais; perfil real ausente,A VALIDAR
+CONNECTOR_LOCKED,PA-01,Controle HVSC,Indicar acoplamento mecanico confirmado,Travado/nao travado,Interface a definir com fabricante,A VALIDAR
+SAFETY_LOOP_HEALTHY,CS-HVSC,Trip HVSC,Indicar integridade do circuito dedicado,Fechado/aberto,Circuito de seguranca separado da rede de dados,A VALIDAR
+SHIP_CB_OPEN,CB-NAVIO,Controle HVSC,Indicar estado do disjuntor a bordo,Aberto/fechado,Retorno de estado; interface a definir,A VALIDAR
+SHORE_CB_OPEN,CB-TERRA,Controle HVSC,Indicar estado do disjuntor em terra,Aberto/fechado,Retorno de estado; interface a definir,A VALIDAR
+VOLTAGE_FREQUENCY_OK,MM-01,Controle HVSC,Indicar verificacao de grandezas de interface,Conforme/nao conforme,Limites dependem da embarcacao,A VALIDAR
+COMMUNICATION_OK,COM-HVSC,Controle operacional,Indicar disponibilidade de comunicacao funcional,Ok/falha,IEC/IEEE 80005-2; detalhes ausentes,A VALIDAR
+HVSC_TRIP_REQUEST,CS-HVSC,CB-TERRA e CB-NAVIO,Comandar abertura coordenada perante evento de seguranca,Trip/rearme conforme procedimento,Circuito dedicado; nao depende da comunicacao funcional,A VALIDAR
+HVSC_FAULT,Controle HVSC,Operacao do terminal,Indicar falha latched ou bloqueio,Alarme/bloqueio,Causa e rearme dependem do projeto,A VALIDAR
+SUPPLY_CONNECTED,Controle HVSC,Operacao do terminal,Indicar estado operacional da conexao,Conectado/desconectado,Dado de supervisao; nao prova ausencia de tensao,A VALIDAR

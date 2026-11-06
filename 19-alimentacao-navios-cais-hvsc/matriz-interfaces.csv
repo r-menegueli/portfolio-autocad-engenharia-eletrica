@@ -1,0 +1,10 @@
+interface,lado_terra,lado_navio,criterio_de_compatibilidade,estado
+Potencia,"13.8 kV; hipotese do caso","6.6 kV; hipotese do caso",Confirmar tensao e capacidade nominal certificadas,NAO CONFIRMADO
+Frequencia,"60 Hz; hipotese do caso","60 Hz; hipotese do caso",Confirmar frequencia e necessidade de conversor,NAO CONFIRMADO
+Sequencia de fases,"A definir","A definir",Confirmar ensaio e limite conforme padrao aplicavel,NAO DEFINIDO
+Conector,"PA-01; nao selecionado","Inlet a bordo nao identificado",Confirmar tipo fabricante e chaveamento,NAO DEFINIDO
+Cabo HVSC,"Comprimento e suporte pendentes","Alcance da tomada a bordo pendente",Estudar massa tracao raio de curvatura e operacao,NAO DEFINIDO
+Protecao e aterramento,"Esquema e ajustes pendentes","Esquema a bordo pendente",Estudo coordenado com navio porto e autoridade,NAO DEFINIDO
+Seguranca,"CS-HVSC conceitual","Circuito correspondente a bordo",Verificar requisitos IEC/IEEE 80005-1 e anexo aplicavel,NAO VERIFICADO
+Dados operacionais,"COM-HVSC conceitual","Interface do navio nao identificada",Mapear dados nao emergenciais conforme IEC/IEEE 80005-2,NAO DEFINIDO
+Transferencia de carga,"Procedimento do terminal pendente","Procedimento do navio pendente",Definir permissivos estados e responsabilidades,NAO DEFINIDO

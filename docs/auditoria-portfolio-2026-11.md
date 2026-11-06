@@ -531,3 +531,9 @@ PDF/PNG de P01-09 foi 0,990330. O AcCoreConsole 2027 auditou 9/9 DXFs P01 e uma 
 geração reproduziu os nove SHA-256. A validação estrita passou em 663.880 verificações,
 sem erros ou avisos; a revisão integrada confirmou 12 projetos, 114 folhas, 456 arquivos
 gráficos e 77 CSVs. Os SVGs continuam aguardando autorização para inspeção no navegador.
+
+## Atualização P19 — alimentação HVSC no cais — 2026-11-06
+
+O P19 acrescenta três pranchas A3: unifilar da interface de 13,8/6,6 kV, implantação esquemática do cais e sequência conceitual de conexão. O caso didático usa 3,2 MVA; as contas resultam em 133,9 A a 13,8 kV e 279,9 A a 6,6 kV. Isso não seleciona equipamento nem confirma compatibilidade de navio.
+
+O validador específico passou em 62 verificações. O AcCoreConsole 2027 abriu/auditou os três DXFs; a repetição do gerador reproduziu os três hashes. As folhas foram conferidas em PNG a 300 dpi e comparadas com PDFs rasterizados independentemente pelo PDFium; similaridades: 0,992812, 0,993874 e 0,989953. Validação estrita do portfólio: 760.998 verificações, zero erros e zero avisos. O repositório registra agora 19 projetos e 135 pranchas A3. A inspeção no navegador nativo continua aguardando autorização.

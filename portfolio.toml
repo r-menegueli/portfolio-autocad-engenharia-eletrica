@@ -120,6 +120,28 @@ lineweight = 18
 linetype = "CONTINUOUS"
 
 [[projects]]
+id = "19-alimentacao-navios-cais-hvsc"
+path = "19-alimentacao-navios-cais-hvsc"
+source_dir = "fonte"
+export_dir = "exports"
+sheet_count = 3
+required_files = [
+  "README.md",
+  "memorial-descritivo.md",
+  "criterios-premissas.md",
+  "referencias-normativas.md",
+  "inspecao-visual.md",
+  "calculo-correntes.csv",
+  "lista-materiais.csv",
+  "lista-sinais.csv",
+  "matriz-interfaces.csv",
+  "sequencia-conexao.csv",
+  "validacao-projeto-19.json",
+  "fonte/gerar_projeto_19.py",
+  "fonte/validar_projeto_19.py",
+]
+
+[[projects]]
 id = "18-compensacao-reativos-qualidade-energia"
 path = "18-compensacao-reativos-qualidade-energia"
 source_dir = "fonte"
@@ -1985,6 +2007,39 @@ source = "17-automacao-subestacao-digital/fonte/03_matriz_goose_testes.dxf"
 svg = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.svg"
 pdf = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.pdf"
 png = "17-automacao-subestacao-digital/exports/03_matriz_goose_testes.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p19-01-unifilar-hvsc-cais"
+kind = "sheet"
+title = "Projeto 19 - Alimentação HVSC no cais - diagrama unifilar"
+source = "19-alimentacao-navios-cais-hvsc/fonte/01_unifilar_hvsc_cais.dxf"
+svg = "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.svg"
+pdf = "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.pdf"
+png = "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p19-02-implantacao-eletrica-cais"
+kind = "sheet"
+title = "Projeto 19 - Implantação conceitual elétrica no cais"
+source = "19-alimentacao-navios-cais-hvsc/fonte/02_implantacao_eletrica_cais.dxf"
+svg = "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.svg"
+pdf = "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.pdf"
+png = "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.png"
+require_a3 = true
+require_notice = true
+
+[[artifacts]]
+id = "p19-03-sequencia-intertravamentos-hvsc"
+kind = "sheet"
+title = "Projeto 19 - Sequência e interfaces HVSC"
+source = "19-alimentacao-navios-cais-hvsc/fonte/03_sequencia_intertravamentos_hvsc.dxf"
+svg = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.svg"
+pdf = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.pdf"
+png = "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.png"
 require_a3 = true
 require_notice = true
 

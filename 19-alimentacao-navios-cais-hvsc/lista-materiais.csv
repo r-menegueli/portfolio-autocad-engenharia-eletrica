@@ -1,0 +1,12 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+01,1,conjunto,Ponto de acoplamento com a rede terrestre do terminal,PCC-01,Curto-circuito e medicao pendentes
+02,1,conjunto,Quadro de entrada em media tensao,QMT-01,Especificacao e protecao pendentes
+03,1,conjunto,Transformador 4 MVA 13.8/6.6 kV,TR-01,Valor hipotetico sem especificacao construtiva
+04,1,conjunto,Quadro de conexao de alta tensao em terra,Q-HVSC,Topologia e intertravamentos pendentes
+05,1,ponto,Armario/ponto de conexao no cais,PT-01,Implantacao e protecao ambiental a definir
+06,1,ponto,Conector e inlet de navio compativeis,PA-01,Tipo e fabricante nao selecionados
+07,1,sistema,Cabo(s) flexivel(is) de conexao HVSC,CAB-HVSC,Quantidade comprimento e apoio dependem do navio
+08,1,conjunto,Medicao de energia e grandezas eletricas,MM-01,Classe faixa e transformadores de instrumento pendentes
+09,1,sistema,Circuito dedicado de seguranca,CS-HVSC,Conforme IEC/IEEE 80005-1 e projeto aprovado
+10,1,sistema,Interface de dados para monitoramento e controle,COM-HVSC,Referencia funcional IEC/IEEE 80005-2; protocolo nao definido
+11,2,unidade,Disjuntores HVSC coordenados em terra e a bordo,CB-TERRA / CB-NAVIO,Caracteristicas e logica dependem dos estudos

@@ -2488,6 +2488,63 @@
       }
     },
     {
+      "id": "p19-01-unifilar-hvsc-cais",
+      "source": "19-alimentacao-navios-cais-hvsc/fonte/01_unifilar_hvsc_cais.dxf",
+      "source_sha256": "25dbe1656124f89b350aebee39d81e07b868d0414e46dd2544fd93f5a65a5828",
+      "outputs": {
+        "pdf": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.pdf",
+          "sha256": "3883e693e9cf88d89f5c1b800de227756b3d5676181c3199ecf5046f95b3261f"
+        },
+        "png": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.png",
+          "sha256": "f032ce99e941464aac4cee4f0fe7e4fc2a0d7bc77bf7970cdc08b2b30225e37b"
+        },
+        "svg": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/01_unifilar_hvsc_cais.svg",
+          "sha256": "55be0c262b5d5a7cb0389a8de49a517402718929de37b58f17938818b2de70db"
+        }
+      }
+    },
+    {
+      "id": "p19-02-implantacao-eletrica-cais",
+      "source": "19-alimentacao-navios-cais-hvsc/fonte/02_implantacao_eletrica_cais.dxf",
+      "source_sha256": "97f9edb2b6c01043f6eacb9e79d20f569e022fc911d05cdbacf855e2b111fd7b",
+      "outputs": {
+        "pdf": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.pdf",
+          "sha256": "f81fb7a13e6ad00ef155b03372781f764c58673986c2c6493edc9bd399fbddac"
+        },
+        "png": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.png",
+          "sha256": "e343e46bb79c278d2830a7a0d6eb4243e0593604ee3ecaa5fb2e48b3f9472414"
+        },
+        "svg": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/02_implantacao_eletrica_cais.svg",
+          "sha256": "20b73cc1e492665c71101e2b4b4a6ba5292e2d3c0abb8bef3a8fd5a5bfa81cea"
+        }
+      }
+    },
+    {
+      "id": "p19-03-sequencia-intertravamentos-hvsc",
+      "source": "19-alimentacao-navios-cais-hvsc/fonte/03_sequencia_intertravamentos_hvsc.dxf",
+      "source_sha256": "d495500a1f4c73c0b8f82b5e33f2955bc9abf1fac89aa50e2b08ecbdf1018aeb",
+      "outputs": {
+        "pdf": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.pdf",
+          "sha256": "fb45ac785b8704a49c57fc4dc60364ca0a0a3c18640d4a75254668995f67db3d"
+        },
+        "png": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.png",
+          "sha256": "ac700c28a6bcbcc00160211a2178aa2482f8b057d64f4bcd94690de044cd6463"
+        },
+        "svg": {
+          "path": "19-alimentacao-navios-cais-hvsc/exports/03_sequencia_intertravamentos_hvsc.svg",
+          "sha256": "870e1b49e0d68774b87058b6cd6117f28106f0465acbaf2a89d1bec18084efd3"
+        }
+      }
+    },
+    {
       "id": "p18-01-unifilar-compensacao-reativos",
       "source": "18-compensacao-reativos-qualidade-energia/fonte/01_unifilar_compensacao_reativos.dxf",
       "source_sha256": "d3cfe9892307663e027ce4e10817107df7d87232cb69020d645ead6582e83605",
