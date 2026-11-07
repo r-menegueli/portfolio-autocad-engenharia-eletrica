@@ -158,7 +158,7 @@ def draw_plan(layout) -> None:
     room_labels = (
         (80, 243, "RECEPCAO / ESPERA"), (80, 153, "ADMINISTRACAO"),
         (230, 243, "CONSULTORIO A"), (338, 243, "CONSULTORIO B"),
-        (230, 153, "SALA DE PROCEDIMENTO*"), (338, 153, "APOIO / ESTOQUE"),
+        (230, 153, "SALA DE PROCEDIMENTO"), (338, 153, "APOIO / ESTOQUE"),
     )
     for x, y, label in room_labels:
         text(layout, label, x, y, 1.05, "11_ARQUITETURA", centered=True, bold=True)

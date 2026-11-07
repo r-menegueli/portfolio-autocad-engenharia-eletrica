@@ -32,6 +32,24 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def manifest_artifact(root: Path, artifact: dict) -> dict:
+    source = root / artifact["source"]
+    outputs = {
+        kind: root / artifact[kind]
+        for kind in ("svg", "pdf", "png")
+        if kind in artifact
+    }
+    return {
+        "id": artifact["id"],
+        "source": artifact["source"],
+        "source_sha256": sha256(source),
+        "outputs": {
+            kind: {"path": str(path.relative_to(root)).replace("\\", "/"), "sha256": sha256(path)}
+            for kind, path in sorted(outputs.items())
+        },
+    }
+
+
 def output_metadata(kind: str, config: dict, artifact: dict) -> dict:
     title = artifact.get("title", "Template A3 - Portfolio AutoCAD de Engenharia Eletrica")
     common = {
@@ -141,14 +159,14 @@ def artifact_bounds(artifact: dict, config: dict) -> tuple[float, float, float, 
     raise ValueError(f"Limites nao definidos para o artefato {artifact['id']}")
 
 
-def build_manifest(root: Path, config: dict, rendered: list[dict]) -> Path:
+def build_manifest(root: Path, config: dict, rendered: list[dict], dpi: int) -> Path:
     manifest = {
         "schema_version": 1,
         "generated_on": config["portfolio"]["template_date"],
         "source_format": "DXF",
         "dxf_writer": f"ezdxf {ezdxf.__version__}",
         "renderer": f"matplotlib {matplotlib.__version__}",
-        "dpi": RENDER_DPI,
+        "dpi": dpi,
         "artifacts": rendered,
     }
     path = root / "renders" / "manifesto.json"
@@ -165,6 +183,12 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Raiz do repositorio")
     parser.add_argument("--dpi", type=int, default=RENDER_DPI, help="Resolucao do PNG")
+    parser.add_argument(
+        "--artifact",
+        action="append",
+        dest="artifacts",
+        help="ID de um artefato para renderizar; pode ser informado mais de uma vez",
+    )
     return parser.parse_args()
 
 
@@ -172,9 +196,18 @@ def main() -> int:
     args = parse_args()
     root = args.root.resolve()
     config = load_config(root)
-    rendered: list[dict] = []
+    available = {artifact["id"] for artifact in config["artifacts"]}
+    requested = set(args.artifacts or [])
+    unknown = sorted(requested - available)
+    if unknown:
+        raise SystemExit("Artefato(s) desconhecido(s): " + ", ".join(unknown))
 
-    for artifact in config["artifacts"]:
+    selected = [
+        artifact
+        for artifact in config["artifacts"]
+        if not requested or artifact["id"] in requested
+    ]
+    for artifact in selected:
         source = root / artifact["source"]
         outputs = {
             kind: root / artifact[kind]
@@ -182,20 +215,12 @@ def main() -> int:
             if kind in artifact
         }
         render_document(source, outputs, artifact_bounds(artifact, config), config, args.dpi, artifact)
-        rendered.append(
-            {
-                "id": artifact["id"],
-                "source": artifact["source"],
-                "source_sha256": sha256(source),
-                "outputs": {
-                    kind: {"path": str(path.relative_to(root)).replace("\\", "/"), "sha256": sha256(path)}
-                    for kind, path in sorted(outputs.items())
-                },
-            }
-        )
         print(f"Renderizado: {artifact['id']} -> {', '.join(sorted(outputs))}")
 
-    manifest = build_manifest(root, config, rendered)
+    # Rebuild complete manifest hashes so selective rendering preserves records for
+    # every other artifact while still updating the files just rendered.
+    rendered = [manifest_artifact(root, artifact) for artifact in config["artifacts"]]
+    manifest = build_manifest(root, config, rendered, args.dpi)
     print(f"Manifesto: {manifest.relative_to(root)}")
     return 0
 

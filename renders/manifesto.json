@@ -2015,19 +2015,19 @@
     {
       "id": "p21-01-planta-clinica",
       "source": "21-instalacao-clinica-ambulatorial/fonte/01_planta_eletrica_clinica.dxf",
-      "source_sha256": "d5cadac23114a21d99bb5b122275c88e8703b3e83021e360dbb605683c998610",
+      "source_sha256": "9299e35bfbca00b20424132c330af7d37bea8800be71b5f020085bafe3904da3",
       "outputs": {
         "pdf": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.pdf",
-          "sha256": "eceab5d1ccbc99c741be37905d567fae0f4860a813e2048827488d35a1b798f6"
+          "sha256": "c01c2a412788a346f6f381bfd44e895d28d2e9110b16000eaf830cad1ce3eb93"
         },
         "png": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.png",
-          "sha256": "7a1bd6638da0297ae11f3fa503d6ec2e27b13e694b3cb72093ccc508e742dc8f"
+          "sha256": "08dd19f40fbc912d5172e9531701597f5283177d70887e37efb4ec92c187422a"
         },
         "svg": {
           "path": "21-instalacao-clinica-ambulatorial/exports/01_planta_eletrica_clinica.svg",
-          "sha256": "47b3699c9f8442f3bf0bc58b1fb7eb2983fea95d2327d9d23186abd0a0ac35b4"
+          "sha256": "06ea8575f3ffdb555a3e389cb5c575972eed7b3bef03911dfa9fbed117b528b7"
         }
       }
     },
