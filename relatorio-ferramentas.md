@@ -1,5 +1,14 @@
 # Relatorio de ferramentas
 
+## Rechecagem do ambiente e dos DXFs — 2026-11-09
+
+- **Windows 11 Pro x64, build 26300:** AMD Ryzen 5 4600G, 7,8 GB de RAM visível; havia 0,95 GB livre na leitura registrada. A unidade C: tinha 42,91 GB livres.
+- **Python/Git:** Python 3.14.7 e Git 2.56.0.windows.1. A consulta ao Python de sistema não encontrou SciPy, ezdxf ou pytest; use o ambiente de projeto configurado para os testes e ferramentas CAD.
+- **MATLAB R2026a:** instalado; os diretórios de Simulink e Simscape Electrical estão presentes. A licença não foi reconsultada e MATLAB/Simulink não foram iniciados nesta rechecagem, devido à memória livre limitada; os resultados atuais desta branch não atribuem à ferramenta as simulações Python.
+- **AutoCAD Core Console 2027:** os 30 DXFs P23–P25 foram abertos e auditados em série em 09/11; 30/30 terminaram com código 0, `AUDIT` encontrou zero erros e zero reparos. O script descartou alterações ao sair. Isso não verifica a interface gráfica nem a saída de plotter. Resumo por folha versionado: `docs/evidencias/auditoria-autocad-p23-p25.csv`.
+
+O registro de 08/11 abaixo é histórico e não substitui uma nova execução MATLAB/Simulink nesta revisão.
+
 ## Atualização de capacidade — 2026-11-08
 
 - **MATLAB R2026a Update 3:** testes de cálculo de P23–P25 executados; 3/3 aprovados.

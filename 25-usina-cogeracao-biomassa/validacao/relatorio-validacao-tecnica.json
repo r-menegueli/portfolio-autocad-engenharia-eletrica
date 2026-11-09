@@ -18,9 +18,19 @@
     "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P25-02, P25-10 inspecionadas ampliadas; malha recortada ao redor das envolventes e tabela separada; validador estrutural conjunto aprovado",
     "pdf": "texto pesquisável por camada Unicode invisível verificado nas 30 folhas; geometria vetorial preservada",
     "resultados_estaticos": "tabelas recalculadas independentemente em Python; MATLAB contém equações correspondentes, porém a versão atual não foi executada",
-    "modelo_simulink": "arquivo SLX existente contém integrador e função MATLAB; execução e reconstrução da versão atual não verificadas nesta revisão",
-    "dinamica": "série armazenada é antiga e representa apenas afundamento de tensão e degrau de referência de potência; cenários e saídas requeridos permanecem incompletos",
-    "inspecao_visual": "pranchas aguardam regeneração e inspeção após a atualização da paleta ACI centralizada"
+    "modelo_simulink": "arquivo SLX existente; execução e reconstrução da versão atual não verificadas nesta revisão",
+    "simulacao_reduzida_python": {
+      "arquivo": "validacao/simulacao_dinamica_python_p25.py",
+      "resultado": "8 cenários, 8008 amostras; 4 testes de implementação passaram; não é validação do comportamento da usina",
+      "cobertura": [
+        "caso nominal e degraus de +0,04 e -0,04 pu na referência mecânica do governador; não são degraus de carga elétrica",
+        "afundamento externo sintético de 0,2 pu por 0,12 s e evento combinado com degrau de referência",
+        "resposta com AVR desabilitado, governador desabilitado e sensibilidade à metade da inércia",
+        "tensão, frequência, velocidade, potências ativa/reativa e corrente calculada do gerador"
+      ]
+    },
+    "dinamica": "alternativa Python RK4 executada com equações agregadas; não substitui execução do Simulink. No cenário de afundamento, a resposta segue oscilatória aos 5 s e termina com potência ativa calculada negativa; não serve para concluir estabilidade ou suportabilidade da usina",
+    "inspecao_visual": "todas as folhas passaram pela prévia de contato; P25-02, P25-08 e P25-10 foram ampliadas após os ajustes"
   },
   "resultados_de_triagem": {
     "S_gerador_operacao_MVA": 27.7778,
@@ -32,12 +42,21 @@
     "curto_138_kV_kA_transitorio": 21.4413,
     "energia_liquida_MWh_ano": 164160
   },
+  "testes": {
+    "calculos_estaticos": 4,
+    "implantacao_CAD": 2,
+    "dinamica_python": 4,
+    "total_P25": 10,
+    "total_focado_P23_P24_P25": 21
+  },
   "limites": [
     "impedâncias de máquina, transformador e rede são hipóteses sem datasheet ou estudo da concessionária",
     "foi usada X'd transitória cadastrada; não há X''d nem resistência ou X/R da rede",
     "curto não inclui componente CC, motores, sequências ou critério completo IEC 60909",
     "modelo Simulink usa equações agregadas em pu e não é modelo eletromagnético de máquina",
-    "a matriz de oito cenários dinâmicos e o monitoramento final de corrente e frequência não foram executados",
+    "simulação Python não inclui rede local/carga auxiliar, resposta de frequência da rede, limites térmicos/de campo, proteção, saturação magnética ou controle de corrente; a entrada dinâmica é referência mecânica, não degrau de carga",
+    "o afundamento de 0,2 pu é uma perturbação sintética; o modelo calcula pico próximo a 5,54 kA e não se recompõe em 5 s, portanto não sustenta análise de suportabilidade, curto de projeto ou seleção de equipamento",
+    "a matriz Python de oito cenários é uma alternativa analítica reduzida e não validada; a matriz MATLAB/Simulink atual e seus registradores não foram executados",
     "MATLAB não foi executado nesta revisão; tentativa anterior foi limitada por memória livre baixa",
     "dimensões físicas de P25-02 são envelopes conceituais assumidos e não dados civis ou de fabricantes",
     "nenhuma declaração de conformidade, proteção coordenada ou uso executivo"

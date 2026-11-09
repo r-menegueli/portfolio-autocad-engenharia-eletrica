@@ -65,10 +65,10 @@ A [galeria comentada](docs/galeria-visual.md) reúne as mesmas prévias e links 
 
 ### Estudos P23–P25
 
-| P23 — Complexo siderúrgico EAF | P24 — Linha de transmissão | P25 — Cogeração a biomassa |
+| P23 — Proteção e medição | P24 — Vão crítico e flecha | P25 — Implantação da casa de máquinas |
 | --- | --- | --- |
-| [![Unifilar do complexo EAF](23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.png)](23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.pdf) | [![Vão crítico e flecha](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.png)](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.pdf) | [![Unifilar da usina](25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.png)](25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.pdf) |
-| [Projeto](23-complexo-siderurgico-eaf/README.md) · [DXF](23-complexo-siderurgico-eaf/fonte/01_diagrama_unifilar_geral.dxf) | [Projeto](24-linha-transmissao-138kv/README.md) · [DXF](24-linha-transmissao-138kv/fonte/03_vano_critico_envelope_flecha.dxf) | [Projeto](25-usina-cogeracao-biomassa/README.md) · [DXF](25-usina-cogeracao-biomassa/fonte/01_diagrama_unifilar.dxf) |
+| [![Proteção e medição do complexo EAF](23-complexo-siderurgico-eaf/exports/06_protecao_medicao.png)](23-complexo-siderurgico-eaf/exports/06_protecao_medicao.pdf) | [![Vão crítico e flecha](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.png)](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.pdf) | [![Implantação da casa de máquinas](25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.png)](25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.pdf) |
+| [Projeto](23-complexo-siderurgico-eaf/README.md) · [DXF](23-complexo-siderurgico-eaf/fonte/06_protecao_medicao.dxf) | [Projeto](24-linha-transmissao-138kv/README.md) · [DXF](24-linha-transmissao-138kv/fonte/03_vano_critico_envelope_flecha.dxf) | [Projeto](25-usina-cogeracao-biomassa/README.md) · [DXF](25-usina-cogeracao-biomassa/fonte/02_implantacao_casa_maquinas.dxf) |
 
 ## Conteúdo dos projetos
 
@@ -131,14 +131,17 @@ Auditorias complementares da revisão consolidada:
 
 Todas as dependências usadas pelos comandos públicos estão fixadas em
 `requirements.txt`. Para reproduzir as três novas entregas, os geradores e análises
-estão nos respectivos READMEs. P23 e P25 incluem modelos Simulink construídos com
-blocos padrão, já que Simscape Electrical não está licenciado neste ambiente.
+estão nos respectivos READMEs. Os modelos Simulink entregues para P23 e P25 usam
+blocos padrão; o registro histórico de 08/11 marcou Simscape Electrical como não
+licenciado, e essa licença não foi reconsultada em 09/11.
 
 ## Validação e relatórios
 
-O [relatório consolidado de validação](relatorio-validacao.md) mantém os resultados históricos P01–P10 e acrescenta a validação geral atual dos 25 projetos. Na revisão de 08/11/2026, o validador estrito aprovou 649.131 verificações sem erros ou avisos; as 30 novas fontes DXF passaram no AutoCAD Core Console. Os testes MATLAB/Simulink para P23–P25 também passaram.
+O [relatório consolidado de validação](relatorio-validacao.md) mantém os registros históricos e acrescenta o estado desta revisão de 09/11/2026. Nesta branch, a suíte geral passou em 11 testes; os testes focados P23–P25 passaram em 21 casos; e as 30 pranchas passaram pelo validador estrutural sem erros ou avisos. Os resultados atuais de cada projeto e as limitações estão nos respectivos relatórios técnicos.
 
-P24 sinaliza uma pendência explícita: no cenário de 140 MW, a corrente calculada (585,72 A) supera a estimativa térmica (571,04 A) sob as premissas cadastradas. Rever condutor e condições térmicas antes de evoluir o estudo.
+As afirmações de execução MATLAB/Simulink da revisão histórica de 08/11 não foram repetidas nesta revisão. MATLAB R2026a e as pastas do Simulink/Simscape estão instalados, mas o MATLAB não foi iniciado porque havia menos de 1 GB de RAM livre nas verificações de 09/11. O AutoCAD Core Console auditou os 30 DXFs atuais: 30/30 com zero erros e zero reparos; a interface gráfica e a saída de plotter não foram verificadas. Os relatórios por projeto distinguem esses resultados do histórico e das verificações Python.
+
+Na triagem atual P24, a maior corrente calculada é 650,80 A e a ampacidade mínima estimada do feixe é 892,04 A nas premissas cadastradas. Esse resultado não confirma capacidade normativa ou de campo: os dados de clima, rota e cabo permanecem sintéticos.
 
 - [Relatório de validação (histórico P01–P10 e estado atual P01–P25)](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)

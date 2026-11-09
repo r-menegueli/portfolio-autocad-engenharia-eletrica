@@ -1,6 +1,22 @@
 # Relatório de validação consolidada
 
-> **Atualização de 08/11/2026:** o registro abaixo preserva a auditoria histórica P01–P10. A revisão atual abrange P01–P25 e passou no validador estrito com **649.131 verificações, zero erros e zero avisos**. O validador dedicado P23–P25 aprovou 30 pranchas e os arquivos associados; as 30 fontes DXF novas passaram no AutoCAD Core Console 2027. Os três testes MATLAB (P23, P24 e P25) passaram; os modelos Simulink P23/P25 foram simulados. P24 mantém uma pendência de projeto: no cenário de 140 MW, 585,72 A calculados excedem a estimativa térmica de 571,04 A. Estes resultados são acadêmicos e não constituem liberação para construção.
+> **Registro histórico de 08/11/2026:** o trecho preserva a auditoria anterior à reengenharia e não deve ser interpretado como uma repetição dos testes no estado atual.
+
+## Estado da branch de reengenharia — 09/11/2026
+
+| Verificação | Escopo corrente | Resultado |
+| --- | --- | :---: |
+| Suíte Python geral | `tests/` | PASS, 11 testes |
+| Testes focados | P23 7, P24 4, P25 10 | PASS, 21 testes |
+| Validador estrutural P23–P25 | 30 folhas DXF/PDF/SVG/PNG | PASS, 0 erros e 0 avisos |
+| Extração de texto PDF | 30 folhas atuais | PASS; 10 páginas A3 em cada caderno consolidado |
+| AutoCAD Core Console | 30 DXFs P23–P25, 09/11/2026 | PASS, 30/30; zero erros e zero reparos no `AUDIT` |
+| MATLAB/Simulink | fontes dinâmicas atuais P23/P25 | NÃO REEXECUTADO nesta revisão; ver registro de ambiente e distinguir do histórico de 08/11 |
+| Preservação | projetos P01–P22 | sem alterações no diff desta branch |
+
+As tabelas estáticas P23–P25 foram recalculadas ou verificadas por rotinas Python independentes. P23 e P25 também têm alternativas dinâmicas reduzidas em Python, executadas em oito cenários cada e cobertas por quatro testes cada. Em P25, a entrada de potência é uma referência mecânica, não um degrau físico de carga; o ensaio de tensão reduzida não se recompõe no horizonte de 5 s e termina com potência ativa calculada negativa. Esse cenário não valida estabilidade nem suportabilidade. As execuções Python não comprovam execução dos modelos MATLAB/Simulink correntes. Consulte `validacao/relatorio-validacao-tecnica.json` dentro de cada projeto para os resultados e limites atuais.
+
+### Revisão histórica — 08/11/2026
 
 ## Revisão atual — 08/11/2026
 

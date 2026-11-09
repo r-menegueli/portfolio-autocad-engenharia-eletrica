@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import shutil
 import zipfile
 
 from PIL import Image, ImageDraw, ImageFont
@@ -90,6 +91,7 @@ def main() -> None:
         preview = OUTPUT / f"{project_id}_pranchas_previa.png"
         book = OUTPUT / book_name
         create_contact_sheet(project_id, folder, title, preview)
+        shutil.copyfile(preview, folder / "pranchas-preview.png")
         create_book(project_id, folder, title, book)
         print(f"{preview.name}; {book.name}")
     package = OUTPUT / "Desenhos_P23-P25_DXF_PDF_SVG_PNG.zip"

@@ -6,17 +6,27 @@
   "verificacoes": {
     "calculos_independentes_python": {
       "arquivo": "validacao/calculos_independentes_p23.py",
-      "resultado": "executado; 3 testes P23 passaram; tabelas estaticas regeneradas",
+      "resultado": "executado; 3 testes estaticos passaram; tabelas estaticas regeneradas",
       "cobertura": [
         "balanco de potencia, compensacao reativa e corrente trifasica",
         "curto-circuito em pu com impedancia completa do transformador",
         "THDi RMS calculado a partir do espectro sintetico e origem documentada de todos os parametros"
       ]
     },
+    "simulacao_reduzida_python": {
+      "arquivo": "validacao/simulacao_dinamica_python_p23.py",
+      "resultado": "8 cenarios, 4008 amostras; 4 testes passaram",
+      "cobertura": [
+        "forno desligado, carga nominal e STATCOM habilitado/desabilitado",
+        "degraus de carga de +20%, -20% e +40% para observar saturacao de Q",
+        "afundamento de rede a 0,8 pu e flutuacao sintetica de arco",
+        "Vbarra, Q do STATCOM, Q na rede, fator de potencia e correntes calculados"
+      ]
+    },
     "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P23-06 inspecionada ampliada e tabela de protecao separada dos simbolos; validador estrutural conjunto aprovado",
     "pdf": "texto pesquisavel por camada Unicode invisivel verificado nas 30 folhas; geometria visual vetorial preservada",
     "MATLAB": "equacoes estaticas inspecionadas e correspondem ao calculo independente; versao atual nao executada nesta revisao",
-    "Simulink": "arquivo existe; dinamica atual nao reexecutada. O CSV historico nao inclui cenarios de forno desligado, limite STATCOM, corrente e frequencia de forma completa"
+    "Simulink": "arquivo existe; dinamica MATLAB/Simulink atual nao reexecutada. A alternativa Python e um modelo reduzido separado e nao valida o arquivo SLX"
   },
   "resultados_de_triagem": {
     "P_total_MW": 28.0,
@@ -37,6 +47,7 @@
     "potencia de forno supoe operacao de 30 MVA a fp 0,72; carga e simultaneidade nao sao medidas",
     "resistencia da fonte assumida zero; forca de curto e impedancia de transformador sao sinteticas e nao ha dados de sequencia",
     "espectro harmonico e amplitude de flutuacao de arco sao hipoteses; nao ha estudo de ressonancia, flicker, TDD nem efeito de filtro por frequencia",
+    "modelo dinamico Python omite rede eletromagnetica, sequencia, fluxo de carga, limitadores de corrente e resposta de processo; os cenarios sao comparativos conceituais",
     "modelo Simulink agregado nao e modelo eletromagnetico ou validado por fabricante; cenarios e saidas atuais permanecem incompletos",
     "plantas P23 continuam conceituais sem levantamento, afastamentos verificados ou dados de equipamento",
     "funcoes ANSI nao incluem coordenacao ou ajustes aprovados; malha de terra nao tem solo, corrente de falta nem tensoes de toque/passo calculadas",

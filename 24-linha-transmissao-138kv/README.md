@@ -2,6 +2,8 @@
 
 Estudo acadêmico e conceitual de uma linha aérea trifásica com corredor fictício, condutor CAA Drake 795 kcmil 26/7 e feixe duplo assumido por fase. As 10 pranchas editáveis DXF e derivados PDF/SVG/PNG ficam em `fonte/` e `exports/`.
 
+![Prévia das dez pranchas do P24](pranchas-preview.png)
+
 ## Conteúdo técnico
 
 - `portfolio.toml`: parâmetros ajustáveis centrais.
@@ -32,5 +34,3 @@ Não há topografia, clima, servidão, dados de fabricante completos do condutor
 Não foi criado nem executado modelo Simulink para este projeto; não alegar simulação dinâmica.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação, energização ou operação sem projeto executivo, verificações específicas e responsabilidade profissional habilitada.
-
-Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
