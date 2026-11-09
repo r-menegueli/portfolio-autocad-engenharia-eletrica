@@ -6,6 +6,7 @@ import argparse
 import csv
 import json
 import math
+import numpy as np
 from pathlib import Path
 import re
 import sys
@@ -37,7 +38,7 @@ from portfolio_config import SheetGeometry, load_config  # noqa: E402
 from renderizar import render_document  # noqa: E402
 
 
-DATE = "2026-11-08"
+DATE = "2026-11-09"
 REVISION = "00"
 DISCLAIMER = (
     "Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços "
@@ -53,16 +54,16 @@ SHEETS: dict[str, list[dict[str, str]]] = {
         ("04_arranjo_transformadores_cubiculos", "TRANSFORMADORES, CUBICULOS E BARRAMENTOS", "Cortes conceituais do transformador principal e da alimentacao de forno", "T1: 45 MVA, 138/34,5 kV, uk=12,5% assumido.\\PTF1: 30 MVA, 34,5/1,0 kV, uk=10% assumido; valores sujeitos a especificacao do fabricante.", "T1: transformador receptor | TF1: transformador de forno | QF: disjuntor | TC/TP: medicao"),
         ("05_alimentacao_secundaria_forno", "ALIMENTACAO SECUNDARIA E CONEXOES DO FORNO", "Derivacoes do transformador, condutores refrigerados e circuito de eletrodos", "Corrente secundaria nominal de referencia: 17,32 kA em 1,0 kV, para 30 MVA trifasicos.\\PCondutores flexiveis e contatos sao apenas esquematicos; nao constituem especificacao de fabricacao.", "U/V/W: fases | E1-E3: eletrodos | CCW: cabos refrigerados a agua | TAPS: regulacao"),
         ("06_protecao_medicao", "PROTECAO E MEDICAO DO COMPLEXO", "Zonas de protecao, TCs/TPs, relés e pontos de medicao", "Codigos ANSI indicam funcoes de estudo, sem ajustes ou coordenacao validados.\\PCurto-circuito preliminar nao substitui estudo de protecao, arco eletrico ou seletividade.", "87T: diferencial trafo | 50/51: sobrecorrente | 87B: diferencial barra | 27/59: tensao | 86: bloqueio"),
-        ("07_statcom_compensacao", "STATCOM E COMPENSACAO DINAMICA", "Conversor VSC, reator de acoplamento, transformador e controle de Q/V", "Compensacao estatica preliminar para fator de potencia alvo de 0,95: 15,06 MVAr.\\PFiltros fornecem 7,50 MVAr fundamentais; STATCOM permanece dentro de ±12,5 MVAr.", "VSC: conversor fonte de tensao | PCC: ponto de acoplamento comum | Qref: comando reativo"),
+        ("07_statcom_compensacao", "STATCOM E COMPENSACAO DINAMICA", "Conversor VSC, reator de acoplamento, transformador e controle de Q/V", "Balanço reativo calculado a partir da potência do forno, das cargas auxiliares, do fator de potência-alvo e dos filtros cadastrados.\\POs valores e a margem do STATCOM são mostrados na tabela; modelo conceitual, sem validação de fabricante.", "VSC: conversor fonte de tensao | PCC: ponto de acoplamento comum | Qref: comando reativo"),
         ("08_filtros_harmonicos", "BANCO DE FILTROS HARMONICOS", "Ramos sintonizados de 5a e 7a ordem e ramo amortecido de alta frequencia", "Espectro de corrente adotado (20%, 12%, 6%, 4%) e hipotese, nao medicao do processo.\\PValidar ressonancia, THD/TDD, perdas e dimensionamento termico com dados reais e impedancia de rede.", "F5: 3,0 MVAr | F7: 2,0 MVAr | HP: 2,5 MVAr | THD: distorcao harmonica total"),
         ("09_aterramento_equipotencializacao", "ATERRAMENTO E EQUIPOTENCIALIZACAO", "Malha conceitual da subestacao, estruturas, transformador e casa do forno", "Malha indicativa; resistividade, corrente de falta, tempo de eliminacao e tensoes de toque/passo nao medidos.\\PDimensionamento conforme estudo de solo e criterios vigentes da instalacao.", "Cu: condutor de cobre | BEP: barra equipotencial | H: haste | ligacao a carcaças e estruturas"),
         ("10_controle_intertravamentos", "CONTROLE, COMANDO E INTERTRAVAMENTOS", "Permissivos de energizacao, sequencia de fusao e desligamento seguro", "Intertravamentos funcionais de estudo; analise de risco e validacao de seguranca independentes.\\PPerda de fluxo de agua, falha de protecao ou emergencia bloqueia arco e abre QF.", "PLC: controlador | QF: disjuntor do forno | FL: fluxo de agua | EMG: emergencia | 86: lockout"),
     ],
     "p24": [
-        ("01_planta_tracado", "PLANTA GERAL DO TRACADO DA LT", "Corredor ficticio de 30 km entre SE A e SE B; geometria ilustrativa", "Corredor, travessias e marcos quilometricos sao dados sinteticos.\\PNao representam levantamento, cadastro, faixa de servidao ou consulta ambiental real.", "SE A/SE B: terminais | T: torre | OPGW: cabo guarda com fibra | km: estaca ficticia"),
-        ("02_perfil_longitudinal", "PERFIL LONGITUDINAL TOPOGRAFICO SINTETICO", "Perfil em marcos de 2 km, com estruturas indicativas em vaos de 300 m", "Elevacoes geradas para este estudo e explicitamente ficticias.\\PPerfil nao apto para locacao de estruturas ou verificacao de travessias.", "x: progressiva (km) | z: elevacao sintetica (m) | vao nominal: 300 m"),
-        ("03_vano_critico_envelope_flecha", "VAO CRITICO E ENVELOPES DE FLECHA", "Comparacao do condutor em temperaturas e vento de referencia", "Modelo parabolico com compatibilidade elastica aproximada; catenaria exata e estados finais nao substituidos.\\PAltura livre de 8 m e criterio ilustrativo, sujeito a local e norma aplicavel.", "20/0: 20 °C sem vento | 45/15: 45 °C e 15 m/s | 75/25: 75 °C e 25 m/s"),
-        ("04_torre_suspensao", "TORRE DE SUSPENSAO - ELEVACAO E PLANTA", "Estrutura trelicada conceitual, cadeia de suspensao e cabos guarda", "Geometria e perfis sao conceituais; nao ha verificacao estrutural, fadiga, montagem ou fundacao.\\PAltura de 38 m e dimensoes preliminares de estudo.", "S: suspensao | F1-F3: fases | OPGW: cabo guarda optico | H: altura de referencia"),
+        ("01_planta_tracado", "PLANTA GERAL DO TRACADO DA LT", "Corredor ficticio de 30 km, estacas e coordenadas cartesianas locais", "Eixo, azimutes, cotas, travessias e estruturas sao dados sinteticos.\\PCoordenadas locais em metros, origem na SE A; nao representam levantamento, cadastro, servidao ou consulta ambiental.", "SE A/SE B: terminais | A: ancoragem | S: suspensao | OPGW: guarda optico | km: estaca ficticia"),
+        ("02_perfil_longitudinal", "PERFIL LONGITUDINAL TOPOGRAFICO SINTETICO", "100 vaos, 101 estruturas e envelopes calculados para o condutor selecionado", "Cotas do terreno interpoladas de marcos sinteticos de 2 km.\\PEnvelope parabolico inclui flecha e alturas de fixacao assumidas; perfil nao serve para locacao ou liberacao de travessias.\\PEscala grafica vertical exagerada 100x; nao usar escala do papel para medir distancias.", "x: progressiva (km) | z: elevacao sintetica (m) | curva vermelha: 75 °C/0 m/s | verde: 20 °C/1 m/s | vao: 300 m"),
+        ("03_vano_critico_envelope_flecha", "VAO NOMINAL E ENVELOPES DE FLECHA", "CAA Drake 795 kcmil em tres pares representativos de temperatura e vento", "Modelo parabolico com compatibilidade elastica de um vao e vento transversal equivalente; catenaria completa, creep, vibracao e estados finais nao substituidos.\\PAltura livre de 8 m e criterio ilustrativo, sujeito a local e norma aplicavel; ventos mecanicos sao cenarios uniformes sinteticos, nao vento de projeto.", "20/0: 20 °C e 0 m/s | 45/15: 45 °C e 15 m/s | 75/30: 75 °C e 30 m/s"),
+        ("04_torre_suspensao", "TORRE DE SUSPENSAO - ELEVACAO E PLANTA", "Estrutura conceitual para feixe duplo CAA Drake em 138 kV", "Geometria e perfis sao conceituais; nao ha verificacao estrutural, fadiga, montagem ou fundacao.\\PAltura de 38 m e dimensoes preliminares de estudo.", "S: suspensao | fases em feixe 2x | OPGW: guarda optico | H: altura assumida"),
         ("05_torre_ancoragem", "TORRE DE ANCORAGEM - ELEVACAO E PLANTA", "Estrutura de retencao para terminacao e seccionamento do trecho", "Estrutura nao dimensionada para cargas de ruptura, angulos reais, vento ou montagem.\\PArranjo de ferragens deve ser confirmado pelo projeto mecanico especifico.", "A: ancoragem | CA: cadeia de ancoragem | T: tracao longitudinal | OPGW: cabo guarda"),
         ("06_cadeias_isoladores_ferragens", "CADEIAS DE ISOLADORES E FERRAGENS", "Suspensao, ancoragem, grampo de suspensao, amortecedor e OPGW", "Contagem de discos, distancia de escoamento e ferragens sao esquematicas.\\PCoordenacao de isolamento depende de poluicao, altitude, sobretensoes e especificacao do sistema.", "IS: isolador | GS: grampo suspensao | GA: grampo ancoragem | AHD: amortecedor"),
         ("07_arranjo_condutores_distancias", "ARRANJO DE FASES E DISTANCIAS GEOMETRICAS", "Configuracao horizontal de circuito simples com cabo(s) guarda", "Geometria de 7,5 m entre fases e altura media adotada para estimativas.\\PDistancias eletricas e afastamentos devem ser validados pelo corredor e requisitos vigentes.", "GMD: distancia media geometrica | GMR: raio medio geometrico | F1-F3: fases"),
@@ -72,7 +73,7 @@ SHEETS: dict[str, list[dict[str, str]]] = {
     ],
     "p25": [
         ("01_diagrama_unifilar", "UNIFILAR DA USINA DE COGERACAO", "Gerador 25 MW / 13,8 kV, transformador elevador e conexao em 138 kV", "Geracao bruta de 25 MW; auxiliares estimados em 2,2 MW; exportacao liquida de 22,8 MW.\\PTransformador de 40 MVA; barra de geracao 13,8 kV e POI de 138 kV.", "G1: gerador 32 MVA | T1: 40 MVA, 13,8/138 kV | Qaux: auxiliares | POI: conexao"),
-        ("02_implantacao_casa_maquinas", "IMPLANTACAO ELETRICA DA CASA DE MAQUINAS", "Biomassa, caldeira, turbina, gerador, auxiliares e patio do transformador", "Layout conceitual sem levantamento arquitetonico, cargas de incendio ou ventilacao calculadas.\\PRotas de cabos, vapor e biomassa devem passar por coordenacao multidisciplinar.", "CB: caldeira | TG: turbina-gerador | TR: transformador | P: bombas | V: ventiladores"),
+        ("02_implantacao_casa_maquinas", "IMPLANTACAO ELETRICA DA CASA DE MAQUINAS", "Planta conceitual cotada em coordenadas locais; bloco fisico em mm mostrado a 1:500", "Dimensoes de predios e equipamentos sao hipoteses de envelope, sem levantamento ou dados de fabricante.\\PRotas de cabo, vapor, agua, incendio, ventilacao e manutencao precisam de coordenacao multidisciplinar.", "CB1: caldeira | TG1: conjunto turbina-gerador | linha cinza: vapor | eixo TV1/G1: acoplamento mecanico | T1: elevador 40 MVA | QSA: auxiliares | origem: canto sudoeste"),
         ("03_layout_gerador_auxiliares", "GERADOR E EQUIPAMENTOS AUXILIARES", "Vista em planta e corte da linha de eixo, excitatriz e auxiliares principais", "Gerador sincronico de 32 MVA, 13,8 kV, 2 polos; rotacao sincrona de 3600 rpm.\\PDimensoes de carcaca e base nao fornecidas por fabricante.", "G1: gerador | EX: excitatriz | M1: bomba | F1: ventilador | 3~: trifasico"),
         ("04_transformador_conexao_rede", "TRANSFORMADOR ELEVADOR E CONEXAO A REDE", "Transformador 13,8/138 kV, bays de geracao e de linha", "Transformador 40 MVA com impedancia de 12% assumida.\\PProtecao, aterramento do neutro, isolamento e coordenacao dependem do arranjo real.", "T1: elevador | QG/QP: disjuntores | TC/TP: medicao | LA: para-raios"),
         ("05_sistema_excitacao_avr", "SISTEMA DE EXCITACAO E AVR", "Medicao de tensao, regulador automatico, limitadores e campo do gerador", "Blocos funcionais representativos; parametros de AVR sao valores de estudo, sem ensaio de resposta.\\PExcitacao real deve incluir limitadores e requisitos do fabricante e do operador.", "AVR: regulador de tensao | PT: TP | CT: TC | OEL/UEL: limitadores | Efd: campo"),
@@ -225,7 +226,15 @@ def table(layout, x: float, y: float, widths: list[float], row_h: float, headers
 
 def add_sheet_frame(root: Path, config: dict, project_id: str, project_title: str, number: int, filename: str, title: str, subtitle: str, notes: str, legend: str, scale: str = "S/ESC."):
     geom = SheetGeometry.from_config(config)
-    doc = configure_document(config, limits=(geom.width, geom.height))
+    project_number = project_id.split("-", 1)[0]
+    color_key = f"p{project_number}"
+    if color_key not in config.get("project_layer_colors", {}):
+        raise KeyError(f"Paleta ACI ausente em portfolio.toml: project_layer_colors.{color_key}")
+    doc = configure_document(
+        config,
+        limits=(geom.width, geom.height),
+        layer_color_overrides=config["project_layer_colors"][color_key],
+    )
     md = doc.ezdxf_metadata()
     md["PORTFOLIO_PROJECT"] = project_id
     md["PORTFOLIO_SHEET"] = f"{number:02d}/10"
@@ -440,14 +449,14 @@ def d23_06(m, p):
     panel(m, 28, 182, 105, 61, "ZONA 1 - T1", "87T / REF")
     panel(m, 151, 182, 105, 61, "ZONA 2 - B1", "87B / 50BF")
     panel(m, 274, 182, 114, 61, "ZONA 3 - FORNO", "50/51 / 49 / 46")
-    transformer(m, 80, 159, "T1", "138/34,5 kV")
-    ln(m, 80, 154, 80, 128, "05_POTENCIA")
-    ln(m, 80, 128, 206, 128, "05_POTENCIA", 0.7)
+    transformer(m, 292, 159, "T1", "138/34,5 kV")
+    ln(m, 292, 154, 292, 128, "05_POTENCIA")
+    ln(m, 292, 128, 206, 128, "05_POTENCIA", 0.7)
     tc(m, "BARRA B1 - 34,5 kV", 206, 132, 1.4, "05_POTENCIA", TITLE_STYLE)
-    ln(m, 206, 128, 330, 128, "05_POTENCIA", 0.7)
-    breaker(m, 330, 151, "52-F1")
-    ln(m, 330, 144, 330, 128, "05_POTENCIA")
-    for x in (80,206,330):
+    ln(m, 206, 128, 372, 128, "05_POTENCIA", 0.7)
+    breaker(m, 352, 151, "52-F1")
+    ln(m, 352, 144, 352, 128, "05_POTENCIA")
+    for x in (292,206,352):
         circle(m, x, 128, 2.3, "07_INSTRUMENTACAO")
         ln(m, x, 125.5, x, 113, "07_INSTRUMENTACAO")
         rect(m, x-22, 102, x+22, 113, "07_INSTRUMENTACAO")
@@ -457,7 +466,7 @@ def d23_06(m, p):
         ln(m, x, 213, x, 194, "07_INSTRUMENTACAO")
         ln(m, x, 194, x+7, 194, "07_INSTRUMENTACAO")
         ln(m, x+7, 194, x+7, 182, "07_INSTRUMENTACAO")
-    tc(m, "BLOQUEIO 86 E INTERTRAVAMENTO DE ABERTURA", 205, 171, 1.25, "06_COMANDO", TITLE_STYLE)
+    tc(m, "BLOQUEIO 86 E INTERTRAVAMENTO DE ABERTURA", 322, 171, 1.15, "06_COMANDO", TITLE_STYLE)
 
 
 def d23_07(m, p):
@@ -466,7 +475,7 @@ def d23_07(m, p):
     ln(m, 105, 214, 105, 190)
     breaker(m, 105, 181, "52-S")
     ln(m, 105, 174, 105, 160)
-    transformer(m, 105, 149, "TS", "34,5 / 1,2 kV")
+    transformer(m, 105, 149, "TS", f"34,5 / {p['furnace_secondary_voltage_kv']:.1f} kV")
     ln(m, 105, 144, 105, 134)
     rect(m, 54, 108, 164, 134, "04_EQUIPAMENTOS")
     tc(m, "REATANCIA DE ACOPLAMENTO", 109, 125, 1.25, "04_EQUIPAMENTOS", TITLE_STYLE)
@@ -485,7 +494,27 @@ def d23_07(m, p):
     equip(m, 306, 147, 72, 48, "CTRL", "CONTROLE Q/V", "droop + limitador")
     for x1,y1,x2,y2 in ((282,137,306,160),(282,124,306,154),(378,171,386,214)):
         arrow(m,x1,y1,x2,y2,"07_INSTRUMENTACAO",1.6)
-    table(m, 190, 270, [46,44,47,46], 9, ["ITEM", "VALOR", "UNID.", "BASE"], [["Q filtros", "7,50", "MVAr", "fundamental"],["Q STATCOM", "±12,5", "MVAr", "dinamico"],["Q alvo", "15,06", "MVAr", "fp 0,95"]], 1.05)
+    p_furnace = p["furnace_transformer_mva"] * p["furnace_power_factor"]
+    q_furnace = p["furnace_transformer_mva"] * math.sin(math.acos(p["furnace_power_factor"]))
+    p_aux = p["auxiliary_active_mw"]
+    q_aux = p_aux * math.tan(math.acos(p["auxiliary_power_factor"]))
+    p_total = p_furnace + p_aux
+    q_raw = q_furnace + q_aux
+    q_target = p_total * math.tan(math.acos(p["target_power_factor"]))
+    q_statcom = max(0.0, q_raw - p["filter_total_mvar"] - q_target)
+    fmt = lambda value: f"{value:.2f}".replace(".", ",")
+    table(
+        m, 190, 270, [46,44,47,46], 8.0,
+        ["ITEM", "VALOR", "UNID.", "BASE"],
+        [
+            ["P total", fmt(p_total), "MW", "forno + aux."],
+            ["Q bruta", fmt(q_raw), "MVAr", "cargas"],
+            ["Q filtros", fmt(p["filter_total_mvar"]), "MVAr", "hipotese"],
+            ["Q alvo PCC", fmt(q_target), "MVAr", f"FP {p['target_power_factor']:.2f}"],
+            ["Q STATCOM req.", fmt(q_statcom), "MVAr", f"lim. ±{fmt(p['statcom_limit_mvar'])}"],
+        ],
+        1.0,
+    )
     tc(m, "CONTROLE DE CORRENTE dq, PLL E LIMITACAO DE CORRENTE - REPRESENTACAO FUNCIONAL", 245, 104, 1.0, "06_COMANDO")
 
 
@@ -493,7 +522,11 @@ def d23_08(m, p):
     ln(m, 36, 220, 385, 220, "05_POTENCIA", 0.7)
     tc(m, "BARRA 34,5 kV - DERIVACOES DE FILTRO", 210, 226, 1.5, "05_POTENCIA", TITLE_STYLE)
     xs = [92,205,318]
-    names = [("F5", "3,0 MVAr", 5),("F7", "2,0 MVAr", 7),("HP", "2,5 MVAr", 11)]
+    names = [
+        ("F5", f"{p['filter_5th_mvar']:.1f}".replace(".", ",") + " MVAr", 5),
+        ("F7", f"{p['filter_7th_mvar']:.1f}".replace(".", ",") + " MVAr", 7),
+        ("HP", f"{p['filter_highpass_mvar']:.1f}".replace(".", ",") + " MVAr", 11),
+    ]
     for x,(name,rating,harm) in zip(xs,names):
         ln(m, x, 220, x, 205)
         breaker(m, x, 197, "52-"+name)
@@ -516,7 +549,7 @@ def d23_08(m, p):
             tc(m, "R", x, 142, 1.0, "06_COMANDO")
         tc(m, f"{name}: {rating}", x, 130, 1.2, "02_TEXTO", TITLE_STYLE)
         tc(m, f"sintonia {harm}a ordem (premissa)", x, 125, 1.0)
-    table(m, 45, 270, [44,37,40,40,42], 8.5, ["RAMO", "Q1", "FUND.", "SINTONIA", "STATUS"], [["F5", "3,0 MVAr", "34,5 kV", "5a", "premissa"],["F7", "2,0 MVAr", "34,5 kV", "7a", "premissa"],["HP", "2,5 MVAr", "34,5 kV", "amortec.", "premissa"]], 1.0)
+    table(m, 45, 270, [44,37,40,40,42], 8.5, ["RAMO", "Q1", "FUND.", "SINTONIA", "STATUS"], [["F5", names[0][1], "34,5 kV", "5a", "premissa"],["F7", names[1][1], "34,5 kV", "7a", "premissa"],["HP", names[2][1], "34,5 kV", "amortec.", "premissa"]], 1.0)
     tc(m, "ESPECTRO DE CORRENTE INJETADA ASSUMIDO", 210, 113, 1.25, "07_INSTRUMENTACAO", TITLE_STYLE)
     for i,(order,pu) in enumerate(zip(p["harmonic_orders"],p["harmonic_current_pu"])):
         x=248+i*27
@@ -603,31 +636,60 @@ def d24_01(m, p):
 def d24_02(m, p):
     x0,y0,w,h=43,124,330,104
     rect(m,x0-5,y0-6,x0+w+5,y0+h+23,"11_ARQUITETURA")
-    tc(m,"PERFIL LONGITUDINAL - DADOS DE ELEVACAO SINTETICOS",210,250,1.5,"11_ARQUITETURA",TITLE_STYLE)
-    pts=[]
-    for km,z in zip(p["route_km"],p["route_elevation_m"]):
-        pts.append((x0+km/30*w,y0+(z-90)*1.1))
-    poly(m,pts,"11_ARQUITETURA",False,0.55)
+    tc(m,"PERFIL LONGITUDINAL - TERRENO FICTICIO E CONDUTORES CALCULADOS",210,250,1.8,"11_ARQUITETURA",TITLE_STYLE)
+    def page_x(km): return x0+km/30*w
+    def page_y(z): return y0+(z-90)*1.1
+    terrain=[(page_x(km),page_y(z)) for km,z in zip(p["route_km"],p["route_elevation_m"])]
+    poly(m,terrain,"11_ARQUITETURA",False,0.55)
+    # All 100 spans are sampled from the same parameterized compatibility model
+    # used by P24-03 and the MATLAB result table.
+    span=p["span_m"]
+    hot_sag=sag_values(p,75.0,0.0)[0]
+    reference_sag=sag_values(p,20.0,1.0)[0]
+    for s in range(100):
+        km0=s*span/1000
+        km1=(s+1)*span/1000
+        z0=interp_profile(p,km0)
+        z1=interp_profile(p,km1)
+        xs_hot=[]; ys_hot=[]; xs_ref=[]; ys_ref=[]
+        for j in range(11):
+            u=j/10
+            km=km0+(km1-km0)*u
+            ground=z0*(1-u)+z1*u
+            zhot=ground+p["mean_conductor_height_m"]-hot_sag*4*u*(1-u)
+            zref=ground+p["mean_conductor_height_m"]-reference_sag*4*u*(1-u)
+            xs_hot.append(page_x(km)); ys_hot.append(page_y(zhot))
+            xs_ref.append(page_x(km)); ys_ref.append(page_y(zref))
+        poly(m,list(zip(xs_hot,ys_hot)),"05_POTENCIA",False,0.55)
+        poly(m,list(zip(xs_ref,ys_ref)),"08_CABOS",False,0.4)
     for s in range(101):
-        km=s*0.3
-        x=x0+km/30*w
-        # linear interpolation on the explicitly stored synthetic profile
-        idx=min(int(km/2),14)
-        f=(km-p["route_km"][idx])/2
-        z=p["route_elevation_m"][idx]*(1-f)+p["route_elevation_m"][idx+1]*f
-        y=y0+(z-90)*1.1
-        ln(m,x,y,x,y+8,"03_COTAS")
+        km=s*span/1000
+        x=page_x(km)
+        z=interp_profile(p,km)
+        y=page_y(z)
+        ln(m,x,y,x,y+5,"03_COTAS")
+    for km in p["anchor_stations_km"]:
+        x=page_x(km); y=page_y(interp_profile(p,km))
+        ln(m,x,y,x,y+p["tower_height_m"]*1.1,"04_EQUIPAMENTOS",0.65)
+        tc(m,"A",x,y+p["tower_height_m"]*1.1+3,1.0,"04_EQUIPAMENTOS",TITLE_STYLE)
     for km in range(0,31,2):
         x=x0+km/30*w
         ln(m,x,y0-2,x,y0+h,"03_COTAS")
-        tc(m,f"{km:02d}",x,y0-5,0.85,"03_COTAS")
+        tc(m,f"{km:02d}",x,y0-5,1.25,"03_COTAS")
     for i in range(6):
-        y=y0+i*18
+        y=y0+i*16.5
         ln(m,x0-3,y,x0+w+3,y,"03_COTAS")
-        tc(m,f"{90+i*15} m",x0-4,y,0.9,"03_COTAS")
-    tc(m,"elevacao sintetica (m)",35,183,1.0,"03_COTAS")
-    tc(m,"progressiva (km)",210,114,1.0,"03_COTAS")
-    table(m, 47, 245, [34,43,43,45], 7.5, ["ESTACA", "ELEVACAO", "ESTRUTURA", "VAO"], [["0+000", "100 m", "A0 terminal", "-"],["15+000", "104 m", "A15 ancoragem", "300 m"],["30+000", "107 m", "B0 terminal", "300 m"]], 0.95)
+        tc(m,f"{90+i*15} m",x0-4,y,1.15,"03_COTAS")
+    tc(m,"elevacao sintetica (m)",35,183,1.25,"03_COTAS")
+    tc(m,"progressiva (km)",210,114,1.25,"03_COTAS")
+    tc(m,"V = 1:909 | H = 1:90 909 | exagero vertical = 100x",210,111,1.2,"13_NOTAS")
+    tc(m,"ANCORAGENS / ESTACAS: 0+000 | 9+900 | 20+100 | 30+000; vao final ate proxima estrutura = 0 m",210,101,1.2,"13_NOTAS")
+    tc(m,"VERMELHO: 75 °C / 0 m/s",337,218,1.3,"05_POTENCIA",TITLE_STYLE)
+    tc(m,"VERDE: 20 °C / 1 m/s",337,213,1.3,"08_CABOS",TITLE_STYLE)
+
+
+def interp_profile(p,km):
+    return float(np.interp(km,p["route_km"],p["route_elevation_m"]))
 
 
 def sag_values(p, temp_c, wind_m_s):
@@ -659,23 +721,26 @@ def sag_values(p, temp_c, wind_m_s):
     sag_v=wv*span**2/(8*hh)
     sag_r=we*span**2/(8*hh)
     t_support=math.hypot(hh,we*span/2)
-    return sag_v,sag_r,hh,t_support
+    sag_h=ww*span**2/(8*hh)
+    return sag_v,sag_r,hh,t_support,sag_h
 
 
 def d24_03(m, p):
     x0,x1,y0,y1=62,354,127,224
     rect(m,42,112,373,251,"11_ARQUITETURA")
-    tc(m,"VAO NOMINAL DE 300 m - MODELO PARABOLICO",210,260,1.35,"11_ARQUITETURA",TITLE_STYLE)
+    tc(m,"VAO NOMINAL DE 300 m - MODELO PARABOLICO",210,260,1.8,"11_ARQUITETURA",TITLE_STYLE)
     for y in (130,160,190,220):
         ln(m,x0,y,x1,y,"03_COTAS")
         tc(m,f"{y-120:02d} m",52,y,0.9,"03_COTAS")
     for x in (x0,x1):
         ln(m,x,132,x,225,"04_EQUIPAMENTOS",0.6)
         circle(m,x,225,2,"04_EQUIPAMENTOS")
-    styles=[(20,0,"05_POTENCIA"),(45,15,"06_COMANDO"),(75,25,"08_CABOS")]
+    styles=[(p["mechanical_conductor_temperatures_c"][0],p["mechanical_wind_speeds_m_s"][0],"05_POTENCIA"),
+            (p["mechanical_conductor_temperatures_c"][1],p["mechanical_wind_speeds_m_s"][1],"06_COMANDO"),
+            (p["mechanical_conductor_temperatures_c"][2],p["mechanical_wind_speeds_m_s"][2],"08_CABOS")]
     details=[]
     for temp,wind,layer in styles:
-        sag,_,h,tens=sag_values(p,temp,wind)
+        sag,_,h,tens,sag_horizontal=sag_values(p,temp,wind)
         pts=[]
         for i in range(41):
             u=i/40
@@ -683,14 +748,14 @@ def d24_03(m, p):
             x=x0+(x1-x0)*u
             pts.append((x,y))
         poly(m,pts,layer,False,0.45)
-        details.append((f"{temp}°C / {wind} m/s",f"flecha {sag:.2f} m; H {h/1000:.1f} kN"))
+        details.append((f"{temp}°C / {wind} m/s",f"f. vert. {sag:.2f} m; f. transv. {sag_horizontal:.2f} m; H {h/1000:.1f} kN"))
     tc(m,"TERRENO / REFERENCIA DE ALTURA LIVRE",210,139,1.0,"11_ARQUITETURA")
     ln(m,60,137,356,137,"11_ARQUITETURA")
     tc(m,"F1",62,230,1.1,"04_EQUIPAMENTOS",TITLE_STYLE)
     tc(m,"F2",354,230,1.1,"04_EQUIPAMENTOS",TITLE_STYLE)
-    table(m,70,251,[47,98],8,["CONDICAO","RESULTADO MECANICO"],[[a,b] for a,b in details],1.0)
+    table(m,70,251,[47,98],8,["CONDICAO","RESULTADO MECANICO"],[[a,b] for a,b in details],1.4)
     dim_h(m,x0,x1,121,127,"300 m")
-    tc(m,"Envelopes ilustrativos; alturas e afastamentos reais dependem da topografia e das regras aplicaveis",210,106,1.05,"13_NOTAS")
+    tc(m,"Envelopes ilustrativos; alturas e afastamentos reais dependem da topografia e das regras aplicaveis",210,106,1.2,"13_NOTAS")
 
 
 def draw_tower(m,p,anchor=False):
@@ -740,9 +805,9 @@ def draw_tower(m,p,anchor=False):
         rect(m,cx+sgn*width0/2-17,base_y-11,cx+sgn*width0/2-7,base_y-7,"04_EQUIPAMENTOS")
     dim_v(m,111,base_y,top_y,150,"38 m")
     dim_h(m,cx-width0/2,cx+width0/2,base_y-17,base_y,"base 19,0 m")
-    panel(m,263,184,115,51,"DADOS DE ESTUDO","circuito simples; 3 fases; 2 guarda")
-    for i,label in enumerate(("Altura total: 38 m","Vao de referencia: 300 m","Condutor: 138-A conceitual","Sem calculo estrutural")):
-        t(m,"• "+label,269,218-i*8,1.1,"02_TEXTO")
+    panel(m,263,184,115,51,"DADOS DE ESTUDO","1 circuito; 3 fases; 2 guarda")
+    for i,label in enumerate(("Altura total: 38 m","Vao de referencia: 300 m",p["conductor_name"],"Feixe: 2x / 0,4 m; estrutura nao verificada")):
+        t(m,"• "+label,269,218-i*8,1.5,"02_TEXTO")
 
 
 def d24_06(m,p):
@@ -775,28 +840,33 @@ def d24_06(m,p):
 
 def d24_07(m,p):
     rect(m,36,114,388,248,"11_ARQUITETURA")
-    tc(m,"SECAO TRANSVERSAL - UM CIRCUITO / GEOMETRIA ADOTADA",212,240,1.5,"11_ARQUITETURA",TITLE_STYLE)
+    tc(m,"SECAO TRANSVERSAL - FEIXE DUPLO POR FASE",212,240,2.0,"11_ARQUITETURA",TITLE_STYLE)
     tower_y=135
     cx=190
     ln(m,cx-5,tower_y,cx-5,226,"04_EQUIPAMENTOS",0.6)
     ln(m,cx+5,tower_y,cx+5,226,"04_EQUIPAMENTOS",0.6)
     for y,arm in ((218,65),(192,80),(166,95)):
         ln(m,cx-arm/2,y,cx+arm/2,y,"04_EQUIPAMENTOS",0.5)
-    xph=[cx-39,cx,cx+39]
+    phase_scale=5.2
+    xph=[cx+(d-(p["phase_spacing_m"][0]+p["phase_spacing_m"][1]+p["phase_spacing_m"][2])/3)*phase_scale for d in p["phase_spacing_m"]]
+    bundle_offset=p["bundle_spacing_m"]*phase_scale/2
     for i,x in enumerate(xph,1):
-        circle(m,x,166,3,"05_POTENCIA")
-        tc(m,f"F{i}",x,157,1.3,"05_POTENCIA",TITLE_STYLE)
+        for dx in (-bundle_offset,bundle_offset):
+            circle(m,x+dx,166,1.8,"05_POTENCIA")
+        tc(m,f"F{i} x2",x,157,1.2,"05_POTENCIA",TITLE_STYLE)
     for x in (cx-25,cx+25):
         circle(m,x,218,2.3,"08_CABOS")
-    tc(m,"OPGW / GUARDA",cx,224,1.0,"08_CABOS")
-    dim_h(m,xph[0],xph[1],181,166,"7,5 m")
-    dim_h(m,xph[1],xph[2],181,166,"7,5 m")
-    dim_v(m,320,135,166,190,"22 m - altura media")
+    tc(m,"OPGW / GUARDA",cx,224,1.3,"08_CABOS")
+    dim_h(m,xph[0],xph[1],181,166,f"{p['phase_spacing_m'][1]-p['phase_spacing_m'][0]:.1f} m")
+    dim_h(m,xph[1],xph[2],181,166,f"{p['phase_spacing_m'][2]-p['phase_spacing_m'][1]:.1f} m")
+    dim_v(m,320,135,166,190,f"{p['mean_conductor_height_m']:.0f} m - altura de fixacao")
     ln(m,65,135,318,135,"11_ARQUITETURA")
     tc(m,"terreno de referencia",300,130,0.95,"11_ARQUITETURA")
-    tc(m,"D = [7,5; 7,5; 15,0] m",78,210,1.2,"12_LEGENDA")
-    tc(m,"GMD = (D12·D23·D31)^(1/3) = 9,45 m",91,201,1.2,"12_LEGENDA")
-    tc(m,"GMR adotado = 10,2 mm; raio externo = 12,575 mm",106,192,1.1,"12_LEGENDA")
+    gmd=math.prod([abs(p["phase_spacing_m"][1]-p["phase_spacing_m"][0]),abs(p["phase_spacing_m"][2]-p["phase_spacing_m"][1]),abs(p["phase_spacing_m"][2]-p["phase_spacing_m"][0])])**(1/3)
+    gmrb=math.sqrt(p["conductor_gmr_m"]*p["bundle_spacing_m"])
+    tc(m,f"Feixe: {p['bundle_subconductors']}x CAA; afastamento {p['bundle_spacing_m']:.2f} m",78,210,1.5,"12_LEGENDA")
+    tc(m,f"GMD = {gmd:.2f} m; GMR equivalente feixe = {gmrb*1000:.1f} mm",91,201,1.5,"12_LEGENDA")
+    tc(m,f"Raio externo = {p['conductor_diameter_m']*500:.2f} mm; condutor {p['conductor_name']}",106,192,1.3,"12_LEGENDA")
     panel(m,65,145,98,30,"DISTANCIAS", "valores geometricos de estudo")
     panel(m,244,145,105,30,"BLINDAGEM", "angulo e cabos guarda a validar")
 
@@ -904,27 +974,112 @@ def d25_01(m,p):
 
 
 def d25_02(m,p):
-    rect(m,33,111,390,252,"11_ARQUITETURA")
-    tc(m,"IMPLANTACAO FUNCIONAL - FLUXOS ELETRICOS E DE PROCESSO",211,244,1.45,"11_ARQUITETURA",TITLE_STYLE)
-    zones=[(44,174,63,49,"PATIO DE\nBIOMASSA"),(118,174,61,49,"CALDEIRA\nCB1"),(192,174,66,49,"CASA DE\nTURBINA"),(272,174,51,49,"GERADOR\nG1"),(337,174,39,49,"PATIO\n138 kV")]
-    for x,y,w,h,label in zones:
-        rect(m,x,y,x+w,y+h,"04_EQUIPAMENTOS")
-        lines=label.split("\n")
-        tc(m,lines[0],x+w/2,y+h/2+3,1.4,"04_EQUIPAMENTOS",TITLE_STYLE)
-        if len(lines)>1: tc(m,lines[1],x+w/2,y+h/2-4,1.2,"02_TEXTO")
-    for a,b in ((107,118),(179,192),(258,272),(323,337)):
-        arrow(m,a,199,b,199,"05_POTENCIA",1.7)
-    tc(m,"biomassa",112,204,0.95,"11_ARQUITETURA")
-    tc(m,"vapor",184,204,0.95,"11_ARQUITETURA")
-    tc(m,"eixo",265,204,0.95,"05_POTENCIA")
-    tc(m,"13,8 kV",330,204,0.95,"05_POTENCIA")
-    equip(m,62,126,52,29,"TR1","TRANSFORMADOR","servicos auxiliares")
-    equip(m,142,126,52,29,"P1","BOMBA","agua / condensado")
-    equip(m,222,126,52,29,"F1","VENTILADOR","tiragem")
-    equip(m,302,126,52,29,"QSA","QSA","2,2 MW agregado")
-    for a,b in ((114,142),(194,222),(274,302)):
-        ln(m,a,141,b,141,"10_ELETROCALHAS")
-    dim_h(m,44,376,119,126,"implantacao esquematica - sem escala de obra")
+    # A planta conserva geometria física em mm dentro de um bloco reutilizável;
+    # a referência inserida na folha usa 1:500 (1 mm no papel = 500 mm no modelo).
+    doc=m.doc
+    block_name="P25_IMPLANTACAO_COGERACAO_MM"
+    b=doc.blocks.new(name=block_name,base_point=(0,0))
+    def bl(x1,y1,x2,y2,layer="11_ARQUITETURA",linetype=None):
+        attrs={"layer":layer}
+        if linetype: attrs["linetype"]=linetype
+        b.add_line((x1,y1),(x2,y2),dxfattribs=attrs)
+    def br(x1,y1,x2,y2,layer="04_EQUIPAMENTOS",linetype=None):
+        pts=[(x1,y1),(x2,y1),(x2,y2),(x1,y2)]
+        attrs={"layer":layer,"closed":True}
+        if linetype: attrs["linetype"]=linetype
+        b.add_lwpolyline(pts,dxfattribs=attrs)
+    def bt(text,x,y,height=1100,layer="02_TEXTO",rotation=0):
+        entity=b.add_text(text,dxfattribs={"height":height,"layer":layer,"style":TEXT_STYLE,"rotation":rotation})
+        entity.set_placement((x,y),align=TextEntityAlignment.MIDDLE_CENTER)
+    def dh(x1,x2,y,base_y,label):
+        bl(x1,base_y,x1,y,"03_COTAS"); bl(x2,base_y,x2,y,"03_COTAS"); bl(x1,y,x2,y,"03_COTAS")
+        for x,sign in ((x1,1),(x2,-1)):
+            bl(x,y,x+sign*900,y+350,"03_COTAS"); bl(x,y,x+sign*900,y-350,"03_COTAS")
+        bt(label,(x1+x2)/2,y+900,1050,"03_COTAS")
+    def dv(y1,y2,x,base_x,label):
+        bl(base_x,y1,x,y1,"03_COTAS"); bl(base_x,y2,x,y2,"03_COTAS"); bl(x,y1,x,y2,"03_COTAS")
+        for y,sign in ((y1,1),(y2,-1)):
+            bl(x,y,x+350,y+sign*900,"03_COTAS"); bl(x,y,x-350,y+sign*900,"03_COTAS")
+        bt(label,x-1100,(y1+y2)/2,1050,"03_COTAS",90)
+
+    # Terreno sintético de 100 x 65 m; origem local declarada no canto sudoeste.
+    br(0,0,100000,65000,"11_ARQUITETURA")
+    bt("N",50000,62500,1500,"03_COTAS")
+    bl(50000,58500,50000,61000,"03_COTAS")
+    bl(50000,61000,49250,59500,"03_COTAS"); bl(50000,61000,50750,59500,"03_COTAS")
+    bt("ACESSO / VIA INTERNA 6 m",50000,3500,1050,"11_ARQUITETURA")
+    bl(0,6500,100000,6500,"11_ARQUITETURA","DASHED")
+
+    # Envelope de armazenagem de biomassa e prédio da caldeira.
+    br(8000,8000,33000,22000,"11_ARQUITETURA")
+    bt("PATIO COBERTO DE BIOMASSA",20500,17500,1050)
+    bt("25 x 14 m - envelope assumido",20500,12500,900,"02_TEXTO")
+    br(8000,26000,33000,56000,"11_ARQUITETURA")
+    bt("PREDIO DA CALDEIRA CB1",20500,52000,1100)
+    br(13000,33000,28000,47000,"04_EQUIPAMENTOS")
+    bt("CALDEIRA",20500,42000,1250,"04_EQUIPAMENTOS",90)
+    br(10000,28500,13000,32500,"04_EQUIPAMENTOS")
+    bt("ALIMENTADOR",11500,30500,750,"02_TEXTO",90)
+
+    # Casa de máquinas: turbina, acoplamento, gerador e condensador em eixo comum.
+    br(36000,14000,74000,46000,"11_ARQUITETURA")
+    bt("CASA DE MAQUINAS - 38 x 32 m",55000,43500,1050,"11_ARQUITETURA")
+    br(40000,27000,54000,35000,"04_EQUIPAMENTOS")
+    bt("TV1 - TURBINA",47000,32500,1050,"04_EQUIPAMENTOS")
+    bt("14 x 8 m",47000,29000,850,"02_TEXTO")
+    br(56000,28000,69000,34000,"04_EQUIPAMENTOS")
+    bt("G1 - GERADOR 25 MW",62500,32000,1050,"04_EQUIPAMENTOS")
+    bt("13,8 kV / 32 MVA*",62500,29500,850,"02_TEXTO")
+    bl(54000,31000,56000,31000,"11_ARQUITETURA")
+    br(41000,16500,53000,23000,"04_EQUIPAMENTOS")
+    bt("CONDENSADOR",47000,20000,850,"04_EQUIPAMENTOS")
+    br(42000,37000,49000,42000,"04_EQUIPAMENTOS")
+    bt("BOMBA DE ALIMENTACAO",45500,39500,700,"04_EQUIPAMENTOS")
+    # Folga de manutenção ilustrada, sem valor normativo.
+    br(38000,25000,71000,37000,"03_COTAS","DASHED")
+    bt("AREA DE MANUTENCAO - HIPOTESE",54500,25800,700,"03_COTAS")
+
+    # Equipamentos auxiliares, sala elétrica e pátio elevador fora da casa de máquinas.
+    br(40000,50000,56000,61000,"11_ARQUITETURA")
+    bt("AGUA / BOMBAS AUXILIARES",48000,57500,900)
+    br(73000,46000,95000,61000,"11_ARQUITETURA")
+    bt("SALA ELETRICA / QSA",84000,57500,1000)
+    br(76500,48500,92000,55500,"04_EQUIPAMENTOS")
+    bt("QSA / 2,2 MW (carga agregada)",84250,52000,800,"04_EQUIPAMENTOS")
+    br(82000,25000,97000,40000,"11_ARQUITETURA")
+    bt("PATIO T1 - 40 MVA",89500,37500,1000,"11_ARQUITETURA")
+    br(84000,28500,95000,36500,"04_EQUIPAMENTOS")
+    bt("T1 13,8/138 kV",89500,34000,850,"04_EQUIPAMENTOS")
+    bt("11 x 8 m - envelope",89500,30500,750,"02_TEXTO")
+    # Trincheira de potência G1-T1 e rota de controle para o QSA.
+    poly(b,[(69000,31000),(76000,31000),(82000,32500),(84000,32500)],"08_CABOS")
+    bt("ROTA DE CABOS CONCEITUAL PARA T1",80000,8800,850,"08_CABOS")
+    poly(b,[(69000,29500),(74000,29500),(74000,50500),(76500,52000)],"06_COMANDO")
+    bt("eletrocalha de controle",74500,41000,750,"06_COMANDO",90)
+    # Ligação de vapor representada separadamente do circuito elétrico.
+    poly(b,[(33000,43000),(36000,43000),(40000,35000)],"11_ARQUITETURA")
+
+    dh(0,100000,-2500,0,"100 m - limite sintetico")
+    dv(0,65000,103000,100000,"65 m - limite sintetico")
+    dh(8000,33000,23500,22000,"25 m")
+    dv(26000,56000,35000,33000,"30 m")
+    dh(36000,74000,11500,14000,"38 m")
+    dv(14000,46000,75500,74000,"32 m")
+    dh(82000,97000,41500,40000,"15 m")
+    bt("ORIGEM LOCAL (0,0) - canto sudoeste",12000,2500,850,"03_COTAS")
+    m.add_blockref(block_name,(90,117),dxfattribs={"xscale":1/500,"yscale":1/500,"zscale":1})
+
+    # Informações de projeto em espaço de folha; envelopes físicos permanecem no bloco em mm.
+    rect(m,305,174,405,252,"12_LEGENDA")
+    tc(m,"ENVELOPES DE ESTUDO",355,246,1.45,"12_LEGENDA",TITLE_STYLE)
+    ln(m,307,241,403,241,"12_LEGENDA")
+    rows=[("Terreno sintetico","100 x 65 m"),("Biomassa","25 x 14 m"),("Caldeira","25 x 30 m"),("Casa de maquinas","38 x 32 m"),("Sala eletrica","22 x 15 m"),("Pátio T1","15 x 15 m"),("G1","25 MW / 13,8 kV"),("T1","40 MVA / 138 kV")]
+    for index,(label,value) in enumerate(rows):
+        yy=235-index*7.2
+        tc(m,label,327,yy,1.25,"02_TEXTO")
+        tc(m,value,375,yy,1.25,"02_TEXTO")
+        if index<len(rows)-1: ln(m,307,yy-3.2,403,yy-3.2,"12_LEGENDA")
+    tc(m,"* placa de G1 assumida; dimensoes sem fabricante",355,179,0.95,"13_NOTAS")
 
 
 def d25_03(m,p):
@@ -1060,16 +1215,24 @@ def d25_08(m,p):
     ln(m,213,170,213,157)
     ln(m,213,157,362,157,"05_POTENCIA",0.7)
     tc(m,"ZONA T1 / POI",305,162,1.2,"05_POTENCIA",TITLE_STYLE)
-    for x,code in ((75,"87G"),(110,"64G"),(150,"40/32"),(180,"46/49"),(245,"87T"),(280,"50/51"),(320,"27/59"),(350,"81")):
-        circle(m,x,238,8,"07_INSTRUMENTACAO")
-        tc(m,code,x,238,1.0,"07_INSTRUMENTACAO",TITLE_STYLE)
-        ln(m,x,230,x,219,"07_INSTRUMENTACAO")
+    for x,code in ((75,"87G"),(110,"64G"),(150,"40/32"),(180,"46/49")):
+        circle(m,x,225,8,"07_INSTRUMENTACAO")
+        tc(m,code,x,225,1.0,"07_INSTRUMENTACAO",TITLE_STYLE)
+        ln(m,x,217,x,219,"07_INSTRUMENTACAO")
+    for x,code in ((245,"87T"),(280,"50/51"),(320,"27/59"),(350,"81")):
+        circle(m,x,172,8,"07_INSTRUMENTACAO")
+        tc(m,code,x,172,1.0,"07_INSTRUMENTACAO",TITLE_STYLE)
+        ln(m,x,164,x,157,"07_INSTRUMENTACAO")
     rect(m,67,119,361,145,"06_COMANDO")
     tc(m,"IED G1 / PROTECAO DE TRANSFORMADOR / 86G",214,136,1.4,"06_COMANDO",TITLE_STYLE)
     tc(m,"Saidas: abre 52G, bloqueia excitacao conforme filosofia e sinaliza eventos",214,126,1.05)
-    for x in (95,165,260,332):
-        ln(m,x,219,x,145,"07_INSTRUMENTACAO")
-    table(m,48,178,[42,48,48,52,46],7.5,["ANSI","FUNCAO","MEDICAO","ACAO","AJUSTE"],[["87G","diferencial","TCs estator","trip","pendente"],["64G","terra estator","neutro","alarme/trip","pendente"],["40","perda campo","V/I","trip","pendente"],["32","potencia reversa","P","trip","pendente"]],0.9)
+    for x in (95,165):
+        ln(m,x,211,x,145,"07_INSTRUMENTACAO")
+        circle(m,x,211,2.3,"07_INSTRUMENTACAO")
+    for x in (260,332):
+        ln(m,x,157,x,145,"07_INSTRUMENTACAO")
+        circle(m,x,157,2.3,"07_INSTRUMENTACAO")
+    table(m,48,267,[42,48,48,52,46],6.0,["ANSI","FUNCAO","MEDICAO","ACAO","AJUSTE"],[["87G","diferencial","TCs estator","trip","pendente"],["64G","terra estator","neutro","alarme/trip","pendente"],["40","perda campo","V/I","trip","pendente"],["32","potencia reversa","P","trip","pendente"]],0.82)
     tc(m,"Lista funcional nao constitui coordenacao de protecao",211,106,1.0,"13_NOTAS")
 
 
@@ -1100,10 +1263,17 @@ def d25_09(m,p):
 
 
 def d25_10(m,p):
-    rect(m,38,116,263,243,"11_ARQUITETURA")
+    rect(m,38,142,263,243,"11_ARQUITETURA")
     tc(m,"MALHA DE TERRA - CASA DE MAQUINAS E PATIO",150,236,1.4,"11_ARQUITETURA",TITLE_STYLE)
-    for x in range(56,251,18): ln(m,x,128,x,224,"08_CABOS",0.35)
-    for y in range(128,225,16): ln(m,56,y,251,y,"08_CABOS",0.35)
+    for x in range(56,252,18):
+        if 78 <= x <= 130 or 168 <= x <= 230:
+            ln(m,x,152,x,176,"08_CABOS",0.35)
+            ln(m,x,205,x,224,"08_CABOS",0.35)
+        else:
+            ln(m,x,152,x,224,"08_CABOS",0.35)
+    for y in (152,168,176,208,216,224): ln(m,56,y,251,y,"08_CABOS",0.35)
+    for y in (184,200):
+        for x1,x2 in ((56,78),(130,168),(230,251)): ln(m,x1,y,x2,y,"08_CABOS",0.35)
     equip(m,78,177,52,27,"G1","GERADOR","neutro e carcaça")
     equip(m,168,177,62,27,"T1","TRANSFORMADOR","tanque / neutro")
     for x,y in ((78,177),(130,177),(168,177),(230,177),(56,128),(251,128),(56,224),(251,224)):
@@ -1111,11 +1281,11 @@ def d25_10(m,p):
     ln(m,104,177,104,153,"08_CABOS")
     ln(m,199,177,199,153,"08_CABOS")
     ln(m,104,153,199,153,"08_CABOS")
-    tc(m,"BEP - BARRA EQUIPOTENCIAL",151,148,1.15,"08_CABOS")
+    tc(m,"BEP - BARRA EQUIPOTENCIAL",151,147,1.0,"08_CABOS")
     panel(m,278,175,105,59,"LIGACOES","gerador / neutro / trafo / trilhos")
     panel(m,278,118,105,44,"ESTUDOS EM ABERTO","solo / Icc / toque / passo")
     table(m,46,136,[50,53,52,50],7.5,["ITEM","PONTO","FUNCAO","STATUS"],[["N-G","G1","neutro","definir"],["T1","tanque","PE","ligar"],["M1","carcaça","PE","ligar"]],0.9)
-    dim_h(m,56,251,123,128,"malha indicativa")
+    tc(m,"malha indicativa",151,138,0.95,"08_CABOS")
     tc(m,"Compatibilizar com aterramento de alta tensao e SPDA",330,108,0.95,"13_NOTAS")
 
 
@@ -1140,11 +1310,16 @@ UNITS = {
     "filter_total_mvar":"MVAr", "filter_5th_mvar":"MVAr", "filter_7th_mvar":"MVAr", "filter_highpass_mvar":"MVAr",
     "filter_damping_ohm":"ohm", "bus_voltage_time_constant_s":"s", "statcom_time_constant_s":"s", "arc_fluctuation_pu":"pu",
     "voltage_kv":"kV", "length_km":"km", "span_m":"m", "span_count":"adimensional", "conductor_r20_ohm_km":"ohm/km",
-    "conductor_diameter_m":"m", "conductor_gmr_m":"m", "conductor_mass_kg_m":"kg/m", "conductor_ea_n":"N", "conductor_alpha_per_c":"1/K",
+    "conductor_rac75_ohm_km":"ohm/km", "conductor_diameter_m":"m", "conductor_gmr_m":"m", "conductor_mass_kg_m":"kg/m", "conductor_ea_n":"N", "conductor_alpha_per_c":"1/K",
     "conductor_rated_tensile_n":"N", "reference_temperature_c":"°C", "reference_horizontal_tension_n":"N", "resistance_alpha_per_c":"1/K",
+    "bundle_subconductors":"adimensional", "bundle_spacing_m":"m", "conductor_temperature_limit_c":"°C",
     "mean_conductor_height_m":"m", "shield_wire_height_m":"m", "tower_height_m":"m", "design_ground_clearance_m":"m", "rated_current_a":"A",
-    "air_density_kg_m3":"kg/m3", "drag_coefficient":"adimensional", "thermal_h_w_m2_c":"W/m2/K", "solar_flux_w_m2":"W/m2",
+    "wind_speeds_m_s":"m/s", "mechanical_wind_speeds_m_s":"m/s", "ambient_temperatures_c":"°C", "mechanical_conductor_temperatures_c":"°C",
+    "thermal_h_w_m2_c":"W/m2/K", "thermal_natural_h_w_m2_c":"W/m2/K", "thermal_reference_wind_m_s":"m/s",
+    "solar_flux_w_m2":"W/m2", "air_density_kg_m3":"kg/m3", "drag_coefficient":"adimensional",
     "solar_absorptivity":"pu", "ground_resistivity_ohm_m":"ohm.m", "ground_rod_length_m":"m", "ground_rod_diameter_m":"m",
+    "phase_spacing_m":"m", "route_km":"km", "route_elevation_m":"m", "route_bearing_deg":"°", "anchor_stations_km":"km",
+    "load_active_mw":"MW", "load_power_factor":"pu",
     "generator_active_mw":"MW", "generator_rating_mva":"MVA", "generator_power_factor":"pu", "generator_voltage_kv":"kV",
     "generator_efficiency":"pu", "grid_short_circuit_mva":"MVA", "power_factor_target":"pu", "capacitor_bank_mvar":"MVAr",
     "process_steam_thermal_mw":"MWth", "biomass_flow_t_h":"t/h", "biomass_lhv_mj_kg":"MJ/kg", "boiler_efficiency":"pu",
@@ -1201,8 +1376,8 @@ def main() -> int:
             title,subtitle,notes,legend=spec[1:]
             project_title={"p23":"Complexo siderurgico - EAF","p24":"Linha de transmissao 138 kV","p25":"Usina de cogeneracao a biomassa"}[key]
             project_meta=next(p for p in config["projects"] if p["path"]==slug)
-            doc,layout=add_sheet_frame(root,config,project_meta["id"],project_title,number,filename,title,subtitle,notes,legend,
-                "1:500" if (key,number) in (("p23",2),("p23",3),("p24",1),("p24",4),("p24",5),("p24",8),("p25",2),("p25",3)) else "S/ESC.")
+            sheet_scale="1:500" if key=="p25" and number==2 else "S/ESC."
+            doc,layout=add_sheet_frame(root,config,project_meta["id"],project_title,number,filename,title,subtitle,notes,legend,sheet_scale)
             DRAW[key][number-1](layout,params)
             prepare_deterministic_write(doc)
             source=base/"fonte"/filename

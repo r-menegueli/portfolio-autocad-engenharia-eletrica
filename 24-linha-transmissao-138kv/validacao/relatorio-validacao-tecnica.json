@@ -1,0 +1,48 @@
+{
+  "data": "2026-11-09",
+  "projeto": "P24",
+  "resultado": "parcial",
+  "base_de_parametros": "portfolio.toml",
+  "versoes": {
+    "MATLAB": "R2026a",
+    "Python": "3.14.7",
+    "ezdxf": "1.4.4",
+    "NumPy": "2.5.2",
+    "Matplotlib": "3.11.1",
+    "pytest": "9.1.1"
+  },
+  "verificacoes": {
+    "validador_estrutural": "aprovado em 2026-11-09; 0 erros e 0 avisos; escopo apenas estrutural DXF/PDF/PNG e checklist",
+    "pranchas_DXF_PDF_SVG_PNG": "10 folhas regeneradas; quatro ampliadas visualmente; sem teste de plotter nem abertura em AutoCAD GUI",
+    "tabelas_resultado": "9 casos eletricos; 900 linhas mecanicas; 9 casos termicos; 101 estruturas",
+    "testes_python": {
+      "arquivo": "validacao/test_resultados_p24.py",
+      "resultado": "4 passed",
+      "cobertura": [
+        "fluxo positivo-sequencia nominal pi e balanco de potencia",
+        "101 estruturas, comprimento total e estacas de ancoragem",
+        "flecha vertical/transversal/resultante, tracao e clearance em 900 linhas",
+        "balanco termico simplificado, ampacidade e margem em 9 condicoes"
+      ]
+    },
+    "MATLAB": "R2026a gravou tabelas numa execucao anterior, mas falhou durante exportacao grafica por falta de memoria. A versao atual de run_analysis.m e test_project_24.m ainda nao foram executados integralmente.",
+    "graficos": "6 PNGs recriados pelo fallback Python; nao sao apresentados como graficos MATLAB"
+  },
+  "resultados_de_triagem": {
+    "corrente_maxima_A": 650.7974,
+    "ampacidade_minima_feixe_A": 892.0442,
+    "margem_termica_minima_percentual": 27.0443,
+    "flecha_vertical_maxima_m": 9.0463,
+    "deslocamento_transversal_maximo_m": 6.553,
+    "tracao_maxima_no_apoio_kN": 32.7579,
+    "clearance_vertical_minimo_sintetico_m": 12.6787
+  },
+  "limites": [
+    "corredor, cotas, azimutes, clima e cargas sao sinteticos",
+    "modelo termico e simplificado e nao e implementacao IEEE 738 validada",
+    "modulo e expansao sao proxies de tabela T-ACSR sem equivalencia confirmada com o CAA selecionado",
+    "clearance nao inclui deslocamento lateral sobre terreno 2D nem libera travessias",
+    "nao ha curto-circuito, sequencia zero, coordenacao de isolamento, estrutura, fundacao ou estudo final de aterramento",
+    "sem alegacao de conformidade ou uso executivo"
+  ]
+}

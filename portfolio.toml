@@ -119,6 +119,39 @@ color = 7
 lineweight = 18
 linetype = "CONTINUOUS"
 
+[project_layer_colors.p23]
+"03_COTAS" = 5
+"04_EQUIPAMENTOS" = 250
+"05_POTENCIA" = 1
+"06_COMANDO" = 94
+"07_INSTRUMENTACAO" = 202
+"08_CABOS" = 160
+"09_BORNES" = 124
+"10_ELETROCALHAS" = 251
+"11_ARQUITETURA" = 8
+
+[project_layer_colors.p24]
+"03_COTAS" = 5
+"04_EQUIPAMENTOS" = 250
+"05_POTENCIA" = 1
+"06_COMANDO" = 94
+"07_INSTRUMENTACAO" = 202
+"08_CABOS" = 160
+"09_BORNES" = 124
+"10_ELETROCALHAS" = 251
+"11_ARQUITETURA" = 8
+
+[project_layer_colors.p25]
+"03_COTAS" = 5
+"04_EQUIPAMENTOS" = 250
+"05_POTENCIA" = 1
+"06_COMANDO" = 94
+"07_INSTRUMENTACAO" = 202
+"08_CABOS" = 160
+"09_BORNES" = 124
+"10_ELETROCALHAS" = 251
+"11_ARQUITETURA" = 8
+
 [[projects]]
 id = "01-painel-motor-inversor"
 path = "01-painel-motor-inversor"
@@ -1845,14 +1878,27 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "dados/parametros.csv",
+  "dados/origem-parametros.csv",
   "resultados/tabelas/resultados-eletricos.csv",
   "resultados/tabelas/resultados-mecanicos.csv",
+  "resultados/tabelas/ampacidade-estimada.csv",
   "resultados/tabelas/tabela-estruturas.csv",
+  "resultados/relatorios/resumo-resultados.md",
+  "resultados/graficos/operacao-eletrica.png",
+  "resultados/graficos/triagem-termica.png",
+  "resultados/graficos/flecha-tracao.png",
+  "resultados/graficos/perfil-tensao.png",
+  "resultados/graficos/sensibilidade-fp.png",
+  "resultados/graficos/sensibilidade-vaos.png",
   "fonte/gerar_projeto_24.py",
   "fonte/validar_projeto_24.py",
   "matlab/calculos/run_analysis.m",
+  "matlab/funcoes/read_project_parameters.m",
   "matlab/testes/test_project_24.m",
+  "validacao/plotar_resultados_p24.py",
+  "validacao/test_resultados_p24.py",
   "validacao/relatorio-validacao.json",
+  "validacao/relatorio-validacao-tecnica.json",
 ]
 
 [[projects]]
@@ -1870,14 +1916,20 @@ required_files = [
   "inspecao-visual.md",
   "lista-materiais.csv",
   "dados/parametros.csv",
+  "dados/origem-parametros.csv",
   "resultados/tabelas/balanco-potencia.csv",
   "resultados/tabelas/curto-circuito.csv",
   "resultados/tabelas/balanco-energetico.csv",
+  "resultados/relatorios/resumo-resultados.md",
   "fonte/gerar_projeto_25.py",
   "fonte/validar_projeto_25.py",
   "matlab/calculos/run_analysis.m",
   "matlab/testes/test_project_25.m",
   "simulink/modelo_cogeracao_dinamico.slx",
+  "validacao/calculos_independentes_p25.py",
+  "validacao/test_calculos_independentes_p25.py",
+  "validacao/test_prancha_implantacao_p25.py",
+  "validacao/relatorio-validacao-tecnica.json",
   "validacao/relatorio-validacao.json",
 ]
 
@@ -1915,30 +1967,37 @@ voltage_kv = 138.0
 length_km = 30.0
 span_m = 300.0
 span_count = 100
-conductor_name = "Condutor conceitual 138-A (nao e SKU comercial)"
-conductor_r20_ohm_km = 0.089
-conductor_diameter_m = 0.02515
-conductor_gmr_m = 0.0102
-conductor_mass_kg_m = 1.18
-conductor_ea_n = 12000000.0
-conductor_alpha_per_c = 0.000019
-conductor_rated_tensile_n = 90000.0
+conductor_name = "CAA 795 kcmil 26/7 Drake Class A (Nexans ref. 64719)"
+conductor_r20_ohm_km = 0.072
+conductor_rac75_ohm_km = 0.086
+conductor_diameter_m = 0.02811
+conductor_gmr_m = 0.01142
+conductor_mass_kg_m = 1.629
+conductor_ea_n = 34850000.0
+conductor_alpha_per_c = 0.0000189
+conductor_rated_tensile_n = 139695.72925
+bundle_subconductors = 2
+bundle_spacing_m = 0.4
 reference_temperature_c = 20.0
 reference_horizontal_tension_n = 25000.0
-resistance_alpha_per_c = 0.00403
 phase_spacing_m = [0.0, 7.5, 15.0]
 mean_conductor_height_m = 22.0
 shield_wire_height_m = 30.0
 tower_height_m = 38.0
 design_ground_clearance_m = 8.0
-rated_current_a = 600.0
+rated_current_a = 910.0
+conductor_temperature_limit_c = 75.0
 air_density_kg_m3 = 1.225
 drag_coefficient = 1.0
-wind_speeds_m_s = [0.0, 15.0, 25.0]
-ambient_temperatures_c = [20.0, 45.0, 75.0]
+wind_speeds_m_s = [0.0, 0.61, 1.0]
+mechanical_wind_speeds_m_s = [0.0, 15.0, 30.0]
+ambient_temperatures_c = [20.0, 40.0, 45.0]
+mechanical_conductor_temperatures_c = [20.0, 45.0, 75.0]
 load_active_mw = [50.0, 100.0, 140.0]
 load_power_factor = [0.90, 0.95, 1.0]
 thermal_h_w_m2_c = 15.0
+thermal_natural_h_w_m2_c = 6.5
+thermal_reference_wind_m_s = 1.0
 solar_flux_w_m2 = 800.0
 solar_absorptivity = 0.5
 ground_resistivity_ohm_m = 100.0
@@ -1946,6 +2005,8 @@ ground_rod_length_m = 3.0
 ground_rod_diameter_m = 0.016
 route_km = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
 route_elevation_m = [100, 102, 108, 113, 110, 104, 98, 95, 100, 112, 123, 126, 118, 109, 104, 107]
+route_bearing_deg = [0, 5, 12, 4, -6, -9, -2, -8, 7, 15, 6, -8, -12, -3, 3, 0]
+anchor_stations_km = [0.0, 9.9, 20.1, 30.0]
 
 [project_parameters.p25]
 frequency_hz = 60.0

@@ -1,0 +1,31 @@
+parametro,classe_origem,fonte_ou_justificativa,limitacao
+frequency_hz,premissa_de_escopo,60 Hz definido para o estudo,Confirmar frequencia nominal do ponto de conexao
+generator_active_mw,premissa_de_escopo,Geracao eletrica bruta de referencia de 25 MW,Confirmar regime e faixa de operacao da turbina
+generator_rating_mva,hipotese_de_equipamento,Placa de estudo 32 MVA para margem sobre 25 MW a fp 0.90,Nao e dado de fabricante nem selecao de gerador
+generator_power_factor,criterio_de_estudo,fp 0.90 assumido para verificar porte aparente,Curva P-Q e requisitos do operador ausentes
+generator_voltage_kv,premissa_de_escopo,13.8 kV definido para o estudo,Confirmar placa e isolamento do gerador
+grid_voltage_kv,premissa_de_escopo,138 kV definido para o estudo,Confirmar tensao e padrao da subestacao
+generator_efficiency,hipotese_de_equipamento,Rendimento eletrico de estudo 0.985,Sem curva do fabricante ou ponto de carga
+main_transformer_mva,hipotese_de_equipamento,Transformador elevador de estudo 40 MVA acima do fluxo nominal estimado,Nao e selecao comercial validada
+main_transformer_x_pu,hipotese_de_equipamento,Reatancia de dispersao uk=12% assumida na base de 40 MVA,Sem placa ou folha de dados
+main_transformer_r_pu,hipotese_de_equipamento,Resistencia equivalente de 0.005 pu assumida na base de 40 MVA,Sem ensaio de perdas ou folha de dados
+grid_short_circuit_mva,hipotese_de_rede,Potencia de curto trifasico de 5000 MVA no nivel de 138 kV,Sem dado de concessionaria ou relacao X/R
+auxiliary_active_mw,estimativa_de_processo,Consumo agregado de auxiliares de 2.2 MW,Sem lista de cargas e fatores de simultaneidade
+auxiliary_power_factor,estimativa_de_processo,fp 0.90 agregado para auxiliares,Sem motores e inversores selecionados
+power_factor_target,criterio_de_estudo,Alvo de fp 0.95 para comparacao no POI,Confirmar requisito aplicavel do operador
+capacitor_bank_mvar,hipotese_de_equipamento,Banco fixo de 4 MVAr para triagem de fluxo reativo,Sem estudo de chaveamento, harmônicos ou ressonancia
+process_steam_thermal_mw,estimativa_de_processo,Vapor util de 30 MWth para cogeração,Sem balanço de massa/entalpia e perfil de demanda
+biomass_flow_t_h,estimativa_de_combustivel,Vazao de biomassa de 50 t/h,Sem umidade, PCI medido e especificacao do combustivel
+biomass_lhv_mj_kg,estimativa_de_combustivel,PCI de 7.5 MJ/kg como valor assumido,Depende de umidade, cinzas e composicao
+boiler_efficiency,estimativa_de_processo,Rendimento de caldeira de 0.82,Sem garantia ou balanco termico de fabricante
+annual_operating_hours,premissa_de_operacao,7200 h/ano para estimativa de energia,Sem disponibilidade ou curva sazonal
+pole_count,hipotese_de_equipamento,Gerador de dois polos para 3600 rpm a 60 Hz,Sem velocidade de turbina/gerador selecionada
+inertia_constant_s,hipotese_de_modelo,H=3.5 s para modelo agregado,Sem dados de conjunto turbina-gerador
+damping_pu,hipotese_de_modelo,D=1.0 pu para modelo agregado,Sem identificacao experimental
+governor_droop_pu,hipotese_de_controle,Droop de 5% assumido,Sem especificacao de governador ou requisito de operacao
+governor_time_constant_s,hipotese_de_controle,Tg=0.5 s assumido,Sem modelo de valvula e turbina
+avr_gain,hipotese_de_controle,Ka=30 assumido para AVR simplificado,Sem modelo do excitador ou curva de capacidade
+avr_time_constant_s,hipotese_de_controle,Ta=0.25 s assumido para AVR simplificado,Sem resposta de ensaio
+generator_transient_reactance_pu,hipotese_de_equipamento,X'd=0.25 pu na base de 32 MVA,Sem X''d, sequencia negativa/zero ou datasheet
+fault_voltage_pu,cenario_de_estudo,Afundamento de tensao de 0.2 pu no modelo dinamico,Disturbio sintetico sem estudo de falta ou rede detalhada
+fault_duration_s,cenario_de_estudo,Duracao de 0.12 s para o afundamento sintetico,Tempo nao selecionado por protecao real

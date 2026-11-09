@@ -5,8 +5,12 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
 import hashlib
+from io import BytesIO
 import json
+import math
+import os
 from pathlib import Path
+import tempfile
 
 import ezdxf
 import matplotlib
@@ -16,12 +20,117 @@ import matplotlib.pyplot as plt  # noqa: E402
 from ezdxf.addons.drawing import Frontend, RenderContext  # noqa: E402
 from ezdxf.addons.drawing.matplotlib import MatplotlibBackend  # noqa: E402
 from ezdxf.addons.drawing.properties import LayoutProperties  # noqa: E402
+from pypdf import PdfReader, PdfWriter  # noqa: E402
+from reportlab.pdfbase import pdfmetrics  # noqa: E402
+from reportlab.pdfbase.ttfonts import TTFont  # noqa: E402
+from reportlab.pdfgen import canvas  # noqa: E402
 
 from portfolio_config import ROOT, load_config
 
 
 MM_PER_INCH = 25.4
+MM_TO_POINTS = 72.0 / MM_PER_INCH
 RENDER_DPI = 300
+SEARCHABLE_FONT = "PortfolioDejaVuSans"
+
+
+def _register_searchable_font() -> None:
+    if SEARCHABLE_FONT in pdfmetrics.getRegisteredFontNames():
+        return
+    font_path = Path(matplotlib.get_data_path()) / "fonts" / "ttf" / "DejaVuSans.ttf"
+    pdfmetrics.registerFont(TTFont(SEARCHABLE_FONT, str(font_path)))
+
+
+def _text_entity_data(entity) -> tuple[str, tuple[float, float], float, float] | None:
+    kind = entity.dxftype()
+    if kind not in {"TEXT", "ATTRIB", "ATTDEF", "MTEXT"}:
+        return None
+    if kind == "MTEXT":
+        value = entity.plain_text()
+        height = float(entity.dxf.char_height)
+        direction = entity.dxf.get("text_direction", (1.0, 0.0, 0.0))
+        rotation = math.degrees(math.atan2(direction[1], direction[0]))
+    else:
+        value = str(entity.dxf.text)
+        height = float(entity.dxf.get("height", 1.5))
+        rotation = float(entity.dxf.get("rotation", 0.0))
+    if kind in {"TEXT", "ATTRIB", "ATTDEF"} and entity.dxf.get("halign", 0):
+        point = entity.dxf.get("align_point", entity.dxf.insert)
+    else:
+        point = entity.dxf.insert
+    value = " ".join(str(value).replace("\x00", "").split())
+    if not value:
+        return None
+    return value, (float(point.x), float(point.y)), height, rotation
+
+
+def _iter_layout_text(layout, depth: int = 0):
+    """Yield visible DXF text, expanding nested inserts into sheet coordinates."""
+    if depth > 8:
+        return
+    for entity in layout:
+        data = _text_entity_data(entity)
+        if data is not None:
+            yield data
+        if entity.dxftype() != "INSERT":
+            continue
+        for attrib in entity.attribs:
+            data = _text_entity_data(attrib)
+            if data is not None:
+                yield data
+        try:
+            virtual = entity.virtual_entities()
+            for child in virtual:
+                data = _text_entity_data(child)
+                if data is not None:
+                    yield data
+                elif child.dxftype() == "INSERT":
+                    yield from _iter_layout_text((child,), depth + 1)
+        except (AttributeError, ezdxf.DXFError):
+            # Unsupported proxy/insert graphics remain visible in the source PDF;
+            # they simply have no corresponding searchable text object.
+            continue
+
+
+def _add_searchable_text_layer(source: Path, pdf_path: Path) -> None:
+    """Overlay invisible Unicode text at DXF coordinates for PDF search/copy."""
+    _register_searchable_font()
+    doc = ezdxf.readfile(source)
+    width_pt = 420.0 * MM_TO_POINTS
+    height_pt = 297.0 * MM_TO_POINTS
+    buffer = BytesIO()
+    overlay = canvas.Canvas(buffer, pagesize=(width_pt, height_pt), pageCompression=1)
+    for value, (x, y), height_mm, rotation in _iter_layout_text(doc.modelspace()):
+        overlay.saveState()
+        overlay.translate(x * MM_TO_POINTS, y * MM_TO_POINTS)
+        overlay.rotate(rotation)
+        text = overlay.beginText(0, 0)
+        text.setFont(SEARCHABLE_FONT, max(1.0, height_mm * MM_TO_POINTS))
+        text.setTextRenderMode(3)  # invisible text: visual CAD paths remain unchanged
+        text.textOut(value)
+        overlay.drawText(text)
+        overlay.restoreState()
+    overlay.save()
+    buffer.seek(0)
+
+    original = PdfReader(str(pdf_path))
+    if len(original.pages) != 1:
+        raise RuntimeError(f"Era esperada uma página para {pdf_path}")
+    page = original.pages[0]
+    page.merge_page(PdfReader(buffer).pages[0])
+    writer = PdfWriter()
+    writer.add_page(page)
+    metadata = original.metadata
+    if metadata:
+        writer.add_metadata({key: str(value) for key, value in metadata.items() if value is not None})
+    with tempfile.NamedTemporaryFile(prefix=f"{pdf_path.stem}-", suffix=".pdf", dir=pdf_path.parent, delete=False) as stream:
+        temp_path = Path(stream.name)
+    try:
+        with temp_path.open("wb") as stream:
+            writer.write(stream)
+        os.replace(temp_path, pdf_path)
+    finally:
+        temp_path.unlink(missing_ok=True)
 
 
 def sha256(path: Path) -> str:
@@ -149,6 +258,8 @@ def render_document(
             # hashes diferentes entre Windows e ambientes Unix.
             svg_text = output_path.read_text(encoding="utf-8")
             output_path.write_text(svg_text, encoding="utf-8", newline="\n")
+    if "pdf" in outputs:
+        _add_searchable_text_layer(source, outputs["pdf"])
 
 
 def artifact_bounds(artifact: dict, config: dict) -> tuple[float, float, float, float]:

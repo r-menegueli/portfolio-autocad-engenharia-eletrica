@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-147
+14A
   9
 $SURFTAB1
  70
@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+5
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+250
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+160
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+124
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+8
   6
 CONTINUOUS
 370
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-144
+147
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-145
+148
 330
 3
 100
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  11
@@ -9163,9 +9163,9 @@ AcDbText
  30
 0.0
  40
-1.5
+2.0
   1
-SECAO TRANSVERSAL - UM CIRCUITO / GEOMETRIA ADOTADA
+SECAO TRANSVERSAL - FEIXE DUPLO POR FASE
   7
 PORTFOLIO_TITULO
  72
@@ -9323,17 +9323,37 @@ AcDbEntity
 100
 AcDbCircle
  10
-151.0
+149.96
  20
 166.0
  30
 0.0
  40
-3.0
+1.8
+  0
+CIRCLE
+  5
+11F
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbCircle
+ 10
+152.04
+ 20
+166.0
+ 30
+0.0
+ 40
+1.8
   0
 TEXT
   5
-11F
+120
 330
 17
 100
@@ -9349,9 +9369,9 @@ AcDbText
  30
 0.0
  40
-1.3
+1.2
   1
-F1
+F1 x2
   7
 PORTFOLIO_TITULO
  72
@@ -9369,7 +9389,7 @@ AcDbText
   0
 CIRCLE
   5
-120
+121
 330
 17
 100
@@ -9379,49 +9399,13 @@ AcDbEntity
 100
 AcDbCircle
  10
-190.0
+188.96
  20
 166.0
  30
 0.0
  40
-3.0
-  0
-TEXT
-  5
-121
-330
-17
-100
-AcDbEntity
-  8
-05_POTENCIA
-100
-AcDbText
- 10
-190.0
- 20
-157.0
- 30
-0.0
- 40
-1.3
-  1
-F2
-  7
-PORTFOLIO_TITULO
- 72
-1
- 11
-190.0
- 21
-157.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+1.8
   0
 CIRCLE
   5
@@ -9435,17 +9419,93 @@ AcDbEntity
 100
 AcDbCircle
  10
-229.0
+191.04
  20
 166.0
  30
 0.0
  40
-3.0
+1.8
   0
 TEXT
   5
 123
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+190.0
+ 20
+157.0
+ 30
+0.0
+ 40
+1.2
+  1
+F2 x2
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+190.0
+ 21
+157.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+CIRCLE
+  5
+124
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbCircle
+ 10
+227.96
+ 20
+166.0
+ 30
+0.0
+ 40
+1.8
+  0
+CIRCLE
+  5
+125
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbCircle
+ 10
+230.04
+ 20
+166.0
+ 30
+0.0
+ 40
+1.8
+  0
+TEXT
+  5
+126
 330
 17
 100
@@ -9461,9 +9521,9 @@ AcDbText
  30
 0.0
  40
-1.3
+1.2
   1
-F3
+F3 x2
   7
 PORTFOLIO_TITULO
  72
@@ -9481,7 +9541,7 @@ AcDbText
   0
 CIRCLE
   5
-124
+127
 330
 17
 100
@@ -9501,7 +9561,7 @@ AcDbCircle
   0
 CIRCLE
   5
-125
+128
 330
 17
 100
@@ -9521,7 +9581,7 @@ AcDbCircle
   0
 TEXT
   5
-126
+129
 330
 17
 100
@@ -9537,7 +9597,7 @@ AcDbText
  30
 0.0
  40
-1.0
+1.3
   1
 OPGW / GUARDA
   7
@@ -9557,79 +9617,79 @@ AcDbText
   0
 LINE
   5
-127
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-151.0
- 20
-166.0
- 30
-0.0
- 11
-151.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
-128
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-190.0
- 20
-166.0
- 30
-0.0
- 11
-190.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
-129
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-151.0
- 20
-181.0
- 30
-0.0
- 11
-190.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
 12A
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+151.0
+ 20
+166.0
+ 30
+0.0
+ 11
+151.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+12B
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+190.0
+ 20
+166.0
+ 30
+0.0
+ 11
+190.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+12C
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+151.0
+ 20
+181.0
+ 30
+0.0
+ 11
+190.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+12D
 330
 17
 100
@@ -9653,7 +9713,7 @@ AcDbLine
   0
 LINE
   5
-12B
+12E
 330
 17
 100
@@ -9677,7 +9737,7 @@ AcDbLine
   0
 TEXT
   5
-12C
+12F
 330
 17
 100
@@ -9695,7 +9755,7 @@ AcDbText
  40
 1.45
   1
-7,5 m
+7.5 m
   7
 PORTFOLIO_TEXTO
  72
@@ -9713,79 +9773,79 @@ AcDbText
   0
 LINE
   5
-12D
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-190.0
- 20
-166.0
- 30
-0.0
- 11
-190.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
-12E
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-229.0
- 20
-166.0
- 30
-0.0
- 11
-229.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
-12F
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-190.0
- 20
-181.0
- 30
-0.0
- 11
-229.0
- 21
-181.0
- 31
-0.0
-  0
-LINE
-  5
 130
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+190.0
+ 20
+166.0
+ 30
+0.0
+ 11
+190.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+131
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+229.0
+ 20
+166.0
+ 30
+0.0
+ 11
+229.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+132
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+190.0
+ 20
+181.0
+ 30
+0.0
+ 11
+229.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+133
 330
 17
 100
@@ -9809,7 +9869,7 @@ AcDbLine
   0
 LINE
   5
-131
+134
 330
 17
 100
@@ -9833,7 +9893,7 @@ AcDbLine
   0
 TEXT
   5
-132
+135
 330
 17
 100
@@ -9851,7 +9911,7 @@ AcDbText
  40
 1.45
   1
-7,5 m
+7.5 m
   7
 PORTFOLIO_TEXTO
  72
@@ -9869,79 +9929,79 @@ AcDbText
   0
 LINE
   5
-133
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-190.0
- 20
-135.0
- 30
-0.0
- 11
-320.0
- 21
-135.0
- 31
-0.0
-  0
-LINE
-  5
-134
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-190.0
- 20
-166.0
- 30
-0.0
- 11
-320.0
- 21
-166.0
- 31
-0.0
-  0
-LINE
-  5
-135
-330
-17
-100
-AcDbEntity
-  8
-03_COTAS
-100
-AcDbLine
- 10
-320.0
- 20
-135.0
- 30
-0.0
- 11
-320.0
- 21
-166.0
- 31
-0.0
-  0
-LINE
-  5
 136
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+190.0
+ 20
+135.0
+ 30
+0.0
+ 11
+320.0
+ 21
+135.0
+ 31
+0.0
+  0
+LINE
+  5
+137
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+190.0
+ 20
+166.0
+ 30
+0.0
+ 11
+320.0
+ 21
+166.0
+ 31
+0.0
+  0
+LINE
+  5
+138
+330
+17
+100
+AcDbEntity
+  8
+03_COTAS
+100
+AcDbLine
+ 10
+320.0
+ 20
+135.0
+ 30
+0.0
+ 11
+320.0
+ 21
+166.0
+ 31
+0.0
+  0
+LINE
+  5
+139
 330
 17
 100
@@ -9965,7 +10025,7 @@ AcDbLine
   0
 LINE
   5
-137
+13A
 330
 17
 100
@@ -9989,7 +10049,7 @@ AcDbLine
   0
 TEXT
   5
-138
+13B
 330
 17
 100
@@ -10007,7 +10067,7 @@ AcDbText
  40
 1.45
   1
-22 m - altura media
+22 m - altura de fixacao
  50
 90.0
   7
@@ -10027,7 +10087,7 @@ AcDbText
   0
 LINE
   5
-139
+13C
 330
 17
 100
@@ -10051,7 +10111,7 @@ AcDbLine
   0
 TEXT
   5
-13A
+13D
 330
 17
 100
@@ -10087,7 +10147,7 @@ AcDbText
   0
 TEXT
   5
-13B
+13E
 330
 17
 100
@@ -10103,9 +10163,9 @@ AcDbText
  30
 0.0
  40
-1.2
+1.5
   1
-D = [7,5; 7,5; 15,0] m
+Feixe: 2x CAA; afastamento 0.40 m
   7
 PORTFOLIO_TEXTO
  72
@@ -10123,7 +10183,7 @@ AcDbText
   0
 TEXT
   5
-13C
+13F
 330
 17
 100
@@ -10139,9 +10199,9 @@ AcDbText
  30
 0.0
  40
-1.2
+1.5
   1
-GMD = (D12·D23·D31)^(1/3) = 9,45 m
+GMD = 9.45 m; GMR equivalente feixe = 67.6 mm
   7
 PORTFOLIO_TEXTO
  72
@@ -10159,7 +10219,7 @@ AcDbText
   0
 TEXT
   5
-13D
+140
 330
 17
 100
@@ -10175,9 +10235,9 @@ AcDbText
  30
 0.0
  40
-1.1
+1.3
   1
-GMR adotado = 10,2 mm; raio externo = 12,575 mm
+Raio externo = 14.05 mm; condutor CAA 795 kcmil 26/7 Drake Class A (Nexans ref. 64719)
   7
 PORTFOLIO_TEXTO
  72
@@ -10195,7 +10255,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-13E
+141
 330
 17
 100
@@ -10227,7 +10287,7 @@ AcDbPolyline
   0
 TEXT
   5
-13F
+142
 330
 17
 100
@@ -10263,7 +10323,7 @@ AcDbText
   0
 TEXT
   5
-140
+143
 330
 17
 100
@@ -10299,7 +10359,7 @@ AcDbText
   0
 LWPOLYLINE
   5
-141
+144
 330
 17
 100
@@ -10331,7 +10391,7 @@ AcDbPolyline
   0
 TEXT
   5
-142
+145
 330
 17
 100
@@ -10367,7 +10427,7 @@ AcDbText
   0
 TEXT
   5
-143
+146
 330
 17
 100
@@ -11515,7 +11575,7 @@ PORTFOLIO_DATE
   3
 WRITTEN_BY_EZDXF
 350
-146
+149
   0
 DICTIONARYVAR
   5
@@ -18149,11 +18209,11 @@ DictionaryVariables
 280
 0
   1
-2026-11-08
+2026-11-09
   0
 DICTIONARYVAR
   5
-146
+149
 330
 2D
 100

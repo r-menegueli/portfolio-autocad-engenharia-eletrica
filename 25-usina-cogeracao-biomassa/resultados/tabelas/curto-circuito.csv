@@ -1,2 +1,2 @@
-Base_MVA,X_rede_pu,R_trafo_pu,X_total_pu,Scc_MVA,Icc_13k8_A,Icc_138_A
-32,0.0064,0.005,0.1264,252.966719076408,10583.3625619406,1058.33625619406
+Base_gerador_MVA,Base_transformador_MVA,X_rede_na_base_trafo_pu,R_trafo_pu,X_trafo_pu,X_d_transitoria_pu,I_rede_13k8_A,I_gerador_13k8_A,I_total_13k8_A,Scc_total_13k8_MVA,I_rede_138_A,I_gerador_138_A,I_total_138_A
+32,40,0.008,0.005,0.12,0.25,8361.018686,5355.132932,13713.66373,327.7881204,20918.48801,522.8983739,21441.32413

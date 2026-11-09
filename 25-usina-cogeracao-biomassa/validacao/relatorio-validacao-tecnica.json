@@ -1,0 +1,45 @@
+{
+  "data": "2026-11-09",
+  "projeto": "P25",
+  "resultado": "parcial",
+  "base_de_parametros": "portfolio.toml -> dados/parametros.csv; rastreabilidade em dados/origem-parametros.csv",
+  "verificacoes": {
+    "calculos_independentes_python": {
+      "arquivo": "validacao/calculos_independentes_p25.py",
+      "resultado": "4 testes estáticos passaram",
+      "cobertura": [
+        "potência aparente e correntes de operação versus placa",
+        "transformação das bases de curto de 40 MVA para 32 MVA e contribuições fasoriais da rede e do gerador",
+        "balanço de energia anual e disponibilidade de vapor",
+        "origem e limitação documentadas para todos os parâmetros centrais"
+      ]
+    },
+    "prancha_implantacao": "2 testes passaram: polígono físico de 100 x 65 m em milímetros, bloco inserido a 1:500, carimbo e paleta central",
+    "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P25-02, P25-10 inspecionadas ampliadas; malha recortada ao redor das envolventes e tabela separada; validador estrutural conjunto aprovado",
+    "pdf": "texto pesquisável por camada Unicode invisível verificado nas 30 folhas; geometria vetorial preservada",
+    "resultados_estaticos": "tabelas recalculadas independentemente em Python; MATLAB contém equações correspondentes, porém a versão atual não foi executada",
+    "modelo_simulink": "arquivo SLX existente contém integrador e função MATLAB; execução e reconstrução da versão atual não verificadas nesta revisão",
+    "dinamica": "série armazenada é antiga e representa apenas afundamento de tensão e degrau de referência de potência; cenários e saídas requeridos permanecem incompletos",
+    "inspecao_visual": "pranchas aguardam regeneração e inspeção após a atualização da paleta ACI centralizada"
+  },
+  "resultados_de_triagem": {
+    "S_gerador_operacao_MVA": 27.7778,
+    "I_gerador_operacao_A": 1162.1382,
+    "I_gerador_nominal_A": 1338.7832,
+    "fp_POI": 0.9554585,
+    "I_POI_A": 99.8351,
+    "curto_13k8_kA_transitorio": 13.7137,
+    "curto_138_kV_kA_transitorio": 21.4413,
+    "energia_liquida_MWh_ano": 164160
+  },
+  "limites": [
+    "impedâncias de máquina, transformador e rede são hipóteses sem datasheet ou estudo da concessionária",
+    "foi usada X'd transitória cadastrada; não há X''d nem resistência ou X/R da rede",
+    "curto não inclui componente CC, motores, sequências ou critério completo IEC 60909",
+    "modelo Simulink usa equações agregadas em pu e não é modelo eletromagnético de máquina",
+    "a matriz de oito cenários dinâmicos e o monitoramento final de corrente e frequência não foram executados",
+    "MATLAB não foi executado nesta revisão; tentativa anterior foi limitada por memória livre baixa",
+    "dimensões físicas de P25-02 são envelopes conceituais assumidos e não dados civis ou de fabricantes",
+    "nenhuma declaração de conformidade, proteção coordenada ou uso executivo"
+  ]
+}

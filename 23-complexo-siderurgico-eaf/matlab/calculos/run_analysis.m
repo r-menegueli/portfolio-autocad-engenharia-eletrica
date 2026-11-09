@@ -8,11 +8,11 @@ Qtarget=P*tan(acos(p.target_power_factor)); Qstat=max(0,Q-p.filter_total_mvar-Qt
 Sraw=hypot(P,Q); Sgrid=hypot(P,Qtarget); Igrid=Sgrid*1e6/(sqrt(3)*p.grid_voltage_kv*1e3);
 Ibus=Sgrid*1e6/(sqrt(3)*p.bus_voltage_kv*1e3); Ifurnace=p.furnace_transformer_mva*1e6/(sqrt(3)*p.furnace_secondary_voltage_kv*1e3);
 base=p.main_transformer_mva; zsrc=base/p.source_short_circuit_mva; rth=p.main_transformer_r_pu; xth=p.main_transformer_x_pu+zsrc;
-Scc=base/sqrt(rth^2+xth^2); Icc=Scc*1e6/(sqrt(3)*p.bus_voltage_kv*1e3);
+Zth=hypot(rth,xth); Scc=base/Zth; Icc=Scc*1e6/(sqrt(3)*p.bus_voltage_kv*1e3);
 thd=sqrt(sum([p.harmonic_current_pu_1 p.harmonic_current_pu_2 p.harmonic_current_pu_3 p.harmonic_current_pu_4].^2));
 balance=table(P,Q,Sraw,P/Sraw,Qtarget,p.filter_total_mvar,Qstat,Sgrid,Igrid,Ibus,Ifurnace,'VariableNames',{'P_MW','Q_bruta_MVAr','S_bruta_MVA','fp_bruto','Q_rede_alvo_MVAr','Q_filtros_MVAr','Q_STATCOM_MVAr','S_PCC_MVA','I_PCC_A','I_B1_A','I_secundaria_A'});
 writetable(balance,fullfile(projectRoot,'resultados','tabelas','balanco-cargas.csv'));
-short=table(base,zsrc,rth,xth,Scc,Icc,'VariableNames',{'Base_MVA','X_fonte_pu','R_transformador_pu','X_total_pu','Scc_34k5_MVA','Icc_34k5_kA'}); short.Icc_34k5_kA=short.Icc_34k5_kA/1000;
+short=table(base,zsrc,rth,xth,Zth,Scc,Icc,'VariableNames',{'Base_MVA','X_fonte_pu','R_transformador_pu','X_total_pu','Z_total_pu','Scc_34k5_MVA','Icc_34k5_kA'}); short.Icc_34k5_kA=short.Icc_34k5_kA/1000;
 writetable(short,fullfile(projectRoot,'resultados','tabelas','curto-circuito.csv'));
 orders=[5;7;11;13]; amps=[p.harmonic_current_pu_1;p.harmonic_current_pu_2;p.harmonic_current_pu_3;p.harmonic_current_pu_4]; harm=table(orders,amps,100*amps,'VariableNames',{'ordem','Ih_pu','Ih_percentual_fundamental'});
 harm.THDi_global_percentual=repmat(100*thd,height(harm),1); writetable(harm,fullfile(projectRoot,'resultados','tabelas','harmonicos.csv'));

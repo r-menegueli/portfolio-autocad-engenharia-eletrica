@@ -1,21 +1,36 @@
-# Linha aérea de transmissão 138 kV, 30 km
+# P24 — Linha de transmissão 138 kV, 30 km
 
-Estudo **acadêmico e conceitual** para portfólio. Abrange traçado e perfil sintéticos, vão nominal 300 m, geometria conceitual de fases, flecha e tração, torres de suspensão/ancoragem, fundações, aterramento e bays terminais.
+Estudo acadêmico e conceitual de uma linha aérea trifásica com corredor fictício, condutor CAA Drake 795 kcmil 26/7 e feixe duplo assumido por fase. As 10 pranchas editáveis DXF e derivados PDF/SVG/PNG ficam em `fonte/` e `exports/`.
 
-## Conteúdo
+## Conteúdo técnico
 
-- 10 pranchas A3 em `fonte/` (DXF editável) e `exports/` (PDF, SVG e PNG).
-- Memorial, critérios, memória de cálculo, referências e inspeção visual.
-- Parâmetros centrais exportados de `portfolio.toml` para `dados/parametros.csv`.
-- Análises MATLAB em `matlab/calculos/run_analysis.m`; resultados CSV e gráficos em `resultados/`.
-- Modelo dinâmico Simulink: `não aplicável neste projeto`.
+- `portfolio.toml`: parâmetros ajustáveis centrais.
+- `dados/parametros.csv`: exportação com valor e unidade.
+- `dados/origem-parametros.csv`: origem, classe e limitação de cada grupo de parâmetros.
+- `matlab/calculos/run_analysis.m`: fluxo positivo-sequência em modelo nominal π, matriz 3×3 de cargas/fp, 900 cenários mecânicos, 9 ambientais e gráficos MATLAB opcionais.
+- `matlab/testes/test_project_24.m`: verificações MATLAB para combinações, energia, estruturas, flechas, tração e ampacidade.
+- `resultados/tabelas/`: fluxo, perfil de estruturas, flechas, deslocamentos transversais e ampacidade de triagem.
+- `validacao/plotar_resultados_p24.py`: fallback de pouca memória que refaz a matriz mecânica simplificada e recria seis gráficos a partir dos parâmetros e tabelas.
+- `validacao/test_resultados_p24.py`: testes independentes de consistência dos CSVs.
+- `validacao/relatorio-validacao.json`: saída do validador estrutural do portfólio.
+- `validacao/relatorio-validacao-tecnica.json`: execução, testes numéricos e limitações técnicas desta revisão.
 
 ## Reprodução
 
-Execute `matlab/calculos/run_analysis.m` no MATLAB R2026a (ou versão compatível). Para reconstruir o modelo Simulink, execute `matlab/calculos/build_model.m`. A rotina de verificação local é `fonte/validar_projeto_24.py`. Gere novamente DXFs/derivados com `python fonte/gerar_projeto_24.py` a partir da raiz do repositório.
+Para gerar tabelas e executar o teste MATLAB sem figuras: `R = run_analysis(false); test_project_24(R);`. Com memória disponível, `R = run_analysis(true); test_project_24(R);` também pede as seis figuras MATLAB; esse caminho não concluiu neste host. O fallback de gráficos e dos casos mecânicos é `python validacao/plotar_resultados_p24.py`, executado da raiz do repositório; os testes Python são `python -m pytest -q 24-linha-transmissao-138kv/validacao/test_resultados_p24.py`.
+
+Os DXFs e derivados desta revisão foram regenerados por `python scripts/engineering_studies.py --project p24`. As pranchas estão marcadas `S/ESC.` porque são composições de folha; a escala gráfica H/V do perfil P24-02 tem exagero vertical de 100× e não deve ser usada para medir terreno ou clearance.
+
+## Resultados de triagem
+
+Para a matriz assumida, a maior corrente é 650,80 A (140 MW/fp 0,90); a ampacidade simplificada mínima do feixe duplo é 892,04 A a 45 °C e vento nulo, margem de 27,04%. O perfil sintético resultou em clearance vertical mínimo de 12,679 m; não inclui blowout lateral sobre terreno 2D. Leia `criterios-premissas.md` e `memoria-calculo.md` antes de interpretar os números.
 
 ## Limites
 
-Estudo conceitual de uma LT aérea de 138 kV com corredor e cotas explicitamente sintéticos. Reúne fluxo de potência por modelo nominal π, estimativa mecânica compatível simplificada, envelopes de flecha e tabelas de arranjo. A verificação térmica confronta os cenários com as premissas e sinaliza margem negativa para revisão. Não representa levantamento topográfico, servidão, licenciamento, travessias, cálculo estrutural ou especificação comercial.
+Não há topografia, clima, servidão, dados de fabricante completos do condutor/torres, estudo de curto-circuito, sequência zero, proteção, coordenação de isolamento, estrutura, fundação, grounding study, requisitos de acesso ou validação profissional. A rotina térmica é uma aproximação e não declara implementação conforme IEEE 738. O módulo axial e o coeficiente térmico são aproximações por tabela T-ACSR cuja equivalência ao CAA selecionado não foi confirmada. Nenhum resultado autoriza locação, fabricação, instalação, energização ou operação.
+
+Não foi criado nem executado modelo Simulink para este projeto; não alegar simulação dinâmica.
+
+Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação, energização ou operação sem projeto executivo, verificações específicas e responsabilidade profissional habilitada.
 
 Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

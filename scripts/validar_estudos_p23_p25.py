@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datetime import date
 import json
 from pathlib import Path
 import re
@@ -60,6 +61,7 @@ def main() -> int:
             errors.append(f"{key}: manifesto lista {len(artifacts)} pranchas-fonte; esperado 10")
         for art in artifacts:
             source = ROOT / art["source"]
+            source_title = ""
             if not source.is_file():
                 errors.append(f"{key}: DXF ausente: {art['source']}")
                 continue
@@ -81,6 +83,9 @@ def main() -> int:
                 for entity in doc.modelspace():
                     if entity.dxftype() == "TEXT":
                         texts.append(entity.dxf.text)
+                        point = entity.dxf.insert
+                        if entity.dxf.layer == "02_TEXTO" and abs(point.x - 210.0) < 1.0 and abs(point.y - 277.0) < 1.0:
+                            source_title = entity.dxf.text
                     elif entity.dxftype() == "MTEXT":
                         texts.append(entity.text)
                     elif entity.dxftype() == "INSERT":
@@ -103,6 +108,12 @@ def main() -> int:
                         reader = PdfReader(str(output))
                         if len(reader.pages) != 1:
                             errors.append(f"{key}: {output_rel} tem {len(reader.pages)} páginas")
+                        extracted = normalized(reader.pages[0].extract_text() or "")
+                        expected_title = normalized(source_title)
+                        if expected_title and expected_title not in extracted:
+                            errors.append(f"{key}: texto pesquisável não contém o título em {output_rel}")
+                        if expected_notice not in extracted:
+                            errors.append(f"{key}: texto pesquisável não contém o aviso obrigatório em {output_rel}")
                         box = reader.pages[0].mediabox
                         w, h = float(box.width), float(box.height)
                         if abs(w - page_w * 72 / 25.4) > 1.0 or abs(h - page_h * 72 / 25.4) > 1.0:
@@ -133,9 +144,10 @@ def main() -> int:
                 errors.append(f"{key}: falha lendo parâmetros: {exc}")
 
     report = {
-        "data": "2026-11-08",
+        "data": date.today().isoformat(),
         "escopo": list(selected),
         "resultado": "aprovado" if not errors else "reprovado",
+        "tipo": "validacao_estrutural_de_arquivos_e_renderizacoes",
         "erros": errors,
         "avisos": warnings,
         "observacao": "Validação estrutural focada; inclui leitura DXF/PDF/PNG e checklist de arquivos. Não certifica cálculo, norma ou projeto executivo.",

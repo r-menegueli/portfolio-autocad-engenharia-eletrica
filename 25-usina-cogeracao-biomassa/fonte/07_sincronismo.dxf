@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+5
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+250
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+160
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+124
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+8
   6
 CONTINUOUS
 370
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  11
@@ -19329,7 +19329,7 @@ DictionaryVariables
 280
 0
   1
-2026-11-08
+2026-11-09
   0
 DICTIONARYVAR
   5

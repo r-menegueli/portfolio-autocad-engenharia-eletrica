@@ -2,7 +2,9 @@
 
 ## Objetivo e escopo
 
-Estudo conceitual de cogeração com balanços elétrico, térmico e de combustível, verificação preliminar de correntes e equivalente dinâmico de máquina síncrona ligado a barramento infinito. A simulação usa blocos Simulink padrão e equações médias em pu; não usa blocos elétricos de máquina nem valida estabilidade transitória, controles do fabricante ou requisitos de conexão.
+Estudo conceitual de cogeração com balanços elétrico, térmico e de combustível, verificação preliminar de correntes e equivalente de curto trifásico de rede e gerador. A potência aparente calculada do gerador em operação é 27,78 MVA, abaixo da placa assumida de 32 MVA; a corrente calculada em operação é 1.162 A, abaixo da corrente nominal de 1.339 A. O transformador exporta 23,86 MVA no cenário nominal, cerca de 59,7% da potência assumida de 40 MVA. A triagem de curto usa X'd e hipóteses explicitadas na memória, sem corrente subtransitória ou componente CC.
+
+O modelo dinâmico existente usa blocos Simulink padrão e equações médias em pu; não usa blocos elétricos de máquina. A série atualmente armazenada cobre um afundamento de tensão e um degrau de potência mecânica, mas não todos os oito cenários solicitados. A versão atualizada do cálculo estático e a nova matriz dinâmica ainda precisam ser executadas no MATLAB para confirmar o modelo e regenerar as séries e gráficos.
 
 ## Arranjo representado
 
@@ -10,7 +12,7 @@ O conjunto inclui: gerador síncrono de 13,8 kV, conexão via transformador 40 M
 
 ## Entregáveis e reprodução
 
-A fonte vetorial DXF é mantida em `fonte/`; PDF/SVG/PNG são derivados em `exports/`. `dados/parametros.csv` registra valores e origem no manifesto central. Os scripts MATLAB produzem tabelas e gráficos em `resultados/`; a construção do modelo dinâmico é rastreável em `matlab/calculos/build_model.m` quando houver modelo Simulink.
+A fonte vetorial DXF é mantida em `fonte/`; PDF/SVG/PNG são derivados em `exports/`. `dados/parametros.csv` registra valores centrais e `dados/origem-parametros.csv` documenta sua classe de evidência. `validacao/calculos_independentes_p25.py` produz os balanços estáticos em `resultados/tabelas/` e é conferido por testes Python. `matlab/calculos/run_analysis.m` espelha essas equações e executa a etapa dinâmica; `matlab/calculos/build_model.m` constrói o modelo Simulink.
 
 ## Responsabilidade
 

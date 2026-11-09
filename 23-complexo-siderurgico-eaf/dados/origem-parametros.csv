@@ -1,0 +1,33 @@
+parametro,classe_origem,fonte_ou_justificativa,limitacao
+frequency_hz,hipotese_de_estudo,frequencia nominal do sistema adotada no portfolio.toml,confirmar com concessionaria
+grid_voltage_kv,hipotese_de_estudo,tensao nominal de conexao declarada no portfolio.toml,nao representa nivel de operacao medido
+bus_voltage_kv,hipotese_de_estudo,tensao nominal da barra interna declarada no portfolio.toml,confirmar ligacao e relacao de transformadores
+furnace_secondary_voltage_kv,hipotese_de_estudo,tensao secundaria declarada nos parametros centrais,confirmar taps e placa do transformador do forno
+source_short_circuit_mva,estimativa_sintetica,forca de curto equivalente atribuida a rede para triagem,falta equivalente R-X e dados de sequencia da concessionaria
+main_transformer_mva,hipotese_de_estudo,potencia nominal assumida do transformador principal,sem placa nem fator de carregamento
+main_transformer_x_pu,estimativa_sintetica,reatancia em pu adotada para o transformador principal,sem fabricante nem tolerancia
+main_transformer_r_pu,estimativa_sintetica,resistencia em pu adotada para o transformador principal,sem ensaios nem correcao termica
+furnace_transformer_mva,hipotese_de_estudo,potencia nominal assumida do transformador do forno,nao prova demanda coincidente nem regime operacional
+furnace_transformer_x_pu,estimativa_sintetica,reatancia em pu adotada para o transformador do forno,sem dados de placa ou ensaio
+furnace_transformer_r_pu,estimativa_sintetica,resistencia em pu adotada para o transformador do forno,sem dados de placa ou ensaio
+furnace_power_factor,hipotese_de_estudo,fator de potencia adotado para carga equivalente do forno,nao deriva de medicao de arco
+auxiliary_active_mw,estimativa_sintetica,potencia ativa agregada das cargas auxiliares,sem lista de cargas nem simultaneidade
+auxiliary_power_factor,hipotese_de_estudo,fator de potencia agregado das cargas auxiliares,sem inventario de motores
+target_power_factor,criterio_de_estudo,alvo de fator de potencia adotado para compensacao,nao substitui requisito de conexao
+statcom_limit_mvar,hipotese_de_estudo,limite de potencia reativa assumido para STATCOM,sem curva P-Q nem especificacao comercial
+filter_total_mvar,hipotese_de_estudo,compensacao reativa total assumida para os filtros,nao dimensiona sintonia ou perdas
+filter_5th_mvar,hipotese_de_estudo,parcela capacitiva atribuida ao filtro de quinta harmonica,sem estudo de ressonancia ou tolerancia
+filter_7th_mvar,hipotese_de_estudo,parcela capacitiva atribuida ao filtro de setima harmonica,sem estudo de ressonancia ou tolerancia
+filter_highpass_mvar,hipotese_de_estudo,parcela atribuida ao filtro passa-alta,sem dados de perdas e amortecimento validados
+harmonic_orders_1,hipotese_sintetica,ordem harmonica de quinta adotada no exemplo,espectro nao medido nem calculado pelo arco
+harmonic_orders_2,hipotese_sintetica,ordem harmonica de setima adotada no exemplo,espectro nao medido nem calculado pelo arco
+harmonic_orders_3,hipotese_sintetica,ordem harmonica de decima primeira adotada no exemplo,espectro nao medido nem calculado pelo arco
+harmonic_orders_4,hipotese_sintetica,ordem harmonica de decima terceira adotada no exemplo,espectro nao medido nem calculado pelo arco
+harmonic_current_pu_1,estimativa_sintetica,amplitude normalizada de corrente harmonica de quinta ordem,base e espectro devem ser substituidos por estudo validado
+harmonic_current_pu_2,estimativa_sintetica,amplitude normalizada de corrente harmonica de setima ordem,base e espectro devem ser substituidos por estudo validado
+harmonic_current_pu_3,estimativa_sintetica,amplitude normalizada de corrente harmonica de decima primeira ordem,base e espectro devem ser substituidos por estudo validado
+harmonic_current_pu_4,estimativa_sintetica,amplitude normalizada de corrente harmonica de decima terceira ordem,base e espectro devem ser substituidos por estudo validado
+filter_damping_ohm,estimativa_sintetica,amortecimento nominal informado para o filtro no estudo,sem topologia ou componente comercial
+bus_voltage_time_constant_s,estimativa_sintetica,constante de tempo agregada da barra no modelo reduzido,nao e resposta eletromagnetica de rede
+statcom_time_constant_s,estimativa_sintetica,constante de tempo agregada do STATCOM no modelo reduzido,nao deriva de fabricante ou controle implementado
+arc_fluctuation_pu,estimativa_sintetica,amplitude sintetica de flutuacao de arco no sinal de entrada,nao reproduz espectro nem dinamica eletromecanica do arco

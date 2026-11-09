@@ -1,0 +1,45 @@
+{
+  "data": "2026-11-09",
+  "projeto": "P23",
+  "resultado": "parcial",
+  "base_de_parametros": "portfolio.toml -> dados/parametros.csv; origem e limitacoes em dados/origem-parametros.csv",
+  "verificacoes": {
+    "calculos_independentes_python": {
+      "arquivo": "validacao/calculos_independentes_p23.py",
+      "resultado": "executado; 3 testes P23 passaram; tabelas estaticas regeneradas",
+      "cobertura": [
+        "balanco de potencia, compensacao reativa e corrente trifasica",
+        "curto-circuito em pu com impedancia completa do transformador",
+        "THDi RMS calculado a partir do espectro sintetico e origem documentada de todos os parametros"
+      ]
+    },
+    "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P23-06 inspecionada ampliada e tabela de protecao separada dos simbolos; validador estrutural conjunto aprovado",
+    "pdf": "texto pesquisavel por camada Unicode invisivel verificado nas 30 folhas; geometria visual vetorial preservada",
+    "MATLAB": "equacoes estaticas inspecionadas e correspondem ao calculo independente; versao atual nao executada nesta revisao",
+    "Simulink": "arquivo existe; dinamica atual nao reexecutada. O CSV historico nao inclui cenarios de forno desligado, limite STATCOM, corrente e frequencia de forma completa"
+  },
+  "resultados_de_triagem": {
+    "P_total_MW": 28.0,
+    "Q_bruta_MVAr": 24.2735759492,
+    "S_bruta_MVA": 37.0568008517,
+    "fp_bruto": 0.7555967962,
+    "Q_alvo_MVAr": 9.2031549450,
+    "Q_filtros_MVAr": 7.5,
+    "Q_STATCOM_MVAr": 7.5704210042,
+    "I_PCC_138kV_A": 123.308981978,
+    "I_barra_34k5kV_A": 493.235927912,
+    "I_secundaria_1kV_A_para_30MVA": 17320.5080757,
+    "Scc_34k5kV_MVA": 314.493131040,
+    "Icc_34k5kV_kA": 5.26297663375,
+    "THDi_sintetico_percentual": 24.4131112315
+  },
+  "limites": [
+    "potencia de forno supoe operacao de 30 MVA a fp 0,72; carga e simultaneidade nao sao medidas",
+    "resistencia da fonte assumida zero; forca de curto e impedancia de transformador sao sinteticas e nao ha dados de sequencia",
+    "espectro harmonico e amplitude de flutuacao de arco sao hipoteses; nao ha estudo de ressonancia, flicker, TDD nem efeito de filtro por frequencia",
+    "modelo Simulink agregado nao e modelo eletromagnetico ou validado por fabricante; cenarios e saidas atuais permanecem incompletos",
+    "plantas P23 continuam conceituais sem levantamento, afastamentos verificados ou dados de equipamento",
+    "funcoes ANSI nao incluem coordenacao ou ajustes aprovados; malha de terra nao tem solo, corrente de falta nem tensoes de toque/passo calculadas",
+    "nenhuma alegacao de conformidade, projeto executivo ou uso para construcao/operação"
+  ]
+}

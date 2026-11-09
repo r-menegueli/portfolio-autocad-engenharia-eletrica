@@ -2375,7 +2375,7 @@ AcDbLayerTableRecord
  70
 0
  62
-4
+5
   6
 CONTINUOUS
 370
@@ -2399,7 +2399,7 @@ AcDbLayerTableRecord
  70
 0
  62
-2
+250
   6
 CONTINUOUS
 370
@@ -2447,7 +2447,7 @@ AcDbLayerTableRecord
  70
 0
  62
-3
+94
   6
 CONTINUOUS
 370
@@ -2471,7 +2471,7 @@ AcDbLayerTableRecord
  70
 0
  62
-6
+202
   6
 CONTINUOUS
 370
@@ -2495,7 +2495,7 @@ AcDbLayerTableRecord
  70
 0
  62
-30
+160
   6
 CONTINUOUS
 370
@@ -2519,7 +2519,7 @@ AcDbLayerTableRecord
  70
 0
  62
-5
+124
   6
 CONTINUOUS
 370
@@ -2543,7 +2543,7 @@ AcDbLayerTableRecord
  70
 0
  62
-8
+251
   6
 CONTINUOUS
 370
@@ -2567,7 +2567,7 @@ AcDbLayerTableRecord
  70
 0
  62
-9
+8
   6
 CONTINUOUS
 370
@@ -8613,7 +8613,7 @@ AcDbText
  40
 1.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  72
@@ -8819,7 +8819,7 @@ AcDbText
  40
 2.25
   1
-2026-11-08
+2026-11-09
   7
 PORTFOLIO_TEXTO
  11
@@ -9009,7 +9009,7 @@ AcDbText
  40
 1.9
   1
-1:500
+S/ESC.
   7
 PORTFOLIO_TEXTO
  11
@@ -11291,7 +11291,7 @@ AcDbText
  40
 1.05
   1
-circuito simples; 3 fases; 2 guarda
+1 circuito; 3 fases; 2 guarda
   7
 PORTFOLIO_TEXTO
  72
@@ -11325,7 +11325,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.5
   1
 • Altura total: 38 m
   7
@@ -11357,7 +11357,7 @@ AcDbText
  30
 0.0
  40
-1.1
+1.5
   1
 • Vao de referencia: 300 m
   7
@@ -11389,9 +11389,9 @@ AcDbText
  30
 0.0
  40
-1.1
+1.5
   1
-• Condutor: 138-A conceitual
+• CAA 795 kcmil 26/7 Drake Class A (Nexans ref. 64719)
   7
 PORTFOLIO_TEXTO
  11
@@ -11421,9 +11421,9 @@ AcDbText
  30
 0.0
  40
-1.1
+1.5
   1
-• Sem calculo estrutural
+• Feixe: 2x / 0,4 m; estrutura nao verificada
   7
 PORTFOLIO_TEXTO
  11
@@ -19183,7 +19183,7 @@ DictionaryVariables
 280
 0
   1
-2026-11-08
+2026-11-09
   0
 DICTIONARYVAR
   5
