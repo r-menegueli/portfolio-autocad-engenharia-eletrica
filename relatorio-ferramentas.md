@@ -1,5 +1,20 @@
 # Relatorio de ferramentas
 
+## Atualização de capacidade — 2026-11-08
+
+- **MATLAB R2026a Update 3:** testes de cálculo de P23–P25 executados; 3/3 aprovados.
+- **Simulink e Stateflow:** licenciados e usados para construir e simular os modelos
+  dinâmicos P23 e P25. Os modelos usam blocos padrão e equações agregadas em pu.
+- **Simscape Electrical:** não licenciado neste ambiente. Os modelos entregues não
+  representam montagens detalhadas de componentes Simscape.
+- **Power System Blocks:** disponível; não substitui uma validação dos modelos ou dos
+  parâmetros por profissional responsável.
+- **AutoCAD Core Console 2027:** auditoria das 30 novas fontes DXF concluída, 30/30
+  aprovadas.
+- **Suíte Python atualizada:** 11 testes passaram; inclui regressão para impedir que
+  sequências numéricas de hashes SHA-256 sejam sinalizadas como CPF. Permanecem avisos
+  de depreciação do NumPy interno do ezdxf.
+
 Auditoria inicial executada em 2026-09-05, antes da criacao dos arquivos do
 repositorio. Foram consultados PATH, metadados de executaveis, assinaturas,
 Registro do Windows, associacoes de arquivo, programas instalados e os runtimes

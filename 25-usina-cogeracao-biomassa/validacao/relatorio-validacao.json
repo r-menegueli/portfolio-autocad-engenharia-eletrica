@@ -1,0 +1,12 @@
+{
+  "data": "2026-11-08",
+  "escopo": [
+    "p23",
+    "p24",
+    "p25"
+  ],
+  "resultado": "aprovado",
+  "erros": [],
+  "avisos": [],
+  "observacao": "Validação estrutural focada; inclui leitura DXF/PDF/PNG e checklist de arquivos. Não certifica cálculo, norma ou projeto executivo."
+}

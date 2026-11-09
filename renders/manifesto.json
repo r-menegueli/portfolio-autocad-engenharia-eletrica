@@ -1,30 +1,11 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-09-05",
+  "generated_on": "2026-11-08",
   "source_format": "DXF",
   "dxf_writer": "ezdxf 1.4.4",
   "renderer": "matplotlib 3.11.1",
   "dpi": 300,
   "artifacts": [
-    {
-      "id": "template-a3",
-      "source": "templates/template-a3.dxf",
-      "source_sha256": "f847c6cc0a22d7acc00f28d1560440b36172f435ba359467c577fc1e9d9a2a90",
-      "outputs": {
-        "pdf": {
-          "path": "renders/template-a3.pdf",
-          "sha256": "094e6ef6e0c5bf6015f5a62f043effc54d44a4a0b4d1cee26c61e966d50554d7"
-        },
-        "png": {
-          "path": "renders/template-a3.png",
-          "sha256": "d31a4825bba2ba8067cb161b1a4e72a2bba14c80f64ca15cb14906d239c4eee1"
-        },
-        "svg": {
-          "path": "templates/template-a3.svg",
-          "sha256": "8f1849b5091657a3e24314f5fa22be36e744d2bc7bcfa49ae62c68f9bfd52bbc"
-        }
-      }
-    },
     {
       "id": "carimbo-a3",
       "source": "templates/carimbo-a3/carimbo-a3.dxf",
@@ -2123,6 +2104,595 @@
         "svg": {
           "path": "22-auxilios-visuais-luminosos-aerodromo/exports/03_controle_monitoracao_e_ensaios.svg",
           "sha256": "39b5f443d59cd2ab6d6524be534d11e64ef866dbcf73331eb632996a2fe4bb88"
+        }
+      }
+    },
+    {
+      "id": "p23-01-unifilar-complexo-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/01_diagrama_unifilar_geral.dxf",
+      "source_sha256": "3cde6c65853ebb65fcdff66850283c657a2a2a1005cac11445dbda99bda875ff",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.pdf",
+          "sha256": "884ef208fe34901300e1d7d10ca0d52dbe7ecd8dcc0287a2a7a73526aa80affe"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.png",
+          "sha256": "82896105bfa06097ec6bace3edcabcd8dbbca32eaab8bcf65d357841bb5447cc"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.svg",
+          "sha256": "565277f971b3bf61254d6b1a18393a9e84b60b747613b58728da2d24df660379"
+        }
+      }
+    },
+    {
+      "id": "p23-02-planta-subestacao-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/02_planta_subestacao_receptora.dxf",
+      "source_sha256": "bd837614a63c7ac458527219cab27dd331a311d6aff2d5bb05fbac9b3638e8ee",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/02_planta_subestacao_receptora.pdf",
+          "sha256": "3f2912304460d15233c402add9c2112ce3a27c398c4fa39fdd1974c5d95f0b48"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/02_planta_subestacao_receptora.png",
+          "sha256": "7256171769fbb683f58f0c1eb2693d61c20d641cabaaf4db4a76ba90f9012e6f"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/02_planta_subestacao_receptora.svg",
+          "sha256": "5c2ff82b8881695d5ab1b444bc1648bf3b18ff4cc6c55aac029b26d34fc426df"
+        }
+      }
+    },
+    {
+      "id": "p23-03-layout-forno-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/03_layout_area_eletrica_forno.dxf",
+      "source_sha256": "1fe9732ce53a202c0b90f300b6c7c1516a1da68f82e303ccdad2667ea881a205",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/03_layout_area_eletrica_forno.pdf",
+          "sha256": "d872b61491a11ab48042835408b9e1a85ae635cd7fd1255d29919e06897c32ce"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/03_layout_area_eletrica_forno.png",
+          "sha256": "d38bf29bd30cae5e8eaa5965684731bba2445299e5f197084a26897c238ec0c0"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/03_layout_area_eletrica_forno.svg",
+          "sha256": "c0affeed90563434ac8e928c9849d19e81b7bb12e31969d8f297c4dc5393e4bd"
+        }
+      }
+    },
+    {
+      "id": "p23-04-transformadores-cubiculos-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/04_arranjo_transformadores_cubiculos.dxf",
+      "source_sha256": "8f07e1630dc94d91cb08d36951ec8392f22a2db92326e4873f91fa6dceb5678a",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/04_arranjo_transformadores_cubiculos.pdf",
+          "sha256": "e13a993223fa2e5dc0256d4c0fa6a01ddbbdcf878ffcaf3a304d696cd98afe50"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/04_arranjo_transformadores_cubiculos.png",
+          "sha256": "41c0378791f1736c910e00f914db8c9eb800696ebe01bf5a1e648bb7df479d6a"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/04_arranjo_transformadores_cubiculos.svg",
+          "sha256": "844a5576a31554520bb477cdc67c68774341cc6bc296bb222dc534b480c39f36"
+        }
+      }
+    },
+    {
+      "id": "p23-05-alimentacao-forno-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/05_alimentacao_secundaria_forno.dxf",
+      "source_sha256": "8cd127362cd0b2345e6257c26492288af3502932cc9020744aa48228e6954602",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/05_alimentacao_secundaria_forno.pdf",
+          "sha256": "e9f5f06a88669189dce2c991803bcd8dc034ffc4269ef1bfc40b0c48b2565a8d"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/05_alimentacao_secundaria_forno.png",
+          "sha256": "e69b47c5f339d4ed90f84a9103616b7d0e589fe60e6e125978992672e48b4805"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/05_alimentacao_secundaria_forno.svg",
+          "sha256": "eb07e69c6741d1776eccac618f950f9f2a5caadcd3e04b76e8a0337622072aa6"
+        }
+      }
+    },
+    {
+      "id": "p23-06-protecao-medicao-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/06_protecao_medicao.dxf",
+      "source_sha256": "fc09fe26e5f646e3d21c0d3e40410b1fec8abd1469c9a34d5cbd1f08ce4bfa62",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/06_protecao_medicao.pdf",
+          "sha256": "43553bdfcb9d1674ed173237eda60c02be4ccc101650f8cc1fc64b646b8865a3"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/06_protecao_medicao.png",
+          "sha256": "ab0b25ec27723e166b14d0343d0501550cf63296375b33ad95c0608e889acf05"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/06_protecao_medicao.svg",
+          "sha256": "56e54a542f005f84a3a2ec736b4dc1ada47c928b59764b77ed2f5d9beacacc61"
+        }
+      }
+    },
+    {
+      "id": "p23-07-statcom-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/07_statcom_compensacao.dxf",
+      "source_sha256": "80a4090e5f21a2f51ef4d8e20c981dafa2fd1c87002d45ccd2a659afa9a7ab28",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/07_statcom_compensacao.pdf",
+          "sha256": "a6285d2bf2cd5a6a17e0ad8dfb831f6aaa685025f92e9a00d6ecce6184b012dc"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/07_statcom_compensacao.png",
+          "sha256": "33580523f39e90bc6fc1df58b3f66a4adf9d4e8246330d023d4e506b991b9464"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/07_statcom_compensacao.svg",
+          "sha256": "62e4143861e2f2c37555cc5e4925ab3951e7abfcdd67a7850774b9ea02e78dc5"
+        }
+      }
+    },
+    {
+      "id": "p23-08-filtros-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/08_filtros_harmonicos.dxf",
+      "source_sha256": "c1d3c041c71895386a2886c4be4b081d112a06193659c05c788a3675325af737",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/08_filtros_harmonicos.pdf",
+          "sha256": "4f7727fbf874a8696c4ae9addd011f38641e487f4a4f3cead3eb6c80e31ae301"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/08_filtros_harmonicos.png",
+          "sha256": "177eb48ebf29cc529965e5f82f00c401bc56fef478e26e8e25819e065d4a579a"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/08_filtros_harmonicos.svg",
+          "sha256": "1f7f1d2bac05afea57b6d70e7c6d9856d21e22423e6da207ae2abfd0ef7dace4"
+        }
+      }
+    },
+    {
+      "id": "p23-09-aterramento-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/09_aterramento_equipotencializacao.dxf",
+      "source_sha256": "a103ae9d442bb6100bf5d0f210bc24aeb216e0ad3375795d44282b849a044c65",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/09_aterramento_equipotencializacao.pdf",
+          "sha256": "49b611b94bed0f810dd27b3af69de66820116faa222ba4574da59c9b4bf86918"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/09_aterramento_equipotencializacao.png",
+          "sha256": "790350d2a31d881815b665499042359f49b9d09a3ffbcb247169bde3e95bacef"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/09_aterramento_equipotencializacao.svg",
+          "sha256": "b3fbd7e6d47ae5e49efb273b0b36d4f89449b051b9563994448521aaf8175305"
+        }
+      }
+    },
+    {
+      "id": "p23-10-controle-eaf",
+      "source": "23-complexo-siderurgico-eaf/fonte/10_controle_intertravamentos.dxf",
+      "source_sha256": "adc8ea76367115fb1ee5dfd38ed4f375c13769a0f2c36e1e3efdb5cbc8110d97",
+      "outputs": {
+        "pdf": {
+          "path": "23-complexo-siderurgico-eaf/exports/10_controle_intertravamentos.pdf",
+          "sha256": "2cafa546b175da8f480bd91e64c10137918728abd579f67301ac61a3a6e39d51"
+        },
+        "png": {
+          "path": "23-complexo-siderurgico-eaf/exports/10_controle_intertravamentos.png",
+          "sha256": "0067038c57ef7cda828c135aeb5ba2892dfc2c933366f9ad8c247d6bbe10f872"
+        },
+        "svg": {
+          "path": "23-complexo-siderurgico-eaf/exports/10_controle_intertravamentos.svg",
+          "sha256": "212add411c8eda5a769ee48d1f9dc3d75b9fdf6a1656fd48fe0f9f1eab634f71"
+        }
+      }
+    },
+    {
+      "id": "p24-01-tracado-lt",
+      "source": "24-linha-transmissao-138kv/fonte/01_planta_tracado.dxf",
+      "source_sha256": "3f655d55ba294a44b148260ab5a8b6884f5139bd265a491e5281dbddb8f0243c",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/01_planta_tracado.pdf",
+          "sha256": "6096f04365dd132cae32458da68cb3796074062dbe257cfa4556b42ba1bdf8a0"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/01_planta_tracado.png",
+          "sha256": "0819f227b8551b9d20b0258a863094cc04b7f187d12692d5476ca2edf29de81f"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/01_planta_tracado.svg",
+          "sha256": "5f64f5bc14087954ede83f94d3a5b9d9a822cae03b950a55603ee8c72709fd53"
+        }
+      }
+    },
+    {
+      "id": "p24-02-perfil-longitudinal-lt",
+      "source": "24-linha-transmissao-138kv/fonte/02_perfil_longitudinal.dxf",
+      "source_sha256": "78066e4eabf6e5bfbe9a571ac86f34544b79ae3b16f903166a39f4420abfc98d",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/02_perfil_longitudinal.pdf",
+          "sha256": "92f62603ff16c164121aa35b67e5e0d899740ee07f92144c9e10d73e17217ce8"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/02_perfil_longitudinal.png",
+          "sha256": "94e820636eaf5d882bfbe3963d7dfb7c492ee9d2206b99ba8bad1725a58feb22"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/02_perfil_longitudinal.svg",
+          "sha256": "ac731a64095549cdfc714586d436c753dd4369782416b2b668f765835c840fd3"
+        }
+      }
+    },
+    {
+      "id": "p24-03-flecha-vano-critico-lt",
+      "source": "24-linha-transmissao-138kv/fonte/03_vano_critico_envelope_flecha.dxf",
+      "source_sha256": "a78a22577c15611ddb542acb373014ad91029d5e622a22cefdf600bf268bfb36",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.pdf",
+          "sha256": "d836ce57e7c7ef69741f81cd809279687fe25c9b68ca7409b3b80bdedf706635"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.png",
+          "sha256": "dce9e70e8844200a1ab5942ee45c1c72793d3316d7164fc5d98e70bd5c769d8f"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.svg",
+          "sha256": "25f16da76e14ef7dc18ac91c0df2416bd9e6899221b71ef9360568d5671f1a0e"
+        }
+      }
+    },
+    {
+      "id": "p24-04-torre-suspensao-lt",
+      "source": "24-linha-transmissao-138kv/fonte/04_torre_suspensao.dxf",
+      "source_sha256": "35988767019abde6345e94774994b96bd1121722c4e222c7adc6125a006faf69",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/04_torre_suspensao.pdf",
+          "sha256": "dc938ee20cf10f6fe307992f553cd0a8c797227fb9f17050e757636237ca2d63"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/04_torre_suspensao.png",
+          "sha256": "ed78c8bbd9e71103dd7d33d09759138b2d9bb0ae3b4350abd71a5483ad81f873"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/04_torre_suspensao.svg",
+          "sha256": "33457e4a011c0312cb754a0873c7ffbbe2d647a165deeab4a05f272c07e266ef"
+        }
+      }
+    },
+    {
+      "id": "p24-05-torre-ancoragem-lt",
+      "source": "24-linha-transmissao-138kv/fonte/05_torre_ancoragem.dxf",
+      "source_sha256": "31d6dfa317b843a10dcd6d41152e66884057de6cceb071f08d1358187f2aff05",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/05_torre_ancoragem.pdf",
+          "sha256": "398096ce6abf863c341538436f22022142df6f36bff558e19b4b6d538508f08e"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/05_torre_ancoragem.png",
+          "sha256": "ee917801855731db38b665c6e93c4a1337d2a11d0fa0bafd8050e05164fa174f"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/05_torre_ancoragem.svg",
+          "sha256": "afb0d5408909ef83851404f3a1fe8982dd6ccd0a7694c006a944a56015cb3f5b"
+        }
+      }
+    },
+    {
+      "id": "p24-06-isoladores-ferragens-lt",
+      "source": "24-linha-transmissao-138kv/fonte/06_cadeias_isoladores_ferragens.dxf",
+      "source_sha256": "83eeca25378fcdfc1e9d1e8ccd3b7f62b8637b1c267b62bc4f9d6bc6235436d3",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/06_cadeias_isoladores_ferragens.pdf",
+          "sha256": "82ec607fdb9e7feeafe52a7faa5e8e15ca7bb626b774e93eb8a8125bad0027b2"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/06_cadeias_isoladores_ferragens.png",
+          "sha256": "ea3c3085ec787c8aa26b7f088a26f40fe48c4d47d30ad6119de01affff7c8faf"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/06_cadeias_isoladores_ferragens.svg",
+          "sha256": "d72cd1274c9273895b3839a5bce804a11e6ce5d121d6a28e17945e95e03655a5"
+        }
+      }
+    },
+    {
+      "id": "p24-07-arranjo-fases-lt",
+      "source": "24-linha-transmissao-138kv/fonte/07_arranjo_condutores_distancias.dxf",
+      "source_sha256": "40f4eafbb974ee5ba21a12c3270af9e1bccc349ba93ecce661a54dbaca6b6b8d",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/07_arranjo_condutores_distancias.pdf",
+          "sha256": "9effcbb255b1b439e68cd71f561da64382057730477e43e1f57752572df4e0f3"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/07_arranjo_condutores_distancias.png",
+          "sha256": "5e7a9ac85aa6692b37260e91536363a4d8acafe3f99bd4287a6068075dc25af1"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/07_arranjo_condutores_distancias.svg",
+          "sha256": "23381dececf3c15f121420b5f144f2494f20e5dfc6468e68950d9146aa49d81d"
+        }
+      }
+    },
+    {
+      "id": "p24-08-fundacoes-lt",
+      "source": "24-linha-transmissao-138kv/fonte/08_fundacoes_conceituais.dxf",
+      "source_sha256": "41f5287ebaf9b0994f032a63e4296005f540e91307f7cc8e9e0ca93ca9db4e74",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/08_fundacoes_conceituais.pdf",
+          "sha256": "e70fea0f79620f5281f02aee5bbe823935a31422e4bab98c0f34cbbb40714774"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/08_fundacoes_conceituais.png",
+          "sha256": "374e63e0956680b6b17fdc33304c57c84450fc85dcf4becedef2ce7b282932d1"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/08_fundacoes_conceituais.svg",
+          "sha256": "4e8c6aa0af872f9f4a8fff13bf1cf38272297705c7631aaa2db3dc35843a1dea"
+        }
+      }
+    },
+    {
+      "id": "p24-09-aterramento-torres-lt",
+      "source": "24-linha-transmissao-138kv/fonte/09_aterramento_torres.dxf",
+      "source_sha256": "93c88294a2a75e129cd244aa18f07738a2a5eb2eee469e92bad1c262804943b5",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/09_aterramento_torres.pdf",
+          "sha256": "43206535bab2d4cc7e63a968cdd1a3e00409df1d1d64d98d6509679ef94706a1"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/09_aterramento_torres.png",
+          "sha256": "5c6e57d405923af0f5ea1ec262c0f75b78e3937a34e72422075610493d73059b"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/09_aterramento_torres.svg",
+          "sha256": "ad99b882cafc0d37aa14b374554d1f4553d28883ced168c5639d45651d573f18"
+        }
+      }
+    },
+    {
+      "id": "p24-10-terminais-lt",
+      "source": "24-linha-transmissao-138kv/fonte/10_interfaces_subestacoes.dxf",
+      "source_sha256": "3976e9592c0cfca6220579e18d7e4978ea83e33ad2d0c5a8096610126f46991f",
+      "outputs": {
+        "pdf": {
+          "path": "24-linha-transmissao-138kv/exports/10_interfaces_subestacoes.pdf",
+          "sha256": "ca6bca8a5b22457389fe4108a48778ff4e0162db60aa61958b10744cd42fd6f1"
+        },
+        "png": {
+          "path": "24-linha-transmissao-138kv/exports/10_interfaces_subestacoes.png",
+          "sha256": "2b088582e7aa7432a2095fd0229f6a257e296e46f44b6ef9fd87f84b3e4e0b80"
+        },
+        "svg": {
+          "path": "24-linha-transmissao-138kv/exports/10_interfaces_subestacoes.svg",
+          "sha256": "a2d6574c0cb93a21de5b5e32bf95d5b9db66ab3fa8c238cda97aa8b2dfc6c8b7"
+        }
+      }
+    },
+    {
+      "id": "p25-01-unifilar-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/01_diagrama_unifilar.dxf",
+      "source_sha256": "09808cd602c7a58423bb09b4a821fb2ed997ff688bd54b69de67aecb98779ad6",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.pdf",
+          "sha256": "f27f89b0d7bceb95232fb0eba6c8462d9b23b60617973cfa9cfa8b395e7d2984"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.png",
+          "sha256": "0cf8762fb49c5054c9f08486b2ea4d23ae0a210fb60f1663bf98c8db8de8671e"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.svg",
+          "sha256": "3fdcc3909e0b1fa57341943ba160f6a8a5a333cde9099f170a2b65c837629c13"
+        }
+      }
+    },
+    {
+      "id": "p25-02-implantacao-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/02_implantacao_casa_maquinas.dxf",
+      "source_sha256": "e6142a53febcda315dff9680c7b895b465bddc3e62704ef71318890ee0bef0c3",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.pdf",
+          "sha256": "4334b39680b3fb471a7596ce3645a6848aed190c59939f5e74472c1129f56e8a"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.png",
+          "sha256": "a9d7e753a29949ea19b4177ebebe6ba6816580bc05ec132866bcea740fab343c"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.svg",
+          "sha256": "cdd456e89d4b157a0177229785a7666559f6f576fafdd708d77246d992d1734d"
+        }
+      }
+    },
+    {
+      "id": "p25-03-gerador-auxiliares-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/03_layout_gerador_auxiliares.dxf",
+      "source_sha256": "f2b5a94be6f06c5d2ea7da954a39a2354bdedafa58ec849a9a99a4aadd5f560f",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.pdf",
+          "sha256": "7afd46b219e95510927380616e0311054989d7dde87fbf92f14c50fa66e650c9"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.png",
+          "sha256": "9a6ad4007fac0bcf94e49229cecf2a955e47a4f5aa80ef280c722bdea700ef61"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.svg",
+          "sha256": "3c57ab1c9a5896d91048772eaef2c10c7ce5ebbeb717451fb6aba6ab6818c492"
+        }
+      }
+    },
+    {
+      "id": "p25-04-transformador-conexao-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/04_transformador_conexao_rede.dxf",
+      "source_sha256": "eeec9b31262e2e68caf85109d7aa057349286685c540a50fc597adb938ced39d",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.pdf",
+          "sha256": "5a7817b9015b0fe41895037a4c5e3ef76c679f13849b9ea64232c49bdc9deabd"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.png",
+          "sha256": "07f68a170ba40da8838711d45ac49c362c99a5e3e498f21b4afb3c56b61f4da9"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.svg",
+          "sha256": "ba4fbac27b8b7af435d5e6b75a264fc521484f335130a4674226333fe8fabaef"
+        }
+      }
+    },
+    {
+      "id": "p25-05-excitacao-avr-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf",
+      "source_sha256": "cf2d57cf2b1de80cb8c0d040ca31a657946196a54b9c64f4f8f90077f91b6c1e",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.pdf",
+          "sha256": "960bd915659495ec79dc4b26cad34300b2734b6021291c553daf14a89ebf22da"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.png",
+          "sha256": "a5d30cf2183ad0daac77bc28aff1ddba1503e7aa0aea0fb798a325cfda255311"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.svg",
+          "sha256": "d98df76be28bcc61d6308595f8205859ac04873528dfa1daddea8589064cea96"
+        }
+      }
+    },
+    {
+      "id": "p25-06-regulador-velocidade-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/06_regulador_velocidade_turbina.dxf",
+      "source_sha256": "b587a8e1ff10b77277ad58cf7296f2673e3a1002cfef086561e6c92d8cbb49d7",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.pdf",
+          "sha256": "c4e0bdb579ba0146361daaede9dfcf4b3c05ff459bbee365e1699ac23f9bfdda"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.png",
+          "sha256": "45b46d178eb707754c0ca5c6a116f030894f5aa2b6d8cb0cfccb5adca3c6c74f"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.svg",
+          "sha256": "2504e70e68b111ab86a31d70181fc90a17f208395d500d7195217451e0aacce4"
+        }
+      }
+    },
+    {
+      "id": "p25-07-sincronismo-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/07_sincronismo.dxf",
+      "source_sha256": "550a9137a00fcbb2df0c4bd7d4f58b30da8b0fbaeebbd665208aeaa9eba7bd81",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.pdf",
+          "sha256": "873a8deb70c0f2e5cf91db78b9de18f74ff2e273da538cc355889c60a450dc81"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.png",
+          "sha256": "30b88b3a42d927ad983ec3f7269ef2b04d6d6825773f2d50268d8b2f1e510e18"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.svg",
+          "sha256": "0a9821ee53166051b45abda3fe5008e7530302530e2d8bc4b268e54b429befc8"
+        }
+      }
+    },
+    {
+      "id": "p25-08-protecoes-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/08_protecao_gerador.dxf",
+      "source_sha256": "d3544b988b8486ddbde705a27c6078999b9977a6e2f16d89062f7da1dd913c2b",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.pdf",
+          "sha256": "a0f8fd7268e2d1f19e568cf66cd40b9cf5432a610575b70cb69adfb5176e49f8"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.png",
+          "sha256": "0389bb661c1f3aed567b219ed42b61855be5f0680e402c8b246f535f501168e4"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.svg",
+          "sha256": "ed04620ce57b586b97a9545e09bf788e926269292fc78fc1623a682cd8bd2644"
+        }
+      }
+    },
+    {
+      "id": "p25-09-servicos-auxiliares-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/09_servicos_auxiliares.dxf",
+      "source_sha256": "7ecb5a116a0c41a3c8810b35610c232762db20ed60788f970db3154c2c52a465",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.pdf",
+          "sha256": "6a7e40b815ed9578f1cbc26f70f0cbd5a73856fefa38ed92a3702ddc9105381b"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.png",
+          "sha256": "2772e08911b96d8578b54b8f50070a394c3f9786e5a634c6b338e3d759abdd52"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.svg",
+          "sha256": "b68ce88fb0977d5c6f01b7f39f040ce77d50e2ed4ddcf9acbdf8ab0e23baf0dd"
+        }
+      }
+    },
+    {
+      "id": "p25-10-aterramento-cogeracao",
+      "source": "25-usina-cogeracao-biomassa/fonte/10_aterramento_equipotencializacao.dxf",
+      "source_sha256": "52f8ef02d86d36c21c066b8b4f084fab522709b97dd2deb2373255a6d8c3f777",
+      "outputs": {
+        "pdf": {
+          "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.pdf",
+          "sha256": "65943153af39966f67d4e1e1ac3617e672da66cf71e115b63addb0e3344a73cd"
+        },
+        "png": {
+          "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.png",
+          "sha256": "3abdd8dfff2471f8f444ad80e9dd2e52342ce282c7a26e0d29b71729e37a17bf"
+        },
+        "svg": {
+          "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.svg",
+          "sha256": "899424f88ef116eedc60858737810fa791294338c650b429b76a9235a3e1daa2"
+        }
+      }
+    },
+    {
+      "id": "template-a3",
+      "source": "templates/template-a3.dxf",
+      "source_sha256": "f847c6cc0a22d7acc00f28d1560440b36172f435ba359467c577fc1e9d9a2a90",
+      "outputs": {
+        "pdf": {
+          "path": "renders/template-a3.pdf",
+          "sha256": "094e6ef6e0c5bf6015f5a62f043effc54d44a4a0b4d1cee26c61e966d50554d7"
+        },
+        "png": {
+          "path": "renders/template-a3.png",
+          "sha256": "d31a4825bba2ba8067cb161b1a4e72a2bba14c80f64ca15cb14906d239c4eee1"
+        },
+        "svg": {
+          "path": "templates/template-a3.svg",
+          "sha256": "8f1849b5091657a3e24314f5fa22be36e744d2bc7bcfa49ae62c68f9bfd52bbc"
         }
       }
     }

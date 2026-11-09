@@ -1,5 +1,25 @@
 # Relatório de validação consolidada
 
+> **Atualização de 08/11/2026:** o registro abaixo preserva a auditoria histórica P01–P10. A revisão atual abrange P01–P25 e passou no validador estrito com **649.131 verificações, zero erros e zero avisos**. O validador dedicado P23–P25 aprovou 30 pranchas e os arquivos associados; as 30 fontes DXF novas passaram no AutoCAD Core Console 2027. Os três testes MATLAB (P23, P24 e P25) passaram; os modelos Simulink P23/P25 foram simulados. P24 mantém uma pendência de projeto: no cenário de 140 MW, 585,72 A calculados excedem a estimativa térmica de 571,04 A. Estes resultados são acadêmicos e não constituem liberação para construção.
+
+## Revisão atual — 08/11/2026
+
+| Verificação | Escopo | Resultado |
+| --- | ---: | :---: |
+| Validador estrito global | P01–P25; 649.131 verificações | PASS, 0 erros, 0 avisos |
+| Validador dedicado | P23–P25; 30 pranchas e artefatos | PASS |
+| AutoCAD Core Console 2027 | 30 DXFs P23–P25 | 30/30 PASS |
+| Testes MATLAB | P23, P24 e P25 | 3/3 PASS |
+| Simulação Simulink | modelos dinâmicos P23 e P25 | PASS |
+| Testes Python | suíte comum e regressão do auditor | 11/11 PASS |
+
+O ensaio térmico indicativo da linha P24 não atende no cenário de 140 MW com as
+premissas atuais. Consultar os resultados e critérios de P24; a seleção de condutor,
+temperatura ambiente, vento e demais parâmetros deve ser revista antes de qualquer
+uso de engenharia. Os modelos de processo P23/P25 usam blocos padrão do Simulink e
+equivalentes agregados em pu, pois Simscape Electrical não estava licenciado no
+ambiente de execução.
+
 **Data:** 2026-09-10
 
 **Escopo:** repositório completo, Projetos P01 a P10

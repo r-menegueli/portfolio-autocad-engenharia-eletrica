@@ -1,6 +1,6 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
-Este repositório reúne 22 estudos acadêmicos e conceituais de instalações, painéis, automação, energia e mobilidade elétrica. O conjunto tem 110 pranchas A3: DXF editável para consulta e edição, com versões em PDF, SVG e PNG para leitura.
+Este repositório reúne 25 estudos acadêmicos e conceituais de instalações, painéis, automação, energia e mobilidade elétrica. O conjunto tem 140 pranchas A3: DXF editável para consulta e edição, com versões em PDF, SVG e PNG para leitura.
 
 Cada pasta descreve as premissas usadas, os arquivos incluídos e os limites do respectivo estudo. Os desenhos não são projetos liberados para construção ou instalação.
 
@@ -21,6 +21,9 @@ em [portfolio.toml](portfolio.toml).
 
 | Código | Projeto | Ênfase técnica | Pranchas | Documentação |
 | :---: | --- | --- | ---: | :---: |
+| P25 | Usina de cogeração a biomassa | gerador síncrono 25 MW, AVR/governador, balanço elétrico e térmico, conexão em 138 kV | 10 | [abrir](25-usina-cogeracao-biomassa/README.md) |
+| P24 | Linha de transmissão aérea 138 kV / 30 km | fluxo nominal π, flecha/tração, ampacidade, estruturas e aterramento conceituais | 10 | [abrir](24-linha-transmissao-138kv/README.md) |
+| P23 | Complexo siderúrgico com forno EAF | 138/34,5 kV, forno 30 MVA, curto-circuito, STATCOM e harmônicos | 10 | [abrir](23-complexo-siderurgico-eaf/README.md) |
 | P22 | Auxílios visuais luminosos de aeródromo | implantação indicativa, circuitos série com CCR, monitoramento e evidências de aceitação | 3 | [abrir](22-auxilios-visuais-luminosos-aerodromo/README.md) |
 | P21 | Instalação elétrica de clínica ambulatorial | planta elétrica, rede normal, gerador, QTA, UPS e matriz de continuidade | 3 | [abrir](21-instalacao-clinica-ambulatorial/README.md) |
 | P20 | Subestação de tração ferroviária em corrente contínua | retificação, terceiro trilho, retorno de corrente, proteção e supervisão | 3 | [abrir](20-tracao-ferroviaria-cc-750v/README.md) |
@@ -44,11 +47,11 @@ em [portfolio.toml](portfolio.toml).
 | P11 | Subestação de Média Tensão 13,8 kV | entrada MT, cubículos, trafo 500 kVA, QGBT, malha NBR 15751 e SPDA NBR 5419 | 6 | [abrir](11-subestacao-media-tensao/README.md) |
 | P12 | Grupo Moto-Gerador 250 kVA com QTA | diesel de emergência, transição aberta, USCA, barramento 500 A e acústica | 6 | [abrir](12-grupo-gerador-qta/README.md) |
 
-Total: **110 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
+Total: **140 pranchas A3**, cada uma disponível em DXF, PDF, SVG e PNG.
 
 ## Galeria de destaques
 
-A seleção abaixo apresenta quatro projetos recentes, cada um com três pranchas. Clique em uma imagem para abrir o PDF A3.
+A seleção abaixo apresenta pranchas de referência. Clique em uma imagem para abrir o PDF A3.
 
 | P13 — Gestão de potência | P17 — Verificação IEC 61850 |
 | --- | --- |
@@ -59,6 +62,13 @@ A seleção abaixo apresenta quatro projetos recentes, cada um com três prancha
 | [Projeto](20-tracao-ferroviaria-cc-750v/README.md) · [DXF](20-tracao-ferroviaria-cc-750v/fonte/03_matriz_protecao_supervisao_tracao_cc.dxf) | [Projeto](22-auxilios-visuais-luminosos-aerodromo/README.md) · [DXF](22-auxilios-visuais-luminosos-aerodromo/fonte/03_controle_monitoracao_e_ensaios.dxf) |
 
 A [galeria comentada](docs/galeria-visual.md) reúne as mesmas prévias e links diretos para os arquivos.
+
+### Estudos P23–P25
+
+| P23 — Complexo siderúrgico EAF | P24 — Linha de transmissão | P25 — Cogeração a biomassa |
+| --- | --- | --- |
+| [![Unifilar do complexo EAF](23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.png)](23-complexo-siderurgico-eaf/exports/01_diagrama_unifilar_geral.pdf) | [![Vão crítico e flecha](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.png)](24-linha-transmissao-138kv/exports/03_vano_critico_envelope_flecha.pdf) | [![Unifilar da usina](25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.png)](25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.pdf) |
+| [Projeto](23-complexo-siderurgico-eaf/README.md) · [DXF](23-complexo-siderurgico-eaf/fonte/01_diagrama_unifilar_geral.dxf) | [Projeto](24-linha-transmissao-138kv/README.md) · [DXF](24-linha-transmissao-138kv/fonte/03_vano_critico_envelope_flecha.dxf) | [Projeto](25-usina-cogeracao-biomassa/README.md) · [DXF](25-usina-cogeracao-biomassa/fonte/01_diagrama_unifilar.dxf) |
 
 ## Conteúdo dos projetos
 
@@ -72,6 +82,7 @@ Os desenhos cobrem diagramas unifilares e funcionais, plantas, painéis, instrum
 | AutoCAD | abertura e edição dos DXFs |
 | DXF AC1027 / R2013 | fonte CAD principal, em milímetros |
 | Python, ezdxf e NumPy | geração e validação estrutural dos desenhos |
+| MATLAB R2026a e Simulink | cálculos P23–P25 e modelos dinâmicos P23/P25 |
 | Matplotlib e Pillow | renderização vetorial e raster |
 | pypdf, PDFium e Poppler | validação e rasterização independente dos PDFs |
 | SVG e navegador Chromium | visualização vetorial e conferência cruzada |
@@ -119,16 +130,17 @@ Auditorias complementares da revisão consolidada:
 ```
 
 Todas as dependências usadas pelos comandos públicos estão fixadas em
-`requirements.txt`. O gerador de cada projeto e seus comandos específicos constam no
-README individual.
+`requirements.txt`. Para reproduzir as três novas entregas, os geradores e análises
+estão nos respectivos READMEs. P23 e P25 incluem modelos Simulink construídos com
+blocos padrão, já que Simscape Electrical não está licenciado neste ambiente.
 
 ## Validação e relatórios
 
-O [relatório consolidado de validação](relatorio-validacao.md) tem data de 10/09/2026 e escopo explícito nos projetos P01–P10. Ele não cobre a coleção atual completa de 22 projetos.
+O [relatório consolidado de validação](relatorio-validacao.md) mantém os resultados históricos P01–P10 e acrescenta a validação geral atual dos 25 projetos. Na revisão de 08/11/2026, o validador estrito aprovou 649.131 verificações sem erros ou avisos; as 30 novas fontes DXF passaram no AutoCAD Core Console. Os testes MATLAB/Simulink para P23–P25 também passaram.
 
-Os projetos P13–P22 incluem registros específicos de validação e inspeção nas respectivas pastas. Consulte o README e os arquivos de resultado de cada projeto; não há neste repositório um único relatório consolidado que substitua o escopo histórico acima.
+P24 sinaliza uma pendência explícita: no cenário de 140 MW, a corrente calculada (585,72 A) supera a estimativa térmica (571,04 A) sob as premissas cadastradas. Rever condutor e condições térmicas antes de evoluir o estudo.
 
-- [Relatório de validação P01–P10](relatorio-validacao.md)
+- [Relatório de validação (histórico P01–P10 e estado atual P01–P25)](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)
 - [Revisão visual](relatorio-revisao-visual.md)
 - [Inventário de arquivos](inventario-arquivos.md)
@@ -140,12 +152,13 @@ Os projetos P13–P22 incluem registros específicos de validação e inspeção
 
 ```text
 portfolio-autocad-engenharia-eletrica/
-├── 01-painel-motor-inversor/ ... 22-auxilios-visuais-luminosos-aerodromo/
+├── 01-painel-motor-inversor/ ... 25-usina-cogeracao-biomassa/
 │   ├── fonte/                  # DXFs e scripts-fonte
 │   ├── exports/                # PDF, SVG e PNG
 │   ├── README.md, memorial, critérios e memórias
 │   └── listas CSV e relatórios processáveis
 ├── docs/                       # padrão, critérios, plano e galeria
+├── projetos/README.md          # guia de compatibilidade e links para os projetos
 ├── templates/                  # template e carimbo A3 em DXF/SVG
 ├── renders/                    # visualizações do template e manifesto
 ├── scripts/                    # geração, renderização, revisão e validação

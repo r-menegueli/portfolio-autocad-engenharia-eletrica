@@ -1,0 +1,2 @@
+ambiente_C,condutor_C,ampacidade_estimada_A,corrente_referencia_A,corrente_maxima_casos_A,margem_percentual,status_termico,calor_solar_W_m,conveccao_W_m,radiacao_W_m
+45,75,571.043051890432,600,585.717664395273,-2.5697909214131,EXCEEDS_THERMAL_ESTIMATE,10.06,35.5549748570025,9.95978182909566

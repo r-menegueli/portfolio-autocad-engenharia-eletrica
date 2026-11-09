@@ -1,0 +1,6 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+T1,1,lote,"Transformador receptor 138/34,5 kV",45 MVA; impedância de estudo,conceitual; nao comprar
+TF1,1,lote,"Transformador do forno 34,5/1,0 kV",30 MVA; taps não especificados,conceitual; nao comprar
+STATCOM,1,lote,Compensador estático VSC,"limite nominal de estudo ±12,5 MVAr",conceitual; nao comprar
+F5/F7/HP,1,lote,Filtros passivos harmônicos,"7,5 MVAr fundamentais agregados",conceitual; nao comprar
+QF/TC/TP,1,lote,Disjuntores e instrumentação,"quantidades indicativas, especificação pendente",conceitual; nao comprar

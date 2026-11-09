@@ -1,0 +1,6 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+Condutor,1,lote,Condutor conceitual 138-A,parâmetros geométricos/térmicos fictícios; não é SKU comercial,conceitual; nao comprar
+Estruturas,1,lote,100 vãos de 300 m; torres esquemáticas,quantidade de estruturas depende do perfil e projeto real,conceitual; nao comprar
+Cabos guarda,1,lote,OPGW e cabo(s) guarda conceituais,"seleção, nível de curto e telecom pendentes",conceitual; nao comprar
+Fundações,1,lote,bases de torre esquemáticas,"sondagem, concreto e cargas não fornecidos",conceitual; nao comprar
+Aterramento,1,lote,hastes e contrapesos conceituais,resistividade de 100 Ω·m é apenas premissa,conceitual; nao comprar

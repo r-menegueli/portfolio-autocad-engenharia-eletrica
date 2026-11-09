@@ -39,6 +39,8 @@ tokens*.json
 .#*
 *.ac$
 *.err
+slprj/
+*.slxc
 
 # Configuracoes locais de IDE
 .idea/

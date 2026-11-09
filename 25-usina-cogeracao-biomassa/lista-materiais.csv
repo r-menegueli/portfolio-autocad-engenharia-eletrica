@@ -1,0 +1,6 @@
+item,quantidade,unidade,descricao,referencia,observacoes
+G1,1,lote,Gerador síncrono,"25 MW; 32 MVA; 13,8 kV; dados de placa incompletos",conceitual; nao comprar
+T1,1,lote,Transformador elevador,"40 MVA; 13,8/138 kV; uk presumida 12%",conceitual; nao comprar
+AVR/GOV,1,lote,Excitação e governador,modelos de primeira ordem; parâmetros presumidos,conceitual; nao comprar
+QSA,1,lote,Serviços auxiliares,"2,2 MW agregados; lista de cargas não fornecida",conceitual; nao comprar
+CB1,1,lote,Banco capacitivo,4 MVAr conceituais; operação/proteção pendentes,conceitual; nao comprar
