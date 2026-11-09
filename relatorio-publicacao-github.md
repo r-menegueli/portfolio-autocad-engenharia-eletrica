@@ -1,19 +1,20 @@
 # Relatório de publicação no GitHub
 
-**Data da preparação:** 2026-11-08  
+**Data da publicação:** 2026-11-08
 **Repositório:** `r-menegueli/portfolio-autocad-engenharia-eletrica`  
 **Branch de trabalho:** `codex/p23-p25-studies`  
 **Destino:** `main`  
-**Estado:** preparado; publicação direta autorizada e pendente de execução.
+**Estado:** publicado no `main` por fast-forward.
+**Commit:** `3d1d228e052694558962e0da9244b6e6a002d67b`
 
 O trabalho acrescenta os projetos P23–P25 à coleção e preserva o histórico anterior.
-O push só ocorrerá após conferir que `origin/main` continua ancestral desta branch;
-sem avanço rápido, não será forçada a atualização.
+Antes do push, `origin/main` foi atualizado e confirmou-se como ancestral deste commit;
+nenhum histórico foi reescrito.
 
 ## Conteúdo preparado
 
 - **25 projetos** e **140 pranchas A3** em DXF, PDF, SVG e PNG.
-- **967 arquivos** na árvore, total de 280.331.377 bytes antes da compressão Git.
+- **967 arquivos** na árvore antes da compressão Git.
 - Formatos principais: 142 DXFs, 141 PDFs, 142 SVGs, 147 PNGs, 106 CSVs,
   35 JSONs, 165 arquivos Markdown, 66 arquivos Python, 11 scripts MATLAB, 2 modelos
   Simulink e 2 workbooks XLSX.
@@ -27,10 +28,10 @@ Não serão incluídos `.venv/`, caches MATLAB (`slprj/` e `*.slxc`), logs, saí
 ## Auditoria e validação
 
 O auditor [`auditar_publicacao.py`](scripts/auditar_publicacao.py) examinou 967
-arquivos, 883 blobs históricos e 612 links relativos: **zero erros e um aviso**.
-O aviso é um e-mail pessoal em um commit antigo do histórico (identificador
-`14c30d95098d`); o auditor oculta o valor. Esse commit antecede esta entrega e o
-histórico não foi reescrito.
+arquivos, 1.078 blobs históricos e 615 links relativos: **zero erros e dois avisos**.
+Os avisos são metadados de e-mail pessoal em `14c30d95098d` (já existente na base) e
+no commit da entrega `3d1d228e0526`; o auditor oculta os valores. Como esse tipo de
+metadado já constava na base, o histórico existente não foi reescrito.
 
 | Verificação | Escopo | Resultado |
 | --- | ---: | :---: |
@@ -68,7 +69,7 @@ python .\scripts\auditar_publicacao.py --root .
 python -m pytest -q
 ```
 
-Os relatórios individuais de engenharia e validação ficam nas pastas P23–P25. Este
-documento será atualizado com o resultado do push e o identificador final publicado.
+Os relatórios individuais de engenharia e validação ficam nas pastas P23–P25. O push
+foi concluído para `main`; o identificador acima é o commit publicado.
 
 > Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.
