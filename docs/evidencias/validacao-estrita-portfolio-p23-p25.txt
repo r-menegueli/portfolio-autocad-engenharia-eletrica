@@ -1,0 +1,4 @@
+COMANDO: .\.venv\Scripts\python.exe scripts\validar_portfolio.py --root . --strict
+EXIT_CODE: 0
+
+VALIDACAO PASS | verificacoes=651139 erros=0 avisos=0 strict=True

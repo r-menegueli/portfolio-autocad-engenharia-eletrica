@@ -33,4 +33,4 @@ Não há topografia, clima, servidão, dados de fabricante completos do condutor
 
 Não foi criado nem executado modelo Simulink para este projeto; não alegar simulação dinâmica.
 
-Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação, energização ou operação sem projeto executivo, verificações específicas e responsabilidade profissional habilitada.
+Projeto acadêmico e conceitual. Não deve ser utilizado para fabricação, instalação ou execução de serviços sem revisão, dimensionamento e responsabilidade de profissional legalmente habilitado.

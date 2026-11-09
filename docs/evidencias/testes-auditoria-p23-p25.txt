@@ -1,0 +1,102 @@
+Auditoria reproducivel de testes - P23/P24/P25
+Data: 2026-11-09
+Ambiente: Windows PowerShell; .venv Python
+
+## pytest geral
+COMANDO: .\.venv\Scripts\python.exe -m pytest -q tests
+..........F                                                              [100%]
+================================== FAILURES ===================================
+______________ test_current_repository_passes_strict_validation _______________
+
+    def test_current_repository_passes_strict_validation() -> None:
+        validator = Validator(ROOT, strict=True)
+        validator.run()
+        result = validator.result()
+>       assert result["status"] == "PASS", json.dumps(result, ensure_ascii=False, indent=2)
+E       AssertionError: {
+E           "status": "FAIL",
+E           "strict": true,
+E           "checks": 651133,
+E           "errors": 1,
+E           "warnings": 0,
+E           "diagnostics": [
+E             {
+E               "severity": "ERROR",
+E               "code": "NOTICE_MISSING",
+E               "path": "24-linha-transmissao-138kv/README.md",
+E               "message": "Aviso obrigatorio ausente.",
+E               "entity": ""
+E             }
+E           ]
+E         }
+E       assert 'FAIL' == 'PASS'
+E
+E         - PASS
+E         + FAIL
+
+tests\test_validador.py:144: AssertionError
+============================== warnings summary ===============================
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+  C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  As an alternative, you can create a new view using np.reshape (with copy=False if needed).
+    m.shape = (3, 3)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_validador.py::test_current_repository_passes_strict_validation
+EXIT_CODE: 1
+
+## pytest P23
+COMANDO: .\.venv\Scripts\python.exe -m pytest -q 23-complexo-siderurgico-eaf\validacao
+.......                                                                  [100%]
+EXIT_CODE: 0
+
+## pytest P24
+COMANDO: .\.venv\Scripts\python.exe -m pytest -q 24-linha-transmissao-138kv\validacao
+....                                                                     [100%]
+EXIT_CODE: 0
+
+## pytest P25
+COMANDO: .\.venv\Scripts\python.exe -m pytest -q 25-usina-cogeracao-biomassa\validacao
+..........                                                               [100%]
+EXIT_CODE: 0
+
+## validador estrutural P23-P25
+COMANDO: .\.venv\Scripts\python.exe scripts\validar_estudos_p23_p25.py --project all
+{
+  "data": "2026-11-09",
+  "escopo": [
+    "p23",
+    "p24",
+    "p25"
+  ],
+  "resultado": "aprovado",
+  "tipo": "validacao_estrutural_de_arquivos_e_renderizacoes",
+  "erros": [],
+  "avisos": [],
+  "observacao": "Focused structural validation: DXF/PDF/PNG reading and file checklist; does not certify calculations, standards, or executive design."
+}
+EXIT_CODE: 0
+
+## Reexecucao apos correcao de conformidade documental
+Constatacao anterior: a validacao geral apontou NOTICE_MISSING em 24-linha-transmissao-138kv/README.md; foi substituido o texto parcial pelo aviso obrigatorio literal.
+COMANDO: .\.venv\Scripts\python.exe -m pytest -q tests
+...........                                                              [100%]
+============================== warnings summary ===============================
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
+  C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  As an alternative, you can create a new view using np.reshape (with copy=False if needed).
+    m.shape = (3, 3)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+EXIT_CODE: 0

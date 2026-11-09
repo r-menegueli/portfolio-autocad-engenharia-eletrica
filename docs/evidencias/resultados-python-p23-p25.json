@@ -1,0 +1,302 @@
+{
+  "data": "2026-11-09",
+  "python": "3.14.7",
+  "results": {
+    "P23": {
+      "static_python_recalculation": {
+        "balanco-cargas": {
+          "P_MW": 28.0,
+          "Q_bruta_MVAr": 24.27357594916073,
+          "S_bruta_MVA": 37.056800851661144,
+          "fp_bruto": 0.7555967961747255,
+          "Q_rede_alvo_MVAr": 9.203154945008169,
+          "Q_filtros_MVAr": 7.5,
+          "Q_STATCOM_MVAr": 7.570421004152561,
+          "S_PCC_MVA": 29.47368421052632,
+          "I_PCC_A": 123.30898197795213,
+          "I_B1_A": 493.2359279118085,
+          "I_secundaria_A": 17320.508075688773
+        },
+        "curto-circuito": {
+          "Base_MVA": 45.0,
+          "X_fonte_pu": 0.018,
+          "R_total_pu": 0.005,
+          "X_total_pu": 0.143,
+          "Z_total_pu": 0.1430873858870865,
+          "Scc_34k5_MVA": 314.49313104028977,
+          "Icc_34k5_kA": 5.2629766337507125
+        },
+        "harmonicos": {
+          "THDi_sintetico_pu": 0.24413111231467408,
+          "THDi_sintetico_percentual": 24.413111231467408
+        }
+      },
+      "reduced_python_simulation": {
+        "scenarios": 8,
+        "samples": 4008,
+        "summary": [
+          {
+            "cenario": "forno_desligado_compensado",
+            "V_min_pu": 0.9926041845986734,
+            "V_max_pu": 0.9926041845986734,
+            "V_final_pu": 0.9926041845986734,
+            "Q_STATCOM_min_MVAr": -6.149224211460966,
+            "Q_STATCOM_max_MVAr": -6.149224211460966,
+            "I_barra_max_A": 113.57965482599569,
+            "fp_final": 0.95
+          },
+          {
+            "cenario": "nominal_sem_STATCOM",
+            "V_min_pu": 0.9435861919837781,
+            "V_max_pu": 0.9435861919837781,
+            "V_final_pu": 0.9435861919837781,
+            "Q_STATCOM_min_MVAr": 0.0,
+            "Q_STATCOM_max_MVAr": 0.0,
+            "I_barra_max_A": 578.8758565456459,
+            "fp_final": 0.8578498808944329
+          },
+          {
+            "cenario": "nominal_com_STATCOM",
+            "V_min_pu": 0.9676433076191963,
+            "V_max_pu": 0.9676433076191963,
+            "V_final_pu": 0.9676433076191963,
+            "Q_STATCOM_min_MVAr": 7.570421004152559,
+            "Q_STATCOM_max_MVAr": 7.570421004152559,
+            "I_barra_max_A": 509.7290747820841,
+            "fp_final": 0.95
+          },
+          {
+            "cenario": "degrau_carga_mais_20pct",
+            "V_min_pu": 0.9592686671494973,
+            "V_max_pu": 0.9676433076191963,
+            "V_final_pu": 0.9626511322233006,
+            "Q_STATCOM_min_MVAr": 7.570421004152559,
+            "Q_STATCOM_max_MVAr": 10.314350047275259,
+            "I_barra_max_A": 604.8529745967843,
+            "fp_final": 0.9499999999999998
+          },
+          {
+            "cenario": "degrau_carga_menos_20pct",
+            "V_min_pu": 0.9676433076191963,
+            "V_max_pu": 0.9760179480888951,
+            "V_final_pu": 0.9726354830150918,
+            "Q_STATCOM_min_MVAr": 4.8264919610298564,
+            "Q_STATCOM_max_MVAr": 7.570421004152559,
+            "I_barra_max_A": 509.7290747820841,
+            "fp_final": 0.95
+          },
+          {
+            "cenario": "saturacao_STATCOM_mais_40pct",
+            "V_min_pu": 0.9501881102958317,
+            "V_max_pu": 0.9676433076191963,
+            "V_final_pu": 0.9558848699401404,
+            "Q_STATCOM_min_MVAr": 7.570421004152559,
+            "Q_STATCOM_max_MVAr": 12.499999999999991,
+            "I_barra_max_A": 702.5275390390731,
+            "fp_final": 0.9456368824943916
+          },
+          {
+            "cenario": "afundamento_rede_0p8pu",
+            "V_min_pu": 0.7734319521500008,
+            "V_max_pu": 0.9676433076191963,
+            "V_final_pu": 0.967643307619196,
+            "Q_STATCOM_min_MVAr": 7.570421004152559,
+            "Q_STATCOM_max_MVAr": 7.570421004152559,
+            "I_barra_max_A": 637.7237539006527,
+            "fp_final": 0.95
+          },
+          {
+            "cenario": "flutuacao_arco_sintetica",
+            "V_min_pu": 0.8604632388614517,
+            "V_max_pu": 1.0757054441580904,
+            "V_final_pu": 0.9194917658194259,
+            "Q_STATCOM_min_MVAr": 7.570421004152559,
+            "Q_STATCOM_max_MVAr": 7.570421004152559,
+            "I_barra_max_A": 573.2213831289861,
+            "fp_final": 0.95
+          }
+        ],
+        "model_limit": "Reduced conceptual Python model; not MATLAB/Simulink, not a validated equipment/network model."
+      }
+    },
+    "P25": {
+      "static_python_recalculation": {
+        "balanco-potencia": {
+          "P_gerador_MW": 25.0,
+          "P_mecanica_MW": 25.380710659898476,
+          "P_aux_MW": 2.2,
+          "P_exportada_MW": 22.8,
+          "Q_gerador_MVAr": 12.108052620946314,
+          "Q_aux_MVAr": 1.0655086306432757,
+          "Q_banco_MVAr": 4.0,
+          "Q_exportada_MVAr": 7.042543990303038,
+          "S_exportada_MVA": 23.862888045149806,
+          "fp_POI": 0.9554585328004404,
+          "Q_alvo_fp_MVAr": 7.4939975980780815,
+          "Q_compensacao_necessaria_MVAr": 3.5485463922249565,
+          "S_gerador_operacao_MVA": 27.77777777777778,
+          "I_operacao_gerador_A": 1162.1382230064933,
+          "I_placa_gerador_A": 1338.78323290348,
+          "I_transformador_AT_A": 167.34790411293503,
+          "I_POI_A": 99.83510751093583,
+          "carregamento_trafo_pu": 0.5965722011287451
+        },
+        "curto-circuito": {
+          "Base_gerador_MVA": 32.0,
+          "Base_transformador_MVA": 40.0,
+          "X_rede_na_base_trafo_pu": 0.008,
+          "R_trafo_pu": 0.005,
+          "X_trafo_pu": 0.12,
+          "X_d_transitoria_pu": 0.25,
+          "I_rede_13k8_A": 8361.018686144727,
+          "I_gerador_13k8_A": 5355.13293161392,
+          "I_total_13k8_A": 13713.663734647851,
+          "Scc_total_13k8_MVA": 327.78812037928276,
+          "I_rede_138_A": 20918.48801411688,
+          "I_gerador_138_A": 522.8983738804376,
+          "I_total_138_A": 21441.324125592215
+        },
+        "balanco-energetico": {
+          "combustivel_MW": 104.16666666666667,
+          "vapor_disponivel_MWth": 85.41666666666667,
+          "vapor_util_MWth": 30.0,
+          "geracao_bruta_MW": 25.0,
+          "exportacao_liquida_MW": 22.8,
+          "rendimento_util_pu": 0.528,
+          "energia_combustivel_MWh_ano": 750000.0,
+          "energia_bruta_MWh_ano": 180000.0,
+          "energia_liquida_MWh_ano": 164160.0,
+          "vapor_util_MWhth_ano": 216000.0
+        }
+      },
+      "reduced_python_simulation": {
+        "scenarios": 8,
+        "samples": 8008,
+        "summary": [
+          {
+            "cenario": "nominal",
+            "Vt_min_pu": 1.0,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 60.0,
+            "f_max_Hz": 60.0,
+            "f_final_Hz": 60.0,
+            "I_max_A": 1162.1382230064933,
+            "Pe_final_MW": 25.0,
+            "Q_final_MVAr": 12.108052620946324
+          },
+          {
+            "cenario": "referencia_potencia_mais_0p04pu",
+            "Vt_min_pu": 1.0,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 59.9977002732809,
+            "f_max_Hz": 60.00469503553149,
+            "f_final_Hz": 59.99932358180579,
+            "I_max_A": 1210.4851291773268,
+            "Pe_final_MW": 26.151124659801308,
+            "Q_final_MVAr": 11.897766559232082
+          },
+          {
+            "cenario": "referencia_potencia_menos_0p04pu",
+            "Vt_min_pu": 1.0,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 59.99530659105831,
+            "f_max_Hz": 60.00230081146129,
+            "f_final_Hz": 60.00057094098496,
+            "I_max_A": 1162.1382230064933,
+            "Pe_final_MW": 23.85101337493218,
+            "Q_final_MVAr": 12.308216331840924
+          },
+          {
+            "cenario": "afundamento_tensao",
+            "Vt_min_pu": 0.2016,
+            "Vt_max_pu": 1.0063744,
+            "Vt_final_pu": 1.0000000000001048,
+            "f_min_Hz": 59.18541864388249,
+            "f_max_Hz": 60.8047571850254,
+            "f_final_Hz": 59.911696185090385,
+            "I_max_A": 5536.940662817997,
+            "Pe_final_MW": -6.934690531874614,
+            "Q_final_MVAr": 14.151948550316263
+          },
+          {
+            "cenario": "afundamento_mais_referencia",
+            "Vt_min_pu": 0.2016,
+            "Vt_max_pu": 1.0063744,
+            "Vt_final_pu": 1.0000000000001048,
+            "f_min_Hz": 59.18541864388249,
+            "f_max_Hz": 60.8047571850254,
+            "f_final_Hz": 59.89522494865564,
+            "I_max_A": 5536.940662817997,
+            "Pe_final_MW": -5.5990189232072725,
+            "Q_final_MVAr": 14.210820251210862
+          },
+          {
+            "cenario": "afundamento_sem_AVR",
+            "Vt_min_pu": 0.2,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 59.214404393713785,
+            "f_max_Hz": 60.77033306343099,
+            "f_final_Hz": 59.73503533904926,
+            "I_max_A": 4979.553603763634,
+            "Pe_final_MW": -2.5141948065378408,
+            "Q_final_MVAr": 14.298788588338454
+          },
+          {
+            "cenario": "referencia_mais_0p04pu_sem_governador",
+            "Vt_min_pu": 1.0,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 60.0,
+            "f_max_Hz": 60.0,
+            "f_final_Hz": 60.0,
+            "I_max_A": 1162.1382230064933,
+            "Pe_final_MW": 25.0,
+            "Q_final_MVAr": 12.108052620946324
+          },
+          {
+            "cenario": "sensibilidade_inercia_metade",
+            "Vt_min_pu": 1.0,
+            "Vt_max_pu": 1.0,
+            "Vt_final_pu": 1.0,
+            "f_min_Hz": 59.99794256793602,
+            "f_max_Hz": 60.004924286562954,
+            "f_final_Hz": 59.99997556010926,
+            "I_max_A": 1208.7592887701617,
+            "Pe_final_MW": 26.34507425239945,
+            "Q_final_MVAr": 11.861372336572686
+          }
+        ],
+        "model_limit": "Reduced conceptual Python model; not MATLAB/Simulink, not a validated equipment/network model."
+      }
+    },
+    "P24": {
+      "reconstructed_and_asserted_by_test_suite": {
+        "electrical_cases": 9,
+        "max_current_case": {
+          "P_MW": "140",
+          "fp": "0.9",
+          "S_MVA": "155.555555555556",
+          "I_recebimento_A": "650.797404883636",
+          "V_envio_LL_kV": "145.09192564875",
+          "regulacao_percentual": "5.13907655706507",
+          "P_envio_MW": "141.626558524299",
+          "perdas_MW": "1.62655852429947"
+        },
+        "mechanical_cases": 900,
+        "max_vertical_sag_m": 9.04625271475334,
+        "max_lateral_sag_m": 6.54615993716775,
+        "min_synthetic_clearance_m": 12.678747285246644,
+        "max_support_tension_kN": 32.7579262537594,
+        "thermal_cases": 9,
+        "minimum_estimated_bundle_ampacity_A": 892.044159378472,
+        "minimum_thermal_margin_percent": 27.0442614256814,
+        "structure_stations": 101
+      },
+      "model_limit": "Simplified Python checks; the MATLAB run is not verified and the route/climate/conductor proxies are synthetic."
+    }
+  }
+}
