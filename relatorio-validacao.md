@@ -1,25 +1,18 @@
 # Relatório de validação consolidada
 
-> **Atualização de 08/11/2026:** o registro abaixo preserva a auditoria histórica P01–P10. A revisão atual abrange P01–P25 e passou no validador estrito com **649.131 verificações, zero erros e zero avisos**. O validador dedicado P23–P25 aprovou 30 pranchas e os arquivos associados; as 30 fontes DXF novas passaram no AutoCAD Core Console 2027. Os três testes MATLAB (P23, P24 e P25) passaram; os modelos Simulink P23/P25 foram simulados. P24 mantém uma pendência de projeto: no cenário de 140 MW, 585,72 A calculados excedem a estimativa térmica de 571,04 A. Estes resultados são acadêmicos e não constituem liberação para construção.
+## Estado das evidências — 10/11/2026
 
-## Revisão atual — 08/11/2026
+A documentação abaixo mantém os resultados históricos P01–P10. Para P23–P25, `main` ainda contém uma atualização de 08/11/2026 que declara verificações MATLAB/Simulink aprovadas. Uma auditoria posterior da branch `revisao/p23-p25` não confirma simulações Simulink concluídas e identifica que os resultados estáticos e dinâmicos precisam ser interpretados segundo seus testes e premissas. Como as branches não foram integradas, não trate as alegações de `main` como reproduzidas nem aplique automaticamente os resultados da outra branch ao conteúdo de `main`.
 
-| Verificação | Escopo | Resultado |
-| --- | ---: | :---: |
-| Validador estrito global | P01–P25; 649.131 verificações | PASS, 0 erros, 0 avisos |
-| Validador dedicado | P23–P25; 30 pranchas e artefatos | PASS |
-| AutoCAD Core Console 2027 | 30 DXFs P23–P25 | 30/30 PASS |
-| Testes MATLAB | P23, P24 e P25 | 3/3 PASS |
-| Simulação Simulink | modelos dinâmicos P23 e P25 | PASS |
-| Testes Python | suíte comum e regressão do auditor | 11/11 PASS |
+| Escopo | Registro disponível | Interpretação |
+| --- | --- | --- |
+| P01–P10 | Auditoria detalhada datada de 10/09/2026 abaixo | Resultado histórico, sem reexecução nesta auditoria da conta |
+| P01–P25 em `main` | O relatório anterior declara 649.131 verificações estruturais e 30/30 DXFs no AutoCAD Core Console | Alegações registradas; não reexecutadas nesta auditoria |
+| MATLAB P23–P25 | O relatório anterior declara três testes aprovados | Não há evidência suficiente nesta branch para confirmar o estado atual |
+| Simulink P23/P25 | O relatório anterior declara simulações aprovadas | A auditoria posterior registra que nenhuma execução atual concluída foi comprovada |
+| Revisão P23–P25 | [RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/blob/revisao/p23-p25/RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md) | Branch independente; não representa uma integração em `main` |
 
-O ensaio térmico indicativo da linha P24 não atende no cenário de 140 MW com as
-premissas atuais. Consultar os resultados e critérios de P24; a seleção de condutor,
-temperatura ambiente, vento e demais parâmetros deve ser revista antes de qualquer
-uso de engenharia. Os modelos de processo P23/P25 usam blocos padrão do Simulink e
-equivalentes agregados em pu, pois Simscape Electrical não estava licenciado no
-ambiente de execução.
-
+Os projetos são acadêmicos e conceituais. P24 também mantém pendências de dimensionamento que devem ser analisadas nos arquivos e cálculos da branch correspondente antes de qualquer evolução.
 **Data:** 2026-09-10
 
 **Escopo:** repositório completo, Projetos P01 a P10
