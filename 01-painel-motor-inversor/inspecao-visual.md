@@ -96,9 +96,9 @@ similaridade PDF/PNG foi 0,991639 em P01-03 e 0,983640 em P01-08. O AutoCAD AcCo
 2027 abriu e auditou as oito fontes DXF: `AUTOCAD_AUDIT=PASS` em 8/8.
 
 Após regenerar o manifesto e os derivados, o validador estrito aprovou 624.834
-verificações, com zero erros e avisos. A revisão consolidada aprovou 12 projetos, 105
-pranchas, 420 arquivos gráficos e 73 CSVs; a similaridade PDF/PNG mínima foi 0,981493,
-sem erros. O registro global está em `work/revisao-p01rev03/resultado.json`.
+verificações, com zero erros e avisos. Na fotografia daquela revisão, a auditoria consolidada registrou 12 projetos, 105
+pranchas, 420 arquivos gráficos e 73 CSVs; esse total foi superado por snapshots
+posteriores. Os resultados atuais estão no [relatório de validação](../relatorio-validacao.md).
 
 A inspeção dos SVGs em navegador continua aguardando autorização. Esta revisão verifica
 apresentação, abertura CAD e consistência documental; não valida dimensionamento,
