@@ -1,9 +1,6 @@
 # Portfólio de Engenharia Elétrica em AutoCAD
 
-Portfólio técnico e acadêmico de **Rogério Eduardo Moreira Menegueli**, formado por
-dezoito estudos conceituais de documentação elétrica. O repositório reúne diagramas,
-plantas, layouts, cálculos, tabelas e memoriais em um fluxo reproduzível, com DXF
-verdadeiro como fonte CAD e PDF, SVG e PNG como formatos de apresentação.
+Este snapshot da branch `revisao/portfolio-2026-11` contém 22 estudos conceituais e 144 pranchas A3, com DXF como fonte CAD e PDF, SVG e PNG para apresentação. O estado mais recente da `main` reúne 25 estudos e 140 pranchas; os snapshots preservam revisões distintas.
 
 **Objetivo profissional:** apresentar competências em documentação de projetos
 elétricos, automação, instrumentação, acionamentos, instalações, sistemas de energia
@@ -21,8 +18,7 @@ validações.
 - [Como abrir e reproduzir](#como-abrir-e-reproduzir)
 - [Validação e relatórios](#validação-e-relatórios)
 
-As regras permanentes estão em [AGENTS.md](AGENTS.md) e os parâmetros processáveis
-em [portfolio.toml](portfolio.toml).
+Os critérios técnicos e gráficos estão em [docs/criterios-tecnicos.md](docs/criterios-tecnicos.md) e [docs/padrao-grafico.md](docs/padrao-grafico.md); os parâmetros processáveis estão em [portfolio.toml](portfolio.toml).
 
 ## Projetos
 
@@ -90,8 +86,7 @@ DXFs, SVGs e READMEs desses quatro projetos.
 | CSV e XLSX | dados técnicos, cálculos e listas rastreáveis |
 | Git e PowerShell | reprodução, auditoria e histórico local |
 
-O ambiente verificado e suas limitações estão no
-[relatório de ferramentas](relatorio-ferramentas.md).
+A reprodução e o histórico das verificações estão em [Ferramentas e validação](relatorio-ferramentas.md).
 
 ### Política dos formatos
 
@@ -173,8 +168,7 @@ ou avisos.
 - [Revisão técnica histórica (P01–P10, 2026-09-10)](relatorio-revisao-tecnica.md)
 - [Revisão visual histórica](relatorio-revisao-visual.md)
 - [Auditoria de projetos, maturidade e correções](docs/auditoria-portfolio-2026-11.md)
-- [Preparação para publicação no GitHub](relatorio-publicacao-github.md)
-- [Inventário de arquivos](inventario-arquivos.md)
+- - [Inventário de arquivos](inventario-arquivos.md)
 - [Critérios técnicos](docs/criterios-tecnicos.md)
 - [Padrão gráfico](docs/padrao-grafico.md)
 - [Plano dos projetos](docs/plano-projetos.md)
@@ -200,7 +194,6 @@ portfolio-autocad-engenharia-eletrica/
 ├── renders/                    # visualizações do template e manifesto
 ├── scripts/                    # geração, renderização, revisão e validação
 ├── tests/                      # testes automatizados do validador
-├── AGENTS.md
 └── portfolio.toml
 ```
 
