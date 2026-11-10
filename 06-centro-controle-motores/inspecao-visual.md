@@ -15,7 +15,7 @@ P06-10 em PDF rasterizado a 150 dpi.
 | 06 | PDF rasterizado a 150 dpi | Resumo X1/X2 e das faixas X3/X4 legível, com referência direta ao detalhamento P06-10. |
 | 10 | PNG de produção e PDF rasterizado a 150 dpi | Tabelas de X3 (24 posições) e X4 (10 posições), cabos, funções, destinos e ligações internas STO legíveis; sem cortes ou colisões visíveis. |
 
-O contato das dez folhas foi gerado em `work/revisao-portfolio-p06-rev04/contatos/06-centro-controle-motores.png`.
+O contato das dez folhas foi usado como apoio à inspeção; a imagem diagnóstica temporária não faz parte dos artefatos publicados.
 
 ## Conferências estruturais e limites
 
