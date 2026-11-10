@@ -1,24 +1,24 @@
 # Relatório de validação consolidada
 
-> **Registro histórico de 08/11/2026:** o trecho preserva a auditoria anterior à reengenharia e não deve ser interpretado como uma repetição dos testes no estado atual.
+> O registro de 08/11/2026 e os resultados P01–P10 abaixo são preservados como histórico. O estado corrente da revisão P23–P25 é resumido separadamente.
 
-## Estado da branch de reengenharia — 09/11/2026
+## Estado atual da branch de revisão — 10/11/2026
 
 | Verificação | Escopo corrente | Resultado |
 | --- | --- | :---: |
-| Suíte Python geral | `tests/` | PASS, 11 testes |
-| Testes focados | P23 7, P24 4, P25 10 | PASS, 21 testes |
-| Validador estrutural P23–P25 | 30 folhas DXF/PDF/SVG/PNG | PASS, 0 erros e 0 avisos |
-| Extração de texto PDF | 30 folhas atuais | PASS; 10 páginas A3 em cada caderno consolidado |
-| AutoCAD Core Console | 30 DXFs P23–P25, 09/11/2026 | PASS, 30/30; zero erros e zero reparos no `AUDIT` |
-| MATLAB/Simulink | fontes dinâmicas atuais P23/P25 | NÃO REEXECUTADO nesta revisão; ver registro de ambiente e distinguir do histórico de 08/11 |
-| Preservação | projetos P01–P22 | sem alterações no diff desta branch |
+| Suíte Python geral | `tests/` | PASS, 36 testes segundo o relatório de auditoria |
+| Validador estrito | repositório e 30 pranchas P23–P25 | PASS, 651.139 verificações, zero erros e zero avisos |
+| AutoCAD Core Console | 30 DXFs P23–P25 | 30/30 no CSV de evidência; não reexecutado nesta revisão de conta |
+| MATLAB estático | P23, P24 e P25 | caminhos estáticos executados; ver relatório de auditoria e entradas provisórias |
+| MATLAB dinâmico e Simulink | P23–P25 | sem execução concluída comprovada; P23 interrompido, P24 sem modelo `.slx`, P25 não iniciado |
+| Preservação | P01–P22 | sem alterações na branch de revisão registrada |
 
-As tabelas estáticas P23–P25 foram recalculadas ou verificadas por rotinas Python independentes. P23 e P25 também têm alternativas dinâmicas reduzidas em Python, executadas em oito cenários cada e cobertas por quatro testes cada. Em P25, a entrada de potência é uma referência mecânica, não um degrau físico de carga; o ensaio de tensão reduzida não se recompõe no horizonte de 5 s e termina com potência ativa calculada negativa. Esse cenário não valida estabilidade nem suportabilidade. As execuções Python não comprovam execução dos modelos MATLAB/Simulink correntes. Consulte `validacao/relatorio-validacao-tecnica.json` dentro de cada projeto para os resultados e limites atuais.
+Os testes cobrem o código, os dados e a estrutura descritos nos relatórios; não certificam dimensionamento, segurança, conformidade ou aptidão para obra. P24 conserva premissas sintéticas de rota, clima e condutor. A branch de revisão não está integrada a `main`.
 
-### Revisão histórica — 08/11/2026
+### Registro histórico de 08/11/2026 — superado pela auditoria posterior
 
-## Revisão atual — 08/11/2026
+
+#### Resultados registrados naquela revisão — não representam o estado atual
 
 | Verificação | Escopo | Resultado |
 | --- | ---: | :---: |
