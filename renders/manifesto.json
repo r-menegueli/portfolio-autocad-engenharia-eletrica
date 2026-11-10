@@ -2494,15 +2494,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.pdf",
-          "sha256": "baf7a0e67ac0be937c0ccf4cf3f5805f8d25752311873840924a3959134a3111"
+          "sha256": "22fb1517837199a546e9137e9c34e409100043ce9b913201b3354fe8431dcba4"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.png",
-          "sha256": "0d63050eda716d11a1cee91ab0f655c027f795a5cf471ced347b194c857b3259"
+          "sha256": "b34c8971aa9c94e4de8f97a5e07d3b0c902cd50f7d7e961ab043d8cc016f8d27"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/01_diagrama_unifilar.svg",
-          "sha256": "0c3adfc56318d1dba06643b8c8c8807aac306ce285b5193a3fd39f1bd9247a96"
+          "sha256": "c1d4f3fbc854a6389ba2a2a1ad1ad03bcdb529ac4aaacb206f70eaaaef3088d4"
         }
       }
     },
@@ -2513,15 +2513,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.pdf",
-          "sha256": "c4df85875cb83b33ba61fb198170fe83e8277463f4139e466742e3319787c5a5"
+          "sha256": "2e834ff691ee35c7f076c6653b1cbf20c0979baf2b1ea20cafe0294f9e2df784"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.png",
-          "sha256": "de31fa896702b731ff73fb99a835b9d1cd50c4fc8fe3baad335ea437871e0c5d"
+          "sha256": "261d54c2de8529cdbaf9102e5a86fede7b5ee585b57b2603ff8c553ebfcfc76d"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/02_implantacao_casa_maquinas.svg",
-          "sha256": "a4527469fd36e6cf0adcde0ed321664c3abb91785f3f913cda55add1d8f21e97"
+          "sha256": "2cdadffc3a5e1b9f9f7e433487989bd53d1782463bca4b874fc0c77dfd9e0544"
         }
       }
     },
@@ -2532,15 +2532,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.pdf",
-          "sha256": "a0dc84c773a2a1800d43f26921ff9cdf51bdd97de478111c31b0723f5eb668b7"
+          "sha256": "436ec8fbaf006b166b5d98046fe423f2c10e229fce045cc8e4c4027cc6ed310e"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.png",
-          "sha256": "c6fd97fc08a2f4cd417ef6006bb35167ca0ffb2483a0c76c210e1727755d0efd"
+          "sha256": "9c634e7c5adfdc498da8d0a82f507dae7d99551d2bda6fc6d4089790671d0f9f"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/03_layout_gerador_auxiliares.svg",
-          "sha256": "a0196fdfb677e70ccafc196eec101bdd17f1422f6d40bb60f20c3e45be0c5558"
+          "sha256": "51af7f5a2c9f18c92d397dce96a12fb6a33d63665c2b9b2f83ca4e43544b4b44"
         }
       }
     },
@@ -2551,34 +2551,34 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.pdf",
-          "sha256": "13e44fef5dcb8b8396b32e0d96c05bcbacb9e4a33caeee6fa37d3406b33eda32"
+          "sha256": "bfe5f582af84099fd325bed9e72f0a71f8e495490e3023f8b18998a91dfa041c"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.png",
-          "sha256": "689acaf164bfc0032650f8fe0c7accd30c21da5c22e0636ea845645f13e45dec"
+          "sha256": "160fa312e1f916a2461278ef92e45a66dd9ecc8eb65399cf73f6b990957bfaa2"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/04_transformador_conexao_rede.svg",
-          "sha256": "b09fd96ac4f88186f98d2c3d2bb4a28cfaea42f6fefa7060c3af881fecff70e4"
+          "sha256": "c83efe066fb66755cf9192551d9802229cd6b9028ede18a3313bdf08f06cb03f"
         }
       }
     },
     {
       "id": "p25-05-excitacao-avr-cogeracao",
       "source": "25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf",
-      "source_sha256": "9a32ddfa00598985db9c906d64325010c0feb73a83ec7efe4152c2a81829dc7f",
+      "source_sha256": "01dd77e87474b50da50b08b9599e0f56e3d4a0f2754021aafa5e9723add8886d",
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.pdf",
-          "sha256": "cf2ef32ca53937c254567fd0270f82360df02bb2327da6a3375742569a0dda1d"
+          "sha256": "4ce7670285e1e9dc6111aa6cf07860c06c5f28b67c87b8aa774bc8474a170a61"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.png",
-          "sha256": "5dfb30b801b5059c1c936cdef1d6758cf443817a22d6aa95221f21eaaee15b85"
+          "sha256": "fa73cce612136c8fef541053b68b6b63616a493b2dab39b6f68b9f4130637958"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.svg",
-          "sha256": "7abf3cebef3c1a4ee995d5dece4737fadbe32286cff161b013961f4b0dd839d0"
+          "sha256": "00e206ddbfc7b14a3a42af93c6bd79e8bab8c44af6c6dd735cf7c053ccfa0fa1"
         }
       }
     },
@@ -2589,15 +2589,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.pdf",
-          "sha256": "5259d00ae62c4d562769643aa49cadfab15095a67eb755f2557c7638bde9077c"
+          "sha256": "4b4cfd1caceaa63f6b23739cafc4bacdcf745edb9ecf31349752f1bada5bc522"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.png",
-          "sha256": "78bd3ab8f28128737d489269b1c8638dde47ad4e2cda4f9006d0722a8c8f9853"
+          "sha256": "2b6046e778fd8b7fcf209cd8c3225870d2c2d188f9411f3b81a40a4f7dece8fc"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/06_regulador_velocidade_turbina.svg",
-          "sha256": "8746d700ea729d9aeedfe58ec261733968af95fd2a668d4a03bc792e651a63df"
+          "sha256": "6c7d8abc00efe22187c9c2d4c5f827056a880f763f8788841ed7a33d7925f621"
         }
       }
     },
@@ -2608,15 +2608,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.pdf",
-          "sha256": "ed37da270145cf99b5a667be9a983b2f80f51d086c013c2328126ce13e3c23d4"
+          "sha256": "82356da2defd68e7ffd3c9df49390f309543cfde1456cb8dd6f4557b822ebc9e"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.png",
-          "sha256": "81fd4a623fc5c0fed85e4271d5624a86f614073b390f2c6e0c44c12ad6aa996f"
+          "sha256": "89386afcc6eb2cbc69efa9eafcee831bbcfb7b4af6c6ea1600d7a6412033c30f"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/07_sincronismo.svg",
-          "sha256": "6e3782b6220877889b2621a4a5ab17e6a4dd48c12e5ff4a490f1f3c12da8e541"
+          "sha256": "d41605872f253af8fe55ef0ef644e73562e91cc79e6aca06c4da01a40a23368f"
         }
       }
     },
@@ -2627,15 +2627,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.pdf",
-          "sha256": "f6729502a2da8e333dba8832a96e4d923c2213730c8cb2d6a84d9f62f2824c68"
+          "sha256": "2441daccccf5507550237d89df339e104591fa26eef32f3cb57339fc2409141d"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.png",
-          "sha256": "c50e11be5dfd6f254ca19d22a41f630595e386f66e6bf988fa6760d01055fe85"
+          "sha256": "218e94039e91c58adf9d9c372a231f99b94da96c70af9b5e43ff4c3d2480ac20"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/08_protecao_gerador.svg",
-          "sha256": "1cc1bef1fe9f1aa82e040c5b44feaa42d3a063f03604f2a16486dbe4b4dbb50b"
+          "sha256": "a683caa6c4710bf162820475c48e397e4f22d90d287bdf07507ccac26f7b824b"
         }
       }
     },
@@ -2646,15 +2646,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.pdf",
-          "sha256": "ac8e16c8d056733bde3b6f86d53e40518783256b473ba3f3d2c31674dddb8f6b"
+          "sha256": "bdeb96b0293f7082f8a446c0ab400637bc8dcdba9c4290313222b7e3a6549190"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.png",
-          "sha256": "f1a0b0f5bf96ea4d41e5e50f85116f4ed089ea877b9ced088ebf768154b49f1e"
+          "sha256": "b5f814498914e12e019fe8473af920b7f820b2f871656bda29f3b3b37b3a0d6d"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/09_servicos_auxiliares.svg",
-          "sha256": "ca7c2daa45dcb43d879322c6d960f3a8b2b1cd44370a4439e4168375be741445"
+          "sha256": "527a2957e5d4cf97d92e56cf25863b2d052afc8bed21423bf0a47f666d72e4b4"
         }
       }
     },
@@ -2665,15 +2665,15 @@
       "outputs": {
         "pdf": {
           "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.pdf",
-          "sha256": "c51eb01b5e4bfb21795db692b4ad0eac7e770bda94e8da0bc73c298d5cb4c375"
+          "sha256": "cef28f61250b0c845604fb456ce8551826cd1516975155c475406e854cfefa58"
         },
         "png": {
           "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.png",
-          "sha256": "386f79bcfeff98448b1225fe8fa758da3831f36a4e01f1269379e6eb7846b694"
+          "sha256": "f1594da0375592fb03f7347e9d23eb6a7bbf4a307818cced937cb4ae381197c7"
         },
         "svg": {
           "path": "25-usina-cogeracao-biomassa/exports/10_aterramento_equipotencializacao.svg",
-          "sha256": "84b94c95cc138563f7db8fdb464d20ae10cfca21d52f92a2b9c1903259fc814e"
+          "sha256": "9cae942409e71507bb2e3469311ec7a014b77116b01b9448599f926845a52f71"
         }
       }
     },

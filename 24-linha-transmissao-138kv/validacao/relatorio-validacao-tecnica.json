@@ -25,7 +25,7 @@
         "balanco termico simplificado, ampacidade e margem em 9 condicoes"
       ]
     },
-    "MATLAB": "R2026a gravou tabelas numa execucao anterior, mas falhou durante exportacao grafica por falta de memoria. A versao atual de run_analysis.m e test_project_24.m ainda nao foram executados integralmente.",
+    "MATLAB": "MATLAB R2026a executou a rotina estatica atual e test_project_24 com exit_code 0; conferiu 9 casos eletricos, 900 mecanicos, 9 termicos e 101 estruturas. Imax=650,797405 A; ampacidade minima=892,044159 A; clearance sintetico minimo=12,678747 m. Evidencia: docs/evidencias/matlab-p24-estatico.json. Nao houve simulacao dinamica.",
     "graficos": "6 PNGs recriados pelo fallback Python; nao sao apresentados como graficos MATLAB"
   },
   "resultados_de_triagem": {

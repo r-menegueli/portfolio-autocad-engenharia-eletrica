@@ -25,8 +25,9 @@
     },
     "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P23-06 inspecionada ampliada e tabela de protecao separada dos simbolos; validador estrutural conjunto aprovado",
     "pdf": "texto pesquisavel por camada Unicode invisivel verificado nas 30 folhas; geometria visual vetorial preservada",
-    "MATLAB": "equacoes estaticas inspecionadas e correspondem ao calculo independente; versao atual nao executada nesta revisao",
-    "Simulink": "arquivo existe; dinamica MATLAB/Simulink atual nao reexecutada. A alternativa Python e um modelo reduzido separado e nao valida o arquivo SLX"
+    "MATLAB": "MATLAB R2026a executou run_analysis(false,false) e test_project_23 com exit_code 0; balanco, curto e harmonicos estaticos conferidos. Evidencia: docs/evidencias/matlab-p23-estatico.json. A rotina dinamica MATLAB nao foi executada.",
+    "Simulink": "arquivo existe. Tres tentativas medidas de MATLAB/Simulink foram interrompidas por limite de memoria durante build_model; a ultima parou em P23_STAGE_BUILD_MODEL_BEGIN com 0,17 GB livres e pico de 2451,2 MB na arvore do processo. Nao ha evidencia de abertura concluida, compilacao ou sim. Evidencias em docs/evidencias/matlab-p23-simulink*.json",
+    "memoria_matlab": "execucao estatica durou 12,77 s, pico de 1206,8 MB na arvore de processos e minimo de 1,206 GB de RAM fisica livre"
   },
   "resultados_de_triagem": {
     "P_total_MW": 28.0,

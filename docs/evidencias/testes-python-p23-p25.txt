@@ -1,0 +1,7 @@
+command: python -m pytest -q 23-complexo-siderurgico-eaf/validacao 24-linha-transmissao-138kv/validacao 25-usina-cogeracao-biomassa/validacao
+python: Python 3.14.7
+pytest: 9.2.0
+ezdxf: 1.4.5
+numpy: 2.5.4
+.......................                                                  [100%]
+exit_code=0

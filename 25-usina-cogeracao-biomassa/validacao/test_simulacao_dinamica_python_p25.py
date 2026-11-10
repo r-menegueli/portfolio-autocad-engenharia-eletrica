@@ -2,7 +2,13 @@ from __future__ import annotations
 
 import math
 
-from simulacao_dinamica_python_p25 import SCENARIOS, read_parameters, simulate_all
+from simulacao_dinamica_python_p25 import (
+    SCENARIOS,
+    _input_discontinuities,
+    read_parameters,
+    simulate_all,
+    simulate_scenario,
+)
 
 
 def _scenario(rows, name):
@@ -50,3 +56,25 @@ def test_frequency_and_current_metrics_are_saved_for_every_scenario() -> None:
     _, summaries = simulate_all()
     assert all(float(row["I_max_A"]) > 0 for row in summaries)
     assert all(float(row["f_min_Hz"]) <= float(row["f_final_Hz"]) <= float(row["f_max_Hz"]) for row in summaries)
+
+
+def test_rk4_splits_inputs_at_exact_voltage_and_reference_discontinuities() -> None:
+    p = read_parameters()
+    sag = next(item for item in SCENARIOS if item["name"] == "afundamento_tensao")
+    reference_step = next(item for item in SCENARIOS if item["name"] == "referencia_potencia_mais_0p04pu")
+    assert _input_discontinuities(sag, p, 5.0) == [1.0, 1.0 + p["fault_duration_s"]]
+    assert _input_discontinuities(reference_step, p, 5.0) == [2.5]
+    coarse = simulate_scenario(reference_step, p, dt=0.005, duration=5.0)
+    fine = simulate_scenario(reference_step, p, dt=0.0025, duration=5.0)
+    max_common_time_error = max(abs(float(coarse[i]["Pe_MW"]) - float(fine[2 * i]["Pe_MW"])) for i in range(len(coarse)))
+    assert max_common_time_error < 1e-4
+
+
+def test_negative_electrical_power_is_retained_as_signed_reverse_power() -> None:
+    p = read_parameters()
+    sag = next(item for item in SCENARIOS if item["name"] == "afundamento_tensao")
+    rows = simulate_scenario(sag, p)
+    assert float(rows[0]["Pe_MW"]) > 0
+    reverse_power_rows = [row for row in rows if float(row["Pe_MW"]) < 0]
+    assert reverse_power_rows
+    assert all(float(row["angle_rad"]) < 0 for row in reverse_power_rows)

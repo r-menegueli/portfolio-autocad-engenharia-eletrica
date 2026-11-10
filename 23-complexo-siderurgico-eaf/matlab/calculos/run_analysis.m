@@ -1,4 +1,8 @@
-function R=run_analysis
+function R=run_analysis(runDynamic,makePlots)
+% Recalcula os indicadores estáticos e, opcionalmente, executa o modelo Simulink.
+% run_analysis(false,false) permite validar os cálculos sem alocar a simulação.
+if nargin < 1, runDynamic=true; end
+if nargin < 2, makePlots=true; end
 here=fileparts(mfilename('fullpath')); projectRoot=fileparts(fileparts(here));
 addpath(fullfile(projectRoot,'matlab','funcoes')); p=read_project_parameters(fullfile(projectRoot,'dados','parametros.csv'));
 furnaceS=p.furnace_transformer_mva; furnaceP=furnaceS*p.furnace_power_factor;
@@ -16,17 +20,30 @@ short=table(base,zsrc,rth,xth,Zth,Scc,Icc,'VariableNames',{'Base_MVA','X_fonte_p
 writetable(short,fullfile(projectRoot,'resultados','tabelas','curto-circuito.csv'));
 orders=[5;7;11;13]; amps=[p.harmonic_current_pu_1;p.harmonic_current_pu_2;p.harmonic_current_pu_3;p.harmonic_current_pu_4]; harm=table(orders,amps,100*amps,'VariableNames',{'ordem','Ih_pu','Ih_percentual_fundamental'});
 harm.THDi_global_percentual=repmat(100*thd,height(harm),1); writetable(harm,fullfile(projectRoot,'resultados','tabelas','harmonicos.csv'));
+R=struct('P_MW',P,'Q_bruta_MVAr',Q,'S_bruta_MVA',Sraw, ...
+    'Q_alvo_MVAr',Qtarget,'Q_filtros_MVAr',p.filter_total_mvar, ...
+    'Q_STATCOM_MVAr',Qstat,'fp_bruto',P/Sraw,'I_PCC_A',Igrid, ...
+    'I_bus_A',Ibus,'I_secundaria_A',Ifurnace,'Icc_34k5_kA',Icc/1000, ...
+    'THDi_sintetico',thd,'dinamica',table());
+if ~runDynamic
+    return
+end
+fprintf('P23_STAGE_BUILD_MODEL_BEGIN\n');
 build_model;
+fprintf('P23_STAGE_BUILD_MODEL_DONE\n');
 mdl='modelo_eaf_dinamico'; load_system(fullfile(projectRoot,'simulink',[mdl '.slx']));
+fprintf('P23_STAGE_LOAD_MODEL_DONE blocks=%d\n',numel(find_system(mdl,'Type','Block')));
 t=(0:0.01:5)'; pload=(P/base)*ones(size(t)); qload=(Q/base)*ones(size(t)); qload(t>=1.2)=1.2*Q/base; qload(t>=3.2)=0.8*Q/base;
 vgrid=ones(size(t)); arc=p.arc_fluctuation_pu*sin(2*pi*2*t);
-assignin('base','u_ts',timeseries([pload qload zeros(size(t)) vgrid arc],t)); out0=sim(mdl,'StopTime','5','ReturnWorkspaceOutputs','on'); y0=out0.get('y_log');
-assignin('base','u_ts',timeseries([pload qload ones(size(t)) vgrid arc],t)); out1=sim(mdl,'StopTime','5','ReturnWorkspaceOutputs','on'); y1=out1.get('y_log');
+assignin('base','u_ts',timeseries([pload qload zeros(size(t)) vgrid arc],t)); fprintf('P23_STAGE_SIM_NO_STATCOM_BEGIN\n'); out0=sim(mdl,'StopTime','5','ReturnWorkspaceOutputs','on'); fprintf('P23_STAGE_SIM_NO_STATCOM_DONE\n'); y0=out0.get('y_log');
+assignin('base','u_ts',timeseries([pload qload ones(size(t)) vgrid arc],t)); fprintf('P23_STAGE_SIM_STATCOM_BEGIN\n'); out1=sim(mdl,'StopTime','5','ReturnWorkspaceOutputs','on'); fprintf('P23_STAGE_SIM_STATCOM_DONE\n'); y1=out1.get('y_log');
 T0=timeseries_table(y0); T1=timeseries_table(y1); T0.scenario=repmat("sem_STATCOM",height(T0),1); T1.scenario=repmat("com_STATCOM",height(T1),1); dyn=[T0;T1];
 writetable(dyn,fullfile(projectRoot,'resultados','tabelas','dinamica-tensao.csv'));
-fig=figure('Visible','off'); tiledlayout(2,1); nexttile; plot(T0.time_s,T0.V_pu,T1.time_s,T1.V_pu,'LineWidth',1.2); grid on; ylabel('Tensão (pu)'); legend('sem STATCOM','com STATCOM','Location','best'); title('Resposta dinâmica conceitual da barra'); nexttile; plot(T1.time_s,T1.Qstat_pu*base,'LineWidth',1.2); grid on; ylabel('Q STATCOM (MVAr)'); xlabel('Tempo (s)'); exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','resposta-dinamica.png')); close(fig);
-fig=figure('Visible','off'); bar([P Qtarget p.filter_total_mvar Qstat]); xticklabels({'P total MW','Q PCC alvo MVAr','Filtros MVAr','STATCOM MVAr'}); grid on; title('Balanço de carga e compensação'); exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','balanco-compensacao.png')); close(fig);
-R=struct('P_MW',P,'Q_bruta_MVAr',Q,'Q_STATCOM_MVAr',Qstat,'fp_bruto',P/Sraw,'I_PCC_A',Igrid,'Icc_34k5_kA',Icc/1000,'THDi_sintetico',thd,'dinamica',dyn);
+R.dinamica=dyn;
+if makePlots
+    fig=figure('Visible','off'); tiledlayout(2,1); nexttile; plot(T0.time_s,T0.V_pu,T1.time_s,T1.V_pu,'LineWidth',1.2); grid on; ylabel('Tensão (pu)'); legend('sem STATCOM','com STATCOM','Location','best'); title('Resposta dinâmica conceitual da barra'); nexttile; plot(T1.time_s,T1.Qstat_pu*base,'LineWidth',1.2); grid on; ylabel('Q STATCOM (MVAr)'); xlabel('Tempo (s)'); exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','resposta-dinamica.png')); close(fig);
+    fig=figure('Visible','off'); bar([P Qtarget p.filter_total_mvar Qstat]); xticklabels({'P total MW','Q PCC alvo MVAr','Filtros MVAr','STATCOM MVAr'}); grid on; title('Balanço de carga e compensação'); exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','balanco-compensacao.png')); close(fig);
+end
 end
 function T=timeseries_table(ts)
 d=squeeze(ts.Data); if size(d,1)~=numel(ts.Time) && size(d,2)==numel(ts.Time), d=d'; end

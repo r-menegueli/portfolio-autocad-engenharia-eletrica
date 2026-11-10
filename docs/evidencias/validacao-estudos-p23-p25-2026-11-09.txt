@@ -1,0 +1,13 @@
+{
+  "data": "2026-11-09",
+  "escopo": [
+    "p23",
+    "p24",
+    "p25"
+  ],
+  "resultado": "aprovado",
+  "tipo": "validacao_estrutural_de_arquivos_e_renderizacoes",
+  "erros": [],
+  "avisos": [],
+  "observacao": "Valida��o estrutural focada; inclui leitura DXF/PDF/PNG e checklist de arquivos. N�o certifica c�lculo, norma ou projeto executivo."
+}

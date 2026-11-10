@@ -101,6 +101,43 @@ def _add(x: list[float], dx: list[float], scale: float) -> list[float]:
     return [a + scale * b for a, b in zip(x, dx)]
 
 
+def _input_discontinuities(scenario: dict[str, Any], p: dict[str, float], duration: float) -> list[float]:
+    events = [float(at) for at, _ in scenario["steps"]]
+    if scenario.get("sag", False):
+        fault_start = 1.0
+        events.extend((fault_start, fault_start + p["fault_duration_s"]))
+    return sorted({event for event in events if 0.0 < event < duration})
+
+
+def _rk4_interval(
+    t: float,
+    state: list[float],
+    end: float,
+    scenario: dict[str, Any],
+    p: dict[str, float],
+    op: dict[str, float],
+    events: list[float],
+) -> list[float]:
+    # Split RK4 at input jumps. At a jump, evaluate the preceding segment's
+    # final stage on its left limit; the next segment starts on the right side.
+    boundaries = [t, *(event for event in events if t < event < end), end]
+    current = state
+    for start, stop in zip(boundaries, boundaries[1:]):
+        h = stop - start
+        k1 = _derivative(start, current, scenario, p, op)
+        k2 = _derivative(start + h / 2, _add(current, k1, h / 2), scenario, p, op)
+        k3 = _derivative(start + h / 2, _add(current, k2, h / 2), scenario, p, op)
+        k4_time = stop
+        if any(math.isclose(stop, event, rel_tol=0.0, abs_tol=1e-12) for event in events):
+            k4_time = math.nextafter(stop, start)
+        k4 = _derivative(k4_time, _add(current, k3, h), scenario, p, op)
+        current = [
+            current[j] + h * (k1[j] + 2 * k2[j] + 2 * k3[j] + k4[j]) / 6
+            for j in range(len(current))
+        ]
+    return current
+
+
 def _signals(t: float, x: list[float], scenario: dict[str, Any], p: dict[str, float], op: dict[str, float]) -> dict[str, float | str]:
     pref, v_grid, v_ref = _inputs(t, scenario, p, op)
     delta, speed, pm, efd_dev = x
@@ -131,20 +168,14 @@ def simulate_scenario(scenario: dict[str, Any], p: dict[str, float], dt: float =
     op = operating_point(p)
     state = [op["delta0_rad"], 0.0, op["pm0_pu"], op["efd0_deviation_pu"]]
     steps = round(duration / dt)
+    events = _input_discontinuities(scenario, p, duration)
     rows: list[dict[str, float | str]] = []
     for index in range(steps + 1):
         t = index * dt
         rows.append(_signals(t, state, scenario, p, op))
         if index == steps:
             break
-        k1 = _derivative(t, state, scenario, p, op)
-        k2 = _derivative(t + dt / 2, _add(state, k1, dt / 2), scenario, p, op)
-        k3 = _derivative(t + dt / 2, _add(state, k2, dt / 2), scenario, p, op)
-        k4 = _derivative(t + dt, _add(state, k3, dt), scenario, p, op)
-        state = [
-            state[j] + dt * (k1[j] + 2 * k2[j] + 2 * k3[j] + k4[j]) / 6
-            for j in range(len(state))
-        ]
+        state = _rk4_interval(t, state, t + dt, scenario, p, op, events)
     return rows
 
 

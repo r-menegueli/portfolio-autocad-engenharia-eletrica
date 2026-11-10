@@ -1,0 +1,607 @@
+{
+  "started_at": "2026-11-09T20:28:01.2433339-03:00",
+  "ended_at": "2026-11-09T20:28:19.7578646-03:00",
+  "duration_seconds": 18.51,
+  "matlab_path": "C:\\Program Files\\MATLAB\\R2026a\\bin\\matlab.exe",
+  "startup_options": [
+    "-nojvm",
+    "-singleCompThread"
+  ],
+  "matlab_root_process_id": 15320,
+  "batch_command": "cd('C:\\Users\\dakra\\Documents\\Codex\\2026-11-08\\new-chat\\work\\portfolio-p23-p25\\23-complexo-siderurgico-eaf\\matlab\\calculos'); addpath('../testes'); fprintf('P23_STAGE_BEGIN_SIMULINK\\n'); R=run_analysis(true,false); fprintf('P23_STAGE_SIM_COMPLETED rows=%d\\n',height(R.dinamica)); test_project_23(R); fprintf('P23_DYNAMIC rangeV=[%.6f,%.6f]pu Qstat=%.6fMVAr\\n',min(R.dinamica.V_pu),max(R.dinamica.V_pu),max(R.dinamica.Qstat_pu)*R.Q_STATCOM_MVAr/max(max(R.dinamica.Qstat_pu),eps));",
+  "exit_code": -1,
+  "stop_reason": "Interrompida com segurança: RAM física livre abaixo de 0.4 GB.",
+  "ram_before": {
+    "free_physical_ram_gb": 2.104,
+    "committed_gb": 11.722,
+    "commit_limit_gb": 22.031,
+    "commit_ratio": 0.5321
+  },
+  "minimum_free_physical_ram_gb": 0.303,
+  "peak_process_tree_working_set_mb": 1660.8,
+  "peak_process_tree_private_mb": 1377.3,
+  "peak_system_committed_gb": 13.172,
+  "ram_after": {
+    "free_physical_ram_gb": 1.298,
+    "committed_gb": 11.843,
+    "commit_limit_gb": 22.031,
+    "commit_ratio": 0.5376
+  },
+  "released_free_ram_gb": 0.995,
+  "stdout": "openEMS v0.0.36 carregado! Use InitCSX(), openEMS(), etc.\r\nP23_STAGE_BEGIN_SIMULINK\r\n",
+  "stderr": "",
+  "samples": [
+    {
+      "elapsed_seconds": 1.18,
+      "free_physical_ram_gb": 1.843,
+      "committed_gb": 11.889,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 205.1,
+      "matlab_process_tree_private_mb": 141.8,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 189.4,
+          "private_bytes_mb": 138.8
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 2.42,
+      "free_physical_ram_gb": 1.536,
+      "committed_gb": 12.163,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 569.5,
+      "matlab_process_tree_private_mb": 426.3,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 462.9,
+          "private_bytes_mb": 382.6
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 90.9,
+          "private_bytes_mb": 40.7
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 3.52,
+      "free_physical_ram_gb": 1.226,
+      "committed_gb": 12.368,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 752.6,
+      "matlab_process_tree_private_mb": 600.8,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 644.1,
+          "private_bytes_mb": 556.0
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.8,
+          "private_bytes_mb": 41.8
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 4.55,
+      "free_physical_ram_gb": 1.19,
+      "committed_gb": 12.468,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 839.2,
+      "matlab_process_tree_private_mb": 699.8,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 730.7,
+          "private_bytes_mb": 655.0
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.8,
+          "private_bytes_mb": 41.8
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 5.57,
+      "free_physical_ram_gb": 1.096,
+      "committed_gb": 12.579,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 889.5,
+      "matlab_process_tree_private_mb": 742.1,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 780.8,
+          "private_bytes_mb": 697.2
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.9,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 6.64,
+      "free_physical_ram_gb": 0.908,
+      "committed_gb": 12.809,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1143.1,
+      "matlab_process_tree_private_mb": 995.3,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1034.5,
+          "private_bytes_mb": 950.4
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.9,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 7.7,
+      "free_physical_ram_gb": 0.762,
+      "committed_gb": 12.811,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1109.3,
+      "matlab_process_tree_private_mb": 966.7,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1000.6,
+          "private_bytes_mb": 921.7
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 93.0,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 8.72,
+      "free_physical_ram_gb": 0.841,
+      "committed_gb": 12.845,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1155.8,
+      "matlab_process_tree_private_mb": 1000.5,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1047.1,
+          "private_bytes_mb": 955.5
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 93.0,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 9.77,
+      "free_physical_ram_gb": 0.799,
+      "committed_gb": 12.861,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1196.7,
+      "matlab_process_tree_private_mb": 1030.2,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1088.1,
+          "private_bytes_mb": 985.3
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 93.0,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 10.82,
+      "free_physical_ram_gb": 0.787,
+      "committed_gb": 12.854,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1232.1,
+      "matlab_process_tree_private_mb": 1063.5,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1123.6,
+          "private_bytes_mb": 1018.6
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.8,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 11.83,
+      "free_physical_ram_gb": 0.658,
+      "committed_gb": 12.935,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1348.5,
+      "matlab_process_tree_private_mb": 1125.8,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1240.0,
+          "private_bytes_mb": 1080.8
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.8,
+          "private_bytes_mb": 41.9
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 12.84,
+      "free_physical_ram_gb": 0.646,
+      "committed_gb": 12.948,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1399.7,
+      "matlab_process_tree_private_mb": 1155.7,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1291.4,
+          "private_bytes_mb": 1111.1
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.6,
+          "private_bytes_mb": 41.6
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 13.86,
+      "free_physical_ram_gb": 0.583,
+      "committed_gb": 12.99,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1476.2,
+      "matlab_process_tree_private_mb": 1203.2,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1367.9,
+          "private_bytes_mb": 1158.6
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.6,
+          "private_bytes_mb": 41.6
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 14.88,
+      "free_physical_ram_gb": 0.505,
+      "committed_gb": 13.043,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1544.5,
+      "matlab_process_tree_private_mb": 1250.2,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1436.3,
+          "private_bytes_mb": 1205.6
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.5,
+          "private_bytes_mb": 41.6
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 15.9,
+      "free_physical_ram_gb": 0.46,
+      "committed_gb": 13.074,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1571.5,
+      "matlab_process_tree_private_mb": 1271.5,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1463.3,
+          "private_bytes_mb": 1227.0
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.5,
+          "private_bytes_mb": 41.5
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 16.92,
+      "free_physical_ram_gb": 0.404,
+      "committed_gb": 13.118,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1646.3,
+      "matlab_process_tree_private_mb": 1322.4,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1538.1,
+          "private_bytes_mb": 1278.0
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.5,
+          "private_bytes_mb": 41.5
+        }
+      ]
+    },
+    {
+      "elapsed_seconds": 17.94,
+      "free_physical_ram_gb": 0.303,
+      "committed_gb": 13.172,
+      "commit_limit_gb": 22.031,
+      "matlab_process_tree_working_set_mb": 1660.8,
+      "matlab_process_tree_private_mb": 1377.3,
+      "processes": [
+        {
+          "pid": 15320,
+          "name": "matlab",
+          "working_set_mb": 8.7,
+          "private_bytes_mb": 1.8
+        },
+        {
+          "pid": 1860,
+          "name": "conhost",
+          "working_set_mb": 7.0,
+          "private_bytes_mb": 1.2
+        },
+        {
+          "pid": 10632,
+          "name": "MATLAB",
+          "working_set_mb": 1552.6,
+          "private_bytes_mb": 1332.8
+        },
+        {
+          "pid": 24908,
+          "name": "MathWorksServiceHost",
+          "working_set_mb": 92.5,
+          "private_bytes_mb": 41.5
+        }
+      ]
+    }
+  ]
+}

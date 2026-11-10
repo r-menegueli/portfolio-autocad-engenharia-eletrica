@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25
+configfile: pyproject.toml
+collected 36 items
+
+tests\test_auditar_publicacao.py ..                                      [  5%]
+tests\test_validador.py .........                                        [ 30%]
+23-complexo-siderurgico-eaf\validacao\test_calculos_independentes_p23.py . [ 33%]
+..                                                                       [ 38%]
+23-complexo-siderurgico-eaf\validacao\test_simulacao_dinamica_python_p23.py . [ 41%]
+...                                                                      [ 50%]
+24-linha-transmissao-138kv\validacao\test_resultados_p24.py ....         [ 61%]
+25-usina-cogeracao-biomassa\validacao\test_calculos_independentes_p25.py . [ 63%]
+...                                                                      [ 72%]
+25-usina-cogeracao-biomassa\validacao\test_prancha_excitacao_p25.py ..   [ 77%]
+25-usina-cogeracao-biomassa\validacao\test_prancha_implantacao_p25.py .. [ 83%]
+                                                                         [ 83%]
+25-usina-cogeracao-biomassa\validacao\test_simulacao_dinamica_python_p25.py . [ 86%]
+.....                                                                    [100%]
+
+============================= 36 passed in 46.05s =============================

@@ -76,7 +76,7 @@ SHEETS: dict[str, list[dict[str, str]]] = {
         ("02_implantacao_casa_maquinas", "IMPLANTACAO ELETRICA DA CASA DE MAQUINAS", "Planta conceitual cotada em coordenadas locais; bloco fisico em mm mostrado a 1:500", "Dimensoes de predios e equipamentos sao hipoteses de envelope, sem levantamento ou dados de fabricante.\\PRotas de cabo, vapor, agua, incendio, ventilacao e manutencao precisam de coordenacao multidisciplinar.", "CB1: caldeira | TG1: conjunto turbina-gerador | linha cinza: vapor | eixo TV1/G1: acoplamento mecanico | T1: elevador 40 MVA | QSA: auxiliares | origem: canto sudoeste"),
         ("03_layout_gerador_auxiliares", "GERADOR E EQUIPAMENTOS AUXILIARES", "Vista em planta e corte da linha de eixo, excitatriz e auxiliares principais", "Gerador sincronico de 32 MVA, 13,8 kV, 2 polos; rotacao sincrona de 3600 rpm.\\PDimensoes de carcaca e base nao fornecidas por fabricante.", "G1: gerador | EX: excitatriz | M1: bomba | F1: ventilador | 3~: trifasico"),
         ("04_transformador_conexao_rede", "TRANSFORMADOR ELEVADOR E CONEXAO A REDE", "Transformador 13,8/138 kV, bays de geracao e de linha", "Transformador 40 MVA com impedancia de 12% assumida.\\PProtecao, aterramento do neutro, isolamento e coordenacao dependem do arranjo real.", "T1: elevador | QG/QP: disjuntores | TC/TP: medicao | LA: para-raios"),
-        ("05_sistema_excitacao_avr", "SISTEMA DE EXCITACAO E AVR", "Medicao de tensao, regulador automatico, limitadores e campo do gerador", "Blocos funcionais representativos; parametros de AVR sao valores de estudo, sem ensaio de resposta.\\PExcitacao real deve incluir limitadores e requisitos do fabricante e do operador.", "AVR: regulador de tensao | PT: TP | CT: TC | OEL/UEL: limitadores | Efd: campo"),
+        ("05_sistema_excitacao_avr", "SISTEMA DE EXCITACAO E AVR", "Topologia estatica conceitual, medicao, controle, campo e intertravamentos", "Topologia de excitacao estatica assumida para estudo; nao identifica fabricante ou modelo comercial.\\PRelacoes de PT/CT, alimentacao e potencia do transformador/ponte, campo, descarga, limites OEL/UEL e ajustes dependem dos dados da unidade.\\PDimensionar supressao de campo e coordenar 41E/86G/64F antes de qualquer aplicacao real.", "TE1: transformador de excitacao | BR1: ponte controlada | 41E: disjuntor de campo | RFD/KFD: descarga | PT/CT: medicao | AVR: regulador | OEL/UEL: limitadores"),
         ("06_regulador_velocidade_turbina", "REGULADOR DE VELOCIDADE DA TURBINA", "Sensor de velocidade, droop, controle de valvula e potencia mecanica", "Modelo dinamico simplificado; nao representa caldeira, combustao, vapor ou atuadores reais.\\PConstante de inercia, droop e tempos sao premissas ajustaveis.", "ω: velocidade | GOV: regulador | CV: valvula de controle | Pm: potencia mecanica"),
         ("07_sincronismo", "SINCRONISMO E FECHAMENTO DO DISJUNTOR", "Verificacao de tensao, frequencia, angulo e permissivos de fechamento", "Limites desenhados sao envelopes de ilustracao, nao ajustes aprovados.\\PFechamento requer sincronizador, rele de verificacao e intertravamentos independentes.", "25: sincronismo | 52: disjuntor | 27/59: tensao | 81: frequencia | Δφ: angulo"),
         ("08_protecao_gerador", "PROTECOES ELETRICAS DO GERADOR", "Zonas de protecao, TCs/TPs, diferencial e funcoes ANSI de gerador", "Funcoes listadas nao incluem estudo de ajustes, saturacao, estabilidade ou coordenacao.\\PProtecao final exige dados de fabricante e estudo de curto-circuito e estabilidade.", "87G: diferencial | 64G: terra estator | 40: perda excitacao | 32: potencia reversa | 46: sequencia negativa"),
@@ -190,37 +190,37 @@ def ground(layout, x: float, y: float, layer: str = "05_POTENCIA") -> None:
     ln(layout, x - 0.9, y - 7.4, x + 0.9, y - 7.4, layer)
 
 
-def equip(layout, x: float, y: float, w: float, h: float, tag: str, title: str, subtitle: str = "", layer="04_EQUIPAMENTOS") -> None:
+def equip(layout, x: float, y: float, w: float, h: float, tag: str, title: str, subtitle: str = "", layer="04_EQUIPAMENTOS", title_font: float = 1.45, tag_font: float = 1.7, subtitle_font: float = 1.05) -> None:
     rect(layout, x, y, x + w, y + h, layer)
     ln(layout, x, y + h - 9, x + w, y + h - 9, layer)
-    tc(layout, title, x + w / 2, y + h - 5.2, 1.45, layer, TITLE_STYLE)
-    tc(layout, tag, x + w / 2, y + h / 2 - 0.4, 1.7, "02_TEXTO", TITLE_STYLE)
+    tc(layout, title, x + w / 2, y + h - 5.2, title_font, layer, TITLE_STYLE)
+    tc(layout, tag, x + w / 2, y + h / 2 - 0.4, tag_font, "02_TEXTO", TITLE_STYLE)
     if subtitle:
-        tc(layout, subtitle, x + w / 2, y + 3.5, 1.05, "02_TEXTO")
+        tc(layout, subtitle, x + w / 2, y + 3.5, subtitle_font, "02_TEXTO")
 
 
-def panel(layout, x: float, y: float, w: float, h: float, title: str, subtitle: str = "") -> None:
+def panel(layout, x: float, y: float, w: float, h: float, title: str, subtitle: str = "", title_font: float = 1.5, subtitle_font: float = 1.05) -> None:
     rect(layout, x, y, x + w, y + h, "11_ARQUITETURA")
-    tc(layout, title, x + w / 2, y + h - 5, 1.5, "11_ARQUITETURA", TITLE_STYLE)
+    tc(layout, title, x + w / 2, y + h - 5, title_font, "11_ARQUITETURA", TITLE_STYLE)
     if subtitle:
-        tc(layout, subtitle, x + w / 2, y + h - 9, 1.05)
+        tc(layout, subtitle, x + w / 2, y + h - 9, subtitle_font)
 
 
-def table(layout, x: float, y: float, widths: list[float], row_h: float, headers: list[str], rows: list[list[str]], font: float = 1.15) -> None:
+def table(layout, x: float, y: float, widths: list[float], row_h: float, headers: list[str], rows: list[list[str]], font: float = 1.15, layer: str = "12_LEGENDA") -> None:
     total = sum(widths)
     nrows = len(rows) + 1
-    rect(layout, x, y - row_h * nrows, x + total, y, "12_LEGENDA")
+    rect(layout, x, y - row_h * nrows, x + total, y, layer)
     for i in range(1, nrows):
-        ln(layout, x, y - row_h * i, x + total, y - row_h * i, "12_LEGENDA")
+        ln(layout, x, y - row_h * i, x + total, y - row_h * i, layer)
     xc = x
     for w in widths[:-1]:
         xc += w
-        ln(layout, xc, y, xc, y - row_h * nrows, "12_LEGENDA")
+        ln(layout, xc, y, xc, y - row_h * nrows, layer)
     for row_i, values in enumerate([headers, *rows]):
         yy = y - row_h * (row_i + 0.5)
         xx = x
         for idx, value in enumerate(values):
-            tc(layout, str(value), xx + widths[idx] / 2, yy, font, "12_LEGENDA", TITLE_STYLE if row_i == 0 else TEXT_STYLE)
+            tc(layout, str(value), xx + widths[idx] / 2, yy, font, layer, TITLE_STYLE if row_i == 0 else TEXT_STYLE)
             xx += widths[idx]
 
 
@@ -1126,37 +1126,112 @@ def d25_04(m,p):
 
 
 def d25_05(m,p):
-    # Excitation power circuit
-    circle(m,55,213,8,"05_POTENCIA")
-    tc(m,"G1",55,214,1.6,"05_POTENCIA",TITLE_STYLE)
-    ln(m,63,213,90,213,"05_POTENCIA")
-    rect(m,90,202,129,224,"04_EQUIPAMENTOS")
-    tc(m,"EXCITATRIZ",109,215,1.2,"04_EQUIPAMENTOS",TITLE_STYLE)
-    ln(m,129,213,153,213,"05_POTENCIA")
-    rect(m,153,202,195,224,"05_POTENCIA")
-    tc(m,"PONTE",174,216,1.2,"05_POTENCIA",TITLE_STYLE)
-    tc(m,"RETIFICADORA",174,208,0.95)
-    ln(m,195,213,224,213,"05_POTENCIA")
-    rect(m,224,205,262,221,"05_POTENCIA")
-    tc(m,"CAMPO F+ F-",243,213,1.15,"05_POTENCIA",TITLE_STYLE)
-    poly(m,[(262,213),(282,213),(282,196),(55,196),(55,204)],"05_POTENCIA")
-    tc(m,"realimentacao de corrente de campo",166,190,1.0,"07_INSTRUMENTACAO")
-    # AVR feedback loop
-    rect(m,57,125,119,159,"07_INSTRUMENTACAO")
-    tc(m,"TP / TC",88,147,1.3,"07_INSTRUMENTACAO",TITLE_STYLE)
-    tc(m,"medicao V, I",88,136,1.0)
-    rect(m,152,121,238,162,"06_COMANDO")
-    tc(m,"AVR / PID",195,151,1.4,"06_COMANDO",TITLE_STYLE)
-    tc(m,"limitadores OEL / UEL",195,140,1.0)
-    tc(m,"Vref - Vt",195,129,1.0)
-    arrow(m,119,142,152,142,"07_INSTRUMENTACAO")
-    arrow(m,238,142,275,142,"06_COMANDO")
-    rect(m,275,128,360,158,"06_COMANDO")
-    tc(m,"Efd / excitacao",317,146,1.25,"06_COMANDO",TITLE_STYLE)
-    arrow(m,317,158,317,183,"06_COMANDO")
-    ln(m,317,183,174,183,"06_COMANDO")
-    ln(m,174,183,174,202,"06_COMANDO")
-    table(m,264,244,[38,48,51],8,["BLOCO","MODELO","ESTADO"],[["AVR","1a ordem","conceitual"],["Excitatriz","ganho efetivo","nao selecionada"],["Limitadores","OEL/UEL","sem ajuste"]],0.95)
+    panel(m,32,116,356,88,"CONTROLE DE TENSAO, LIMITES E INTERTRAVAMENTOS","",1.9,1.5)
+
+    # Alimentacao trifasica do transformador de excitacao e circuito de campo.
+    for phase,y in (("U",240),("V",234),("W",228)):
+        tc(m,phase,43,y,1.6,"02_TEXTO")
+        ln(m,46,y,61,y,"05_POTENCIA",0.55)
+        ln(m,75,y,84,y,"05_POTENCIA",0.55)
+        ln(m,120,y,132,y,"05_POTENCIA",0.55)
+        ln(m,177,y,184,y,"05_POTENCIA",0.55)
+    # PT voltage taps and one-phase CT representation are tied to the G1 bus.
+    circle(m,55,240,1.8,"07_INSTRUMENTACAO")
+    tc(m,"CT1",56,245,1.6,"07_INSTRUMENTACAO")
+    poly(m,[(50,240),(34,240),(34,184),(42,184)],"07_INSTRUMENTACAO",width=0.3)
+    poly(m,[(50,234),(38,234),(38,178),(42,178)],"07_INSTRUMENTACAO",width=0.3)
+    arrow(m,38,184,42,184,"07_INSTRUMENTACAO",1.2)
+    arrow(m,38,178,42,178,"07_INSTRUMENTACAO",1.2)
+    poly(m,[(55,240),(55,198),(70,198),(70,188)],"07_INSTRUMENTACAO",width=0.3)
+    arrow(m,70,192,70,188,"07_INSTRUMENTACAO",1.2)
+    tc(m,"G1 / BARRA 13,8 kV",54,247,1.6,"05_POTENCIA")
+    rect(m,61,224,75,244,"05_POTENCIA")
+    tc(m,"QFE",68,234,1.9,"05_POTENCIA",TITLE_STYLE)
+    tc(m,"3P",68,226,1.5,"02_TEXTO")
+    rect(m,84,221,120,247,"04_EQUIPAMENTOS")
+    tc(m,"TE1",102,240,1.9,"04_EQUIPAMENTOS",TITLE_STYLE)
+    tc(m,"TRANSF.\nEXCITACAO",102,232,1.5,"02_TEXTO")
+    tc(m,"relacao a definir",102,224,1.5,"13_NOTAS")
+    rect(m,132,220,177,248,"05_POTENCIA")
+    tc(m,"BR1",154.5,239,2.0,"05_POTENCIA",TITLE_STYLE)
+    tc(m,"PONTE CONTROLADA",154.5,232,1.5,"02_TEXTO")
+    tc(m,"3~ / CC",154.5,224,1.5,"02_TEXTO")
+    ln(m,184,238,187,238,"05_POTENCIA",0.6)
+    ln(m,201,238,220,238,"05_POTENCIA",0.6)
+    breaker(m,194,238,"41E",False)
+    ln(m,184,225,252,225,"05_POTENCIA",0.6)
+    tc(m,"F+",215,243,1.6,"05_POTENCIA")
+    tc(m,"F-",215,220,1.6,"05_POTENCIA")
+    poly(m,[(220,238),(222,238),(225,230),(229,236),(233,229),(237,236),(241,229),(245,235),(248,225)],"05_POTENCIA",width=0.45)
+    tc(m,"CAMPO G1",234,244,1.5,"04_EQUIPAMENTOS")
+    # KFD/RFD is a discharge branch across the field; its control is generic.
+    ln(m,248,238,260,238,"05_POTENCIA",0.55)
+    ln(m,248,225,260,225,"05_POTENCIA",0.55)
+    ln(m,260,238,260,236,"05_POTENCIA",0.55)
+    circle(m,260,235,0.75,"05_POTENCIA"); circle(m,260,232,0.75,"05_POTENCIA")
+    ln(m,259.4,234.4,260.6,232.6,"05_POTENCIA",0.45)
+    rect(m,257,226,263,230,"05_POTENCIA")
+    ln(m,260,232,260,230,"05_POTENCIA",0.55)
+    ln(m,260,226,260,225,"05_POTENCIA",0.55)
+    tc(m,"KFD / RFD",276,233,1.6,"05_POTENCIA")
+    tc(m,"descarga de campo",276,228,1.5,"13_NOTAS")
+    tc(m,"fecha quando 41E abre",276,223,1.5,"13_NOTAS")
+
+    table(m,296,252,[26,31,35],6,["BORNES","SINAL","ORIGEM"],[
+        ["XT1:01-03","Vt abc","PT1 / relacao a definir"],
+        ["XT1:04-06","Ia-Ic","CT1 / relacao a definir"],
+        ["XT2:01-02","If / Efd","TCF / transdutor"],
+        ["XT2:03-04","Vref rem.","QEV / remoto"],
+    ],1.45,"09_BORNES")
+    tc(m,"BORNEAMENTO ILUSTRATIVO",343,256,1.6,"12_LEGENDA",TITLE_STYLE)
+
+    # Measurement, reference, regulation, limiter and trip signal paths.
+    equip(m,42,164,57,24,"PT1/CT1","MEDICAO","Vt e corrente","07_INSTRUMENTACAO",1.8,2.0,1.5)
+    equip(m,42,128,57,24,"Vref","LOCAL / REMOTO","comando externo","06_COMANDO",1.8,2.0,1.5)
+    rect(m,119,157,219,193,"06_COMANDO")
+    ln(m,119,186,219,186,"06_COMANDO")
+    tc(m,"AVR1 - REGULADOR DE TENSAO",169,189,1.8,"06_COMANDO",TITLE_STYLE)
+    circle(m,132,173,2.8,"06_COMANDO")
+    tc(m,"+",127.5,179,1.5,"06_COMANDO")
+    tc(m,"-",127.5,167,1.5,"06_COMANDO")
+    tc(m,"Σ",132,173,1.7,"06_COMANDO",TITLE_STYLE)
+    rect(m,144,164,178,182,"06_COMANDO")
+    tc(m,"PI",161,177,1.8,"06_COMANDO",TITLE_STYLE)
+    tc(m,"Kp + Ki/s",161,169,1.5,"06_COMANDO")
+    rect(m,184,164,212,182,"06_COMANDO")
+    tc(m,"LIMITES",198,177,1.6,"06_COMANDO",TITLE_STYLE)
+    tc(m,"Efd min/max",198,169,1.5,"06_COMANDO")
+    arrow(m,135,173,144,173,"06_COMANDO",1.25)
+    arrow(m,178,173,184,173,"06_COMANDO",1.25)
+    equip(m,239,170,54,22,"OEL/UEL","LIMITADORES","I e Q/P","06_COMANDO",1.8,2.0,1.5)
+    equip(m,239,134,54,22,"TCF/TEF","FEEDBACK","If / Efd","07_INSTRUMENTACAO",1.8,2.0,1.5)
+    equip(m,307,163,70,29,"52G/86G","PERMISSIVOS","52G fechado; 86G normal","06_COMANDO",1.8,2.2,1.5)
+    equip(m,307,126,70,24,"64F / 41E","TRIP / ALARME","bloqueio e descarga","06_COMANDO",1.8,2.0,1.5)
+    arrow(m,99,176,127,168,"07_INSTRUMENTACAO",1.6)
+    tc(m,"Vt",112,172,1.5,"07_INSTRUMENTACAO")
+    poly(m,[(99,168),(104,168),(104,153),(266,153),(266,170)],"07_INSTRUMENTACAO",width=0.3)
+    arrow(m,266,166,266,170,"07_INSTRUMENTACAO",1.2)
+    tc(m,"Is estat. -> limitador",168,155,1.5,"07_INSTRUMENTACAO")
+    poly(m,[(99,140),(109,140),(109,179),(128,179)],"06_COMANDO",width=0.3)
+    arrow(m,124,179,128,179,"06_COMANDO",1.2)
+    tc(m,"Vref",113,182,1.5,"06_COMANDO")
+    arrow(m,239,181,219,181,"06_COMANDO",1.8)
+    arrow(m,239,145,219,164,"07_INSTRUMENTACAO",1.8)
+    circle(m,250,225,1.25,"07_INSTRUMENTACAO")
+    tc(m,"TCF",258,247,1.5,"07_INSTRUMENTACAO")
+    poly(m,[(250,225),(250,196),(236,196),(236,145),(239,145)],"07_INSTRUMENTACAO",width=0.3)
+    arrow(m,236,145,239,145,"07_INSTRUMENTACAO",1.2)
+    arrow(m,342,163,342,150,"06_COMANDO",1.8)
+    arrow(m,307,138,299,138,"06_COMANDO",1.5)
+    poly(m,[(299,138),(299,213),(218,213)],"06_COMANDO",width=0.35)
+    arrow(m,224,213,218,213,"06_COMANDO",1.4)
+    rect(m,183,208,218,218,"06_COMANDO")
+    tc(m,"Y41E",200.5,214,1.8,"06_COMANDO",TITLE_STYLE)
+    tc(m,"trip 41E / fecha KFD",200.5,210,1.5,"06_COMANDO")
+    poly(m,[(169,193),(169,207),(154,207),(154,219)],"06_COMANDO",width=0.35)
+    arrow(m,154,211,154,219,"06_COMANDO",1.5)
+    tc(m,"PULSOS BR1",137,211,1.5,"06_COMANDO")
+    tc(m,"NAO HA CURVAS, AJUSTES, RELACOES OU DADOS DE FABRICANTE DEFINIDOS",210,109,1.6,"13_NOTAS")
 
 
 def d25_06(m,p):

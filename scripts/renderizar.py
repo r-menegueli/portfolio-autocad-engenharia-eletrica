@@ -116,10 +116,10 @@ def _add_searchable_text_layer(source: Path, pdf_path: Path) -> None:
     original = PdfReader(str(pdf_path))
     if len(original.pages) != 1:
         raise RuntimeError(f"Era esperada uma página para {pdf_path}")
-    page = original.pages[0]
-    page.merge_page(PdfReader(buffer).pages[0])
     writer = PdfWriter()
-    writer.add_page(page)
+    writer.add_page(original.pages[0])
+    # pypdf 7 requires page edits to target a page already owned by a writer.
+    writer.pages[0].merge_page(PdfReader(buffer).pages[0])
     metadata = original.metadata
     if metadata:
         writer.add_metadata({key: str(value) for key, value in metadata.items() if value is not None})

@@ -15,13 +15,13 @@
       ]
     },
     "prancha_implantacao": "2 testes passaram: polígono físico de 100 x 65 m em milímetros, bloco inserido a 1:500, carimbo e paleta central",
-    "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas; P25-02, P25-10 inspecionadas ampliadas; malha recortada ao redor das envolventes e tabela separada; validador estrutural conjunto aprovado",
+    "pranchas": "10 folhas DXF/PDF/SVG/PNG regeneradas e pre-visualizacao atualizada; P25-05 redesenhada com potencia de excitacao, medicao, AVR PI, limites, OEL/UEL, permissivos, trip e borneamento. Inspecao visual ampliada feita; 2 testes verificam entidades/camadas DXF e etiquetas pesquisaveis no PDF; AutoCAD Core Console 2027 auditou a DXF com exit code 0, 0 erros, 0 correcoes e 0 objetos apagados. Conexoes, dimensoes eletricas e ajustes continuam ilustrativos.",
     "pdf": "texto pesquisável por camada Unicode invisível verificado nas 30 folhas; geometria vetorial preservada",
-    "resultados_estaticos": "tabelas recalculadas independentemente em Python; MATLAB contém equações correspondentes, porém a versão atual não foi executada",
-    "modelo_simulink": "arquivo SLX existente; execução e reconstrução da versão atual não verificadas nesta revisão",
+    "resultados_estaticos": "tabelas recalculadas independentemente em Python e rotina atual executada em MATLAB R2026a com test_project_25; exit_code 0. Evidencia: docs/evidencias/matlab-p25-estatico.json",
+    "modelo_simulink": "arquivo SLX existente, mas a execucao P25 nao foi iniciada; memoria fisica observada de 2,14 GB livre era inferior ao pico de 2,45 GB medido na tentativa de build P23, e a margem segura foi preservada. Nenhuma abertura, compilacao ou simulacao P25 foi confirmada.",
     "simulacao_reduzida_python": {
       "arquivo": "validacao/simulacao_dinamica_python_p25.py",
-      "resultado": "8 cenários, 8008 amostras; 4 testes de implementação passaram; não é validação do comportamento da usina",
+      "resultado": "8 cenarios, 8008 amostras regeneradas; 6 testes da dinamica passaram; integracao RK4 separa descontinuidades de entrada; nao e validacao do comportamento da usina",
       "cobertura": [
         "caso nominal e degraus de +0,04 e -0,04 pu na referência mecânica do governador; não são degraus de carga elétrica",
         "afundamento externo sintético de 0,2 pu por 0,12 s e evento combinado com degrau de referência",
@@ -29,7 +29,7 @@
         "tensão, frequência, velocidade, potências ativa/reativa e corrente calculada do gerador"
       ]
     },
-    "dinamica": "alternativa Python RK4 executada com equações agregadas; não substitui execução do Simulink. No cenário de afundamento, a resposta segue oscilatória aos 5 s e termina com potência ativa calculada negativa; não serve para concluir estabilidade ou suportabilidade da usina",
+    "dinamica": "alternativa Python RK4 executada com equacoes agregadas; no cenario de afundamento de 0,2 pu por 0,12 s, a corrente calculada chega a 5578,30 A, Pe varia de -21,242 a 72,827 MW e termina em -6,291 MW aos 5 s (dt=5 ms). A comparacao de passos 5 a 0,625 ms mostra sensibilidade material; nao serve para concluir estabilidade ou suportabilidade da usina. Diagnostico em resultados/relatorios/diagnostico-potencia-negativa-python.json.",
     "inspecao_visual": "todas as folhas passaram pela prévia de contato; P25-02, P25-08 e P25-10 foram ampliadas após os ajustes"
   },
   "resultados_de_triagem": {
@@ -45,9 +45,10 @@
   "testes": {
     "calculos_estaticos": 4,
     "implantacao_CAD": 2,
-    "dinamica_python": 4,
-    "total_P25": 10,
-    "total_focado_P23_P24_P25": 21
+    "dinamica_python": 6,
+    "excitacao_CAD": 2,
+    "total_P25": 14,
+    "total_focado_P23_P24_P25": 25
   },
   "limites": [
     "impedâncias de máquina, transformador e rede são hipóteses sem datasheet ou estudo da concessionária",
@@ -56,8 +57,8 @@
     "modelo Simulink usa equações agregadas em pu e não é modelo eletromagnético de máquina",
     "simulação Python não inclui rede local/carga auxiliar, resposta de frequência da rede, limites térmicos/de campo, proteção, saturação magnética ou controle de corrente; a entrada dinâmica é referência mecânica, não degrau de carga",
     "o afundamento de 0,2 pu é uma perturbação sintética; o modelo calcula pico próximo a 5,54 kA e não se recompõe em 5 s, portanto não sustenta análise de suportabilidade, curto de projeto ou seleção de equipamento",
-    "a matriz Python de oito cenários é uma alternativa analítica reduzida e não validada; a matriz MATLAB/Simulink atual e seus registradores não foram executados",
-    "MATLAB não foi executado nesta revisão; tentativa anterior foi limitada por memória livre baixa",
+    "a matriz Python de oito cenarios e uma alternativa analitica reduzida, com sensibilidade temporal material; nao valida a matriz MATLAB/Simulink nem comportamento da unidade",
+    "MATLAB R2026a foi executado somente no caminho estatico; modelo dinamico Simulink nao foi aberto, compilado ou simulado",
     "dimensões físicas de P25-02 são envelopes conceituais assumidos e não dados civis ou de fabricantes",
     "nenhuma declaração de conformidade, proteção coordenada ou uso executivo"
   ]

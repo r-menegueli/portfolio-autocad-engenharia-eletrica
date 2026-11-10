@@ -1,7 +1,8 @@
-function R = run_analysis(runDynamic)
+function R = run_analysis(runDynamic, makePlots)
 % Recalcula os balanços P25 e, opcionalmente, executa o modelo Simulink.
-% run_analysis(false) limita a execução aos cálculos estáticos e reduz memória.
+% run_analysis(false,false) limita a execução aos cálculos estáticos e reduz memória.
 if nargin < 1, runDynamic = true; end
+if nargin < 2, makePlots = true; end
 here = fileparts(mfilename('fullpath'));
 projectRoot = fileparts(fileparts(here));
 addpath(fullfile(projectRoot, 'matlab', 'funcoes'));
@@ -123,20 +124,22 @@ dyn = table(log.Time,data(:,1),speed,data(:,3),Pe,data(:,5),Q,Vt,frequency,curre
 writetable(dyn, fullfile(projectRoot, 'resultados', 'tabelas', 'dinamica-maquina.csv'));
 R.dinamica = dyn;
 
-fig = figure('Visible','off');
-tiledlayout(4,1);
-nexttile; plot(dyn.time_s,dyn.Vt_pu,'LineWidth',1.1); grid on; ylabel('Vt (pu)');
-title('Resposta agregada a afundamento de tensão e degrau de potência mecânica');
-nexttile; plot(dyn.time_s,dyn.frequency_Hz,'LineWidth',1.1); grid on; ylabel('f (Hz)');
-nexttile; plot(dyn.time_s,dyn.Pe_pu*Sg,dyn.time_s,dyn.Q_pu*Sg,'LineWidth',1.1); grid on; ylabel('P / Q (MW / MVAr)');
-legend('P elétrica','Q elétrica','Location','best');
-nexttile; plot(dyn.time_s,dyn.I_gerador_A,'LineWidth',1.1); grid on; ylabel('I (A)'); xlabel('Tempo (s)');
-exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','resposta-dinamica.png'));
-close(fig);
-fig = figure('Visible','off');
-bar([Pg Pnet Paux p.process_steam_thermal_mw fuel]);
-xticklabels({'Geração bruta','Exportação líquida','Auxiliares','Vapor útil','Combustível'});
-ylabel('MW / MWth'); grid on; title('Balanço energético nominal');
-exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','balanco-energetico.png'));
-close(fig);
+if makePlots
+    fig = figure('Visible','off');
+    tiledlayout(4,1);
+    nexttile; plot(dyn.time_s,dyn.Vt_pu,'LineWidth',1.1); grid on; ylabel('Vt (pu)');
+    title('Resposta agregada a afundamento de tensão e degrau de potência mecânica');
+    nexttile; plot(dyn.time_s,dyn.frequency_Hz,'LineWidth',1.1); grid on; ylabel('f (Hz)');
+    nexttile; plot(dyn.time_s,dyn.Pe_pu*Sg,dyn.time_s,dyn.Q_pu*Sg,'LineWidth',1.1); grid on; ylabel('P / Q (MW / MVAr)');
+    legend('P elétrica','Q elétrica','Location','best');
+    nexttile; plot(dyn.time_s,dyn.I_gerador_A,'LineWidth',1.1); grid on; ylabel('I (A)'); xlabel('Tempo (s)');
+    exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','resposta-dinamica.png'));
+    close(fig);
+    fig = figure('Visible','off');
+    bar([Pg Pnet Paux p.process_steam_thermal_mw fuel]);
+    xticklabels({'Geração bruta','Exportação líquida','Auxiliares','Vapor útil','Combustível'});
+    ylabel('MW / MWth'); grid on; title('Balanço energético nominal');
+    exportgraphics(fig,fullfile(projectRoot,'resultados','graficos','balanco-energetico.png'));
+    close(fig);
+end
 end

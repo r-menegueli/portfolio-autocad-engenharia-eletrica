@@ -1,0 +1,6 @@
+Auditoria nativa AutoCAD Core Console 2027
+Comando: accoreconsole.exe /i 25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf /s scripts/autocad/auditar.scr
+Exit code: 0
+Arquivo DXF aberto e processado; AUDIT em modo sem correção automática.
+Resultado no log: 0 erros encontrados, 0 corrigidos e 0 objetos apagados.
+Log integral UTF-16: docs/evidencias/auditoria-autocad-p25-05-2026-11-09.log

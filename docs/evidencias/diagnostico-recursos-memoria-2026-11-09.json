@@ -1,0 +1,123 @@
+{
+  "recorded_at": "2026-11-09T21:20:17.0216787-03:00",
+  "machine": {
+    "windows_caption": "Microsoft Windows 11 Pro",
+    "windows_version": "10.0.26300",
+    "cpu": "AMD Ryzen 5 4600G with Radeon Graphics",
+    "visible_ram_total_gb": 7.8,
+    "ram_available_gb": 1.93,
+    "commit_limit_gb": 22.03,
+    "commit_available_gb": 9.7,
+    "automatic_managed_pagefile": true,
+    "pagefiles": [
+      {
+        "Name": "C:\\pagefile.sys",
+        "AllocatedBaseSize": 14575,
+        "CurrentUsage": 751,
+        "PeakUsage": 1345
+      }
+    ],
+    "local_drives": [
+      {
+        "DeviceID": "C:",
+        "FreeGB": 38.4,
+        "SizeGB": 464.8
+      },
+      {
+        "DeviceID": "G:",
+        "FreeGB": 36.48,
+        "SizeGB": 464.8
+      }
+    ]
+  },
+  "high_memory_processes": [
+    {
+      "ProcessName": "Memory Compression",
+      "Id": 3216,
+      "WorkingSetMB": 1136.4
+    },
+    {
+      "ProcessName": "ChatGPT",
+      "Id": 11948,
+      "WorkingSetMB": 326.2
+    },
+    {
+      "ProcessName": "MsMpEng",
+      "Id": 4828,
+      "WorkingSetMB": 221.3
+    },
+    {
+      "ProcessName": "explorer",
+      "Id": 7800,
+      "WorkingSetMB": 179.6
+    },
+    {
+      "ProcessName": "ChatGPT",
+      "Id": 15092,
+      "WorkingSetMB": 164.1
+    },
+    {
+      "ProcessName": "Discord",
+      "Id": 18196,
+      "WorkingSetMB": 139.0
+    },
+    {
+      "ProcessName": "codex",
+      "Id": 5628,
+      "WorkingSetMB": 123.0
+    },
+    {
+      "ProcessName": "WhatsApp.Root",
+      "Id": 13024,
+      "WorkingSetMB": 113.9
+    },
+    {
+      "ProcessName": "pwsh",
+      "Id": 13440,
+      "WorkingSetMB": 95.3
+    },
+    {
+      "ProcessName": "MathWorksServiceHost",
+      "Id": 19580,
+      "WorkingSetMB": 80.7
+    }
+  ],
+  "matlab_processes": [],
+  "prior_matlab_peak_measurements": [
+    {
+      "duration_s": 12.77,
+      "result": "success static calculations",
+      "dynamic_simulation": "not run",
+      "peak_tree_working_set_mb": 1206.8,
+      "minimum_free_ram_gb": 1.206,
+      "project": "P23 static -nojvm -singleCompThread"
+    },
+    {
+      "project": "P24 static",
+      "duration_s": 14.74,
+      "minimum_free_ram_gb": 0.486,
+      "peak_tree_working_set_mb": 1126.1,
+      "result": "success MATLAB checks"
+    },
+    {
+      "duration_s": 11.97,
+      "result": "success static calculations",
+      "dynamic_simulation": "not run",
+      "peak_tree_working_set_mb": 1213.3,
+      "minimum_free_ram_gb": 1.058,
+      "project": "P25 static -nojvm -singleCompThread"
+    },
+    {
+      "duration_s": 31.92,
+      "result": "safely stopped while model build was still running",
+      "opened_compiled_simulated": false,
+      "peak_tree_working_set_mb": 2451.2,
+      "minimum_free_ram_gb": 0.17,
+      "project": "P23 Simulink attempt"
+    }
+  ],
+  "notes": [
+    "Resource snapshot does not change the Windows pagefile or close user applications.",
+    "At the current 1.82 GB of free physical RAM, no P25 Simulink attempt was started; the measured P23 builder peak was 2.45 GB."
+  ]
+}

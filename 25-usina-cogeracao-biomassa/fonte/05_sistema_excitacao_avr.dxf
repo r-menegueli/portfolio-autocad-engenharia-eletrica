@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-14E
+1D3
   9
 $SURFTAB1
  70
@@ -3481,7 +3481,7 @@ ACAD
   0
 APPID
   5
-14B
+1D0
 330
 3
 100
@@ -3495,7 +3495,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-14C
+1D1
 330
 3
 100
@@ -7987,7 +7987,7 @@ AcDbText
  40
 1.8
   1
-Medicao de tensao, regulador automatico, limitadores e campo do gerador
+Topologia estatica conceitual, medicao, controle, campo e intertravamentos
   7
 PORTFOLIO_TEXTO
  72
@@ -8184,8 +8184,10 @@ AcDbMText
 198.0
  71
 1
+  3
+Topologia de excitacao estatica assumida para estudo; nao identifica fabricante ou modelo comercial.\PRelacoes de PT/CT, alimentacao e potencia do transformador/ponte, campo, descarga, limites OEL/UEL e ajustes dependem dos dados da unidade.\PDimensi
   1
-Blocos funcionais representativos; parametros de AVR sao valores de estudo, sem ensaio de resposta.\PExcitacao real deve incluir limitadores e requisitos do fabricante e do operador.
+onar supressao de campo e coordenar 41E/86G/64F antes de qualquer aplicacao real.
   7
 PORTFOLIO_TEXTO
  44
@@ -8279,7 +8281,7 @@ AcDbMText
  71
 1
   1
-AVR: regulador de tensao | PT: TP | CT: TC | OEL/UEL: limitadores | Efd: campo
+TE1: transformador de excitacao | BR1: ponte controlada | 41E: disjuntor de campo | RFD/KFD: descarga | PT/CT: medicao | AVR: regulador | OEL/UEL: limitadores
   7
 PORTFOLIO_TEXTO
  44
@@ -9113,7 +9115,7 @@ AcDbEntity
   8
 01_CARIMBO
   0
-CIRCLE
+LWPOLYLINE
   5
 117
 330
@@ -9121,17 +9123,29 @@ CIRCLE
 100
 AcDbEntity
   8
-05_POTENCIA
+11_ARQUITETURA
 100
-AcDbCircle
+AcDbPolyline
+ 90
+4
+ 70
+1
  10
-55.0
+32.0
  20
-213.0
- 30
-0.0
- 40
-8.0
+116.0
+ 10
+388.0
+ 20
+116.0
+ 10
+388.0
+ 20
+204.0
+ 10
+32.0
+ 20
+204.0
   0
 TEXT
   5
@@ -9141,27 +9155,63 @@ TEXT
 100
 AcDbEntity
   8
-05_POTENCIA
+11_ARQUITETURA
 100
 AcDbText
  10
-55.0
+210.0
  20
-214.0
+199.0
  30
 0.0
  40
-1.6
+1.9
   1
-G1
+CONTROLE DE TENSAO, LIMITES E INTERTRAVAMENTOS
   7
 PORTFOLIO_TITULO
  72
 1
  11
-55.0
+210.0
  21
-214.0
+199.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+119
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+43.0
+ 20
+240.0
+ 30
+0.0
+ 40
+1.6
+  1
+U
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+43.0
+ 21
+240.0
  31
 0.0
 100
@@ -9171,61 +9221,31 @@ AcDbText
   0
 LINE
   5
-119
-330
-17
-100
-AcDbEntity
-  8
-05_POTENCIA
-100
-AcDbLine
- 10
-63.0
- 20
-213.0
- 30
-0.0
- 11
-90.0
- 21
-213.0
- 31
-0.0
-  0
-LWPOLYLINE
-  5
 11A
 330
 17
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
+370
+60
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbLine
  10
-90.0
+46.0
  20
-202.0
- 10
-129.0
- 20
-202.0
- 10
-129.0
- 20
-224.0
- 10
-90.0
- 20
-224.0
+240.0
+ 30
+0.0
+ 11
+61.0
+ 21
+240.0
+ 31
+0.0
   0
-TEXT
+LINE
   5
 11B
 330
@@ -9233,33 +9253,23 @@ TEXT
 100
 AcDbEntity
   8
-04_EQUIPAMENTOS
+05_POTENCIA
+370
+60
 100
-AcDbText
+AcDbLine
  10
-109.0
+75.0
  20
-215.0
+240.0
  30
 0.0
- 40
-1.2
-  1
-EXCITATRIZ
-  7
-PORTFOLIO_TITULO
- 72
-1
  11
-109.0
+84.0
  21
-215.0
+240.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 LINE
   5
@@ -9270,22 +9280,24 @@ LINE
 AcDbEntity
   8
 05_POTENCIA
+370
+60
 100
 AcDbLine
  10
-129.0
+120.0
  20
-213.0
+240.0
  30
 0.0
  11
-153.0
+132.0
  21
-213.0
+240.0
  31
 0.0
   0
-LWPOLYLINE
+LINE
   5
 11D
 330
@@ -9294,28 +9306,22 @@ LWPOLYLINE
 AcDbEntity
   8
 05_POTENCIA
+370
+60
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbLine
  10
-153.0
+177.0
  20
-202.0
- 10
-195.0
- 20
-202.0
- 10
-195.0
- 20
-224.0
- 10
-153.0
- 20
-224.0
+240.0
+ 30
+0.0
+ 11
+184.0
+ 21
+240.0
+ 31
+0.0
   0
 TEXT
   5
@@ -9325,27 +9331,27 @@ TEXT
 100
 AcDbEntity
   8
-05_POTENCIA
+02_TEXTO
 100
 AcDbText
  10
-174.0
+43.0
  20
-216.0
+234.0
  30
 0.0
  40
-1.2
+1.6
   1
-PONTE
+V
   7
-PORTFOLIO_TITULO
+PORTFOLIO_TEXTO
  72
 1
  11
-174.0
+43.0
  21
-216.0
+234.0
  31
 0.0
 100
@@ -9353,7 +9359,7 @@ AcDbText
  73
 2
   0
-TEXT
+LINE
   5
 11F
 330
@@ -9361,33 +9367,23 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+05_POTENCIA
+370
+60
 100
-AcDbText
+AcDbLine
  10
-174.0
+46.0
  20
-208.0
+234.0
  30
 0.0
- 40
-0.95
-  1
-RETIFICADORA
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-174.0
+61.0
  21
-208.0
+234.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 LINE
   5
@@ -9398,22 +9394,24 @@ LINE
 AcDbEntity
   8
 05_POTENCIA
+370
+60
 100
 AcDbLine
  10
-195.0
+75.0
  20
-213.0
+234.0
  30
 0.0
  11
-224.0
+84.0
  21
-213.0
+234.0
  31
 0.0
   0
-LWPOLYLINE
+LINE
   5
 121
 330
@@ -9422,30 +9420,24 @@ LWPOLYLINE
 AcDbEntity
   8
 05_POTENCIA
+370
+60
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbLine
  10
-224.0
+120.0
  20
-205.0
- 10
-262.0
- 20
-205.0
- 10
-262.0
- 20
-221.0
- 10
-224.0
- 20
-221.0
+234.0
+ 30
+0.0
+ 11
+132.0
+ 21
+234.0
+ 31
+0.0
   0
-TEXT
+LINE
   5
 122
 330
@@ -9454,176 +9446,26 @@ TEXT
 AcDbEntity
   8
 05_POTENCIA
+370
+60
 100
-AcDbText
+AcDbLine
  10
-243.0
+177.0
  20
-213.0
+234.0
  30
 0.0
- 40
-1.15
-  1
-CAMPO F+ F-
-  7
-PORTFOLIO_TITULO
- 72
-1
  11
-243.0
+184.0
  21
-213.0
+234.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-LWPOLYLINE
+TEXT
   5
 123
-330
-17
-100
-AcDbEntity
-  8
-05_POTENCIA
-100
-AcDbPolyline
- 90
-5
- 70
-0
- 10
-262.0
- 20
-213.0
- 10
-282.0
- 20
-213.0
- 10
-282.0
- 20
-196.0
- 10
-55.0
- 20
-196.0
- 10
-55.0
- 20
-204.0
-  0
-TEXT
-  5
-124
-330
-17
-100
-AcDbEntity
-  8
-07_INSTRUMENTACAO
-100
-AcDbText
- 10
-166.0
- 20
-190.0
- 30
-0.0
- 40
-1.0
-  1
-realimentacao de corrente de campo
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-166.0
- 21
-190.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-LWPOLYLINE
-  5
-125
-330
-17
-100
-AcDbEntity
-  8
-07_INSTRUMENTACAO
-100
-AcDbPolyline
- 90
-4
- 70
-1
- 10
-57.0
- 20
-125.0
- 10
-119.0
- 20
-125.0
- 10
-119.0
- 20
-159.0
- 10
-57.0
- 20
-159.0
-  0
-TEXT
-  5
-126
-330
-17
-100
-AcDbEntity
-  8
-07_INSTRUMENTACAO
-100
-AcDbText
- 10
-88.0
- 20
-147.0
- 30
-0.0
- 40
-1.3
-  1
-TP / TC
-  7
-PORTFOLIO_TITULO
- 72
-1
- 11
-88.0
- 21
-147.0
- 31
-0.0
-100
-AcDbText
- 73
-2
-  0
-TEXT
-  5
-127
 330
 17
 100
@@ -9633,23 +9475,23 @@ AcDbEntity
 100
 AcDbText
  10
-88.0
+43.0
  20
-136.0
+228.0
  30
 0.0
  40
-1.0
+1.6
   1
-medicao V, I
+W
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-88.0
+43.0
  21
-136.0
+228.0
  31
 0.0
 100
@@ -9657,7 +9499,111 @@ AcDbText
  73
 2
   0
-LWPOLYLINE
+LINE
+  5
+124
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+46.0
+ 20
+228.0
+ 30
+0.0
+ 11
+61.0
+ 21
+228.0
+ 31
+0.0
+  0
+LINE
+  5
+125
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+75.0
+ 20
+228.0
+ 30
+0.0
+ 11
+84.0
+ 21
+228.0
+ 31
+0.0
+  0
+LINE
+  5
+126
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+120.0
+ 20
+228.0
+ 30
+0.0
+ 11
+132.0
+ 21
+228.0
+ 31
+0.0
+  0
+LINE
+  5
+127
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+177.0
+ 20
+228.0
+ 30
+0.0
+ 11
+184.0
+ 21
+228.0
+ 31
+0.0
+  0
+CIRCLE
   5
 128
 330
@@ -9665,29 +9611,17 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
-AcDbPolyline
- 90
-4
- 70
-1
+AcDbCircle
  10
-152.0
+55.0
  20
-121.0
- 10
-238.0
- 20
-121.0
- 10
-238.0
- 20
-162.0
- 10
-152.0
- 20
-162.0
+240.0
+ 30
+0.0
+ 40
+1.8
   0
 TEXT
   5
@@ -9697,27 +9631,27 @@ TEXT
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbText
  10
-195.0
+56.0
  20
-151.0
+245.0
  30
 0.0
  40
-1.4
+1.6
   1
-AVR / PID
+CT1
   7
-PORTFOLIO_TITULO
+PORTFOLIO_TEXTO
  72
 1
  11
-195.0
+56.0
  21
-151.0
+245.0
  31
 0.0
 100
@@ -9725,7 +9659,7 @@ AcDbText
  73
 2
   0
-TEXT
+LWPOLYLINE
   5
 12A
 330
@@ -9733,35 +9667,33 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+07_INSTRUMENTACAO
 100
-AcDbText
+AcDbPolyline
+ 90
+4
+ 70
+0
+ 43
+0.3
  10
-195.0
+50.0
  20
-140.0
- 30
-0.0
- 40
-1.0
-  1
-limitadores OEL / UEL
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-195.0
- 21
-140.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+240.0
+ 10
+34.0
+ 20
+240.0
+ 10
+34.0
+ 20
+184.0
+ 10
+42.0
+ 20
+184.0
   0
-TEXT
+LWPOLYLINE
   5
 12B
 330
@@ -9769,33 +9701,31 @@ TEXT
 100
 AcDbEntity
   8
-02_TEXTO
+07_INSTRUMENTACAO
 100
-AcDbText
+AcDbPolyline
+ 90
+4
+ 70
+0
+ 43
+0.3
  10
-195.0
+50.0
  20
-129.0
- 30
-0.0
- 40
-1.0
-  1
-Vref - Vt
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-195.0
- 21
-129.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+234.0
+ 10
+38.0
+ 20
+234.0
+ 10
+38.0
+ 20
+178.0
+ 10
+42.0
+ 20
+178.0
   0
 LINE
   5
@@ -9809,15 +9739,15 @@ AcDbEntity
 100
 AcDbLine
  10
-119.0
+38.0
  20
-142.0
+184.0
  30
 0.0
  11
-152.0
+42.0
  21
-142.0
+184.0
  31
 0.0
   0
@@ -9833,15 +9763,15 @@ AcDbEntity
 100
 AcDbLine
  10
-152.0
+42.0
  20
-142.0
+184.0
  30
 0.0
  11
-150.33989292952955
+41.003935757717734
  21
-143.11536743478283
+184.6692204608697
  31
 0.0
   0
@@ -9857,15 +9787,15 @@ AcDbEntity
 100
 AcDbLine
  10
-152.0
+42.0
  20
-142.0
+184.0
  30
 0.0
  11
-150.33989292952955
+41.003935757717734
  21
-140.88463256521717
+183.3307795391303
  31
 0.0
   0
@@ -9877,19 +9807,19 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbLine
  10
-238.0
+38.0
  20
-142.0
+178.0
  30
 0.0
  11
-275.0
+42.0
  21
-142.0
+178.0
  31
 0.0
   0
@@ -9901,19 +9831,19 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbLine
  10
-275.0
+42.0
  20
-142.0
+178.0
  30
 0.0
  11
-273.3398929295296
+41.003935757717734
  21
-143.11536743478283
+178.6692204608697
  31
 0.0
   0
@@ -9925,19 +9855,19 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbLine
  10
-275.0
+42.0
  20
-142.0
+178.0
  30
 0.0
  11
-273.3398929295296
+41.003935757717734
  21
-140.88463256521717
+177.3307795391303
  31
 0.0
   0
@@ -9949,31 +9879,33 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbPolyline
  90
 4
  70
-1
+0
+ 43
+0.3
  10
-275.0
+55.0
  20
-128.0
+240.0
  10
-360.0
+55.0
  20
-128.0
+198.0
  10
-360.0
+70.0
  20
-158.0
+198.0
  10
-275.0
+70.0
  20
-158.0
+188.0
   0
-TEXT
+LINE
   5
 133
 330
@@ -9981,33 +9913,21 @@ TEXT
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
-AcDbText
+AcDbLine
  10
-317.0
+70.0
  20
-146.0
+192.0
  30
 0.0
- 40
-1.25
-  1
-Efd / excitacao
-  7
-PORTFOLIO_TITULO
- 72
-1
  11
-317.0
+70.0
  21
-146.0
+188.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 LINE
   5
@@ -10017,19 +9937,19 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbLine
  10
-317.0
+70.0
  20
-158.0
+188.0
  30
 0.0
  11
-317.0
+70.6692204608697
  21
-183.0
+188.99606424228227
  31
 0.0
   0
@@ -10041,23 +9961,23 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+07_INSTRUMENTACAO
 100
 AcDbLine
  10
-317.0
+70.0
  20
-183.0
+188.0
  30
 0.0
  11
-315.88463256521715
+69.3307795391303
  21
-181.33989292952955
+188.99606424228227
  31
 0.0
   0
-LINE
+TEXT
   5
 136
 330
@@ -10065,23 +9985,35 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
+05_POTENCIA
 100
-AcDbLine
+AcDbText
  10
-317.0
+54.0
  20
-183.0
+247.0
  30
 0.0
+ 40
+1.6
+  1
+G1 / BARRA 13,8 kV
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-318.11536743478285
+54.0
  21
-181.33989292952955
+247.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+LWPOLYLINE
   5
 137
 330
@@ -10089,55 +10021,7 @@ LINE
 100
 AcDbEntity
   8
-06_COMANDO
-100
-AcDbLine
- 10
-317.0
- 20
-183.0
- 30
-0.0
- 11
-174.0
- 21
-183.0
- 31
-0.0
-  0
-LINE
-  5
-138
-330
-17
-100
-AcDbEntity
-  8
-06_COMANDO
-100
-AcDbLine
- 10
-174.0
- 20
-183.0
- 30
-0.0
- 11
-174.0
- 21
-202.0
- 31
-0.0
-  0
-LWPOLYLINE
-  5
-139
-330
-17
-100
-AcDbEntity
-  8
-12_LEGENDA
+05_POTENCIA
 100
 AcDbPolyline
  90
@@ -10145,23 +10029,95 @@ AcDbPolyline
  70
 1
  10
-264.0
+61.0
  20
-212.0
+224.0
  10
-401.0
+75.0
  20
-212.0
+224.0
  10
-401.0
+75.0
  20
 244.0
  10
-264.0
+61.0
  20
 244.0
   0
-LINE
+TEXT
+  5
+138
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+68.0
+ 20
+234.0
+ 30
+0.0
+ 40
+1.9
+  1
+QFE
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+68.0
+ 21
+234.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+139
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+68.0
+ 20
+226.0
+ 30
+0.0
+ 40
+1.5
+  1
+3P
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+68.0
+ 21
+226.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
   5
 13A
 330
@@ -10169,23 +10125,31 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+04_EQUIPAMENTOS
 100
-AcDbLine
+AcDbPolyline
+ 90
+4
+ 70
+1
  10
-264.0
+84.0
  20
-236.0
- 30
-0.0
- 11
-401.0
- 21
-236.0
- 31
-0.0
+221.0
+ 10
+120.0
+ 20
+221.0
+ 10
+120.0
+ 20
+247.0
+ 10
+84.0
+ 20
+247.0
   0
-LINE
+TEXT
   5
 13B
 330
@@ -10193,23 +10157,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+04_EQUIPAMENTOS
 100
-AcDbLine
+AcDbText
  10
-264.0
+102.0
  20
-228.0
+240.0
  30
 0.0
+ 40
+1.9
+  1
+TE1
+  7
+PORTFOLIO_TITULO
+ 72
+1
  11
-401.0
+102.0
  21
-228.0
+240.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 13C
 330
@@ -10217,23 +10193,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
-AcDbLine
+AcDbText
  10
-264.0
+102.0
  20
-220.0
+232.0
  30
 0.0
+ 40
+1.5
+  1
+TRANSF.EXCITACAO
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-401.0
+102.0
  21
-220.0
+232.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+TEXT
   5
 13D
 330
@@ -10241,23 +10229,35 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+13_NOTAS
 100
-AcDbLine
+AcDbText
  10
-302.0
+102.0
  20
-244.0
+224.0
  30
 0.0
+ 40
+1.5
+  1
+relacao a definir
+  7
+PORTFOLIO_TEXTO
+ 72
+1
  11
-302.0
+102.0
  21
-212.0
+224.0
  31
 0.0
+100
+AcDbText
+ 73
+2
   0
-LINE
+LWPOLYLINE
   5
 13E
 330
@@ -10265,21 +10265,29 @@ LINE
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbLine
+AcDbPolyline
+ 90
+4
+ 70
+1
  10
-350.0
+132.0
  20
-244.0
- 30
-0.0
- 11
-350.0
- 21
-212.0
- 31
-0.0
+220.0
+ 10
+177.0
+ 20
+220.0
+ 10
+177.0
+ 20
+248.0
+ 10
+132.0
+ 20
+248.0
   0
 TEXT
   5
@@ -10289,27 +10297,27 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
 AcDbText
  10
-283.0
+154.5
  20
-240.0
+239.0
  30
 0.0
  40
-0.95
+2.0
   1
-BLOCO
+BR1
   7
 PORTFOLIO_TITULO
  72
 1
  11
-283.0
+154.5
  21
-240.0
+239.0
  31
 0.0
 100
@@ -10325,27 +10333,27 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
 AcDbText
  10
-326.0
+154.5
  20
-240.0
+232.0
  30
 0.0
  40
-0.95
+1.5
   1
-MODELO
+PONTE CONTROLADA
   7
-PORTFOLIO_TITULO
+PORTFOLIO_TEXTO
  72
 1
  11
-326.0
+154.5
  21
-240.0
+232.0
  31
 0.0
 100
@@ -10361,27 +10369,27 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
 AcDbText
  10
-375.5
+154.5
  20
-240.0
+224.0
  30
 0.0
  40
-0.95
+1.5
   1
-ESTADO
+3~ / CC
   7
-PORTFOLIO_TITULO
+PORTFOLIO_TEXTO
  72
 1
  11
-375.5
+154.5
  21
-240.0
+224.0
  31
 0.0
 100
@@ -10389,7 +10397,7 @@ AcDbText
  73
 2
   0
-TEXT
+LINE
   5
 142
 330
@@ -10397,35 +10405,25 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
+370
+60
 100
-AcDbText
+AcDbLine
  10
-283.0
+184.0
  20
-232.0
+238.0
  30
 0.0
- 40
-0.95
-  1
-AVR
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-283.0
+187.0
  21
-232.0
+238.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 143
 330
@@ -10433,35 +10431,25 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
+370
+60
 100
-AcDbText
+AcDbLine
  10
-326.0
+201.0
  20
-232.0
+238.0
  30
 0.0
- 40
-0.95
-  1
-1a ordem
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-326.0
+220.0
  21
-232.0
+238.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 144
 330
@@ -10469,35 +10457,23 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbText
+AcDbLine
  10
-375.5
+187.0
  20
-232.0
+238.0
  30
 0.0
- 40
-0.95
-  1
-conceitual
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-375.5
+191.5
  21
-232.0
+238.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+LINE
   5
 145
 330
@@ -10505,35 +10481,23 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbText
+AcDbLine
  10
-283.0
+196.5
  20
-224.0
+238.0
  30
 0.0
- 40
-0.95
-  1
-Excitatriz
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-283.0
+201.0
  21
-224.0
+238.0
  31
 0.0
-100
-AcDbText
- 73
-2
   0
-TEXT
+CIRCLE
   5
 146
 330
@@ -10541,35 +10505,19 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbText
+AcDbCircle
  10
-326.0
+192.7
  20
-224.0
+238.0
  30
 0.0
  40
-0.95
-  1
-ganho efetivo
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-326.0
- 21
-224.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+1.0
   0
-TEXT
+CIRCLE
   5
 147
 330
@@ -10577,35 +10525,19 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbText
+AcDbCircle
  10
-375.5
+195.3
  20
-224.0
+238.0
  30
 0.0
  40
-0.95
-  1
-nao selecionada
-  7
-PORTFOLIO_TEXTO
- 72
-1
- 11
-375.5
- 21
-224.0
- 31
-0.0
-100
-AcDbText
- 73
-2
+1.0
   0
-TEXT
+LINE
   5
 148
 330
@@ -10613,33 +10545,21 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+05_POTENCIA
 100
-AcDbText
+AcDbLine
  10
-283.0
+193.5
  20
-216.0
+238.8
  30
 0.0
- 40
-0.95
-  1
-Limitadores
-  7
-PORTFOLIO_TEXTO
- 72
-1
  11
-283.0
+194.6
  21
-216.0
+237.2
  31
 0.0
-100
-AcDbText
- 73
-2
   0
 TEXT
   5
@@ -10649,27 +10569,89 @@ TEXT
 100
 AcDbEntity
   8
-12_LEGENDA
+02_TEXTO
 100
 AcDbText
  10
-326.0
+194.0
  20
-216.0
+243.0
  30
 0.0
  40
-0.95
+1.15
   1
-OEL/UEL
+41E
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-326.0
+194.0
  21
-216.0
+243.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+14A
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+184.0
+ 20
+225.0
+ 30
+0.0
+ 11
+252.0
+ 21
+225.0
+ 31
+0.0
+  0
+TEXT
+  5
+14B
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+215.0
+ 20
+243.0
+ 30
+0.0
+ 40
+1.6
+  1
+F+
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+215.0
+ 21
+243.0
  31
 0.0
 100
@@ -10679,7 +10661,1185 @@ AcDbText
   0
 TEXT
   5
-14A
+14C
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+215.0
+ 20
+220.0
+ 30
+0.0
+ 40
+1.6
+  1
+F-
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+215.0
+ 21
+220.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+14D
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+9
+ 70
+0
+ 43
+0.45
+ 10
+220.0
+ 20
+238.0
+ 10
+222.0
+ 20
+238.0
+ 10
+225.0
+ 20
+230.0
+ 10
+229.0
+ 20
+236.0
+ 10
+233.0
+ 20
+229.0
+ 10
+237.0
+ 20
+236.0
+ 10
+241.0
+ 20
+229.0
+ 10
+245.0
+ 20
+235.0
+ 10
+248.0
+ 20
+225.0
+  0
+TEXT
+  5
+14E
+330
+17
+100
+AcDbEntity
+  8
+04_EQUIPAMENTOS
+100
+AcDbText
+ 10
+234.0
+ 20
+244.0
+ 30
+0.0
+ 40
+1.5
+  1
+CAMPO G1
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+234.0
+ 21
+244.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+14F
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+248.0
+ 20
+238.0
+ 30
+0.0
+ 11
+260.0
+ 21
+238.0
+ 31
+0.0
+  0
+LINE
+  5
+150
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+248.0
+ 20
+225.0
+ 30
+0.0
+ 11
+260.0
+ 21
+225.0
+ 31
+0.0
+  0
+LINE
+  5
+151
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+260.0
+ 20
+238.0
+ 30
+0.0
+ 11
+260.0
+ 21
+236.0
+ 31
+0.0
+  0
+CIRCLE
+  5
+152
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbCircle
+ 10
+260.0
+ 20
+235.0
+ 30
+0.0
+ 40
+0.75
+  0
+CIRCLE
+  5
+153
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbCircle
+ 10
+260.0
+ 20
+232.0
+ 30
+0.0
+ 40
+0.75
+  0
+LINE
+  5
+154
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+50
+100
+AcDbLine
+ 10
+259.4
+ 20
+234.4
+ 30
+0.0
+ 11
+260.6
+ 21
+232.6
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+155
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+257.0
+ 20
+226.0
+ 10
+263.0
+ 20
+226.0
+ 10
+263.0
+ 20
+230.0
+ 10
+257.0
+ 20
+230.0
+  0
+LINE
+  5
+156
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+260.0
+ 20
+232.0
+ 30
+0.0
+ 11
+260.0
+ 21
+230.0
+ 31
+0.0
+  0
+LINE
+  5
+157
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+370
+60
+100
+AcDbLine
+ 10
+260.0
+ 20
+226.0
+ 30
+0.0
+ 11
+260.0
+ 21
+225.0
+ 31
+0.0
+  0
+TEXT
+  5
+158
+330
+17
+100
+AcDbEntity
+  8
+05_POTENCIA
+100
+AcDbText
+ 10
+276.0
+ 20
+233.0
+ 30
+0.0
+ 40
+1.6
+  1
+KFD / RFD
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+276.0
+ 21
+233.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+159
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+276.0
+ 20
+228.0
+ 30
+0.0
+ 40
+1.5
+  1
+descarga de campo
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+276.0
+ 21
+228.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+15A
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+276.0
+ 20
+223.0
+ 30
+0.0
+ 40
+1.5
+  1
+fecha quando 41E abre
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+276.0
+ 21
+223.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+15B
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+296.0
+ 20
+222.0
+ 10
+388.0
+ 20
+222.0
+ 10
+388.0
+ 20
+252.0
+ 10
+296.0
+ 20
+252.0
+  0
+LINE
+  5
+15C
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+296.0
+ 20
+246.0
+ 30
+0.0
+ 11
+388.0
+ 21
+246.0
+ 31
+0.0
+  0
+LINE
+  5
+15D
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+296.0
+ 20
+240.0
+ 30
+0.0
+ 11
+388.0
+ 21
+240.0
+ 31
+0.0
+  0
+LINE
+  5
+15E
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+296.0
+ 20
+234.0
+ 30
+0.0
+ 11
+388.0
+ 21
+234.0
+ 31
+0.0
+  0
+LINE
+  5
+15F
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+296.0
+ 20
+228.0
+ 30
+0.0
+ 11
+388.0
+ 21
+228.0
+ 31
+0.0
+  0
+LINE
+  5
+160
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+322.0
+ 20
+252.0
+ 30
+0.0
+ 11
+322.0
+ 21
+222.0
+ 31
+0.0
+  0
+LINE
+  5
+161
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbLine
+ 10
+353.0
+ 20
+252.0
+ 30
+0.0
+ 11
+353.0
+ 21
+222.0
+ 31
+0.0
+  0
+TEXT
+  5
+162
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+309.0
+ 20
+249.0
+ 30
+0.0
+ 40
+1.45
+  1
+BORNES
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+309.0
+ 21
+249.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+163
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+337.5
+ 20
+249.0
+ 30
+0.0
+ 40
+1.45
+  1
+SINAL
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+337.5
+ 21
+249.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+164
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+370.5
+ 20
+249.0
+ 30
+0.0
+ 40
+1.45
+  1
+ORIGEM
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+370.5
+ 21
+249.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+165
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+309.0
+ 20
+243.0
+ 30
+0.0
+ 40
+1.45
+  1
+XT1:01-03
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+309.0
+ 21
+243.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+166
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+337.5
+ 20
+243.0
+ 30
+0.0
+ 40
+1.45
+  1
+Vt abc
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+337.5
+ 21
+243.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+167
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+370.5
+ 20
+243.0
+ 30
+0.0
+ 40
+1.45
+  1
+PT1 / relacao a definir
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+370.5
+ 21
+243.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+168
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+309.0
+ 20
+237.0
+ 30
+0.0
+ 40
+1.45
+  1
+XT1:04-06
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+309.0
+ 21
+237.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+169
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+337.5
+ 20
+237.0
+ 30
+0.0
+ 40
+1.45
+  1
+Ia-Ic
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+337.5
+ 21
+237.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16A
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+370.5
+ 20
+237.0
+ 30
+0.0
+ 40
+1.45
+  1
+CT1 / relacao a definir
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+370.5
+ 21
+237.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16B
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+309.0
+ 20
+231.0
+ 30
+0.0
+ 40
+1.45
+  1
+XT2:01-02
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+309.0
+ 21
+231.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16C
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+337.5
+ 20
+231.0
+ 30
+0.0
+ 40
+1.45
+  1
+If / Efd
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+337.5
+ 21
+231.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16D
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+370.5
+ 20
+231.0
+ 30
+0.0
+ 40
+1.45
+  1
+TCF / transdutor
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+370.5
+ 21
+231.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16E
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+309.0
+ 20
+225.0
+ 30
+0.0
+ 40
+1.45
+  1
+XT2:03-04
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+309.0
+ 21
+225.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+16F
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+337.5
+ 20
+225.0
+ 30
+0.0
+ 40
+1.45
+  1
+Vref rem.
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+337.5
+ 21
+225.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+170
+330
+17
+100
+AcDbEntity
+  8
+09_BORNES
+100
+AcDbText
+ 10
+370.5
+ 20
+225.0
+ 30
+0.0
+ 40
+1.45
+  1
+QEV / remoto
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+370.5
+ 21
+225.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+171
 330
 17
 100
@@ -10689,23 +11849,2813 @@ AcDbEntity
 100
 AcDbText
  10
-375.5
+343.0
  20
-216.0
+256.0
  30
 0.0
  40
-0.95
+1.6
   1
-sem ajuste
+BORNEAMENTO ILUSTRATIVO
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+343.0
+ 21
+256.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+172
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+42.0
+ 20
+164.0
+ 10
+99.0
+ 20
+164.0
+ 10
+99.0
+ 20
+188.0
+ 10
+42.0
+ 20
+188.0
+  0
+LINE
+  5
+173
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+42.0
+ 20
+179.0
+ 30
+0.0
+ 11
+99.0
+ 21
+179.0
+ 31
+0.0
+  0
+TEXT
+  5
+174
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+70.5
+ 20
+182.8
+ 30
+0.0
+ 40
+1.8
+  1
+MEDICAO
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+70.5
+ 21
+182.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+175
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+70.5
+ 20
+175.6
+ 30
+0.0
+ 40
+2.0
+  1
+PT1/CT1
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+70.5
+ 21
+175.6
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+176
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+70.5
+ 20
+167.5
+ 30
+0.0
+ 40
+1.5
+  1
+Vt e corrente
   7
 PORTFOLIO_TEXTO
  72
 1
  11
-375.5
+70.5
  21
-216.0
+167.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+177
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+42.0
+ 20
+128.0
+ 10
+99.0
+ 20
+128.0
+ 10
+99.0
+ 20
+152.0
+ 10
+42.0
+ 20
+152.0
+  0
+LINE
+  5
+178
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+42.0
+ 20
+143.0
+ 30
+0.0
+ 11
+99.0
+ 21
+143.0
+ 31
+0.0
+  0
+TEXT
+  5
+179
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+70.5
+ 20
+146.8
+ 30
+0.0
+ 40
+1.8
+  1
+LOCAL / REMOTO
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+70.5
+ 21
+146.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+17A
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+70.5
+ 20
+139.6
+ 30
+0.0
+ 40
+2.0
+  1
+Vref
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+70.5
+ 21
+139.6
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+17B
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+70.5
+ 20
+131.5
+ 30
+0.0
+ 40
+1.5
+  1
+comando externo
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+70.5
+ 21
+131.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+17C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+119.0
+ 20
+157.0
+ 10
+219.0
+ 20
+157.0
+ 10
+219.0
+ 20
+193.0
+ 10
+119.0
+ 20
+193.0
+  0
+LINE
+  5
+17D
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+119.0
+ 20
+186.0
+ 30
+0.0
+ 11
+219.0
+ 21
+186.0
+ 31
+0.0
+  0
+TEXT
+  5
+17E
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+169.0
+ 20
+189.0
+ 30
+0.0
+ 40
+1.8
+  1
+AVR1 - REGULADOR DE TENSAO
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+169.0
+ 21
+189.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+CIRCLE
+  5
+17F
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbCircle
+ 10
+132.0
+ 20
+173.0
+ 30
+0.0
+ 40
+2.8
+  0
+TEXT
+  5
+180
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+127.5
+ 20
+179.0
+ 30
+0.0
+ 40
+1.5
+  1
++
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+127.5
+ 21
+179.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+181
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+127.5
+ 20
+167.0
+ 30
+0.0
+ 40
+1.5
+  1
+-
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+127.5
+ 21
+167.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+132.0
+ 20
+173.0
+ 30
+0.0
+ 40
+1.7
+  1
+Σ
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+132.0
+ 21
+173.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+183
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+144.0
+ 20
+164.0
+ 10
+178.0
+ 20
+164.0
+ 10
+178.0
+ 20
+182.0
+ 10
+144.0
+ 20
+182.0
+  0
+TEXT
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+161.0
+ 20
+177.0
+ 30
+0.0
+ 40
+1.8
+  1
+PI
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+161.0
+ 21
+177.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+161.0
+ 20
+169.0
+ 30
+0.0
+ 40
+1.5
+  1
+Kp + Ki/s
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+161.0
+ 21
+169.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+186
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+184.0
+ 20
+164.0
+ 10
+212.0
+ 20
+164.0
+ 10
+212.0
+ 20
+182.0
+ 10
+184.0
+ 20
+182.0
+  0
+TEXT
+  5
+187
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+198.0
+ 20
+177.0
+ 30
+0.0
+ 40
+1.6
+  1
+LIMITES
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+198.0
+ 21
+177.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+188
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+198.0
+ 20
+169.0
+ 30
+0.0
+ 40
+1.5
+  1
+Efd min/max
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+198.0
+ 21
+169.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+189
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+135.0
+ 20
+173.0
+ 30
+0.0
+ 11
+144.0
+ 21
+173.0
+ 31
+0.0
+  0
+LINE
+  5
+18A
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+144.0
+ 20
+173.0
+ 30
+0.0
+ 11
+142.96243308095598
+ 21
+173.69710464673926
+ 31
+0.0
+  0
+LINE
+  5
+18B
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+144.0
+ 20
+173.0
+ 30
+0.0
+ 11
+142.96243308095598
+ 21
+172.30289535326074
+ 31
+0.0
+  0
+LINE
+  5
+18C
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+178.0
+ 20
+173.0
+ 30
+0.0
+ 11
+184.0
+ 21
+173.0
+ 31
+0.0
+  0
+LINE
+  5
+18D
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+184.0
+ 20
+173.0
+ 30
+0.0
+ 11
+182.96243308095598
+ 21
+173.69710464673926
+ 31
+0.0
+  0
+LINE
+  5
+18E
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+184.0
+ 20
+173.0
+ 30
+0.0
+ 11
+182.96243308095598
+ 21
+172.30289535326074
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+18F
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+239.0
+ 20
+170.0
+ 10
+293.0
+ 20
+170.0
+ 10
+293.0
+ 20
+192.0
+ 10
+239.0
+ 20
+192.0
+  0
+LINE
+  5
+190
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+239.0
+ 20
+183.0
+ 30
+0.0
+ 11
+293.0
+ 21
+183.0
+ 31
+0.0
+  0
+TEXT
+  5
+191
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+266.0
+ 20
+186.8
+ 30
+0.0
+ 40
+1.8
+  1
+LIMITADORES
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+266.0
+ 21
+186.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+192
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+266.0
+ 20
+180.6
+ 30
+0.0
+ 40
+2.0
+  1
+OEL/UEL
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+266.0
+ 21
+180.6
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+193
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+266.0
+ 20
+173.5
+ 30
+0.0
+ 40
+1.5
+  1
+I e Q/P
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+266.0
+ 21
+173.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+194
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+239.0
+ 20
+134.0
+ 10
+293.0
+ 20
+134.0
+ 10
+293.0
+ 20
+156.0
+ 10
+239.0
+ 20
+156.0
+  0
+LINE
+  5
+195
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+239.0
+ 20
+147.0
+ 30
+0.0
+ 11
+293.0
+ 21
+147.0
+ 31
+0.0
+  0
+TEXT
+  5
+196
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+266.0
+ 20
+150.8
+ 30
+0.0
+ 40
+1.8
+  1
+FEEDBACK
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+266.0
+ 21
+150.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+197
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+266.0
+ 20
+144.6
+ 30
+0.0
+ 40
+2.0
+  1
+TCF/TEF
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+266.0
+ 21
+144.6
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+198
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+266.0
+ 20
+137.5
+ 30
+0.0
+ 40
+1.5
+  1
+If / Efd
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+266.0
+ 21
+137.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+199
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+307.0
+ 20
+163.0
+ 10
+377.0
+ 20
+163.0
+ 10
+377.0
+ 20
+192.0
+ 10
+307.0
+ 20
+192.0
+  0
+LINE
+  5
+19A
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+307.0
+ 20
+183.0
+ 30
+0.0
+ 11
+377.0
+ 21
+183.0
+ 31
+0.0
+  0
+TEXT
+  5
+19B
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+342.0
+ 20
+186.8
+ 30
+0.0
+ 40
+1.8
+  1
+PERMISSIVOS
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+342.0
+ 21
+186.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+19C
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+342.0
+ 20
+177.1
+ 30
+0.0
+ 40
+2.2
+  1
+52G/86G
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+342.0
+ 21
+177.1
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+19D
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+342.0
+ 20
+166.5
+ 30
+0.0
+ 40
+1.5
+  1
+52G fechado; 86G normal
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+342.0
+ 21
+166.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+19E
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+307.0
+ 20
+126.0
+ 10
+377.0
+ 20
+126.0
+ 10
+377.0
+ 20
+150.0
+ 10
+307.0
+ 20
+150.0
+  0
+LINE
+  5
+19F
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+307.0
+ 20
+141.0
+ 30
+0.0
+ 11
+377.0
+ 21
+141.0
+ 31
+0.0
+  0
+TEXT
+  5
+1A0
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+342.0
+ 20
+144.8
+ 30
+0.0
+ 40
+1.8
+  1
+TRIP / ALARME
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+342.0
+ 21
+144.8
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1A1
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+342.0
+ 20
+137.6
+ 30
+0.0
+ 40
+2.0
+  1
+64F / 41E
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+342.0
+ 21
+137.6
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1A2
+330
+17
+100
+AcDbEntity
+  8
+02_TEXTO
+100
+AcDbText
+ 10
+342.0
+ 20
+129.5
+ 30
+0.0
+ 40
+1.5
+  1
+bloqueio e descarga
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+342.0
+ 21
+129.5
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+1A3
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+99.0
+ 20
+176.0
+ 30
+0.0
+ 11
+127.0
+ 21
+168.0
+ 31
+0.0
+  0
+LINE
+  5
+1A4
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+127.0
+ 20
+168.0
+ 30
+0.0
+ 11
+125.96814583663868
+ 21
+169.22281518863397
+ 31
+0.0
+  0
+LINE
+  5
+1A5
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+127.0
+ 20
+168.0
+ 30
+0.0
+ 11
+125.47788183711302
+ 21
+167.5068911902941
+ 31
+0.0
+  0
+TEXT
+  5
+1A6
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+112.0
+ 20
+172.0
+ 30
+0.0
+ 40
+1.5
+  1
+Vt
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+112.0
+ 21
+172.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+1A7
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbPolyline
+ 90
+5
+ 70
+0
+ 43
+0.3
+ 10
+99.0
+ 20
+168.0
+ 10
+104.0
+ 20
+168.0
+ 10
+104.0
+ 20
+153.0
+ 10
+266.0
+ 20
+153.0
+ 10
+266.0
+ 20
+170.0
+  0
+LINE
+  5
+1A8
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+266.0
+ 20
+166.0
+ 30
+0.0
+ 11
+266.0
+ 21
+170.0
+ 31
+0.0
+  0
+LINE
+  5
+1A9
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+266.0
+ 20
+170.0
+ 30
+0.0
+ 11
+265.3307795391303
+ 21
+169.00393575771773
+ 31
+0.0
+  0
+LINE
+  5
+1AA
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+266.0
+ 20
+170.0
+ 30
+0.0
+ 11
+266.6692204608697
+ 21
+169.00393575771773
+ 31
+0.0
+  0
+TEXT
+  5
+1AB
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+168.0
+ 20
+155.0
+ 30
+0.0
+ 40
+1.5
+  1
+Is estat. -> limitador
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+168.0
+ 21
+155.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+1AC
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+0
+ 43
+0.3
+ 10
+99.0
+ 20
+140.0
+ 10
+109.0
+ 20
+140.0
+ 10
+109.0
+ 20
+179.0
+ 10
+128.0
+ 20
+179.0
+  0
+LINE
+  5
+1AD
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+124.0
+ 20
+179.0
+ 30
+0.0
+ 11
+128.0
+ 21
+179.0
+ 31
+0.0
+  0
+LINE
+  5
+1AE
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+128.0
+ 20
+179.0
+ 30
+0.0
+ 11
+127.00393575771773
+ 21
+179.6692204608697
+ 31
+0.0
+  0
+LINE
+  5
+1AF
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+128.0
+ 20
+179.0
+ 30
+0.0
+ 11
+127.00393575771773
+ 21
+178.3307795391303
+ 31
+0.0
+  0
+TEXT
+  5
+1B0
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+113.0
+ 20
+182.0
+ 30
+0.0
+ 40
+1.5
+  1
+Vref
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+113.0
+ 21
+182.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LINE
+  5
+1B1
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+239.0
+ 20
+181.0
+ 30
+0.0
+ 11
+219.0
+ 21
+181.0
+ 31
+0.0
+  0
+LINE
+  5
+1B2
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+219.0
+ 20
+181.0
+ 30
+0.0
+ 11
+220.4940963634234
+ 21
+179.99616930869544
+ 31
+0.0
+  0
+LINE
+  5
+1B3
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+219.0
+ 20
+181.0
+ 30
+0.0
+ 11
+220.4940963634234
+ 21
+182.00383069130456
+ 31
+0.0
+  0
+LINE
+  5
+1B4
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+239.0
+ 20
+145.0
+ 30
+0.0
+ 11
+219.0
+ 21
+164.0
+ 31
+0.0
+  0
+LINE
+  5
+1B5
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+219.0
+ 20
+164.0
+ 30
+0.0
+ 11
+219.39183116872798
+ 21
+162.24316525102296
+ 31
+0.0
+  0
+LINE
+  5
+1B6
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+219.0
+ 20
+164.0
+ 30
+0.0
+ 11
+220.77460686570691
+ 21
+163.69871861626393
+ 31
+0.0
+  0
+CIRCLE
+  5
+1B7
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbCircle
+ 10
+250.0
+ 20
+225.0
+ 30
+0.0
+ 40
+1.25
+  0
+TEXT
+  5
+1B8
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbText
+ 10
+258.0
+ 20
+247.0
+ 30
+0.0
+ 40
+1.5
+  1
+TCF
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+258.0
+ 21
+247.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+1B9
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbPolyline
+ 90
+5
+ 70
+0
+ 43
+0.3
+ 10
+250.0
+ 20
+225.0
+ 10
+250.0
+ 20
+196.0
+ 10
+236.0
+ 20
+196.0
+ 10
+236.0
+ 20
+145.0
+ 10
+239.0
+ 20
+145.0
+  0
+LINE
+  5
+1BA
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+236.0
+ 20
+145.0
+ 30
+0.0
+ 11
+239.0
+ 21
+145.0
+ 31
+0.0
+  0
+LINE
+  5
+1BB
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+239.0
+ 20
+145.0
+ 30
+0.0
+ 11
+238.00393575771773
+ 21
+145.6692204608697
+ 31
+0.0
+  0
+LINE
+  5
+1BC
+330
+17
+100
+AcDbEntity
+  8
+07_INSTRUMENTACAO
+100
+AcDbLine
+ 10
+239.0
+ 20
+145.0
+ 30
+0.0
+ 11
+238.00393575771773
+ 21
+144.3307795391303
+ 31
+0.0
+  0
+LINE
+  5
+1BD
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+342.0
+ 20
+163.0
+ 30
+0.0
+ 11
+342.0
+ 21
+150.0
+ 31
+0.0
+  0
+LINE
+  5
+1BE
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+342.0
+ 20
+150.0
+ 30
+0.0
+ 11
+343.00383069130453
+ 21
+151.4940963634234
+ 31
+0.0
+  0
+LINE
+  5
+1BF
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+342.0
+ 20
+150.0
+ 30
+0.0
+ 11
+340.99616930869547
+ 21
+151.4940963634234
+ 31
+0.0
+  0
+LINE
+  5
+1C0
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+307.0
+ 20
+138.0
+ 30
+0.0
+ 11
+299.0
+ 21
+138.0
+ 31
+0.0
+  0
+LINE
+  5
+1C1
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+299.0
+ 20
+138.0
+ 30
+0.0
+ 11
+300.24508030285284
+ 21
+137.16347442391287
+ 31
+0.0
+  0
+LINE
+  5
+1C2
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+299.0
+ 20
+138.0
+ 30
+0.0
+ 11
+300.24508030285284
+ 21
+138.83652557608713
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+1C3
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+3
+ 70
+0
+ 43
+0.35
+ 10
+299.0
+ 20
+138.0
+ 10
+299.0
+ 20
+213.0
+ 10
+218.0
+ 20
+213.0
+  0
+LINE
+  5
+1C4
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+224.0
+ 20
+213.0
+ 30
+0.0
+ 11
+218.0
+ 21
+213.0
+ 31
+0.0
+  0
+LINE
+  5
+1C5
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+218.0
+ 20
+213.0
+ 30
+0.0
+ 11
+219.1620749493293
+ 21
+212.219242795652
+ 31
+0.0
+  0
+LINE
+  5
+1C6
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+218.0
+ 20
+213.0
+ 30
+0.0
+ 11
+219.1620749493293
+ 21
+213.780757204348
+ 31
+0.0
+  0
+LWPOLYLINE
+  5
+1C7
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+1
+ 10
+183.0
+ 20
+208.0
+ 10
+218.0
+ 20
+208.0
+ 10
+218.0
+ 20
+218.0
+ 10
+183.0
+ 20
+218.0
+  0
+TEXT
+  5
+1C8
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+200.5
+ 20
+214.0
+ 30
+0.0
+ 40
+1.8
+  1
+Y41E
+  7
+PORTFOLIO_TITULO
+ 72
+1
+ 11
+200.5
+ 21
+214.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1C9
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+200.5
+ 20
+210.0
+ 30
+0.0
+ 40
+1.5
+  1
+trip 41E / fecha KFD
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+200.5
+ 21
+210.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+LWPOLYLINE
+  5
+1CA
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbPolyline
+ 90
+4
+ 70
+0
+ 43
+0.35
+ 10
+169.0
+ 20
+193.0
+ 10
+169.0
+ 20
+207.0
+ 10
+154.0
+ 20
+207.0
+ 10
+154.0
+ 20
+219.0
+  0
+LINE
+  5
+1CB
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+154.0
+ 20
+211.0
+ 30
+0.0
+ 11
+154.0
+ 21
+219.0
+ 31
+0.0
+  0
+LINE
+  5
+1CC
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+154.0
+ 20
+219.0
+ 30
+0.0
+ 11
+153.16347442391287
+ 21
+217.75491969714716
+ 31
+0.0
+  0
+LINE
+  5
+1CD
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbLine
+ 10
+154.0
+ 20
+219.0
+ 30
+0.0
+ 11
+154.83652557608713
+ 21
+217.75491969714716
+ 31
+0.0
+  0
+TEXT
+  5
+1CE
+330
+17
+100
+AcDbEntity
+  8
+06_COMANDO
+100
+AcDbText
+ 10
+137.0
+ 20
+211.0
+ 30
+0.0
+ 40
+1.5
+  1
+PULSOS BR1
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+137.0
+ 21
+211.0
+ 31
+0.0
+100
+AcDbText
+ 73
+2
+  0
+TEXT
+  5
+1CF
+330
+17
+100
+AcDbEntity
+  8
+13_NOTAS
+100
+AcDbText
+ 10
+210.0
+ 20
+109.0
+ 30
+0.0
+ 40
+1.6
+  1
+NAO HA CURVAS, AJUSTES, RELACOES OU DADOS DE FABRICANTE DEFINIDOS
+  7
+PORTFOLIO_TEXTO
+ 72
+1
+ 11
+210.0
+ 21
+109.0
  31
 0.0
 100
@@ -11827,7 +15777,7 @@ PORTFOLIO_DATE
   3
 WRITTEN_BY_EZDXF
 350
-14D
+1D2
   0
 DICTIONARYVAR
   5
@@ -18465,7 +22415,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-14D
+1D2
 330
 2D
 100

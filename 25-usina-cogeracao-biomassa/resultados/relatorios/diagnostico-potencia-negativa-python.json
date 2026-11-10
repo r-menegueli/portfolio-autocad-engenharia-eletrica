@@ -1,0 +1,189 @@
+{
+  "status": "EXECUTADO_PYTHON_MODELO_AGREGADO; NAO E SIMULINK",
+  "parameters_used": {
+    "generator_rating_mva": 32.0,
+    "generator_active_mw": 25.0,
+    "generator_efficiency": 0.985,
+    "generator_transient_reactance_pu": 0.25,
+    "inertia_constant_s": 3.5,
+    "damping_pu": 1.0,
+    "governor_droop_pu": 0.05,
+    "governor_time_constant_s": 0.5,
+    "avr_gain": 30.0,
+    "avr_time_constant_s": 0.25,
+    "fault_voltage_pu": 0.2,
+    "fault_duration_s": 0.12
+  },
+  "initial_operating_point": {
+    "Pm_pu": 0.7931472081218274,
+    "Pe_pu": 0.78125,
+    "Pe_MW": 25.0,
+    "delta_rad": 0.17657539270497735,
+    "loss_pu": 0.011897208121827374,
+    "swing_equation_residual_pu": 0.0
+  },
+  "signed_active_power_equation": "Pe_pu = Efd_pu * Vgrid_pu / Xd_transitoria_pu * sin(delta_rad)",
+  "interpretation": "Pe inicial positiva confirma exportacao no ponto nominal. O sinal negativo aparece quando a oscilacao leva delta abaixo de zero; no modelo reduzido isso representa reversao transitiva do fluxo ativo, nao evidencia de erro de convencao nem justificativa para inverter/clamp. A resposta de 5 s tem oscilacoes e picos acima da potencia nominal, portanto nao valida suportabilidade nem estabilidade. A sensibilidade a dt e reportada sem selecionar um passo para ocultar a limitacao.",
+  "five_second_step_sensitivity": [
+    {
+      "dt_s": 0.005,
+      "duration_s": 5.0,
+      "samples": 1001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": -6.291310114043698,
+      "Pe_min_MW": -21.242342626689293,
+      "time_Pe_min_s": 1.355,
+      "Pe_max_MW": 72.82736968763068,
+      "time_Pe_max_s": 1.165,
+      "angle_min_rad": -0.1429652540587726,
+      "angle_max_rad": 0.4904822393166458,
+      "frequency_final_Hz": 59.903391536915166,
+      "current_max_A": 5578.299711956196,
+      "negative_Pe_samples": 205
+    },
+    {
+      "dt_s": 0.0025,
+      "duration_s": 5.0,
+      "samples": 2001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": -5.755063156626712,
+      "Pe_min_MW": -20.35006345384021,
+      "time_Pe_min_s": 1.3575,
+      "Pe_max_MW": 72.7988786054648,
+      "time_Pe_max_s": 1.165,
+      "angle_min_rad": -0.1380460079119714,
+      "angle_max_rad": 0.4864307385296063,
+      "frequency_final_Hz": 59.89650349083506,
+      "current_max_A": 5604.560428877973,
+      "negative_Pe_samples": 402
+    },
+    {
+      "dt_s": 0.00125,
+      "duration_s": 5.0,
+      "samples": 4001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": -5.424206932548127,
+      "Pe_min_MW": -19.8523238103348,
+      "time_Pe_min_s": 1.3587500000000001,
+      "Pe_max_MW": 72.70573983963111,
+      "time_Pe_max_s": 1.1612500000000001,
+      "angle_min_rad": -0.13519225568082463,
+      "angle_max_rad": 0.4840457701416231,
+      "frequency_final_Hz": 59.890830545143956,
+      "current_max_A": 5617.344884780627,
+      "negative_Pe_samples": 790
+    },
+    {
+      "dt_s": 0.000625,
+      "duration_s": 5.0,
+      "samples": 8001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": -4.864351530990378,
+      "Pe_min_MW": -19.132909828278464,
+      "time_Pe_min_s": 1.360625,
+      "Pe_max_MW": 71.42068772220217,
+      "time_Pe_max_s": 1.1612500000000001,
+      "angle_min_rad": -0.13105960009335257,
+      "angle_max_rad": 0.4806808744409678,
+      "frequency_final_Hz": 59.87655621613223,
+      "current_max_A": 5634.800292946846,
+      "negative_Pe_samples": 1557
+    }
+  ],
+  "adjacent_step_comparison": [
+    {
+      "coarse_dt_s": 0.005,
+      "fine_dt_s": 0.0025,
+      "max_common_time_Pe_difference_MW": 1.1316283243435734,
+      "coarse_final_Pe_MW": -6.291310114043698,
+      "fine_final_Pe_MW": -5.755063156626712
+    },
+    {
+      "coarse_dt_s": 0.0025,
+      "fine_dt_s": 0.00125,
+      "max_common_time_Pe_difference_MW": 0.7709177994215537,
+      "coarse_final_Pe_MW": -5.755063156626712,
+      "fine_final_Pe_MW": -5.424206932548127
+    },
+    {
+      "coarse_dt_s": 0.00125,
+      "fine_dt_s": 0.000625,
+      "max_common_time_Pe_difference_MW": 1.5367769533565916,
+      "coarse_final_Pe_MW": -5.424206932548127,
+      "fine_final_Pe_MW": -4.864351530990378
+    }
+  ],
+  "long_horizon_step_sensitivity": [
+    {
+      "dt_s": 0.0025,
+      "duration_s": 20.0,
+      "samples": 8001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": 17.545174740300478,
+      "Pe_min_MW": -20.35006345384021,
+      "time_Pe_min_s": 1.3575,
+      "Pe_max_MW": 72.7988786054648,
+      "time_Pe_max_s": 1.165,
+      "angle_min_rad": -0.1380460079119714,
+      "angle_max_rad": 0.4864307385296063,
+      "frequency_final_Hz": 60.0205763170917,
+      "current_max_A": 5604.560428877973,
+      "negative_Pe_samples": 537
+    },
+    {
+      "dt_s": 0.00125,
+      "duration_s": 20.0,
+      "samples": 16001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": 17.5982519110783,
+      "Pe_min_MW": -19.8523238103348,
+      "time_Pe_min_s": 1.3587500000000001,
+      "Pe_max_MW": 72.70573983963111,
+      "time_Pe_max_s": 1.1612500000000001,
+      "angle_min_rad": -0.13519225568082463,
+      "angle_max_rad": 0.4840457701416231,
+      "frequency_final_Hz": 60.01935724451162,
+      "current_max_A": 5617.344884780627,
+      "negative_Pe_samples": 1049
+    },
+    {
+      "dt_s": 0.0025,
+      "duration_s": 60.0,
+      "samples": 24001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": 24.842897364600482,
+      "Pe_min_MW": -20.35006345384021,
+      "time_Pe_min_s": 1.3575,
+      "Pe_max_MW": 72.7988786054648,
+      "time_Pe_max_s": 1.165,
+      "angle_min_rad": -0.1380460079119714,
+      "angle_max_rad": 0.4864307385296063,
+      "frequency_final_Hz": 59.99887477684916,
+      "current_max_A": 5604.560428877973,
+      "negative_Pe_samples": 537
+    },
+    {
+      "dt_s": 0.00125,
+      "duration_s": 60.0,
+      "samples": 48001,
+      "Pe_initial_MW": 25.0,
+      "Pe_final_MW": 24.844701312748395,
+      "Pe_min_MW": -19.8523238103348,
+      "time_Pe_min_s": 1.3587500000000001,
+      "Pe_max_MW": 72.70573983963111,
+      "time_Pe_max_s": 1.1612500000000001,
+      "angle_min_rad": -0.13519225568082463,
+      "angle_max_rad": 0.4840457701416231,
+      "frequency_final_Hz": 59.998862691749,
+      "current_max_A": 5617.344884780627,
+      "negative_Pe_samples": 1049
+    }
+  ],
+  "model_limits": [
+    "equivalente agregado maquina-rede, sem parametros validados de fabricante",
+    "Xd_transitoria usada; sem Xd_subtransitoria, eixo d/q completo ou rede externa detalhada",
+    "AVR e governador reduzidos, com limites e resposta parametrizados por hipoteses",
+    "sem limitador de corrente do gerador, protecao, falta trifasica EMT ou cargas auxiliares dinamicas",
+    "potencia ativa assinada e corrente calculada sao indicadores do modelo, nao limites de placa"
+  ]
+}

@@ -10,9 +10,13 @@ assert(R.Icc_138_A>20000 && R.Icc_138_A<23000);
 assert(R.combustivel_MW>100 && R.combustivel_MW<110);
 assert(R.rendimento_util_pu>0.4 && R.rendimento_util_pu<0.7);
 assert(R.energia_liquida_MWh_ano>160000);
-assert(all(isfinite(R.dinamica.speed_deviation_pu))); assert(height(R.dinamica)>50);
-assert(all(isfinite(R.dinamica.frequency_Hz)) && all(R.dinamica.I_gerador_A>=0));
-assert(max(abs(R.dinamica.speed_deviation_pu))<0.05);
-assert(max(R.dinamica.Efd_deviation_pu)<0.3);
-fprintf('P25: balanços, bases de curto, energia e série dinâmica verificados.\n');
+if ~isempty(R.dinamica)
+    assert(all(isfinite(R.dinamica.speed_deviation_pu))); assert(height(R.dinamica)>50);
+    assert(all(isfinite(R.dinamica.frequency_Hz)) && all(R.dinamica.I_gerador_A>=0));
+    assert(max(abs(R.dinamica.speed_deviation_pu))<0.05);
+    assert(max(R.dinamica.Efd_deviation_pu)<0.3);
+    fprintf('P25: balanços, bases de curto, energia e série dinâmica verificados.\n');
+else
+    fprintf('P25: balanços, bases de curto e energia verificados; dinâmica não executada.\n');
+end
 end

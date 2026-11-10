@@ -22,7 +22,9 @@ Os balanços foram recalculados por `validacao/calculos_independentes_p25.py`; t
 
 ## Dinâmica
 
-A série antiga ainda representa somente afundamento de tensão e degrau de potência de referência, em modelo pu agregado. Ela não cobre integralmente os oito cenários requeridos e não foi regenerada nesta revisão. A versão corrigida de `matlab/calculos/run_analysis.m` não foi executada no MATLAB; não atribuir os valores da tabela dinâmica antiga ao código atualizado.
+A série atual foi regenerada pelo modelo agregado RK4 em Python: 8 cenários e 8.008 amostras. No afundamento sintético de 0,2 pu por 0,12 s, com passo de 5 ms, a corrente máxima calculada é 5.578,30 A; a potência ativa atinge 72,827 MW e −21,242 MW, e termina em −6,291 MW aos 5 s. O sinal negativo ocorre quando o ângulo do rotor fica negativo na equação assinada; não deve ser invertido ou limitado artificialmente. A sensibilidade do valor final ao passo (−6,291 MW a 5 ms; −4,864 MW a 0,625 ms) permanece significativa, e os picos excedem os valores nominais. Portanto, esta série não prova estabilidade ou suportabilidade.
+
+O MATLAB R2026a executou os balanços estáticos e os testes MATLAB do projeto. A dinâmica MATLAB e o modelo Simulink não foram executados com sucesso; os números acima vêm somente da alternativa Python, não de Simulink.
 
 Nenhum resultado é medição, certificação, ajuste de proteção ou liberação de engenharia executiva.
 

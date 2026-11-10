@@ -12,11 +12,91 @@
 
 ## Conclusão executiva
 
-A revisão anterior melhorou rastreabilidade, cálculos Python, exportações e alguns desenhos, mas **não concluiu a reengenharia técnica integral**. A comparação DXF encontrou alterações geométricas relevantes em 10 das 30 pranchas; apenas P24-02 e P25-02 são redesenhos substantivos. Vinte pranchas conservam praticamente a mesma geometria, apesar de mudanças de paleta, revisão, texto ou exportação. As demais oito tiveram ajustes de composição ou geometria, sem se tornarem projetos executivos.
+A auditoria inicial encontrou reengenharia parcial e lacunas relevantes. Na continuação registrada abaixo, foram executados os caminhos estáticos MATLAB dos três projetos, a dinâmica Python P25 foi regenerada e investigada, e a prancha P25-05 foi redesenhada. A reengenharia integral continua **incompleta**; os resultados e limitações desta continuação substituem as afirmações anteriores sobre execução MATLAB, valores dinâmicos P25 e desenho P25-05.
 
-Os testes Python e validadores disponíveis passaram depois de corrigida uma frase obrigatória no README do P24. **Não foi comprovada execução bem-sucedida de MATLAB ou Simulink.** Nesta auditoria, os modelos `.slx` não foram abertos, compilados ou simulados; não há logs duráveis que confirmem êxito anterior. Os resultados dinâmicos que foram executados são modelos reduzidos em Python e estão identificados como tais.
+Os modelos Simulink continuam sem execução bem-sucedida comprovada: uma tentativa P23 foi interrompida durante a construção do modelo por memória física baixa; o modelo P25 não foi iniciado; P24 não contém `.slx`. Os validadores finais e 36 testes Python passaram. `CONCLUÍDO E VALIDADO` refere-se somente ao escopo identificado e não significa conformidade normativa, segurança, dimensionamento profissional ou aptidão para construção.
 
-As classificações abaixo se aplicam ao escopo indicado em cada linha. `CONCLUÍDO E VALIDADO` cobre validação estrutural dos arquivos, não conformidade normativa, segurança, dimensionamento profissional ou aptidão para construção.
+## Atualização da continuação — 2026-11-09
+
+**Esta atualização é a fotografia atual e prevalece sobre as seções históricas abaixo quando houver divergência.** As seções 1–8 foram escritas antes desta continuação, no estado publicado `475358b`; elas preservam o registro da auditoria inicial. O trabalho atual está na branch autorizada `codex/p23-p25-reengineering`, comparada com `origin/main` (`bec032760fc836d7a441f2efbd08a161bf3ccf3e`). Não foi feito merge em `main`.
+
+### Mudanças locais desta continuação
+
+O inventário com cada caminho, status Git (`A`, `M` ou `D`) e escopo desta continuação está em [`docs/evidencias/inventario-continuidade-2026-11-09.csv`](docs/evidencias/inventario-continuidade-2026-11-09.csv): desde `475358b`, são 86 caminhos (23 criados, 63 alterados, 0 removidos). A comparação completa dos arquivos dos três projetos com `origin/main` está em [`docs/evidencias/inventario-arquivos-p23-p25.csv`](docs/evidencias/inventario-arquivos-p23-p25.csv). Não foram removidos arquivos dos projetos nesta continuação. Os cadernos PDF e o ZIP compilado foram gerados fora do repositório, em `outputs/`.
+
+| Projeto | Mudanças de conteúdo nesta continuação | Desenhos/exportações | Removidos |
+|---|---|---|---:|
+| **P23** | Rotina MATLAB agora executa o caminho estático sem construir Simulink; leitor de parâmetros e teste MATLAB corrigidos; tabelas estáticas recalculadas; relatório técnico atualizado. | Nenhum DXF redesenhado nesta continuação. | 0 |
+| **P24** | Leitor MATLAB de parâmetros corrigido; caminho estático e `test_project_24` executados; resumo e tabela mecânica recalculados; relatório técnico atualizado. | Nenhum DXF redesenhado nesta continuação. | 0 |
+| **P25** | Caminho estático MATLAB/teste executados; dinâmica Python corrigida para separar eventos e avaliar sensibilidade; diagnóstico de potência negativa, testes, CSVs, memória de cálculo, resumo e relatório técnico atualizados. | P25-05 redesenhada; as dez folhas foram reexportadas; prévia de contato e cadernos derivados recriados. | 0 |
+| **Comum** | Corrigida compatibilidade do renderizador com pypdf 7; adicionados medidor MATLAB e evidências de MATLAB, Simulink, recursos, testes, validadores e empacotamento. | Não se aplica. | 0 |
+
+Nos desenhos, **P25-05 é a única nova alteração geométrica/material desta continuação**: passou a mostrar barramento trifásico, disjuntor de campo 41E, transformador TE1 e ponte BR1, circuito de campo e descarga KFD/RFD, medição PT/CT, AVR PI e limites, OEL/UEL, TCF/TEF, permissivos 52G/86G, trip 64F/41E e tabela ilustrativa de bornes. Fonte: [`25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf`](25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf); imagem inspecionada: [`25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.png`](25-usina-cogeracao-biomassa/exports/05_sistema_excitacao_avr.png). O teste CAD verifica rótulos, camadas, quantidade mínima de entidades e texto pesquisável no PDF. O AutoCAD Core Console 2027 também abriu e auditou esta DXF: exit code 0, zero erros, zero correções e zero objetos apagados. Os dez PDFs/PNGs/SVGs do P25 foram regenerados; as outras nove fontes DXF não tiveram redesenho nesta continuação. P23 e P24 também não tiveram DXFs redesenhados nesta continuação. A maioria das folhas ainda é conceitual/esquemática.
+
+### MATLAB executado e resultados
+
+MATLAB R2026a foi realmente iniciado e executou os caminhos estáticos e os respectivos testes. Os JSONs vinculados guardam comando batch, opções de inicialização, tempos, códigos de saída, RAM, stdout e stderr.
+
+| Projeto | Execução/saída MATLAB observada | Duração; pico da árvore; RAM física livre mínima | Estado |
+|---|---|---|---|
+| **P23** | `run_analysis(false,false)` + `test_project_23`: 28,000000 MW; 24,273576 MVAr brutos; 7,570421 MVAr STATCOM; 123,308982 A no PCC; 5,262977 kA de curto; THDi sintético 0,244131 pu (24,4131%). O teste declarou verificados balanço, curto e harmônicos; dinâmica não executada. | 12,77 s; 1.206,8 MB; 1,206 GB. | Estático MATLAB **CONCLUÍDO E VALIDADO**. Evidência: [`matlab-p23-estatico.json`](docs/evidencias/matlab-p23-estatico.json). |
+| **P24** | `run_analysis` + `test_project_24`: 9 casos elétricos, 900 mecânicos, 9 térmicos e 101 posições estruturais; Imax 650,797405 A; ampacidade mínima 892,044159 A; clearance sintético mínimo 12,678747 m. | 14,74 s; 1.126,1 MB; 0,486 GB. | Cálculos estáticos MATLAB **CONCLUÍDO E VALIDADO**. Evidência: [`matlab-p24-estatico.json`](docs/evidencias/matlab-p24-estatico.json). |
+| **P25** | `run_analysis(false,false)` + `test_project_25`: P líquido 22,800000 MW; S gerador 27,777778 MVA; fp POI 0,955459; Iop 1.162,138 A versus 1.338,783 A nominais; curtos equivalentes 13,713664 kA em 13,8 kV e 21,441324 kA em 138 kV; combustível 104,166667 MW; rendimento útil agregado 0,528; energia líquida 164.160 MWh/ano. Dinâmica não executada nessa chamada. | 11,97 s; 1.213,3 MB; 1,058 GB. | Estático MATLAB **CONCLUÍDO E VALIDADO**. Evidência: [`matlab-p25-estatico.json`](docs/evidencias/matlab-p25-estatico.json). |
+
+P23 e P25 usaram `-nojvm -singleCompThread`; P24 executou com as opções padrão registradas. O script [`scripts/medir_execucao_matlab.ps1`](scripts/medir_execucao_matlab.ps1) registrou consumo e interrompeu as tentativas de risco. A estática passou, mas não foram executadas as rotinas dinâmicas MATLAB nem os modelos Simulink. O teste MATLAB comprova apenas os checks codificados para estes dados e pressupostos.
+
+### Simulink e recursos
+
+| Projeto | Arquivo | Abriu | Compilou | Simulou | Resultado verificável |
+|---|---|---|---|---|---|
+| **P23** | `23-complexo-siderurgico-eaf/simulink/modelo_eaf_dinamico.slx` existe e seu blob local continua igual ao de `origin/main`. | Não confirmado | Não | Não | Três tentativas monitoradas pararam dentro de `build_model`; a última registrou apenas `P23_STAGE_BUILD_MODEL_BEGIN`, 31,92 s, pico de árvore de 2.451,2 MB e mínimo de 0,17 GB livre. Não se produziu resultado de simulação. Evidências: [`matlab-p23-simulink.json`](docs/evidencias/matlab-p23-simulink.json), [`matlab-p23-simulink-nojvm.json`](docs/evidencias/matlab-p23-simulink-nojvm.json) e [`matlab-p23-simulink-tentativa2.json`](docs/evidencias/matlab-p23-simulink-tentativa2.json). |
+| **P24** | Não existe `.slx` no projeto. | Não se aplica | Não se aplica | Não se aplica | Dinâmica Simulink **NÃO EXECUTADO**. |
+| **P25** | `25-usina-cogeracao-biomassa/simulink/modelo_cogeracao_dinamico.slx` existe e seu blob local continua igual a `origin/main`. | Não | Não | Não | A tentativa P25 não foi iniciada. A medição de 21:20 encontrou 1,93 GB livres; ficou abaixo do pico de 2,45 GB já medido para construir P23. Evidência do estado do sistema: [`diagnostico-recursos-memoria-2026-11-09.json`](docs/evidencias/diagnostico-recursos-memoria-2026-11-09.json). |
+
+O pagefile permaneceu automático (`C:\pagefile.sys`, alocação de 14.575 MB; 9,70 GB de commit disponível na última amostra). Nenhum aplicativo do usuário foi encerrado e nenhuma configuração do Windows foi alterada. A limitação observada foi a RAM física: 7,8 GB visíveis, 1,93 GB livres na amostra final e consumo medido do builder P23 superior a isso. Logo, **nenhum resultado MATLAB/Simulink dinâmico está apresentado como sucesso**.
+
+### Dinâmica Python P25 — resultado e limite
+
+A alternativa reduzida foi executada novamente em oito cenários e 8.008 amostras. O integrador RK4 agora divide os intervalos nos instantes de mudança da tensão e da referência; os testes incluem essa descontinuidade, convergência de um degrau suave e conservação do sinal quando a potência ativa muda de sentido. Não foi invertido nem cortado o valor negativo.
+
+No afundamento sintético de 0,2 pu por 0,12 s, com passo de 5 ms e horizonte de 5 s, o cálculo termina em −6,291 MW, atinge −21,242 MW e +72,827 MW, e calcula pico de corrente de 5.578,3 A. A sensibilidade do valor final entre passo 5 ms e 0,625 ms é −6,291 a −4,864 MW; diferenças entre passos adjacentes não são monotônicas por causa dos limitadores rígidos do modelo. A interpretação assinada é reversão transitória dentro do modelo quando o ângulo cruza zero. Os picos excedem as bases assumidas e não existem limite de corrente, rede detalhada, proteção ou dinâmica de carga; portanto a curva **não valida** estabilidade, suportabilidade, desempenho de máquina comercial ou ajuste de proteção. Evidências: [`diagnostico-potencia-negativa-python.json`](25-usina-cogeracao-biomassa/resultados/relatorios/diagnostico-potencia-negativa-python.json), [memória de resultados](25-usina-cogeracao-biomassa/resultados/relatorios/diagnostico-potencia-negativa-python.md) e [`resultados-python-p23-p25.json`](docs/evidencias/resultados-python-p23-p25.json).
+
+### Validação final desta continuação
+
+| Comando | Resultado observado | Evidência |
+|---|---|---|
+| `python -m pytest -v tests 23-complexo-siderurgico-eaf/validacao 24-linha-transmissao-138kv/validacao 25-usina-cogeracao-biomassa/validacao` | **36 passed in 46.05s**, código de saída 0. | [`testes-python-final-p23-p25.txt`](docs/evidencias/testes-python-final-p23-p25.txt) |
+| `python scripts/validar_estudos_p23_p25.py --project all` | **aprovado**, erros 0, avisos 0; leitura estrutural DXF/PDF/PNG das 30 folhas. | [`validacao-estudos-p23-p25-2026-11-09.txt`](docs/evidencias/validacao-estudos-p23-p25-2026-11-09.txt) |
+| `python scripts/validar_portfolio.py --root . --strict --format human --report docs/evidencias/validacao-portfolio-strict-2026-11-09.json` | **PASS**, 655.982 verificações, 0 erros, 0 avisos. | [`validacao-portfolio-strict-2026-11-09.txt`](docs/evidencias/validacao-portfolio-strict-2026-11-09.txt), [JSON](docs/evidencias/validacao-portfolio-strict-2026-11-09.json) |
+| `python scripts/engineering_studies.py --root . --project p25` | **10 DXFs gerados e renderizados**, incluindo o P25-05 revisado. | [`regeneracao-prancha-p25-05.txt`](docs/evidencias/regeneracao-prancha-p25-05.txt) |
+| `accoreconsole.exe /i 25-usina-cogeracao-biomassa/fonte/05_sistema_excitacao_avr.dxf /s scripts/autocad/auditar.scr` | AutoCAD Core Console 2027, exit code 0; **0 erros, 0 corrigidos, 0 apagados**. | [Resumo](docs/evidencias/auditoria-autocad-p25-05-2026-11-09.txt), [log integral](docs/evidencias/auditoria-autocad-p25-05-2026-11-09.log) |
+| `python scripts/empacotar_pranchas_p23_p25.py` | Gerou prévias e cadernos P23/P24/P25 e ZIP-fonte dos desenhos. | [`empacotamento-pranchas-p23-p25-2026-11-09.txt`](docs/evidencias/empacotamento-pranchas-p23-p25-2026-11-09.txt) |
+
+As classificações atuais por projeto são:
+
+| Projeto/escopo | Estado | Evidência principal e limite |
+|---|---|---|
+| **P23 — cálculos estáticos MATLAB** | CONCLUÍDO E VALIDADO | MATLAB R2026a e teste do projeto passaram; pressupostos de carga, rede e harmônicos permanecem sintéticos. |
+| **P23 — desenhos** | CONCLUÍDO COM RESTRIÇÕES | Estado anterior registra P23-06/07 com alterações parciais; nenhuma prancha P23 foi redesenhada nesta continuação e plantas/equipamentos continuam conceituais. |
+| **P23 — Simulink/dinâmica MATLAB** | INCOMPLETO | Tentativa medida parou durante `build_model`; sem abertura/compilação/simulação concluída. |
+| **P24 — cálculos estáticos MATLAB** | CONCLUÍDO E VALIDADO | Checks elétricos, mecânicos, térmicos e estruturais passaram; rota, clima e condutor são sintéticos. |
+| **P24 — desenhos** | CONCLUÍDO COM RESTRIÇÕES | P24-02 já havia sido redesenhada; nenhum novo DXF foi alterado nesta continuação e o conjunto ainda não é executivo. |
+| **P24 — Simulink** | NÃO EXECUTADO | O projeto não contém modelo `.slx`. |
+| **P25 — cálculo estático MATLAB** | CONCLUÍDO E VALIDADO | Testes e balanços estáticos passaram; dados de máquina/rede não são dados de placa confirmados. |
+| **P25 — dinâmica Python** | CONCLUÍDO COM RESTRIÇÕES | 8 cenários/8.008 amostras; sensibilidade temporal e picos acima da base tornam a resposta inadequada para concluir estabilidade ou suportabilidade. |
+| **P25 — desenhos** | CONCLUÍDO COM RESTRIÇÕES | P25-05 ganhou detalhe funcional verificável; os demais desenhos continuam em grande parte genéricos/esquemáticos. |
+| **P25 — Simulink** | NÃO EXECUTADO | Arquivo existe, mas não foi aberto, compilado nem simulado. |
+| **P23, P24 e P25 — prontidão de engenharia executiva** | INCOMPLETO | Faltam dados de fabricante e campo, coordenação/estudos normativos e revisão profissional independente. |
+
+### Comparação e publicação
+
+Desde o estado `475358b`, houve três melhorias verificáveis: (1) execução real dos caminhos estáticos MATLAB e testes específicos de P23/P24/P25, com JSON de consumo e saída; (2) regeneração da dinâmica Python P25 com integração nos eventos e apresentação explícita da sensibilidade, sem camuflar a potência negativa; (3) redesenho funcional da P25-05, com inspeção visual e testes DXF/PDF. Também foi corrigida a ordem de associação/mesclagem de páginas do renderizador para pypdf 7 e foram atualizadas as prévias/cadernos. A comparação geométrica e os dados locais anteriores permanecem úteis como histórico; estes passos não completam a reengenharia das 30 folhas.
+
+As alterações desta continuação são publicadas na branch existente `codex/p23-p25-reengineering`, preservando os commits anteriores. `main` continua sem merge. A revisão não declara conformidade normativa nem liberação para construção/instalação.
+
+## Registro histórico da auditoria inicial
+
+As seções a seguir preservam métodos, comparações e evidências da auditoria anterior. Para o estado atual de MATLAB, P25-05, dinâmica P25, quantidade de testes, validadores e inventário desta continuação, use as tabelas acima.
 
 ## 1. Base, método e estado do Git
 
@@ -29,8 +109,8 @@ O repositório não apresenta remoções nos três projetos. O diff de projeto c
 | Projeto | Criados | Alterados | Removidos | Total |
 |---|---:|---:|---:|---:|
 | P23 | 10 | 47 | 0 | 57 |
-| P24 | 11 | 55 | 0 | 66 |
-| P25 | 12 | 51 | 0 | 63 |
+| P24 | 11 | 56 | 0 | 67 |
+| P25 | 16 | 51 | 0 | 67 |
 
 O inventário linha a linha, com o status Git (`A`, `M` ou `D`) e o caminho completo dentro do repositório, está em [`docs/evidencias/inventario-arquivos-p23-p25.csv`](docs/evidencias/inventario-arquivos-p23-p25.csv). Inclui as dez fontes DXF e os 30 derivados PDF/PNG/SVG de cada projeto.
 
@@ -38,7 +118,7 @@ O inventário linha a linha, com o status Git (`A`, `M` ou `D`) e o caminho comp
 
 - **P23 — 10 criados:** `dados/origem-parametros.csv`, `pranchas-preview.png`, `resultados/graficos/resposta-cenarios-python.png`, duas tabelas de cenários Python e os scripts/testes independentes em `validacao/`. Entre os alterados estão as 10 fontes em `fonte/`, 30 exportações em `exports/`, `matlab/calculos/run_analysis.m`, `memoria-calculo.md`, README e tabelas estáticas.
 - **P24 — 11 criados:** `dados/origem-parametros.csv`, prévia, seis gráficos de triagem, `validacao/plotar_resultados_p24.py`, `validacao/test_resultados_p24.py` e o relatório técnico. Entre os alterados estão as dez pranchas e exportações, `matlab/calculos/run_analysis.m`, `matlab/testes/test_project_24.m`, parâmetros, memoriais e tabelas de resultados. Nesta auditoria, o texto final do `README.md` também foi ajustado para conter literalmente o aviso obrigatório do repositório.
-- **P25 — 12 criados:** rastreabilidade dos parâmetros, prévia, gráficos e tabelas dos cenários Python, scripts de cálculos independentes e dinâmicos e seus testes. Foram alterados os dez DXFs e derivados, scripts MATLAB, memoriais e tabelas de potência, energia e curto-circuito.
+- **P25 — 16 criados:** rastreabilidade dos parâmetros, prévia, gráficos e tabelas dos cenários Python, scripts de cálculos independentes e dinâmicos e seus testes, mais o diagnóstico de potência negativa (Python, JSON e Markdown) e o teste da prancha P25-05. Foram alterados os dez DXFs e derivados, scripts MATLAB, memoriais e tabelas de potência, energia e curto-circuito.
 
 Além das pastas dos projetos, a branch-base alterou arquivos compartilhados como `portfolio.toml`, `scripts/engineering_studies.py`, `scripts/renderizar.py`, `scripts/validar_estudos_p23_p25.py`, `renders/manifesto.json`, `README.md`, `docs/galeria-visual.md`, `relatorio-ferramentas.md` e `relatorio-validacao.md`, e criou `scripts/empacotar_pranchas_p23_p25.py` e `docs/auditoria-reengenharia-p23-p25.md`. Os CSVs desta auditoria e este relatório são novas evidências adicionadas agora.
 
@@ -50,7 +130,7 @@ Além das pastas dos projetos, a branch-base alterou arquivos compartilhados com
 |---|---|---|---|
 | **P23** | Nenhum | **P23-06** reorganiza símbolos/tabela de proteção; **P23-07** reorganiza blocos e tabela de compensação e corrige o alvo de STATCOM para cerca de 7,57 MVAr | P23-01 a P23-05, P23-08 a P23-10 |
 | **P24** | **P24-02**: perfil longitudinal substituído por perfil sintético com 101 posições de estrutura e envelopes de flecha | **P24-03** atualiza curvas/envelopes; **P24-04 e P24-05** têm mudanças pontuais de geometria/rotulagem; **P24-07** revê a representação do feixe e cotas | P24-01, P24-06, P24-08, P24-09, P24-10 |
-| **P25** | **P25-02**: fluxograma anterior substituído por implantação conceitual cotada de 100 × 65 m, inserida em bloco 1:500 | **P25-08** reposiciona zonas/tabela para eliminar colisão; **P25-10** interrompe trechos da malha nas envolventes e separa a tabela | P25-01, P25-03 a P25-07, P25-09 |
+| **P25** | **P25-02**: fluxograma anterior substituído por implantação conceitual cotada de 100 × 65 m, inserida em bloco 1:500; **P25-05**: diagrama de excitação com potência, medição, AVR/limites, permissivos, trip e borneamento | **P25-08** reposiciona zonas/tabela para eliminar colisão; **P25-10** interrompe trechos da malha nas envolventes e separa a tabela | P25-01, P25-03, P25-04, P25-06, P25-07, P25-09 |
 
 As 30 classificações, quantidades de entidades da base e do estado atual e contagens de diferenças geométricas/textuais/de estilo estão em [`docs/evidencias/comparativo-pranchas-p23-p25.csv`](docs/evidencias/comparativo-pranchas-p23-p25.csv). Os pontos visuais principais foram comparados lado a lado com a base.
 

@@ -1,0 +1,94 @@
+Redirect stdout (file: C:\Users\dakra\AppData\Local\Temp\accc127082).
+AcCoreConsole: StdOutConsoleMode: processed-output: disabled,auto
+AutoCAD Core Engine Console - Copyright 2026 Autodesk, Inc.  All rights reserved. (X.118.0.0)
+
+Execution Path:
+C:\Program Files\Autodesk\AutoCAD 2027\accoreconsole.exe
+Current Directory: C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25
+
+Version Number: X.118.0.0 (UNICODE)
+LogFilePath has been set to the working folder.
+CoreHeartBeat
+Substituindo [simplex.shx] para [OpenSans-Light.ttf].
+Substituindo [simplex.shx] para [OpenSans-LightItalic.ttf].
+Substituindo [simplex.shx] para [OpenSans-Regular.ttf].
+Substituindo [simplex.shx] para [OpenSans-Italic.ttf].
+Substituindo [simplex.shx] para [OpenSans-SemiBold.ttf].
+Substituindo [simplex.shx] para [OpenSans-SemiBoldItalic.ttf].
+Substituindo [simplex.shx] para [OpenSans-Bold.ttf].
+Substituindo [simplex.shx] para [OpenSans-BoldItalic.ttf].
+Substituindo [simplex.shx] para [OpenSans-ExtraBold.ttf].
+Substituindo [simplex.shx] para [OpenSans-ExtraBoldItalic.ttf].
+Substituindo [simplex.shx] para [OpenSansCondensed-Bold.ttf].
+Substituindo [simplex.shx] para [OpenSansCondensed-Light.ttf].
+Substituindo [simplex.shx] para [OpenSansCondensed-LightItalic.ttf].
+Substituindo [simplex.shx] para [LiberationSerif-Regular.ttf].
+Substituindo [simplex.shx] para [LiberationSerif-Bold.ttf].
+Substituindo [simplex.shx] para [LiberationSerif-BoldItalic.ttf].
+Substituindo [simplex.shx] para [LiberationSerif-Italic.ttf].
+Substituindo [simplex.shx] para [LiberationMono-Regular.ttf].
+Substituindo [simplex.shx] para [LiberationMono-Bold.ttf].
+Substituindo [simplex.shx] para [LiberationMono-BoldItalic.ttf].
+Substituindo [simplex.shx] para [LiberationMono-Italic.ttf].
+Regenerando modelo.
+
+variável de sistema alteradas **** ****
+3 de variáveis do sistema monitoradas foram alteradas desde o valor preferido. Utilize o comando MONITORVARSISTEMA para visualizar as alterações.
+
+
+Utilitários de menu do AutoCAD carregado.
+Comando:
+CoreHeartBeat
+Comando:
+
+Comando:
+Comando: _.FILEDIA
+
+Inserir o novo valor para FILEDIA <0>: 0
+
+Comando: _.CMDDIA
+
+Inserir o novo valor para CMDDIA <0>: 0
+
+Comando: _.AUDIT
+
+Corrigir quaisquer erros detectados? [Sim/Não] <N>: _N
+
+
+
+Inspecionando o cabeçalho
+
+
+Inspecionando tabelas
+
+
+Inspecionando entidades Etapa 1
+
+
+Passo 1 500     objetos inspecionados
+Inspecionando entidades Etapa 2
+
+
+Passo 2 500     objetos inspecionados
+Inspecionando blocos
+
+ 8       blocos inspecionados
+
+
+
+Inspecionar AcDsRecords
+
+
+Total de erros encontrados 0 corrigidos 0
+
+Apagados 0 objetos
+
+
+Comando: _.QUIT
+_Y
+Tem certeza de que deseja desconsiderar todas as alterações efetuadas no desenho? <N> _Y
+
+Comando:
+.SAIR
+
+LogFilePath has been restored to ''.
