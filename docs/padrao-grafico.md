@@ -1,6 +1,6 @@
 # Padrao grafico do portfolio
 
-Este documento define a linguagem visual comum aos doze projetos do portfólio. O
+Este documento define a linguagem visual comum aos 22 estudos do portfólio. O
 arquivo [`portfolio.toml`](../portfolio.toml) e a fonte de verdade legivel por
 maquina; divergencias entre este texto e a configuracao devem ser corrigidas antes
 de uma nova prancha.
