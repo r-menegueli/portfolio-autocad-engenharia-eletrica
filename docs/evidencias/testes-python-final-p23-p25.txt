@@ -1,6 +1,6 @@
 ============================= test session starts =============================
 platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
-rootdir: C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25
+rootdir: <repository-root>
 configfile: pyproject.toml
 collected 36 items
 
