@@ -3,7 +3,7 @@
 **Data:** 2026-11-09  
 **Revisão:** inicial, antes de qualquer alteração técnica nos projetos  
 **Base preservada:** `origin/main` / `bec032760fc836d7a441f2efbd08a161bf3ccf3e`  
-**Branch de trabalho:** `codex/p23-p25-reengineering`
+**Branch atual:** `revisao/p23-p25`; **nome na data desta auditoria:** `codex/p23-p25-reengineering`
 
 ## Escopo e método
 
@@ -115,4 +115,4 @@ Esta seção registra os resultados depois das alterações da branch de trabalh
 - Os três contatos e cadernos PDF foram recriados a partir das exportações finais. Cada PDF tem 10 páginas A3 e texto selecionável/pesquisável. A extração contou 13.822 caracteres em P23, 13.078 em P24 e 13.525 em P25.
 - O ZIP final contém 120 arquivos: 30 DXFs editáveis e 90 derivados PDF/SVG/PNG.
 - A comparação de escopo não encontrou mudanças em P01–P22. O manifesto compartilhado `renders/manifesto.json` foi atualizado para os renders P23–P25.
-- Próximo ato autorizado: registrar as alterações e enviar a branch `codex/p23-p25-reengineering` ao `origin`; confirmar o hash remoto após o push.
+- Estado atual: a branch de revisão permanece separada de `main`. A continuação e o estado atual estão registrados em [RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md](../RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md).
