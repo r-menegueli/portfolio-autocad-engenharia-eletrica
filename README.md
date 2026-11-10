@@ -88,8 +88,7 @@ Os desenhos cobrem diagramas unifilares e funcionais, plantas, painéis, instrum
 | CSV e XLSX | dados técnicos, cálculos e listas rastreáveis |
 | Git e PowerShell | reprodução, auditoria e histórico local |
 
-O ambiente verificado e suas limitações estão no
-[relatório de ferramentas](relatorio-ferramentas.md).
+A reprodução e o estado das verificações estão em [Ferramentas e validação](relatorio-ferramentas.md) e no [relatório consolidado](relatorio-validacao.md).
 
 ### Política dos formatos
 
@@ -135,7 +134,7 @@ blocos padrão, já que Simscape Electrical não está licenciado neste ambiente
 
 ## Validação e relatórios
 
-O [relatório consolidado de validação](relatorio-validacao.md) mantém os resultados históricos P01–P10 e acrescenta a validação geral atual dos 25 projetos. Na revisão de 08/11/2026, o validador estrito aprovou 649.131 verificações sem erros ou avisos; as 30 novas fontes DXF passaram no AutoCAD Core Console. Os testes MATLAB/Simulink para P23–P25 também passaram.
+O [relatório consolidado de validação](relatorio-validacao.md) preserva os resultados históricos P01–P10 e registra separadamente o estado de P23–P25. A revisão em `main` contém alegações históricas de validação global e MATLAB/Simulink que não foram confirmadas por evidência executável desta branch. A revisão `revisao/p23-p25` documenta testes estáticos MATLAB e Python, além de pendências explícitas; ela não confirma simulação Simulink bem-sucedida. Consulte o relatório antes de interpretar qualquer resultado.
 
 P24 sinaliza uma pendência explícita: no cenário de 140 MW, a corrente calculada (585,72 A) supera a estimativa térmica (571,04 A) sob as premissas cadastradas. Rever condutor e condições térmicas antes de evoluir o estudo.
 
