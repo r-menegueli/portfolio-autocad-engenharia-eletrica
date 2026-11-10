@@ -1,5 +1,7 @@
 # Plano dos dez projetos acadêmicos
 
+> Este plano histórico cobre os projetos P01–P10. A coleção atual abrange P01–P25; consulte o [README](../README.md) e o manifesto `portfolio.toml` para o índice vigente.
+
 Autor: Rogério Eduardo Moreira Menegueli
 Estado: P01 a P10 concluídos
 
