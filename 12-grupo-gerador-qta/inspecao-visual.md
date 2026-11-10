@@ -16,7 +16,7 @@ O Projeto 12 contém nove pranchas A3 em DXF, PDF, SVG e PNG. A inspeção desta
 | 08 | PNG de produção e PDF rasterizado a 150 dpi | Nove eventos cabem na tabela; a condição de rede indica duração >3 s, a tipografia aumentou para 1,45 mm e não observei texto cortado ou linhas sobrepostas. |
 | 09 | PNG de produção e PDF rasterizado a 150 dpi | Quatro ramais, cabos/trechos assumidos e campos pendentes estão legíveis; não observei cortes, colisões ou conflito com o carimbo. |
 
-O contato completo está em `work/revisao-portfolio/contatos/12-grupo-gerador-qta.png`, gerado localmente. Os PNGs de produção foram gerados a 300 dpi. Os PDFs das folhas 07, 08 e 09 foram rasterizados independentemente a 150 dpi para inspeção.
+O contato completo foi gerado localmente como apoio à inspeção; a imagem diagnóstica não faz parte dos artefatos publicados. Os PNGs de produção foram gerados a 300 dpi. Os PDFs das folhas 07, 08 e 09 foram rasterizados independentemente a 150 dpi para inspeção.
 
 ## Conferências estruturais
 
