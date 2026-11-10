@@ -1,12 +1,8 @@
 # Guia de organização dos projetos acadêmicos
 
-Os dez projetos descritos no [plano de projetos](../docs/plano-projetos.md) foram
-criados na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
-Esta pasta conserva as convenções de organização e aceitação.
+O [plano de projetos](../docs/plano-projetos.md) registra a origem dos estudos P01–P10, mantidos na raiz junto dos projetos posteriores. Esta pasta conserva as convenções de organização; os projetos existentes não devem ser movidos nem duplicados.
 
-Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
-[padrão gráfico](../docs/padrao-grafico.md) e os
-[critérios técnicos](../docs/criterios-tecnicos.md).
+Consulte o [padrão gráfico](../docs/padrao-grafico.md), os [critérios técnicos](../docs/criterios-tecnicos.md) e o [manifesto do portfólio](../portfolio.toml).
 
 ## Ordem e identificadores reservados
 
