@@ -38,7 +38,7 @@ Revisão: 01
 ## Critérios gráficos
 
 - Folha A3 paisagem, unidades em milímetros e DXF R2013 como fonte principal.
-- Layers, moldura, carimbo, legenda, notas e aviso conforme [AGENTS.md](../AGENTS.md).
+- Layers, moldura, carimbo, legenda, notas e aviso conforme [padrão gráfico](../docs/padrao-grafico.md).
 - PDF, SVG e PNG são derivados dos DXFs e devem ser inspecionados visualmente.
 
 ## Limites
