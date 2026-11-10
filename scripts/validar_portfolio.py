@@ -107,7 +107,6 @@ class Validator:
 
     def check_structure(self) -> None:
         required_paths = [
-            "AGENTS.md",
             "README.md",
             "LICENSE",
             ".gitignore",
