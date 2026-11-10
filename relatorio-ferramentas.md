@@ -220,7 +220,7 @@ rasterizaram a 150 dpi. Google Chrome 152.0.7977.77 abriu os sete SVGs; os PNGs 
 produção foram inspecionados em 300 dpi. A primeira revisão levou a ajustes de rótulos,
 folgas do unifilar e intervalo visual do workbook; a segunda inspeção foi aprovada. As
 sete abas do workbook técnico foram renderizadas, examinadas e não apresentaram erros
-de fórmula. Na conclusão original, o gerador usava `@oai/artifact-tool` 2.8.59.
+de fórmula. O gerador atual das planilhas utiliza Python e bibliotecas públicas documentadas.
 
 O fluxo CAD usou ezdxf 1.4.4, Matplotlib 3.11.1, Pillow 12.3.0 e pypdf 6.17.0. O
 validador específico aprovou 294 verificações de somas, fases, proteções, quedas,
@@ -406,7 +406,7 @@ portfólio:
 - Python 3.14.7, ezdxf 1.4.4, Matplotlib 3.11.1 e Pillow 12.3.0;
 - pypdf 6.17.0, pdfplumber 0.11.10, PDFium 5.13.0 e Poppler 26.07.0;
 - Microsoft Edge 152.0.4191.66 e Google Chrome 152.0.7977.83;
-- Node.js 24.19.0 e `@oai/artifact-tool` 2.8.59, usados na revisão visual registrada;
+- Node.js 24.19.0, disponível no ambiente de revisão;
 - Git 2.53.0.windows.3 e PowerShell 7.6.5.
 
 O AcCoreConsole abriu e auditou 70/70 DXFs. O Edge abriu e rasterizou 70/70 SVGs;
@@ -419,9 +419,8 @@ Os detalhes e comandos reproduzíveis estão no
 
 ## Preparação para publicação pública em 2026-09-10
 
-O pacote `@oai/artifact-tool` não está disponível no registro público npm. Para não
-publicar uma dependência inacessível, o gerador do workbook P05 e o auditor dos dois
-workbooks foram migrados para Python com `openpyxl 3.1.5` e `et-xmlfile 2.0.0`, ambos
+Para assegurar a reprodução em um ambiente público, o gerador do workbook P05 e o auditor dos dois
+workbooks utilizam Python com `openpyxl 3.1.5` e `et-xmlfile 2.0.0`, ambos
 disponíveis publicamente sob licença MIT. O `package.json` deixou de ser necessário.
 
 O workbook P05 regenerado preservou sete abas e 209 fórmulas, passou nas 294
