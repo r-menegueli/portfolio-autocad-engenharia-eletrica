@@ -4,9 +4,7 @@ Os dez projetos descritos no [plano de projetos](../docs/plano-projetos.md) fora
 criados na raiz por instruções explícitas e não devem ser movidos ou duplicados aqui.
 Esta pasta conserva as convenções de organização e aceitação.
 
-Antes de iniciar uma pasta, consulte as [regras permanentes](../AGENTS.md), o
-[padrão gráfico](../docs/padrao-grafico.md) e os
-[critérios técnicos](../docs/criterios-tecnicos.md).
+Consulte o [padrão gráfico](../docs/padrao-grafico.md), os [critérios técnicos](../docs/criterios-tecnicos.md) e o [manifesto do portfólio](../portfolio.toml).
 
 ## Ordem e identificadores reservados
 
