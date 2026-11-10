@@ -12,7 +12,7 @@ A documentação abaixo mantém os resultados históricos P01–P10. Para P23–
 | Simulink P23/P25 | O relatório anterior declara simulações aprovadas | A auditoria posterior registra que nenhuma execução atual concluída foi comprovada |
 | Revisão P23–P25 | [RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md](https://github.com/r-menegueli/portfolio-autocad-engenharia-eletrica/blob/revisao/p23-p25/RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md) | Branch independente; não representa uma integração em `main` |
 
-Os projetos são acadêmicos e conceituais. P24 também mantém pendências de dimensionamento que devem ser analisadas nos arquivos e cálculos da branch correspondente antes de qualquer evolução.
+Os projetos são acadêmicos e conceituais. P24 mantém pendências de dimensionamento. Os snapshots de `main` e `revisao/p23-p25` registram valores diferentes de corrente e ampacidade; esses resultados não foram conciliados como um mesmo cenário. Revise cada conjunto de premissas antes de qualquer evolução.
 **Data:** 2026-09-10
 
 **Escopo:** repositório completo, Projetos P01 a P10
