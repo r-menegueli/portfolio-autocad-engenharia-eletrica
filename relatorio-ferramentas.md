@@ -18,7 +18,7 @@
 Auditoria inicial executada em 2026-09-05, antes da criacao dos arquivos do
 repositorio. Foram consultados PATH, metadados de executaveis, assinaturas,
 Registro do Windows, associacoes de arquivo, programas instalados e os runtimes
-fornecidos pelo Codex. Nenhum aplicativo CAD foi iniciado durante a auditoria
+disponíveis no ambiente temporário de execução. Nenhum aplicativo CAD foi iniciado durante a auditoria
 inicial.
 
 ## Resumo
@@ -32,7 +32,7 @@ inicial.
 | ODA File Converter | nao encontrado | - | nao ha conversor DWG independente |
 | Inkscape | nao encontrado | - | SVG sera produzido por Matplotlib, sem teste pelo Inkscape |
 | Python do sistema | encontrado | CPython 3.14.7 x64 | no momento da auditoria, nao possuia os pacotes tecnicos solicitados |
-| Python do runtime Codex | encontrado | CPython 3.12.14 x64 | localizado em cache interno; nao deve ser dependencia permanente do projeto |
+| Python do ambiente temporário | encontrado | CPython 3.12.14 x64 | não constitui dependência permanente do projeto |
 | ezdxf | ausente inicialmente | instalado depois no `.venv`: 1.4.4 | gera e audita DXF; nao grava DWG |
 | matplotlib | ausente inicialmente | instalado depois no `.venv`: 3.11.1 | renderizacao pode diferir de um CAD em fontes e hachuras complexas |
 | Pillow | runtime: 12.3.0 | `.venv`: 12.3.0 | validacao raster; nao valida semantica CAD |
@@ -61,14 +61,14 @@ inicial.
 
 Na auditoria inicial, o Python 3.14.7 do sistema nao importava `ezdxf`,
 `matplotlib`, `pytest`, `reportlab`, `pypdf`, `pdfplumber`, `fitz`, `cairosvg` ou
-`PIL`. O runtime temporario do Codex continha ReportLab, pypdf, pdfplumber e Pillow,
+`PIL`. O ambiente temporário de execução continha ReportLab, pypdf, pdfplumber e Pillow,
 e passou em um smoke test totalmente em memoria de geracao, leitura e extracao de
 texto PDF.
 
 Foi criado posteriormente um `.venv` local, nao versionado, a partir do Python
 3.14.7. As dependencias diretas e transitivas estao fixadas em
 [`requirements.txt`](requirements.txt).
-O projeto nao codifica caminhos do cache Codex; os scripts usam o interpretador
+O projeto nao codifica caminhos de caches temporários; os scripts usam o interpretador
 ativo e descoberta explicita de ferramentas externas.
 
 Os nove testes automatizados passaram. O `ezdxf 1.4.4`, quando exercitado com
