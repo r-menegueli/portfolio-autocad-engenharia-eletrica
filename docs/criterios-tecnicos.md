@@ -56,7 +56,7 @@ fonte. Coerencia dimensional e obrigatoria.
 
 ## Referencias normativas controladas
 
-A tabela registra o estado consultado em 2026-09-05. Antes de cada projeto final,
+A tabela registra fontes oficiais consultadas em 2026-11-10. A edição indicada não representa certificação de conformidade do projeto. Antes de cada projeto final,
 confirmar novamente no catalogo oficial e consultar o texto integral licenciado.
 "Referencia" nao significa certificacao de conformidade.
 
