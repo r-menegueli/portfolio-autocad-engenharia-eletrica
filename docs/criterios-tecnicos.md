@@ -56,7 +56,7 @@ fonte. Coerencia dimensional e obrigatoria.
 
 ## Referencias normativas controladas
 
-A tabela registra o estado consultado em 2026-09-05. Antes de cada projeto final,
+A tabela registra fontes oficiais consultadas em 2026-11-10. A edição indicada não representa certificação de conformidade do projeto. Antes de cada projeto final,
 confirmar novamente no catalogo oficial e consultar o texto integral licenciado.
 "Referencia" nao significa certificacao de conformidade.
 
@@ -68,7 +68,7 @@ confirmar novamente no catalogo oficial e consultar o texto integral licenciado.
 | [ABNT NBR 5419-2:2026](https://www.abntcatalogo.com.br/pnm.aspx?Q=REZxa2hZejlUejZ1a3RaUzdubks3ZlE3ajNIMGFPR2tRYnpuUDhNeEdUOD0=) | gerenciamento de risco | versao corrigida 2026 |
 | [ABNT NBR 5419-3:2026](https://www.abntcatalogo.com.br/pnm.aspx?Q=cld2NDkxSm1oU2lyVXhXQ2ZXRXY1TE9FNGlLS3Z1cTBWT3d6eWVSb3FoUT0=) | danos fisicos e risco a vida | versao corrigida 2026 |
 | [ABNT NBR 5419-4:2026](https://www.abntcatalogo.com.br/pnm.aspx?Q=anlGM2pWTXlJdnh2RkIvY1BWREVNTmFUUzB3bmZsaTRLQ1VnUWJzWkRnaz0=) | sistemas eletricos e eletronicos | versao corrigida 2026 |
-| [NR-10 do MTE](https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-10-nr-10) | seguranca em instalacoes e servicos | texto de 2019 vigente ate 2027-05-31; nova redacao prevista para 2027-06-01 |
+| [NR-10 do MTE](https://www.gov.br/trabalho-e-emprego/pt-br/acesso-a-informacao/participacao-social/conselhos-e-orgaos-colegiados/comissao-tripartite-partitaria-permanente/normas-regulamentadora/normas-regulamentadoras-vigentes/norma-regulamentadora-no-10-nr-10) | seguranca em instalacoes e servicos | texto anterior vigente até 2027-05-31; redação aprovada pela Portaria MTE nº 737/2026 com vigência a partir de 2027-06-01 |
 | [ABNT NBR 16752:2020](https://www.abntcatalogo.com.br/pnm.aspx?Q=WDZpNW1lb2pNdzJNOTB6RXZPTlZNTE1kQTJuaGJNSVZRMGI2cW10c3I2ND0=) | folhas e elementos de desenho tecnico | confirmada em 2025 |
 | [IEC 60617:2026 DB](https://webstore.iec.ch/en/publication/2723) | simbolos eletrotecnicos | base licenciada publicada em 2026 |
 | [IEC 61082-1:2014](https://webstore.iec.ch/en/publication/4469) | apresentacao de informacao eletrotecnica | estabilidade indicada ate 2029 |
