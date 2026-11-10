@@ -14,8 +14,7 @@ Cada pasta descreve as premissas usadas, os arquivos incluídos e os limites do 
 - [Como abrir e reproduzir](#como-abrir-e-reproduzir)
 - [Validação e relatórios](#validação-e-relatórios)
 
-As regras permanentes estão em [AGENTS.md](AGENTS.md) e os parâmetros processáveis
-em [portfolio.toml](portfolio.toml).
+Os critérios técnicos e gráficos estão em [docs/criterios-tecnicos.md](docs/criterios-tecnicos.md) e [docs/padrao-grafico.md](docs/padrao-grafico.md); os parâmetros processáveis constam de [portfolio.toml](portfolio.toml).
 
 ## Projetos
 
@@ -163,7 +162,6 @@ portfolio-autocad-engenharia-eletrica/
 ├── renders/                    # visualizações do template e manifesto
 ├── scripts/                    # geração, renderização, revisão e validação
 ├── tests/                      # testes automatizados do validador
-├── AGENTS.md
 └── portfolio.toml
 ```
 
