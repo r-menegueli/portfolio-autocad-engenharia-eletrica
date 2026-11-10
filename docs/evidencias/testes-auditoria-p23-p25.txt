@@ -42,7 +42,7 @@ tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
-  C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  <repository-root>\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
   As an alternative, you can create a new view using np.reshape (with copy=False if needed).
     m.shape = (3, 3)
 
@@ -94,7 +94,7 @@ tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
 tests/test_validador.py::test_layers_bounds_and_duplicate_text_are_detected
-  C:\Users\dakra\Documents\Codex\2026-11-08\new-chat\work\portfolio-p23-p25\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
+  <repository-root>\.venv\Lib\site-packages\ezdxf\math\_matrix44.py:637: DeprecationWarning: Setting the shape on a NumPy array has been deprecated in NumPy 2.5.
   As an alternative, you can create a new view using np.reshape (with copy=False if needed).
     m.shape = (3, 3)
 
