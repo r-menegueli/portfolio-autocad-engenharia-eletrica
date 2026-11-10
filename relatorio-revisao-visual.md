@@ -18,9 +18,7 @@
 5. Os dois workbooks foram importados e todas as 13 abas foram renderizadas para
    revisão visual.
 
-As imagens diagnósticas ficam em `work/revisao-portfolio/`, `work/revisao-svg/` e
-`work/revisao-workbooks/`. Esses diretórios são temporários, reproduzíveis e
-ignorados pelo Git.
+As imagens diagnósticas foram usadas como apoio temporário à inspeção visual e não fazem parte dos artefatos publicados.
 
 ## Critérios visuais
 
