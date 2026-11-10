@@ -136,7 +136,7 @@ blocos padrão, já que Simscape Electrical não está licenciado neste ambiente
 
 O [relatório consolidado de validação](relatorio-validacao.md) preserva os resultados históricos P01–P10 e registra separadamente o estado de P23–P25. A revisão em `main` contém alegações históricas de validação global e MATLAB/Simulink que não foram confirmadas por evidência executável desta branch. A revisão `revisao/p23-p25` documenta testes estáticos MATLAB e Python, além de pendências explícitas; ela não confirma simulação Simulink bem-sucedida. Consulte o relatório antes de interpretar qualquer resultado.
 
-P24 sinaliza uma pendência explícita: no cenário de 140 MW, a corrente calculada (585,72 A) supera a estimativa térmica (571,04 A) sob as premissas cadastradas. Rever condutor e condições térmicas antes de evoluir o estudo.
+Na fotografia de `main`, o P24 registra corrente de 585,72 A acima da estimativa térmica de 571,04 A no cenário de 140 MW. A branch `revisao/p23-p25` apresenta valores diferentes de corrente e ampacidade sob seus cenários. As revisões não foram integradas nem reconciliadas; trate as duas como pendências específicas de cada snapshot e confira premissas e cálculos antes de evoluir o estudo.
 
 - [Relatório de validação (histórico P01–P10 e estado atual P01–P25)](relatorio-validacao.md)
 - [Revisão técnica](relatorio-revisao-tecnica.md)
