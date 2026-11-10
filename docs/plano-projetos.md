@@ -10,8 +10,7 @@ Elétrica, do desenho de baixa tensão à integração de sistemas industriais. 
 P12 foram acrescentados depois e não fazem parte do plano original; a lista atual
 de doze estudos está no [README do repositório](../README.md#projetos).
 
-As regras permanentes estão no [AGENTS.md](../AGENTS.md), e os critérios comuns
-estão descritos no [padrão gráfico](./padrao-grafico.md) e nos
+Os critérios comuns estão descritos no [padrão gráfico](./padrao-grafico.md) e nos
 [critérios técnicos](./criterios-tecnicos.md). A organização prevista para as
 pastas de trabalho está resumida em [projetos/README.md](../projetos/README.md).
 
