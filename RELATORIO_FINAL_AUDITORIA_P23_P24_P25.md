@@ -4,7 +4,7 @@
 
 **Repositório:** `r-menegueli/portfolio-autocad-engenharia-eletrica`
 
-**Branch auditada:** `codex/p23-p25-reengineering`
+**Branch atual:** `revisao/p23-p25` (a auditoria de 09/11/2026 foi registrada quando a branch ainda se chamava `codex/p23-p25-reengineering`).
 
 **Base de comparação:** `origin/main` em `bec032760fc836d7a441f2efbd08a161bf3ccf3e`
 
@@ -18,7 +18,7 @@ Os modelos Simulink continuam sem execução bem-sucedida comprovada: uma tentat
 
 ## Atualização da continuação — 2026-11-09
 
-**Esta atualização é a fotografia atual e prevalece sobre as seções históricas abaixo quando houver divergência.** As seções 1–8 foram escritas antes desta continuação, no estado publicado `475358b`; elas preservam o registro da auditoria inicial. O trabalho atual está na branch autorizada `codex/p23-p25-reengineering`, comparada com `origin/main` (`bec032760fc836d7a441f2efbd08a161bf3ccf3e`). Não foi feito merge em `main`.
+**Nome atual da branch:** `revisao/p23-p25`, após renomeação em 10/11/2026. Esta atualização é a fotografia do conteúdo auditado e prevalece sobre as seções históricas abaixo quando houver divergência. As seções 1–8 foram escritas antes desta continuação, no estado publicado `475358b`; elas preservam o registro da auditoria inicial. O trabalho foi comparado com `main` (`bec032760fc836d7a441f2efbd08a161bf3ccf3e`) e permanece em branch separada. Não foi feito merge em `main`.
 
 ### Mudanças locais desta continuação
 
@@ -53,7 +53,7 @@ P23 e P25 usaram `-nojvm -singleCompThread`; P24 executou com as opções padrã
 | **P24** | Não existe `.slx` no projeto. | Não se aplica | Não se aplica | Não se aplica | Dinâmica Simulink **NÃO EXECUTADO**. |
 | **P25** | `25-usina-cogeracao-biomassa/simulink/modelo_cogeracao_dinamico.slx` existe e seu blob local continua igual a `origin/main`. | Não | Não | Não | A tentativa P25 não foi iniciada. A medição de 21:20 encontrou 1,93 GB livres; ficou abaixo do pico de 2,45 GB já medido para construir P23. Evidência do estado do sistema: [`diagnostico-recursos-memoria-2026-11-09.json`](docs/evidencias/diagnostico-recursos-memoria-2026-11-09.json). |
 
-O pagefile permaneceu automático (`C:\pagefile.sys`, alocação de 14.575 MB; 9,70 GB de commit disponível na última amostra). Nenhum aplicativo do usuário foi encerrado e nenhuma configuração do Windows foi alterada. A limitação observada foi a RAM física: 7,8 GB visíveis, 1,93 GB livres na amostra final e consumo medido do builder P23 superior a isso. Logo, **nenhum resultado MATLAB/Simulink dinâmico está apresentado como sucesso**.
+As tentativas de dinâmica P23 foram interrompidas durante a construção e não produziram uma simulação concluída. P24 não contém modelo `.slx` e P25 não foi iniciado. **Nenhum resultado MATLAB/Simulink dinâmico está apresentado como sucesso.**
 
 ### Dinâmica Python P25 — resultado e limite
 
@@ -90,7 +90,7 @@ As classificações atuais por projeto são:
 
 ### Comparação e publicação
 
-Desde o estado `475358b`, houve três melhorias verificáveis: (1) execução real dos caminhos estáticos MATLAB e testes específicos de P23/P24/P25, com JSON de consumo e saída; (2) regeneração da dinâmica Python P25 com integração nos eventos e apresentação explícita da sensibilidade, sem camuflar a potência negativa; (3) redesenho funcional da P25-05, com inspeção visual e testes DXF/PDF. Também foi corrigida a ordem de associação/mesclagem de páginas do renderizador para pypdf 7 e foram atualizadas as prévias/cadernos. A comparação geométrica e os dados locais anteriores permanecem úteis como histórico; estes passos não completam a reengenharia das 30 folhas.
+Desde o estado `475358b`, houve três melhorias verificáveis: (1) execução real dos caminhos estáticos MATLAB e testes específicos de P23/P24/P25, com JSON de consumo e saída; (2) regeneração da dinâmica Python P25 com integração nos eventos e apresentação explícita da sensibilidade, sem camuflar a potência negativa; (3) redesenho funcional da P25-05, com inspeção visual e testes DXF/PDF. Também foi corrigida a ordem de associação/mesclagem de páginas do renderizador para pypdf 7 e foram atualizadas as prévias/cadernos. A comparação geométrica e os registros técnicos anteriores permanecem úteis como histórico; estes passos não completam a reengenharia das 30 folhas.
 
 As alterações desta continuação são publicadas na branch existente `codex/p23-p25-reengineering`, preservando os commits anteriores. `main` continua sem merge. A revisão não declara conformidade normativa nem liberação para construção/instalação.
 
