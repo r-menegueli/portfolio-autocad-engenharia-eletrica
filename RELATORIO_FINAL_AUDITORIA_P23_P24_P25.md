@@ -92,7 +92,7 @@ As classificações atuais por projeto são:
 
 Desde o estado `475358b`, houve três melhorias verificáveis: (1) execução real dos caminhos estáticos MATLAB e testes específicos de P23/P24/P25, com JSON de consumo e saída; (2) regeneração da dinâmica Python P25 com integração nos eventos e apresentação explícita da sensibilidade, sem camuflar a potência negativa; (3) redesenho funcional da P25-05, com inspeção visual e testes DXF/PDF. Também foi corrigida a ordem de associação/mesclagem de páginas do renderizador para pypdf 7 e foram atualizadas as prévias/cadernos. A comparação geométrica e os registros técnicos anteriores permanecem úteis como histórico; estes passos não completam a reengenharia das 30 folhas.
 
-As alterações desta continuação são publicadas na branch existente `codex/p23-p25-reengineering`, preservando os commits anteriores. `main` continua sem merge. A revisão não declara conformidade normativa nem liberação para construção/instalação.
+As alterações desta continuação permanecem na branch atual `revisao/p23-p25`, cujo nome anterior era `codex/p23-p25-reengineering`; os commits anteriores estão preservados. `main` continua sem merge. A revisão não declara conformidade normativa nem liberação para construção/instalação.
 
 ## Registro histórico da auditoria inicial
 
@@ -233,7 +233,7 @@ O `pytest` geral ainda emite seis `DeprecationWarning` internos do `ezdxf` ao us
 
 ## 8. Publicação no GitHub
 
-O trabalho anterior já estava publicado em `codex/p23-p25-reengineering`, mas não integrado a `main`. O relatório e os novos CSVs/logs desta auditoria são publicados na mesma branch, preservando os commits anteriores. `main` permanece no commit-base; não foi feito merge porque o escopo continua incompleto e os modelos MATLAB/Simulink não têm execução bem-sucedida comprovada.
+O trabalho auditado foi publicado sob o nome `codex/p23-p25-reengineering`, depois renomeado para `revisao/p23-p25`, sem integração em `main`. O relatório e as evidências permanecem na mesma branch. `main` não recebeu merge porque o escopo continua incompleto e os modelos MATLAB/Simulink não têm execução bem-sucedida comprovada.
 
 ## Evidências vinculadas
 
