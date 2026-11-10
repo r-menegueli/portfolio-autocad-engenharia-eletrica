@@ -4,7 +4,7 @@
   "duration_seconds": 38.32,
   "matlab_path": "C:\\Program Files\\MATLAB\\R2026a\\bin\\matlab.exe",
   "matlab_root_process_id": 13592,
-  "batch_command": "cd('C:/Users/dakra/Documents/Codex/2026-11-08/new-chat/work/portfolio-p23-p25/23-complexo-siderurgico-eaf/matlab/calculos'); addpath('../testes'); R=run_analysis; test_project_23(R); fprintf('P_MW=%.6f; Q_STATCOM_MVAr=%.6f; Icc_34k5_kA=%.6f; Vmin_pu=%.6f; Vfinal_com_STATCOM_pu=%.6f\\\\n',R.P_MW,R.Q_STATCOM_MVAr,R.Icc_34k5_kA,min(R.dinamica.V_pu),R.dinamica.V_pu(end));",
+  "batch_command": "cd('$REPO/23-complexo-siderurgico-eaf/matlab/calculos'); addpath('../testes'); R=run_analysis; test_project_23(R); fprintf('P_MW=%.6f; Q_STATCOM_MVAr=%.6f; Icc_34k5_kA=%.6f; Vmin_pu=%.6f; Vfinal_com_STATCOM_pu=%.6f\\\\n',R.P_MW,R.Q_STATCOM_MVAr,R.Icc_34k5_kA,min(R.dinamica.V_pu),R.dinamica.V_pu(end));",
   "exit_code": -1,
   "stop_reason": "Interrompida com segurança: RAM física livre abaixo de 0.2 GB.",
   "ram_before": {
@@ -33,7 +33,7 @@
       "committed_gb": 11.905,
       "commit_limit_gb": 22.031,
       "matlab_process_tree_working_set_mb": 181.2,
-      "matlab_process_tree_private_mb": 130.0,
+      "matlab_process_tree_private_mb": 130,
       "processes": [
         {
           "pid": 13592,
@@ -44,14 +44,14 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
           "working_set_mb": 165.5,
-          "private_bytes_mb": 127.0
+          "private_bytes_mb": 127
         }
       ]
     },
@@ -72,7 +72,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -106,7 +106,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -140,7 +140,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -174,7 +174,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -208,7 +208,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -230,7 +230,7 @@
       "free_physical_ram_gb": 1.089,
       "committed_gb": 12.586,
       "commit_limit_gb": 22.031,
-      "matlab_process_tree_working_set_mb": 935.0,
+      "matlab_process_tree_working_set_mb": 935,
       "matlab_process_tree_private_mb": 795.4,
       "processes": [
         {
@@ -242,13 +242,13 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 826.0,
+          "working_set_mb": 826,
           "private_bytes_mb": 750.1
         },
         {
@@ -264,7 +264,7 @@
       "free_physical_ram_gb": 0.996,
       "committed_gb": 12.707,
       "commit_limit_gb": 22.031,
-      "matlab_process_tree_working_set_mb": 1111.0,
+      "matlab_process_tree_working_set_mb": 1111,
       "matlab_process_tree_private_mb": 960.8,
       "processes": [
         {
@@ -276,13 +276,13 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 1002.0,
+          "working_set_mb": 1002,
           "private_bytes_mb": 915.4
         },
         {
@@ -310,7 +310,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -344,7 +344,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -378,7 +378,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -412,7 +412,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -424,8 +424,8 @@
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
-          "private_bytes_mb": 42.0
+          "working_set_mb": 93,
+          "private_bytes_mb": 42
         }
       ]
     },
@@ -446,20 +446,20 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 1084.0,
+          "working_set_mb": 1084,
           "private_bytes_mb": 985.8
         },
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
-          "private_bytes_mb": 42.0
+          "working_set_mb": 93,
+          "private_bytes_mb": 42
         }
       ]
     },
@@ -480,19 +480,19 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
           "working_set_mb": 1111.2,
-          "private_bytes_mb": 1009.0
+          "private_bytes_mb": 1009
         },
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
+          "working_set_mb": 93,
           "private_bytes_mb": 41.9
         }
       ]
@@ -514,7 +514,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -526,7 +526,7 @@
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
+          "working_set_mb": 93,
           "private_bytes_mb": 41.9
         }
       ]
@@ -548,7 +548,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -560,7 +560,7 @@
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
+          "working_set_mb": 93,
           "private_bytes_mb": 41.9
         }
       ]
@@ -582,7 +582,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -594,7 +594,7 @@
         {
           "pid": 24556,
           "name": "MathWorksServiceHost",
-          "working_set_mb": 93.0,
+          "working_set_mb": 93,
           "private_bytes_mb": 41.9
         }
       ]
@@ -616,7 +616,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -650,13 +650,13 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 1419.0,
+          "working_set_mb": 1419,
           "private_bytes_mb": 1186.6
         },
         {
@@ -684,7 +684,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -718,7 +718,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -752,13 +752,13 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 1477.0,
+          "working_set_mb": 1477,
           "private_bytes_mb": 1228.2
         },
         {
@@ -786,7 +786,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -820,13 +820,13 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
-          "working_set_mb": 1520.0,
+          "working_set_mb": 1520,
           "private_bytes_mb": 1260.9
         },
         {
@@ -854,7 +854,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -888,7 +888,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -922,7 +922,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -944,8 +944,8 @@
       "free_physical_ram_gb": 0.414,
       "committed_gb": 13.191,
       "commit_limit_gb": 22.031,
-      "matlab_process_tree_working_set_mb": 1736.0,
-      "matlab_process_tree_private_mb": 1451.0,
+      "matlab_process_tree_working_set_mb": 1736,
+      "matlab_process_tree_private_mb": 1451,
       "processes": [
         {
           "pid": 13592,
@@ -956,7 +956,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -990,7 +990,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1024,14 +1024,14 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
           "pid": 24388,
           "name": "MATLAB",
           "working_set_mb": 1687.7,
-          "private_bytes_mb": 1457.0
+          "private_bytes_mb": 1457
         },
         {
           "pid": 24556,
@@ -1046,7 +1046,7 @@
       "free_physical_ram_gb": 0.311,
       "committed_gb": 13.276,
       "commit_limit_gb": 22.031,
-      "matlab_process_tree_working_set_mb": 1852.0,
+      "matlab_process_tree_working_set_mb": 1852,
       "matlab_process_tree_private_mb": 1545.6,
       "processes": [
         {
@@ -1058,7 +1058,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1092,7 +1092,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1126,7 +1126,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1160,7 +1160,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1194,7 +1194,7 @@
         {
           "pid": 9528,
           "name": "conhost",
-          "working_set_mb": 7.0,
+          "working_set_mb": 7,
           "private_bytes_mb": 1.2
         },
         {
@@ -1211,5 +1211,6 @@
         }
       ]
     }
-  ]
+  ],
+  "public_path_redaction": "Absolute local workspace prefix replaced with $REPO (repository root); remaining command and result data preserved."
 }
