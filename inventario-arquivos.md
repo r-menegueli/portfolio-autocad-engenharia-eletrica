@@ -62,13 +62,10 @@ layers, geometria e caminhos.
 
 ## Rastreabilidade
 
-O inventário detalhado por arquivo pode ser regenerado em
-`work/revisao-portfolio/inventario.csv` com:
+O inventário detalhado por arquivo pode ser regenerado localmente com:
 
 ```powershell
 .\.venv\Scripts\python.exe .\scripts\revisar_portfolio.py --root .
 ```
 
-Essa saída local inclui projeto, prancha, identificador, tipo, caminho, tamanho e
-dimensões das tabelas CSV. Ela é deliberadamente ignorada pelo Git para evitar
-versionar dados diagnósticos derivados.
+A saída inclui projeto, prancha, identificador, tipo, caminho, tamanho e dimensões das tabelas CSV. Ela é derivada e permanece fora do controle de versão.
