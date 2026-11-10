@@ -14,8 +14,7 @@ Cada pasta descreve as premissas usadas, os arquivos incluídos e os limites do 
 - [Como abrir e reproduzir](#como-abrir-e-reproduzir)
 - [Validação e relatórios](#validação-e-relatórios)
 
-As regras permanentes estão em [AGENTS.md](AGENTS.md) e os parâmetros processáveis
-em [portfolio.toml](portfolio.toml).
+Os critérios de desenho e documentação estão em [docs/padrao-grafico.md](docs/padrao-grafico.md) e [docs/criterios-tecnicos.md](docs/criterios-tecnicos.md); os parâmetros processáveis estão em [portfolio.toml](portfolio.toml).
 
 ## Projetos
 
@@ -89,8 +88,7 @@ Os desenhos cobrem diagramas unifilares e funcionais, plantas, painéis, instrum
 | CSV e XLSX | dados técnicos, cálculos e listas rastreáveis |
 | Git e PowerShell | reprodução, auditoria e histórico local |
 
-O ambiente verificado e suas limitações estão no
-[relatório de ferramentas](relatorio-ferramentas.md).
+A reprodução e o estado das verificações estão em [Ferramentas e validação](relatorio-ferramentas.md) e no [relatório consolidado](relatorio-validacao.md).
 
 ### Política dos formatos
 
@@ -137,9 +135,7 @@ licenciado, e essa licença não foi reconsultada em 09/11.
 
 ## Validação e relatórios
 
-O [relatório consolidado de validação](relatorio-validacao.md) mantém os registros históricos e acrescenta o estado desta revisão de 09/11/2026. Nesta branch, a suíte geral passou em 11 testes; os testes focados P23–P25 passaram em 21 casos; e as 30 pranchas passaram pelo validador estrutural sem erros ou avisos. Os resultados atuais de cada projeto e as limitações estão nos respectivos relatórios técnicos.
-
-As afirmações de execução MATLAB/Simulink da revisão histórica de 08/11 não foram repetidas nesta revisão. MATLAB R2026a e as pastas do Simulink/Simscape estão instalados, mas o MATLAB não foi iniciado porque havia menos de 1 GB de RAM livre nas verificações de 09/11. O AutoCAD Core Console auditou os 30 DXFs atuais: 30/30 com zero erros e zero reparos; a interface gráfica e a saída de plotter não foram verificadas. Os relatórios por projeto distinguem esses resultados do histórico e das verificações Python.
+A auditoria desta branch registra 36 testes Python aprovados, 651.139 verificações estruturais sem erros ou avisos e uma evidência versionada de 30/30 DXFs aprovados pelo AutoCAD Core Console. A auditoria também registra caminhos estáticos MATLAB executados para P23–P25. As rotinas dinâmicas MATLAB/Simulink não têm execução bem-sucedida confirmada: P23 foi interrompido antes de produzir simulação, P24 não possui modelo Simulink e P25 não foi iniciado. Consulte o [relatório final](RELATORIO_FINAL_AUDITORIA_P23_P24_P25.md) para escopo, premissas e limitações. Esses testes não certificam engenharia.
 
 Na triagem atual P24, a maior corrente calculada é 650,80 A e a ampacidade mínima estimada do feixe é 892,04 A nas premissas cadastradas. Esse resultado não confirma capacidade normativa ou de campo: os dados de clima, rota e cabo permanecem sintéticos.
 
@@ -166,7 +162,6 @@ portfolio-autocad-engenharia-eletrica/
 ├── renders/                    # visualizações do template e manifesto
 ├── scripts/                    # geração, renderização, revisão e validação
 ├── tests/                      # testes automatizados do validador
-├── AGENTS.md
 └── portfolio.toml
 ```
 
