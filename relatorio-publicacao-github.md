@@ -2,7 +2,6 @@
 
 **Data da publicação:** 2026-11-08
 **Repositório:** `r-menegueli/portfolio-autocad-engenharia-eletrica`  
-**Branch de trabalho:** `codex/p23-p25-studies`  
 **Destino:** `main`  
 **Estado:** publicado no `main` por fast-forward.
 **Commit:** `3d1d228e052694558962e0da9244b6e6a002d67b`
